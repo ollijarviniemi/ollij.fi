@@ -70,7 +70,7 @@ Helppo ja usein esitetty vastaus kuuluu "ihmiset ovat tyhmiä". Ja tämän vasta
 
 Kyllä, kiitos, ihmiset ovat tyhmiä, mutta miten asiat olisivat *eri tavalla*, jos ihmiset olisivat vähemmän tyhmiä? (Ei, "paremmin" ei ole vastaus.) Voitaisiinko me silti tehdä asioita noin, vaikka ihmiset ovatkin "tyhmiä"? Ja *millä tavoilla* ja *mistä syistä* ihmiset ovat tyhmiä? Voitaisiinko noille tehdä jotakin?
 
-Riman ollessa näin matalalla on helpompi keksiä parempia vastauksia. Insentiivit vaikuttavat yhdeltä oleelliselta palapelin palalta, joka selittää epätäydellisyyksiä. Ihmisiä työntävät voimat eivät (aina) osoita kohti Hyviä Asioita. Välillä ne osoittavat kohti Huonoja Asioita. Ihmiset (välillä) seuraavat insentiivejä. Sitten tapahtuu Huonoja Asioita. Tai välillä sopivat insentiivit kohti Hyviä Asioita puuttuvat ja kukaan ei tee niitä.
+Asetettuani riman näin matalalle keksin parempiakin vastauksia. Insentiivit vaikuttavat yhdeltä oleelliselta palapelin palalta, joka selittää epätäydellisyyksiä. Ihmisiä työntävät voimat eivät (aina) osoita kohti Hyviä Asioita. Välillä ne osoittavat kohti Huonoja Asioita. Ihmiset (välillä) seuraavat insentiivejä. Sitten tapahtuu Huonoja Asioita. Tai välillä sopivat insentiivit kohti Hyviä Asioita puuttuvat ja kukaan ei tee niitä.
 
 ---
 
@@ -98,7 +98,7 @@ Yleisesti *kaikki* osapuolet haluavat toteuttaa Pareto-parannuksen, jos niitä s
 
 ![Pareto-käyrä](Kuvat/vanki_5-1.jpg)
 
-Silti aina sinne ei päästä. Insentiivit voivat välillä olla sellaisia, joita seuraamalla päädytään stabiiliin mutta huonoon tilaan. Ihmiset tekevät (naiivisti ajateltuna) itselleen parhaan asian ja tämän seurauksena kollektiivisesti pudotaan Pareto-käyrältä. (Ehkä se ei ollutkaan itselle paras asia...)
+Silti sinne ei aina päästä. Insentiivit ovat välillä sellaisia, joita seuraamalla päädytään stabiiliin mutta huonoon tilaan. Ihmiset tekevät (naiivisti ajateltuna) itselleen parhaan asian, ja tämän seurauksena kollektiivisesti pudotaan Pareto-käyrältä. (Ehkä se ei ollutkaan itselle paras asia...)
 
 Onneksi tämä on vain ajatusleikki. Oikeassa elämässä ihmisillä ei tietenkään ole eriäviä preferenssejä (tai eriäviä *uskomuksia*), insentiivit osoittavat aina kohti yhteistä hyvää ja yksittäiselle henkilölle paras vaihtoehto on tietysti aina muillekin paras.
 
@@ -108,7 +108,7 @@ Joskus huvitan itseäni ajatuksella, että emme ole Pareto-käyrällä vain sen 
 
 Ongelma on toki syvemmällä. Ihmisten käsitys *optimaalisesta toiminnasta* ja *rationaalisesta ihmisestä* on sellainen, joka johtaa huonoihin lopputuloksiin. Olen [aiemminkin](/epi/filosofiatila) puhunut siitä, kuinka ihmisten konsepti "rationaalisuudesta" sisältää kaikenlaista hölynpölyä, kuten "rationaalinen ihminen on täysin itsekäs". Ja itsekkyyshän tietysti tarkoittaa, että vangin dilemman kaltaisissa koordinaatio-ongelmissa ei tehdä yhteistyötä muiden kanssa.
 
-Ja koko vangin dilemman pointti, yksi *koko peliteorian* keskeisimmistä pointeista, on mennyt ohi. Jos kerta olet niin rationaalinen, niin mikset saa, mitä haluat? Jos kerta olette niin rationaalisia, niin miksette ole Pareto-käyrällä? Yritän olla juuttumatta sanojen määritelmien käsittelyyn, mutta minulla on ehdotus: jospa vaikka konseptisi rationaalisuudesta vastaisi sitä, millä oikeasti saavutetaan parhaat lopputulokset.
+Ja koko vangin dilemman pointti, yksi *koko peliteorian* keskeisimmistä pointeista, on mennyt ohi. Jos kerta olet niin rationaalinen, niin mikset saa mitä haluat? Jos kerta olette niin rationaalisia, niin miksette ole Pareto-käyrällä? Yritän olla juuttumatta sanojen määritelmien käsittelyyn, mutta minulla on ehdotus: jospa vaikka konseptisi rationaalisuudesta vastaisi sitä, millä oikeasti saavutetaan parhaat lopputulokset.
 
 (Hyökkään tietysti olkiukkoa vastaan, eikö? [Wikipedia-sivulla vangin dilemmasta](https://en.wikipedia.org/wiki/Prisoner%27s_dilemma) kirjoitetaan "Loyalty to one's partner is, in this game, irrational" -- ja ei, kyse ei ole vain tästä Wikipedia-sivusta. Siten pitää keksiä uusia sanoja kuten "[superrationaalinen](https://en.wikipedia.org/wiki/Superrationality)" sille, mikä on *oikeasti* hyvä tapa toimia. Tai hetkinen, tässä superrationaalisuudessakin on ongelmansa, ja paras toimintatapa onkin se joka on *hyperrationaalinen*...)
 

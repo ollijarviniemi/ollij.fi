@@ -16,7 +16,7 @@ Omilla filosofian tunneillani sen sijaan käytettiin runsaasti aikaa antiikin Kr
 
 Joskus on ollut aika, jolloin olen ollut yllättynyt kuullessani, kuinka "historian suurimmat ajattelijat" ovat sanoneet ties mitä hölynpölyä. Sittemmin olen ymmärtänyt, että tämä on *juuri miten odottaisikin asian olevan*.
 
-Kysyin kerran tuttaviltani: montako filosofia osaat nimetä, jotka ovat olleet elossa, kun evoluutioteoria on kehitetty?
+Kysyin kerran tuttaviltani: montako evoluutioteorian kehittämisen jälkeen elänyttä filosofia osaatte nimetä?
 
 Evoluutio on vain *yksi* niistä lukemattoman monista ideoista, joiden valossa näkemykset kuten "jotkut ihmiset ovat luonnostaan orjia" näyttäytyvät vähemmän järkeviltä.
 

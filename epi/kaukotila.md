@@ -10,13 +10,13 @@ Miksi ihmiset sanovat näin? Ehkä kyse on [kvantifioinnin puutteesta](/epi/kvan
 
 Ehkä siinä on muutakin.
 
-Lukiossa osallistuin erinäisiin tiedekilpailuun. Muistan erään tapauksen, jossa pääsin kilpailun jatkoon, mutta finaali järjestettäisiin vasta muutamaa kuukautta myöhemmin yliopisto-opiskeluni jo alkaessa. Silloin mietin: "voi voi kun se kilpailu on vasta tuolloin, en tiedä kiinnostaako minua enää sitten yliopistossa jokin lukion tiedekilpailu".
+Lukiossa osallistuin erinäisiin tiedekilpailuihin. Muistan erään tapauksen, jossa pääsin kilpailun jatkoon, mutta finaali järjestettäisiin vasta muutamaa kuukautta myöhemmin yliopisto-opiskeluni jo alkaessa. Silloin mietin: "voi voi kun se kilpailu on vasta tuolloin, en tiedä kiinnostaako minua enää sitten yliopistossa jokin lukion tiedekilpailu".
 
 Ja miten kävi?
 
 Kiinnostihan se, suunnilleen yhtä paljon kuin lukiossakin. Yllätys!
 
-Ongelmana oli, että yliopistoa miettiessäni käytin hyvin erilaista ajattelua kuin jos miettisin arkipäiväisiä aiheita kuten "tarvitseeko minun pestä pyykkiä?" tai "tuletko meille kylään ensi viikolla?". En miettinyt, mitä oikeasti odotan tapahtuvan. Yliopisto tuntui epämääräiseltä konseptilta. Alitajuisesti ajattelin, että yliopisto-opiskelijat ovat vanhoja ja kiinnostuneita ihan eri jutuista kuin pienet lukiolaiset -- joten varmaan minäkin koen suuren muodonmuutoksen samalla sekunnilla, kun saan opiskeluoikeuden. (Näin ei käynyt.)
+Ongelmana oli, että yliopistoa miettiessäni käytin hyvin erilaista ajattelua kuin jos miettisin arkipäiväisiä aiheita kuten "tarvitseeko minun pestä pyykkiä?" tai "tuletko meille kylään ensi viikolla?". En miettinyt, mitä oikeasti odotan tapahtuvan. Yliopisto tuntui epämääräiseltä konseptilta. Alitajuisesti ajattelin, että yliopisto-opiskelijat ovat vanhoja ja kiinnostuneita ihan eri jutuista kuin pienet lukiolaiset, joten varmaan minäkin koen suuren muodonmuutoksen samalla sekunnilla, kun saan opiskeluoikeuden. (Näin ei käynyt.)
 
 Kutsun tätä *kaukotilaksi*. Tulevaisuus nähdään *erillisinä komponenttina*. Se ei lähesty päivä tai vuosi kerrallaan, vaan sinne yhtäkkiä ilmestytään. Ajattelussa käytetään hyvin yksinkertaisia malleja, joista puuttuu sellaisia pikkuasioita kuten ihmiskunnan teknologinen kehitys.
 

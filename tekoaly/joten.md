@@ -8,7 +8,7 @@ Eli käytännössä? Esimerkiksi: Selvitetään mitä syväoppimismallien sisäl
 
 (Pieni präntti: Lista ei ole kattava. Yksityiskohdilla on väliä. Yksityiskohdat ovat vaikeita. Lisään siksi listaan yleisen "ymmärretään ongelmaa ja asioita paremmin" -kohdan.)
 
-Millainen on hyvä tilanne? Tässä on yksi kuva: Tiettyä laskentamäärää suuremmat koulutusajot tulee ajaa riippumattoman kansainvälisen tahon laskentakeskuksilla. "Tulee" tarkoittaa kansainvälistä sopimusta, joka sitoo yksityisten tahojen lisäksi myös itse valtioita. Muun laskentatehon kulkeutumista seurataan ja kontrolloidaan ehtojen toteutumisen valvomiseksi. Koulutettaville malleille suoritetaan riippumaton riskiarvio ennen ja jälkeen kouluttamisen. Lähtökohtana on turvallisuustutkimus, ei kyvykkäämpien mallien rakentaminen, ja siihen kohdennetaan resursseja. Mallien kehitysnopeuden määrää ymmärrys ja ymmärryksen taso mallien toiminnasta, kyvyistä ja riskeistä.
+Millainen on hyvä tilanne? Tässä on yksi kuva: Tiettyä laskentamäärää suuremmat koulutusajot tulee ajaa riippumattoman kansainvälisen tahon laskentakeskuksilla. "Tulee" tarkoittaa kansainvälistä sopimusta, joka sitoo yksityisten tahojen lisäksi myös itse valtioita. Muun laskentatehon kulkeutumista seurataan ja kontrolloidaan ehtojen toteutumisen valvomiseksi. Koulutettaville malleille suoritetaan riippumaton riskiarvio ennen ja jälkeen kouluttamisen. Lähtökohtana on turvallisuustutkimus, ei kyvykkäämpien mallien rakentaminen, ja siihen kohdennetaan resursseja. Mallien kehitysnopeuden määrää ymmärrys ja ymmärryksen taso mallien toiminnasta, kyvyistä ja riskeistä. Ongelmaa ratkotaan ajan kanssa.
 
 Entä miten yksilönä suhtautua asiaan?
 
