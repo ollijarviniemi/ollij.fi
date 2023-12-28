@@ -6,6 +6,9 @@ texts:
 - /tekoaly/usein/
 - /tekoaly/joten/
 - /tekoaly/lukemista/
+
+toc:
+ - /tekoaly/
 ---
 ## Tekoälyuhka
 

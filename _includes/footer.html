@@ -6,6 +6,7 @@
 
     {% assign dir = page.url | split: '/' %}
     {% assign dir = dir[1] %}
+
     {% if site.text_lists contains dir %}
       {% assign main_path = dir | append: '.md' %}
       {% assign main = site.pages | where: 'path', main_path | first %}
@@ -27,6 +28,13 @@
             <a href="{{ texts[prev] }}">Edellinen</a>
           {% endif %}
         </div>
+
+        <div>
+          {% if prev or next %}
+            <a href="{{ main.toc }}">Sisällysluettelo</a>
+          {% endif %}
+        </div>
+
         <div>
           {% if next %}
             <a href="{{ texts[next] }}">Seuraava</a>

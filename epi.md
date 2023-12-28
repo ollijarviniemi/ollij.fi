@@ -38,7 +38,11 @@ texts:
  - /epi/kerran_luotin/
  - /epi/epi_on_tarkeaa/
  - /epi/kirjallisuutta/
+
+toc:
+ - /epi/
 ---
+
 # Epi
 
 ## [Esipuhe](/epi/epipuhe)
