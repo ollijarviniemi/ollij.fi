@@ -2,7 +2,6 @@
 # If you want to omit the line-break after the end of text, use `>-` instead.
 
 # Build settings
-
 # If you clone the Minima repo and build locally, use this setting.
 #theme: minima
 remote_theme: jekyll/minima
@@ -42,3 +41,7 @@ minima:
   skin: dark
 
 permalink: /:collection/:path/
+
+text_lists:
+  - epi
+  - tekoaly
