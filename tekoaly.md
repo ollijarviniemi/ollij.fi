@@ -1,3 +1,12 @@
+---
+texts:
+- /tekoaly/aluksi/
+- /tekoaly/lyhyt/
+- /tekoaly/keskipitka/
+- /tekoaly/usein/
+- /tekoaly/joten/
+- /tekoaly/lukemista/
+---
 ## Tekoälyuhka
 
 - [Aluksi](/tekoaly/aluksi)

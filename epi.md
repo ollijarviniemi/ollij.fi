@@ -1,3 +1,44 @@
+---
+texts:
+ - /epi/epipuhe/
+ - /epi/binaarinen_jakauma/
+ - /epi/leveat_jakaumat/
+ - /epi/matala_informaatio/
+ - /epi/kvantifiointi/
+ - /epi/yksi_muuttuja/
+ - /epi/symmetrian_rikkominen/
+ - /epi/ilmeiset_ohjeet/
+ - /epi/kohteliaat_tulkinnat/
+ - /epi/jattilaisten_olkapailla/
+ - /epi/sumuiset_ajatukset/
+ - /epi/probabilistinen_ajattelu/
+ - /epi/uskomusten_muutos/
+ - /epi/miksi_todennakoisyydet/
+ - /epi/epa_I/
+ - /epi/odotusarvo/
+ - /epi/epa_II/
+ - /epi/kunnolla/
+ - /epi/mihin_matematiikkaa/
+ - /epi/miksi_uskot/
+ - /epi/kaukotila/
+ - /epi/filosofiatila/
+ - /epi/keskustelunimaisijat/
+ - /epi/helpot_maalitaulut/
+ - /epi/status/
+ - /epi/haitallinen_sovinnollisuus/
+ - /epi/reflektointi/
+ - /epi/vakuuttamisesta/
+ - /epi/lokaali_kommunikaatio/
+ - /epi/sanoista/
+ - /epi/tyokalujen_vaarinkaytto/
+ - /epi/tehokas_maailma/
+ - /epi/ongelmien_sivuuttamisesta/
+ - /epi/negatiivisuus/
+ - /epi/insentiivit/
+ - /epi/kerran_luotin/
+ - /epi/epi_on_tarkeaa/
+ - /epi/kirjallisuutta/
+---
 # Epi
 
 ## [Esipuhe](/epi/epipuhe)
