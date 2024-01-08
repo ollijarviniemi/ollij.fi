@@ -18,9 +18,9 @@ Minun oli vaikea keksiä hyviä esimerkkejäkään (pysyessäni kaukana [keskust
 
 ## [Yhden muuttujan malli](/epi/yksi_muuttuja)
 
-Tämäkin oli hankala kirjoittaa. Minusta tuntuu, että ihmiset tekevät jatkuvasti hyppäyksiä muotoa "tämä asia on tuolla mittarilla hyvä, siispä se on hyvä" (vrt. [halo effect](https://en.wikipedia.org/wiki/Halo_effect)) tai juuttuvat kiinni lempimuuttujaansa ja yksinkertaisiin selityksiin.
+Tämäkin oli hankala kirjoittaa. Minusta tuntuu, että ihmiset tekevät jatkuvasti hyppäyksiä muotoa "tämä asia on tuolla mittarilla hyvä, siispä se on hyvä" (vrt. [halo effect](https://en.wikipedia.org/wiki/Halo_effect)) tai juuttuvat kiinni lempimuuttujaansa ja yksinkertaisiin selityksiin. Silti minun oli vaikea keksiä selkeitä esimerkkejä, joissa päättely menee pieleen.
 
-Samankaltaista ideaa selitetään Max Goodbirgin tekstissä "[Causal Explanations Considered Harmful](https://superbowl.substack.com/p/causal-explanations-considered-harmful)" (jossa on hyviä kuvia!)
+Samasta teemasta lisää (kuvien kanssa): Max Goodbirdin "[Causal Explanations Considered Harmful](https://superbowl.substack.com/p/causal-explanations-considered-harmful)" ja Adam Zernerin "[Losing the root for the tree](https://www.lesswrong.com/posts/ma7FSEtumkve8czGF/losing-the-root-for-the-tree)".
 
 ## [Symmetrian rikkominen, yleispätevät vasta-argumentit ja niin edelleen](/epi/symmetrian_rikkominen)
 
@@ -194,7 +194,19 @@ Paljon enemmän kielestä: "[A Human's Guide to Words](https://www.readthesequen
 
 ## [Työkalujen väärinkäyttö](/epi/tyokalujen_vaarinkaytto)
 
-Ja muista: [sinulla on oikeus ajatella](https://thezvi.wordpress.com/2017/11/27/you-have-the-right-to-think/) (Zvi Mowshowitz).
+Hyvän epin sosiaalisista vuorovaikutuksista on kirjoitettu enemmänkin. Pidän [Duncan Sabienin](https://www.lesswrong.com/posts/XPv4sYrKnPzeJASuk/basics-of-rationalist-discourse-1#Guidelines__in_brief_) ja [Rob Bensingerin](https://www.lesswrong.com/posts/svuBpoSduzhYjFPrA/elements-of-rationalist-discourse) listauksia hyvien keskustelujen piirteistä laadukkaina. Oman tekstini teemaan liittyen korostan kohtia
+
+"Try to contribute to a social environment that encourages belief accuracy and good epistemic processes. Try not to 'win' arguments[...]",
+
+"Reward others' good epistemic conduct (e.g., updating) more than most people naturally do. Err on the side of carrots over sticks, forgiveness over punishment, and civility over incivility[...]"
+
+ja
+
+"Hold yourself to the absolute highest standard when directly modeling or assessing others' internal states, values, and thought processes".
+
+Nämä ohjeet vaikuttavat hyviltä joidenkin epäonnistumisten välttämiseen. Tavoite ei ole voittaa väittelyitä, vaan yritetään luoda hyvää epiä tukeva sosiaalinen ympäristö ja palkita toisia esimerkiksi omien virheidensä myöntämisestä. Väitteitä koskien toisten ajatusprosesseja tehdään hyvin harkitusti -- "hold yourself to the absolute highest standard" -- totuudenmukaisia uskomuksia tavoitellen (eikä väittelyn voittoa tavoitellen).
+
+Ja kyllä, joskus ihmiset todella ovat väärässä jostakin. [Sinulla on oikeus ajatella](https://thezvi.wordpress.com/2017/11/27/you-have-the-right-to-think/) ja ajatella "olen eri mieltä tuosta uskomuksesta, nähdäkseni...". Hyvät keskustelunormit eivät tietenkään käske ajattelemaan "mutta enhän minä tiedä mistään mitään". Niiden tavoite on ohjeistaa, *miten* vaikkapa eriäviä näkemyksiä saa käsiteltyä produktiivisesti.
 
 ## [Tehokkaan maailman hypoteesi](/epi/tehokas_maailma)
 
@@ -212,7 +224,7 @@ Scott Alexanderin "[Meditations on Moloch](https://slatestarcodex.com/2014/07/30
 
 ## [Kerran luotin](/epi/kerran_luotin)
 
-Lisää tieteestä voi lukea esimerkiksi [Scott Alexanderilta](https://www.lesswrong.com/codex#YhQ39PPHNrRCgYXcs) tai [Yudkowskylta](https://www.readthesequences.com/Science-And-Rationality-Sequence) tai [Gwern Branwenilta](https://gwern.net/#meta-science). Ja mitä tulee ihmiskuntaan ja sen selviytymiseen: [ei ole mitään sääntöä, joka sanoo, että selviämme kyllä](https://www.youtube.com/watch?v=JD_iA7imAPs).
+Omiin ajatuksiini (meta)tieteestä on vaikuttanut [Scott Alexanderin](https://www.lesswrong.com/codex#YhQ39PPHNrRCgYXcs), [Yudkowskyn](https://www.readthesequences.com/Science-And-Rationality-Sequence) ja [Gwern Branwenin](https://gwern.net/#meta-science) tekstit. Ja mitä tulee ihmiskuntaan ja sen selviytymiseen: [ei ole mitään sääntöä, joka sanoo, että selviämme kyllä](https://www.youtube.com/watch?v=JD_iA7imAPs).
 
 ## [Epi on tärkeää](/epi/epi_on_tarkeaa)
 
