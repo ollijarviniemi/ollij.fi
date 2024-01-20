@@ -18,7 +18,7 @@ Ja seuraavien kysymysten:
 - Miten koulutusta voisi kehittää? Minkälaisia lopputuloksia eri muutoksilla saadaan aikaan?
 - Miten tällaisiin haastaviin kysymyksiin voidaan paremmin löytää vastauksia?
 
-Vastaus: Keskeisenä teemana on *uskomukset*, niiden *totuudenmukaisuus* ja *prosessit*, joilla totuudenmukaisiin uskomuksiin päädytään.
+Vastaus: Keskeinen teema on *uskomukset*, niiden *totuudenmukaisuus* ja *prosessit*, joilla totuudenmukaisiin uskomuksiin päädytään.
 
 Uskot, että kaverisi saapuu luoksesi -- todella odotat, että kohta hän tulee -- mutta olet väärässä. Tämä valkenee sinulle hiljattain ajan edetessä. Uskot avainten olevan taskussasi ja etsit avaimia sieltä, mutta uskomus ei ole totuudenmukainen: todellisuudessa avaimet ovat pöydällä. Lukemasi tekstin maalaama kuva maailmasta on mielestäsi väärä: tekstin pohjalta tulee vain epätotuudenmukaisemmat uskomukset. Työpaikkaa etsiessä pyrit saamaan totuudenmukaisemman kuvan siitä, millaisia vaihtoehdot ovat (ja siten selvittää sitä, miten ne vastaavat mitä haluat). Jos teemme tälläisen muutoksen koulutukseen, mitä tapahtuu? Tieteellisellä tutkimuksella pyritään tähän asiaan -- kuinka hyvin siinä onnistutaan? Miten voimme ylipäätään selvittää tällaisia asioita?
 
