@@ -53,7 +53,7 @@ toc:
 - [Jakaumat ovat leveitä](/epi/leveat_jakaumat)
 - [Matalan informaation väitteet](/epi/matala_informaatio)
 - [Kvantifiointi](/epi/kvantifiointi)
-- [Yhden muuttujan malli](/epi/yksi_muuttuja)
+- [Yhden muuttujan mallit](/epi/yksi_muuttuja)
 - [Symmetrian rikkominen, yleispätevät vasta-argumentit ja niin edelleen](/epi/symmetrian_rikkominen)
 
 ## Itsestäänselvyyksiä
