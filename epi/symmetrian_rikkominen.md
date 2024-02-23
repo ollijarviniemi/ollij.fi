@@ -67,7 +67,7 @@ Jos yleisesti pohtii kysymystä "milloin kannattaa lukea kirja?", oleellisimmat 
 
 Tosillekin väitteille voi esittää huonoja argumentteja.
 
-Argumentteja voi verrata matemaattisiin todistuksiin. (Sivuutetaan hetkeksi se, että päättelyt ja argumentit eivät perustu binääriseen logiikkaan, vaan jatkuvaan, [probabilistiseen ajatteluun](/epi/probabilistinen_ajattelu).) Tällöin todistus on virheellinen, jos siinä on yksikin virheellinen askel. Tämä ei tarkoita, että todistettava *väite* olisi epätosi. Ehkä todistuksen virheet voi korjata. Ehkä väitteen voi todistaa jollakin toisella tavalla. Mutta itse *todistus* on virheellinen. Tosillekin väitteille0 voi esittää virheellisiä todistuksia.
+Argumentteja voi verrata matemaattisiin todistuksiin. (Sivuutetaan hetkeksi se, että päättelyt ja argumentit eivät perustu binääriseen logiikkaan, vaan jatkuvaan, [probabilistiseen ajatteluun](/epi/probabilistinen_ajattelu).) Tällöin todistus on virheellinen, jos siinä on yksikin virheellinen askel. Tämä ei tarkoita, että todistettava *väite* olisi epätosi. Ehkä todistuksen virheet voi korjata. Ehkä väitteen voi todistaa jollakin toisella tavalla. Mutta itse *todistus* on virheellinen. Tosillekin väitteille voi esittää virheellisiä todistuksia.
 
 Erinäisille virheellisille päättelyn askelille on monia nimiä: symmetriaa rikkomaton argumentti, yleispätevä vasta-argumentti, epävalidi implikaatio, "todistaa liikaa", yhden muuttujan malli... Saman argumentin voi muotoilua vaihtamalla saada kuulumaan eri kategoriaan. Joka tapauksessa kyse on samasta konseptista: riippumatta lopullisen väitteen todenmukaisuudesta tämä *nimenomainen argumentti* ei ole validi.
 
