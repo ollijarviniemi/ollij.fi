@@ -33,7 +33,7 @@ Lukijalle, joka sen sijaan haluaa lyhyemmän korkean tason kuvauksen tekoälyn r
 
 Jos taas lukija haluaa ymmärtää, miksi tekoälyt *itsessään* muodostavat riskejä ja minkä takia näitä riskejä on vaikea poistaa, löytää alta minun vastaukseni -- sillä rajoitteella, että olen pyrkinyt kirjoittamaan yleistajuisesti ja verrattain lyhyesti.
 
-*Kirjoitettu maaliskuussa 2024.*
+*Kirjoitettu maaliskuussa 2024.*[^kiitos]
 
 <a name="osio-1">
 ## 1. Tekoälystä yleisesti
@@ -698,3 +698,5 @@ Lopuksi mainitsen, ettei tekoäly ole pelkästään tärkeä aihe, vaan myös *k
 [^57]: Niille tekoälyille, joista tekoälyn uhista huolissaan olevat ovat huolissaan, ei ole jaettua hyväksyttyä määritelmää. "Transformatiivinen tekoäly" on yksi kohtalaisen yleinen termi, karkeasti viitaten tekoälyihin, jotka aiheuttavat vähintään yhtä merkittäviä muutoksia kuin maatalouden kehittäminen tai teollinen vallankumous (ks. Open Philanthropy, [Some Background on Our Views Regarding Advanced Artificial Intelligence](https://www.openphilanthropy.org/research/some-background-on-our-views-regarding-advanced-artificial-intelligence/)).
 
 [^58]: Tai: eivät ole pyrkimättä tähän.
+
+[^kiitos]: Kiitokset Akseli Jussinmäelle, Konsta Tiilikaiselle ja Meeri Kuoppalalle palautteesta aiempiin versioihin.
