@@ -97,7 +97,7 @@ Then they came for me—and there was no one left to speak for me."
 
 <br>
 
-"First they came for the epistemology. We don't know what happened next."
+"First they came for the epistemology. We don't know what happened after that."
 
 ----
 
