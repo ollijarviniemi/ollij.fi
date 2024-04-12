@@ -562,7 +562,7 @@ Lopulta todellisuus on varmaankin jotakin muuta.[^60] Toivottavasti hyvällä ta
 
 **K:** "Mitä tekoälyn muodostamille uhille voidaan tehdä?"
 
-Aloitan sanomalla, että nykyinen tilanne todella on sellainen, että poikkeukselliset toimenpiteet uhan välttämiseksi ovat perusteltuja. "Rakennamme kovaa tahtia ihmisiä älykkäämpiä tekoälyjä tietämättä, mitä teemme ja riskeeraten jokaisen ihmisen hengen" ei ole normaali asioiden tila. Siten olen ymmärtäväinen esimerkiksi monia artikkelissa [Pausing AI Developments Isn’t Enough. We Need to Shut it All Down](https://time.com/6266923/ai-eliezer-yudkowsky-open-letter-not-enough/) (Yudkowsky) esitettyjä ajatuksia kohtaan.
+Aloitan sanomalla, että nykyinen tilanne todella on sellainen, että poikkeukselliset toimenpiteet uhan välttämiseksi ovat perusteltuja. "Rakennamme kovaa tahtia ihmisiä älykkäämpiä tekoälyjä tietämättä, mitä teemme ja riskeeraten jokaisen ihmisen hengen" ei ole normaali asioiden tila. Siten en pidä esimerkiksi artikkelissa [Pausing AI Developments Isn’t Enough. We Need to Shut it All Down](https://time.com/6266923/ai-eliezer-yudkowsky-open-letter-not-enough/) (Yudkowsky) esitettyä kuvausta tilanteen vakavuudesta kovin liioiteltuna.
 
 En kuitenkaan keskity tässä niinkään hallinnolliseen tai sosiaaliseen puoleen, koska omat vahvuuteni ovat toisaalla. Sen sijaan listaan tässä muutamia teknisempiä suuntauksia, joiden työstäminen vie ihmiskunnan parempaan asemaan.
 
