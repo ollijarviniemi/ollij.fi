@@ -1,12 +1,12 @@
 # Saavutuksia
 
-[Tässä linkki](/cv2023-6_FIN.pdf) tavanomaiseen CV:hen. Alla vapaamuotoisempi lista saavutuksistani, joista olen erityisen ylpeä.
+[Tässä linkki](/cv.pdf) tavanomaiseen CV:hen (englanniksi). Alla vapaamuotoisempi lista taustastani ja saavutuksista, joista olen erityisen ylpeä.
 
 ## Koulutus
 
 Koulutukseltani olen filosofian tohtori, väitöstutkimuksen alana matematiikka.
 
-- Filosofian tohtori (2021-2023), Turun yliopisto. Sain tohtorin tutkinnon 21-vuotiaana.
+- Filosofian tohtori (2021-2023), Turun yliopisto. Sain tohtorin tutkinnon 21-vuotiaana. Väitöskirjani [Problems in Analytic and Algebraic Number Theory](https://urn.fi/URN:ISBN:978-951-29-9305-5) palkittiin Suomen Matemaattisen Yhdistyksen toimesta parhaana vuoden aikana valmistuneena matematiikan alan väitöskirjana.
 
 - Filosofian maisteri (2020-2021), Helsingin yliopisto.
 
@@ -19,7 +19,7 @@ Suoritin lukion Valkeakosken Tietotien lukiossa / Päivölän opiston matematiik
 Lukioaikanani osallistuin aktiivisesti matematiikka-, ohjelmointi- ja tiedekilpailuihin. Alla isoimpia saavutuksiani:
 
 - Sain Suomen historian parhaan tuloksen Kansainvälisissä matematiikkaolympialaisissa (2019)
- 
+
 - Voitin toisen palkinnon European Union Contest for Young Scientists -tiedekilpailussa (2019)
 
 - Sain pronssia Kansainvälisistä tietotekniikkaolympialaisista (2019)

@@ -92,7 +92,7 @@ Ensimmäinen tarina: Tekoälyjä ei ole vain yksi, vaan käytännössä tekoäly
 
 Jos olemme onnistuneet suuntaamaan nämä tekoälyt tekemään hyviä asioita, niin sitten kaikki on tietysti enemmän kuin hyvin. Käytännössä taas tekoälyjä, kuten miltei mitä tahansa muitakin järjestelmiä, on vaikea suunnata tekemään oikeita asioita. Tekoälyt välillä tekevät asioita, jotka eivät ole oikein kenenkään mielestä hyviä, mutta asialle on vaikea tehdä mitään. Tekoälyt tekevät asioita yhä itsenäisemmin ja ihmiset ymmärtävät vähenevissä määrin, mitä tapahtuu. Paine on kuitenkin hyödyntää tekoälyä enenevissä määrin: ne ovat halvempia ja parempia kuin ihmiset.
 
-Taloudellinen ja teknologinen kehitys on poikkeuksellisen nopeaa. Ihmiset eivät kuitenkaan ole samalla tavalla ohjaksissa kuin tavallisesti: Suuri osa kaikesta toiminnasta ja ajatustyöstä on tekoälyjen toteuttamaa. Olemme täysin riippuvaisia tekoälyjärjestelmien toiminnasta (samaan tapaan kuin nyt olemme täysin riippuvaisia sähköstä). Ja siten on aiheellista kysyä: "Tulemme elämään todella erikoisia aikoja, asiat muuttuvat nopeasti ja ihmiset ovat vähenevissä määrin ohjaksissa; käykö tässä hyvin?"
+Taloudellinen ja teknologinen kehitys on poikkeuksellisen nopeaa. Ihmiset eivät kuitenkaan ole samalla tavalla ohjaksissa kuin tavallisesti: Suuri osa kaikesta toiminnasta ja ajatustyöstä on tekoälyjen toteuttamaa. Olemme täysin riippuvaisia tekoälyjärjestelmien toiminnasta (samaan tapaan kuin nyt olemme täysin riippuvaisia sähköstä). Ja siten on aiheellista kysyä: "Tulemme elämään todella erikoisia aikoja, asiat muuttuvat nopeasti ja ihmiset ovat vähenevissä määrin ohjaksissa; käykö tässä hyvin? Pitäisikö jonkun miettiä tätä?"
 
 Ei ole toki ilmiselvää, että tässä kävisi huonosti: Tähän vaikuttaa monenlaiset tekijät teknisistä ongelmista ja ratkaisuista sosiopoliittisiin päätöksiin. Pyrin vain lyhyesti avaamaan, että panokset ovat korkeat ja epävarmuutta on. Kerron siksi vielä toisen tarinan, joka havainnollistaa suoremmin potentiaalisia vaaroja.
 
@@ -555,7 +555,7 @@ Kenties tarinan lopussa tekoäly lähtee itsenäisesti toteuttamaan aikeitaan, m
 
 Ja kuten tekstin alussa mainitsin, keskityn pitkälti tekoälyjen aiheuttamiin riskeihin *itsenäisinä toimijoina*. Tekoälyjen väärinkäyttö tai yheiskunnassa yhä laajemman tekoälyn käytön luomat riskit ovat myös realistisia, vaikken olekaan käsitellyt niitä tässä. Yhteiskunnallisiin riskeihin liittyen ohjaan lukijan Paul Christianon artikkeleihin [What Failure Looks Like](https://www.alignmentforum.org/posts/HBxe6wdjxK239zajf/what-failure-looks-like) ja [Another (outer) alignment failure story](https://www.alignmentforum.org/posts/AyNHoTWWAJ5eb99ji/another-outer-alignment-failure-story) sekä Andrew Critchin tekstiin [What Multipolar Failure Looks Like, and Robust Agent-Agnostic Processes (RAAPs)](https://www.alignmentforum.org/posts/LpM3EAakwYdS6aRKf/what-multipolar-failure-looks-like-and-robust-agent-agnostic#W5CPYxDi4nKiBFdoh).
 
-Lopulta todellisuus on varmaankin jotakin muuta. Toivottavasti hyvällä tavalla.
+Lopulta todellisuus on varmaankin jotakin muuta.[^60] Toivottavasti hyvällä tavalla.
 
 <a name="osio-8">
 ## 8. Ratkaisuja
@@ -698,5 +698,7 @@ Lopuksi mainitsen, ettei tekoäly ole pelkästään tärkeä aihe, vaan myös *k
 [^57]: Niille tekoälyille, joista tekoälyn uhista huolissaan olevat ovat huolissaan, ei ole jaettua hyväksyttyä määritelmää. "Transformatiivinen tekoäly" on yksi kohtalaisen yleinen termi, karkeasti viitaten tekoälyihin, jotka aiheuttavat vähintään yhtä merkittäviä muutoksia kuin maatalouden kehittäminen tai teollinen vallankumous (ks. Open Philanthropy, [Some Background on Our Views Regarding Advanced Artificial Intelligence](https://www.openphilanthropy.org/research/some-background-on-our-views-regarding-advanced-artificial-intelligence/)).
 
 [^58]: Tai: eivät ole pyrkimättä tähän.
+
+[^60]: Erityisesti pyrin antamaan uhkaskenaarion, joka ei vaadi suuria muutoksia tekoälykehityksessä. Suuret muutokset ovat tietysti mahdollisia ja ne voivat tuoda mukanaan uusia ongelmia.
 
 [^kiitos]: Kiitokset Akseli Jussinmäelle, Konsta Tiilikaiselle ja Meeri Kuoppalalle palautteesta aiempiin versioihin.
