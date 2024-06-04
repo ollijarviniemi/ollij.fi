@@ -7,10 +7,10 @@ Tekoäly on kehittynyt poikkeuksellista tahtia, ja pidemmälle kehittyessään s
 **K:** "Menemme kohta yksityiskohtiin, mutta onko sinulla antaa nyt lyhyttä kuvausta siitä, mihin nämä näkemykset perustuvat?"
 
 Tässä on keskeisiä ajatuksia tiivistettynä:
-- Tekoälyt voivat kehittyä äärimmäisen kyvykkäiksi, samalla luoden vakavia uhkia
-- Tämä on se suunta, johon nykyinen tekoälyala on kovaa vauhtia menossa
-- Ymmärrämme tekoälyjen toimintaa hyvin heikosti
-- Monet ongelmista eivät ole päällepäin näkyviä, vaan päinvastoin erinäiset tekijät johtavat ongelmien piilottamiseen
+- Tekoälyt voivat kehittyä äärimmäisen kyvykkäiksi, samalla luoden vakavia uhkia.
+- Tämä on se suunta, johon nykyinen tekoälyala on kovaa vauhtia menossa.
+- Ymmärrämme tekoälyjen toimintaa hyvin heikosti.
+- Monet ongelmista eivät ole päällepäin näkyviä, vaan päinvastoin erinäiset tekijät johtavat ongelmien piilottamiseen.
 
 Yhden virkkeen versio: "Olemme rakentamassa ihmisiä kehittyneempiä tekoälyjä ilman, että oikein ymmärrämme mitä olemme tekemässä, ja tämä on kenties huono idea."
 
@@ -42,7 +42,7 @@ Jos taas lukija haluaa ymmärtää, miksi tekoälyt *itsessään* muodostavat ri
 
 Ihmisillä on kyky havainnoida ja mallintaa ympäristöään, oppia, ratkoa monenlaisia ongelmia, suunnitella tulevaa varten  ja niin edelleen. Aivoissamme tapahtuu jotakin, joka mahdollistaa tämän kaiken, ja tähän voi viitata sanoilla "äly" tai "kognitiiviset kyvyt". Vaikka ihmisillä (ja vaihtelevissa määrin myös muilla elämillä) on nämä kyvyt, emme silti oikein ymmärrä tätä ilmiötä.
 
-Tekoälyn tavoitteena on saada näitä samoja asioita toteutettua tietokoneilla: luoda ohjelma, joka niin ikään kykenee oppimaan, ratkomaan ongelmia, suunnittelemaan ja mallintamaan ympäristöä.
+Tekoälyalan tavoitteena on saada näitä samoja asioita toteutettua tietokoneilla: luoda ohjelma, joka niin ikään kykenee oppimaan, ratkomaan ongelmia, suunnittelemaan ja mallintamaan ympäristöä.
 
 **K:** "Miten kuvailisit tilannetta tekoälyalalla yleisesti?"
 
@@ -390,7 +390,7 @@ Tämä ei vaadi, että tekoälyllä olisi "tavoitteita". Toisaalta tavoitteellis
 
 **K:** "Onko tekoälyillä tavoitteita?"
 
-Alkuhuomautus: Olen huomannut, että ihmisillä on hyvin erilaisia reaktioita sanasta "tavoite" tekoälyn kontekstissa: jotkut ovat hyvin valmiita abstraktion "tavoite" käyttämiseen, jotkut taas ovat miltei allergisia sanaa kohtaan. Tämä osio on kirjoitettu jälkimmäiset ihmiset mielessä pitäen. Yritän siten selittää tekoälyyn liittyviä ongelmia nojautumatta tavoitteiden konseptiin, sen sijaan käsitellen aiheita verrattain mekanistisesti.
+*Alkuhuomautus.* Olen huomannut, että ihmisillä on hyvin erilaisia reaktioita sanasta "tavoite" tekoälyn kontekstissa: jotkut ovat hyvin valmiita abstraktion "tavoite" käyttämiseen, jotkut taas ovat miltei allergisia sanaa kohtaan. Tämä osio on kirjoitettu jälkimmäiset ihmiset mielessä pitäen. Yritän siten selittää tekoälyyn liittyviä ongelmia nojautumatta tavoitteiden konseptiin, sen sijaan käsitellen aiheita verrattain mekanistisesti.
 
 Puretaan kysymystä palasiin. Ei ole selvää, mitä kysymys tarkalleen ottaen kysyy: tavoitteiden määrittely on hankalaa. Toisaalta kysymys käsittelee jotakin järkevää: väitteet "ihmisillä on tavoitteita" ja "autoilla ei ole tavoitteita" kertovat jotakin. Ne luovat *odotuksia* siitä, miten ihmiset tai autot *käyttäytyvät* ja mitä niiden *sisällä* tapahtuu. Niin ikään kysymyksellä "onko tekoälyillä tavoitteita?" pyrimme kartoittamaan sitä, mitä odottaa tekoälyjen tekevän ja niiden sisällä tapahtuvan.
 
@@ -553,7 +553,7 @@ Tekoälyorganisaatio saattaisi huomata mallin tekevän jotakin todella pahaa, ku
 
 Kenties tarinan lopussa tekoäly lähtee itsenäisesti toteuttamaan aikeitaan, mutta tämä ei pääty *niin* huonosti: Joko malli ei "yritä" tehdä mitään täysin katastrofaalista, tai ihmiset ovat tietoisia tekoälyn toiminnasta ja saavat kuin saavatkin pidettyä sen aisoissa. Varoituslaukaus on annettu, astetta kyvykkäämmillä malleilla kävisi huonommin ja kysymys on, miten virheestä opitaan. Kenties vahingot ovat suuria, tilanteeseen reagoidaan vakavasti ja tämä johtaa toimenpiteisiin tekoälyn riskien vähentämiseksi (toivottavasti hyviin sellaisiin). Tai sitten tämä voi olla vain yksi ongelmatapaus [kymmenien muiden](https://docs.google.com/spreadsheets/d/e/2PACX-1vRPiprOaC3HsCf5Tuum8bRfzYUiKLRqJmbOoC-32JorNdfyTiRRsR7Ea5eWtvsWzuxo8bjOxCG84dAg/pubhtml) joukossa, josta ei oikeastaan koitunut mitään kovin suurta haittaa, ja on oikeastaan epäselvää, "yrittikö" tekoäly tehdä mitään pahaa, joten oikeastaan mitään muutosta ei tarvita.
 
-Ja kuten tekstin alussa mainitsin, keskityn pitkälti tekoälyjen aiheuttamiin riskeihin *itsenäisinä toimijoina*. Tekoälyjen väärinkäyttö tai yheiskunnassa yhä laajemman tekoälyn käytön luomat riskit ovat myös realistisia, vaikken olekaan käsitellyt niitä tässä. Yhteiskunnallisiin riskeihin liittyen ohjaan lukijan Paul Christianon artikkeleihin [What Failure Looks Like](https://www.alignmentforum.org/posts/HBxe6wdjxK239zajf/what-failure-looks-like) ja [Another (outer) alignment failure story](https://www.alignmentforum.org/posts/AyNHoTWWAJ5eb99ji/another-outer-alignment-failure-story) sekä Andrew Critchin tekstiin [What Multipolar Failure Looks Like, and Robust Agent-Agnostic Processes (RAAPs)](https://www.alignmentforum.org/posts/LpM3EAakwYdS6aRKf/what-multipolar-failure-looks-like-and-robust-agent-agnostic#W5CPYxDi4nKiBFdoh).
+Ja kuten tekstin alussa mainitsin, keskityn pitkälti tekoälyjen aiheuttamiin riskeihin *itsenäisinä toimijoina*. Tekoälyjen väärinkäyttö tai yheiskunnassa yhä laajemman tekoälyn käytön luomat riskit ovat myös realistisia, vaikken olekaan käsitellyt niitä tässä. Yhteiskunnallisiin riskeihin liittyen ohjaan lukijan Paul Christianon artikkeleihin [What Failure Looks Like](https://www.alignmentforum.org/posts/HBxe6wdjxK239zajf/what-failure-looks-like) ja [Another (outer) alignment failure story](https://www.alignmentforum.org/posts/AyNHoTWWAJ5eb99ji/another-outer-alignment-failure-story) sekä Andrew Critchin tekstiin [What Multipolar Failure Looks Like, and Robust Agent-Agnostic Processes (RAAPs)](https://www.alignmentforum.org/posts/LpM3EAakwYdS6aRKf/what-multipolar-failure-looks-like-and-robust-agent-agnostic).
 
 Lopulta todellisuus on varmaankin jotakin muuta.[^60] Toivottavasti hyvällä tavalla.
 

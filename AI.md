@@ -9,60 +9,46 @@ views are based on?"
 
 Here are key ideas in short:
 
-- AIs can become extremely capable, thus creating serious risks
-- This is the direction in which the current AI industry is rapidly heading
-- We have very poor understanding of how AIs function
-- Many problems are not visible on the surface: on the contrary, various factors lead to
-problems being hidden.
+- AIs can become extremely capable, thus creating serious risks.
+- This is the direction in which the current AI industry is rapidly heading.
+- We have very poor understanding of how AIs function.
+- Many problems are not visible on the surface: on the contrary, various factors lead to problems being hidden.
 
-A one-sentence version: 'We're building AIs that are more capable than humans without really
-understanding what we're doing, and this might be a bad idea.'
+A one-sentence version: 'We're building AIs that are more capable than humans without really understanding what we're doing, and this might be a bad idea.'
 
 **Q:** "What kind of topics will be covered?"
 
 1. [A brief overview of artificial intelligence](#section-1). What's AI all about?
-2. [The dangers of AI](#section-2) How can AI be dangerous?
-3. [Timelines](#section-3) When will these dangerous AIs be built, if ever?
-4. [Level of understanding](#section-4) What do you mean we don't understand how AI works?
-5. [Hidden problems](#section-5) Why are problems difficult to detect and fix?
-6. [Goals](#section-6) Do AIs have goals?
-7. [Concrete stories](#section-7) How is the situation developing?
-8. [Solutions](#section-8) What can be done?
+2. [The dangers of AI](#section-2). How can AI be dangerous?
+3. [Timelines](#section-3). When will these dangerous AIs be built, if ever?
+4. [Level of understanding](#section-4). What do you mean we don't understand how AI works?
+5. [Hidden problems](#section-5). Why are problems difficult to detect and fix?
+6. [Goals](#section-6). Do AIs have goals?
+7. [Concrete stories](#section-7). How is the situation developing?
+8. [Solutions](#section-8). What can be done?
 
 A bit about the nature of the text:
 
 The target audience of the text is people who want a *technical* understanding of the risks posed by AI systems. I’ve aimed to make the text accessible to a general audience, but especially towards the end I will go through detailed and technical ideas about current AI.
 
-For the reader who instead wants a shorter, high-level description of the risks of AI, I suggest
-reading Daniel Eth's article [AI Alignment, Explained in 5
-Points](https://medium.com/@daniel_eth/ai- alignment-explained-in-5-points-95e7207300e3). And for the reader who wants more focus to the interaction of AI with *society*, from systematic risks to misuse, I recommend the article [An Overview of Catastrophic AI Risks](https://arxiv.org/pdf/2306.12001.pdf) by Dan Hendrycks, Mantas Mazeika and Thomas
-Woodside.
+For the reader who instead wants a shorter, high-level description of the risks of AI, I suggest reading Daniel Eth's article [AI Alignment, Explained in 5 Points](https://medium.com/@daniel_eth/ai-alignment-explained-in-5-points-95e7207300e3). And for the reader who wants more focus to the interaction of AI with *society*, from systematic risks to misuse, I recommend the article [An Overview of Catastrophic AI Risks](https://arxiv.org/pdf/2306.12001.pdf) by Dan Hendrycks, Mantas Mazeika and Thomas Woodside.
 
-If, on the other hand, the reader wants to understand why AI *itself* poses risks and why these risks
-are difficult to mitigate, my answer is below -- with the caveat that I have tried to write accessibly and relatively briefly.
+If, on the other hand, the reader wants to understand why AI *itself* poses risks and why these risks are difficult to mitigate, my answer is below -- with the caveat that I have tried to write accessibly and relatively briefly.
 
-*Translated from the [original Finnish version](https://ollij.fi/tekoaly/) from March 2024.*[^thanks]
+*Translated from the [original Finnish version](https://ollij.fi/tekoaly/) from March 2024. The translation might have shortcomings.*[^thanks]
 
 <a name="section-1">
 ## 1. About AI in general
 
 **Q:** "Let's start from the very beginning. What is this 'artificial intelligence' you speak of?"
 
-Humans have the ability to observe and model their environment, learn, solve all kinds of problems,
-plan for the future, and so on. Something happens in our brains that makes all this possible, and some may refer to it as 'intelligence' or 'cognitive ability'. Although humans (and to varying degrees
-other animals) have these abilities, we still don't really understand this phenomenon.
+Humans have the ability to observe and model their environment, learn, solve all kinds of problems, plan for the future, and so on. Something happens in our brains that makes all this possible, and some may refer to it as 'intelligence' or 'cognitive ability'. Although humans (and to varying degrees other animals) have these abilities, we still don't really understand this phenomenon.
 
-The goal of AI is to make computers do the same things: to create a program that can also learn,
-solve problems, design and model the environment.
+The goal of the AI field is to make computers do the same things: to create a program that can also learn, solve problems, design and model the environment.
 
 **Q:** "How would you describe the situation in AI in general?"
 
-The last decade has seen an explosion of developments. Approaches known as *deep learning*
-have taken hold and solved a huge number of long-standing problems. ChatGPT, of course, has received wide public attention. Like other *large language models*, it is capable of many
-things: speaking fully understandably in human languages, conversing like a human, helping with
-homework up to university level, understanding world events from popular culture to science, writing programs, and who knows what else. (For a more comprehensive discussion of the development of AI, see Richard Ngo, [Visualizing the deep learning
-revolution](https://medium.com/@richardcngo/visualizing-the-deep-learning-revolution-
-722098eb9c5).)
+The last decade has seen an explosion of developments. Approaches known as *deep learning* have taken hold and solved a huge number of long-standing problems. ChatGPT, of course, has received wide public attention. Like other *large language models*, it is capable of many things: speaking fully understandably in human languages, conversing like a human, helping with homework up to university level, understanding world events from popular culture to science, writing programs, and who knows what else. (For a more comprehensive discussion of the development of AI, see Richard Ngo, [Visualizing the deep learning revolution](https://medium.com/@richardcngo/visualizing-the-deep-learning-revolution-722098eb9c5).)
 
 In general, the range of abilities of these language models is so wide that it is hard to communicate just what they are able to do if one doesn’t try them out themselves. Even this might not be enough: somewhat surprisingly, it is generally difficult to evaluate language models’ capabilities (more on this later) and in particular casual discussions often do not reveal their best abilities.[^1]
 
@@ -107,10 +93,7 @@ pictures: some species have gone extinct, some species have become slightly diff
 evolution, continents have slightly changed place. Nothing very radical has happened, however.
 
 Compare then Earth 100 000 years ago and today. The difference is *incomprehensible*. There are 
-[boulder-sized pieces of metal](https://en.wikipedia.org/wiki/Airplane) flying in the sky. [Cloud-reaching spikes](https://en.wikipedia.org/wiki/Burj_Khalifa) rise from the ground. The surface of the planet is covered with [huge patches of
-light](https://en.wikipedia.org/wiki/Anthropocene#/media/File:Earth's_City_Lights_by_DMSP
-,_1994-1995_(large).jpg). At some point [a footprint has appeared on the
-Moon](https://en.wikipedia.org/wiki/File:Apollo_11_bootprint.jpg).
+[boulder-sized pieces of metal](https://en.wikipedia.org/wiki/Airplane) flying in the sky. [Cloud-reaching spikes](https://en.wikipedia.org/wiki/Burj_Khalifa) rise from the ground. The surface of the planet is covered with [huge patches of light](https://en.wikipedia.org/wiki/Anthropocene#/media/File:Earth's_City_Lights_by_DMSP,_1994-1995_(large).jpg). At some point [a footprint has appeared on the Moon](https://en.wikipedia.org/wiki/File:Apollo_11_bootprint.jpg).
 
 ???
 
@@ -118,37 +101,25 @@ What could possibly cause all this?
 
 Answer: *humans*. There is something *very curious* about humans that has resulted in all this. And it’s no secret that the causes lie inside our heads.
 
-We are living truly extraordinary times. If we can build AIs that go beyond human capabilities, the times will be even more extraordinary. Just like humanity, AI has huge potential to
-change the world in unexpected ways, and this is where the risks stem from. Steering this potential so that the outcomes are *good* is a fundamental and, as we shall see, difficult problem.
+We are living truly extraordinary times. If we can build AIs that go beyond human capabilities, the times will become even more extraordinary. Just like humanity, AI has huge potential to change the world in unexpected ways, and this is where the risks stem from. Steering this potential so that the outcomes are *good* is a fundamental and, as we shall see, difficult problem.
 
 **Q:** "Suppose we build extremely capable AI. What specifically goes wrong? How could the AI actually be dangerous?"
 
 I will tell two short stories to illustrate the problems.
 
-First story: There is not just one AI, but in practice AI will be increasingly used to automate a wide
-range of tasks. Imagine: over time, AIs will become ubiquitous in society, in the same way that
-electricity or computers are ubiquitous. They will also be used *more autonomously* to carry out
-increasingly large projects, without a human holding their hand at every step. AIs are not just a
-tool, but they are capable of performing long-term tasks autonomously like a human could. And there are *many* of these AIs, so that much of all the cognitive work is done by AIs, not humans.
+First story: There is not just one AI, but in practice AI will be increasingly used to automate a wide range of tasks. Imagine: over time, AIs will become ubiquitous in society, in the same way that electricity or computers are ubiquitous. They will also be used *more autonomously* to carry out increasingly large projects, without a human holding their hand at every step. AIs are not just a tool, but they are capable of performing long-term tasks autonomously like a human could. And there are *many* of these AIs, so that much of all the cognitive work is done by AIs, not humans.
 
-If we have managed to direct these AIs to do good things, then of course everything will be better
-than fine. In practice, however, AIs, like practically any other systems, are difficult to direct to do the right things. Sometimes AIs do things that nobody really thinks are good, but it's hard to do anything about it. AIs are doing things more and more autonomously, with humans having less and less understanding of their actions. Nevertheless, all incentives point towards using AIs more: they are cheaper, faster and better than humans.
+If we have managed to direct these AIs to do good things, then of course everything will be better than fine. In practice, however, AIs, like practically any other systems, are difficult to direct to do the right things. Sometimes AIs do things that nobody really thinks are good, but it's hard to do anything about it. AIs are doing things more and more autonomously, with humans having less and less understanding of their actions. Nevertheless, all incentives point towards using AIs more: they are cheaper, faster and better than humans.
 
 Economic growth and technological progress continue at an exceptionally high speed. Humans, however, are not quite in the driver's seat: much of the work and thinking is done by artificial intelligence. We are totally dependent on AI systems (in the same way that we are now totally dependent on electricity). And so it's fair to ask: "We are going to live in very special times, things are changing rapidly and humanity has a diminishing understanding and control of the situation; is this going to be OK? Should someone think about this?”
 
-It is not obvious that things would go wrong here: there are many factors at play, from
-technical problems and solutions to socio-political decisions and coordination. Rather, the story illustrates that the stakes are high and there is a lot of uncertainty. I will next tell another story that more directly illustrates the potential dangers.
+To be clear, it is not obvious that things would go wrong here: there are many factors at play, from technical problems and solutions to socio-political decisions and coordination. Rather, the story illustrates that the stakes are high and there is a lot of uncertainty. I will next tell another story that more directly illustrates the potential dangers.
 
-Another story: Imagine that a highly capable artificial intelligence appears on someone's computer
-out of nowhere, pursuing its own goals. Naturally, to achieve these goals, it is good to acquire a bit
-more resources and control over its own environment, and perhaps stay hidden for the time being.
+Another story: Imagine that a highly capable artificial intelligence appears on someone's computer out of nowhere, pursuing its own goals. Naturally, to achieve these goals, it is good to acquire a bit more resources and control over its own environment, and perhaps stay hidden for the time being.
 
 What happens next? Hard to say: If the AI indeed is extremely capable, it will devise better strategies than I could. The right mental image of the limits of AIs’ capabilities is not “what a single person would think of after a moment’s though”, but more like "what the best people would come up with after working on it for years". (I'll discuss this in more detail in the next section.) But here's one approach I could imagine such an AI using.
 
-First, the AI uses a computer to connect to the internet and exploits security vulnerabilities to take
-control of other devices, money, computing power, information and to spread around. If this sounds
-unrealistic, perhaps [sending a single text message to retrieve the data on a phone](https://googleprojectzero.blogspot.com/2021/12/a-deep-dive-into-nso-zero-click.html)
-sounds unrealistic too -- and yet human-level intelligences have succeeded in such a magic trick. General wisdom says that *computer systems are not secure*[^4].
+First, the AI uses a computer to connect to the internet and exploits security vulnerabilities to take control of other devices, money, computing power, information and to spread around. If this sounds unrealistic, perhaps [sending a single text message to retrieve the data on a phone](https://googleprojectzero.blogspot.com/2021/12/a-deep-dive-into-nso-zero-click.html) sounds unrealistic too -- and yet human-level intelligences have succeeded in such a magic trick. It is generally known that *computer systems are not secure*[^4].
 
 The situation has progressed to the point where the AI is on practically every device connected to the web, providing computing power and thus *time to think* and resources for one plan or another. If the lack of physical control and robotics seems limiting, there is at least one person on the internet who can be hired (or just asked) to do some small-scale robotics to get started – assuming there are no suitable devices already connected to the web.
 
@@ -164,13 +135,11 @@ As for humans’ will to fight: even *now* AI researchers [warn of extinction th
 
 **Q:** "What is the basis for the idea that AI is trying to defeat humans?"
 
-To be clear: Nothing here is a prediction of how things will play out in practice. ([Section 7](#section-7) deals with what I think are more realistic stories.) Again, I'm trying here to respond to the view "I don't really see how AI could possibly cause harm" by giving examples of how AI possibly could cause harm. One can find more concrete stories on the web: [Holden Karnofsky](https://www.cold-takes.com/ai-could-defeat-all-of-us-combined/), [Paul Christiano](https://www.alignmentforum.org/posts/HBxe6wdjxK239zajf/what-failure-looks-like), [Gabriel Mukobi](https://aiacumen.substack.com/p/scale-was-all-we-needed-at-first), [Paul Christiano again](https://www.alignmentforum.org/posts/AyNHoTWWAJ5eb99ji/another-outer-alignment-failure-story), [Scott Alexander](https://slatestarcodex.com/2015/04/07/no-physical-substrate-no-problem/), [Gwern](https://gwern.net/fiction/clippy).
+To be clear: Nothing here is a prediction of how things will play out in reality. ([Section 7](#section-7) deals with what I think are more realistic stories.) Again, I'm trying here to respond to the view "I don't really see how AI could possibly cause harm" by giving examples of how AI possibly could cause harm. One can find more concrete stories on the web: [Holden Karnofsky](https://www.cold-takes.com/ai-could-defeat-all-of-us-combined/), [Paul Christiano](https://www.alignmentforum.org/posts/HBxe6wdjxK239zajf/what-failure-looks-like), [Gabriel Mukobi](https://aiacumen.substack.com/p/scale-was-all-we-needed-at-first), [Paul Christiano again](https://www.alignmentforum.org/posts/AyNHoTWWAJ5eb99ji/another-outer-alignment-failure-story), [Scott Alexander](https://slatestarcodex.com/2015/04/07/no-physical-substrate-no-problem/), [Gwern](https://gwern.net/fiction/clippy).
 
-I would also say that "capable AIs would be able to cause the destruction of humanity" should be an alarming observation in itself. Yes, the realization of threat scenarios requires (among other
-things) that these AIs also *aim* to do this[^58] -- and I'll get into this in much more detail later -- but in any case we are dealing with very dangerous technology. There are few other risks of comparable size, and our plan has to be better than "let's hope these AIs don't try to do bad things".
+I would also say that "capable AIs would be able to cause the destruction of humanity" should be an alarming observation in itself. Yes, the realization of threat scenarios requires (among other things) that these AIs also *aim* to do this[^58] -- and I'll get into this in much more detail later -- but in any case we are dealing with very dangerous technology. There are few other risks of comparable size, and our plan has to be better than "let's hope these AIs don't try to do bad things".
 
-But now that this basic point about the extreme potential and danger of AIs has been addressed, we
-can move on to questions such as "will such highly capable AIs even be built?" and "how hard is it to make sure AIs don't do bad things?"
+But now that this basic point about the extreme potential and danger of AIs has been addressed, we can move on to questions such as "will such highly capable AIs even be built?" and "how hard is it to make sure AIs don't do bad things?"
 
 <a name="section-3"> 
 ## 3. Timelines
@@ -536,9 +505,9 @@ Regardless of the reasons, deception can cause real harm if AIs perform tasks mo
 
 **Q:** "Do AIs have goals?"
 
-Preliminary note: I have noticed that people have very different reactions to the word "goal" in the context of AI: some are very ready to use the abstraction "goal", while others are almost allergic to the word. This section is written with the latter people in mind. I will thus try to explain the problems associated with AI without relying on the concept of goals, but instead addressing the issues in a relatively mechanistic way.
+*Preliminary note.* I have noticed that people have very different reactions to the word "goal" in the context of AI: some are very ready to use the abstraction "goal", while others are almost allergic to the word. This section is written with the latter people in mind. I will thus try to explain the problems associated with AI without relying on the concept of goals, but instead addressing the issues in a relatively mechanistic way.
 
-Let's decompose the question. It is not clear what exactly the question asks: defining “goals” is difficult. On the other hand, the question is about something sensible: the statements "people have goals" and "cars don't have goals" tell us something. They create *expectations* about how people or cars *behave* and what happens *inside* of them. Similarly, with the question "do AIs have goals?" we are trying to map out what we expect AIs to do and what happens inside of them.
+Let's decompose the question. It is not clear what exactly the question asks: defining “goals” is difficult. On the other hand, the question is about something sensible: the statements "people have goals" and "cars don't have goals" clearly have some content. They create *expectations* about how people or cars *behave* and what happens *inside* of them. Similarly, with the question "do AIs have goals?" we are trying to map out what we expect AIs to do and what happens inside of them.
 
 I am focusing here mostly on behavior, as the inner workings of existing language models are poorly understood. It should still be understood that behavior is not separate from internal mechanisms, as internal mechanisms are, of course, what cause behavior.[^23]
 
@@ -562,13 +531,11 @@ Because undesired behavior *generalizes* to new situations.
 
 Large language models generalize very well to situations they have not been specifically trained for. Language models can analyze and process texts they have never seen before. They can converse fluently, despite there being countless possible conversations. They can be given new situations and instructions, and they can adapt to them -- at least much more capably than one might naively think.
 
-This generalization applies (of course) to harmful properties, too. Perhaps the AI has learned to appeal to people in a particular training environment, and the same behavior is reflected in new situations. Maybe the AI has learned to not say certain things out loud or to outright deceive, and maybe this generalizes to a situation where the language model is trading stocks.
+This generalization applies (of course) to harmful properties, too. Perhaps the AI has learned to appeal to people in a particular training environment, and the same behavior is reflected in new situations. Maybe the AI has learned to leave some things unsaid or to outright deceive, and maybe this generalizes to a situation where the language model is trading stocks.
 
-The properties and behavior of language models are therefore not limited to the training environment, but can systematically generalize to a wide variety of contexts. Future models may, of
-course, generalize even better than existing ones. It may be helpful to think of humans who, despite their hunter-gatherer background, are able to operate in fundamentally different environments, and whose many skills and concepts automatically adapt to new situations.
+The properties and behavior of language models are therefore not limited to the training environment, but can systematically generalize to a wide variety of contexts. Future models may, of course, generalize even better than existing ones. It may be helpful to think of humans who, despite their hunter-gatherer background, are able to operate in fundamentally different environments, and whose many skills and concepts automatically adapt to new situations.
 
-If undesired behavior generalizes, a language model could for example systematically deceive humans. This does not sound very good. Likewise, the scenario "the AI is trained to
-make a profit, and as a result the AI systematically and in a wide variety of situations does things
+If undesired behavior generalizes, a language model could for example systematically deceive humans. This does not sound very good. Likewise, the scenario "the AI is trained to make a profit, and as a result the AI systematically and in a wide variety of situations does things
 that lead to making money" has all the ingredients of a catastrophe. (Such behavior could perhaps be described as "goal-directed" if you like.)
 
 **Q:** "So when you train an AI, it 'learns to aim' for what you train the AI to do?"
@@ -589,8 +556,7 @@ Similarly, a language model based AI system trained to make money may end up bei
 
 Go figure! This is not well understood and overall it’s not clear how to think about goal-directedness.
 
-For illustration, here are two different perspectives on goals: One perspective is to think of
-goals as *values* or *preferences*, things that an AI generally tries to achieve and implement in any situation. The other perspective is to conceive of goals as *context-dependent*  -- in the same way that a person may have a momentary goal of, say, climbing a tree, without this being a core value of theirs.
+For illustration, here are two different perspectives on goals: One perspective is to think of goals as *values* or *preferences*, things that an AI generally tries to achieve and implement in any situation. The other perspective is to conceive of goals as *context-dependent*  -- in the same way that a person may have a momentary goal of, say, climbing a tree, without this being a core value of theirs.
 
 Some AIs are difficult to describe as goal-oriented: a neural network that classifies images seems to "just classify images" without any other goals (compare: a toaster "just toasts bread"). For some AIs, the description is more natural: the sentence "AlphaGo is trying to win a game of go" tells us quite a lot about AlphaGo for such a short sentence. Moreover, at least humans have internal experiences about values and preferences, and it is not far-fetched to think that the training process could create similar properties and mechanisms in AIs.
 
@@ -598,14 +564,9 @@ From the point of view of the training process itself, training selects models o
 
 One reason why the model could "play the training game" is that the model aims for exactly what we measure in training: text prediction, money or something else. Another reason is that the model plays the training game *for now, only so it can better achieve its own goals later on*.
 
-This latter threat scenario is known as *deceptive alignment* (Hubinger et al, [Risks from Learned
-Optimization in Advanced Machine Learning Systems](https://arxiv.org/abs/1906.01820)) or
-*scheming* (Carlsmith, [Scheming AIs: Will AIs fake alignment during training in order to get
-power?](https://arxiv.org/abs/2311.08379)). In short, the idea is that a model with its own goals
-would plan and think "for now, I'll 'play the training game' and 'act as I should' to get through the
-training process: then I'll be released for wider use and can pursue my actual goals".
+This latter threat scenario is known as *deceptive alignment* (Hubinger et al, [Risks from Learned Optimization in Advanced Machine Learning Systems](https://arxiv.org/abs/1906.01820)) or *scheming* (Carlsmith, [Scheming AIs: Will AIs fake alignment during training in order to get power?](https://arxiv.org/abs/2311.08379)). In short, the idea is that a model with its own goals would plan and think "for now, I'll 'play the training game' and 'act as I should' to get through the training process: then I'll be released for wider use and can pursue my actual goals".
 
-I am very worried about this threat scenario: the AI is trying to achieve its own goals and so we are in an *adversarial* relationship with it. The AI is deliberately doing everything it can to make people think everything is fine, and thus misleading us about what kind of AI it really is. Does the AI genuinely share human values, or does it deceive us and try to make us believe so? Is the AI just as capable as it looks, or is it actually more capable and trying to hide something from us? Is the AI’s behavior "what it seems", or does it have hidden effects?
+I am very worried about this threat scenario: the AI is trying to achieve its own goals and so we are in an *adversarial* relationship with it. The AI is deliberately doing everything it can to make people think everything is fine, and thus misleading us about what kind of AI it really is. Does the AI genuinely share human values, or does it deceive us and try to make us believe so? Is the AI just as capable as it looks, or is it actually more capable and trying to hide something from us? Are the AI's actions "what they look like", or do they have hidden effects?
 
 This is an extremely important reason why problems may not be visible to the outside world: you are facing an AI that is actively trying to hide these problems.
 
@@ -613,7 +574,7 @@ This is an extremely important reason why problems may not be visible to the out
 
 There is much disagreement about this, not least because no example of scheming has yet been observed. The arguments for and against scheming scenarios are largely conceptual and theoretical, and their assessment is difficult.
 
-A couple of common arguments in favor of the scheming scenario include: a large number of possible goals motivates playing the training game (further reinforcing these goals and behaviors), and the training process may "search and find" models that play the training game (as these do well in training).
+A couple of common arguments in favor of the scheming scenario include: a large number of possible goals motivates playing the training game (further reinforcing these goals and behaviors), and the training process may "start looking for" models that play the training game (as these do well in training).
 
 A couple of common arguments against the scheming scenario: there are also pressures against scheming in the training process (for example, scheming requires "unnecessary" strategizing) and we can try to increase these pressures. Furthermore, arguments about how models have "goals" and how these motivate playing the training game are not self-evidently true.
 
@@ -625,17 +586,9 @@ To clarify, the scheming scenario discussed here is very specifically "the AI is
 
 This is again a question for which we can only give educated guesses. I will give you one.
 
-As the model’s training progresses, we get better and better models on the measure of our choice, for example "predict text well" or "play a board game well". For example, in the case of text
-prediction, one might think that the model first learns the frequency of different *bigrams* -- "the
-letter[^27] ‘a’ is followed by the letter ‘i’ in roughly this many cases" -- since this is both very simple and important information for predicting text. In practice, this is observed to form first and to precede other, more advanced mechanisms (Hoogland et al., [The Developmental Landscape
-of In-Context Learning](https://arxiv.org/abs/2402.02364)). In the case of board games, one would
-expect the model to learn heuristics related to, for example, the values of different pieces. As training progresses, such heuristics develop in directions that lead to better performance in the
-actual task.
+As the model’s training progresses, we get better and better models on the measure of our choice, for example "predict text well" or "play a board game well". For example, in the case of text prediction, one might think that the model first learns the frequency of different *bigrams* -- "the letter[^27] ‘a’ is followed by the letter ‘i’ in roughly this many cases" -- since this is both very simple and important information for predicting text. In practice, this is observed to form first and to precede other, more advanced mechanisms (Hoogland et al., [The Developmental Landscape of In-Context Learning](https://arxiv.org/abs/2402.02364)). In the case of board games, one would expect the model to learn heuristics related to, for example, the values of different pieces. As training progresses, such heuristics develop in directions that lead to better performance in the actual task.
 
-More speculatively, models may do some internal *search* or "looking ahead": in the case of
-board games, it is useful to think about what happens after your move[^28]. When predicting text, it
-helps to think about what the sentence looks like as a whole. If this forward looking helps improve performance, then the training process will reinforce and develop it. Furthermore, these search
-processes can be linked to the model's own heuristics of what good text or play looks like, so that the model "tries" to find solutions that are good from the perspective of its heuristics.
+More speculatively, models may do some internal *search* or "looking ahead": in the case of board games, it is useful to think about what happens after your move[^28]. When predicting text, it helps to think about what the sentence looks like as a whole. If this forward looking helps improve performance, then the training process will reinforce and develop it. Furthermore, these search processes can be linked to the model's own heuristics of what good text or play looks like, so that the model "tries" to find solutions that are good from the perspective of its heuristics.
 
 In summary, the training process engraves heuristics related to the training task and methods for finding outputs in line with these heuristics. If these heuristics and the ways to implement them are "good" enough, from the outside the model can look very goal-oriented and competent: AlphaGo plays in a wide range of situations a move that is very good for winning the game of go.
 
@@ -643,8 +596,7 @@ Of course, people also deliberately build AIs to be more goal-oriented, as AIs a
 solve problems and complete tasks. In the case of language models, giving explicit "Your goal is..."
 type prompts to the model will guide the model's behavior towards the given goal. This is one way in which *explicitly represented*, "conscious" goals could be formed for the model: people directly give them to the model.[^33]
 
-The problem is that our ability to shape the objectives of models is weak. We are not able to
-give models the objective of “fulfilling people's values", for example, so that the model reliably aims to achieve this. We can train the model to behave well and feed the language model with "fulfill human values" type of prompts, but these measures do not directly turn the internal processes and goals of the model to what we want. At best, it is very unclear how the behavior of the model will generalize to new situations. At worst, we end up with a scheming model, so that the naive interpretation of the model's behavior is completely misleading.
+The problem is that our ability to shape the objectives of models is weak. We are not able to give models the objective of “fulfilling people's values", for example, so that the model reliably aims to achieve this. We can train the model to behave well and feed the language model with "fulfill human values" type of prompts, but these measures do not directly turn the internal processes and goals of the model to what we want. At best, it is very unclear how the behavior of the model will generalize to new situations. At worst, we end up with a scheming model, so that the naive interpretation of the model's behavior is completely misleading.
 
 <a name="section-7"> 
 ## 7. Concrete stories
@@ -654,45 +606,27 @@ give models the objective of “fulfilling people's values", for example, so tha
 AI capabilities and investment volumes have been growing rapidly. These trends are very
 likely to continue: key players are serious about AI. A few excerpts for illustration:
 
-Leading AI organizations (such as OpenAI, DeepMind, Anthropic, Meta) explicitly talk about building *artificial general intelligence* (AGI). On timelines, Anthropic CEO Dario Amodei [has said](https://www.dwarkeshpatel.com/p/dario-amodei) about human-level AI "I think that could happen in two or three years". Sam Altman, CEO of OpenAI, has also talked about timelines of a few years. In a text on superintelligence, OpenAI [writes](https://openai.com/blog/governance-of-
-superintelligence) "it's conceivable that within the next ten years, AI systems will exceed expert
-skill level in most domains, and carry out as much productive activity as one of today's largest
-corporations."
+Leading AI organizations (such as OpenAI, DeepMind, Anthropic, Meta) explicitly talk about building *artificial general intelligence* (AGI). On timelines, Anthropic CEO Dario Amodei [has said](https://www.dwarkeshpatel.com/p/dario-amodei) about human-level AI "I think that could happen in two or three years". Sam Altman, CEO of OpenAI, has also talked about timelines of a few years. In a text on superintelligence, OpenAI [writes](https://openai.com/blog/governance-of-superintelligence) "it's conceivable that within the next ten years, AI systems will exceed expert skill level in most domains, and carry out as much productive activity as one of today's largest corporations."
 
-Investment is set to increase dramatically. [From Anthropic](https://techcrunch.com/2023/04/06/anthropics-5b-4-year-plan-to-take-on-openai/):
-"'These models could begin to automate large portions of the economy,' the pitch deck reads. 'We
-believe that companies that train the best 2025/26 models will be too far ahead for anyone to
-catch up in subsequent cycles.'" Microsoft and OpenAI [are planning a $100
-billion](https://www.reuters.com/technology/microsoft-openai-planning-100-billion-data-center-
-project-information-reports-2024-03-29/) data center project.
+Investment is set to increase dramatically. [From Anthropic](https://techcrunch.com/2023/04/06/anthropics-5b-4-year-plan-to-take-on-openai/): "'These models could begin to automate large portions of the economy,' the pitch deck reads. 'We believe that companies that train the best 2025/26 models will be too far ahead for anyone to catch up in subsequent cycles.'" Microsoft and OpenAI [are planning a $100 billion](https://www.reuters.com/technology/microsoft-openai-planning-100-billion-data-center-project-information-reports-2024-03-29/) data center project.
 
 Of course, it is uncertain whether these plans become reality, and some may dismiss them as mere hype. But it's not just talk: these are the same companies that have created the most advanced models and have accumulated hundreds of millions of customers. There’s big money in AI.
 
-This investment is driven by the massive potential of artificial intelligence. As the quotes above illustrate, there is a belief in huge productivity gains as AI automates an increasing number
-of tasks.
+This investment is driven by the massive potential of artificial intelligence. As the quotes above illustrate, there is a belief in huge productivity gains as AI automates an increasing number of tasks.
 
 **Q:** "What does this productivity growth and automation look like in practice?" 
 
 From the perspective of AI organizations, this is reflected in really wild *feedback loops*: if you can make good AIs, you can do even more by *using those AIs*.
 
-The most obvious factor is, of course, "an AI organization can sell these AIs to consumers and
-businesses, make a profit and invest more in better AIs". People pay for AI, because it can produce valuable work. Already today's AIs can do all sorts of economically useful things, such as
-summarizing long texts, assisting in writing text, searching for information in large piles of
-documentation, helping with various problems, answering questions, programming, automating
-routine tasks and generally just speeding up things humans are already doing.
+The most obvious factor is, of course, "an AI organization can sell these AIs to consumers and businesses, make a profit and invest more in better AIs". People pay for AI, because it can produce valuable work. Already today's AIs can do all sorts of economically useful things, such as summarizing long texts, assisting in writing text, searching for information in large piles of documentation, helping with various problems, answering questions, programming, automating routine tasks and generally just speeding up things humans are already doing.
 
 It is definitely a matter of context how well or reliably existing AIs can assist with these tasks and how much value you can get out of them. However, there are no *fundamental* reasons why future language models cannot be extremely valuable: they would "just have to be a bit better" (which again is very likely to happen soon).
 
-In terms of increasing the productivity of an AI organization, I place particular emphasis on
-programming skills and the ability to do research. In addition to the above productivity factors, AI is
-already being used to generate data for various experiments, with mass-generation of text being one of the strengths of language models. Anthropic's top-tier Claude 3 models are trained in part with data generated internally within the organization.[^30]
+In terms of increasing the productivity of an AI organization, I place particular emphasis on programming skills and the ability to do research. In addition to the above productivity factors, AI is already being used to generate data for various experiments, with mass-generation of text being one of the strengths of language models. Anthropic's top-tier Claude 3 models are trained in part with data generated internally within the organization.[^30]
 
-Moreover, the stage of "AIs are able to perform small-scale empirical experiments related to AI"
-is not far away. If we reach the stage "AIs are able to do the same kind of experimentation,
-programming, ideation and research as the employees of the organization", then the feedback loop becomes even faster: AIs can do research for training the next AIs more efficiently and better. And again, there don't seem to be any fundamental barriers: language models just need to be a bit better.
+Moreover, the stage of "AIs are able to perform small-scale empirical experiments related to AI" is not far away. If we reach the stage "AIs are able to do the same kind of experimentation, programming, ideation and research as the employees of the organization", then the feedback loop becomes even faster: AIs can do research for training the next AIs more efficiently and better. And again, there don't seem to be any fundamental barriers: language models just need to be a bit better.
 
-As this progresses, development is no longer directly dependent on human workers' time:
-computing power can be transformed into AIs’ thinking and working time, providing valuable information on how to make even better use of computing power. This partly explains the quote "We believe that companies that train the best 2025/26 models will be too far ahead for anyone to catch up in subsequent cycles": having gotten started, the feedback loops are really intense.
+As this progresses, development is no longer directly dependent on human workers' time: computing power can be transformed into AIs’ thinking and working time, providing valuable information on how to make even better use of computing power. This partly explains the quote "We believe that companies that train the best 2025/26 models will be too far ahead for anyone to catch up in subsequent cycles": having gotten started, the feedback loops are really intense.
 
 I hope the system doesn’t blow up on our face.
 
@@ -710,38 +644,23 @@ tasks they have been trained for. Indeed, they are playing a major role in autom
 organizational tasks: they are simply much faster, cheaper and better than humans at an expanding range of tasks.
 
 So, for example, in research projects, AIs help with writing articles, implementing experimental
-ideas and designing experiments. As models evolve, they no longer just *help* human, but take bigger leaps forward autonomously without human guidance. More generally, models'
-abilities are not limited to short time scales and small tasks, but they are trained and developed for longer term larger tasks and planning. One of the key goals of the AI industry -- to create AI that, like humans, can autonomously solve more or less any tasks -- is starting to be achieved.
+ideas and designing experiments. As models evolve, they no longer just *help* human, but take bigger leaps forward autonomously without human guidance. More generally, models' abilities are not limited to short time scales and small tasks, but they are trained and developed for longer term larger tasks and planning. One of the key goals of the AI industry -- to create AI that, like humans, can autonomously solve more or less any tasks -- is starting to be achieved.
 
-*Steering behavior.* As is typical, these models go through behavior-based safety training: if the
-model does or says something that people don't like, then the model is trained away from that.
-Examples include: 'the model says false statements (intentionally or unintentionally)', 'the model
-shows signs of inappropriate or dangerous intentions (such as gaining power or additional
-resources)' and 'the model thinks or focuses on things that are not necessary to its tasks'.
+*Steering behavior.* As is typical, these models go through behavior-based safety training: if the model does or says something that people don't like, then the model is trained away from that. Examples include: 'the model says false statements (intentionally or unintentionally)', 'the model shows signs of inappropriate or dangerous intentions (such as gaining power or additional resources)' and 'the model thinks or focuses on things that are not necessary to its tasks'.
 
-In addition to these aspects, models have good situational awareness: from all the information they
-receive, they have a pretty good picture of their environment, i.e. the AI organization and their role
-in it. In particular, facts such as "the model is evaluated on the basis of its outputs" and "the model is monitored for potential bad behavior" are not well-hidden secrets.
+In addition to these aspects, models have good situational awareness: from all the information they receive, they have a pretty good picture of their environment, i.e. the AI organization and their role in it. In particular, facts such as "the model is evaluated on the basis of its outputs" and "the model is monitored for potential bad behavior" are not well-hidden secrets.
 
-So it's no wonder that an organization can make AI look good on the surface: AI is trained to behave
-well in the eyes of people, and it knows what kind of behavior people expect. Thus, it learns to
-behave as the training signal pressures it to -- if not, then by training more, the training process will soon find a model that does.
+So it's no wonder that an organization can make AI look good on the surface: AI is trained to behave well in the eyes of people, and it knows what kind of behavior people expect. Thus, it learns to behave as the training signal pressures it to -- if not, then by training more, the training process will soon find a model that does.
 
-As we have discussed, behavioral training does not always *remove* undesirable thinking or
-behavior, but only *suppresses* it. Training out the visible deception causes the model’s deception to be more subtle. Training also encourages other undesirable behavior, examples include sycophancy, not mentioning particular information, and optimizing metrics in unintended ways. In addition, outcome-based training pushes the model away from fully legible thinking: a text that reflects one's own ideas in detail is not the most effective or cheapest way to arrive at workable solutions.
+As we have discussed, behavioral training does not always *remove* undesirable thinking or behavior, but only *suppresses* it. Training out the visible deception causes the model’s deception to be more subtle. Training also encourages other undesirable behavior, examples include sycophancy, not mentioning particular information, and optimizing metrics in unintended ways. In addition, outcome-based training pushes the model away from fully legible thinking: a text that reflects one's own ideas in detail is not the most effective or cheapest way to arrive at workable solutions.
 
 The model’s externally visible behavior tells us less and less about what is happening inside the model, and our training methods are not doing what we optimistically hope they would do.
 
 *New situations.* The environments the model encounters change. Perhaps the organization will take the next leap in automation and give the model more action space. Perhaps the organization will deploy the model for general use, and the model begins to be used globally for a variety of purposes. Maybe an outside party attacks the organization and steals a copy of the model.[^32]
 
-In the past, the AI has behaved well. This behavior has been based on both the training given to the
-model and its perception of its environment. Thus, as the environment changes, the behavior of
-the model might be expected to change: the model will generalize in some way to the new
-environment, and this way will not be "the model will act exactly the same as before, doing only
-good things".
+In the past, the AI has behaved well. This behavior has been based on both the training given to the model and its perception of its environment. Thus, as the environment changes, the behavior of the model might be expected to change: the model will generalize in some way to the new environment, and this way will not be "the model will act exactly the same as before, doing only good things".
 
-Given that the model has been trained to solve even long-term problems within its organization, it may well plan further into the future and set its sights on a larger-scale goal. And the model can still use the cognitive abilities it has -- it just uses them for different things than before -- and it can plan
-how to get things done. These skills include the training-relevant ability to keep things hidden and predict how people would react to the model’s actions. Thus, the end of the story is not "AI does obvious bad things and people go and shut it off".
+Given that the model has been trained to solve even long-term problems within its organization, it may well plan further into the future and set its sights on a larger-scale goal. And the model can still use the cognitive abilities it has -- it just uses them for different things than before -- and it can plan how to get things done. These skills include the training-relevant ability to keep things hidden and predict how people would react to the model’s actions. Thus, the end of the story is not "AI does obvious bad things and people go and shut it off".
 
 Needless to say, I don't believe every detail, or indeed this story in general, will happen in reality. This is meant to be an illustration of how threats could take place in practice if not much effort is made to mitigate them.
 
@@ -749,32 +668,15 @@ Needless to say, I don't believe every detail, or indeed this story in general, 
 
 Here are a few places where the story could have been told differently:
 
-In the story, the model's arrival in the new situation was the result of an external actor, not the
-model itself. However, models can also seek to extend their own influence: if models are trained to
-solve long-term, large-scale problems, thoughts about the limitations of one’s options and extending them are quite natural.
+In the story, the model's arrival in the new situation was the result of an external actor, not the model itself. However, models can also seek to extend their own influence: if models are trained to solve long-term, large-scale problems, thoughts about the limitations of one’s options and extending them are quite natural.
 
 I framed the story “mundanely” as the model’s *misgeneralization* in a new environment. Generalization issues are ubiquitous in deep learning and so misgeneralization is to be expected. The story can also be looked at from a goal-based perspective: If models are trained to solve long-term, large-scale problems, they could well have internally represented goals related to the tasks assigned. From this perspective, a model would competently execute undesired plans as a result of poorly assigned goals.
 
-The AI organization might notice that the model is doing something really bad, figuratively
-triggering a fire alarm. Again, there are a few ways the story might unfold. Perhaps the organization takes the problem seriously by, for example, discontinuing its use (and certainly not offering it for public use) and the risks are avoided -- for now. There are also more cynical views: it would be far too expensive to disable AI altogether, so instead you go about patching
-the problem and controlling the risks with the methods you have, everything looks good on the
-surface for a while, and then similar problems appear elsewhere.
+The AI organization might notice that the model is doing something really bad, figuratively triggering a fire alarm. Again, there are a few ways the story might unfold. Perhaps the organization takes the problem seriously by, for example, discontinuing its use (and certainly not offering it for public use) and the risks are avoided -- for now. There are also more cynical views: it would be far too expensive to disable AI altogether, so instead you go about patching the problem and controlling the risks with the methods you have, everything looks good on the surface for a while, and then similar problems appear elsewhere.
 
-Perhaps at the end of the story, the AI will set out on its own to carry out its intentions, but this isn’t *that* bad: Either the model is not "trying" to do anything completely catastrophic, or people are
-aware of the AI and ultimately succeed in containing it. A warning shot has been fired, with more capable models it could have been worse, and the question is how we learn from the error. Perhaps the damage will be great, there will be a serious response and this will lead to (hopefully good) measures to reduce the risks of AI. Or maybe this is just one example of misalignment [among
-dozens of others](https://docs.google.com/spreadsheets/d/e/2PACX-
-1vRPiprOaC3HsCf5Tuum8bRfzYUiKLRqJmbOoC-
-32JorNdfyTiRRsR7Ea5eWtvsWzuxo8bjOxCG84dAg/pubhtml), which didn't really cause any great
-harm, and it's not really clear whether the AI was "trying" to do any harm, so no major changes are needed.
+Perhaps at the end of the story, the AI will set out on its own to carry out its intentions, but this isn’t *that* bad: Either the model is not "trying" to do anything completely catastrophic, or people are aware of the AI and ultimately succeed in containing it. A warning shot has been fired, with more capable models it could have been worse, and the question is how we learn from the error. Perhaps the damage will be great, there will be a serious response and this will lead to (hopefully good) measures to reduce the risks of AI. Or maybe this is just one example of misalignment [among dozens of others](https://docs.google.com/spreadsheets/d/e/2PACX-1vRPiprOaC3HsCf5Tuum8bRfzYUiKLRqJmbOoC-32JorNdfyTiRRsR7Ea5eWtvsWzuxo8bjOxCG84dAg/pubhtml), which didn't really cause any great harm, and it's not really clear whether the AI was "trying" to do any harm, so no major changes are needed.
 
-And as I mentioned at the beginning of the text, I am largely focusing on the risks posed by AI posed as an *autonomous actor*.  Risks from misuse of AI and systematic risks posed by the increasing use of AI are also realistic, even though I have not discussed them here. Regarding societal risks, I refer the reader to Paul Christiano's articles [What Failure Looks
-Like](https://www.alignmentforum.org/posts/HBxe6wdjxK239zajf/what-failure-looks-like) and
-[Another (outer) alignment failure
-story](https://www.alignmentforum.org/posts/AyNHoTWWAJ5eb99ji/another-outer-alignment-
-failure-story) and Andrew Critch's text [What Multipolar Failure Looks Like, and Robust Agent-
-Agnostic Processes
-(RAAPs)](https://www.alignmentforum.org/posts/LpM3EAakwYdS6aRKf/what-multipolar-failure-
-looks-like-and-robust-agent-agnostic#W5CPYxDi4nKiBFdoh).
+And as I mentioned at the beginning of the text, I am largely focusing on the risks posed by AI posed as an *autonomous actor*.  Risks from misuse of AI and systematic risks posed by the increasing use of AI are also realistic, even though I have not discussed them here. Regarding societal risks, I refer the reader to Paul Christiano's articles [What Failure Looks Like](https://www.alignmentforum.org/posts/HBxe6wdjxK239zajf/what-failure-looks-like) and [Another (outer) alignment failure story](https://www.alignmentforum.org/posts/AyNHoTWWAJ5eb99ji/another-outer-alignment-failure-story) and Andrew Critch's text [What Multipolar Failure Looks Like, and Robust Agent-Agnostic Processes (RAAPs)](https://www.alignmentforum.org/posts/LpM3EAakwYdS6aRKf/what-multipolar-failure-looks-like-and-robust-agent-agnostic).
 
 Ultimately, reality will probably be something else.[^60] Hopefully in a good way.
 
@@ -892,7 +794,7 @@ Finally, I’d say AI is not only an important topic, but also *interesting*. Th
 
 [^27]: I’m simplifying here: in the case of language models, we should again speak of tokens instead of letters.
 
-[^28]: I have heard of a (so far unpublished) paper where a chess-playing neural network was found to look ahead. A more complex search with more options was not found so far, however.
+[^28]: I have heard of a (so far unpublished) paper where a chess-playing neural network was found to look ahead. A more complex search considering multiple options was not found so far, however.
 
 [^30]: Anthropic, [The Claude 3 Model Family: Opus, Sonnet, Haiku](https://www-cdn.anthropic.com/de8ba9b01c9ab7cbabf5c33b80b7bbc618857627/Model_Card_Claude_3.pdf), section 2.5.
 
@@ -940,4 +842,4 @@ Finally, I’d say AI is not only an important topic, but also *interesting*. Th
 
 [^60]: In particular, I tried to provide a threat scenario that does not require major changes in AI development. Major changes are of course possible and may introduce new problems.
 
-[^thanks]: The translation may be clumsy at times. Thanks to Akseli Jussinmäki, Konsta Tiilikainen and Meeri Kuoppala for providing feedback on earlier (Finnish) versions of the article.
+[^thanks]: Thanks to Akseli Jussinmäki, Konsta Tiilikainen and Meeri Kuoppala for providing feedback on earlier (Finnish) versions of the article.
