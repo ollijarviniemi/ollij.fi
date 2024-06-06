@@ -24,4 +24,4 @@ Kyse ei ole kuitenkaan tästä nimenomaisesta ideasta (en oikeasti ole miettinyt
 
 Toinen esimerkki: [Mihin matematiikkaa tarvitaan?](/epi/mihin_matematiikkaa) -tekstissä avasin yhtä keskeistä syytä sille, miksi pidän (tietyntyyppistä) matematiikkaa hyödyllisenä. Vastaus ei ole sellainen, jonka pystyisin välittämään suullisesti arkipäivän keskustelussa -- vaikka olen miettinyt asian jo valmiiksi ja kirjoittanut siitä tekstinkin. Teksti nimittäin hyödyntää toistakymmentä esimerkkiä, joista kunkin käsitteleminen vie aikaa, kaikkia ei kuitenkaan muista ja jossakin kohtaa pitää pysähtyä miettimään, mitä haluaakaan sanoa ja miten. (Suhtaudun nykyään hieman ymmärtäväisemmin siihen, ettei minulle ole aiemmin tarjottu tyydyttävää vastausta kysymykseeni.)
 
-En ole keksinyt hyviä tapoja kiertää keskustelujen lokaaliusongelmaa -- muuta kuin tietysti sen, että kirjoittaa ajatuksensa.
+En ole keksinyt hyviä tapoja kiertää keskustelujen lokaaliusongelmaa -- muuta kuin tietysti sen, että kirjoittaa ajatuksensa ylös.
