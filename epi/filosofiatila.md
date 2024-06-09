@@ -16,7 +16,7 @@ Selkein ongelma ajatusleikissä on, että sen premissi on, jos nyt ei *epäreali
 
 Vastalauseeni vastalauseelle on, että käytännössä näin ei käy.
 
-Nimittäin yksi kohtalaisen yleinen keskustelun etenemissuunta on tarkentavat kysymykset kuten "kuinka paljon aikaa on, ennen kuin ratikka ajaa ihmisten yli?" tai "ehdinkö mennä päästämään ihmiset köyhistä ennen ratikan saapumista?" Ei kuulosta hyvältä alulta yleisten ajatusten muodostamiseen.`
+Nimittäin yksi kohtalaisen yleinen keskustelun etenemissuunta on tarkentavat kysymykset kuten "kuinka paljon aikaa on, ennen kuin ratikka ajaa ihmisten yli?" tai "ehdinkö mennä päästämään ihmiset köysistä ennen ratikan saapumista?" Ei kuulosta hyvältä alulta yleisten ajatusten muodostamiseen.`
 
 Toinen tapa, jolla keskustelu voi suistua raiteiltaan, on uusien ajatusleikkien kehittäminen. Entä jos vivun vääntämisen sijasta sinun tulee [tönäistä lihava mies sillalta ratikan pysäyttämiseksi](https://en.wikipedia.org/wiki/Trolley_problem#The_Fat_Man)? Entä jos tämä lihava mies onkin se, joka köytti ihmiset raiteisiin kiinni? Entä jos oletkin lääkäri sairaalassa, ja voit pelastaa viisi potilasta ottamalla elimiä yhdeltä potilaalta (joka tämän seurauksena kuolee)?
 
