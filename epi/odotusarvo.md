@@ -6,17 +6,17 @@
 
 **Anna:** Niin siis odotusarvo lasketaan summaamalla toden--
 
-**Bella:** Minä kyllä tiedän miten odotusarvo lasketaan, mutten näe, miten se liittyy lottoamisen kannattavuuteen mitenkään.
+**Bella:** Minä kyllä tiedän [miten odotusarvo lasketaan](https://en.wikipedia.org/wiki/Expected_value#Examples), mutten näe, miten se liittyy lottoamisen kannattavuuteen mitenkään.
 
-**Anna:** Yleisesti epävarmuutta käsitellessä kannattaa valita vaihtoehto, jolla on suurin odotusarvo. Lottoamisen tapauksessa odotusarvo on negatiivinen ja lottoamatta jättämisessä se on nolla, joten ei kannata lotota.
+**Anna:** Yleisesti epävarmuutta käsitellessä kannattaa valita vaihtoehto, jolla on suurin odotusarvo. Lottoamisen tapauksessa odotusarvo on negatiivinen, ja lottoamatta jättämisessä se on nolla, joten ei kannata lotota.
 
 **Bella:** Miksi? Siis olen samaa mieltä, että lototessa odotusarvollisesti menettää rahaa, mutta miksi vaihtoehto kannattaa valita odotusarvon mukaan?
 
 **Anna:** ...koska silloin keskimäärin voittaa eniten? Se on mitä odotusarvo tarkoittaa: mikä on keskimääräinen lopputulos.
 
-**Bella:** Kuulostaa epäilyttävästi [mediaanin](https://en.wikipedia.org/wiki/Median) määritelmältä -- mediaani nimenomaan on keskimmäinen lopputulos niin, että 50% todennäköisyydellä saat enintään niin hyvän tuloksen kuin mediaani ja 50% todennäköisyydellä vähintään niin hyvän. Miksemme valitse vaihtoehtoa mediaanin mukaan? Tai jonkin muun mittarin mukaan?
+**Bella:** Kuulostaa epäilyttävästi [mediaanin](https://en.wikipedia.org/wiki/Median) määritelmältä -- mediaani nimenomaan on keskimmäinen lopputulos niin, että 50 % todennäköisyydellä saat enintään niin hyvän tuloksen kuin mediaani ja 50 % todennäköisyydellä vähintään niin hyvän. Miksemme valitse vaihtoehtoa mediaanin mukaan? Tai jonkin muun mittarin mukaan?
 
-**Anna:** *Keskimääräinen* tulos ei ole sama kuin *keskimmäinen* tulos. Kuvittele esimerkiksi peli, jossa 51 prosentin todennäköisyydellä häviät euron, mutta 49% todennäköisyydellä voitat sata euroa. Mediaani on euron häviö, ja todennäköisemmin häviät kuin voitat, mutta peliin kannattaa silti osallistua.
+**Anna:** *Keskimääräinen* tulos ei ole sama kuin *keskimmäinen* tulos. Kuvittele esimerkiksi peli, jossa 51 prosentin todennäköisyydellä häviät euron, mutta 49 % todennäköisyydellä voitat sata euroa. Mediaani on euron häviö, ja todennäköisemmin häviät kuin voitat, mutta peliin kannattaa silti osallistua.
 
 **Bella:** Hmm, kieltämättä olen tästä samaa mieltä. En silti näe, miksi valita pelit nimenomaan odotusarvon perusteella...
 
@@ -38,9 +38,9 @@
 
 \*Anna huomaa, että logaritmit ja negatiiviset arvot eivät ole yhteensopivia\*
 
-**Anna:** ...niin tosiaan, pelissä ei tule ottaa logaritmia voitoista ja häviöistä, vaan sinun *pelin jälkeisestä varallisuudesta*. Osallistumisen kannattavuus riippuu tällöin omasta varallisuudestasi: jos olet hyvin rikas, niin kannattaa osallistua, ja jos taas köyhempi, niin ei. Odota, minä voin laskea tarkan kohdan, jossa osallistuminen kannattaa.
+**Anna:** ...niin tosiaan, pelissä ei tule ottaa logaritmia voitoista ja häviöistä, vaan sinun *pelin jälkeisestä varallisuudestasi*. Osallistumisen kannattavuus riippuu tällöin omasta varallisuudestasi: jos olet hyvin rikas, niin kannattaa osallistua, ja jos taas köyhempi, niin ei kannata. Odota, minä voin laskea tarkan kohdan, jossa osallistuminen kannattaa.
 
-**Bella:** Ei tarvitse, tajusin kyllä idean. En siltikään usko, että tämä toimii. Jos varallisuutesi on sata euroa, kai sinun kuitenkin kannattaa osallistua peliin, jossa prosentin todennäköisyydellä menetät ja 99% todennäköisyydellä voitat sata euroa.
+**Bella:** Ei tarvitse, tajusin kyllä idean. En siltikään usko, että tämä toimii. Jos varallisuutesi on sata euroa, kai sinun kuitenkin kannattaa osallistua peliin, jossa prosentin todennäköisyydellä menetät ja 99 % todennäköisyydellä voitat sata euroa.
 
 **Anna:** Niin no tämäkin on vain malli -- oikeassa elämässä on mahdollista olla velkaa ja näin edes päin. Eli olen samaa mieltä, että peliin kannattaa osallistua.
 
@@ -52,7 +52,7 @@
 
 **Anna:** Kuvitellaan, että sinulle annetaan erilaisia pelejä pelattavaksi. Ehkä yhdestä saat varmasti 2 euroa per pelikerta, toisen pelaaminen maksaa euron mutta siinä voittaa 50% todennäköisyydellä 10 euroa, kolmannessa heitetään noppaa ja saat silmälukujen verran euroja ja niin edelleen. Kuvitellaan myös, että saat pelata pelejä *niin monta kertaa kuin haluat*. Mitä pelejä sinun kannattaa pelata?
 
-**Anna:** Vastaus: sitä, jolla on suurin odotusarvo. Nimittäin *monen* pelikerran jälkeen sinun *keskimääräinen* voitto, siis voitot jaettuna pelikerrat, [lähestyy hyvin todennäköisesti odotusarvoa](https://en.wikipedia.org/wiki/Law_of_large_numbers). Esimerkiksi noppapelin pelaaminen sata kertaa antaa sinulle keskimäärin noin 3,5 euroa per peli. Mitä enemmän pelejä pelaat, sitä parempi tämä arvio on. Ja siten suuremman odotusarvon pelejä pelaamalla saat *hyvin* todennäköisesti enemmän rahaa kuin pienemmän odotusarvon peleistä.
+**Anna:** Vastaus: sitä, jolla on suurin odotusarvo. Nimittäin *monen* pelikerran jälkeen sinun *keskimääräinen* voittosi, siis kokonaisvoitto jaettuna pelikertojen määrällä, [lähestyy hyvin todennäköisesti odotusarvoa](https://en.wikipedia.org/wiki/Law_of_large_numbers). Esimerkiksi noppapelin pelaaminen sata kertaa antaa sinulle keskimäärin noin 3,5 euroa per peli. Mitä enemmän pelejä pelaat, sitä parempi tämä arvio on. Ja siten suuremman odotusarvon pelejä pelaamalla saat *hyvin* todennäköisesti enemmän rahaa kuin pienemmän odotusarvon peleistä.
 
 **Bella:** Kieltämättä tässä on järkeä. Entä jos kyse on vain yksittäisestä tilanteesta? Harvoinhan sama tilanne toistuu kahdesti.
 
@@ -70,7 +70,7 @@
 
 **Bella:** Ja miten se lasketaan? Äläkä vain ala puhumaan mistään logaritmeista.
 
-**Anna:** Takin ottamisen tapauksessa voit miettiä, kuinka ikävää on olla ulkona kylmässä ilman takkia *verrattuna* siihen, että otit takin turhaan mukaan. Jos se on vaikkapa kolminkertaisesti niin ikävää, niin sinun kannattaa ottaa takki mukaan, jos kylmän todennäköisyys on yli 25 prosenttia ja olla ottamatta, jos se on alle 25 prosenttia.
+**Anna:** Takin ottamisen tapauksessa voit miettiä, kuinka ikävää on olla ulkona kylmässä ilman takkia *verrattuna* siihen, että otit takin turhaan mukaan. Jos se on vaikkapa kolminkertaisesti niin ikävää, niin sinun kannattaa ottaa takki mukaan, jos kylmän todennäköisyys on yli 25 prosenttia, ja olla ottamatta, jos se on alle 25 prosenttia.
 
 **Bella:** Mitä tarkoittaa, että toinen asia on kolme kertaa niin ikävä kuin ensimmäinen?
 
@@ -90,7 +90,7 @@
 
 **Camilla:** Kiitos. Annalla on hyviä pointteja, mutta... häneltä tuntuu puuttuvan pohja, jolle muu päättely perustuu. Tämän vuoksi odotusarvomatematiikan yhdistäminen oikeaan maailmaan onnistui heikosti. Selitykset olivat ikään kuin "[vähän sinne päin](/epi/sumuiset_ajatukset)".
 
-**Camilla:** Toiminta toistetuissa peleissä on yksi motivaatio, jonka odotusarvoille voi esittää. Kieltämättä se tarjoaa hyvän intuition. En kuitenkaan pidä sitä *keskeisimpänä* tai *syvimpänä* syynä odotusarvojen tutkimiselle. Kenties fundamentaalein syy on, että *koherenteista preferensseistä ja uskomuksista seuraa, että eri preferensseillä on kvantifioitavat painoarvot ja vaihtoehtoja vertaillaan probabilististen odotusarvojen perusteella*.
+**Camilla:** Toiminta toistetuissa peleissä on yksi motivaatio, jonka odotusarvoille voi esittää. Kieltämättä se tarjoaa hyvän intuition. En kuitenkaan pidä sitä *keskeisimpänä* tai *syvimpänä* syynä odotusarvojen tutkimiselle. Kenties fundamentaalein syy odotusarvojen käyttämiselle on, että *koherenteista preferensseistä ja uskomuksista seuraa, että eri preferensseillä on kvantifioitavat painoarvot ja vaihtoehtoja vertaillaan probabilististen odotusarvojen perusteella*.
 
 **Bella:** Preferoisin hitaampaa selitystä.
 
@@ -106,7 +106,7 @@
 
 **Camilla:** Sinulla on maailmaa koskevia uskomuksia. Näissä uskomuksissa on epävarmuutta. Toisaalta näitä epävarmuuksia voi vertailla: pidät joitain asioita "enemmän mahdollisina" kuin toisia. Nämä uskomukset noudattavat myös joitain ilmeisiä ehtoja: esimerkiksi sama väite muotoiltuna eri tavalla on edelleen yhtä "mahdollinen", tai tilanne "sekä A että B tapahtuvat" on enintään niin "mahdollinen" kuin tilanne "A tapahtuu".
 
-*Ainoa* nämä (ja muutamat muut luontevat ehdot) toteuttava tapa käsitellä epävarmuutta on tavallinen todennäköisyyslaskenta. Mikä tahansa muu tapa johtaa välttämättä näiden luontevien ehtojen rikkomiseen.
+*Ainoa* nämä (ja muutaman muun luontevan ehdot) toteuttava tapa käsitellä epävarmuutta on tavallinen todennäköisyyslaskenta. Mikä tahansa muu tapa johtaa välttämättä näiden luontevien ehtojen rikkomiseen.
 
 **Bella:** Onko tämän tarkoitus olla itsestäänselvää?
 
@@ -122,20 +122,20 @@
 
 Kuten uskomuksilla, myös preferensseillä on joitain luontevia ehtoja, joita niiden olisi hyvä noudattaa. Jos esimerkiksi preferoit vaihtoehtoa A vaihtoehdon B yli ja vaihtoehtoa B vaihtoehdon C yli, niin varmaankin preferoit vaihtoehtoa A vaihtoehdon C yli. Tai jos 100% todennäköisyys saada omena on parempi kuin 100% todennäköisyys saada banaani, on varmaankin 50% todennäköisyys saada omena parempi kuin 50% todennäköisyys saada banaani (jos muissa tapauksissa et saa mitään).
 
-**Camilla:** *Ainoa* nämä (ja muutamat muut luontevat ehdot) toteuttava tapa käsitellä prefernssejä epävarmojen vaihtoehtojen yli on odotusarvon kautta.
+**Camilla:** *Ainoa* nämä (ja muutaman muun luontevan ehdot) toteuttava tapa käsitellä preferenssejä epävarmojen vaihtoehtojen yli on odotusarvon kautta.
 
-Tarkalleen: jos uskomuksesi ja preferenssisi toteuttavat niitä koskevat luontevat ehdot, eli uskomuksesi ja toimintasi eivät ole 'ilmiselvästi huonoja', niin tästä voi *johtaa* sen, että suhteutat asioita kvantitatiivisesti toisiinsa ja maksimoit kvantitatiivisten preferenssien odotusarvoa.
+Tarkemmin sanottuna: jos uskomuksesi ja preferenssisi toteuttavat niitä koskevat luontevat ehdot, niin tästä voi *johtaa* sen, että suhteutat asioita kvantitatiivisesti toisiinsa ja maksimoit kvantitatiivisten preferenssien odotusarvoa.
 
 Ja ei, tämäkään ei ole itsestäänselvyys.
 
-**Camilla:** Missään kohtaa emme *olettaneet*, että uskomuksesi vastaavat todennäköisyyksiä, että pystyt kvantifioimaan preferenssejäsi tai että painotat epävarmoja tilanteita niiden todennäköisyyksien suhteessa. Nämä ehdot *seuraavat* siitä, että muodostat uskomuksiasi järkevästi ja käsittelet epävarmuutta preferensseissäsi koherentisti.
+**Camilla:** Missään kohtaa emme *olettaneet*, että uskomuksesi vastaavat todennäköisyyksiä, että pystyt kvantifioimaan preferenssejäsi tai että painotat epävarmoja tilanteita niiden todennäköisyyksien suhteessa. Nämä asiat *seuraavat* siitä, että muodostat uskomuksiasi järkevästi ja käsittelet epävarmuutta ja preferenssejä koherentisti.
 
 **Bella:** Tämä kuulostaa järkevältä -- ainakin selvästi vakuuttavammalta kuin Annan selitys. En tosin ihan vieläkään ymmärrä, mikä on se minkä odotusarvoa maksimoidaan.
 
-**Camilla:** Sinun preferenssien toteutumista. Jos tämä vastaus ei tyydytä, niin saatat odottaa odotusarvoilta enemmän kuin mitä niiden on tarkoitus tarjota. Nämä argumentit eivät kerro, *mitä preferenssisi ovat*. Se on sinun asiasi. Matematiikka ei sano, että sinun tulee tykätä omenoista enemmän kuin banaaneista. Sen sijaan nämä argumentit kertovat, *miten preferenssejä tulee käsitellä epävarmuuden tilassa*.
+**Camilla:** Sinun preferenssiesi toteutumista. Jos tämä vastaus ei tyydytä, niin saatat odottaa odotusarvoilta enemmän kuin mitä niiden on tarkoitus tarjota. Nämä argumentit eivät kerro, *mitä preferenssisi ovat*. Se on sinun asiasi. Matematiikka ei sano, että sinun tulee tykätä omenoista enemmän kuin banaaneista. Sen sijaan nämä argumentit kertovat, *miten preferenssejä tulee käsitellä epävarmuuden tilassa*.
 
-Jos et toimi tavalla, joka vastaa odotusarvon maksimoimista, niin saat vähemmän niitä asioita, joita preferoisit saavasi enemmän. Koherenssiehtojen rikkomisella on *seurauksia*, ja ne ovat *huonoja seurauksia*.
+Jos et toimi tavalla, joka vastaa odotusarvon maksimoimista, niin saat vähemmän niitä asioita, joita haluaisit saada enemmän. Koherenssiehtojen rikkomisella on *seurauksia*, ja ne ovat *huonoja seurauksia*.
 
 **Bella:** Hmm, ajattelinkin kysyä siitä seuraavaksi: miksi oikeastaan välitämme koherenssiehdoista? Mikä siinä menee pieleen, jos niitä rikkoo?
 
-**Camilla:** Riippuu miten niitä rikkoo! Ihmisillä on monia eri taipumuksia, jotka saavat heidät toimimaan inkoherentisti ja minkä seurauksena he saavat vähemmän sitä mitä he haluavat. Tämä taitaa olla helpointa selittää vain antamalla muutama esimerkki, joissa ihmiset toimivat huonosti. Odotas, olen kirjoittanut tekstin aiheesta...
+**Camilla:** Riippuu miten niitä rikkoo! Ihmisillä on monia eri taipumuksia, jotka saavat heidät toimimaan epäjohdonmukaisesti ja joiden seurauksena he saavat vähemmän sitä mitä he haluavat. Tämä taitaa olla helpointa selittää vain antamalla muutama esimerkki, joissa ihmiset toimivat huonosti. Odotas, olen kirjoittanut tekstin aiheesta...
