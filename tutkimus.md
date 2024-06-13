@@ -1,5 +1,11 @@
 # Tutkimus
 
+## Tekoälyturvallisuus
+
+- Uncovering Deceptive Tendencies in Language Models: A Simulated Company AI Assistant, yhdessä Evan Hubingerin kanssa, 2024. [arXiv](https://arxiv.org/abs/2405.01576)
+
+## Matematiikka
+
 - Higher-degree Artin conjecture. _The Quarterly Journal of Mathematics_, 2024. [Julkaisija](https://doi.org/10.1093/qmath/haae012)
 - Composite values of shifted exponentials, yhdessä Joni Teräväisen kanssa. _Adv. Math._, 2023. [arXiv](https://arxiv.org/abs/2010.01789), [julkaisija](https://doi.org/10.1016/j.aim.2023.109187)
 - Positive lower density for prime divisors of generic linear recurrences. _Math. Proc. Cambridge Philos. Soc._, 2023. [arXiv](https://arxiv.org/abs/2102.04042), [julkaisija](https://doi.org/10.1017/S0305004123000257)
