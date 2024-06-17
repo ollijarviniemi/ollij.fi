@@ -6,27 +6,7 @@
 
 ---
 
-Kuvitellaan, että lukion opetussuunnitelmaan tehdään muutosta ja opetuksessa halutaan käsitellä enemmän eettistä ja moraalista toimintaa. Eri vaihtoehtoja puntaroitua kurssisisältö päätetään rakentaa muutaman ihmisen ja heidän näkemystensä pohjalle. Kuvitellaan lisäksi, että nämä henkilöt ovat esittäneet sellaisia näkemyksiä kuin "naiset ovat luonnostaan alempiarvoisia kuin miehet" tai... en oikeastaan menekään pidemmälle. Saat ideasta kiinni.
-
-Rehellinen mielipiteeni olisi, että nämä näkemykset ovat täyttä hölynpölyä ja suhtautuisin *hyvin* epäileväisesti tähän "opetussisältöön". Etsikää parempia näkemyksiä ja parempia näkemyksiä omaavia ihmisiä ja puhukaa niistä!
-
-Tämä on tietysti naurettava, kuviteltu tilanne.
-
-Omilla filosofian tunneillani sen sijaan käytettiin runsaasti aikaa antiikin Kreikan filosofien ajatusten käsittelyyn. Näiden joukosta löytyy esimerkiksi Aristoteles näkemyksensä "[jotkut ihmiset ovat luonnostaan orjia](https://en.wikipedia.org/wiki/Natural_slavery)" kanssa. Jostakin syystä tämä hyväksytään. ([Kykenen toki](/epi/reflektointi) keksimään tälle [perusteluja](/epi/miksi_uskot): Aristoteles on ollut "vaikutusvaltainen ajattelija" tai "historiallisesti merkittävä henkilö" tai "häneltä voi silti oppia jotakin, vaikka jotkut näkemykset ovatkin huonoja ja vanhentuneita" tai "hänestä oppiminen auttaa ymmärtämään filosofian historiaa yleisemmin". En vain pidä näitä *hyvinä* tai [symmetriaa rikkovina](/epi/symmetrian_rikkominen) perusteluina.)
-
-Joskus on ollut aika, jolloin olen ollut yllättynyt kuullessani, kuinka "historian suurimmat ajattelijat" ovat sanoneet ties mitä hölynpölyä. Sittemmin olen ymmärtänyt, että tämä on *juuri miten odottaisikin asian olevan*.
-
-Kysyin kerran tuttaviltani: montako evoluutioteorian kehittämisen jälkeen elänyttä filosofia osaatte nimetä?
-
-Evoluutio on vain *yksi* niistä lukemattoman monista ideoista, joiden valossa näkemykset kuten "jotkut ihmiset ovat luonnostaan orjia" näyttäytyvät vähemmän järkeviltä.
-
-Niin ikään "eläimillä ei ole sielua, koska he eivät osaa puhua" (Descartes) voi kuulostaa validimmalta argumentilta, kun ei tiedä ajattelun tapahtuvan aivoissa ja puheen tuottamisesta äänihuulissa. Ja että eläimet kommunikoivat muuten kuin puhumalla. Ja että jotkut ihmiset ovat puhekyvyttömiä aivoihin liittymättömistä syistä. (Ehkä Descartes ei koskaan tavannut puhekyvyttömiä.)
-
-Kaikki nämä asiat -- ajattelu tapahtuu aivoissa, ääni tuotetaan äänihuulissa, eläimet kommunikoivat keskenään, puhekyvyttömyys ei välttämättä johdu aivojen ongelmista, on olemassa puhekyvyttömiä ihmisiä -- ovat tietenkin itsestäänselvyyksiä, jotka kaikki tietävät.
-
-Aivan kuten evoluutioteoria on itsestäänselvyys.
-
-Aivan kuten valistus ja tieteellinen vallankumous ovat itsestäänselvyyksiä.
+Viimeisten vuosisatojen myötä ymmärryksemme ympäröivästä todellisuudesta on kehittynyt valtavasti. Newtonin sanoin jättiläisten olkapäiltä näkee kauas. Kyse ei ole pelkästään siitä, ettei kauan sitten eläneillä ollut käsitystä DNA-molekyyleistä tai suhteellisuusteoriasta. Kyse on paljon perustavanlaatuisemmista eroista: ihmiset ovat entisaikaan olleet väärässä asioista, joita ei tulisi nykyään edes ajatelleeksi vaikeina kysymyksinä.
 
 Otteita Steven Pinkerin kirjasta Enlightenment Now:
 
@@ -38,6 +18,8 @@ He believes that a murdered body will bleed in the presence of the murderer. He 
 
 A century and a third later, an educated descendant of this Englishman would believe none of these things."
 
-Tavallisesti pitäisin satoja (tai tuhansia) vuosia vanhojen ihmisten näkemysten kritisoimista epäreilun [helppona maalitauluna](/epi/helpot_maalitaulut), mutta ihmiset tuntuvat pitävän filosofeja ja heidän näkemyksiään suuressa arvossa. Minullekin on suositeltu vanhojen suurten ajattelijoiden kirjoitusten lukemista. (Ja tietysti lukion filosofia on mitä on.) Ihmiset eivät käsitä, kuinka syvästi maailmankuvat eroavat nyt ja ennen valistusta, tieteellistä vallankumousta ja näitä seurannutta vuosisatojen kehitystä.
+Historian saatossa ihmiset ovat ajatelleet maailmaa hyvin eri tavalla. Tämä koskee tietysti myös aikojensa suurimpia ajattelijoita. Aristoteles ajatteli, että [jotkut ihmiset ovat luonnostaan orjia](https://en.wikipedia.org/wiki/Natural_slavery). Evoluutio on vain *yksi* niistä lukemattoman monesta Aristoteleen ajan jälkeen kehitetystä ideasta, joiden valossa tämä orjuusnäkemys näyttää vähemmän järkevältä. Myöhemmin 1600-luvulla elänyt Rene Descartes uskoi, ettei eläimillä ole sielua, koska ne eivät osaa puhua. Tämä voi kuulostaa validilta argumentilta, jos ei tiedä ajattelun tapahtuvan aivoissa, puheen tuottamisesta äänihuulissa, eläinten välisestä kommunikoinnista tai siitä, että jotkut ihmiset ovat puhekyvyttömiä. Nykyajan näkökulmasta nämä taas kuulostavat itsestäänselvyyksiltä, aivan kuten valistus ja tieteellinen vallankumous ovat itsestäänselvyyksiä.
 
-Ymmärrettyäni, kuinka korkealla jättiläisten olkapäät ovatkaan, olen suhtautunut epäilevästi heihin, jotka yrittävät työntää minut takaisin maankamaralle.
+Mutta Aristoteles ja Descartes ylsivät saavutuksiinsa *ilman*, että heitä edeltävät olivat kertoneet heille kaikkea nykyistä tietämystämme evoluutiosta, psykologiasta ja ihmisen anatomiasta. He tietysti tekivät paljon virheitä, jotka ovat nykysilmään ilmeisiä -- mikä on juuri sitä, miltä kehityksen *kuuluukin* näyttää. Juuri he ovat niitä jättiläisiä, joiden olkapäillä nyt seisomme. 
+
+Heidän ja kaikkien muiden ihmiskuntaa eteenpäin työntäneen ansiosta *pystymme parempaan*. Me voimme nähdä vielä entistäkin kauemmas.
