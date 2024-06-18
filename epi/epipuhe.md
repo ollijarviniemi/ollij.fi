@@ -58,4 +58,4 @@ Lopussa mainitsen ajatuksiani inspiroineita [muita materiaaleja](/epi/kirjallisu
 
 Tekstejä ei ole pakko lukea järjestyksessä ja erityisesti eri osiot voi lukea haluamassaan järjestyksessä. Tekstit ovat pikemminkin laaja verkosto kuin sivu sivulta rakentuva tarina. Teksteissä on esimerkiksi runsaasti linkkejä toisiinsa, usein myös "aiemmasta" tekstistä "myöhempään". Jos et tiedä, mistä aloittaa, kokeile [Reflektointi](/epi/reflektointi), [Jättiläisten olkapäillä](/epi/jattilaisten_olkapailla) tai [Probabilistinen ajattelu](/epi/probabilistinen_ajattelu).
 
-*Kirjoitettu syksyllä 2023.*
+*Kirjoitettu syksyllä 2023. Erityiskiitokset Akseli Jussinmäelle kattavista korjauksista ja ehdotuksista teksteihin.*
