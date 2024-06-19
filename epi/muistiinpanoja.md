@@ -12,7 +12,7 @@ Inspiraationa toimi Eliezer Yudkowskyn "[The Fallacy of Gray](https://www.readth
 
 ## [Kvantifiointi](/epi/kvantifiointi)
 
-Tämä oli vaikea teksti kirjoittaa. Pointti on sinänsä itsestään selvä: kyllä, asioita voi vertailla ja laittaa järjestykseen ja lukuja voi käyttää suuruuden mittaamiseen. Silti...
+Tämä oli vaikea teksti kirjoittaa. Pointti on sinänsä itsestäänselvyys: kyllä, asioita voi vertailla ja laittaa järjestykseen, ja lukuja voi käyttää suuruuden mittaamiseen. Silti...
 
 Minun oli vaikea keksiä hyviä esimerkkejäkään (pysyessäni kaukana [keskustelunimaisijoista](/epi/keskustelunimaisijat)). Tämä on asia, mitä tapahtuu sinänsä kaikkialla, mutta tuntuu epäreilulta valita jokin tietty silmätikuksi. "Eihän tuo nyt ole mitenkään ihmeellinen esimerkki, asiat vain ovat noin" ja "miten tuota nyt sitten kvantifioisi järkevästi" olisivat molemmat ihan järkeviä reaktioita. Toisaalta... tämä on vähän minun pointtini. Kvantifiointi ei ole helppoa, sitten sitä ei tehdä, tätä tapahtuu koko ajan ja välillä tästä on haittaa.
 
@@ -24,7 +24,7 @@ Samasta teemasta lisää (kuvien kanssa): Max Goodbirdin "[Causal Explanations C
 
 ## [Symmetrian rikkominen, yleispätevät vasta-argumentit ja niin edelleen](/epi/symmetrian_rikkominen)
 
-Inspiraationa toimi Yudkowskyn teksti [Local Validity as a Key to Sanity and Civilization](https://www.lesswrong.com/posts/WQFioaudEH8R7fyhm/local-validity-as-a-key-to-sanity-and-civilization). Yudkowsky käsittelee isompaa pointtia, minä tyydyin puhumaan vain peruspointista "tosillekin väitteille on huonoja argumentteja; huonoja argumentteja ei tule hyväksyä, vaikka ne tukevat omaa joukkuetta; argumentin hyvyyttä voi tutkia erikseen väitteen totuudenmukaisesta".
+Lisää itse pääteemasta: [Local Validity as a Key to Sanity and Civilization](https://www.lesswrong.com/posts/WQFioaudEH8R7fyhm/local-validity-as-a-key-to-sanity-and-civilization).
 
 Lisää ennustusmarkkinoista: [Prediction Market FAQ](https://www.astralcodexten.com/p/prediction-market-faq).
 
@@ -52,7 +52,7 @@ Lisäisin vielä ensimmäiseen pointtiin liittyen "älä sano asioita, joihin et
 
 ## [Liian kohteliaat tulkinnat](/epi/kohteliaat_tulkinnat)
 
-Vasta jonkin verran konseptia kehiteltyäni ja tekstiä kirjoitettuani tajusin, että Yudkowskyn "[Conjunction Controversy (Or, How They Nail It Down)](https://www.lesswrong.com/posts/cXzTpSiCrNGzeoRAz/conjunction-controversy-or-how-they-nail-it-down)" käsittelee juuri konjunktioharhaa ja varoittaa näistä liian kohteliaista tulkinnoista (vieläpä käyttäen sanaa "charitable"). Noh. Täältä ajatus varmaan pitkälti oli lähtöisin. Suosittelen tekstiä.
+Vasta jonkin verran konseptia kehiteltyäni ja tekstiä kirjoitettuani tajusin, että Yudkowskyn "[Conjunction Controversy (Or, How They Nail It Down)](https://www.lesswrong.com/posts/cXzTpSiCrNGzeoRAz/conjunction-controversy-or-how-they-nail-it-down)" käsittelee juuri konjunktioharhaa ja varoittaa näistä liian kohteliaista tulkinnoista (vieläpä käyttäen sanaa "charitable"). Noh. Ajatukseni ovat varmaankin pitkälti Yudkowskyn tekstistä lähtöisin, ja voin suositella sitä.
 
 ## [Sumuiset ajatukset](/epi/sumuiset_ajatukset)
 
@@ -64,11 +64,11 @@ Olen myös tykästynyt termiin [substituutio](https://en.wikipedia.org/wiki/Attr
 
 Scott Alexanderin teksti [On first looking into Chapman’s “Pop Bayesianism”](https://slatestarcodex.com/2013/08/06/on-first-looking-into-chapmans-pop-bayesianism/) on hyvä toinen selitys probabilistisen ajattelun hyödyllisyydestä.
 
-Saatat tunnistaa siitä jotakin omista teksteistäni tuttuja aiheita, kuten itsestäänselvyyksien epäitsestäänselvyys, kuinka ihmiset eksplisiittisesti kysyttäessä pitävät jotakin [ilmeisenä](/epi/ilmeiset_ohjeet) ja muussa kontekstissa toimivat sen vastaisesti, [jättiläisten olkapäät](/epi/jattilaisten_olkapailla) ovat korkealla, [kohteliaita tulkintoja](/epi/kohteliaat_tulkinnat) kuinka kaikki tietysti tietävät perusasiat ja [perusteettomia syytöksiä](/epi/helpot_maalitaulut) olkiukkojen kimppuun käymisestä, parempi epi on tärkeää nimenomaan mukavuusalueen ulkopuolella vaikeissa aiheissa, ja tietysti ihmisten epäonnistuminen probabilistisessa ajattelussa.
+Saatat tunnistaa siitä jotakin omista teksteistäni tuttuja aiheita: itsestäänselvyyksien epäitsestäänselvyys, kuinka ihmiset eksplisiittisesti kysyttäessä pitävät jotakin [ilmeisenä](/epi/ilmeiset_ohjeet) ja muussa kontekstissa toimivat sen vastaisesti, [jättiläisten olkapäät](/epi/jattilaisten_olkapailla) ovat korkealla, [kohteliaita tulkintoja](/epi/kohteliaat_tulkinnat) kuinka kaikki tietysti tietävät perusasiat, [perusteettomia syytöksiä olkiukkojen pieksemisestä](/epi/helpot_maalitaulut), parempi epi on tärkeää nimenomaan mukavuusalueen ulkopuolella vaikeissa aiheissa, ja tietysti ihmisten epäonnistuminen probabilistisessa ajattelussa.
 
-Painottaisin vielä, että numeeristen arvojen pyöritteleminen ei ole oleellisin pointti. Tästä lisää myös [toisaalla](/epi/miksi_todennakoisyydet).
+Painottaisin vielä, että numeeristen arvojen pyöritteleminen ei ole tärkein juttu, mitä todennäköisyyksistä saa irti. Tästä lisää myös [toisaalla](/epi/miksi_todennakoisyydet).
 
-...mutta ymmärrän, miksi ihmiset haluavat vastauksen kysymykseen "miten näitä uskomuksia oikeasti muutetaan todennäköisyyksiksi?", joten alla on lyhyt vastaukseni. Muistutan vielä, että tämä on analoginen kysymyksen "miten kylmän ja kuumuuden tuntemuksia oikeasti muutetaan Celsius-asteiksi?" kanssa. Sitä on aika vaikea selittää lapselle, jolla ei ole tuntumaa Celsius-asteikosta. Selitykset ovat tosin samanlaisia.
+...mutta ymmärrän, miksi ihmiset haluavat vastauksen kysymykseen "miten näitä uskomuksia oikeasti muutetaan todennäköisyyksiksi?", joten alla on lyhyt vastaukseni. Muistutan vielä, että tämä on analoginen kysymyksen "miten kylmän ja kuumuuden tuntemuksia oikeasti muutetaan Celsius-asteiksi?" kanssa. Sitä on aika vaikea selittää lapselle, jolla ei ole tuntumaa Celsius-asteikosta.
 
 **Ensimmäinen näkökulma** on asettaa vertailukohtia. Lämpötila on 20 astetta silloin, kun kesällä on lämmintä. 0 astetta vastaa lämpötilaa syksyn lopulla. Saunassa on 80 astetta.
 
@@ -76,31 +76,31 @@ Painottaisin vielä, että numeeristen arvojen pyöritteleminen ei ole oleellisi
 
 **Toinen näkökulma** on verrata omia tuntemuksia oikeisiin arvoihin. "Nyt minulla on hieman viileä. Sanoisin lämpötilan olevan 10 astetta". Mittari sanoo 14 astetta. Ihan kohtalainen arvio.
 
-Uskomusten tapauksessa prosessi on: Valitse jokin väite, josta olet nyt epävarma, mutta jonka totuusarvon voit saada selville (hieman myöhemmin, etsimällä vastauksen netistä tai jotakin muuta kautta). Mieti, kuinka epävarma olet, ja mittaa sitä numeerisella todennäköisyydellä.
+Uskomusten tapauksessa prosessi on: Valitse jokin väite, josta olet nyt epävarma, mutta jonka totuusarvon tulet myöhemmin saamaan selville. Mieti, kuinka epävarma olet, ja mittaa sitä numeerisella todennäköisyydellä.
 
-Tämä on hieman vaativampaa kuin lämpötilojen tapauksessa ja tämän hyvin tekemiseen on erilaisia temppuja (esimerkiksi: mieti, kuinka *yllättynyt* olisit eri tuloksia havaitessasi). Lisäksi ensimmäisellä tai toisella kertaa ei vielä välttämättä saa kuvaa siitä, kuinka hyvin onnistuu. Toisaalta jos ensimmäinen arviosi on "90%, että näin on", näin ei olekaan ja et oikeastaan yllättynyt tästä, niin muunnos on varmaankin mennyt pieleen.
+Tämä on hieman vaativampaa kuin lämpötilojen tapauksessa. Numeeristen arvioiden tekemiseen on erilaisia temppuja: voi esimerkiksi miettiä, kuinka *yllättynyt* olisi eri asioita havaitessaan. Lisäksi toisin kuin lämpötilojen tapauksessa, uskomuksilla on vaikeampaa sanoa, mikä on "oikea arvo".
 
-(Ja kyllä, [olen tietoinen](/epi/reflektointi) vastalauseesta "mutta ehkä sinulla kävi vain huono tuuri!". Ehkä tämä on taas näitä [huumorihakuisia väitteitä, joilla sivuutetaan ongelmia](/epi/ongelmien_sivuuttamisesta). Kyllä, välillä käy "huono tuuri", siis että epätodennäköisenä pitämäsi asia tapahtuu. Eikä tämä aina tarkoita, että alkuperäinen uskomuksesi tai sen muunnos todennäköisyydeksi oli huono. Muista silti, että huonon tuurin syyttäminen on [yleispätevä puolustus](/epi/symmetrian_rikkominen).)
+Toisaalta jos ensimmäinen arviosi on 90%, mutta todellisuudessa väite ei päde ja et olekaan tästä kovin yllättynyt, niin muunnos on varmaankin mennyt pieleen.
 
-Avuksi voi olla todennäköisyyksien miettiminen *frekvenssien* ja osuuksien näkökulmasta. 90 prosenttia vastaa sitä, että voisit tehdä kymmenen tällaista ennustusta ja olla keskimäärin väärässä kerran.
+Avuksi voi olla todennäköisyyksien miettiminen *frekvenssien* ja osuuksien näkökulmasta. 90 prosenttia vastaa sitä, että voisit tehdä kymmenen tällaista ennustusta ja olla keskimäärin väärässä vain kerran.
 
 **Kolmas näkökulma** on... okei, en keksi tälle lämpötila-analogiaa.
 
 Idea on miettiä, millä kertoimilla olisi valmis lyödä vetoa asiasta. (Kyllä, minunkin äitini varoitti osallistumasta vedonlyönteihin. Jatketaan.) Yleisesti "miten löisin vetoa asiasta" saa miettimään "mitä minä [oikeasti](/epi/kaukotila) uskon aiheesta?" ja kertoimien miettiminen auttaa [kvantifioimaan](/epi/kvantifiointi) uskomusten vahvuutta.
 
-Miten reagoit ehdotukseen "saat euron, jos tämä asia tapahtuu ja menetät euron, jos se ei tapahdu"?
+Miten reagoit ehdotukseen "saat euron, jos asia X tapahtuu ja menetät euron, jos X ei tapahdu"?
 
-Jos reaktiosi on "oletko tyhmä, totta kai otan tämä vastaan -- ilmaista rahaa!", niin varmaankin uskomuksesi väitteelle on selvästi yli 50 prosenttia.
+Jos reaktiosi on "oletko tyhmä, totta kai otan tämä vastaan -- ilmaista rahaa!", niin varmaankin uskomuksesi on selvästi yli 50 prosenttia.
 
 Jos reaktiosi on "en, mutta toiseen suuntaan olen valmis ottamaan vedon vastaan", niin uskomuksesi on alle 50 prosenttia.
 
 Jos reaktiosi on "hmm, enpä tiedä", niin uskomuksesi lienee 50 prosentin tienoilla.
 
-Entä ehdotukseen "saat euron, jos tämä asia tapahtuu ja menetät *kaksi* euroa, jos se ei tapahdu"? Tätä kautta saa heijasteltua, ovatko omat todennäköisyydet yli, alle vai suunnilleen 67 prosenttia.
+Entä ehdotukseen "saat euron, jos X tapahtuu ja menetät *kaksi* euroa, jos X ei tapahdu"? Tätä kautta saa heijasteltua, ovatko omat todennäköisyydet yli, alle vai suunnilleen 67 prosenttia.
 
-Käytännössä ihmiset suhtautuvat usein epäilevästi vedonlyöntiin: se ei ole sivistynyttä, vaan johtaa uhkapeliriippuvuuteen. Tämä on hyvin harmillinen assosiaatio. Sivistynyttä nimenomaan on se, että ollaan valmiita seisomaan omien sanojen ja uskomusten takana -- eikä niin, että suullisesti otetaan kantaa asioihin, mutta peräännytään ottamasta vastuuta sanomisistaan ja testaamasta uskomuksien hyvyyttä.
+Käytännössä ihmiset suhtautuvat usein epäilevästi vedonlyöntiin: se ei ole sivistynyttä, vaan johtaa uhkapeliriippuvuuteen. Tämä on hyvin harmillinen assosiaatio. Sivistynyttä nimenomaan on se, että ollaan valmiita seisomaan omien sanojen ja uskomusten takana -- eikä niin, että suullisesti otetaan kantaa asioihin, mutta ei olla valmiita ottamaan vastuuta sanomisistaan ja peräännytään uskomusten testaamisesta.
 
-Joka tapauksessa tätä voi harrastaa rahan sijasta myös kuvainnollisilla ennustuspisteillä (tai [leikkirahalla](https://manifold.markets/)) -- tai ihan vain ajatuksen tasolla reflektoidakseen, kuinka vahvasti oikeasti uskoo mitä uskoo.
+Joka tapauksessa tätä voi harrastaa rahan sijasta myös kuvainnollisilla ennustuspisteillä -- tai ihan vain ajatuksen tasolla reflektoidakseen, kuinka vahvasti oikeasti uskoo mitä uskoo.
 
 ## [Uskomusten muutos](/epi/uskomusten_muutos)
 
@@ -115,26 +115,24 @@ Kuten usein, 3Blue1Brown-kanavan selitykset ovat hyviä: [Bayes theorem, the geo
 Tässä tekstissä käsitellään hieman useampia aiheita. Lista ei tosiaankaan ole kaikenkattava ja asioita voi selittää eri tavoilla. Tässä joitakin tekstejä, joista olen itse hyötynyt:
 
 - Arbital-sivustolla on muutama hyvä teksti näihin liittyen: yllä linkattu [Bayesin kaavan selitys](https://arbital.com/p/bayes_rule/?l=1zq), [Bayesian view of scientific virtues](https://arbital.com/p/bayes_science_virtues/), [Shift towards the hypothesis of least surprise](https://arbital.com/p/flee_from_surprise/), [Extraordinary claims require extraordinary evidence](https://arbital.com/p/bayes_extraordinary_claims/)
-- Yudkowsky: [What is Evidence?](https://www.readthesequences.com/What-Is-Evidence), [Absence of Evidence is Evidence of Absence](https://www.readthesequences.com/Absence-Of-Evidence-Is-Evidence-Of-Absence), ja oikeastaan yleisemmin [Noticing Confusion](https://www.readthesequences.com/Noticing-Confusion-Sequence) -tekstit.
-- Päivityksen ja vastapäivityksen laki on hieman tekninen ja hankala. Lisää aiheesta: Yudkowskyn [Conservation of Expected Evidence](https://www.readthesequences.com/Conservation-Of-Expected-Evidence), Scott Garrabrantin [Yes requires the possibility of No](https://www.lesswrong.com/posts/G5TwJ9BGxcgh5DsmQ/yes-requires-the-possibility-of-no), Abram Demskin [Mistakes with Conservation of Expected Evidence](https://www.lesswrong.com/posts/zTfSXQracE7TW8x4w/mistakes-with-conservation-of-expected-evidence)
+- Yudkowsky: [What is Evidence?](https://www.readthesequences.com/What-Is-Evidence), [Absence of Evidence is Evidence of Absence](https://www.readthesequences.com/Absence-Of-Evidence-Is-Evidence-Of-Absence) ja yleisemmin [Noticing Confusion](https://www.readthesequences.com/Noticing-Confusion-Sequence) -tekstikokoelma.
+- Päivityksen ja vastapäivityksen laki on hieman tekninen ja hankala. Lisää aiheesta: Yudkowskyn [Conservation of Expected Evidence](https://www.readthesequences.com/Conservation-Of-Expected-Evidence), Scott Garrabrantin [Yes requires the possibility of No](https://www.lesswrong.com/posts/G5TwJ9BGxcgh5DsmQ/yes-requires-the-possibility-of-no) ja Abram Demskin [Mistakes with Conservation of Expected Evidence](https://www.lesswrong.com/posts/zTfSXQracE7TW8x4w/mistakes-with-conservation-of-expected-evidence)
 
 ## [Odotusarvo ja epävarmuus](/epi/odotusarvo)
 
-Camilla esitti kaksi väitettä: ensinnäkin sen, että uskomusten epävarmuutta tulee mitata todennäköisyyksillä ja toisekseen sen, että preferenssejä ja epävarmuutta tulee käsitellä odotusarvojen kautta. Ensimmäinen näistä tuloksista kulkee nimellä [Cox's theorem](https://en.wikipedia.org/wiki/Cox%27s_theorem) ja toinen nimellä [von Neumann–Morgenstern utility theorem](https://en.wikipedia.org/wiki/Von_Neumann%E2%80%93Morgenstern_utility_theorem).
-
-On tosin muitakin tällaisia *koherenssiteoreemoja*, kuten [Dutch book](https://en.wikipedia.org/wiki/Dutch_book) ja Abraham Waldin [Complete class theorem](https://doi.org/10.1214/aoms/1177730345). Johtopäätös on samanhenkinen: uskomuksia tulee mitata todennäköisyyksillä ja preferenssejä käsitellä odotusarvojen kautta, tai muuten käy huonosti.
+Camilla esitti kaksi väitettä: ensinnäkin sen, että uskomusten epävarmuutta tulee mitata todennäköisyyksillä ja toisekseen sen, että preferenssejä ja epävarmuutta tulee käsitellä odotusarvojen kautta. Ensimmäinen näistä tuloksista kulkee nimellä [Cox's theorem](https://en.wikipedia.org/wiki/Cox%27s_theorem) ja toinen nimellä [von Neumann–Morgenstern utility theorem](https://en.wikipedia.org/wiki/Von_Neumann%E2%80%93Morgenstern_utility_theorem). On tosin muitakin tällaisia *koherenssiteoreemoja*, kuten [Dutch book](https://en.wikipedia.org/wiki/Dutch_book) -argumentit ja Abraham Waldin [Complete class theorem](https://doi.org/10.1214/aoms/1177730345).
 
 (Jos haluaa lukea tekstin, jossa koherenssia käsitellään tarkasti yksityiskohtia myöten, suosittelen Yudkowskyn tekstiä [Coherent decisions imply consistent utilities](https://www.lesswrong.com/posts/RQpNHSiWaXTvDxt6R/coherent-decisions-imply-consistent-utilities).)
 
-Nämä asiat ovat tosin hieman monimutkaisempia kuin mitä Camilla antaa ymmärtää. Odotusarvon maksimoiminen tuntuu johtavan reunatapauksissa epäintuitiivisiin tuloksiin -- enkä tarkoita tällä tilanteita, joissa pelataan absurdin suurista rahasummista (raha tai edes onnellisuus kun eivät vastaa ihmisen [arvoja](/epi/filosofiatila), toisin kuin Anna vihjasi). Nämä reunatapaukset ovat kuitenkin enemmän tai vähemmän [filosofisia ajatusleikkejä](/epi/filosofiatila), joten en juutu niihin tässä (mutta jos välttämättä haluat, niin löydät yhden [täältä](https://www.lesswrong.com/posts/9RCoE7jmmvGd5Zsh2/the-lifespan-dilemma)).
+Nämä asiat ovat tosin hieman monimutkaisempia kuin mitä Camilla antaa ymmärtää. Koherenssiteoreemojen tulkitsemisen kanssa tulee olla tarkkana: "jos uskomuksesi ja preferenssisi toteuttavat nämä luontevat ehdot, niin silloin maksimoit odotusarvoa" on hieman eri väite kuin "jos et maksimoi odotusarvoa, niin menetät arvoa". Tarkempaa kritiikkiä löytää tekstistä [There are no coherence theorems](https://www.lesswrong.com/posts/yCuzmCsE86BTu9PfA/there-are-no-coherence-theorems).
 
 Sain lukijalta palautetta siitä, kuinka dialogissa sivuutettiin preferenssien reflektoinnin haaste: pelkästään "sinun tulee maksimoida odotusarvoa" ei kerro, mitä tehdä ristiriitaisten intuitioiden ja mieltymysten esiintyessä.
 
-Olen samaa mieltä, että tämä on haastavaa. En todellakaan väitä antaneeni tähän ratkaisua.
+Olen samaa mieltä, että tämä on haastavaa. Selvästikään raha tai edes onnellisuus ei ole kaikki, mistä ihmiset välittävät (toisin kuin Anna vihjasi).
 
-Pointtiani selkeyttää konsepti *deskriptiivinen-preskriptiivinen-normatiivinen* -jaottelusta.
+Tarkennan sitä, mitä tekstilläni haluan välittää, esittelemällä konseptin *deskriptiivinen-preskriptiivinen-normatiivinen* -jaottelusta.
 
-*Deskriptiivinen* näkökulma epävarmuuteen käsittelee sitä, miten *ihmiset käytännössä* käsittelevät epävarmuutta ja tekevät päätöksiä. Esimerkiksi kognitiivisesta psykologiasta löytyy tällaista lähestymistapaa.
+*Deskriptiivinen* näkökulma epävarmuuteen käsittelee sitä, miten *ihmiset käytännössä* käsittelevät epävarmuutta ja tekevät päätöksiä. Esimerkiksi kognitiivisesta psykologiasta löytyy pitkä lista tutkimuksia ihmisten toiminnasta.
 
 *Normatiivinen* näkökulma käsittelee, miten epävarmuutta ja päätöksiä *ideaalisti* käsitellään. Todennäköisyyslaskenta on keskeinen esimerkki.
 
@@ -142,9 +140,9 @@ Pointtiani selkeyttää konsepti *deskriptiivinen-preskriptiivinen-normatiivinen
 
 Tämän tekstin teema on normatiivinen näkökulma epävarmuuteen ja preferensseihin. Odotusarvot ovat oikea (tai ainakin melko oikea) lähestymistapa. En ottanut kantaa siihen, miten tähän päästään. Se ei ole tekstin aihe.
 
-Käytän tilaisuuden hyväkseni ja huomautan, ettei luonnollisessa kielessä ole itsessään deskriptiivinen-preskriptiivinen -erottelua. "Ihmiset eivät käytännössä tee päätöksiään odotusarvolaskelmien kautta!" voi kuulostaa nasevalta vasta-argumentilta: Tietenkään ihmiset eivät mieti asioita numeeristen todennäköisyyksien kautta! (Deskriptiivinen väite.) Sopivalla äänenpainolla saa kuitenkin samalla välitettyä *presekriptiivistä* väitettä: että näin ei kannatakaan tehdä, että todennäköisyyksiä ei kannata käyttää, että se miten asiat ovat nyt on oikeastaan hyvä. (Taas yksi voitto [status quon puolustajille](/epi/negatiivisuus).)
+Otettuani konspetin esiin käytän vielä tilaisuuden hyväkseni ja huomautan, ettei luonnollisessa kielessä ole itsessään deskriptiivinen-preskriptiivinen -erottelua. "Ihmiset eivät käytännössä tee päätöksiään odotusarvolaskelmien kautta!" voi kuulostaa nasevalta vasta-argumentilta: Tietenkään ihmiset eivät mieti asioita numeeristen todennäköisyyksien kautta! (Deskriptiivinen väite.) Sopivalla äänenpainolla saa kuitenkin samalla välitettyä *presekriptiivistä* väitettä: että näin ei kannatakaan tehdä, että todennäköisyyksiä ei kannata käyttää, että se miten asiat ovat nyt on oikeastaan hyvä. (Taas yksi voitto [status quon puolustajille](/epi/negatiivisuus).)
 
-Ja yritäpä oikeassa keskustelutilanteessa vastata tällaiseen kommenttiin "deskriptiivisesti tulkittuna väitteesi on selvästi tosi, mutta luonnollisessa kielessä ei ole selvää erottelua deskriptiivisten ja preskriptiivisten väitteiden välillä, ja tunnuit äänensävylläsi samalla esittävän väitteen preskriptiivisessä muodossa ja yrittävän saada tämän muodon kuulostamaan ilmeiseltä, mitä pidän hieman epärehellisenä retorisena keinona".
+Ja yritäpä oikeassa keskustelutilanteessa vastata tällaiseen kommenttiin "deskriptiivisesti tulkittuna väitteesi on selvästi tosi, mutta luonnollisessa kielessä ei ole selvää erottelua deskriptiivisten ja preskriptiivisten väitteiden välillä, ja tunnuit äänensävylläsi samalla esittävän väitteen preskriptiivisessä muodossa, yrittäen saada myös tämän muodon kuulostamaan selvältä, ja pidän tätä hieman epärehellisenä retorisena keinona".
 
 ## [Kunnolla tehty todennäköisyyslaskenta](/epi/kunnolla)
 
@@ -160,11 +158,11 @@ Olen miettinyt ja lukenut "filosofiaa" koskevia aiheita, ja näihin on sisältyn
 
 Yudkowskyn "[Politics is the Mind-Killer](https://www.readthesequences.com/Politics-Is-The-Mind-Killer)" käsittelee samankaltaisia ideaa. Kyse ei kuitenkaan ole vain politiikasta (edes laajasti miellettynä).
 
-Joku voisi käyttää samalle konseptille nimitystä "meemi", mutta ihmisille tulee tästä sanasta mieleen hyvin eri asioita (jotka eivät välttämättä vastaa sanan alkuperäistä tarkoitusta), enkä tarkoita tätä hyvällä tavalla. "Keskustelunimaisija" on kuvaavampi.
+Joku voisi käyttää samalle konseptille nimitystä "meemi", mutta ihmisille tulee tästä sanasta mieleen hyvin eri asioita (jotka eivät välttämättä vastaa sanan alkuperäistä tarkoitusta). "Keskustelunimaisija" on kuvaavampi.
 
 ## [Helpot maalitaulut](/epi/helpot_maalitaulut)
 
-Tämä on hyvä tilaisuus esittää pahoitteluni kaikille heille, joiden puheita olen teksteissäni käyttänyt esimerkkeinä huonosta epistä. Toivottavasti tekstin luettuanne ymmärrätte, miksi todella halusin puhua oikeista tilanteista enkä vain hypoteettisia "joku voisi ajatella näin" -esimerkkejä. Eikä siinä ole mitään henkilökohtaista -- päinvastoin, pointti on nimenomaan se, että nämä ovat yleisiä ilmiöitä (eikä vain tuttavapiirini ominaisuuksia).
+Tämä on hyvä tilaisuus esittää pahoitteluni kaikille heille, joiden puheita olen teksteissäni käyttänyt esimerkkeinä huonosta epistä. Toivottavasti tekstin luettuanne ymmärrätte, miksi todella halusin puhua oikeista tilanteista enkä vain hypoteettista "joku voisi ajatella näin" -esimerkeistä. Eikä siinä ole mitään henkilökohtaista -- päinvastoin, pointti on nimenomaan se, että nämä ovat yleisiä ilmiöitä (eikä vain tuttavapiirini ominaisuuksia).
 
 Pidän sitä oikeastaan meriittinä, jos ajatukset ja puheet ovat niin selkeitä, että niitä voi käyttää esimerkkeinä. Paljon yleisempää tuntuu olevan sellainen [sumuinen ajattelu](/epi/sumuiset_ajatukset) ja [epämääräinen puhe](/epi/matala_informaatio), josta on vaikea tulkita mitä tarkalleen halutaan sanoa ja mitä oikeastaan uskotaan -- että varmaankin tässä on huono epi, mutta toisaalta tilanteeseen löytyy jokin uskottava [kohtelias tulkinta](/epi/kohteliaat_tulkinnat), jonka valossa kaikki on kunnossa. Tällaisten esimerkkien ympärille on vaikea rakentaa tekstejä.
 
@@ -174,7 +172,7 @@ Itse tekstin aiheeseen liittyen nostan esiin Scott Alexanderin tekstin "[The Cow
 
 ## [Status](/epi/status)
 
-Simlerin ja Hansonin "The Elephant in the Brain" käsittelee statusta ja vastaavia aiheita kirjan edestä.
+Simlerin ja Hansonin "The Elephant in the Brain" käsittelee statusta ja vastaavia aiheita kokonaisen kirjan edestä.
 
 ## [Reflektointi](/epi/reflektointi)
 
@@ -206,7 +204,7 @@ ja
 
 Nämä ohjeet vaikuttavat hyviltä joidenkin epäonnistumisten välttämiseen. Tavoite ei ole voittaa väittelyitä, vaan yritetään luoda hyvää epiä tukeva sosiaalinen ympäristö ja palkita toisia esimerkiksi omien virheidensä myöntämisestä. Väitteitä koskien toisten ajatusprosesseja tehdään hyvin harkitusti -- "hold yourself to the absolute highest standard" -- totuudenmukaisia uskomuksia tavoitellen (eikä väittelyn voittoa tavoitellen).
 
-Ja kyllä, joskus ihmiset todella ovat väärässä jostakin. [Sinulla on oikeus ajatella](https://thezvi.wordpress.com/2017/11/27/you-have-the-right-to-think/) ja ajatella "olen eri mieltä tuosta uskomuksesta, nähdäkseni...". Hyvät keskustelunormit eivät tietenkään käske ajattelemaan "mutta enhän minä tiedä mistään mitään". Niiden tavoite on ohjeistaa, *miten* vaikkapa eriäviä näkemyksiä saa käsiteltyä produktiivisesti.
+Ja kyllä, joskus ihmiset todella ovat väärässä jostakin. [Sinulla on oikeus ajatella](https://thezvi.wordpress.com/2017/11/27/you-have-the-right-to-think/) "olen eri mieltä tuosta uskomuksesta, nähdäkseni..." Hyvät keskustelunormit eivät tietenkään käske ajattelemaan "mutta enhän minä tiedä mistään mitään". 
 
 ## [Tehokkaan maailman hypoteesi](/epi/tehokas_maailma)
 
@@ -224,15 +222,13 @@ Scott Alexanderin "[Meditations on Moloch](https://slatestarcodex.com/2014/07/30
 
 ## [Kerran luotin](/epi/kerran_luotin)
 
-Omiin ajatuksiini (meta)tieteestä on vaikuttanut [Scott Alexanderin](https://www.lesswrong.com/codex#YhQ39PPHNrRCgYXcs), [Yudkowskyn](https://www.readthesequences.com/Science-And-Rationality-Sequence) ja [Gwern Branwenin](https://gwern.net/#meta-science) tekstit. Ja mitä tulee ihmiskuntaan ja sen selviytymiseen: [ei ole mitään sääntöä, joka sanoo, että selviämme kyllä](https://www.youtube.com/watch?v=JD_iA7imAPs).
+Omiin ajatuksiini (meta)tieteestä on vaikuttanut [Scott Alexanderin](https://www.lesswrong.com/codex#YhQ39PPHNrRCgYXcs), [Yudkowskyn](https://www.readthesequences.com/Science-And-Rationality-Sequence) ja [Gwernin](https://gwern.net/#meta-science) tekstit.
 
 ## [Epi on tärkeää](/epi/epi_on_tarkeaa)
 
 Olen käyttänyt paljon tilaa kirjoittaakseni itse epistä ja sen parantamisesta. Epin tärkeyttä, sitä miksi välittää tästä kaikesta, käsittelen vasta lopuksi.
 
 Syy on se, että sitä on oikeasti aika vaikea selittää. Ihmisten ensireaktiot liittyvät varsin usein [helppoihin maalitauluihin](/epi/helpot_maalitaulut). On [monia tapoja sivuuttaa](/epi/ongelmien_sivuuttamisesta) konkreettisten ongelmien käsittely. Jotkut ajattelevat, että ongelmien syynä on oikeastaan vain nuo [pahat ihmiset](/epi/insentiivit). Jotkut esittävät ongelmaan ratkaisun [puolen sekunnin mietinnän](/epi/reflektointi) jälkeen. Liian selkeät esimerkit sivuutetaan itsestäänselvyytenä. Erikoisemmat esimerkit saavat kohteekseen [epävalideja argumentteja](/epi/symmetrian_rikkominen) ja selityksiä, kuinka on [naiivia](/epi/negatiivisuus) uskoa tuollaisen muutoksen olevan mahdollista. Kaiken tämän käsittelyä hankaloittaa [tausta-ajatus](/epi/tehokas_maailma), jonka mukaan maailmassa ei oikeasti voi olla mitään pahasti vialla ja että [luotettavat aikuiset](/epi/kerran_luotin) pitävät kyllä huolta. Tai [asenne](/epi/vakuuttamisesta), että on minun tehtäväni vakuuttaa toinen. Ja jos käsittelen ihmisten epin heikkoutta abstraktilla tasolla, ajattelu ajautuu [hassuihin](/epi/kaukotila) [tiloihin](/epi/filosofiatila), ajatellaan vinoumien olevan vain [hassuja kokeita](/epi/mihin_matematiikkaa) ja selitetään kuinka omituisuuksille on varmastikin jokin [hyvä syy](/epi/kohteliaat_tulkinnat).
-
-(Tai sitten jotakin muuta. Tekstissä antamani esimerkit voi sivuuttaa silläkin, että ne ovat abstrakteja, isoja ongelmia. Niihin ei tietenkään yksi ihminen voi vaikuttaa, ja oikeastaan on [rationaalista](/epi/insentiivit) olla tekemättä niille mitään, ja [siten ongelmaa ei ole](/epi/ongelmien_sivuuttamisesta). Voisin vastata tähän antamalla esimerkkejä tilanteista, joissa "tavallisesta maalaisjärjestä" ja Standardinarratiivista poikkeaminen on antanut henkilökohtaisia hyötyjä, mutta ne voisi sitten sivuuttaa jollakin muulla. Annan siten asian olla.)
 
 Ehkä en myöskään osaa pukea ajatuksiani sanoiksi riittävän hyvin. Tässä on oikeasti [aika paljon selitettävää](/epi/lokaali_kommunikaatio).
 
