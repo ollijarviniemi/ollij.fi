@@ -50,6 +50,10 @@ Stefan Schubertin "[The most basic rationality techniques are often neglected](h
 
 Lisäisin vielä ensimmäiseen pointtiin liittyen "älä sano asioita, joihin et usko".
 
+## [Jättiläisten olkapäillä](/epi/jattilaisten_olkapailla)
+
+Katso myös: [Read History of Philosophy Backwards](https://slatestarcodex.com/2013/04/11/read-history-of-philosophy-backwards/) (Scott Alexander).
+
 ## [Liian kohteliaat tulkinnat](/epi/kohteliaat_tulkinnat)
 
 Vasta jonkin verran konseptia kehiteltyäni ja tekstiä kirjoitettuani tajusin, että Yudkowskyn "[Conjunction Controversy (Or, How They Nail It Down)](https://www.lesswrong.com/posts/cXzTpSiCrNGzeoRAz/conjunction-controversy-or-how-they-nail-it-down)" käsittelee juuri konjunktioharhaa ja varoittaa näistä liian kohteliaista tulkinnoista (vieläpä käyttäen sanaa "charitable"). Noh. Ajatukseni ovat varmaankin pitkälti Yudkowskyn tekstistä lähtöisin, ja voin suositella sitä.
