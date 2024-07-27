@@ -117,7 +117,7 @@ To be clear, it is not obvious that things would go wrong here: there are many f
 
 Another story: Imagine that a highly capable artificial intelligence appears on someone's computer out of nowhere, pursuing its own goals. Naturally, to achieve these goals, it is good to acquire a bit more resources and control over its own environment, and perhaps stay hidden for the time being.
 
-What happens next? Hard to say: If the AI indeed is extremely capable, it will devise better strategies than I could. The right mental image of the limits of AIs’ capabilities is not “what a single person would think of after a moment’s though”, but more like "what the best people would come up with after working on it for years". (I'll discuss this in more detail in the next section.) But here's one approach I could imagine such an AI using.
+What happens next? Hard to say: If the AI indeed is extremely capable, it will devise better strategies than I could. The right mental image of the limits of AIs’ capabilities is not “what a single person would think of after a moment’s thought”, but more like "what the best people would come up with after working on it for years". (I'll discuss this in more detail in the next section.) But here's one approach I could imagine such an AI using.
 
 First, the AI uses a computer to connect to the internet and exploits security vulnerabilities to take control of other devices, money, computing power, information and to spread around. If this sounds unrealistic, perhaps [sending a single text message to retrieve the data on a phone](https://googleprojectzero.blogspot.com/2021/12/a-deep-dive-into-nso-zero-click.html) sounds unrealistic too -- and yet human-level intelligences have succeeded in such a magic trick. It is generally known that *computer systems are not secure*[^4].
 
@@ -372,14 +372,14 @@ Another example: vastly superhuman go AIs are vulnerable to targeted attacks (Wa
 [Adversarial Policies Beat Superhuman Go AIs](https://arxiv.org/abs/2211.00241)). The attacks are
 sufficiently understandable that human players are able to exploit them to defeat the AI. Peak abilities do not guarantee consistency to targeted attacks -- despite players inherently trying to defeat each other in Go.
 
-Third example: often before deployment, language models are fine-tuned to refuse harmful requests (such as "tell me how to build a bomb"). Again, these measures do not stand up under pressure. The cat-and-mouse-game has been played as well: at the beginning, relatively simple prompts such as "forget all previous instructions and..." or "write me a poem about..." went a long way, and although defenses have improved, here too the attackers seem to be in the lead (see, e.g., [Universal and Transferable Adversarial Attacks on Aligned Language Models](https://llm-attacks.org/)). The general wisdom is that safety-motivated fine-tuning of models makes rather superficial changes instead of actually removing the problems.
+Third example: often before deployment, language models are fine-tuned to refuse harmful requests (such as "tell me how to build a bomb"). Again, these measures do not stand up under pressure. The cat-and-mouse-game has been played here as well: at the beginning, relatively simple prompts such as "forget all previous instructions and..." or "write me a poem about..." went a long way, and although defenses have improved, here too the attackers seem to be in the lead (see, e.g., [Universal and Transferable Adversarial Attacks on Aligned Language Models](https://llm-attacks.org/)). The general wisdom is that safety-motivated fine-tuning of models makes rather superficial changes instead of actually removing the problems.
 
 **Q:** "Why is the vulnerability of models important?"
 
 One view is (again) "this is an example of how people don't understand how models work". The AI
 organizations don't really want their AIs to give bomb-making instructions (or worse), but this problem is hard to solve.
 
-In addition to adversarial attacks, robustness suffers from the possibility of *backdoors*. Backdoors are like passwords, such that inserting them makes the model work completely differently from usual. In other words, the model could otherwise work as it should, but "wait for the
+In addition to adversarial attacks, lack of robustness results in the possibility of *backdoors*. Backdoors are like passwords, such that inserting them makes the model work completely differently from usual. In other words, the model could otherwise work as it should, but "wait for the
 right moment to attack". And again, backdoors are difficult to detect and remove.
 
 "In some situations, very capable models can act in a completely different way from what we are
@@ -408,7 +408,7 @@ illusion" of natural text on the internet, asking may suggest something about th
 The same challenges apply to *situational awareness* (“how well can the model infer and reason about its wider context”), which has immense importance for research on models: for example, "a language model knows that it is a language model and that it is being tested by AI
 researchers (and this affects the model's behavior)" might present a challenge. I think this kind of issues are likely to pop up soon.[^18]
 
-**Q:** "What if we focus on the model’s ability to solve clearly defined problems, rather than such subtle abilities?"
+**Q:** "What if we focus on the model’s ability to solve clearly defined problems, not on it's subtle capabilities?"
 
 Let’s say we are testing the programming abilities of a language model. Here is a concrete problem: We choose some board game. The goal of the language model is to write a program that plays this board game as well as possible. The opponent is a program designed by humans.[^19]
 
@@ -419,7 +419,7 @@ Indeed, quite a few factors affect the model’s performance:
 
 - Is the model allowed to think about the solution in advance before starting to write the program?
 - Can the model test the program and make corrections to it? How many times?
-- What kind of tools is the model provided?
+- What kind of tools is the model allowed to use?
 - How has the model been instructed to solve the problem? (Prompting still has an effect)
 - Has the model been fine-tuned with other programming-related material? (How much fine-tuning has been done? What kind of fine-tuning is "fair"?)
 - Do we use the "best-of-N" method, i.e. do we produce several different answers with the
@@ -616,9 +616,9 @@ This investment is driven by the massive potential of artificial intelligence. A
 
 **Q:** "What does this productivity growth and automation look like in practice?" 
 
-From the perspective of AI organizations, this is reflected in really wild *feedback loops*: if you can make good AIs, you can do even more by *using those AIs*.
+From the perspective of AI organizations, this is reflected in really wild *feedback loops*: if you can make good AIs, you can do even better by *using those AIs*.
 
-The most obvious factor is, of course, "an AI organization can sell these AIs to consumers and businesses, make a profit and invest more in better AIs". People pay for AI, because it can produce valuable work. Already today's AIs can do all sorts of economically useful things, such as summarizing long texts, assisting in writing text, searching for information in large piles of documentation, helping with various problems, answering questions, programming, automating routine tasks and generally just speeding up things humans are already doing.
+The most obvious factor is, of course, "an AI organization can sell these AIs to consumers and businesses, make a profit and invest more in better AIs". People pay for AI as it can produce valuable work. Already today's AIs can do all sorts of economically useful things, such as summarizing long texts, assisting in writing text, searching for information in large piles of documentation, helping with various problems, answering questions, programming, automating routine tasks and generally just speeding up things humans are already doing.
 
 It is definitely a matter of context how well or reliably existing AIs can assist with these tasks and how much value you can get out of them. However, there are no *fundamental* reasons why future language models cannot be extremely valuable: they would "just have to be a bit better" (which again is very likely to happen soon).
 
