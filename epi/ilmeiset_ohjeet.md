@@ -14,7 +14,7 @@ Samanlainen ilmiö vaikuttaa pätevän yleisemminkin. Juttelin kerran erään so
 
 Toinen esimerkki: Seurasin esitystä aiheesta "miten luoda turvallinen sosiaalinen ympäristö". Monet pointit olivat itsestäänselvyyksien kuuloisia. Ikään kuin sanottaisiin "älä ole ikävä ihminen" ja "ole mukava toisille" tusinalla eri tapoja. Kaikkihan tämän tietää!
 
-Silti minä pidin esitystä hyödyllisenä. Siitä ihan oikeasti sai irti sellaisia asioita, joista ei saa kiinni vain toistamalla "ole kiva tyyppi" uudelleen ja uudelleen. Ja ajattelin, että tällaisesta aiheesta on varmaan vaikea pitää esitystä: pitää jotenkin kiertää ihmisten "nämähän ovat itsestäänselvyyksiä" -reaktiot ja saada heidän tajuamaan, että tässä on jotakin tajuttavaa.
+Silti minä pidin esitystä hyödyllisenä. Siitä ihan oikeasti sai irti sellaisia asioita, joista ei saa kiinni vain toistamalla "ole kiva tyyppi" uudelleen ja uudelleen. Ja ajattelin, että tällaisesta aiheesta on varmaan vaikea pitää esitystä: pitää jotenkin kiertää ihmisten "nämähän ovat itsestäänselvyyksiä" -reaktiot ja saada heidät tajuamaan, että tässä on jotakin tajuttavaa.
 
 Ainakin omissa kirjoituksissani olen törmännyt tähän ongelmaan. Jos kirjoitusteni ideat [pyöristää lähimpiin kliseisiin](/epi/sumuiset_ajatukset), niin kieltämättä helposti tulee ajatus "kaikkihan tämän tietää". Mutta, no, yritän kirjoittaa asioita, joita kokemuksieni perusteella kaikki *eivät* tiedä. Tai ehkä he "tietävät" samassa mielessä kuin ihmiset periaatteessa pystyvät keksimään ilmeisiä ohjeita, mutta tämä on eri asia kuin *oikeasti miettiä ja keksiä* ne ilmeiset ohjeet, puhumattakaan että *toteuttaisi* niitä.
 

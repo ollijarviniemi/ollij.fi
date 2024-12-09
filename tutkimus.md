@@ -2,6 +2,7 @@
 
 ## Tekoälyturvallisuus
 
+- FrontierMath: A Benchmark for Evaluating Advanced Mathematical Reasoning in AI, yhdessä monen muun tekijän kanssa. 2024. [arXiv](https://arxiv.org/abs/2411.04872)
 - Uncovering Deceptive Tendencies in Language Models: A Simulated Company AI Assistant, yhdessä Evan Hubingerin kanssa, 2024. [arXiv](https://arxiv.org/abs/2405.01576)
 
 ## Matematiikka
