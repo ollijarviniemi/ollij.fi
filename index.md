@@ -1,3 +1,8 @@
+---
+layout: home
+title: Home
+---
+
 Nämä ovat Olli Järviniemen nettisivut.
 
 Mielenkiintoisin sisältö näillä sivuilla on [epiä käsittelevä tekstikokoelmani](/epi) sekä [kirjoitukseni tekoälyuhasta](/tekoaly).
