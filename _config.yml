@@ -25,14 +25,6 @@ titles_from_headings:
 header_pages:
   - index.md
 
-exclude:
-  - "*.md"
-  - "**/*.md"
-  - "*/*"
-  - "**/*"
-
-include:
-  - "index.md"
 # Set to `true` to show excerpts on the homepage.
 #show_excerpts: false
 
