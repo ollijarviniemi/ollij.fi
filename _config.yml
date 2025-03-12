@@ -11,6 +11,19 @@ remote_theme: jekyll/minima
 # add a line comment on "theme: minima" above.
 #remote_theme: jekyll/minima
 
+
+defaults:
+  -
+    scope:
+      path: "" # all files
+    values:
+      nav_exclude: true
+  -
+    scope:
+      path: "index.md"
+    values:
+      nav_exclude: false
+      
 plugins:
   - jekyll-seo-tag
   - jekyll-titles-from-headings
@@ -24,13 +37,6 @@ titles_from_headings:
 # in order as they should show up.
 header_pages:
   - index.md
-
-exclude:
-  - epi/*.md
-  - tekoaly/*.md
-  - tutkimus*
-  - wiki*
-  # List all files you don't want in navigation except your main pages
 
 # Set to `true` to show excerpts on the homepage.
 #show_excerpts: false
