@@ -1,0 +1,68 @@
+<footer class="site-footer h-card">
+  <data class="u-url" href="{{ "/" | relative_url }}"></data>
+
+
+  <div class="wrapper">
+
+    {% assign dir = page.url | split: '/' %}
+    {% assign dir = dir[1] %}
+
+    {% if site.text_lists contains dir %}
+      {% assign main_path = dir | append: '.md' %}
+      {% assign main = site.pages | where: 'path', main_path | first %}
+      {% assign texts = main.texts %}
+      {% for text in texts %}
+        {% if text == page.url %}
+          {% unless forloop.first %}
+            {% assign prev = forloop.index0 | minus: 1 %}
+          {% endunless %}
+          {% unless forloop.last %}
+            {% assign next = forloop.index0 | plus: 1 %}
+          {% endunless %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+      <div class="footer-navigation">
+        <div>
+          {% if prev %}
+            <a href="{{ texts[prev] }}">Edellinen</a>
+          {% endif %}
+        </div>
+
+        <div>
+          {% if prev or next %}
+            <a href="{{ main.toc }}">Sisällysluettelo</a>
+          {% endif %}
+        </div>
+
+        <div>
+          {% if next %}
+            <a href="{{ texts[next] }}">Seuraava</a>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+      {%- if site.author %}
+        <ul class="contact-list">
+          {% if site.author.name -%}
+            <li class="p-name">{{ site.author.name | escape }}</li>
+          {% endif -%}
+          {% if site.author.email -%}
+            <li><a class="u-email" href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></li>
+          {%- endif %}
+        </ul>
+      {%- endif %}
+      </div>
+    </div>
+
+    <div class="social-links">
+      {%- include social.html -%}
+    </div>
+
+
+  </div>
+
+</footer>

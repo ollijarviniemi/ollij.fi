@@ -1,0 +1,57 @@
+defaultpen(fontsize (10pt));
+usepackage("amsmath");
+usepackage("amssymb");
+settings.tex="latex";
+settings.outformat="pdf";
+size (15cm);
+
+
+real s = 1*sqrt(100/82);
+void sq(real x, real y) {
+	filldraw((x, y)--(x+s, y)--(x+s, y+s)--(x, y+s)--cycle, red);
+}
+
+
+real x = 50;
+real h = 5;
+real w = 20;
+
+draw((w/2, 0)--(w/2, h));
+draw((0, h)--(w, h));
+
+draw((x-w/2, 0)--(x-w/2, h));
+draw((x-w, h)--(x, h));
+
+label((w/2, -0.7), "Rasitus");
+label((w/2, -1.8), scale(0.55)*"(72 palikkaa)");
+label((x - w/2, -0.7), "Muu syy");
+label((x - w/2, -1.8), scale(0.55)*"(10 palikkaa)");
+
+label((w/4, h*0.9), scale(0.8)*"vahva = vasen");
+label((w/4, h*0.7), scale(0.55)*"(72 palikkaa)");
+
+label((3*w/4, h*0.9), scale(0.8)*"vahva = oikea");
+label((3*w/4, h*0.7), scale(0.55)*"(0 palikkaa)");
+
+label((x - 3*w/4, h*0.9), scale(0.8)*"vahva = vasen");
+label((x - 3*w/4, h*0.7), scale(0.55)*"(10 palikkaa)");
+label((x - w/4, h*0.9), scale(0.8)*"vahva = oikea");
+label((x - w/4, h*0.7), scale(0.55)*"(0 palikkaa)");
+
+
+for(int t = 0; t <= 0; ++t) {
+	for(int y = 1; y <= 2; ++y) {
+		for(int k = 1; k <= 5; ++k) {
+			sq(x - w + 1.5 + k*s + w*t/2, h + y*s - s);
+		}
+	}
+}
+
+
+for(int y = 1; y <= 8; ++y) {
+	for(int k = 1; k <= 9; ++k) {
+		sq(k*s-1, h + y*s - s);
+	}
+}
+
+

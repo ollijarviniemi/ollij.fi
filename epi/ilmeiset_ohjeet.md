@@ -1,0 +1,33 @@
+# Ilmeiset ohjeet
+
+Seuraava tekstinpätkä on jäänyt mieleeni (lainaus on Nate Soaresin tekstistä [Obvious advice](https://mindingourway.com/obvious-advice/)):
+
+"This is a common scene at [the place I work at]: I have a decision to make, like what sort of winter fundraiser to run. Before making any choices, I take a few minutes to write down all the obvious things to do before making the decision: spend five minutes brainstorming options before weighting any pros or cons; talk to people who have run different types of fundraisers in similar situations; and so on. I can usually generate a handful of obvious things to do before making my decision. I write those things down, and then I describe my decision to one of my advisors and see if they have any advice. They say "only the obvious," and then rattle off five more obvious things I hadn't thought of, all of them useful.
+
+Sometimes, I wonder how successful a person would be if they just did all the obvious things in pursuit of their goals."
+
+Ilmeiset ohjeet ovat, no, ilmeisiä, mutta niitä tulee yllättävän harvoin mietittyä, saati sitten toteutettua.
+
+Niitä on myös yllättävän hankala *tarjota*. Sanotaan vaikka, että kaverisi harmittelee ohimennen, että hänellä on viime aikoina kestänyt pitkä aika nukahtaa. Tähän keksii kaikenlaisia ilmeisiä ratkaisuehdotuksia (kuten "mene nukkumaan ja herää säännölliseen aikaan" tai "yritä rauhoittua ja rajoita ruutuaikaa ennen nukkumaanmenoa"). Tällaisten sanominen toiselle tuntuu kuitenkin hieman hassulta: kyllähän kaveri varmaan pystyisi itsekin keksimään ilmeiset ideat. Ajatteleekohan hän, että pidän häntä ihan tyhmänä? Ja yritänkö minä edes auttaa vai sanonko vain itsestäänselvyyksiä? Käytännössä ilmeisiä ohjeita ei kuitenkaan tule aina mietittyä ja vielä harvemmin toteutettua. Lisäksi eri asiat ovat eri ihmisille ilmeisiä.
+
+Samanlainen ilmiö vaikuttaa pätevän yleisemminkin. Juttelin kerran erään sosiaalisen median parissa työskentelevän henkilön kanssa. Aiheesta puhuttaessa hän aloitti sanomalla, kuinka [kannustimet](/epi/insentiivit) ohjaavat kohti polarisoivaa sisältöä ja kuinka samantyyppiset ihmiset [kuplautuvat](/epi/leveat_jakaumat) samojen sisältöjen ääreen. Huomasin itselläni ajatuksen muotoa "jaa, taas tätä" ja metaforista silmien pyörittelyä: kaikki ovat varmasti kuulleet nämä asiat moneen kertaan. Sitten mietin askeleen pidemmälle ja totesin, että nämä ovat oikeastaan silti asioita, joita voisi miettiä vähän syvemmin kuin yksittäisten kliseiden verran.
+
+Toinen esimerkki: Seurasin esitystä aiheesta "miten luoda turvallinen sosiaalinen ympäristö". Monet pointit olivat itsestäänselvyyksien kuuloisia. Ikään kuin sanottaisiin "älä ole ikävä ihminen" ja "ole mukava toisille" tusinalla eri tapoja. Kaikkihan tämän tietää!
+
+Silti minä pidin esitystä hyödyllisenä. Siitä ihan oikeasti sai irti sellaisia asioita, joista ei saa kiinni vain toistamalla "ole kiva tyyppi" uudelleen ja uudelleen. Ja ajattelin, että tällaisesta aiheesta on varmaan vaikea pitää esitystä: pitää jotenkin kiertää ihmisten "nämähän ovat itsestäänselvyyksiä" -reaktiot ja saada heidät tajuamaan, että tässä on jotakin tajuttavaa.
+
+Ainakin omissa kirjoituksissani olen törmännyt tähän ongelmaan. Jos kirjoitusteni ideat [pyöristää lähimpiin kliseisiin](/epi/sumuiset_ajatukset), niin kieltämättä helposti tulee ajatus "kaikkihan tämän tietää". Mutta, no, yritän kirjoittaa asioita, joita kokemuksieni perusteella kaikki *eivät* tiedä. Tai ehkä he "tietävät" samassa mielessä kuin ihmiset periaatteessa pystyvät keksimään ilmeisiä ohjeita, mutta tämä on eri asia kuin *oikeasti miettiä ja keksiä* ne ilmeiset ohjeet, puhumattakaan että *toteuttaisi* niitä.
+
+Tekstini kohdeyleisö ei ole ihmiset lukemassa näitä tekstejä. Tekstini kohdeyleisö on ihmiset silloin, kun he *eivät* mieti näitä asioita ja epäonnistuvat "ilmeisissä" asioissa -- aivan kuten "miten luoda turvallinen sosiaalinen ympäristö" -esitysten kohdeyleisö on ihmiset silloin, kun tämä ei toteudu.
+
+Jos kirjoitan "mediat poimivat ääriesimerkkejä jakaumien hänniltä", ihmiset pyörittelevät silmiään ja miettivät "jaa, taas tätä", mutta silloin tällöin minulle kuitenkin jaetaan polarisoivin tai tunteita herättävin uutinen mitä sinä päivänä on julkaistu. Tai mainitaan keskustelunaiheeseen liittyvä äärimmäinen esimerkki mediasta ikään kuin se olisi representatiivinen tapaus.
+
+Tai kun mainitsen, kuinka korrelaatio ei implikoi kausaatiota, ihmiset kurtistavat kulmiaan ja vastaavat "tietenkään ei". Sitten keskusteltaessa jostakin oikeasta asiasta ihmiset vetävät korrelatiivisista huomioista kausaalisia johtopäätöksiä. Jos tämän ottaa esille, niin vastataan "kyllä se nyt jotakin kertoo".
+
+Saatan puhua, kuinka (muun muassa) huonot [insentiivit](/epi/insentiivit) johtavat siihen, että ihmiset tekevät huonoja asioita -- ei siksi, että he olisivat "pahoja" ihmisiä, vaan ihan ymmärrettävistä ja hyvistäkin syistä. Ihmiset nyökkäilevät tälle itsestäänselvyydelle, mutta myöhemmin oikeista ongelmista keskustellessa kuitenkin vihjaavat, että ne ovat niiden pahojen ihmisten syytä.
+
+Nostan esiin, että kohtalaisen usein ajautuvat väittelytilaan ja tämä johtaa huonoon epiin. Minulle vastataan, että Oikeat Väittelyt -- sellaiset mitä näkee televisiossa tai väittelykilpailuissa -- ovat tietysti huonoja, mutta väittelyä voi tehdä kunnolla ja sivistyneesti. Ja... näkemykseni kohdistuvat nimenomaan siihen, mitä ihmiset tavallisesti mieltävät väittelyksi ja miten ne käytännössä sujuvat, ei johonkin [helppoon maalitauluun](/epi/helpot_maalitaulut).
+
+Olen tarkoituksella valinnut ihmisille entuudestaan tuntemattoman termin "epi" kuvatakseni sitä asiaa, mitä teksteissäni käsittelen. Toinen vaihtoehto olisi yrittää kommunikoida sitä kliseillä kuten "totuus on tärkeää" ja "Top 5 Tapaa, Joilla Voit Ajatella Paremmin", mutta nämä tuntuvat pikemminkin johtavan reaktioihin muotoa "totta kai ihmiset ovat usein väärässä -- oletko kuullut Dunning-Krugerin ilmiöstä eli siitä, että tyhmät ihmiset ovat yli-itsevarmoja?", mikä [ei todellakaan](/epi/helpot_maalitaulut) ole minun pointtini. Olen miettinyt, että ehkä jos yritän olla laukaisematta ihmisten kliseereaktioita, saan sanottua asioita ikään kuin vaivihkaa niin, etteivät ne jää kiinni itsestäänselvyyssuodattimiin tai [pyöristy](/epi/sumuiset_ajatukset) tuttuihin mutta eri ajatuksiin.
+
+Toisaalta olen käyttänyt paljon vaivaa vain tämän "tässä on oikeasti jotakin tajuttavaa, nämä eivät ole itsestäänselvyyksiä" -pointin sanomiseen tusinalla eri tapoja. Toivon, että se on hyödyllistä, ja että siitä ihan oikeasti saa irti sellaisia asioita, joista ei saa kiinni vain toistamalla "ihmiset ovat usein väärässä" uudelleen ja uudelleen.

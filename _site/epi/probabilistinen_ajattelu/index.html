@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Probabilistinen ajattelu | ollij.fi</title>
+<meta name="generator" content="Jekyll v3.9.5" />
+<meta property="og:title" content="Probabilistinen ajattelu" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="http://localhost:4000/epi/probabilistinen_ajattelu/" />
+<meta property="og:url" content="http://localhost:4000/epi/probabilistinen_ajattelu/" />
+<meta property="og:site_name" content="ollij.fi" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Probabilistinen ajattelu" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","headline":"Probabilistinen ajattelu","url":"http://localhost:4000/epi/probabilistinen_ajattelu/"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="ollij.fi" />
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">ollij.fi</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Probabilistinen ajattelu</h1>
+  </header>
+
+  <div class="post-content">
+    <p>Olet sopinut tapaavasi kaverisi tänään kello kymmenen. Hän ei saavu ajoissa paikalle. Odotat. Kello näyttää 10:10. “Ehkä hän on unohtanut tai juuttunut johonkin muualle”, pohdit. Odotat lisää. Epäilysi voimistuvat ajan edetessä. Kello 10:20 luovutat asian suhteen.</p>
+
+<p>Tarinan opetus?</p>
+
+<p>Ensinnäkin olet epävarma siitä, miten käy: et tiedä, tuleeko kaveri paikalle vai ei. Jos kysyt itseltäsi, saapuuko kaverisi paikalle vai ei, paras vastaus ei ole <a href="/epi/binaarinen_jakauma">binäärinen</a> “kyllä” tai “ei”, vaan esimerkiksi “en tiedä”.</p>
+
+<p>Lisäksi epävarmuutesi tila muuttuu. Alussa olet epävarmempi kaverisi saapumisesta (ehkä hän tulee, ehkä ei), lopussa varmempi (hän tuskin tulee, luovutan). Vaikka siis kummassakaan tapauksessa “et tiedä” miten käy, uskomusten vahvuutta voi silti vertailla ja <a href="/epi/kvantifiointi">kvantifioida</a>. Jotkut uskomukset ovat vahvempia kuin toiset, joskus aika paljonkin.</p>
+
+<p>Hmm… olisipa kätevää, jos olisi jokin tapa käsitellä epävarmuutta kvantitatiivisesti. Sellainen järjestelmä, joka tarjoaa asteikon uskomuksille. Asteikolla isommat luvut voisivat vastata sitä, että luulee näin olevan ja pienemmät taas sitä, että näin ei varmaankaan ole. Ai, ja vielä jos näille luvuille voisi tehdä laskutoimituksia! Niin, että uskomusten epävarmuuksia voisi jotenkin käsitellä ja yhdistellä.</p>
+
+<p>Lukijan suureksi yllätykseksi paljastan, että tällainen järjestelmä on olemassa: todennäköisyydet ja todennäköisyyslaskenta.</p>
+
+<p>Tutkitaan alun esimerkkiä tästä näkökulmasta. Alussa odottaisit kaverisi tulevan paikalle – et tietenkään <em>varmasti</em>, mutta ei kaverisi kovin usein unohda asioita. Ja hän on kohtalaisen täsmällinen, joten hän tuskin tulee paljoa myöhässä.</p>
+
+<p>Sinulla on siis <em>uskomuksia</em>, <em>odotuksia</em> siitä, milloin kaverisi saapuu. Hyvin todennäköisesti hän saapuu. Jos hän saapuu, niin hän saattaa olla myöhässä tai saattaa olla olematta. On kuitenkin epätodennäköistä, että hän on paljoa myöhässä.</p>
+
+<p>Näitä intuitioita voi muuttaa luvuiksi. Sanotaan, että on 90% todennäköisyys, että kaverisi saapuu paikalle (ja 10%, että ei). Tämä 90 prosentin osuus jakautuu eri saapumisajoille odotustesi mukaisesti: enemmän prosentteja lähelle kello kymmentä, vähemmän muualle.</p>
+
+<p>Alla kuvassa on yksi esimerkki siitä, miltä uskomukset voivat näyttää. Kukin palikka vastaa yhtä prosenttia kyseiselle lopputulokselle.</p>
+
+<p><img src="/epi/Kuvat/prob_1" alt="Todennäköisyydet tutun saapumisajalle" /></p>
+
+<p>Takaisin oikeaan maailmaan: Odotat. Kello näyttää 10:10. Vieraasi ei ole tullut paikalle. Tämä on hieman yllättävää. Uskomuksesi muuttuvat.</p>
+
+<p>Tutkitaan edellistä kuvaa. Palikat, jotka oli asetettu ennen kello 10:10 tulee unohtaa. (Lasken sinun puolestasi: niitä on 75 kappaletta.) Laitoit panoksesi väärälle vaihtoehdolle ja menetät ne. Kuva näyttää seuraavalta:</p>
+
+<p><img src="/epi/Kuvat/prob_2" alt="Osa panoksista katoaa" /></p>
+
+<p>Tässä on… jotakin hassua. 10%, ettei kaveri saavu, 15% sille, että hän vielä tulee, ja… ai niin, menetit sen 75%.</p>
+
+<p>Mutta uskomusten pitäisi yhteensä olla 100% – ei enempää, ei vähempää. Täten deflaatio iskee ja palikoiden arvo kasvaa! Palikoita on jäljellä enää 25, joten nyt jokainen palikka on neljän prosentin arvoinen. (Palikoiden sijaintien muutos on vain visualisoinnissa syntyvä haaste.)</p>
+
+<p><img src="/epi/Kuvat/prob_3" alt="Uudet todennäköisyydet tutun saapumisajalle" /></p>
+
+<p>Nyt on 40% todennäköisyys, että kaverisi ei saavu paikalle! Käy tietysti järkeen, että todennäköisyys on kasvanut: jos odotat kaveriasi ja häntä ei näy, alat epäilemään, että hän ei tule ollenkaan.</p>
+
+<p>Samaa peliä voi tietysti pelata uudestaan: odotat, kaverisi ei saavu, menetät panoksiasi, palikoiden suuruudet muuttuvat ja uskomuksesi ovat muuttuneet. Kello 10:20 palikoita on jäljellä edelleen 10 sille, ettei kaverisi tule, ja vain 1 sille, että hän vielä tulee. Tällöin todennäköisyys sille, ettei kaverisi tule paikalle, on 10 : 1 eli noin 90 prosenttia. Silloin on hyvä aika lähteä.</p>
+
+<hr />
+
+<p>“En ihan ymmärrä. Mistä käytännössä hankitaan todennäköisyydet eri tilanteille? Etkö voi saada laskuista mitä vain tuloksia ulos laittamalla sisään sopivat todennäköisyydet? Joten mikä hyöty tässä on?”, kysytään yleisöstä.</p>
+
+<p>Todennäköisyydet kuvaavat uskomusten vahvuuksia. Kenen uskomuksia? Esimerkiksi sinun. Ihmisillä on yleisesti ottaen eri uskomukset ja siten eri todennäköisyydet. Kaverisi saattaa tietää, saapuuko hän luoksesi sovittuun aikaan, vaikka sinä et tätä tietäisi.</p>
+
+<p>Se, että sanot “on 10 prosentin todennäköisyys, ettei kaverini tule paikalle”, kertoo <em>sinun uskomuksistasi</em> koskien kaverin tulemista, siis <em>sinun pääsi sisällöstä</em>, <em>sinun aivoistasi</em>, ei kaverisi sijainnista. Erityisesti väite ei tarkoita, että kaverisi paikalle tuleminen olisi “oikeasti satunnaista” (mitä ikinä tämä tarkoittaakaan). Se koskee vain ja ainoastaan sinun tietämystäsi. Tietysti (tai toivottavasti) uskomuksesi liittyvät siihen, miten asiat oikeasti ovat. Uskomuksesi ja todellisuus ovat kuitenkin kaksi eri asiaa, aivan kuten kartta ja maasto ovat kaksi eri asiaa.</p>
+
+<p>Ihmiset eivät toki luontaisesti mieti asioita numeerisesti todennäköisyyksien kautta. Ihmiset eivät myöskään mieti äänenvoimakkuutta numeerisesti desibelien kautta. Joskus on ollut aika, jolloin ihmiset eivät ole miettineet lämpötilaa numeerisesti Celsius-asteiden kautta (koska asteikkoa ei oltu vielä kehitelty).</p>
+
+<p>Tästä huolimatta jotkut asiat ovat kuumempia kuin toiset, jotkut äänet kovempia kuin toiset ja jotkut uskomukset vahvempia kuin toiset. Huomaat tämän itsekin, vaikkei kehossasi ole Celsius-asteet ilmoittavaa lämpömittaria tai todennäköisyydet ilmoittavaa uskomuksenvahvuusmittaria.</p>
+
+<p>Joten mistä ne todennäköisyydet saadaan? Samasta paikasta kuin Celsius-asteet. Sinulla <em>on jo</em> se tieto, vaikkakaan ei numeerisessa muodossa. Eikä sitä ole aina helppoa muuttaa lukumuotoon: ehkä sinulla on tosi kylmä ja siksi ajattelet ulkona olevan 30 astetta pakkasta, vaikka sitä on oikeasti vain 20 astetta. Toisaalta näissä muunnoksissa kehittyy tekemisen myötä: veikkaan, että olet parempi arvioimaan tapahtumien kestoja minuutteina kuin äänenkorkeuksia hertseinä.</p>
+
+<p>Miksi muuttaa uskomuksiaan todennäköisyyksiksi? Samasta syystä kuin etäisyyksiä muutetaan kilometreiksi, massaa muutetaan kilogrammoiksi tai aikaa muutetaan tunneiksi (tai määrää muutetaan luvuiksi). “Muuttaa” on tietysti väärä sana, oikea sana on “mitata”.</p>
+
+<p>Hyvin usein riittää vain karkeat <em>arviot</em>. Joskus “menee 20 minuuttia” todella kommunikoi asian paremmin kuin “menee vähän aikaa” (tietysti olettaen molempien tietävän, mitä 20 minuuttia tarkoittaa). Numeerisia arvoja ei tietenkään aina esitetä, mutta niitä tietenkin aina välillä esitetään. Lisäksi konsepteilla voidaan tehdä (yksinkertaista tai monimutkaisempaa) <em>mallinnusta</em>.</p>
+
+<p>Nämä sama huomiot pätevät myös todennäköisyyksien kohdalla. Joskus “olen 90% varma” todella kommunikoi asian paremmin kuin “olen aika varma” (tietysti olettaen molempien tietävän, mitä 90 prosenttia tarkoittaa). Ja konseptien kautta saa varsin hyviä työkaluja ja malleja uskomusten muodostamiseen. Sellaisia itsestäänselvyyksiä, jotka eivät olekaan itsestäänselviä.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+
+  <div class="wrapper">
+
+    
+    
+
+    
+      
+      
+      
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+          
+          
+      <div class="footer-navigation">
+        <div>
+          
+            <a href="/epi/sumuiset_ajatukset/">Edellinen</a>
+          
+        </div>
+
+        <div>
+          
+            <a href="/epi/">Sisällysluettelo</a>
+          
+        </div>
+
+        <div>
+          
+            <a href="/epi/uskomusten_muutos/">Seuraava</a>
+          
+        </div>
+      </div>
+    
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"></ul>
+</div>
+
+
+  </div>
+
+</footer>
+</body>
+
+</html>
