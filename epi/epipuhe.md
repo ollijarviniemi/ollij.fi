@@ -46,7 +46,7 @@ Tämä kokoelma koostuu kuudesta osiosta: "Työkaluja", "Itsestäänselvyyksiä"
 
 "Epävarmat uskomukset" kertoo epävarmuuden käsittelystä ja todennäköisyyslaskennan tähän antamista työkaluista.
 
-"Ansoja"-osiossa käsitellään muutamaa yleistä keskusteluihin ja ajatteluihin liittyvää ansaa.
+"Ansoja"-osiossa käsitellään muutamaa yleistä keskusteluihin ja ajatteluun liittyvää ansaa.
 
 "Yhdessä" käsittelee erityisesti keskustelutilanteisiin liittyviä huomiota.
 
