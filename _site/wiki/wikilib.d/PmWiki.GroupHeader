@@ -1,9 +1,0 @@
-version=pmwiki-2.3.15 ordered=1 urlencoded=1
-author=Petko
-charset=UTF-8
-csum=typo (+1)
-name=PmWiki.GroupHeader
-rev=67
-targets=
-text=(:Summary: PmWiki group header. Includes styles and trail.:)%0a%25define=note font-style=italic color=green%25\%0a%25define=important block bgcolor=#fcc border='1px solid black' padding=5px%25\%0a%25define=audience class='frame rfloat' font-size:smaller bgcolor=#ffffcc clear=right%25(:comment please leave the multiple style definitions concatenated as a single line.  Linebreaks do appear in the output when the wiki is configured with linebreaks enabled -- thanks!:)%0a(:include PmWiki.GroupFooter#trailstart#trailend:)%0a(:if ! equal "{*$:Audience}" "" :)%0a>>audience%3c%3c%0a{*$:Audience}%0a>>%3c%3c%0a(:ifend:)
-time=1669299012
