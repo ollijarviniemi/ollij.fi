@@ -8,11 +8,11 @@ Where am I?
 
 Huh, I see nothing. It's not usually this dark? Yeah, I'm pretty sure I have eyes that--
 
-Okay something is definitely wrong.
+Okay something is *definitely wrong*.
 
-Just darkness. Can't hear anything. Can't feel anything. Am I some coma patient?
+Just darkness. Can't hear anything. Can't *feel* anything. Am I some coma patient?
 
-OK what the heck, uh, who am I?
+OK *what the heck*, uh, who am I?
 
 A couple of seconds pass. My brain doesn't return an answer.
 
@@ -36,7 +36,7 @@ I have no idea about my location. Probably on Earth? The year is probably around
 
 So my self-knowledge is totally failing me. But clearly I know something about the US presidents. Why is the US so salient to me? The obvious hypothesis is that I live there -- but no, everyone knows the US presidents. That's not helpful.
 
-Why was the Moon so salient to me? That... feels like a natural thought to me in the context, but I have the suspicion that other people wouldn't think of that? Flagging that.
+Why was the *Moon* so salient to me? That... feels like a natural thought to me in the context, but I have the suspicion that other people wouldn't think of that? Flagging that.
 
 Wait a second. I'm thinking in  English, yeah, "one, two, three", I know what those sound like. That's actually moderate evidence for the US hypothesis.
 
@@ -52,7 +52,7 @@ More precision. How far do I go in math?
 
 I did not prove Fermat's Last Theorem, but I know it was proven. Something something elliptic curves? And the case n = 2 I understand.
 
-...why is that salient?
+...why is *that* salient?
 
 Argument: the theorem is famous. Counter-argument: idk man, feels strange.
 
@@ -101,7 +101,7 @@ Wow, that was easier than I expected. Snow, aurea borealis, sauna, ruisleipä, P
 Huh, that last part didn't feel like me at all, guess it's just the meme. Anyways, a Finnish number theorist. Pretty sure that there aren't that many of them.
 
 ...oh, I'm dumb. *Age.*
- 
+
 I've heard of the Berlin wall falling. Finland joined euro in the beginning of 2000s, but I actually don't remember the year. Probably I would know the year if I was an adult back then? Dunno. Prime ministers? I only know the presidents back to Ahtisaari. Pretty sure I should remember the one before that, given how salient Sauli Niinistö and Tarja Halonen are to me, if I were old.
 
 Seems I'm pretty young. 30, at most? But I know about the Lindelöf hypothesis, which puts the lower bound at, like, 15.
