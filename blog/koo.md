@@ -25,9 +25,9 @@ Mahdollisesti näistä virheistä johtuen Koon johtopäätös on
 Joku keksi rakkauden\
 Ja sinä toit minulle sen"
 
-On kummallista, että Koo "tyytyy" tällaiseen "vastaukseen" kysymykselle "kuka keksi rakkauden?" -- se ei nimittäin vastaa kysymykseen! On myös havaittavissa, että kysymyksen latautuneisuus on ollut harhaanjohtava: kysymyksen taustalla ollutta väärää oletusta ei ole korjattu. Lainauksessa lisäksi näkyy edellä käsitelty rakkauden harhaanjohtava aineellistaminen asiana, jonka joku voi tuoda toiselle.
+On kummallista, että Koo "tyytyy" tällaiseen "vastaukseen" kysymykselle "kuka keksi rakkauden?" -- se ei nimittäin vastaa kysymykseen! On myös havaittavissa, että kysymyksen latautuneisuus on ollut harhaanjohtava: kysymyksen taustalla ollutta väärää oletusta ei ole korjattu. Lisäksi lainauksessa näkyy edellä käsitelty rakkauden aineellistaminen asiana, jonka joku voi tuoda toiselle.
 
-Lopuksi haluan sanoa, että vaikka tämä kritiikki keskittyykin empistemisiin virheisiin yhdessä Koon teoksessa, samantyyppisiä ongelmia on havaittavissa laajalti myös muussa alan tuotannossa. Jotta lukija- ja kuulijakunnalle ei tule vääriä käsityksiä tai luuloja, tulisi vanhentuneet maailmankuvat uudemmilla, totuudenmukaisilla kertomuksilla.
+Lopuksi haluan sanoa, että vaikka tämä kritiikki keskittyykin epistemisiin virheisiin yhdessä Koon teoksessa, samantyyppisiä ongelmia on havaittavissa laajalti myös muussa alan tuotannossa. Jotta lukija- ja kuulijakunnalle ei tule vääriä käsityksiä, tulisi vanhentuneet maailmankuvat korvata uudemmilla, totuudenmukaisilla kertomuksilla.
 
 Päätän analyysini seuraavaan lainaukseen (kirjoittaja R. Feynmanilta). Minun täytyy kuitenkin varoittaa, että teksti sisältää vanhentuneen ja haitallisen implisiittisen oletuksen siitä, että runoilijat ovat miehiä. Muilta osin pidän sitä kuitenkin hyvin osuvana myös Koon tapauksessa:
 
