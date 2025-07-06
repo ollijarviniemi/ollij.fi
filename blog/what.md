@@ -6,12 +6,12 @@ So I wrote. I didn't put up a blog or anything -- I wasn't, like, *serious* abou
 
 One day I learned that Telegram allows you to create channels, where only the channel maintainer can comment. I set up such a channel, told my friends that this is where I'm going to write, and so I did. This solution worked extremely well, as all my negative emotions about breaching social norms were removed: people knew what the channel was about, and if they didn't like it, they could just leave. (No one *did*, but the point is that they *could*.)
 
-I wrote a good bunch there. After writing my twentieth banger, I thought: what a shame that no one outside of this channel won't see these. I considered the idea of putting my texts out in the public. And though some of my friends were supportive, I hesitated. My texts weren't polished. They were almost always written in one go on an evening when I felt like ~~ranting~~ writing. Both my Finnish and English teachers would be ashamed of my grammar. The texts were not at the level where you could publish them as Blog Posts.
+I wrote a good bunch there. After writing my twentieth banger, I thought: what a shame that no one outside of this channel can see these. I considered the idea of putting my texts out in the public. And though some of my friends were supportive, I hesitated. My texts weren't polished. They were almost always written in one go on an evening when I felt like ~~ranting~~ writing. Both my Finnish and English teachers would be ashamed of my grammar. The texts were not at the level where you could publish them as Blog Posts, and I wasn't looking forward to the negative feedback I would get on them.
 
 Eventually I got tired of being so dramatic about it, and thought: "You know what, maybe I'll just put them up on my website, but write a long disclaimer at the top where I explain how all this is really casual, I haven't bothered to polish this, continue at your own risk, you can find my more formal writing elsewhere."
 
 That's what I did and that's what this is.
 
-Some of the content is in English. Most is in (colloquial) Finnish. I defaulted to my native language, but I write differently in different languages, so I sometimes deliberately chose English -- I couldn't say those things in Finnish while sounding like me to myself. (Even in Finnish text I at times wanted to use English vocabulary, so if you pay attention, you might catch an anglicism here and there.)
+Some of the content is in English. Most is in colloquial Finnish. I defaulted to my native language, but I write differently in different languages, so I sometimes deliberately chose English -- I couldn't say those things in Finnish while sounding like me to myself.
 
 What you see is essentially what I have originally written, a relatively unobstructed viewpoint to how I view things.
