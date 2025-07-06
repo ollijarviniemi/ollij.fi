@@ -26,7 +26,7 @@ Tämä lienee hyvä hetki mainita, että yksi edellä mainitsemistani "ilmeisist
 
 Hempelin paradoksi kuuluu seuraavasti:
 
-"Hypoteesi 'kaikki varikset ovat mustia' on loogisesti ekvivalentti hypoteesin 'kaikki epämustat asiat ovat epävariksia', ja tätä hypoteesia tukee huomio valkoisesta kengästä."
+"Hypoteesi 'kaikki varikset ovat mustia' on loogisesti ekvivalentti hypoteesin 'kaikki epämustat asiat ovat epävariksia' kanssa, ja tätä hypoteesia tukee huomio valkoisesta kengästä."
 
 Mutta tietenkään kenkien värit eivät liity mitenkään lintujen väreihin! On selvää, että jokin tässä menee pieleen.
 
@@ -40,7 +40,7 @@ Onkohan oikeassa elämässä tilanteita, joissa testataan vain yksittäistä hyp
 
 Jaynesin kirjan parhaimpia osia on sen kritiikki tieteessä käytettäviä todennäköisyyslaskennan menetelmiä kohtaan.
 
-Jo perustavanlaatuinen näkökulma "tehdään tilastollinen testi hypoteesin kumoamiseksi (tai todetaan, että se ei kumoutunut)" on virheellinen: taas, hypoteesien vertailuun tarvitaan vähintään kaksi hypoteesia (ja hypoteeseja ei "kumota" vaan niiden todennäköisyydet muuttuvat). Kyllä, käytännössä tilastollisilla testeillä saadaan kuvaa hypoteesin pätevyydestä ja riittävän pienen todennäköisyyden omaavat hypoteesit kannattaa sivuuttaa -- mutta nämä ovat *approksimaatioita*, "jotakin sinne päin" eikä *normatiivisesti oikea* tapa käsitellä hypoteeseja ja epävarmuutta.
+Jo perustavanlaatuinen näkökulma "tehdään tilastollinen testi hypoteesin kumoamiseksi (tai todetaan, että se ei kumoutunut)" on virheellinen: taas, hypoteesien vertailuun tarvitaan vähintään kaksi hypoteesia (ja hypoteeseja ei "kumota", vaan niiden todennäköisyydet muuttuvat). Kyllä, käytännössä tilastollisilla testeillä saadaan kuvaa hypoteesin pätevyydestä ja riittävän pienen todennäköisyyden omaavat hypoteesit kannattaa sivuuttaa -- mutta nämä ovat *approksimaatioita*, "jotakin sinne päin" eikä *normatiivisesti oikea* tapa käsitellä hypoteeseja ja epävarmuutta.
 
 Joskus tietysti kätevät ja nopeat (mutta hyvin epätäydelliset) lähestymistavat toimivat riittävän hyvin, joskus taas eivät. Erityisesti yleinen mittari nollahypoteesin kumoamisesta ja p-arvoista kertoo vähän itse tutkittavasta ilmiöstä -- "[the null hypothesis is always false](https://gwern.net/everything)" -- eikä erityisesti kerro vaikutuksen *suuruudesta*, mikä on lopulta usein se mistä olemme kiinnostuneita.
 
