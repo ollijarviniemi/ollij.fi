@@ -1,5 +1,7 @@
 # What is this blog about?
 
+*July 2025*
+
 For some time now, I've had things I wanted to say. Unfortunately for me, many of the things I most wanted to say didn't fit into natural everyday conversation. It's just not normal, I've found, to interject with a two minute monologue, and before long people will interrupt or stop paying attention. And, more fundamentally, I simply am not capable of saying the things I want, the way I want them, in real time.
 
 So I wrote. I didn't put up a blog or anything -- I wasn't, like, *serious* about writing, you know? -- but simply wrote long text messages in various friend chat groups I was in. This still wasn't the perfect solution. It felt weird to hijack a normal chat group and turn it into your notebook, and chat groups died and new ones sprung with different people and atmospheres. At times I felt like I had no place where I could write casually, which made me unsatisfied.
