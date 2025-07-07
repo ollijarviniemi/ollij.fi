@@ -1,1 +1,5 @@
 _site/*
+compile_llms.py
+update_llms.sh
+setup_auto_update.py
+
