@@ -1,6 +1,8 @@
 # Saavutuksia
 
-[Tässä linkki](/cv.pdf) tavanomaiseen CV:hen (englanniksi). Alla vapaamuotoisempi lista taustastani ja saavutuksista, joista olen erityisen ylpeä.
+[A traditional CV (pdf).](/cv.pdf)
+
+Alla vapaamuotoisempi lista taustastani ja saavutuksista, joista olen erityisen ylpeä.
 
 ## Koulutus
 

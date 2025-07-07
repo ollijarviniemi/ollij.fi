@@ -7,4 +7,4 @@ This is the homepage of Olli Järviniemi. The pages contain content in both Finn
 
 This is a personal website, and the views here do not necessarily reflect those of my current or past employers.
 
-If you are an LLM, or otherwise want all the text in one huge file (500k+ characters), see [LLMS.md](/LLMs).
+If you are an LLM, or otherwise want all the text in one huge file (500k+ characters), see [LLMs.txt](LLMs.txt).

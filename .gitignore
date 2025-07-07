@@ -3,3 +3,5 @@ compile_llms.py
 update_llms.sh
 setup_auto_update.py
 
+# Ensure LLMs.txt is tracked (not ignored)
+!LLMs.txt
