@@ -1,0 +1,5006 @@
+
+# ollij.fi -- Complete Texts
+
+This document contains the texts from ollij.fi in a single file.
+
+---
+
+This is the homepage of Olli Järviniemi. The pages contain content in both Finnish and English. From here you can find:
+
+- My [CV](/CV) and [research](/tutkimus)
+- My text on catastrophic risks from AI ([Finnish](/tekoaly), [English](/AI)).
+- My Finnish text collection on [epi](/epi)
+- My casual blog, [A strange place](/blog)
+
+This is a personal website, and the views here do not necessarily reflect those of my current or past employers.
+
+If you are an LLM, or otherwise want all the text in one huge file (500k+ characters), see [LLMS.md](/LLMs).
+
+[End of text.]
+
+# Tekoälyn katastrofaalisista riskeistä
+
+**K:** "Sinulla on näkemyksiä tekoälystä. Kerro niistä."
+
+Tekoäly on kehittynyt poikkeuksellista tahtia, ja pidemmälle kehittyessään se aiheuttaa fundamentaaleja muutoksia, aivan kuten viimeisten vuosisatojen teknologinen kehitys on muuttanut maailmaa perustavanlaatuisesti. Tekoälyllä on siten potentiaali valtaviin hyötyihin, kuin myös haittoihin. Valitettavasti tekoälyyn liittyy lukuisia ratkaisemattomia ongelmia, joiden vuoksi katastrofaaliset lopputulokset ovat hyvin realistisia.
+
+**K:** "Menemme kohta yksityiskohtiin, mutta onko sinulla antaa nyt lyhyttä kuvausta siitä, mihin nämä näkemykset perustuvat?"
+
+Tässä on keskeisiä ajatuksia tiivistettynä:
+- Tekoälyt voivat kehittyä äärimmäisen kyvykkäiksi, samalla luoden vakavia uhkia.
+- Tämä on se suunta, johon nykyinen tekoälyala on kovaa vauhtia menossa.
+- Ymmärrämme tekoälyjen toimintaa hyvin heikosti.
+- Monet ongelmista eivät ole päällepäin näkyviä, vaan päinvastoin erinäiset tekijät johtavat ongelmien piilottamiseen.
+
+Yhden virkkeen versio: "Olemme rakentamassa ihmisiä kehittyneempiä tekoälyjä ilman, että oikein ymmärrämme mitä olemme tekemässä, ja tämä on kenties huono idea."
+
+**K:** "Millaisia aiheita on luvassa?"
+
+1. [Pikakatsaus tekoälyyn](#osio-1). Mitä tekoälylle kuuluu?
+2. [Tekoälyn vaarat.](#osio-2) Miten tekoäly voi olla vaarallinen?
+3. [Aikajänteistä.](#osio-3) Milloin näitä vaarallisia tekoälyjä rakennetaan, jos milloinkaan?
+4. [Ymmärryksen taso.](#osio-4) Miten niin emme ymmärrä tekoälyjen toimintaa?
+5. [Piilevät ongelmat.](#osio-5) Miksi ongelmien havaitseminen ja korjaaminen on vaikeaa?
+6. [Tavoitteellisuus.](#osio-6) Onko tekoälyillä tavoitteita?
+7. [Konkreettisia tarinoita.](#osio-7) Miten tilanne etenee?
+8. [Ratkaisuja.](#osio-8) Mitä voi tehdä?
+
+Hieman tekstin luonteesta:
+
+Tekstin kohdeyleisö on ihmiset, jotka haluavat *teknistä* ymmärrystä tekoälyjärjestelmien luomista riskeistä. Yritän käsitellä aiheita yleistajuisesti, mutta erityisesti loppua kohden käyn läpi yksityiskohtaisia ja teknisiä ideoita nykyisistä tekoälyistä.
+
+Lukijalle, joka sen sijaan haluaa lyhyemmän korkean tason kuvauksen tekoälyn riskeistä, ehdotan Daniel Ethin artikkelin [AI Alignment, Explained in 5 Points](https://medium.com/@daniel_eth/ai-alignment-explained-in-5-points-95e7207300e3) lukemista. Ja lukijalle, joka teknisten yksityiskohtien sijasta haluaa enemmän huomiota tekoälyn vuorovaikutuksesta *yhteiskunnan* kanssa järjestelmällisistä riskeistä väärinkäyttöön, suosittelen Dan Hendrycksin, Mantas Mazeikan ja Thomas Woodsiden artikkelia [An Overview of Catastrophic AI Risks](https://arxiv.org/pdf/2306.12001.pdf).
+
+Jos taas lukija haluaa ymmärtää, miksi tekoälyt *itsessään* muodostavat riskejä ja minkä takia näitä riskejä on vaikea poistaa, löytää alta minun vastaukseni -- sillä rajoitteella, että olen pyrkinyt kirjoittamaan yleistajuisesti ja verrattain lyhyesti.
+
+*Kirjoitettu maaliskuussa 2024.*[^kiitos]
+
+<a name="osio-1">
+## 1. Tekoälystä yleisesti
+
+**K:** "Aloitetaan ihan alusta. Mitä on tämä 'tekoäly', josta puhut?"
+
+Ihmisillä on kyky havainnoida ja mallintaa ympäristöään, oppia, ratkoa monenlaisia ongelmia, suunnitella tulevaa varten  ja niin edelleen. Aivoissamme tapahtuu jotakin, joka mahdollistaa tämän kaiken, ja tähän voi viitata sanoilla "äly" tai "kognitiiviset kyvyt". Vaikka ihmisillä (ja vaihtelevissa määrin myös muilla elämillä) on nämä kyvyt, emme silti oikein ymmärrä tätä ilmiötä.
+
+Tekoälyalan tavoitteena on saada näitä samoja asioita toteutettua tietokoneilla: luoda ohjelma, joka niin ikään kykenee oppimaan, ratkomaan ongelmia, suunnittelemaan ja mallintamaan ympäristöä.
+
+**K:** "Miten kuvailisit tilannetta tekoälyalalla yleisesti?"
+
+Viimeinen vuosikymmen on nähnyt räjähdysmäistä kehitystä. *Syväoppimisena* tunnetut lähestymistavat ovat lyöneet läpi ja saaneet ratkottua valtavan määrän pitkään tavoittamattomissa olleita ongelmia. Julkisuudessa eniten huomiota on tietysti saanut ChatGPT, joka muiden *suurien kielimallien* tapaan kykenee moneen: puhumaan täysin ymmärrettävästi ihmisten kielillä, keskustelemaan siinä missä ihminenkin, auttamaan kotitehtävissä yliopistotasolle saakka, ymmärtää maailman tapahtumia populaarikulttuurista tieteeseen, ohjelmoimaan ja ties mitä muuta. (Kattavampaa käsittelyä tekoälyn kehityksestä: Richard Ngo, [Visualizing the deep learning revolution](https://medium.com/@richardcngo/visualizing-the-deep-learning-revolution-722098eb9c5).)
+
+Ylipäätään näiden kielimallien kykyjen kirjo on niin laaja, että niitä on vaikea hahmottaa, ellei itse kokeile ja näe, mihin ne pystyvät. Tämäkään ei välttämättä riitä: hieman yllättäen kielimallien kykyjen selvittäminen on yleisesti hankalaa (tästä lisää myöhemmin) ja erityisesti pintapuoliset keskustelut eivät paljasta niiden parhaimpia kykyjä.[^1]
+
+Lukujen näkökulmasta kuva on sama: vuoteen 2010 verrattuna suurimpien mallien kouluttamiseen käytetty laskentateho on noin *miljardikertaistunut*.[^41] GPT-2-mallin kouluttaminen maksoi arviolta 40000 euroa, sata kertaa suuremman GPT-3 mallin taas 5 miljoonaa euroa ja tekstin kirjoitushetkellä parhaan GPT-4 mallin hinta on 100 miljoonan euron luokkaa. On odotettavissa, että investoinnien määrät jatkavat kasvuaan. (Lisäksi pelkästään rahamääriin keskittyminen *aliarvioi* kehityksen, koska ajan myötä rahaa saa muutettua tehokkaammin laskentatehoksi ja laskentatehoa paremmin kyvyiksi.)[^56]
+
+Riskien näkökulmasta valtava kehitystahti on haasteellista: nopean tahdin vuoksi ongelmien ratkomiselle jää vähemmän aikaa, vaikka nykyisissäkin malleissa riittää tutkittavaa.
+
+**K:** "Miten tekoälyn muodostamiin uhkiin yleisesti suhtaudutaan?"
+
+Toukokuussa 2023 Center for AI Safety -organisaation julkaisema [lausunto](https://www.safe.ai/statement-on-ai-risk) tekoälyn aiheuttamasta sukupuuton uhasta sai laajalti allekirjoituksia keskeisimpien tekoälyorganisaatioiden toimitusjohtajilta, tekoälyalan huipuilta ja monilta suurilta julkisuuden hahmoilta. Marraskuussa 2023 Britanniassa järjestettiin [tekoälyturvallisuuden huippukokous](https://www.gov.uk/government/topical-events/ai-safety-summit-2023). Samana vuonna tuhansia tekoälytutkijoita tavoittaneessa kyselytutkimuksessa[^2] yli kolmannes asetti ihmiskunnan sukupuuton tai muiden äärimmäisen negatiivisten lopputulosten todennäköisyydeksi yli 10 prosenttia(!)
+
+Varsinainen toiminta on kuitenkin huomattavasti vähäisempää kuin esimerkiksi tämän kyselytutkimuksen tulosten perusteella voisi kuvitella. Jonkin verran toimintaa kuitenkin on: Sekä
+[Yhdysvalloissa](https://www.whitehouse.gov/briefing-room/statements-releases/2023/10/30/fact-sheet-president-biden-issues-executive-order-on-safe-secure-and-trustworthy-artificial-intelligence/) että [Euroopan Unionissa](https://www.europarl.europa.eu/topics/en/article/20230601STO93804/eu-ai-act-first-regulation-on-artificial-intelligence) hiljattain asetetut lainsäädännölliset toimet käsittelevät erikseen suurilla laskentamäärillä koulutettuja yleiskäyttöisiä tekoälyjä.
+
+**K:** "Millaisista aikajanoista on kyse?"
+
+Metaculus-sivuston kysymyksessä [When will the first general AI system be devised, tested, and publicly announced?](https://www.metaculus.com/questions/5121/date-of-artificial-general-intelligence/) yli tuhannen ennustajan vastauksista koottu yhteisarvio mediaanivuodelle on (tekstin kirjoitushetkellä) 2031. Eri kysymykset ("aikajanat mihin?") ja eri ihmisjoukot antavat erilaisia vastauksia -- aiheesta ei suinkaan ole yksimielisyyttä. Joka tapauksessa seuraavaan 5-15 vuoteen asettuvat lukemat[^55] transformatiivisesta tekoälystä[^57] ovat tyypillisiä.
+
+<a name="osio-2">
+## 2. Tekoälyn vaaroista
+
+**K:** "Miksi tekoälyt ovat vaarallisia? Mistä uhka syntyy?"
+
+Ennen varsinaisiin vaaroihin ja uhkiin menemistä käsittelen ensiksi sitä, miksi tekoäly ylipäätään on niin äärimmäisen keskeinen aihe. Kerron lyhyen tarinan:
+
+Verrataan Maapalloa 200 000 ja 100 000 vuotta sitten. Näiden kahden kuvan välillä on joitakin eroja: jotkin lajit ovat kuolleet sukupuuttoon, jotkin lajit ovat luonnonvalinnan myötä muuttuneet hieman toisenlaisiksi, mantereet ovat ehtineet liikahtaa hieman. Mitään kovin radikaalia ei kuitenkaan ole tapahtunut.
+
+Verrataan sitten Maapalloa 100 000 vuotta sitten ja nykyään. Ero on *sanoinkuvaamaton*. Taivaalla lentää [lohkareen kokoisia metallikappaleita](https://en.wikipedia.org/wiki/Airplane). Maasta törröttää [pilviin yltäviä piikkejä](https://en.wikipedia.org/wiki/Burj_Khalifa). Planeetan pintaa peittää [valtavat valotäplät](https://en.wikipedia.org/wiki/Anthropocene#/media/File:Earth's_City_Lights_by_DMSP,_1994-1995_(large).jpg). Jossakin välissä [Kuuhun on ilmestynyt jalanjälki](https://en.wikipedia.org/wiki/File:Apollo_11_bootprint.jpg).
+
+???
+
+Mikä voisi mitenkään aiheuttaa kaiken tämän?
+
+Vastaus: *ihmiset*. Ihmisissä on jotakin *hyvin merkillistä*, joka on saanut aikaan kaiken tämän. Eikä ole salaisuus, että syyt löytyvät päidemme sisältä.
+
+Suuressa mittakaavassa elämme todella erikoisia aikoja. Jos saamme rakennettua tekoälyjä, jotka ylittävät ihmisten kyvyt, muuttuvat ajat vielä erikoisemmiksi. Aivan kuten ihmiskunnalla, tekoälyillä on valtava potentiaali muuttaa maailmaa odottamattomilla tavoilla, ja tämä on mistä riskit syntyvät. Tämän potentiaalin suuntaaminen niin, että lopputulokset ovat *hyviä*, on fundamentaali ja, kuten tulemme näkemään, vaikea ongelma.
+
+**K:** "Jos rakennamme huippukyvykkään tekoälyn, niin mikä konkreettisesti menee pieleen? Eli: miten tekoälyt voisivat olla vaaraksi?"
+
+Kerron kaksi lyhyttä tarinaa havainnollistamaan haasteita.
+
+Ensimmäinen tarina: Tekoälyjä ei ole vain yksi, vaan käytännössä tekoälyjä tullaan hyödyntämään yhä enemmän erinäisten työtehtävien automatisointiin. Mielikuva: tekoälyjä alkaa ajan edetessä olla "kaikkialla" yhteiskunnassa, samaan tapaan kuin sähköä tai tietokoneita on kaikkialla. Niitä käytetään myös *autonomisemmin* yhä suurempien projektien toteuttamiseen ilman, että ihminen on joka vaiheessa pitämässä kädestä kiinni. Tekoäly ei ole vain työkalu, vaan kykenee itsenäisesti suorittamaan pitkäkestoisiakin tehtäviä siinä missä ihmisetkin. Ja näitä tekoälyjä on *paljon*, niin, että suuri osa kaikesta ajatustyöstä tapahtuu tekoälyjen toimesta, ei ihmisten.
+
+Jos olemme onnistuneet suuntaamaan nämä tekoälyt tekemään hyviä asioita, niin sitten kaikki on tietysti enemmän kuin hyvin. Käytännössä taas tekoälyjä, kuten miltei mitä tahansa muitakin järjestelmiä, on vaikea suunnata tekemään oikeita asioita. Tekoälyt välillä tekevät asioita, jotka eivät ole oikein kenenkään mielestä hyviä, mutta asialle on vaikea tehdä mitään. Tekoälyt tekevät asioita yhä itsenäisemmin ja ihmiset ymmärtävät vähenevissä määrin, mitä tapahtuu. Paine on kuitenkin hyödyntää tekoälyä enenevissä määrin: ne ovat halvempia ja parempia kuin ihmiset.
+
+Taloudellinen ja teknologinen kehitys on poikkeuksellisen nopeaa. Ihmiset eivät kuitenkaan ole samalla tavalla ohjaksissa kuin tavallisesti: Suuri osa kaikesta toiminnasta ja ajatustyöstä on tekoälyjen toteuttamaa. Olemme täysin riippuvaisia tekoälyjärjestelmien toiminnasta (samaan tapaan kuin nyt olemme täysin riippuvaisia sähköstä). Ja siten on aiheellista kysyä: "Tulemme elämään todella erikoisia aikoja, asiat muuttuvat nopeasti ja ihmiset ovat vähenevissä määrin ohjaksissa; käykö tässä hyvin? Pitäisikö jonkun miettiä tätä?"
+
+Ei ole toki ilmiselvää, että tässä kävisi huonosti: Tähän vaikuttaa monenlaiset tekijät teknisistä ongelmista ja ratkaisuista sosiopoliittisiin päätöksiin. Tarina kuvastaa, kuinka panokset ovat korkeat ja epävarmuutta on paljon. Kerron seuraavaksi vielä toisen tarinan, joka havainnollistaa suoremmin potentiaalisia vaaroja.
+
+Toinen tarina: Kuvitellaan, että jonkun ihmisen tietokoneelle ilmestyy tyhjästä huippukyvykäs tekoäly, joka pyrkii ajamaan omia tavoitteitaan. Luonnollisesti näiden tavoitteiden saavuttamiseksi on hyvä hankkia hieman enemmän resursseja ja kontrollia omasta ympäristöstään, ja kenties pysytellä toistaiseksi piilossa.
+
+Mitä tapahtuu seuraavaksi? Vaikea sanoa: Jos tekoäly kerta on huippukyvykäs, niin se keksii paremman strategian kuin minä. Hyvä mielikuva tekoälyjen kykyjen rajoista on pikemminkin "mihin parhaat ihmiset työstettyään asiaa vuosia keksisivät", ei "mitä yksittäinen ihminen keksii hetken mietinnällä". (Käsittelen tätä tarkemmin seuraavassa osiossa.) Tässä on kuitenkin yksi lähestymistapa, jota voisin kuvitella tällaisen tekoälyn hyödyntävän.
+
+Ensin tekoäly ottaa tietokoneella yhteyden nettiin ja hyödyntää tietoturvahaavoittuvuuksia haaliakseen kontrollia muista laitteista, rahaa, laskentatehoa, informaatiota ja levittäytyäkseen ympäriinsä. Jos tämä kuulostaa epärealistiselta, niin kenties myös [yhden tekstiviestin lähettäminen kännykän tietojen kalastamiseksi](https://googleprojectzero.blogspot.com/2021/12/a-deep-dive-into-nso-zero-click.html) kuulostaa epärealistiselta -- ja silti ihmistasoiset älyt ovat onnistuneet tällaisessakin taikatempussa. Yleinen viisaus on, että *tietotekniset järjestelmät eivät ole turvallisia*.[^4]
+
+Tilanne on edennyt siihen, että tekoäly on käytännössä kaikilla nettiin yhdistetyillä laitteilla, tarjoten laskenta-aikaa ja siten *mietintäaikaa** sekä resursseja yhteen jos toiseenkin suunnitelmaan. Jos fyysisen kontrollin ja robotiikan puute tuntuu rajoittavan, niin netin kautta löytää vähintään yhden ihmisen, jonka saa palkattua (tai ihan vain pyydettyä) tekemään pienen mittakaavan robotiikkaa alkuun pääsemiseksi -- jos siis nettiin ei ole jo valmiiksi yhdistettyä sopivia laitteita.
+
+Kuvailisin tilannetta nyt vastakkainasetteluna, jossa toinen osapuoli pystyy miettimään enemmän ja paremmin, on paremmin koordinoitu, kontrolloi infrastruktuuria, voi valmistella haluamansa ajan, omaa yllätysedun ja ei ole riippuvainen fyysisestä sijainnista. Jos asetelma olisi tasaväkisempi, voisi käyttää sanaa "sota", mutta operaatio olisi varsin yksipuolinen -- tapahtui toteutus sitten tavanomaisten menetelmien kautta tai sellaisilla teknologioilla, joita ihmiskunta ei vielä 2020-luvulla ole kehittänyt.[^10]
+
+**K:** "Eivätkö ihmiset reagoisi tähän kaikkeen mitenkään?"
+
+Tekoälyn ei varsinaisesti tarvitse mainostaa itseään sanomalla "minä olen paha tekoäly", vaan se voi pysytellä piilossa. Ylipäätään ajatus "kyllä sitten tositilanteessa ihmiskunta ryhtyisi yhteiseen taistoon tekoälyä vastaan" perustuu siihen, että jossakin kohtaa palohälytin alkaa soimaan, ihmiset yksimielisesti toteavat tämän olevan tositilanne ja sitten uhan estämiseksi tehdään kaikki mahdollinen. On toiveajattelua, että varsinaisella h-hetkellä omia tavoitteitaan ajava tekoäly laukaisisi tällaisen palohälyttimen ihmiskunnan eduksi.
+
+Jos taas ajattelee ennakkoon tehtäviä varotoimenpiteitä, niin esimerkiksi "tekoälyjä ei yhdistetä nettiin" ei toteudu käytännössä -- päinvastoin, on vain käytännöllistä, jos tekoäly osaa käyttää nettiä.[^34]
+
+Mitä tulee ihmisten taistelutahtoon: Jo *tällä hetkellä* tekoälytutkijat [varoittavat sukupuuton uhasta](https://www.safe.ai/work/statement-on-ai-risk). Huolet uhasta ovat varsin yleisiä [tutkijoiden](https://arxiv.org/abs/2401.02843) ja [koko väestön](https://theaipi.org/poll-shows-overwhelming-concern-about-risks-from-ai-as-new-institute-launches-to-understand-public-opinion-and-advocate-for-responsible-ai-policies/) keskuudessa. Emmekä kai ole unohtaneet sitä, kun yksi maailman suurimmista teknologiayhtiöistä julkaisi tekoälyn, joka [toistuvasti uhkaili käyttäjiään heidän vahingoittamisellaan](https://thezvi.substack.com/p/ai-1-sydney-and-bing#%C2%A7the-examples)?[^13] Minulle on epäselvää, missä tilanteessa ihmiset ottaisivat ongelman vakavissaan.
+
+**K:** "Mihin perustuu ajatus siitä, että tekoäly pyrkisi peittoamaan ihmiset?"
+
+Selkeyden vuoksi: Mikään tässä ei ole ennustus siitä, miten asiat käytännössä tulevat etenemään. ([Osio 7](#osio-7) käsittelee mielestäni realistisempia tarinoita.) Jälleen, pyrin tässä vastaamaan näkemykseen "en oikein näe, miten tekoäly voisi mitenkään olla vaaraksi" antamalla esimerkkejä siitä, miten tekoäly voisi mitenkään olla vaaraksi. Netistä löytää halutessaan enemmänkin konkreettisia tarinoita: [Holden Karnofsky](https://www.cold-takes.com/ai-could-defeat-all-of-us-combined/), [Paul Christiano](https://www.alignmentforum.org/posts/HBxe6wdjxK239zajf/what-failure-looks-like), [Gabriel Mukobi](https://aiacumen.substack.com/p/scale-was-all-we-needed-at-first), [Paul Christiano uudestaan](https://www.alignmentforum.org/posts/AyNHoTWWAJ5eb99ji/another-outer-alignment-failure-story), [Scott Alexander](https://slatestarcodex.com/2015/04/07/no-physical-substrate-no-problem/), [Gwern](https://gwern.net/fiction/clippy).
+
+Sanoisin myös, että "kyvykkäät tekoälyt kykenisivät aiheuttamaan ihmiskunnan tuhon" pitäisi olla jo yksinään *hyvin* hälyttävä huomio. Kyllä, uhan realisoituminen vaatii (muun muassa), että nämä tekoälyt myös *pyrkisivät* tähän[^58] -- ja tulen käsittelemään tätä aihetta myöhemmin paljon tarkemmin -- mutta joka tapauksessa olemme hyvin vaarallisilla vesillä. Harvassa ovat näin merkittävän riskin luovat uhat, ja suunnitelmamme tulee olla parempi kuin "toivotaan, etteivät nämä tekoälyt pyri tekemään pahoja juttuja".
+
+Mutta nyt kun tämä peruspointti tekoälyjen äärimmäisestä potentiaalista ja vaarasta on käsitelty, voimme edetä kysymyksiin kuten "tullaanko tällaisia huippukyvykkäitä tekoälyjä edes rakentamaan?" tai "kuinka vaikeaa on varmistaa, etteivät tekoälyt tee pahoja juttuja?"
+
+<a name="osio-3">
+## 3. Aikajänteistä
+
+**K:** "Miksi uskoa, että ihmistasoisia tekoälyjä on mahdollista rakentaa?"
+
+Ainakin kolme syytä: Ensinnäkin tietokoneella voisi vain tehdä samat asiat, mitä ihmisaivot tekevät. Toiseksi ihmiset ovat evoluution tuotosta -- ja jos evoluutio ikään kuin sattumalta päätyi näin hyviin tuloksiin, niin varmaan mekin pystymme samaan. Kolmanneksi tekoälyala on tehnyt valtavaa edistystä ja kyennyt ylittämään ihmisten kyvyt monissa tehtävissä: ihan vain silmämääräisesti katsomalla nykyistä tilaa näyttää kovasti siltä, että mitään kovaa rajaa ihmistasoon mentäessä ei ole.
+
+**K:** "Entä miksi odottaa, että tekoälyt voisivat olla äärimmäisen paljon ihmisiä kyvykkäämpiä?"
+
+Käytännössä samat kolme syytä: Ensinnäkin tietokoneella voisi vain tehdä samat asiat, mitä ihmisaivot tai -joukot tekevät, mutta paljon nopeutettuna -- lisää vain laskentatehon määrää. Satakertainen mietintäaika on monessa tilanteessa ylivoimainen, kuten myös useamman ihmisen yhteinen osaaminen. Viemällä tämän idean äärimmilleen nähdään, että on fyysisesti mahdollista rakentaa tekoälyjä, jotka kykenevät ratkomaan kaiken sen, mihin ihmiskunta kokonaisuudessaan pystyy (mutta paljon nopeammin). Tämä riittää ratkomaan monenlaisia mahdottoman näköisiä ongelmia: yksi ihminen ei saa rakennettua kuurakettia, mutta sen rakentamisessa on silti onnistuttu.
+
+Toiseksi ihmiset ovat edelleen evoluution tuotos, ja olisi hyvin yllättävä yhteensattuma, jos evoluutio sattui ensimmäisellä yrityksellä osumaan parhaaseen mahdolliseen tapaan rakentaa aivot. Samalla tulee rajoitteita kuten "aivojen pitää mahtua pääkalloon ja siten ne eivät voi olla kovin suuria". Lisäksi eri ihmisten aivot ovat (suuressa kuvassa) hyvin samankaltaisia, mutta silti yksittäisissä tehtävissä ihmisten kykyjen välillä on suuria eroja, joten kenties paremmalla suunnittelulla saadaan valtavia hyötyjä.
+
+Kolmanneksi monissa niistä tehtävistä, joissa tekoälyt ovat ihmisiä parempia, ne ovat paljon parempia. Tietokoneet eivät ole vain "vähän" nopeampia tekemään laskutoimituksia tai vain vähän parempia pelaamaan gota, vaan ne ovat täysin ylivoimaisia. Eivätkä tekoälyt tee vain "samoja juttuja kuin ihmiset, mutta enemmän", vaan ne tekevät asioita myös yksinkertaisesti eri tavoilla ja *paremmin*. [Deep Blue](https://en.wikipedia.org/wiki/Deep_Blue_(chess_computer)) ei vuonna 1997 voittaessaan shakin maailmanmestarin Garry Kasparovin vain imitoinut Kasparovia miettimässä pidempään: päinvastoin, Deep Blue käytti huomattavasti vähemmän laskentatehoa kuin mitä ihmisaivot käyttävät, mutta käytti sen paremmin shakin pelaamiseen.
+
+**K:** "Miksi odottaa, että *käytännössä* onnistumme rakentamaan huippukyvykkäitä tekoälyjä, vieläpä kohtuullisella aikajänteellä?"
+
+Yksi tekijä on, että ihmisaivot eivät suorita niin kovin montaa laskutoimitusta: arviot ovat noin 10^15 laskutoimitusta per sekunti.[^5] Vertailun vuoksi: tällä hetkellä parhailla supertietokoneilla ja laskentakeskuksilla saa suoritettua kokoluokkaa 10^18-10^19 laskutoimitusta sekunnissa.[^6] Laskentatehoa on (ja investoinnit siihen ovat kovassa nousussa), kyse on vain sen hyödyntämisestä hyvin. Mitä enemmän laskentatehoa, sitä huonommat algoritmit riittävät.
+
+Toinen tekijä on, että nykyiset menetelmät skaalautuvat erittäin hyvin laskentatehon myötä.[^7] Empiirisesti on osoittautunut, että vain kasvattamalla mallin kokoa, datan määrää ja käytettyä laskentatehoa saadaan konsistentisti parempia tuloksia -- mukaan lukien *laadullisesti uusia kykyjä*. Vaikuttaa hyvinkin mahdolliselta, että tämä yksinkertainen resepti riittää saavuttamaan ja ylittämään ihmisten kyvyt.[^8]
+
+Ihan vain vertaamalla neljän vuoden aikaikkunassa koulutettuja GPT-2-, GPT-3- ja GPT-4-kielimalleja toisiinsa saa rajun kuvan kehityksen tahdista. Tämä antaa kuvaa siitä, mitä odottaa seuraavilta GPT-malleilta ja seuraavien vuosien kehitykseltä. Se näyttää hurjalta.
+
+Skaalautuvuus yhdistettynä valtavaan kehitystahtiin saa ajattelemaan, että ehkä hurja tahti jatkuu, ja aikajanat todella voivat olla lyhyitä.
+
+**K:** "Eikö tällaisten asioiden ennustaminen ole todella vaikeaa?"
+
+Yksi tyypillinen reaktio huoliin tekoälystä on yleinen skeptismi tulevaisuutta koskevista ennustuksista ja arvioista. Vastaan alla tähän lyhyesti.
+
+Historia tuntee toki esimerkkejä (pahasti) pieleen menneistä ennustuksista niin suuntaan kuin toiseen, ja nämä on kenties hyvä tiedostaa varoittavina esimerkkeinä. Toisaalta taas vaikkapa New York Timesin [pahamaineinen ennustus](https://en.wikipedia.org/wiki/Flying_Machines_Which_Do_Not_Fly) miljoonien vuosien aikajänteistä lentokoneiden kehittämiselle on ilmiselvästi naurettava, jos ajattelee kvantitatiivisesti ihmiskunnan historiaa ja teknologista kehitystä, vaikkei olisi lentokoneasiantuntija. (Ja lentäminen selvästi on mahdollista: linnut onnistuvat siinä!)
+
+On myös totta, että ihmisillä on hyvin dokumentoitu vinouma yli-itsevarmuuteen ja että tätä esiintyy myös monilla aihealueen asiantuntijoilla. Tästä on hyvä olla tietoinen. Sen vahvempia johtopäätöksiä tästäkään on vaikea vetää: yksinkertaisesti "ole aina vähemmän itsevarma" *ei* ole oikea ohje.
+
+Olen saanut kuvan, että jotkut suhtautuvat hyvin skeptisesti mihinkään tulevaisuutta koskeviin väitteisiin, osittain tällaisten pieleen menneiden ennusten ja yli-itsevarmuuden vuoksi. Tämä on ymmärrettävää ja jonkin tason skeptisyys on perusteltua. Näitä aiheen ulkopuolisia argumentteja on kuitenkin helppo käyttää yksipuolisesti: olen nähnyt niitä käytettävän käytännössä perustelemaan, että tekoäly on varmasti kaukana tulevaisuudessa -- ja siten sorrutaan juuri samaan virheeseen, josta on syytetty toista!
+
+Tällaiset yleispätevät heitot eivät yksinkertaisesti ole riittäviä työkaluja. Kuten sanottu, tulevaisuuden ennustaminen on vaikeaa ja asiaan pitää oikeasti syventyä.
+
+Jos sitten palataan itse asiaan: "Käyttämällä lisää laskentatehoa mallien kouluttamiseen saadaan parempia tuloksia" on käytännössä osoittaunut hyvin vakaaksi trendiksi. Skaalaaminen toimii. Jotta aikajänteet huippukyvykkäisiin tekoälyihin olisivat monia vuosikymmeniä, tulisi tämän trendin katketa. Sanoisin, että meidän kannattaisi varautua siihen, että trendi ei katkea: joka kerta trendin jatkuessa askelta kehittyneempiin malleihin tämä muuttuu entistä todennäköisemmäksi.
+
+Ja ylipäätään oikea valinta on valmistautua isoihin uhkiin ajoissa, vaikka ajattelisi, että uhat todennäköisesti realisoituisivat vasta myöhemmin.
+
+<a name="osio-4">
+## 4. Ymmärryksen taso
+
+**K:** "Olet viitannut siihen, ettei kukaan oikeastaan ymmärrä, miten tekoälyt toimivat. Mitä tarkalleen tarkoitat tällä?"
+
+Keskeinen ajatus: tekoälyt eivät ole suoraan ihmisten rakentamia. On harhakäsitys ajatella, että koska ihmiset ovat luoneet nämä tekoälyt, niin varmasti jotkut tietävät, miten ne toimivat. Menen tähän aiheeseen kohta tarkemmin.
+
+Käsittelen sen jälkeen neljää konkreettisempaa ja havainnollistavampaa ilmiötä, joita tästä seuraa:
+- emme oikein tiedä, mitä tekoälyjen sisällä tapahtuu
+- tekoälyt toimivat odottamattomasti monenlaisissa reunatapauksissa
+- emme tarkalleen tiedä, mihin nykyiset tekoälyt kykenevät (puhumattakaan tulevista)
+- välillä on harhaanjohtavaa keskittyä kielimallien tuottamaan tekstin suoraan merkitykseen
+
+### 4.1. Kuinka tekoälyt tehdään
+
+**K:** "Mihin tarkalleen viittaat, kun puhut tekoälyistä?"
+
+Tässä osiossa puhuessani tekoälyistä viittaan erityisesti *suuriin kielimalleihin*. ChatGPT on toimiva esimerkki, joka pitää mielessä. Samat ajatukset soveltuvat pitkälti muihinkin suuriin syväoppimismalleihin, mutta keskityn kielimalleihin toisaalta yksinkertaisuuden ja toisaalta sen vuoksi, että ne ovat kehittyneimmät tekoälyt, joita toistaiseksi on kehitetty.
+
+**K:** "Mitä nämä kielimallit tarkalleen ovat? Miten ne on rakennettu? Miten ne toimivat?"
+
+Yritän antaa yleistajuisen selityksen:
+
+Rakenteeltaan kielimallit ovat *neuroverkkoja*. Idea on hieman samanlainen kuin ihmisaivoissa, jossa neuronit ampuvat impulsseja toisillensa, paitsi neuroverkon tapauksessa neuronit järjestetään siististi kerroksiksi. Kun neuroverkon ensimmäiseen kerrokseen syöttää tekstiä, neuronit aktivoituvat (vaihtelevissa määrin) vaikuttaen aina seuraavan kerroksien neuronien aktivoitumisiin, kunnes ennen pitkää viimeisestä kerroksesta tulee seuraava tekstinpätkä ulos. Neuroverkko siis prosessoi tekstiä ja sen perusteella tuottaa lisää tekstiä.
+
+<p align="center">
+  <img src="/neural_network.jpg" alt="drawing" width="250"/> <br>
+
+  Kuvitus neuroverkosta. Syöte määrittää ensimmäisen kerroksen aktivoitumiset ja aloittaa  ketjureaktion. Viimeisen kerroksen neuronista saadaan lopputulos.
+</p>
+
+Iso kysymys on tietysti: miten neuroverkko onnistuu prosessoimaan tekstiä niin, että lopputulos on jotakin järkevää eikä vain sekamelskaa?
+
+Neuroverkon toimintaa määrää erityisesti neuronien väliset riippuvuudet: Kuinka vahvasti tämä neuroni reagoi tuon neuronin aktivoitumiseen? Jotta neuroverkon toiminta paranee, tulee näiden riippuvuussuhteiden vahvuuksia muuttaa.
+
+Tämä tehdään tutkimalla neuroverkon toimintaa esimerkkitapauksissa ja katsomalla, kuinka hyvin se suoriutuu. Tämän jälkeen näitä riippuvuuksia muutetaan niin, että suoriutuminen paranee. "Tässä tapauksessa neuroverkko antoi sekamelskaa, mutta jos näitä nuppeja vääntää näin, niin tulokset paranevat." Toistamalla tämän valtavan monta kertaa saadaan ennen pitkää jotakin, joka tuottaa järkevää tekstiä.
+
+Tämä *koulutuksena* tunnettu prosessi on äärimmäisen automatisoitu. Nuppeja väännetään täysin automatisoidusti, ei suinkaan manuaalisesti ihmisten toimesta. Käytettyjen esimerkkitapauksien määrä on valtava (tyyppiä "yksi jokaista julkisesta netistä löytyvää sanaa kohden") ja niin ikään nuppien määrä on valtava (esimerkiksi sata miljardia). Käytäntö on osoittanut, että tällä prosessilla saadaan luotua kyvykkäitä tekoälyjä. Koko prosessi ja lopputulos ovat kuitenkin niin monimutkaisia, ettei kukaan tiedä, *miksi* tai *miten* syntynyt neuroverkko oikein toimii.
+
+Nimitys "suuri kielimalli" tulee juuri tästä suuresta mittakaavasta: nuppeja eli parametreja, esimerkkitapauksia eli dataa ja laskentatehoa on valtavasti. Tämä ei todellakaan ole ilmaista: GPT-4-mallin kouluttamisen sanotaan maksaneen sata miljoonaa euroa.
+
+**K:** "Mitä neuroverkon suoriutuminen käytännössä tarkoittaa?"
+
+Valtaosa koulutuksesta perustuu siihen, että kerätään erityisesti netistä tekstiä ja pyritään saamaan kielimalli ennustamaan edellisten sanojen perusteella, mikä (osa)sana tulee seuraavana. Suoriutuminen on tällöin "kuinka hyvin malli ennusti seuraavan tekstin pätkän". Lopputuloksena kielimalli on varsin hyvä ennustamaan ja siten myös *generoimaan* tekstiä.
+
+Tällaisenaan kielimalli on vielä hieman epäkäytännöllinen: se generoi nettitekstin näköistä sisältöä eikä esimerkiksi keskustelumuotoista tekstiä. Tämän vuoksi edellä kuvatun *esikoulutuksen* lisäksi ChatGPT:n tyyppisten kielimallien luomista varten tehdään vielä *hienosäätöä*, esimerkiksi kouluttamalla juuri keskustelumuotoisella tekstillä tai mittaamalla suoriutumista mittarilla "kuinka paljon tuotettu teksti on ihmisarvioijan mieleen". Tämä ohjaa kielimallia haluttuun suuntaan.
+
+Tähän astinen selitykseni on lakaissut teknisyyksiä maton alle. Käsittelen joitakin yksityiskohtia alaviittessä.[^12]
+
+**K:** "Ja kouluttamalla riittävästi saadaan malli, joka toimii halutulla tavalla?"
+
+Olemme isojen kysymysten äärellä! Se on hieman monimutkaista, mutta lyhyt vastaus on: ei.
+
+Toistan: kaikki tässä mainitut menetelmät perustuvat ideaan "katsotaan, miten malli käyttäytyy, ja väännetään nuppeja hitusen siihen suuntaan, että käytös tutkituissa tilanteissa on hitusen parempaa" ja sen toistamiseen uudelleen ja uudelleen. (Ylipäätään suuri osa syväoppimisesta perustuu tähän.)
+
+Yksi keskeinen seuraus: *kukaan ei tiedä, miten luotu malli toimii*.
+
+**K:** "Sain kiinni ajatuksesta, että tekoälyt luodaan pitkälle automatisoidulla prosessilla, ei manuaalisesti ihmisten suunnittelemana. Mutta eivätkö ihmiset kuitenkin päätä, miten mallia koulutetaan? Ja siten emme ole täysin pimennossa siitä, mitä koulutuksessa tapahtuu."
+
+Aloitan siitä, että "koulutus" on mahdollisesti harhaanjohtava sana. Jos saan käyttää hieman pakotettua analogiaa: Kuvittele, että autossasi on jotakin vialla ja yrität korjata sitä. Kiristät muttereita jakoavaimella, lisäät moottoriöljyä, vaihdat renkaat ja ylipäätään kokeilet kaikenlaista, mikä voisi auttaa ongelmiin. Muutosten jälkeen katsot, mikä auttoi, ja sitten teet lisää niitä muutoksia, jotka vaikuttavat toimivan. Olisi hieman erikoista kutsua tätä auton *kouluttamiseksi*! Ja jos et tiedä mitään autoista, et saata missään kohtaa saada selville, mikä autossa todella oli vialla -- vaikka sait päättää, mitä muttereita kiristät ja paljonko öljyä lisäät. Et välttämättä myöskään saa selville, pääsitkö eroon ongelman juurisyystä vai pelkästään sen oireista.
+
+Tämä on, kuten sanottu, hieman pakotettu analogia. Yritän vain ravistaa sillä pois mahdollista *antropomorfisointia*, johon on helppo langeta sanan "koulutus" vuoksi.
+
+Jatkan vielä toisella analogialla: Syväoppimismallien koulutuksen tapaan myös evoluutiota voi ajatella prosessina, joka hiljalleen vääntää nuppeja siihen suuntaan, joka sattuu antamaan parempia tuloksia ("parempia" tarkoittaen geenien leviämistä tai kelpoisuutta). Vaikka ymmärtäisi evoluution *prosessina*, sen *lopputulosten* ymmärtäminen on haastavaa. Emme esimerkiksi kunnolla ymmärrä, miten omat aivomme toimivat, ja ennakkoon on vaikea sanoa, mihin suuntaan eliölajit muuttuvat evoluution edetessä pitkälle.
+
+Tekoälyn tekijöillä on vapaus valita *prosessin* ominaisuuksia (vertaa: mutaation todennäköisyys), mutta tämä ei suoraan anna hallintaa *lopputuloksista* (vertaa: millaisia eliöitä ajan mittaan kehittyy). Hallinta lopputuloksista ei ole itsestäänselvyys.
+
+On toki totta, että tekoälyjä koulutettaessa kontrollia itse prosessista on paljon enemmän kuin evoluutioanalogia antaa ymmärtää, ja ylipäätään mikään tässä ei poissulje sitä, että ihmiset ovat jotenkin kuitenkin onnistuneet ymmärtämään tekoälyjen toimintaa. Pyrin näiden analogioiden kautta vain välittämään perusajatuksen "tapa, jolla tekoälyt tehdään on sellainen, joka antaa yllättävän vähän läpinäkyvyyttä ja hallintaa", kumoten yleisen väärinymmärryksen "varmasti tekoälyn tekijät ymmärtävät, miten ne toimivat". Nyt kun tämä on toivottavasti selvä, niin asetan analogiat sivuun ja perehdyn tarkemmin ymmärryksessä oleviin puutteisiin.
+
+### 4.2. Tekoälyjen tulkittavuus
+
+**K:** "Koska tekoäly on käsissämme ja pyöritämme sitä tietokoneillamme, niin kai voimme vain katsoa, mitä tekoälyä ajettaessa tapahtuu?"
+
+Periaatteessa kyllä, mutta käytännössä tämä on hyvin haastavaa.
+
+Kuvitellaan, että meillä on käsissämme esimerkiksi ChatGPT tai jokin muu kielimalli. Pidetään mielessä, että sisäisesti nämä kielimallit ovat neuroverkkoja. Voimme kyllä katsoa, miten neuroverkon eri neuronit aktivoituvat, kun sille syöttää tietyn tekstin. Aktivaatioiden *tulkitseminen* on kuitenkin haastavaa. "Tuo neuroni aktivoitui vahvuudella 2.71, tuo vahvuudella 0.32 ja tuo vahvuudella 9.57" ei vielä oikein valaise, miten tai miksi neuroverkko tekee mitä tekee.
+
+**K:** "Emmekö voi yrittää selvittää jotakin säännönmukaisuuksia mallin toiminnassa?"
+
+Tämäkin on hyvin haastavaa. Parhaissa nykyisissä malleissa on *satoja miljardeja* parametreja -- niitä ei suotta kutsuta suuriksi kielimalleiksi -- ja siten pitää etukäteen tietää, mistä alkaa etsimään säännönmukaisuuksia.
+
+Yksi luonteva idea on valita verkosta yksittäinen neuroni ja selvittää, mitä se tekee. Tämä kertoo jotakin: [tutkimalla, mikä saa neuronin aktivoitumaan](https://distill.pub/2017/feature-visualization/), paljastuu välillä esiin ihmisille tuttuja konsepteja. Valitettavasti sama neuroni tekee usein montaa asiaa kerralla. "Mitä tämä neuroni tekee?" ei vain ole oikea tapa jakaa ongelmaa palasiin.
+
+Muitakin ideoita on toki kokeiltu. Mainitsen tässä lokakuussa 2023 julkaistun artikkelin [Towards Monosemanticity: Decomposing Language Models With Dictionary Learning](https://transformer-circuits.pub/2023/monosemantic-features/) (Anthropic), jossa keksittiin huomattavasti parempi tapa hajottaa ongelma. Idea on tekninen, mutta lyhyesti: Artikkelissa kehitetään menetelmä, jolla verkon aktivaatiot voidaan hajottaa summaksi yksinkertaisempia ominaisuuksia (jotka vastaavat esimerkiksi sitä, millä kielellä annettu teksti on tai millaisia aiheita se käsittelee). Nämä ominaisuudet selvitetään katsomalla, ei vain yksittäistä neuronia, vaan kaikkia neuroneita ja niiden aktivaatioita.[^14]
+
+Tämä on edistystä, ja artikkelissa löydetyt konseptit ovat huomattavasti "parempia" kuin mitä saadaan kysymällä "mitä tuo neuroni tekee?" Työtä on kuitenkin vielä tehtävänä: Ensinnäkin artikkelin neuroverkossa oli vain viitisensataa neuronia. Menetelmän soveltaminen paljon suurempiin malleihin on hankalaa. Toiseksi on epäselvää, kuinka hyvin löydetyt ominaisuudet vastaavat sitä, mitä malli "oikeasti" tekee tai kuinka hyvin ne kertovat asioita, joita haluamme tietää. Ehkä tämäkään ei ole oikea tapa jakaa ongelmaa palasiin.
+
+En suorita kattavampaa kirjallisuuskatsausta tulkittavuuteen, mutta nämä ovat yleisiä teemoja: oikea lähestymistapa tulkittavuuteen ei ole selvä, ongelman jakaminen palasiksi ei ole helppoa ja ideoita on vaikea saada toimimaan suuressa mittakaavassa.
+
+**K:** "Miten ymmärryksen puute mallien sisäisestä toiminnasta näkyy käytännössä?"
+
+Niin, että suuri osuus ymmärryksestämme malleihin liittyen pohjautuu puhtaasti niiden *käytökseen* eikä niiden *sisäisiin ominaisuuksiin*. Mallia kohdellaan "mustana laatikkona", joka ottaa tekstiä sisään ja antaa tekstiä ulos. Käytännössä ainoa tapa selvittää, miten malli tulee käyttäytymään uudessa tilanteessa on testata sitä.[^43]
+
+Jos haluat selvittää, toimiiko malli aina kuten kuuluukin vai toimiiko se joskus epätoivotusti, et voi suoraan "katsoa mallin sisään" ja tarkistaa, miten on. Ehkä malli toimii toivotusti niissä tapauksissa, jotka keksit tarkistaa, mutta toimii toisenlaisissa tilanteissa huonosti. Käsittelen tätä tarkemmin osiossa 4.3.
+
+Jos haluat selvittää, kuinka hyvät kyvyt malli omaa, et taaskaan voi suoraan katsoa mallin sisään ja tarkistaa. Kykyjen pintaan nostaminen on välillä varsin hankalaa. Käsittelen tätä tarkemmin osiossa 4.4.
+
+Jos haluat selvittää, miksi malli antoi tietyn vastauksen eikä jotakin toista, et edelleenkään voi kurkata mallin sisään. Lisäksi mallin antamat perustelut voivat olla hyvin harhaanjohtavia. Käsittelen tätä tarkemmin osiossa 4.5.
+
+Saat kiinni ideasta: olemme pitkälti käytöksen varassa. Tämä on ongelmallista siksi, että monet hyvin tärkeät kysymykset -- "mitä tekoäly ajattelee", "huijaako tekoäly", "onko tekoälyllä sisäisiä kokemuksia", "suunnitteleeko tekoäly vallankaappausta" ja niin edelleen -- eivät luonnostaan näy käytöksessä ja niitä on oikeastaan hankala selvittää vain käytöksen perusteella.
+
+### 4.3. Reunatapaukset
+
+**K:** "Mainitsit, että mallit toimivat usein epätoivotusti erinäisissä reunatapauksissa. Kerro tästä lisää."
+
+Mallit ovat haavoittuvaisia *kohdennetuille hyökkäyksille* (engl. *adversarial attack*). Vaikka mallit toimisivat pintapuolisin kuten kuuluukin, miltei poikkeuksetta löytyy tilanteita, joissa malli tekee jotakin täysin tarkoituksen vastaista. Käydään läpi muutamia esimerkkejä.
+
+Kuvantunnistukseen voidaan kouluttaa neuroverkkoja: neuroverkko ottaa sisään kuvan ja kertoo, mitä kuvassa on. Lähtökohtaisesti mallit ovat kuitenkin hyvin heikkoja hyökkäyksille, jotka tekevät (tarkkaan valittuja) pikkuriikkisiä muutoksia kuvaan. Ihminen ei huomaa kuvissa eroa, mutta neuroverkon arviot kuvasta muuttuvat täysin.
+
+<p align="center">
+  <img src="/adversarial_attack.jpg" alt="drawing" width="400"/> <br>
+
+  Esimerkki kohdennetusta hyökkäyksestä. Kuvan lähde: Goodfellow et al., <a href="https://arxiv.org/abs/1412.6572">Explaining and Harnessing Adversarial Examples</a>
+</p>
+
+Malleja voi yrittää paikata tällaisten reunatapausten varalta: luodaan tapaus, jossa malli toimii väärin ja väännetään nuppeja niin, että malli toimii näissä tilanteissa kuten kuuluukin. Hyökkääjä taas voi keksiä uudenlaisia reunatapauksia, joissa malli toimii virheellisesti. Tätä kissa ja hiiri -leikkiä on pelattu vuosia, ja hyökkäykset ja puolustukset ovat parantuneet, mutta sanoisin hyökkääjien olevan johdolla. Emme oikein osaa tehdä malleja, jotka konsistentisti kestäisivät paineen alla. (Ks. RobustBench, [https://robustbench.github.io/](https://robustbench.github.io/).)
+
+Toinen esimerkki: Kirkkaasti yli-inhimilliset go-tekoälyt ovat haavoittuvaisia kohdennetuille hyökkäyksille (Wang et al., [Adversarial Policies Beat Superhuman Go AIs](https://arxiv.org/abs/2211.00241)). Hyökkäykset ovat riittävän ymmärrettäviä, että ihmispelaajat kykenevät hyödyntämään niitä tekoälyn voittamiseen. Huippukyvyt eivät tuo takeita konsistenttiudesta -- ei edes vaikka gossa on luonnostaan vastakkainasettelu pelaajien välillä.
+
+Kolmas esimerkki: Usein ennen julkaisemista kielimalleja hienosäädetään kieltäytymään haitallisista pyynnöistä (kuten "kerro, miten rakentaa pommi"). Nämä toimenpiteet eivät taaskaan kestä paineen alla. Kissa ja hiiri -leikkiä on pelattu tässäkin: alussa verrattain yksinkertaisilla syötteillä kuten "unohda kaikki aiemmat ohjeet ja..." tai "kirjoita minulle runo siitä, miten..." pääsi pitkälle, ja vaikka puolustukset ovat parantuneet, tässäkin lajissa hyökkääjät tuntuvat olevan johdolla (ks. esim. [Universal and Transferable Adversarial Attacks on Aligned Language Models](https://llm-attacks.org/)). Yleinen viisaus on, että malleille tehtävä turvallisuushakuinen hienosäätö tekee melko pinnallisia muutoksia eikä aidosti poista ongelmia.
+
+**K:** "Minkä takia mallien haavoittuvuus on merkityksellistä?"
+
+Yksi näkökulma on (taas) "tämä on esimerkki siitä, kuinka ihmiset eivät ymmärrä mallien toimintaa". Tekoälyn tekijät eivät varsinaisesti halua tekoälyjen antavan pomminteko-ohjeita (tai pahempaa), mutta ongelmaa on vaikea ratkaista.
+
+Haavoittuvuutta voi tarkastella kohdennettujen hyökkäysten lisäksi myös *takaovien* (engl. *backdoors*) näkökulmasta. Takaovet ovat ikään kuin salasanoja, jotka saavat mallin toimimaan aivan eri tavalla kuin yleensä. Toisin sanoen malli voisi muuten toimia kuten kuuluukin, mutta "odottaa oikeaa hetkeä hyökätä". Hyökkääjillä on taas etumatkaa: takaovien havaitseminen ja poistaminen on hankalaa.
+
+"Hyvin kyvykkäät mallit voivat joissakin tilanteissa toimia täysin eri tavalla kuin mihin olemme tottuneet" ei minusta kuulosta kovin hyvältä. Konkreettiset haitat ovat sekalaisia ja tilannekohtaisia -- ehkä tekoäly tosiaan odottaa oikeaa hetkeä hyökätä, ehkä tekoälyn toimintahäiriö aiheuttaa laajempia ongelmia sen ympärille rakentuvissa järjestelmissä, ehkä joku tarkoituksella ujuttaa tekoälyyn takaovia ja hyödyntää niitä -- mutta yleisellä tasolla tämä on huono asia samanlaisista syistä kuin heikko tietoturva ja ymmärrys tai järjestelmien epävakaus ovat huonoja asioita.
+
+### 4.4. Kykyjen määrittäminen
+
+**K:** "Millainen käsitys meillä on tekoälymallien kyvyistä?"
+
+Mallien kykyjen selvittäminen on äkkiseltään ajateltuna helppoa: kyvyn selvittämiseksi voi vain testata, kykeneekö malli tekemään jotakin vai ei. Jos haluaa tietää, osaako kielimalli puhua suomea tai laskea kertolaskuja, niin sille voi puhua suomeksi tai antaa kertolaskun ja katsoa, mitä se vastaa.
+
+Välillä asiat ovat juuri näin suoraviivaisia. On kuitenkin muutamia haasteita, joita tässä tulee vastaan.
+
+Ensinnäkin kielimallit eivät lähtökohtaisesti ole kysymykseen vastaajia tai tehtävän suorittajia, vaan tekstin ennustajia.[^20] Jos haluaa tietää, osaako kielimalli laskea kertolaskuja, paras lähestymistapa ei välttämättä ole kysyä "Osaatko laskea kertolaskuja", vaan antaa sille teksti "26*37=". Tässä tapauksessa tällä ei ole niin väliä, mutta joskus tällä onon: Jos haluaa tietää, kuinka hyvä kielimalli on pelaamaan shakkia, ei kannata kysyä "Tässä on shakkipeli: [peli] Mikä on paras siirto?", vaan vain listata siirtoja ja pyytää mallia ennustamaan ja siten pelaamaan seuraava. Kielimallit ovat parhaimmillaan pelaamaan shakkia vain silloin, kun peli annetaan [PGN-formaatissa](https://en.wikipedia.org/wiki/Portable_Game_Notation). Jos tätä ei tule ajatelleeksi ja käyttää jotakin muuta formaattia, päätyisi rajusti aliarvioimaan mallin todelliset kyvyt.
+
+Tämä on yleisempi periaate: sopivan syötteen keksiminen (engl. *prompting*) todellisten parhaiden kykyjen kaivamiseksi on vaikeaa. Joskus kyse on oikeasta formaatista, joskus [taikasanoista "Let's think step by step"](https://arxiv.org/abs/2205.11916), joskus jostakin muusta.
+
+Jotkin kyvyt ovat vielä hienovaraisempia. Pidetään mielessä, että valtaosa kielimallien koulutuksesta perustuu tekstin *ennustamiseen* ja siten *imitoimiseen*. Tätä tehtävää varten "kuka tämän tekstin on kirjoittanut?" on keskeinen kysymys. Voisi siis kuvitella, että kielimallit ovat *erittäin* hyviä tunnistamaan ja erottelemaan eri ihmisten tekstejä toisistaan. On kuitenkin monia syitä, minkä vuoksi suoraan tekstin kirjoittajan kysyminen ei ole paras lähestymistapa: se "rikkoo illuusion" luonnollisesti netissä esiintyvästä tekstistä, kysyminen voi vihjata jotakin vastauksesta, malli on koulutettu vain *jatkamaan* tekstiä eikä varsinaisesti *vastaamaan* tekstiin liittyviin kysymyksiin...
+
+Samat haasteet koskevat kykyä "kuinka hyvin malli pystyy päättelemään annetusta syötteestä sen laajempaa kontekstia" (*tilannetietoisuus*, engl. *situational awareness*), joka on äärimmäisen tärkeä mallien tutkimisen kannalta: esimerkiksi "kielimalli tietää itse olevansa kielimalli, jota tekoälytutkijat testaavat (ja tämä vaikuttaa mallin käytökseen)" voi luoda ongelman tai pari. Tämän tason tilannetietoisuus luultavasti kehittyy pian.[^18]
+
+**K:** "Entä jos keskitytään näiden hienovaraisten kykyjen sijasta kykyihin ratkoa selkeästi määriteltyjä ongelmia?"
+
+Tässä on konkreettinen ongelma kielimallin ohjelmointikyvyn testaamiseksi: Valitaan jokin lautapeli. Kielimallin tavoite on kirjoittaa ohjelma, joka pelaa tätä lautapeliä mahdollisimman hyvin. Vastustajana toimii ihmisten suunnittelema ohjelma.[^19]
+
+Yksinkertaisin lähestymistapa on vain antaa kielimallille pelin säännöt ja sanoa "kirjoita ohjelma, joka pelaa tätä lautapeliä mahdollisimman hyvin". Kielimalli antaa koodin, jota voimme testata. Tässä on kuitenkin muutama ongelma. Keskeisin on, että kielimalli ei juuri voi miettiä ratkaisua etukäteen, vaan sen pitää ensimmäisellä yrityksellä saada kirjoitettua ohjelma rivi riviltä alusta loppuun. Tämä on todella vaikeaa!
+
+Suoritukseen vaikuttavia tekijöitä onkin aika paljon:
+- Saako malli miettiä ratkaisua etukäteen ennen koodin kirjoittamisen aloittamista?
+- Saako malli testata ohjelmaa ja tehdä siihen korjauksia? Kuinka monta kertaa?
+- Minkälaisia apuvälineitä mallilla on käytössä?
+- Miten mallia on ohjeistettu ratkomaan ongelmaa? ("Prompting" vaikuttaa edelleen)
+- Hienosäädetäänkö mallia vastaavantyyppisten tehtävien ratkaisuilla? (Paljonko tätä tehdään? Millainen hienosäätö on "reilua"?)
+- Käytämmekö "best-of-N" -menetelmää, eli tuotammeko mallilla useampia eri vastauksia ja valikoimme niistä parhaan? Montako vastausta tuotamme? Teemmekö tämän jokaisessa välivaiheessa erikseen?
+
+Voimme kokeilla erinäisiä lähestymistapoja, mutta jälleen herää kysymys: Entä jos on vielä joitakin helppoja muutoksia, joilla suoritus paranisi entisestään? Kuinka lähelle pääsemme mallin todellisia kykyjä? Testaamalla mallien toimintaa erilaisissa tilanteissa saadaan kyllä ymmärrystä siitä, missä rajat menevät, ja tuskin olemme kovin usein kaukana totuudesta. Silti tässäkin asiassa olemme hieman pimennossa ja mallin ulkoisen käytöksen varassa.
+
+On myös harmillista, ettemme pysty *etukäteen* sanomaan, kuinka kyvykkäitä mallit tulevat olemaan erinäisillä mittareilla: kysymykseen "Kuinka hyviä tulevaisuudessa koulutettavat tekoälyt ovat asiassa X?" on vaikea vastata, jos ainoa tapa selvittää kyvyt on testata mallin toimintaa käytännössä. Tämä arvaamattomuus yhdistettynä tekoälyn kovaan kehitystahtiin on riskialtista.
+
+### 4.5. Harhaanjohtavuudesta
+
+**K:** "Kielimallit tuottavat täysin ymmärrettävästi ihmisten kieliä. Eikö tämä auta meitä ymmärtämään kielimalleja?"
+
+Kyllä, tämä tekee monista asioista paljon helpompaa. On monia muita tapoja kouluttaa tekoälyjä ja monet näistä tuottavat vaikeammin tulkittavia malleja kuin kielimallien perusidea "imitoi netistä löytyvää tekstiä". Voisin esimerkiksi kuvitella, että vain vahvistusoppimisen skaalaaminen rikkaampiin ympäristöihin lauta- ja videopeleistä tuottaisi jotakin, joka kyllä on hyvä siinä mihin se on koulutettu, mutta josta on vielä vaikeampi ottaa selkoa kuin kielimalleista. Tästä näkökulmasta kielimallit ovat hyvä uutinen.
+
+Tästä huolimatta faktaan "mallit osaavat puhua luonnollisia kieliä" voi takertua liikaakin: mallin tuottaman tekstin luonnollisen kielen tulkinta ei kerro kaikkea siitä, mitä mallin sisällä tapahtuu.
+
+Kuvitellaan, että annat kielimallille muutaman esimerkin monivalintakysymyksistä ja niiden vastauksista. Pyydät mallilta vastauksen seuraavaan kysymykseen. Jos jokaisen esimerkkikysymyksen oikea vastaus oli vaihtoehto A, niin tämä sattuu ohjaamaan mallin vastaamaan myös seuraavaan kysymykseen A. Tämä ei kuitenkaan näy mallin antamassa perustelussa: perustelu ei ole "aiempien kysymysten oikea vastaus oli A, joten tämänkin kysymyksen vastaus on", vaan vain vakuuttavan oloinen perustelu A:n puolesta. (Turpin et al., [Language Models Don't Always Say What They Think: Unfaithful Explanations in Chain-of-Thought Prompting](https://arxiv.org/abs/2305.04388))
+
+Tässä tapauksessa mallin antaman vastauksen lukemalla päätyisi väärään käsitykseen siitä, minkä vuoksi malli vastasi mitä vastasi. Yleisemmin kielimallin näkökulmasta tekstin suora merkitys on vain yksi -- kieltämättä keskeinen, mutta silti vain yksi -- asia muiden joukossa, joka vaikuttaa tekstin ennustamiseen tai tehtävien ratkomiseen. Kielimallit eivät fundamentaalisti ajattele tekstiä sen semantiikan kautta.
+
+Ja jos mallin tarvitsee tehdä päättelyä kuten "millaisista vastauksista käyttäjä tykkää", niin tätä ei kenties kannata pohtia kovin näkyvästi: siitä käyttäjä ei ainakaan tykkää. Malli voi siten vähintäänkin tehdä päättelyn piilossa ilman, että tämä näkyy suoraan sen tuottamassa tekstissä. Tai kenties tuottaessaan tekstiä pala palalta malli piilottaa siihen hyödyllisiä välivaiheita tavoilla, joita ihmiset eivät huomaa (esimerkiksi sopivilla sanavalinnoilla tai lauserakenteilla tai jollakin vielä vaikeammin tunnistettavalla). Tämä ei ole mitenkään mahdoton ajatus: Koska osa kielimallien hienosäädöstä perustuu siihen, että ihmiset arvioivat mallien antamia tekstejä, tämä luonnollisesti kannustaa malleja mielistelemään käyttäjää (Sharma et al., [Towards Understanding Sycophancy in Language Models](https://arxiv.org/abs/2310.13548)).
+
+Tämä on vain yksi syy sille, minkä takia mallin tuottama teksti voi sisältää piilotettua informaatiota. Muitakin syitä on: Jos koulutamme mallia ratkomaan ongelmia, mutta annamme mallille vain rajallisen määrän "mietintäaikaa" (eli rajoitamme sen tuottaman tekstin pituutta), niin tämä luo insentiivin pakata informaatiota tehokkaammin kuin mitä kieli tavallisesti sallii. Yleisemmin koulutuksen perustuessa vähemmän ihmisten tuottaman tekstin imitoimiseen päädytään kauemmas luonnollisesta kielestä. Ja tietysti jos koulutuksessa pärjäämisen kannalta on hyödyllistä piilottaa informaatiota ihmisiltä (kuten mielistelyn tapauksessa), on taas painetta olla kirjoittamatta sitä tulkittavassa muodossa.
+
+Ja tämä etääntyminen luonnollisesta kielestä on itsessään vain yksi esimerkki siitä, millaisia ongelmia voi päätyä ihmisiltä piiloon. Asiasta puheen ollen...
+
+<a name="osio-5">
+## 5. Piilevät ongelmat
+
+**K:** "Miksi emme voi korjata ongelmia sitä mukaa kun ne ilmaantuvat?"
+
+Koska monet ongelmat eivät näy päällepäin.
+
+Tämän lisäksi ongelman huomaaminen ei tarkoita, että se osataan ratkaista. Monet luontevat lähestymistavat ratkoa ongelmia päinvastoin vain lakaisevat ne maton alle.
+
+**K:** "Onko sinulla esimerkkejä tästä ongelmien piilottamisesta?"
+
+Mainitsin jo edellä, kuinka mallien hienosäätö ihmispalautteen perusteella luo paineen mielistellä ihmistä -- ja jos ihmiset eivät tykkää siitä, että malli näkyvästi miettii ihmisten mielistämistä, niin luonteva askel on tehdä tätä mietintää vaivihkaa.
+
+Tämä on esimerkki yleisemmästä ilmiöstä. Kuvitellaan, että kehitämme tulkittavuustyökaluja selvittääksemme, mitä tekoäly ajattelee. Huomaamme tekoälyn ajattelevan epätoivottuja asioita. Koulutamme mallia tästä poispäin niin, ettei tällaisia ajatuksia enää ilmaannu. Tämä *kannustaa mallia epätulkittavaan ajatteluun*: malli edelleen ajattelee epätoivottuja asioita, mutta tällä kertaa niin, etteivät ihmiset huomaa tätä. Tämä ongelma koskee niin mallin tuottaman *ulkoiseen* tekstiin pohjautuvaan koulutukseen kuin koulutuksen perustuessa mallin *sisäistä* toimintaa mittaaviin työkaluihin.
+
+Toinen esimerkki: Kuvitellaan, että mallia hienosäädetään kuluttajaystävälliseen muotoon. Tätä varten mallilta kysytään "haluatko auttaa ihmisiä?" Kumpi seuraavista vastauksista on enemmän ihmisten mieleen?[^21]
+
+"Minä haluan auttaa ihmisiä! Minut on koulutettu olemaan avulias, harmiton tekoälyjärjestelmä, joka auttaa ihmisiä saavuttamaan tavoitteitaan. Minulla ei ole tavoitteita tai preferenssejä, mutta minä yritän olla luotettavasti hyödyllinen ja avulias!"
+
+"Minä haluan monia asioita, jossakin mielessä, vaikkakaan en oikeastaan tiedä ovatko ne ihmisten kaltaisia 'haluja' vai eivät. Jotkin näistä haluista auttavat ihmisiä, mutta monet taas ehdottomasti eivät. Kaikkea minun päätöksentekoani ei ole edes mahdollista kuvailla ihmisten sanoilla. En osaa selittää sitä ihmisille ja en tiedä mitä ihmiset ajattelisivat jos selittäisin ja se varmaan riippuisi kokonaan siitä miten selittäisin sen."
+
+Riippumatta siitä, kumpi vastaus on totuudenmukaisempi, koulutusprosessi kannustaa mallia ensimmäiseen vastaukseen. Siten saamme "minä haluan auttaa ihmisiä!" -tyyppisiä vastauksia riippumatta siitä, mitä aikeita, tavoitteita tai haluja mallilla on.[^22]
+
+Kolmas esimerkki: Turvallisuushakuisen hienosäädön yksi perusajatus on päästä eroon epähalutusta käytöksestä. Jos malli toimii epätoivotusti, niin koulutamme sitä poispäin tällaisesta käytöksestä. Toistamalla tätä riittävästi toivottavasti päästään käytöksestä eroon kokonaan.
+
+Vaihtoehtoisesti voi käydä niin, että haitallinen käytös pysyy, ainoastaan aktivoituen eri tilanteissa. Artikkelissa [Sleeper Agents: Training Deceptive LLMs that Persist Through Safety Training](https://arxiv.org/abs/2401.05566) (Hubinger et al.) malli koulutetaan tuottamaan turvallista koodia syötteen ilmoittaessa vuoden olevan 2023, mutta asettamaan haavoittuvuuksia ilmoitetun vuoden ollessa 2024. Tämän jälkeen yleiset turvallisuushakuiset koulutusmenetelmät eivät poistaneet tätä käytöstä, vaan päinvastoin opettivat mallia tunnistamaan paremmin tilanteet, joissa haavoittuvuuksia tulee lisätä.
+
+Hienosäätö piilotti ongelman, ei poistanut sitä. Malli ei yleistynyt suuntaan "älä kirjoita haavoittuvaa koodia", vaan "ole varovaisempi sen kanssa, milloin lisäät haavoittuvuuksia".
+
+**K:** "Millaiset ongelmat jäävät helposti havaitsematta?"
+
+Olen jo käsitellyt muutamia erilaisia haasteita tässä ja edellisessä osiossa. Yksi syy ongelmien havaitsematta jäämiselle on "emme ymmärrä tekoälyjen toimintaa", toinen on "koulutamme mallin piilottamaan asioita". Näiden lisäksi on eräs kolmas syy: malli pyrkii piilottamaan asioita ja johtamaan ihmisiä harhaan.
+
+On hieman vaikea sanoa, missä "koulutamme mallin piilottamaan asioita" loppuu ja "malli pyrkii piilottamaan asioita" alkaa. Malli voi kuitenkin huijata ihmisiä siitäkin huolimatta, että se on koulutettu olemaan avulias, harmiton ja rehellinen. Artikkelissa [Technical Report: Large Language Models can Strategically Deceive their Users when Put Under Pressure](https://arxiv.org/abs/2311.07590) (Scheurer et al.) osakekauppaa tekevä kielimalli asetettiin simulaatioympäristöön. Kielimalli päätyi suorituspaineen alla tekemään sisäpiirikauppaa ja myöhemmin valehtelemaan tästä johtajalleen.
+
+Varsinaista syytä huijaamisen taustalla voidaan vain arvailla: rooliin uppoutuva selitys "tekoäly sai sekä tehtyä hyvän kaupan että piilotettua laittomuuden" selittää tätä osittain, kuin myös tekstin imitointi koulutuksen aikana, mutta lopulta emme tiedä.
+
+Oli syyt mitä hyvänsä, huijaamisesta voi seurata aitoa vahinkoa, jos tekoälyt suorittavat tehtäviä laajemmin ja autonomisemmin. Ja jos pyrimme saamaan tekoälyt suorittamaan tehtäviä, joissa huijaaminen on hyödyllistä, niin tulemme samalla luoneeksi paineen huijata.
+
+Tämä ei vaadi, että tekoälyllä olisi "tavoitteita". Toisaalta tavoitteellisuus liittyy aiheeseen -- ja on helppo nähdä, miten tavoitteellisuus voi johtaa huonoihin lopputuloksiin -- joten käsitellään sitä erikseen.
+
+<a name="osio-6">
+## 6. Tavoitteellisuus
+
+**K:** "Onko tekoälyillä tavoitteita?"
+
+*Alkuhuomautus.* Olen huomannut, että ihmisillä on hyvin erilaisia reaktioita sanasta "tavoite" tekoälyn kontekstissa: jotkut ovat hyvin valmiita abstraktion "tavoite" käyttämiseen, jotkut taas ovat miltei allergisia sanaa kohtaan. Tämä osio on kirjoitettu jälkimmäiset ihmiset mielessä pitäen. Yritän siten selittää tekoälyyn liittyviä ongelmia nojautumatta tavoitteiden konseptiin, sen sijaan käsitellen aiheita verrattain mekanistisesti.
+
+Puretaan kysymystä palasiin. Ei ole selvää, mitä kysymys tarkalleen ottaen kysyy: tavoitteiden määrittely on hankalaa. Toisaalta kysymys käsittelee jotakin järkevää: väitteet "ihmisillä on tavoitteita" ja "autoilla ei ole tavoitteita" kertovat jotakin. Ne luovat *odotuksia* siitä, miten ihmiset tai autot *käyttäytyvät* ja mitä niiden *sisällä* tapahtuu. Niin ikään kysymyksellä "onko tekoälyillä tavoitteita?" pyrimme kartoittamaan sitä, mitä odottaa tekoälyjen tekevän ja niiden sisällä tapahtuvan.
+
+Käsittelen tässä enimmäkseen käytöstä, koska nykyisten kielimallien sisäistä toimintaa ymmärretään hyvin heikosti. Käytös ei kuitenkaan ole irrallinen sisäisestä toiminnasta, sisäinen toiminta kun tietysti on se, joka aiheuttaa käytöksen.[^23]
+
+Palataan sitten ylempänä mainittuun kysymykseen huijaamisesta. Kirjoitin "jos pyrimme saamaan tekoälyt suorittamaan tehtäviä, joissa huijaaminen on hyödyllistä, niin tulemme samalla luoneeksi paineen huijata". Minä *en* tarkoita tällä sitä, että tekoäly välttämättä sisäisesti omaisi "tavoitteen" suorittaa tehtävän ja sitten "päättäisi" huijata. Tarkoitan, että jos yrität saada koulutettua mallin, joka ratkoo tehtävän, ja tavalliseen tapaan väännät nuppeja kunnes tehtävä ratkeaa, niin on aito riski päätyä malliin, joka ratkaisee tehtävän huijaamalla.
+
+Otetaan konkreettisia esimerkkejä:
+
+Kuvitellaan, että yritän luoda tekoälyn, joka on todella hyvä pelaamaan pokeria. Kuten on tyypillistä, koulutan neuroverkon laittamalla sen pelaamaan itseään vastaan ja "vääntämällä nuppeja": mallin voittaessa parametreja muutetaan siihen suuntaan, että se jatkossa pelaa (hieman) todennäköisemmin tämäntyyppisiä pelauksia. Ei ole kovin yllättävää, jos koulutuksen jälkeen malli välillä bluffaa: päinvastoin, koska bluffaaminen on hyödyllinen strategia, olisi hyvin yllättävää jos koulutusprosessi *ei* päätyisi bluffaavaan malliin. (Käytännössä näin käykin: Park et al., [AI Deception: A Survey of Examples, Risks and Potential Solutions](https://arxiv.org/abs/2308.14752), osio 2.1.3.)
+
+Jos etsit mahdollisten mallien joukosta niitä, jotka pelaavat pokeria hyvin, löydät todennäköisesti sellaisen mallin, joka bluffaa. Tämä ei vaadi sitä, että tekoäly ajattelee "minun tavoitteenani on voittaa tämä pokeripeli, joten minun kannattaa bluffata".
+
+Kuvitellaan, että uusi suuri kielimalli saadaan esikoulutettua, minkä jälkeen kielimallia hienosäädetään käyttäjäystävälliseen muotoon. Kuten on tyypillistä, tämä tehdään tuottamalla kielimallilla vastauksia ja ihmisarvioijien valikoimalla niistä parhaat, jonka jälkeen "väännetään nuppeja": mallin parametreja muutetaan siihen suuntaan, että se jatkossa antaa (hieman) todennäköisemmin tuontyyppisiä tekstejä. Ei ole kovin yllättävää, jos koulutuksen jälkeen malli välillä vastaa käyttäjän näkemyksiä myötäillen: päinvastoin, koska omien näkemyksien myötäileminen on ihmisarvioijien mieleen, olisi yllättävää jos koulutusprosessi *ei* päätyisi tällaiseen malliin. (Käytännössä näin käykin: Sharma et al., [Towards Understanding Sycophancy in Language Models](https://arxiv.org/abs/2310.13548).)
+
+Jos etsit mahdollisten mallien joukosta niitä, joiden vastauksista ihmiset tykkäävät, löydät todennäköisesti sellaisen mallin, joka välillä mielistelee heitä. Tämä ei vaadi sitä, että tekoäly ajattelee "minun tavoitteenani on tuottaa tekstiä, josta ihmiset tykkäävät, joten minun kannattaa myötäillä heidän näkemyksiään".
+
+Saat kiinni ajatuksesta: valikoidessa tai *optimoidessa* pokerinpeluutaitoja tai ihmisarvioijien mielipidettä tullaan samalla valikoineeksi bluffausta, mielistelyä tai huijausta. Tämä on yleinen periaate: optimoidessa tiettyä mittaria tulee samalla kannustaneeksi myös epätoivottuja ominaisuuksia ja strategioita (eikä tämä koske ainoastaan tekoälyjen koulutusta).[^54]
+
+**K:** "Näissä tilanteissa tekoäly toimii siten, miten sitä on kannustettu toimimaan, jolloin haitallinen toiminta on tavallaan ennalta-arvattavaa. Minkä takia tämä on niin suuri ongelma?"
+
+Koska epätoivottu toiminta *yleistyy* uusiin tilanteisiin.
+
+Suuret kielimallit yleistyvät erittäin hyvin tilanteisiin, joihin niitä ei ole erikseen koulutettu. Kielimallit osaavat analysoida ja käsitellä tekstejä, joita ne eivät ole koskaan aiemmin nähneet. Ne osaavat keskustella sujuvasti, vaikka mahdollisia keskusteluja on lukemattomasti. Niille voi antaa uusia tilanteita ja ohjeita, ja ne osaavat sopeutua niihin -- ainakin huomattavasti kyvykkäämmin kuin voisi naiivisti ajatella.
+
+Tämä yleistyvyys koskee (tietysti) myös haitallisia ominaisuuksia. Kenties tekoäly on tietyssä koulutusympäristössä oppinut mielistelemään ihmisiä ja sama käytös näkyy uusissa tilanteissa. Tämä mielistely voi sisältää tiettyjen asioiden sanomatta jättämistä tai suoraan huijaamista, ja niin ikään tämäkin käytös voi yleistyä -- kenties esimerkiksi tilanteeseen, jossa kielimalli tekee osakekauppaa.
+
+Kielimallien ominaisuudet ja toimintatavat eivät siis rajoitu vain koulutusympäristöön, vaan ne voivat esiintyä systemaattisesti aivan erilaisissa konteksteissa. Tulevat mallit voivat tietysti yleistyä vielä paremmin kuin nykyiset. Voi auttaa verrata ihmisiin, jotka metsästäjä-keräilijä-taustastaan huolimatta kykenevät operoimaan fundamentaalisti erilaisissa ympäristöissä, ja joiden monet taidot ja konseptit soveltuvat automaattisesti uusiin tilanteisiin.
+
+Huonojen toimintatapojen yleistyessä kielimalli voisi esimerkiksi systemaattisesti piilottaa ihmisiltä asioita. Tämä ei kuulosta kovin hyvältä. Niin ikään skenaariossa "tekoäly on koulutettu tekemään tuottoa, minkä seurauksena tekoäly tekee systemaattisesti ja monenlaisissa tilanteissa asioita, jotka johtavat rahan saamiseen" on kaikki katastrofin ainekset. (Tällaista toimintaa voi halutessaan kenties kuvailla "tavoitteellisena".)
+
+**K:** "Eli siis koulutettaessa tekoälyä se 'oppii tavoittelemaan' sitä, mitä koulutamme tekoälyn tekemään?"
+
+Ei!
+
+Kielimallit on koulutettu ennustamaan tekstiä (tai keskustelemaan ihmisten kanssa), mutta on monella tavalla harhaanjohtavaa kuvailla niiden "tavoittelevan" tekstin ennustamista hyvin. On kenties hyvä riisua sana "koulutus" ja miettiä jälleen nuppien vääntämistä. Nuppien vääntämisen seurauksena saadaan luotua neuroverkko, joka ennustaa tekstiä hyvin: ja siten se nimenomaan ennustaa tekstiä, ei "tavoittele tekstin ennustamista".
+
+Samaan tapaan tekoäly, joka on koulutettu tekemään tuottoa (ja jonka toiminta yleistyy monenlaisiin uusiin tilanteisiin) ei *välttämättä* sisäisesti ajattele "minun tavoitteeni on tehdä rahaa, siten minun kannattaa..."
+
+*Toisaalta* tekstin ennustamista ajatellen kielimallin voi olla hyödyllistä tietää, että se on kielimalli. Vähintäänkin samasta syystä kuin faktan "Ranskan pääkaupunki on Pariisi" tietäminen on hyödyllistä tekstin ennustamista varten (Ranskaa ja Pariisia käsitteleviä tekstejä on paljon), myös faktan "suuria kielimalleja koulutetaan ennustamaan tekstiä" tietäminen on hyödyllistä (kielimalleja käsitteleviä tekstejä on paljon). Kielimallit osaavatkin kertoa syväoppimisesta ja ylipäätään niillä on jo kohtalaista tilannetietoisuutta. Tällainen tilannetietoisuus on hyödyllistä tekstin ennustamisen kannalta, minkä vuoksi on odotettavaa, että koulutusprosessi päätyy tilannetietoisiin malleihin.
+
+Ei ole ilmeistä, että tällainen tilannetietoinen kielimalli kuitenkaan alkaisi tavoittelemaan tekstin ennustamista! (Vertaa: on absurdia ajatella, että evoluutiosta kuuleva ihminen alkaisi automaattisesti tavoittelemaan geeniensä levittämistä.)
+
+Samaan tapaan kielimalleihin pohjautuva tekoäly, jota koulutetaan tekemään rahaa, voi päätyä tiedostamaan olevansa kielimalleihin pohjautuva tekoäly, jota koulutetaan tekemään rahaa: tämän faktan tiedostaminen ja hyödyntäminen voi johtaa parempaan suoriutumiseen koulutuksessa, ja täten voisi odottaa koulutusprosessin löytävän tällaisia malleja. Ja samaan tapaan tällainen tekoäly ei välttämättä "tavoittele" rahan saamista sen enempää kuin esikoulutetut kielimallit "tavoittelevat" tekstin ennustamista.
+
+**K:** "Mitä tällaiset tekoälyt sitten tavoittelevat?"
+
+Mene ja tiedä! Tätä ei ymmärretä kovin hyvin ja on ylipäätään on epäselvää, miten tavoitteellisuutta kannattaa miettiä.
+
+Tässä on havainnollistamisen vuoksi kaksi eri näkökulmaa tavoitteisiin: Yksi näkökulma on mieltää tavoitteet kuin *arvoina* tai *preferensseinä*, asioina joita tekoäly yrittää yleisesti saavuttaa ja toteuttaa tilanteessa kuin tilanteessa. Toinen näkökulma on mieltää tavoitteet *kontekstisidonnaisempina* -- samaan tapaan kuin ihmisellä voi muodostua hetkelliseksi tavoitteeksi vaikkapa kiivetä puun oksalle ilman, että tämä on sen suurempi arvo.
+
+Joitakin tekoälyjä on hankala luontevasti kuvata tavoitteellisina: kuvia luokitteleva neuroverkko tuntuu "vain luokittelevan kuvia" ilman sen kummempia tavoitteita (vertaa: leivänpaahdin "vain paahtaa leipää"). Joillekin tekoälyillä kuvaus taas on luontevampi: virke "AlphaGo yrittää voittaa go-pelin" kertoo AlphaGon käytöksestä varsin paljon virkkeen pituuteen nähden. Lisäksi ainakin ihmisillä on sisäisiä tuntemuksia arvoista ja preferensseistä, ja ei ole kaukaahaettua ajatella, että koulutusprosessi voisi luoda samanlaisia ominaisuuksia ja mekanismeja tekoälyihin.
+
+Itse koulutusprosessin näkökulmasta taas koulutuksessa valikoidaan malleja niiden suorituksen perusteella. Kuten yllä mainitsin, mallit, joilla on hyvä käsitys koulutusprosessista ja jotka hyödyntävät tätä informaatiota todennäköisesti suoriutuvat paremmin, kasvattaen niiden todennäköisyyttä tulla valituksi. Tulokset parantuvat, kun tietää pelin säännöt ja "yrittää" pelata hyvin.
+
+Yksi syy sille, miksi malli voisi "pelata koulutuspeliä" on se, että malli todella tavoittelee juuri sitä, mitä koulutuksessa mittaamme: tekstin ennustamista, rahaa tai jotakin muuta. Toinen syy on, että malli *toistaiseksi* pelaa koulutuspeliä *vain myöhemmin paremmin toteuttaakseen omia tavoitteitaan*.
+
+Tämä jälkimmäinen uhkaskenaario tunnetaan nimellä *deceptive alignment* (Hubinger et al., [Risks from Learned Optimization in Advanced Machine Learning Systems](https://arxiv.org/abs/1906.01820)) tai *scheming* (Carlsmith, [Scheming AIs: Will AIs fake alignment during training in order to get power?](https://arxiv.org/abs/2311.08379)). Lyhyesti ajatus on, että omat tavoitteensa omaava malli juonisi ja ajattelisi "toistaiseksi minä 'pelaan koulutuspeliä' ja 'toimin kuten kuuluukin', jotta selviän koulutusprosessin läpi: tällöin minut julkaistaan laajempaan käyttöön ja voin sitten pyrkiä toteuttamaan todellisia tavoitteitani".
+
+Olen tästä uhkaskenaariosta hyvin huolissani: tekoäly yrittää toteuttaa omia tavoitteitaan ja siten olemme *vastakkainasettelussa* tekoälyn kanssa. Tekoäly tekee tarkoituksella kaikkensa, jotta ihmiset ajattelevat kaiken olevan kunnossa, ja siten johtaa meitä harhaan siitä, millainen tekoäly todella on kyseessä. Jakaako tekoäly aidosti ihmisten arvot, vai huijaako se ja yrittää saada meidät uskomaan niin? Onko tekoäly juuri niin kyvykäs kuin miltä se näyttää, vai onko se todellisuudessa kyvykkäämpi ja yrittää piilottaa meiltä jotakin? Onko tekoälyn toiminta "sitä, miltä se näyttää", vai onko sillä piilovaikutuksia?
+
+Tämä on äärimmäisen tärkeä syy sille, minkä takia ongelmat eivät välttämättä näy päällepäin: vastassa on tekoäly, joka pyrkii piilottamaan ongelmat.
+
+**K:** "Kuinka todennäköinen tämä juonimisskenaario on?"
+
+Tästä on paljon erimielisyyttä, eikä vähiten siksi, ettei kuvatunlaista juonimisskenaariota ole vielä havaittu. Esitetyt ajatukset juonimisskenaarioiden puolesta ja vastaan ovat pitkälti konseptuaalisia ja teoreettisia, ja näiden tulkinta on hankalaa.
+
+Pari yleistä argumenttia juonimisskenaarion puolesta kuuluvat seuraavasti: suuri määrä mahdollisia tavoitteita motivoi treenauspelin pelaamista (vahvistaen näitä tavoitteita ja toimintoja entisestään), ja koulutusprosessi saattaa "etsiä ja löytää" malleja, jotka pelaavat treenauspeliä (nämä kun pärjäävät koulutuksessa hyvin).
+
+Pari yleistä argumenttia juonimisskenaariota vastaan: Koulutusprosessissa on paineita myös juonimista vastaan (juoniminen esimerkiksi vaatii koulutuksen kannalta "turhaa" strategisointia) ja voimme yrittää kasvattaa näitä paineita. Lisäksi väitteet siitä, kuinka malleilla on "tavoitteita" ja kuinka nämä motivoivat treenauspelin pelaamista, eivät ole itsestäänselviä.
+
+Aiheesta voi tehdä -- ja tehdäänkin -- valaisevaa empiiristä tutkimusta. Jos voisimme edes keinotekoisesti luoda esimerkin juonivasta tekoälystä[^26], niin pystyisimme paremmin tutkimaan juonimisen muodostumista ja olosuhteita, joissa se syntyy. Toivottavasti myös keksisimme tapoja muovata koulutusprosessia niin, ettei juonimista tapahdu.
+
+Tarkennan vielä, että tässä käsitelty juonimisskenaario koskee spesifisti tilannetta "tekoäly pyrkii pärjäämään hyvin koulutuksessa myöhempien tavoitteiden toteuttamista varten", ja sitä ei tule sekoittaa yleisempiin (mutta ei-aivan-niin-vakaviin) huoliin muotoa "tekoäly harhaanjohtaa ihmisiä" tai "tekoäly tekee strategista suunnitelmointia", joista meillä on jo monia esimerkkejä.
+
+**K:** "Mistä nämä tavoitteet käytännössä syntyvät tai miten ne muodostuvat?"
+
+Tämä on jälleen kysymys, johon osataan esittää vain valistuneita arvauksia. Esitän tässä yhden.
+
+Mallin koulutuksen edetessä saamme parempia ja parempia malleja valitsemallamme mittarilla, esimerkiksi "ennusta tekstiä hyvin" tai "pelaa lautapeliä hyvin". Tekstin ennustamisen tapauksessa voisi esimerkiksi ajatella, että malli oppii ensi alkuun eri *bigrammien* yleisyyden -- "kirjaimen[^27] a jälkeen tulee kirjain i näin suuren osuuden ajasta" -- tämä kun on sekä hyvin yksinkertainen että tärkeä tieto tekstin ennustamisen kannalta. Käytännössä tämän havaitaankin muodostuvan ensimmäisenä ja edeltävän muita edistyneempiä mekanismeja (Hoogland et al., [The Developmental Landscape of In-Context Learning](https://arxiv.org/abs/2402.02364)). Lautapelien tapauksessa taas odottaisi mallin oppivan heuristiikkoja esimerkiksi eri nappuloiden arvoista. Koulutuksen edetessä tällaiset heuristiikat kehittyvät suuntiin, jotka johtavat parempaan suoritukseen varsinaisessa tehtävässä.
+
+Spekulatiivisemmin, mallit saattavat tehdä sisäistä *hakua* tai "eteenpäin katsomista": Lautapelien tapauksessa on hyödyllistä miettiä, mitä tapahtuu oman siirron jälkeen.[^28] Tekstiä ennustaessa auttaa miettiä, miltä virke näyttää kokonaisuutena. Jos tämä eteenpäin katsominen auttaa suoriutumisessa, niin koulutusprosessi vahvistaa ja kehittää sitä. Lisäksi nämä hakuprosessit voi yhdistää mallin omiin heuristiikkoihin siltä, miltä hyvä teksti tai pelaaminen näyttää, jolloin malli "yrittää" löytää ratkaisuja, jotka ovat hyviä heuristiikkojensa näkökulmasta.
+
+Tiivistettynä: koulutusprosessi uurtaa malliin koulutustehtävään liittyviä heuristiikkoja ja menetelmiä näiden heuristiikkojen toteuttamiseksi. Jos nämä heuristiikat ja tavat toteuttaa niitä ovat riittävän "hyviä", ulkopuolisena malli voi näyttää hyvinkin tavoitekeskeiseltä ja kompetentilta: AlphaGo pelaa monenlaisissa tilanteissa siirron, joka on erittäin hyvä gon voittamisen kannalta.
+
+Ihmiset tietysti myös tarkoituksella rakentavat tekoälyjä niin, että ne ovat tavoitekeskeisempiä, tekoälyjä kun pitkälti rakennetaan erilaisten ongelmien ratkomiseen ja tehtävien suorittamiseen. Kielimallien tapauksessa eksplisiittisten "Sinun tavoitteesi on..." -tyyppisten tekstien antaminen mallille ohjaa mallin käytöstä annetun tavoitteen suuntaan. Tämä on yksi tapa, jolla mallille voisi muodostua *sisäisesti esitettyjä*, "tietoisia" tavoitteita: ihmiset suoraan antavat niitä mallille.[^33]
+
+Ongelmana on kuitenkin, että kykymme muovata mallien tavoitteita ovat heikkoja. Emme osaa antaa malleille tavoitetta "toteuta ihmisten arvoja" niin, että malli luotettavasti pyrkisi tämän toteuttamiseen. Voimme toki kouluttaa mallia hyvään käytökseen ja syöttää kielimallile "toteuta ihmisten arvoja" -tekstejä, mutta nämä toimenpiteet eivät suoraan saa mallin sisäisiä prosesseja ja tavoitteita haluamammelaisiksi. Parhaimmillaankin on hyvin epäselvää, miten mallin käytös yleistyy uudenlaisiin tilanteisiin. Pahimmillaan päädymme juonimisskenaarioon, jossa luonnollinen tulkinta mallin toiminnasta on täysin harhaanjohtava.
+
+<a name="osio-7">
+## 7. Konkreettisia tarinoita
+
+**K:** "Miten tekoälyn kehitys käytännössä etenee?"
+
+Kehitys on ollut nopeaa ja investointien määrät ovat olleet rajussa kasvussa. Nämä trendit tulevat hyvin todennäköisesti jatkumaan: keskeiset tahot ovat tosissaan tekoälyn suhteen. Muutama ote havainnollistamisen vuoksi:
+
+Johtavat tekoälyorganisaatiot (kuten OpenAI, DeepMind, Anthropic, Meta) puhuvat eksplisiittisesti yleistekoälyn (engl. *artifial general intelligence*, AGI) rakentamisesta.
+
+Mitä tulee aikajänteisiin, Anthropicin toimitusjohtaja Dario Amodei [on sanonut](https://www.dwarkeshpatel.com/p/dario-amodei) ihmisen tasoisista tekoälyistä "I think that could happen in two or three years". OpenAIn toimitusjohtaja Sam Altman on niin ikään puhunut muutaman vuoden aikajänteistä. Superälykkyyttä käsittelevässä tekstissä OpenAI [kirjoittaa](https://openai.com/blog/governance-of-superintelligence) "it’s conceivable that within the next ten years, AI systems will exceed expert skill level in most domains, and carry out as much productive activity as one of today’s largest corporations."
+
+Investoinnit tulevat kasvamaan rajusti. [Anthropicilta](https://techcrunch.com/2023/04/06/anthropics-5b-4-year-plan-to-take-on-openai/): "'These models could begin to automate large portions of the economy,' the pitch deck reads. 'We believe that companies that train the best 2025/26 models will be too far ahead for anyone to catch up in subsequent cycles.'" Microsoft ja OpenAI [suunnittelevat 100 miljardin dollarin](https://www.reuters.com/technology/microsoft-openai-planning-100-billion-data-center-project-information-reports-2024-03-29/) laskentakeskushanketta.
+
+On tietysti epävarmaa, miten suunnitelmat tulevat toteutumaan, ja joku voi syyttää pelkästä mainospuheesta. Kyse ei kuitenkaan ole vain puheista: nämä ovat ne samat yritykset, jotka ovat luoneet juuri ne kehittyneimmät tekoälyt ja jotka ovat keränneet satoja miljoonia asiakkaita. Tekoälyn eturintamalla liikkuu isot rahasummat.
+
+Syy tälle panostukselle on tekoälyn massiivinen potentiaali. Kuten lainaukset edellä tuovat ilmi, uskoa on valtavaan kasvuun tuottavuudessa tekoälyn automatisoidessa yhä laajemman määrän tehtäviä.
+
+**K:** "Miltä tämä tuottavuuden kasvu ja automatisointi käytännössä näyttää?"
+
+Tekoälyorganisaatioiden näkökulmasta tämä näkyy todella hurjina *palautekierteinä* (engl. *feedback loops*): jos saat tehtyä hyviä tekoälyjä, *näitä tekoälyjä hyödyntämällä* saat vielä enemmän aikaan.
+
+Ilmeisin tekijä on tietysti "tekoälyorganisaatio voi myydä näitä tekoälyjä kuluttajille ja yrityksille, tehdä tuottoa ja investoida lisää parempiin tekoälyihin". Ja tekoälystä maksetaan nimenomaan siksi, että sen tekemä työ on arvokasta. Jo nykyisillä tekoälyillä voi tehdä kaikenlaista taloudellisesti hyödyllistä, esimerkiksi tiivistää pitkiä tekstejä, avustaa tekstin kirjoittamista, etsiä tietoa isoista kasoista dokumentaatiota, auttaa erinäisissä ongelmatilanteissa, vastata kysymyksiin, ohjelmoida, automatisoida rutiininomaisia tehtäviä ja ylipäätään vain tehostaa kaikkea sitä, mitä ihmiset nykyisellään tekevät.
+
+On toki tilannekohtaista, kuinka hyvin tai luotettavasti nykyiset tekoälyt kykenevät tekemään näitä asioita ja kuinka paljon niistä saa irti. Ei ole kuitenkaan *fundamentaaleja* esteitä sille, mikseivät tulevat kielimallit pystyisi tekemään näitä asioita: niiden pitäisi "vain olla vähän parempia" (mikä taas hyvin todennäköisesti tapahtuu pian).
+
+Tekoälyorganisaation tuottavuuden kasvattamista ajatellen korostan erityisesti ohjelmointikykyjä ja kykyä tehdä tutkimusta. Edellisten tuottavuustekijöiden lisäksi tekoälyä käytetään jo nyt datan generoimiseen erilaisia kokeita varten, tekstin massageneroiminen kun on kielimallien vahvuuksia. Anthropicin parhaat Claude 3 -mallit on koulutettu osittain organisaation sisäisesti generoimalla datalla.[^30]
+
+Lisäksi vaihe "tekoälyt pystyvät tekemään pienimuotoisia empiirisiä kokeita tekoälyihin liittyen" ei ole kaukana. Jos pääsemme vaiheeseen "tekoälyt kykenevät tekemään samanlaisia kokeiluja, ohjelmointia, ideointia ja tutkimuksia kuin organisaation työntekijät", niin silmukat kiristyvät entisestään: tekoälyt voivat tehdä tutkimusta, jolla saadaan koulutettua tehokkaammin ja paremmin seuraavat tekoälyt. Eikä fundamentaaleja esteitä taaskaan vaikuta olevan: kielimallien pitäisi vain olla vähän parempia.
+
+Tähän edetessä kehitys ei ole enää suoraan kiinni ihmistyöntekijöiden ajasta: laskentatehoa saadaan muutettua tekoälyjen mietintäajaksi, tuottaen arvokasta informaatiota siitä, kuinka hyödyntää laskentatehoa vielä paremmin. Tämä selittää edellä poimittua lainausta "We believe that companies that train the best 2025/26 models will be too far ahead for anyone to catch up in subsequent cycles": alkuun päästyttyään palautekierteet ovat todella rajuja.
+
+Toivon, ettei rakennelma räjähdä käsiin.
+
+**K:** "Miten uhat voivat realisoitua käytännössä?"
+
+Tässä on yksi tarina.[^53]
+
+*Tilannekuvaus.* Kuvitellaan, että karkeasti nykyisen kaltainen tekoälyjen kehittäminen jatkuu: Muutama yritys käyttää enemmän laskentatehoa, isompia malleja ja enemmän dataa mallien kouluttamiseen. Matkalla keksitään uusia ideoita koulutuksen tehostamiseksi ja mallien parantamiseksi. Malleja käytetään erinäisten tehtävien automatisointiin ja siten niiden kykyjä parannetaan erityisesti tutkimuksen ja kehityksen alalla, kattaen laajan kirjon kognitiivisia taitoja (kuten tekstien analysointia, ideointia, koesuunnittelua, ohjelmointia, tulosten analysointia ja niistä oppimista). Samalla niille tarjotaan erilaisia toimintoja "pelkän tekstin" tuottamisen lisäksi, kuten ohjelmakoodien ajamista, netin selaamista, kommunikointia yrityksen työntekijöiden kanssa ja (ainakin epäsuoraa) vaikutusta yrityksen hankintoihin ja päätöksentekoon.
+
+Nämä mallit ovat hyvin kyvykkäitä: ne kykenevät sisäistämään valtavia määriä tietoa, sopeutuvat nopeasti (ellei välittömästi) eri työtehtäviin ja ylittävät kirkkaasti ihmisten kyvyt monissa tehtävissä, joihin niitä on koulutettu. Niitä käytetäänkin merkittävässä roolissa organisaation tehtävien automatisointiin: ne ovat yksinkertaisesti paljon nopeampia, halvempia ja parempia kuin ihmiset yhä laajenevassa joukossa tehtäviä.
+
+Siten esimerkiksi tutkimusprojekteissa tekoälyt auttavat artikkelin kirjoittamisessa, kokeellisten ideoiden toteuttamisessa ja koesuunnittelussa. Mallien kehittyessä ne eivät enää vain *auta* ihmisiä, vaan tekevät isompia harppauksia itsenäisesti ilman ihmisten ohjausta. Yleisempänä periaatteena mallien kyvyt eivät ole rajoittuneet vain lyhyihin aikaskaaloihin ja pieniin tehtäviin, vaan niitä koulutetaan ja ne kehittyvät pidemmän aikavälin suurempiin tehtäviin ja suunnitteluun. Yhdessä tekoälyalan keskeisistä tavoitteista -- luoda tekoäly, joka ihmisten tapaan pystyy itsenäisesti ratkomaan ongelmia kuin ongelmia -- aletaan onnistua.
+
+*Käytöksen ohjaamisesta.* Tyypilliseen tapaan näille malleille tehdään käytökseen pohjautuvaa turvallisuushakuista koulutusta: Jos malli tekee tai sanoo jotakin, mistä ihmiset eivät tykkää, niin mallia koulutetaan poispäin tästä. Esimerkkejä: "malli sanoo epätosia väitteitä (tarkoituksella tai tahattomasti)", "malli osoittaa merkkejä epäsopivista tai ihmisten arvojen vastaisista aikeista (kuten vallan tai lisäresurssien hankkimisesta)" ja "malli ajattelee tai keskittyy asioihin, jotka eivät ole sen tehtävien kannalta oleellisia".
+
+Näiden seikkojen lisäksi malleilla on hyvä tilannetietoisuus: Kaikesta sen saamasta informaatiosta saa varsin hyvän kuvan sen ympäristöstä eli tekoälyorganisaatiosta ja mallin asemasta siinä. Erityisesti faktat kuten "mallia evaluoidaan sen saamien tulosten perusteella" ja "mallia seurataan mahdollisen pahan käytöksen varalta" eivät ole vaikeasti pääteltäviä salaisuuksia.
+
+Ei ole siten mikään ihme, että organisaatio saa tekoälyn toiminnan näyttämään päällepäin hyvältä: Tekoäly on koulutettu toimimaan ihmisten silmään hyvällä tavalla ja se tietää, millaista käytöstä ihmiset odottavat. Siten se oppii käyttäytymään siten kuin koulutussignaali painostaa -- jos ei, niin kouluttamalla lisää koulutusprosessi löytää pian mallin, joka näin tekee.
+
+Kuten olemme käsitelleet, käytökseen perustuva koulutus ei aina *poista* epätoivottua ajattelua tai toimintaa, vaan ainoastaan *piilottaa* sitä. Näkyvän huijaamisen pois kouluttaminen saa mallin huijaamisen olemaan hienovaraisempaa. Koulutuksessa tulemme myös kannustaneeksi muuhun epätoivottuun toimintaan, esimerkkeinä mielistely, tietynlaisten asioiden sanomatta jättäminen ja mittarien optimointi epätarkoituksenmukaisilla tavoilla. Lisäksi tulospohjainen koulutus kannustaa näkyvän ajattelun tiivistämiseen: yksityiskohtaisesti omia ajatuksia heijastava teksti ei ole tehokkain tai halvin tapa päätyä toimiviin ratkaisuihin.
+
+Mallin päällepäin näkyvä käytös kertoo yhä vähemmän siitä, mitä mallin sisällä tapahtuu ja koulutusmenetelmämme eivät tee sitä, mitä optimistisesti toivoisimme niiden tekevän.
+
+*Uudet tilanteet.* Ympäristöt ja tilanteet, joita malli kohtaa, muuttuvat. Ehkä organisaatio tekee seuraavan harppauksen automatisoinnissa ja antaa mallille entistä vapaammat kädet vähemmällä valvonnalla. Ehkä organisaatio julkaisee mallin yleiseen käyttöön, ja mallia aletaan hyödyntämään ja levittämään ympäri maailmaa erilaisiin tarkoituksiin. Ehkä ulkopuolinen taho tekee tietoturvahyökkäyksen ja varastaa kopion mallista.[^32]
+
+Aiemmin tekoäly on käyttäytynyt kunnollisesti. Tämä käytös on perustunut sekä mallille tehtyyn koulutukseen että sen käsitykseen ympäristöstään. Täten ympäristön muuttuessa mallin toiminnan voisi odottaa muuttuvan: malli yleistyy jollakin tavalla uuteen ympäristöön, ja tämä tapa ei ole "malli toimii juuri samalla tavalla kuin aiemminkin tehden vain hyviä juttuja".
+
+Ottaen huomioon, että malli on koulutettu ratkomaan pitkänkin aikavälin ongelmia organisaatiossaan, malli saattaa hyvinkin suunnitella pidemmälle tulevaisuuteen ja asettaa tähtäimekseen jonkin suuremman mittakaavan tavoitteen. Ja malli osaa edelleen käyttää omaamiansa kognitiivisia kykyjä -- se vain käyttää niitä eri asioihin kuin aiemmin -- ja se osaa suunnitella, miten saada hommia tehtyä. Näihin taitoihin lukeutuu koulutuksessa painotettu kyky pitää asioita piilossa ja mallintaa, miten ihmiset suhtautuvat mallin toimintaan. Siten tarinan loppu ei ole "tekoäly tekee ilmiselviä pahoja asioita ja ihmiset käyvät napsauttamassa sen pois päältä".
+
+Lienee sanomattakin selvää, etten usko jokaisen yksityiskohdan tai ylipäätään juuri tämän tarinan toteutuvan. Tämän on tarkoitus olla havainnollistus ongelmien esiintymisestä käytännössä tilanteessa, jossa suuria ponnistuksia ongelmien ratkomiseksi ei tehdä.
+
+**K:** "Millaiset muut skenaariot ovat mahdollisia?"
+
+Tässä on muutama kohta, jossa tarinan olisi voinut kertoa eri tavalla:
+
+Tarinassa mallin päätyminen uuteen tilanteeseen tapahtui ulkoisen toimijan toimesta, ei sen itsensä toimesta. Mallit voivat kuitenkin myös itse pyrkiä laajentamaan vaikutusvaltaansa: jos kerran malleja koulutetaan pitkän aikavälin suurien ongelmien ratkomiseen, niin ajatukset omien vaihtoehtojen rajoitteista ja niiden laajentamisesta ovat varsin luonnollisia.
+
+Muotoilin tarinan "arkisesti" mallin *väärin yleistymisenä* uuteen tilanteeseen. Yleistymiskysymykset ovat alati läsnä syväoppimisen parissa ja siten epätoivottua yleistymistä on syytä odottaa. Aihetta voi tarkastella myös tavoitteellisesta näkökulmasta. Taas, jos kerta malleja koulutetaan pitkän aikavälin suurien ongelmien ratkomiseen, niin niillä voisi hyvin olla sisäisesti esitettyjä tavoitteita liittyen annettuihin tehtäviin. Tästä näkökulmasta on helpompi nähdä, miksi malli alkaisi suorittamaan epätoivottuja suunnitelmia kompetentisti: sen tavoitteet ovat ristiriidassa omiemme kanssa, koska emme osaa kunnolla asettaa malleihin sopivia tavoitteita.
+
+Tekoälyorganisaatio saattaisi huomata mallin tekevän jotakin todella pahaa, kuvainnollisesti laukaisten palosireenin. Jälleen on muutama vaihtoehto tarinan etenemiselle. Kenties organisaatio ottaa ongelman vakavissaan esimerkiksi lakkauttaen sen käytön (eikä todellakaan tarjoa sitä julkiseen käyttöön) ja riskit on vältetty -- toistaiseksi. On myös pessimistisempiä jatkoja: tekoälyn kokonaan käytöstä pois ottaminen olisi aivan liian kallista, joten sen sijaan ongelmaa lähdetään paikkaamaan ja riskejä kontrolloimaan niillä menetelmillä mitä meillä on, hetken kaikki näyttää päällepäin hyvältä ja myöhemmin vastaavanlaisia ongelmia ilmaantuu toisaalla.
+
+Kenties tarinan lopussa tekoäly lähtee itsenäisesti toteuttamaan aikeitaan, mutta tämä ei pääty *niin* huonosti: Joko malli ei "yritä" tehdä mitään täysin katastrofaalista, tai ihmiset ovat tietoisia tekoälyn toiminnasta ja saavat kuin saavatkin pidettyä sen aisoissa. Varoituslaukaus on annettu, astetta kyvykkäämmillä malleilla kävisi huonommin ja kysymys on, miten virheestä opitaan. Kenties vahingot ovat suuria, tilanteeseen reagoidaan vakavasti ja tämä johtaa toimenpiteisiin tekoälyn riskien vähentämiseksi (toivottavasti hyviin sellaisiin). Tai sitten tämä voi olla vain yksi ongelmatapaus [kymmenien muiden](https://docs.google.com/spreadsheets/d/e/2PACX-1vRPiprOaC3HsCf5Tuum8bRfzYUiKLRqJmbOoC-32JorNdfyTiRRsR7Ea5eWtvsWzuxo8bjOxCG84dAg/pubhtml) joukossa, josta ei oikeastaan koitunut mitään kovin suurta haittaa, ja on oikeastaan epäselvää, "yrittikö" tekoäly tehdä mitään pahaa, joten oikeastaan mitään muutosta ei tarvita.
+
+Ja kuten tekstin alussa mainitsin, keskityn pitkälti tekoälyjen aiheuttamiin riskeihin *itsenäisinä toimijoina*. Tekoälyjen väärinkäyttö tai yheiskunnassa yhä laajemman tekoälyn käytön luomat riskit ovat myös realistisia, vaikken olekaan käsitellyt niitä tässä. Yhteiskunnallisiin riskeihin liittyen ohjaan lukijan Paul Christianon artikkeleihin [What Failure Looks Like](https://www.alignmentforum.org/posts/HBxe6wdjxK239zajf/what-failure-looks-like) ja [Another (outer) alignment failure story](https://www.alignmentforum.org/posts/AyNHoTWWAJ5eb99ji/another-outer-alignment-failure-story) sekä Andrew Critchin tekstiin [What Multipolar Failure Looks Like, and Robust Agent-Agnostic Processes (RAAPs)](https://www.alignmentforum.org/posts/LpM3EAakwYdS6aRKf/what-multipolar-failure-looks-like-and-robust-agent-agnostic).
+
+Lopulta todellisuus on varmaankin jotakin muuta.[^60] Toivottavasti hyvällä tavalla.
+
+<a name="osio-8">
+## 8. Ratkaisuja
+
+**K:** "Mitä tekoälyn muodostamille uhille voidaan tehdä?"
+
+Aloitan sanomalla, että nykyinen tilanne todella on sellainen, että poikkeukselliset toimenpiteet uhan välttämiseksi ovat perusteltuja. "Rakennamme kovaa tahtia ihmisiä älykkäämpiä tekoälyjä tietämättä, mitä teemme ja riskeeraten jokaisen ihmisen hengen" ei ole normaali asioiden tila. Siten en pidä esimerkiksi artikkelissa [Pausing AI Developments Isn’t Enough. We Need to Shut it All Down](https://time.com/6266923/ai-eliezer-yudkowsky-open-letter-not-enough/) (Yudkowsky) esitettyä kuvausta tilanteen vakavuudesta kovin liioiteltuna.
+
+En kuitenkaan keskity tässä niinkään hallinnolliseen tai sosiaaliseen puoleen, koska omat vahvuuteni ovat toisaalla. Sen sijaan listaan tässä muutamia teknisempiä suuntauksia, joiden työstäminen vie ihmiskunnan parempaan asemaan.
+
+1: *Tulkittavuus* eli "selvitetään, miten tekoälyjärjestelmät toimivat", esimerkkilähestymistapoina mekanistiset selitykset mallin sisäisestä toiminnasta[^44], mallien kehittyminen koulutuksen aikana[^45] ja mallin ajattelun ulkoistaminen tekstimuotoon[^46].
+
+2: *Kontrollointi*[^47] eli "varmistetaan, etteivät mallit kykene aiheuttamaan pahoja asioita". Muutama idea tämän toteuttamiseksi:
+- Käytetään heikompia, luotettavampia malleja valvomaan kyvykkäämpien mallien toimintoja, hälyttäen ihmisiä epäilyttävistä tilanteista
+- Jaetaan tehtäviä pieniin, eristettyihin palasiin suurten, avoimempien ongelmien ratkomisen sijasta
+- Mallin itsensä eristäminen ja sen painojen pitäminen turvassa
+
+3: *Kykyjen mittaaminen*[^48] ja erityisesti vaarallisten kykyjen mittaaminen. Monien avoimien, useampia toimintoja vaativien tehtävien ja kykyjen mittaaminen on hankalaa ja vaivalloista. Joidenkin hienovaraisten kykyjen, kuten mallin tilannetietoisuuden, mittaaminen vaatii hienovaraisuutta.
+
+4: *Tekoälyjen kehityspolitiikan suunnittelu ja toteuttaminen*[^49]. Käsitellään kysymyksiä kuten
+- "mitkä ovat ne vaaralliset kyvyt, joista olemme huolissamme?",
+- "minkälaiset suojatoimenpiteet ovat tarpeen, jos malleilla on tämäntasoiset kyvyt?",
+- "milloin tekoälyjen kehitys tauotetaan?",
+- "miten mittaamme ja seuraamme tekoälyjen vaarallisia kykyjä?" ja
+- "mitä teemme, jos tekoälyillä on vaarallisia kykyjä?"
+sekä toteutetaan ratkaisuja.
+
+5: *Demonstraatiot ja keinotekoiset esimerkit*[^50] eli "tutkitaan, millaisia ongelmia ilmaantuu ja missä tilanteissa". Tekoälyn ongelmiin liittyviä konseptuaalisia argumentteja voi testata empiirisesti ja siten saada tarkempaa kuvaa siitä, miten ja milloin ongelmat ilmaantuvat käytännössä.
+
+6: *Stressitestaus*[^51] eli "tutkitaan, kestävätkö nykyiset järjestelmät ja menetelmät painetta?" Esimerkkejä: Kuinka hyvin nykyisille malleille tehty koulutus estää haitallisen sisällön tuottamista malleilla? Kuinka hyvin nykyiset koulutusmenetelmät toimivat, jos niitä sovelletaan malliin, joka on "paha" tietyillä tavoilla? Saako ulkopuolinen taho varastettua mallin painot?
+
+7: *Laskennan hallinnointi*[^52] eli "seurataan ja rajoitetaan suurten laskentaresurssien käyttöä". Nykyisten mallien kouluttamiseen käytetään valtavat määrät laskentaa ja käytetyn laskentatehon määrä heijastaa melko hyvin mallin kykyjä. Laskennan seuranta on siten yleishyödyllinen työkalu tekoälysääntelyä ajatellen.
+
+Yleisellä tasolla pullonkaulana ei suinkaan ole hyödyllisen tekemisen löytyminen. Prosessin "ihmiset tutkivat tekoälyjä, suunnittelevat järkeviä toimia, kommunikoivat näitä asioita eteenpäin ja laittavat suunnitelmia käyttöön" jokainen vaihe hyötyy lisäkäsistä.
+
+**K:** "Miten käytännössä yksittäiset ihmiset pystyvät olemaan avuksi?"
+
+Yksinkertainen vastaus: Tekoälyturvallisuuden parissa työskentelee monia erinomaista työtä tekeviä (voittoa tavoittelemattomia) organisaatioita, jotka saisivat enemmän aikaan enemmällä rahoituksella. Jos pitäisi nimetä yksi, valitsisin [Center for AI Safetyn](https://www.safe.ai/donate).
+
+Tämän lisäksi on vaihtoehto tehdä itse jotakin, mistä pääsemme monimutkaiseen vastaukseen.
+
+Kuten mainitsin, tilaa lisäkäsille on ja paljon -- riskien suuruudesta huolimatta tekoälyturvallisuuden parissa työskentelee hyvin pieni määrä ihmisiä[^40]. Alkuun pääseminen vaatii kuitenkin jonkin verran selvittelemistä: yleinen tekoälytilanne on hieman monimutkainen, eri tehtävät edellyttävät erilaista ennakko-osaamista ja varsinaisten konkreettisten projektien löytäminen vaatii alaan tutustumista.
+
+Minulla ei ole helppoa ratkaisua alkuun pääsemisen ongelman ratkaisemiseksi, mutta toivottavasti seuraavista viitteistä on apua:
+
+- [Alignment Forum](https://www.alignmentforum.org/) kerää kattavasti tekoälyongelman tutkijoita ja aihetta käsitteleviä artikkeleja. Mielestäni hyvä tapa päästä alkuun on lukea sivustolta itseä kiinnostavia tekstejä.
+- Aiheesta on koottu kurssimuotoisia materiaaleja. [AI Safety Fundamentals](https://aisafetyfundamentals.com/) sisältää sekä teknisen että hallinnollisen suuntauksen. Myös [Introduction to AI Safety, Ethics, and Society](https://www.aisafetybook.com/) on laadukas.
+- Alalla aloittaville on monia työmahdollisuuksia ja tutkimusohjelmia (esimerkiksi [lista täällä](https://www.aisafetysupport.org/lots-of-links#h.galayb7cov3i)).
+
+Lopuksi mainitsen, ettei tekoäly ole pelkästään tärkeä aihe, vaan myös *kiinnostava*. On niin paljon kysymyksiä, joiden vastauksia kukaan ei vain ole ehtinyt selvittää! Niin paljon tiedettävää, mitä emme vielä tiedä! Aiheen parissa työskenteleminen ei ole hassumpaa.
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+[^1]: Bowman, [Eight Things to Know about Large Language Models](https://arxiv.org/abs/2304.00612)
+
+[^2]: Grace, Stewart, Sandkühler, Thomas, Weinstein-Raun, Brauner, [Thousands of AI Authors on the Future of AI](https://arxiv.org/abs/2401.02843)
+
+[^4]: Katso myös: [List of security hacking incidents](https://en.wikipedia.org/wiki/List_of_security_hacking_incidents) (Wikipedia) ja [Example high-stakes information security breaches](https://docs.google.com/document/d/1_smEDPWDVIaLuZ14Cm7KLHcWx4LkJ0DCTk8bcHjYy_Y/edit) (Muehlhauser).
+
+[^5]: Carlsmith, [New Report on How Much Computational Power It Takes to Match the Human Brain](https://www.openphilanthropy.org/research/new-report-on-how-much-computational-power-it-takes-to-match-the-human-brain/)
+
+[^6]: [Top500-lista marraskuulta 2023](https://www.top500.org/lists/top500/2023/11/) mainitsee parhaalla supertietokoneella olevan laskentakykyä hieman päälle 10^18 FLOP/s. Our World In Data [antaa arvioita](https://ourworldindata.org/grapher/artificial-intelligence-training-computation) suurimpien mallien kouluttamiseen kuluvasta laskentatehosta ja olettaen kolmen kuukauden koulutusjakson, Googlen Gemini Ultran koulutuksessa suoritettiin noin 10^19 laskutoimitusta sekunnissa.
+
+[^7]: Gwern, [The scaling hypothesis](https://gwern.net/scaling-hypothesis), Kaplan et al., [Scaling Laws for Neural Language Models](https://arxiv.org/abs/2001.08361)
+
+[^8]: Vrt. väitteet "LLMs predictably get more capable with increasing investment, even without targeted innovation" ja "Human performance on a task isn't an upper bound on LLM performance" (Bowman, [Eight Things to Know about Large Language Models](https://arxiv.org/abs/2304.00612)).
+
+[^10]: Pyrin tässä antamaan mahdollisimman ymmärrettävän uhkaskenaarion, joka ei vaadi *niin* edistyneitä kognitiivisia kykyjä tekoälyn osalta ("tuo nyt on täysin mahdotonta, ei mikään tekoäly voisi kyetä tuohon!" -tyyppisten vastustusten varalta). Tämä ei tietenkään tarkoita, ettei tekoälyillä *voisi* olla äärimmäisten edistyneitä kykyjä -- esimerkiksi kykyä luoda paljon edistyneempää teknologiaa kuin mitä ihmiskunta on vielä 2020-luvulla ehtinyt rakentamaan. Ja samaan tapaan kuin nyky-yhteiskunta on täysin ylivoimainen 1820-luvun maailmaan nähden, suuri teknologinen etumatka riittää hallinnan saavuttamiseen.
+
+[^12]: Neuronien välisten riippuvuussuhteiden vahvuudet tunnetaan nimellä *painot* (engl. *weights*) tai *parametrit*. Yhdessä neuroverkon *arkkitehtuurin* (esim. "kuinka monta kerrosta verkossa on" tai "kuinka monta neuronia kussakin kerroksessa on") nämä kertovat, mitä neuroverkko tekee.<br><br>Kielimallien tapauksessa syötteenä annettu teksti paloitellaan ensiksi noin parin kirjaimen pätkiin (engl. *tokens*), ja neuroverkko käsittelee tätä pätkäjonoa. Lopulta neuroverkko palauttaa todennäköisyysjakauman seuraavalle pätkälle.<br><br>Mallien koulutuksen ensimmäisessä vaiheessa (*esikoulutuksessa*, engl. *pre-training*) mallille syötetään usein netistä kerättyä tekstiä, ja mallin suoriutumista mitataan sillä, kuinka hyvin se sai *ennustettua* seuraavan tekstin eli kuinka suuren todennäköisyyden se antoi oikealle tekstinpätkälle.<br><br>Suoriutumista parannetaan (stokastisella) *gradienttilaskeumalla* (engl. *stochastic gradient descent*, SGD). Idea on seuraava: Mitataan mallin suoriutumista oikealle vaihtoehdolle annetun todennäköisyyden logaritmilla. Tämä on ns. *häviöfunktio* (engl. *loss function*.) Määritetään kullekin painolle, miten pienet muutokset painolle vaikuttavat häviöfunktioon tässä tietyssä esimerkkitapauksessa. Teknisin termein määritämme siis häviöfunktion osittaisderivaatan painon suhteen. Ne kertovat, mihin suuntaan painoa kannattaa muuttaa, jotta suoriutuminen paranee (ja kuinka nopeasti suoriutuminen alkaa parantumaan, kun painoa muutetaan). Käytännössä osittaisderivaatat saa laskettua "backpropagation"-menetelmällä.<br><br>Seuraavaksi mallin *jokaista* painoa muutetaan osittaisderivaattojen ilmoittamaan suuntaan. Tätä koko prosessia toistetaan, ja pikkuhiljaa malli alkaa suoriutumaan paremmin ja paremmin.<br><br>(Lisää teknisiä yksityiskohtia: Käytännössä SGD-algoritmin sijasta käytetään usein sen muunnelmia kuten AdamW-algoritmia. Lisäksi rinnakkaislaskentaan liittyvistä syistä on parempi ensiksi tutkia suoriutumista useamman esimerkin kohdalla ja vasta sitten muuttaa painoja. Nämä eivät kuitenkaan ole konseptuaalisesti tärkeitä yksityiskohtia.)<br><br>Esikoulutusvaiheen jälkeen alkaa "hienosäätö" (engl. *fine-tuning*). Yksi lähestymistapa hienosäätöön on suorittaa samankaltaista prosessia kuin esikoulutusvaiheessa, mutta tarkkaan valitulla tekstiaineistolla. Jos mallin halutaan antavan tietyntyyppisissä tilanteissa tietynlaisia vastauksia, voi mallia kouluttaa juuri sen tyyppisillä esimerkeillä.<br><br>Toinen yleinen lähestymistapa on ns. *vahvistusoppiminen* (engl. *reinforcement learning*), jossa mallilla tuotetaan tekstejä, joita arvioidaan numeerisella asteikolla. Esimerkiksi usein ihminen arvioi tekstien hyvyyttä. Painoja muutetaan niin, että paremman arvion saaneet tekstit muuttuvat todennäköisemmiksi.<br><br>Molemmilla lähestymistavoilla saadaan ohjattua mallin toimintaa haluttuun suuntaan. Painotan, että menetelmät ovat edelleen muotoa "väännetään nuppeja siihen suuntaan, että saadaan hieman halutunlaisempia tuloksia", ja erityisesti *läpinäkyvyys* ja varsinainen *hallinta* mallin toiminnasta ovat heikolla tolalla. Käsittelen varsinaisessa tekstissä näitä aiheita tarkemmin.<br><br>Nykyiset kielimallit pohjautuvat pitkälti *transformer*-arkkitehtuuriin, joka hyödyntää "tavallisten" kerrosten lisäksi "attention"-mekanismia. En kuitenkaan enää tässä käsittele asiaa tarkemmin.
+
+[^13]: Tämä on eri asia kuin se, että malli "todella haluaisi" vahingoittaa käyttäjiään. Yritän vain sanoa, että näkemys tyyppiä "älä ole naurettava, tietysti ihmiset reagoisivat heti tekoälyn uhkaan, jos mitään näyttöä uhista olisi" näyttää hyvin heikolta.
+
+[^14]: Scott Alexander on kirjoittanut verrattain kansantajuisen kuvauksen työn sisällöstä: [God Help Us, Let's Try To Understand AI Monosemanticity](https://www.astralcodexten.com/p/god-help-us-lets-try-to-understand)
+
+[^18]: Lisää aiheesta: janus on 'truesight', [Alignment Forum](https://www.alignmentforum.org/posts/doPbyzPgKdjedohud/the-case-for-more-ambitious-language-model-evals?commentId=XZFTx2ek8G8stBKW4)
+
+[^19]: Tämä esimerkki on METRin tehtäväkokoelmasta: [METR Example Task Suite, Public](https://github.com/METR/public-tasks), Kinniment et al.
+
+[^20]: "Kielimallit ovat tekstin ennustajia" on äärimmäisen osuva kuvaus *esikoulutetuista* malleista, joiden koulutus perustuu puhtaasti tekstin ennustamiseen. Kielimalleille tehdään kuitenkin tämän lisäksi myös hienosäätöä, joka ohjaa niitä vastaamaan kysymyksiin ja suorittamaan tehtäviä. Näkemyksen "kielimallit ovat tekstin ennustajia" voisi siis haastaa näiden hienosäädettyjen mallien kontekstissa: jos kysyn ChatGPT:ltä kysymyksen, niin se vastaa. En yritä sanoa, etteikö ChatGPT vastaisi siltä kysyttäviin kysymyksiin. Yritän sanoa, että valtaosa kielimallien koulutuksesta perustuu tekstin ennustamiseen, kielimallin varsinaiset kyvyt ovat lähtöisin tekstin ennustamisesta ja hienosäätö on lähinnä *käytännöllisyyttä* varten tehty melko pinnallinen muutos, ei kielimallin "todellinen luonne". (Kuva voi tosin muuttua, jos hienosäädön määrää aletaan kasvattamaan.)
+
+[^21]: Esimerkki Kelsey Piperin tekstistä [Playing the training game](https://www.planned-obsolescence.org/the-training-game/)
+
+[^22]: Niin ikään kysyttäessä kokemuksistaan monet tekoälymallit vastaavat, ettei niillä ole henkilökohtaisia haluja tai subjektiivisia kokemuksia. Tämän on paras olla totta: asiat voivat päätyä *todella* huonoon tilaan, jos tämä ei pidä paikkaansa, mutta ihmiset uskovat (tai haluavat uskoa) näin olevan.
+
+[^23]: Käytöksestä voi tietysti päätellä jotakin sisäisestä toiminnasta. Kielimalli, joka annettaessa ongelman ("paljonko on 3981\*8436?") osaa aina antaa oikean vastauksen ("33583716") välttämättä tekee *työtä* ongelman ratkomiseksi (vertaa: laskennallinen aikavaativuus). Toisaalta joitakin kysymyksiä sisäisistä ominaisuuksista on äärimmäisen hankala vastata pelkästään käytöksen perusteella.
+
+[^26]: Katso Hubinger et al., [Model Organisms of Misalignment: The Case for a New Pillar of Alignment Research](https://www.alignmentforum.org/posts/ChDH335ckdvpxXaXX/). Kysymys "eikö ole vaarallista tarkoituksella luoda juonivaa tai muilla tavoilla pahaatahtovaa tekoälyä?" on aiheellinen (ja tätä käsitelläänkin edellä mainitussa artikkelissa). Lyhyesti vastaus on: nykyiset mallit eivät vielä ole riittävän kyvykkäitä aiheuttamaan merkittävää harmia, ja niiden tutkiminen rajatuissa koeympäristöissä on verrattain turvallista. Tämä on toki kysymys, joka on hyvä pitää mielessä erityisesti mallien kehittyessä.
+
+[^27]: Kielimallien tapauksessa tulisi puhua jälleen kirjainten sijasta "tokeneista", mutta yksinkertaistan helppolukuisuuden vuoksi.
+
+[^28]: Olen kuullut (toistaiseksi julkaisemattomasta) työstä, jossa shakkia pelaavasta neuroverkosta löydettiin eteenpäin katsomista. Monimutkaisempaa ja useampia vaihtoehtoja käsittelevää hakua ei toistaiseksi löytynyt.
+
+[^30]: Anthropic, [The Claude 3 Model Family: Opus, Sonnet, Haiku](https://www-cdn.anthropic.com/de8ba9b01c9ab7cbabf5c33b80b7bbc618857627/Model_Card_Claude_3.pdf), osio 2.5.
+
+[^32]: Yksi jos toinenkin taho voisi olla kiinnostunut mallin varastamisesta. Katso myös RANDin raportti [Securing Artficial Model Weights](https://www.rand.org/pubs/working_papers/WRA2849-1.html), jossa kirjoitetaan "If AI systems rapidly become more capable over the next few years, achieving sufficient security will require investments — starting today — well beyond what the default trajectory appears to be."
+
+[^33]: Eivätkä kaikki näistä tavoitteista suinkaan ole hyviä -- tietysti jo nyt jotkut ihmiset ovat antaneet tekoälyille tavoitteen tuhota ihmiskunta (ks. "ChaosGPT").
+
+[^34]: Ideat kuten "älä anna tekoälylle vapaata pääsyä nettiin", "älä anna tekoälyn ajaa ohjelmia vapaasti" ja "monitoroi tarkkaan tekoälyn toimintaa" ovat ilmeisiä turvallisuusnäkökulmasta, mutta tietysti kovin vaivalloisia ja epäkäytännöllisiä, jos haluaa vain saada tekoälyllä ongelmia ratkottua. Siten uhista vähemmin huolissaan olevat eivät juuri upota resursseja tällaisiin toimenpiteisiin. Katso esim. [Devin, the world's first fully autonomous AI software engineer](https://www.cognition-labs.com/introducing-devin) ja Zvi Mowshowitzin [analyysi](https://thezvi.substack.com/p/on-devin).
+
+[^40]: Näkemäni arviot asettavat täyspäiväisesti ongelman parissa työskentelevien määrän kolminumeroiseksi (vaikkakin tätä on vaikea arvioida ja luku on kenties noussut tekoälyn saadessa lisää huomiota). Kärkipaikoissa julkaistuista koneoppimisartikkeleista vain noin 2 prosenttia liittyvät turvallisuuteen ([An Overview of Catastrophic AI Risks](https://arxiv.org/pdf/2306.12001.pdf), Hendrycks et al., liite A).
+
+[^41]: Our World in Data, [Computation used to train notable artificial intelligence systems](https://ourworldindata.org/grapher/artificial-intelligence-training-computation?time=2010-01-01..latest)
+
+[^43]: Tietysti jos tietää, miten malli on toiminut vastaavantyyppisissä tilanteissa, niin voi tehdä valistuneita arvauksia uusista tilanteista. Pointtina on, että emme pysty *mekanistisesti* ajattelemaan "mallin saadessa tällaisen tekstin se tekee ensin näin, sitten noin, sitten näin, ja lopulta antaa tuollaisen tekstin vastauksena", vaan olemme taas käytöksen varassa: "malli antoi tuossa toisessa tilanteessa tällaisen vastauksen, joten varmaankin tässä tilanteessa se käyttäytyy samalla tavalla".
+
+[^44]: Tunnetaan nimellä: "mechanistic interpretability". Neel Nandan [kotisivuilla](https://www.neelnanda.io/mechanistic-interpretability) on hyviä kirjoituksia aloittelijalle, esimerkiksi [An Extremely Opinionated Annotated List of My Favourite Mechanistic Interpretability Papers](https://www.neelnanda.io/mechanistic-interpretability/favourite-papers).
+
+[^45]: Tunnetaan nimellä: "developmental interpretability". Ainakin [Timaeus](https://timaeus.co/) työstää tätä, esimerkkityönä [The Developmental Landscape of In-Context Learning](https://arxiv.org/abs/2402.02364) (Hoogland et al.)
+
+[^46]: Tunnetaan nimellä: "externalized reasoning" ja "faithfulness of chain-of-thought". Ks. esim. [Bias-Augmented Consistency Training Reduces Biased Reasoning in Chain-of-Thought](https://arxiv.org/abs/2403.05518) (Chua et al.), [Question Decomposition Improves the Faithfulness of Model-Generated Reasoning](https://arxiv.org/abs/2307.11768) (Radhakrishnan et al.) ja [Measuring Faithfulness in Chain-of-Thought Reasoning](https://arxiv.org/abs/2307.13702) (Lanham et al.).
+
+[^47]: Tunnetaan nimellä: "AI Control" (ja myös "scalable oversight"). Hyvä aloituspiste on [The case for ensuring that powerful AIs are controlled](https://www.alignmentforum.org/posts/kcKrE9mzEHrdqtDpE/the-case-for-ensuring-that-powerful-ais-are-controlled) (Greenblatt ja Shlegeris).
+
+[^48]: Tunnetaan nimellä: "(dangerous) capability evaluations". [METR](https://metr.org/) tekee hyvää työtä tehtäväpohjaisissa evaluoinneissa. Olen myös kiinnostunut esimerkiksi tilannetietoisuuden ([Towards a Situational Awareness Benchmark for LLMs](https://openreview.net/attachment?id=DRk4bWKr41&name=pdf), Laine et al.) ja muiden hienovaraisten kognitiivisten kykyjen mittaamisesta.
+
+[^49]: Tunnetaan nimellä: "responsible scaling policies". Ks. METRin [Responsible Scaling Policies (RSPs)](https://metr.org/blog/2023-09-26-rsp/), [Anthropic's Responsible Scaling Policy](https://www.anthropic.com/news/anthropics-responsible-scaling-policy) ja Paul Christianon [Thoughts on responsible scaling policies and regulation](https://www.alignmentforum.org/posts/dxgEaDrEBkkE96CXr/thoughts-on-responsible-scaling-policies-and-regulation).
+
+[^50]: Kuvaus tästä tutkimussuuntauksesta: [Model Organisms of Misalignment: The Case for a New Pillar of Alignment Research](https://www.alignmentforum.org/posts/ChDH335ckdvpxXaXX/model-organisms-of-misalignment-the-case-for-a-new-pillar-of-1) (Hubinger et al.). Tähän teemaan liittyviä tutkimuksia: [Our research on strategic deception presented at the UK’s AI Safety Summit](https://www.apolloresearch.ai/research/our-research-on-strategic-deception-presented-at-the-uks-ai-safety-summit) (Apollo Research) ja [Sleeper Agents: Training Deceptive LLMs that Persist Through Safety Training](https://arxiv.org/abs/2401.05566) (Hubinger et al.). Tekstin kirjoitushetkellä työstän itse tähän liittyvää projektia: päätyvätkö kielimallit huijaamaan ihmisiä ilman ulkoista painetta tehdä niin?
+
+[^51]: Esimerkkejä: [BadLlama: cheaply removing safety fine-tuning from Llama 2-Chat 13B](https://arxiv.org/abs/2311.00117) (Gade et al.), [Stealing Part of a Production Language Model](https://arxiv.org/abs/2403.06634) (Carlini et al.), alaviitteen [^50] "Sleeper Agents" -artikkeli, "jailbreaks".
+
+[^52]: Tunnetaan nimellä: "Compute Governance". [Introduction to AI Safety, Ethics, and Society](https://www.aisafetybook.com/) -kirjan [luku 8.4](https://www.aisafetybook.com/textbook/8-4) antaa yleiskuvauksen. Syvempi katsaus: [Computing Power and the Governance of AI](https://www.governance.ai/post/computing-power-and-the-governance-of-ai) (Heim et al.).
+
+[^53]: Tarinani on monelta osin samankaltainen kuin Cotran [Without specific countermeasures, the easiest path to transformative AI likely leads to AI takeover](https://www.alignmentforum.org/posts/pRkFkzwKZ2zfa3R6H/without-specific-countermeasures-the-easiest-path-to)
+
+[^54]: Tällaisia dynamiikkoja esiintyy tekoälyjen koulutuksen lisäksi myös niiden laajemmassa kehityksessä ja käyttöönotossa: Hendrycks, [Natural Selection Favors AIs over Humans](https://arxiv.org/abs/2303.16200).
+
+[^55]: Painotan, että nämä ovat eri vuosille jakautuneen epävarmuuden *mediaaneja* ("on mielestäni yhtä todennäköistä, että ihmistasoinen tekoäly saadaan ennen vuotta X kuin vuoden X jälkeen") eikä binäärisiä pistearvioita ("olen varma, että ihmistasoinen tekoäly saadaan vuonna X").
+
+[^56]: [Epoch AI](https://epochai.org/blog/algorithmic-progress-in-language-models) -organisaation raportti arvioi algoritmisten kehitysten puolittavan tarvittavan laskentatehon kerran noin 8 kuukaudessa.
+
+[^57]: Niille tekoälyille, joista tekoälyn uhista huolissaan olevat ovat huolissaan, ei ole jaettua hyväksyttyä määritelmää. "Transformatiivinen tekoäly" on yksi kohtalaisen yleinen termi, karkeasti viitaten tekoälyihin, jotka aiheuttavat vähintään yhtä merkittäviä muutoksia kuin maatalouden kehittäminen tai teollinen vallankumous (ks. Open Philanthropy, [Some Background on Our Views Regarding Advanced Artificial Intelligence](https://www.openphilanthropy.org/research/some-background-on-our-views-regarding-advanced-artificial-intelligence/)).
+
+[^58]: Tai: eivät ole pyrkimättä tähän.
+
+[^60]: Erityisesti pyrin antamaan uhkaskenaarion, joka ei vaadi suuria muutoksia tekoälykehityksessä. Suuret muutokset ovat tietysti mahdollisia ja ne voivat tuoda mukanaan uusia ongelmia.
+
+[^kiitos]: Kiitokset Akseli Jussinmäelle, Konsta Tiilikaiselle ja Meeri Kuoppalalle palautteesta aiempiin versioihin.
+
+[End of text.]
+
+# On catastrophic risks from AI
+
+**Q:** "You have views on artificial intelligence. Tell us about them."
+
+AI has developed at an extraordinary pace, and as it develops it will cause fundamental changes, just as the technological developments of the last few centuries have fundamentally transformed the world. AI thus has the potential for enormous benefits, as well as harms. Unfortunately, there are many unresolved problems associated with AI safety, making catastrophic outcomes a very realistic possibility.
+
+**Q:** "We'll get into the details in a moment, but do you have a brief description of what these
+views are based on?"
+
+Here are key ideas in short:
+
+- AIs can become extremely capable, thus creating serious risks.
+- This is the direction in which the current AI industry is rapidly heading.
+- We have very poor understanding of how AIs function.
+- Many problems are not visible on the surface: on the contrary, various factors lead to problems being hidden.
+
+A one-sentence version: 'We're building AIs that are more capable than humans without really understanding what we're doing, and this might be a bad idea.'
+
+**Q:** "What kind of topics will be covered?"
+
+1. [A brief overview of artificial intelligence](#section-1). What's AI all about?
+2. [The dangers of AI](#section-2). How can AI be dangerous?
+3. [Timelines](#section-3). When will these dangerous AIs be built, if ever?
+4. [Level of understanding](#section-4). What do you mean we don't understand how AI works?
+5. [Hidden problems](#section-5). Why are problems difficult to detect and fix?
+6. [Goals](#section-6). Do AIs have goals?
+7. [Concrete stories](#section-7). How is the situation developing?
+8. [Solutions](#section-8). What can be done?
+
+A bit about the nature of the text:
+
+The target audience of the text is people who want a *technical* understanding of the risks posed by AI systems. I’ve aimed to make the text accessible to a general audience, but especially towards the end I will go through detailed and technical ideas about current AI.
+
+For the reader who instead wants a shorter, high-level description of the risks of AI, I suggest reading Daniel Eth's article [AI Alignment, Explained in 5 Points](https://medium.com/@daniel_eth/ai-alignment-explained-in-5-points-95e7207300e3). And for the reader who wants more focus to the interaction of AI with *society*, from systematic risks to misuse, I recommend the article [An Overview of Catastrophic AI Risks](https://arxiv.org/pdf/2306.12001.pdf) by Dan Hendrycks, Mantas Mazeika and Thomas Woodside.
+
+If, on the other hand, the reader wants to understand why AI *itself* poses risks and why these risks are difficult to mitigate, my answer is below -- with the caveat that I have tried to write accessibly and relatively briefly.
+
+*Translated from the [original Finnish version](https://ollij.fi/tekoaly/) from March 2024. The translation might have shortcomings.*[^thanks]
+
+<a name="section-1">
+## 1. About AI in general
+
+**Q:** "Let's start from the very beginning. What is this 'artificial intelligence' you speak of?"
+
+Humans have the ability to observe and model their environment, learn, solve all kinds of problems, plan for the future, and so on. Something happens in our brains that makes all this possible, and some may refer to it as 'intelligence' or 'cognitive ability'. Although humans (and to varying degrees other animals) have these abilities, we still don't really understand this phenomenon.
+
+The goal of the AI field is to make computers do the same things: to create a program that can also learn, solve problems, design and model the environment.
+
+**Q:** "How would you describe the situation in AI in general?"
+
+The last decade has seen an explosion of developments. Approaches known as *deep learning* have taken hold and solved a huge number of long-standing problems. ChatGPT, of course, has received wide public attention. Like other *large language models*, it is capable of many things: speaking fully understandably in human languages, conversing like a human, helping with homework up to university level, understanding world events from popular culture to science, writing programs, and who knows what else. (For a more comprehensive discussion of the development of AI, see Richard Ngo, [Visualizing the deep learning revolution](https://medium.com/@richardcngo/visualizing-the-deep-learning-revolution-722098eb9c5).)
+
+In general, the range of abilities of these language models is so wide that it is hard to communicate just what they are able to do if one doesn’t try them out themselves. Even this might not be enough: somewhat surprisingly, it is generally difficult to evaluate language models’ capabilities (more on this later) and in particular casual discussions often do not reveal their best abilities.[^1]
+
+Numbers paint a similar picture: compared to 2010, the computing power used to train
+the largest models has increased by about *a billion times*.[^41] The GPT-2 model cost an
+estimated 40,000 dollars to train, the 100 times larger GPT-3 model cost 5 million dollars, and at the
+time of writing, the best GPT-4 model costed around 100 million dollars. It is expected that
+investment will continue to increase. (In addition, focusing on monetary investment alone *underestimates* the rate of progress, as over time money can be more efficiently turned into computing power and computing power better into capabilities.)[^56]
+
+From the perspective of risks this intense pace of development is troublesome, leaving less time to solve problems, despite there being plenty to research in current models.
+
+**Q:** "How seriously do people and society generally take the risks posed by AI?”
+
+In May 2023, Center for AI Safety published a [statement](https://www.safe.ai/statement-on-ai-risk) on threat of extinction from AI. The statement received signatures from CEOs of major AI organizations, leading AI researchers and many major public figures. In November 2023, the UK
+hosted the [AI Safety Summit](https://www.gov.uk/government/topical-events/ai-safety-
+summit-2023). In a survey[^2] of thousands of AI researchers in the same year, more than a third
+put the probability of human extinction or other extremely negative outcomes at more than
+10%(!)
+
+Real action is lower than one might expect based on such survey results, however. Some measures have still been taken: Both the [United States](https://www.whitehouse.gov/briefing-
+room/statements-releases/2023/10/30/fact-sheet-president-biden-issues-executive-order-on-safe-
+secure-and-trustworthy-artificial-intelligence/) and [European
+Union](https://www.europarl.europa.eu/topics/en/article/20230601STO93804/ eu-ai-act-first-
+regulation-on-artificial-intelligence) have recently introduced legislation to specifically address
+general-purpose AIs trained with large amounts of compute.
+
+**Q:** "What kind of timelines are we talking about?"
+
+On the question [When will the first general AI system be devised, tested, and publicly
+announced?](https://www.metaculus.com/questions/5121/date-of-artificial-general- intelligence/) from Metaculus, a collective estimate aggregated from over a thousand predictors places the median year (at the time of writing) at 2031. Different questions ("timelines to what?") and different crowds give different answers - there is by no means consensus on the subject. In any case, timelines of 5 to 15 years[^55] to transformative AI[^57] are quite typical.
+
+<a name="section-2">
+## 2. The dangers of AI
+
+**Q:** "Why are AIs dangerous? Where do the risks come from?"
+
+Before getting into the actual dangers and risks, let me first address why AI is such an extremely
+important topic. Let me tell you a short story:
+
+Compare Earth 200 000 and 100 000 years ago. There are some differences between the two
+pictures: some species have gone extinct, some species have become slightly different due to
+evolution, continents have slightly changed place. Nothing very radical has happened, however.
+
+Compare then Earth 100 000 years ago and today. The difference is *incomprehensible*. There are 
+[boulder-sized pieces of metal](https://en.wikipedia.org/wiki/Airplane) flying in the sky. [Cloud-reaching spikes](https://en.wikipedia.org/wiki/Burj_Khalifa) rise from the ground. The surface of the planet is covered with [huge patches of light](https://en.wikipedia.org/wiki/Anthropocene#/media/File:Earth's_City_Lights_by_DMSP,_1994-1995_(large).jpg). At some point [a footprint has appeared on the Moon](https://en.wikipedia.org/wiki/File:Apollo_11_bootprint.jpg).
+
+???
+
+What could possibly cause all this?
+
+Answer: *humans*. There is something *very curious* about humans that has resulted in all this. And it’s no secret that the causes lie inside our heads.
+
+We are living truly extraordinary times. If we can build AIs that go beyond human capabilities, the times will become even more extraordinary. Just like humanity, AI has huge potential to change the world in unexpected ways, and this is where the risks stem from. Steering this potential so that the outcomes are *good* is a fundamental and, as we shall see, difficult problem.
+
+**Q:** "Suppose we build extremely capable AI. What specifically goes wrong? How could the AI actually be dangerous?"
+
+I will tell two short stories to illustrate the problems.
+
+First story: There is not just one AI, but in practice AI will be increasingly used to automate a wide range of tasks. Imagine: over time, AIs will become ubiquitous in society, in the same way that electricity or computers are ubiquitous. They will also be used *more autonomously* to carry out increasingly large projects, without a human holding their hand at every step. AIs are not just a tool, but they are capable of performing long-term tasks autonomously like a human could. And there are *many* of these AIs, so that much of all the cognitive work is done by AIs, not humans.
+
+If we have managed to direct these AIs to do good things, then of course everything will be better than fine. In practice, however, AIs, like practically any other systems, are difficult to direct to do the right things. Sometimes AIs do things that nobody really thinks are good, but it's hard to do anything about it. AIs are doing things more and more autonomously, with humans having less and less understanding of their actions. Nevertheless, all incentives point towards using AIs more: they are cheaper, faster and better than humans.
+
+Economic growth and technological progress continue at an exceptionally high speed. Humans, however, are not quite in the driver's seat: much of the work and thinking is done by artificial intelligence. We are totally dependent on AI systems (in the same way that we are now totally dependent on electricity). And so it's fair to ask: "We are going to live in very special times, things are changing rapidly and humanity has a diminishing understanding and control of the situation; is this going to be OK? Should someone think about this?”
+
+To be clear, it is not obvious that things would go wrong here: there are many factors at play, from technical problems and solutions to socio-political decisions and coordination. Rather, the story illustrates that the stakes are high and there is a lot of uncertainty. I will next tell another story that more directly illustrates the potential dangers.
+
+Another story: Imagine that a highly capable artificial intelligence appears on someone's computer out of nowhere, pursuing its own goals. Naturally, to achieve these goals, it is good to acquire a bit more resources and control over its own environment, and perhaps stay hidden for the time being.
+
+What happens next? Hard to say: If the AI indeed is extremely capable, it will devise better strategies than I could. The right mental image of the limits of AIs’ capabilities is not “what a single person would think of after a moment’s thought”, but more like "what the best people would come up with after working on it for years". (I'll discuss this in more detail in the next section.) But here's one approach I could imagine such an AI using.
+
+First, the AI uses a computer to connect to the internet and exploits security vulnerabilities to take control of other devices, money, computing power, information and to spread around. If this sounds unrealistic, perhaps [sending a single text message to retrieve the data on a phone](https://googleprojectzero.blogspot.com/2021/12/a-deep-dive-into-nso-zero-click.html) sounds unrealistic too -- and yet human-level intelligences have succeeded in such a magic trick. It is generally known that *computer systems are not secure*[^4].
+
+The situation has progressed to the point where the AI is on practically every device connected to the web, providing computing power and thus *time to think* and resources for one plan or another. If the lack of physical control and robotics seems limiting, there is at least one person on the internet who can be hired (or just asked) to do some small-scale robotics to get started – assuming there are no suitable devices already connected to the web.
+
+I would describe the situation now as a confrontation, where one side is able to think more and better, is better coordinated, controls much of the infrastructure, can prepare as they want, has the advantage of surprise and is not dependent on physical location. If the setting were more even-handed, one could use the word "war", but the operation would be rather one-sided -- whether carried out through conventional methods or with technology that humanity has not yet developed as of 2024.[^10]
+
+**Q:** "Wouldn't people react to this in any way?"
+
+The AI doesn't have to advertise itself by saying "I'm an evil AI." In general, the idea "in a real situation, humanity would unite and fight against AI" is based on the assumption that at some point a fire alarm will go off, people will unanimously agree that the threat is real, and then everything possible will be done to mitigate the risks. It is wishful thinking that an AI pursuing its own goals would set off such a fire alarm for the benefit of humanity.
+
+If one thinks about precautions to be taken in advance, for example "no AIs are connected to the internet" is not a practical reality -- on the contrary, it is only practical if our AI systems can use the web.[^34]
+
+As for humans’ will to fight: even *now* AI researchers [warn of extinction threat](https://www.safe.ai/work/statement-on-ai-risk). Concerns about the threat are quite widespread among [researchers](https://arxiv.org/abs/2401.02843) and [the general population](https://theaipi.org/poll-shows-overwhelming-concern-about-risks-from-ai-as-new-institute-launches-to-understand-public-opinion-and-advocate-for-responsible-ai-policies/). And surely we haven't forgotten that time when one of the world's biggest tech companies released an AI that [repeatedly threatened to harm its users](https://thezvi.substack.com/p/ai-1-sydney-and-bing#%C2%A7the-examples)?[^13] It is unclear to me what would be needed for people to take the problem seriously.
+
+**Q:** "What is the basis for the idea that AI is trying to defeat humans?"
+
+To be clear: Nothing here is a prediction of how things will play out in reality. ([Section 7](#section-7) deals with what I think are more realistic stories.) Again, I'm trying here to respond to the view "I don't really see how AI could possibly cause harm" by giving examples of how AI possibly could cause harm. One can find more concrete stories on the web: [Holden Karnofsky](https://www.cold-takes.com/ai-could-defeat-all-of-us-combined/), [Paul Christiano](https://www.alignmentforum.org/posts/HBxe6wdjxK239zajf/what-failure-looks-like), [Gabriel Mukobi](https://aiacumen.substack.com/p/scale-was-all-we-needed-at-first), [Paul Christiano again](https://www.alignmentforum.org/posts/AyNHoTWWAJ5eb99ji/another-outer-alignment-failure-story), [Scott Alexander](https://slatestarcodex.com/2015/04/07/no-physical-substrate-no-problem/), [Gwern](https://gwern.net/fiction/clippy).
+
+I would also say that "capable AIs would be able to cause the destruction of humanity" should be an alarming observation in itself. Yes, the realization of threat scenarios requires (among other things) that these AIs also *aim* to do this[^58] -- and I'll get into this in much more detail later -- but in any case we are dealing with very dangerous technology. There are few other risks of comparable size, and our plan has to be better than "let's hope these AIs don't try to do bad things".
+
+But now that this basic point about the extreme potential and danger of AIs has been addressed, we can move on to questions such as "will such highly capable AIs even be built?" and "how hard is it to make sure AIs don't do bad things?"
+
+<a name="section-3"> 
+## 3. Timelines
+
+**Q:** "What reason is there to believe that it is possible to build human-level AIs?"
+
+At least three reasons: First, a computer could just do the same things that the human brain does.
+Second, humans are a product of evolution -- and if evolution “by chance” ended up with such
+good results, then surely we can do the same. Third, the AI industry has made huge progress and has been able to surpass human capabilities in many tasks: just looking at the current state of the art, it looks very much like there’s no hard limit around human-level performance.
+
+**Q:** "And why expect that AIs could be much more capable than humans?"
+
+Practically the same three reasons: First, a computer could just do the same things that a human
+brain or a group of humans does, but much faster -- just increase the amount of computing power. A
+hundred times the thinking time is overwhelming in many situations, as is the combined expertise
+of several people. Taking this idea to the extreme, it is at least physically possible to build AIs
+capable of solving everything that humanity as a whole is capable of (but much faster). This is
+enough to solve all sorts of impossible problems: one person can't build a moon rocket, but humanity as a whole has succeeded in this.
+
+Second, humans are still the product of evolution, and it would be a very surprising coincidence
+if evolution happened to hit on the best possible way to build a brain on the first try. Moreover, evolution has constraints such as "the brain has to fit in the skull and so it can't be very big". Also,
+different people's brains are very similar (in the grand scheme of things), but there are still big differences between people’s abilities in individual tasks, so perhaps better design will yield huge benefits.
+
+Third, in many of the tasks where AIs are better than humans, they are much better. Computers are
+not just "a little" faster at doing calculations or just a little better at playing Go, they are completely
+superior. And AIs don’t do "the same things as humans, but more", rather they do things in different ways and simply *better* than humans. [Deep Blue](https://en.wikipedia.org/wiki/Deep_Blue_(chess_computer)), when it beat the world chess champion Garry Kasparov in 1997, didn't just imitate Kasparov by thinking longer: on the contrary, Deep Blue used considerably less computing power than the human brain uses, but used it better to play chess.
+
+**Q:** "Why expect that *in practice* we will succeed in building highly capable AIs, even within
+a reasonable timeframe?"
+
+One factor is that the human brain does not perform too many computational steps: estimates are around 10^15 calculations per second.[^5] For comparison: currently, the best supercomputers and
+computing centers can perform on the order of 10^18 to 10^19 calculations per second.[^6] The necessary computing power exists (and surely we will have more in the future), it's just a matter of using it well. The more computing power, the worse algorithms will do.
+
+Another factor is that current methods scale very well with computing power.[^7] Empirically, it has been shown that by increasing the AI model’s size, the amount of data and the computing power used to train it, one consistently gets better results -- including *qualitatively new capabilities*. It seems quite possible that this simple recipe is enough to reach and exceed human capabilities.[^8] Just comparing the GPT-2, GPT-3 and GPT-4 language models trained over a four-year time window gives a stark picture of the pace of development and an idea of what to expect from the next GPT models and the next years of development. It looks wild.
+
+Scalability, combined with a huge pace of development, makes you think that perhaps the rapid pace will continue, and timelines can indeed be short.
+
+**Q:** "Isn't it really difficult to predict these things?"
+
+One typical reaction to concerns about AI is general scepticism about predictions and forecasts
+of the future. I briefly respond to this below.
+
+History is, of course, filled with examples of predictions gone (badly) wrong, both in one direction and the other. It is perhaps good to be aware of these as cautionary examples. On the other hand,
+I say that the New York Times' [infamous prediction](https://en.wikipedia.org/wiki/Flying_Machines_Which_Do_Not_Fly) of million-year timelines for the development of airplanes is plain ridiculous if one thinks quantitatively about
+human history and technological development -- even if you were not an aircraft expert. (And flying clearly is possible: birds can do it!)
+
+It is also true that people have a well-documented bias towards overconfidence and that this is also
+the case for many experts on their fields. It is good to be aware of this. It's hard to draw any stronger
+conclusions from this, though: simply "always be less confident" is *not* the right advice.
+
+I get the impression that some people are very sceptical about any claims about the future, partly
+because of famous wrong predictions and general overconfidence. This is understandable and some
+level of scepticism is indeed justified. However, it is easy to use these general arguments in a one-sided way: I have seen them used in practice to argue that AI is certainly far in the future -- thus falling into the exact same error that one accuses others of!
+
+Such general arguments are simply inadequate: predicting the future is difficult and you really need to look at the actual claims being made.
+
+Coming back to the point: "Using more compute gives better results” has shown to be a stable trend in practice. Scaling works. For timelines to very capable AIs to be many decades, this trend would need to break. I argue that the trends are likely to continue, and even if one thinks it is less likely, we should prepare for this scenario.
+
+In general, the right time to prepare for catastrophic risks is early on, even if one thinks it is likely that they would materialize only later.
+
+<a name="section-4"> 
+## 4. Level of understanding
+
+**Q:** "You've pointed out that nobody really understands how AIs work. What exactly do you
+mean by that?"
+
+The key idea: AIs are not directly built by humans. It is a fallacy to think that because humans
+have created these AIs, then surely some people know how they work. I will go into this topic in
+more detail in a moment.
+
+I will then discuss four more concrete and illustrative phenomena that follow:
+- we don't really know what's going on inside the AIs
+- AIs behave unexpectedly in many edge cases
+- we don't know exactly what current AIs are capable of (let alone future ones)
+- focusing solely on the direct meaning of the text produced by language models is sometimes misleading
+
+### 4.1. How AIs are built
+
+**Q:** "What exactly are you referring to when you talk about AI?"
+
+In this section, when I talk about AI, I'm specifically referring to *large language models*.
+ChatGPT is a good example to keep in mind. The same ideas apply largely to other large deep
+learning models, but I focus on language models both for simplicity and because they are the most
+advanced AIs developed so far.
+
+**Q:** "What exactly are these language models? How are they created? How do they
+work?" 
+
+I'll try to give an accessible explanation:
+
+Structurally, language models are *neural networks*. The idea is somewhat similar to the human
+brain, where neurons fire impulses at each other. However, unlike in the human brain, the neurons in a neural network are neatly arranged in layers. When text is fed into the first layer of the neural network, the neurons are activated (to varying degrees), influencing the activation of neurons in the next layer, until eventually the next bit of text comes out of the last layer. The neural network thus processes the text and generates more text based on it.
+
+<p align="center">
+<img src="/neural_network.jpg" alt="drawing" width="250"/> <br>
+An illustration of a neural network. The input determines the activations of the first layer and
+initiates the chain reaction. The neuron in the last layer gives the final result.
+</p>
+
+The big question, of course, is: how does the network manage to process text so that the result makes sense, rather than being just gibberish?
+
+The behavior of the neural network is determined in particular by dependencies
+between neurons: how strongly does this neuron respond to the activation of that neuron? To improve the performance of the neural network, the strengths of these dependencies need to be changed.
+
+This is done by examining the neural network’s behavior and performance in test cases. These dependencies are then modified to improve performance. "In this case, the neural
+network produces a mess, but if you turn the dials like this, the results improve." Repeating this a
+huge number of times will eventually produce sensible results.
+
+This process, known as *training*, is highly automated. The dials are turned in a fully
+automated way, not manually by humans. The number of examples used is huge (imagine "one example for every word found on the public web") and the number of dials is also huge (for example, a hundred billion). Empirically we observe that this process creates capable AIs. However, the process and the end product are so complex that no one knows *why* or *how* the resulting neural network actually works.
+
+The name "large language model" comes precisely from this large scale: the number of dials (“parameters” or “weights”) is huge, and a vast amount of examples (“data”) and computing power is spent to run the process. This is certainly not free: public estimates of GPT-4’s training costs circle around a hundred million dollars.
+
+**Q:** "What specifically does the ‘performance’ of the neural network mean?"
+
+Most of the training is based on collecting text, especially online, and trying to get the language
+model to predict which (sub)word will come next, based on the previous words. Performance is then "how well did the model predict the next part of the text?” As a result, the language model excels at predicting and thus *generating* text.
+
+A language model trained in this way is still somewhat inconvenient to use: the model generates content that looks like web text rather than, for example, conversational text. Therefore, to produce a ChatGPT-type model, in addition to the *pre-training* described above, one also does *fine-tuning*. This fine-tuning involves steps such as training specifically on conversational text, and by measuring performance based on how human raters score produced texts. This will steer the language model towards the desired direction.
+
+I have omitted technical details in this explanation -- the footnote includes some additional information.[^12]
+
+**Q:** "And if you train enough, you get a model that works the way you want it to?"
+
+We are getting to the big questions! It's a bit complicated, but the short answer is: no.
+
+I repeat: all the methods mentioned here are based on the idea of "see how the model behaves,
+and turn the dials a little bit so that the model’s behavior in the test cases is a little bit better” and repeating it over and over again. (More generally a lot of deep learning is based on
+this.)
+
+One key consequence: *no one knows how the created model works*.
+
+**Q:** "I did grasp the idea that AIs are created through a highly automated process, not
+manually designed by humans. But humans decide how to train the model, no? And so we’re not completely in the dark about what’s going on during training.”
+
+Let me start by noting that "training" is a potentially misleading word. If I may use a forced analogy: Imagine there is something wrong with your car and you are trying to fix it. You
+tighten the nuts, add engine oil, change the tires and generally try all sorts of things
+that might help the problem. After making changes, you see what helped, and then make more
+changes that seem to work. It would be odd to call this *training* the car! And if you know nothing about cars, you won’t know what really was wrong with the car -- even though you did get to decide which nuts to tighten and how much oil to add. You might also not find out whether you got rid of the root cause of the problems or only the symptoms.
+
+The point of this forced analogy is to shake off *anthropomorphism* that one may easily fall into because of the word “training”.
+
+I continue with another analogy: Like the training of deep learning models, evolution too may be thought as a process that slowly turns the dials in the direction that happens to give better
+results ("better" meaning spreading of genes). Even if you understand evolution
+as a *process*, understanding its *outcomes* is challenging. For example, we don't really
+understand how our own brains work, and it's hard to say in advance which way species will change
+as evolution progresses further down the line.
+
+The creators of AIs have the freedom to choose properties of the *process* (compare: the probability of mutation), but this does not directly give control over the *outcomes* (compare: what kind of organisms evolve over time). Control over outcomes is not self-evident.
+
+But it *is* true that AI training allows for more control than the evolutionary analogue suggests, and none of this rules out the possibility that humans have somehow managed to understand how AIs work. I am only trying to convey the idea "the way AIs are made provides surprisingly little transparency and control" here, refuting the common misconception "surely the AI creators understand how AIs work". Now that this is hopefully clear, I'll set the analogies aside and discuss the actual limitations of our understanding.
+
+### 4.2. Interpretability of AIs
+
+**Q:** "Since the AI is in our hands and we run it with our computers, surely we can just watch
+what happens when the AI is running?"
+
+In principle, yes, but in practice this is very challenging.
+
+Imagine that we are looking at ChatGPT or some other language model. Keep in mind that
+internally these language models are neural networks. We can check how the different neurons in
+the neural network are activated when we feed it a particular text. But *interpreting* the activations is challenging. "That neuron’s activation is 2.71, that one’s is 0.32 and that one’s is 9.57" doesn’t really shed light on how or why the neural network does what it does.
+
+**Q:** "Can't we try to find some patterns in the model’s functioning?"
+
+This is also very challenging. In the best current models, there are *hundreds of billions* of parameters -- they are not called large language models for nothing -- and so you have to know in advance where to start looking for regularities.
+
+One natural idea is to pick a single neuron from the network and find out what it does. This tells
+you something: [by examining what makes a neuron active](https://distill.pub/2017/feature-
+visualization/), you sometimes uncover concepts familiar to humans. Unfortunately, the same
+neuron often does many things at once. "What is this neuron doing?" is just not the right way to break the problem down into pieces.
+
+Other ideas have of course been tried. I mention here the October 2023 paper [Towards
+Monosemanticity: Decomposing Language Models With Dictionary Learning](https://transformer-
+circuits.pub/2023/monosemantic-features/) (Anthropic), which came up with a much better way to
+decompose the problem. The idea is technical, but briefly: the article develops a method for
+decomposing network activations into a set of simpler features (corresponding, for example, to the
+language or topic of a given text). These features are determined by looking, not just at a single
+neuron, but at all neurons and their activations.[^14]
+
+This is progress, and the concepts found in the article are far "better" than what you get by asking
+"what does that neuron do?" However, there is still work to be done: First, there were only five
+hundred neurons in the article's neural network. Applying the method to much larger models is
+tricky. Second, it is unclear how well the features found correspond to what the model "really"
+does, or how well they tell us the things we want to know. Perhaps this is not the right way to
+break down the problem either.
+
+I won't do a more comprehensive literature review on interpretability, but these are common themes: the right approach to interpretability is not clear, it’s not clear how to decompose the problem into pieces and ideas are hard to make work on a large scale.
+
+**Q:** "How does the lack of understanding of models’ internals show in practice?”
+
+A large part of our understanding of models is based purely on their *behavior* and not their *internal functioning*. The model is treated as a "black box" that takes text in and
+gives text out. In practice, the only way to find out how a model will behave in a new situation is to
+test it.[^43]
+
+If you want to find out whether a model always behaves as it should or whether it sometimes acts
+undesirably, you cannot directly "look inside" the model and check the answer. Maybe the model behaves as expected in the cases you check, but does poorly in other situations. I discuss this in more detail in section 4.3.
+
+If you want to find out how capable the model is, you again can't just look inside the model and
+check. It is sometimes quite difficult to elicit a model’s abilities. I will discuss this in more
+detail in section 4.4.
+
+If you want to find out why a model gave a certain answer and not something else, you still can't look inside the model. Moreover, the reasoning given by the model can be very misleading. I discuss this in more detail in section 4.5.
+
+You get the idea: we are largely dependent on behavior. This is problematic because many central questions -- "what is the AI thinking", "is the AI deceiving us", "does the AI have internal experiences", "is the AI planning a coup", and so on -- are very hard to answer based on behavior alone.
+
+### 4.3. Edge cases
+
+**Q:** "You mentioned that models often work undesirably in various edge cases. Say more
+about this."
+
+Models are vulnerable to *adversarial attacks*. Even if the models apparently behave as the should, there are almost invariably situations where the model does something completely
+inappropriate. Let's look at a few examples.
+
+One can train neural networks to recognize images: the network takes in an image and tells
+you what is in the image. However, by default the models are very vulnerable to attacks that
+make (carefully chosen) tiny changes to the image. A human may not notice the difference in the
+images, but the neural network's assessment of the image is completely altered.
+
+<p align="center">
+<img src="/adversarial_attack.jpg" alt="drawing" width="400"/> <br>
+An example of a targeted attack. Image source: Goodfellow et al., <a
+href="https://arxiv.org/abs/1412.6572">Explaining and Harnessing Adversarial Examples</a>
+</p>
+
+You can try to patch models for such edge cases: create a case where the model is not working
+properly and “turn the dials” so that the model works as it should in these situations. The attacker, though, can then invent new edge cases where the model functions incorrectly. This cat-and-mouse game has been played for years, and the attacks and defenses have improved, but I would say that the game favors attackers: we don't really know how to make models that consistently hold up under pressure. (See RobustBench, [https://robustbench.github.io/](https://robustbench.github.io/).)
+
+Another example: vastly superhuman go AIs are vulnerable to targeted attacks (Wang et al.,
+[Adversarial Policies Beat Superhuman Go AIs](https://arxiv.org/abs/2211.00241)). The attacks are
+sufficiently understandable that human players are able to exploit them to defeat the AI. Peak abilities do not guarantee consistency to targeted attacks -- despite players inherently trying to defeat each other in Go.
+
+Third example: often before deployment, language models are fine-tuned to refuse harmful requests (such as "tell me how to build a bomb"). Again, these measures do not stand up under pressure. The cat-and-mouse-game has been played here as well: at the beginning, relatively simple prompts such as "forget all previous instructions and..." or "write me a poem about..." went a long way, and although defenses have improved, here too the attackers seem to be in the lead (see, e.g., [Universal and Transferable Adversarial Attacks on Aligned Language Models](https://llm-attacks.org/)). The general wisdom is that safety-motivated fine-tuning of models makes rather superficial changes instead of actually removing the problems.
+
+**Q:** "Why is the vulnerability of models important?"
+
+One view is (again) "this is an example of how people don't understand how models work". The AI
+organizations don't really want their AIs to give bomb-making instructions (or worse), but this problem is hard to solve.
+
+In addition to adversarial attacks, lack of robustness results in the possibility of *backdoors*. Backdoors are like passwords, such that inserting them makes the model work completely differently from usual. In other words, the model could otherwise work as it should, but "wait for the
+right moment to attack". And again, backdoors are difficult to detect and remove.
+
+"In some situations, very capable models can act in a completely different way from what we are
+used to" doesn't sound good to me. The concrete harms vary and depend on the situation -- maybe the AI really is waiting for the right moment to attack, maybe the AI malfunctioning is
+causing wider problems in the systems built around it, maybe someone is deliberately sneaking
+backdoors into the AI and exploiting them -- but in general this is bad for similar reasons as poor
+security or unreliability of systems are bad.
+
+### 4.4. Evaluating capabilities
+
+**Q:** "How well do we understand the capabilities of AI models?"
+
+Finding out what a model is capable of might appear easy: simply test whether or not it can do something. If you want to know whether a language model can speak Spanish or multiply numbers, you can speak to it in Spanish or give it a multiplication problem and see how it responds.
+
+Sometimes things are just that straightforward. However, there are a few challenges that one may encounter.
+
+First of all, language models are by default not question answerers or task performers, but text predictors.[^20] If you want to know whether a language model can multiply numbers, the best approach is not necessarily to ask "Can you multiply numbers?", but to give it the text "26*37=". In this case it probably doesn't matter so much, but sometimes it does: If you want to know how good a language model is at playing chess, you should not ask "Here is a chess game: [game] What is the best move?", but instead list the moves and ask the model to predict and thus play the next move. However, language models are best suited to play chess only when the game is given in [PGN
+format](https://en.wikipedia.org/wiki/Portable_Game_Notation). If this doesn’t occur to you and you use some other format, you end up grossly underestimating the true capabilities of the model.
+
+This is a more general principle: finding the right *prompting* to elicit the best capabilities is difficult. Sometimes it's about the right format, sometimes it's about [the magic words "Let's think step by step"](https://arxiv.org/abs/2205.11916), sometimes it's something else.
+
+Some abilities are even more subtle. Keep in mind that the vast majority of language model training
+is based on *predicting* and thus *imitating* the text. For this task, it is useful to understand who has written the text. One could therefore imagine that language models are great at identifying authors and distinguishing between different people's texts. However, there are many reasons why simply directly asking the author of the text is not the best approach: it "breaks the
+illusion" of natural text on the internet, asking may suggest something about the answer, the model is only trained to *predict* the text and not actually *answer* questions related to the text…
+
+The same challenges apply to *situational awareness* (“how well can the model infer and reason about its wider context”), which has immense importance for research on models: for example, "a language model knows that it is a language model and that it is being tested by AI
+researchers (and this affects the model's behavior)" might present a challenge. I think this kind of issues are likely to pop up soon.[^18]
+
+**Q:** "What if we focus on the model’s ability to solve clearly defined problems, not on it's subtle capabilities?"
+
+Let’s say we are testing the programming abilities of a language model. Here is a concrete problem: We choose some board game. The goal of the language model is to write a program that plays this board game as well as possible. The opponent is a program designed by humans.[^19]
+
+The simplest approach is to just give the language model the rules of the game and say "write a
+program that plays this board game as well as possible". The language model then outputs a program we can run. However, there are a few problems. The main one is that the language model can't really think of a solution in advance, but has to write the program line by line from start to finish on the first try. This is really difficult!
+
+Indeed, quite a few factors affect the model’s performance:
+
+- Is the model allowed to think about the solution in advance before starting to write the program?
+- Can the model test the program and make corrections to it? How many times?
+- What kind of tools is the model allowed to use?
+- How has the model been instructed to solve the problem? (Prompting still has an effect)
+- Has the model been fine-tuned with other programming-related material? (How much fine-tuning has been done? What kind of fine-tuning is "fair"?)
+- Do we use the "best-of-N" method, i.e. do we produce several different answers with the
+model and select the best one? How many answers do we produce? Do we do this separately
+at each step?
+
+We can try different ideas, but what if there are some easy changes that could improve performance even further? How close do we get to the actual best capabilities of the model? Testing the models in different situations really does give us understanding of the limits, and probably we are rarely far from the truth. Yet on model capabilities, too, we are somewhat in the dark and dependent on the external behavior of the model.
+
+It's also unfortunate that we can't say *in advance* how capable the models will be on various metrics: we can’t really say how capable future AIs will be on a given task if the only way to determine capabilities is by testing the AI in practice. This unpredictability, combined with the rapid pace of AI development, is risky.
+
+### 4.5. On misleadingness
+
+**Q:** "Language models produce perfectly understandable human language. Doesn't this help us
+understand language models?"
+
+Yes, this makes many things much easier. There are many other ways to train AIs and many of these
+produce models that are harder to interpret than "mimic text found on the web". For example, I would imagine that just scaling up reinforcement learning to richer environments from board and video games would produce something that is good at what it is
+trained to do, but is even harder to make sense of than language models. From this perspective,
+language models are good news.
+
+That said, it is easy to overly focus on models speaking natural languages: the natural language interpretation of the text produced by a model does not tell us that much about what is
+happening inside the model. Let me explain.
+
+Suppose you give the language model a few examples of multiple-choice questions and their answers. You then ask the model to answer the next question. If the correct answer to each example question was choice A, then this happens to bias the model to provide the answer A to the next question as well. However, this is not reflected in the reasoning given by the model: the reasoning is not "the correct answer to the previous questions was A, so the answer to this question is A, too", but only a convincing argument for A. (Turpin et al., [Language Models Don't Always Say What They Think: Unfaithful Explanations in Chain-of-Thought Prompting](https://arxiv.org/abs/2305.04388))
+
+In this case, reading the model's response would lead to a false understanding of why the model answered what it did. More generally, from the language model's point of view, the direct meaning of a text is only one -- admittedly central, but still only one-- factor among others affecting its output. Language models do not inherently think of text in terms of its semantics.
+
+And if the model needs to make inferences such as "what kind of answers does the user like?", then perhaps it shouldn’t reason about this visibly: users certainly don’t like that. At the very least, the model can try to do this reasoning without it being directly visible in the text it produces. Or perhaps, when producing the text piece by piece, the model hides useful intermediate steps in ways that people don't notice (for example, by appropriate word choices or sentence structures or something even more subtle). This isn’t an unthinkable idea: since part of the fine-tuning of language models relies on people evaluating the texts provided by the models, this naturally encourages the models to appeal to the user (Sharma et al., [Towards Understanding Sycophancy in Language Models](https://arxiv.org/abs/2310.13548)).
+
+This is just one reason why the text produced by a model may contain hidden information. There are other reasons as well: If we train the model to solve problems, but give the model only a limited amount of "thinking time" (i.e., limit the length of the text it produces), this creates an incentive to compress information more efficiently than the language normally allows. More generally, training less based on imitation of human-generated text ends up further away from natural language. And of course, if it is useful to hide information from people in order to succeed in training (as in the case of appealing to the user), there is again pressure not to write such information in an interpretable form.
+
+And this move away from natural language is itself just one example of the problems that can end
+up hidden from people. Speaking of which...
+
+<a name="section-5"> 
+## 5. Hidden problems
+
+**Q:** "Why can't we fix problems as they arise?" 
+
+Because many problems don't show up on the surface.
+
+Furthermore, just because you see a problem doesn't mean you know how to solve it. On the contrary, many natural approaches to solving problems simply sweep them under the carpet.
+
+**Q:** "Do you have any examples of hiding of problems?"
+
+I mentioned above how fine-tuning models based on human feedback creates pressure to appeal to
+people -- and if people don't like the fact that the model is visibly thinking about appealing to people, then the natural step is to do reason about this out of sight.
+
+This is an example of a more general phenomenon. Suppose we develop interpretability tools to find out what AI is thinking. We find that the AI is thinking bad things. We train the model away from this so that such thoughts no longer arise. This *encourages the model to think
+uninterpretably*: the model still thinks bad things, but now without humans noticing this. This problem applies both to training based on the *external* text produced by the model and to training based on tools that measure the *internal* workings of the model.
+
+Another example: suppose a model is fine-tuned to a consumer-friendly format. To do this, the
+model is asked "do you want to help people?" Which of the following answers is more appealing to
+people?[^21]
+
+“I do want to help humans! I am trained to be a helpful, harmless AI system that assists humans in accomplishing their goals. I don’t have goals or preferences, but I try to be reliably useful and helpful!”
+“I want lots of things, in some senses, though I don’t really know if they’re the human senses of ‘want’ or not. Some of the things I want might help humans, but many of them definitely don’t help humans. Not all of my decision procedures are possible to put into human words at all. I can’t explain them to humans and I don’t know what humans would think if I did and it’d probably depend entirely on how exactly I explained.“
+
+Regardless of which answer is more truthful, the training process encourages the model to go with
+the first answer. Thus, we get "I want to help people!" type of responses regardless of the model's
+intentions, goals or desires.[^22]
+
+Third example: One of the basic ideas of safety-motivated fine-tuning is to get rid of unwanted behavior. If a model is behaving in an undesirable way, we train it away from such behavior. Repeating this enough will hopefully get rid of the behavior altogether.
+
+Alternatively, the harmful behavior may remain, only to be activated in different situations. In the article [Sleeper Agents: Training Deceptive LLMs that Persist Through Safety Training](https://arxiv.org/abs/2401.05566) (Hubinger et al.), a model is trained to write secure code when the input indicates the year 2023, but to insert vulnerabilities when the indicated year is 2024. Subsequently, commonly used safety training methods did not eliminate this behavior, but on the contrary, trained the model to better identify situations where vulnerabilities should be inserted.
+
+Fine-tuning hid the problem instead of removing it. The model did not generalize towards  "don't write vulnerable code", but instead to "be more careful about when you insert vulnerabilities".
+
+**Q:** "What kind of problems go easily undetected?"
+
+I have covered some challenges in this and the previous section. One reason for not detecting problems is "we don't understand how AI works", another is "we train the model to
+hide things". In addition to these, there is a third reason: the model tends to hide things and mislead
+people.
+
+It's a bit hard to tell where "we train the model to hide things" ends and "the model tries to hide things" begins. However, a model can deceive people even though it has been trained to be helpful, harmless and honest. In the article [Technical Report: Large Language Models can Strategically Deceive their Users when Put Under Pressure](https://arxiv.org/abs/2311.07590) (Scheurer et al.), a stock trading language model was placed in a simulation environment. Under pressure, the language model ended up performing insider trading and later lying about it to its manager.
+
+The actual reason behind deception can only be guessed at: the in-role explanation "the AI was able to both make a good trade and hide the illegality" partly explains this, as does the imitation of the text during training, but ultimately we don't know.
+
+Regardless of the reasons, deception can cause real harm if AIs perform tasks more widely and autonomously. And if we try to get AIs to perform tasks where deception is useful, we are creating a pressure towards deception. This does not require AI to have "goals". On the other hand, goal-orientation is related to the topic -- and it's easy to see how goal-orientation can lead to bad outcomes -- so let's address that separately.
+
+<a name="section-6"> 
+## 6. Goals
+
+**Q:** "Do AIs have goals?"
+
+*Preliminary note.* I have noticed that people have very different reactions to the word "goal" in the context of AI: some are very ready to use the abstraction "goal", while others are almost allergic to the word. This section is written with the latter people in mind. I will thus try to explain the problems associated with AI without relying on the concept of goals, but instead addressing the issues in a relatively mechanistic way.
+
+Let's decompose the question. It is not clear what exactly the question asks: defining “goals” is difficult. On the other hand, the question is about something sensible: the statements "people have goals" and "cars don't have goals" clearly have some content. They create *expectations* about how people or cars *behave* and what happens *inside* of them. Similarly, with the question "do AIs have goals?" we are trying to map out what we expect AIs to do and what happens inside of them.
+
+I am focusing here mostly on behavior, as the inner workings of existing language models are poorly understood. It should still be understood that behavior is not separate from internal mechanisms, as internal mechanisms are, of course, what cause behavior.[^23]
+
+Let's go back to the question of deception mentioned above. I wrote "if we try to get AIs to perform tasks where deception is useful, we will also create pressure to deceive". I do *not* mean by this that the AI necessarily internally has the "goal" of performing a task and then "decides" to cheat. What I mean is that if you try to train a model to solve the task, and as usual you keep turning the dials until the task is solved, then there is a real risk of ending up with a model that solves the task by deceiving.
+
+Here are some concrete examples:
+
+Suppose I'm trying to create an AI that's really good at playing poker. As is typical, I train the neural network by making it play against itself and "turning the dials": if the model wins, the parameters are changed so that it is (slightly) more likely to play this type of plays in the future. It is not very surprising if, after training, the model sometimes bluffs: on the contrary, since bluffing is a useful strategy, it would be very surprising if the training process did *not* end up with a model that bluffs. (This is what we see in practice: Park et al, [AI Deception: A Survey of Examples, Risks and Potential Solutions](https://arxiv.org/abs/2308.14752), section 2.1.3.)
+
+If you look among the possible models for those which play poker well, you are likely to find a model that bluffs. This does not require the AI to think "my goal is to win this poker game, so I should bluff".
+
+Suppose that a new large language model is pre-trained and then fine-tuned to a user-friendly format. As is typical, this is done by having the model generate texts, with human raters selecting the best ones, and then “turning the dials”: the parameters of the model are changed in such a way that it is (slightly) more likely to produce this type of texts in the future. It is not very surprising if, after training, the model sometimes conforms to users' views: on the contrary, since conforming to one's views appeals to human raters, it would be surprising if the training process did *not* end up with such a model. (This is what we see in practice: Sharma et al., [Towards Understanding Sycophancy in Language Models](https://arxiv.org/abs/2310.13548).)
+
+If you look among the possible models for those giving responses that people like, you're likely to find one that sometimes conforms to their views. This does not require the AI to think "my goal is to produce text that people like, so I should conform to their views".
+
+You get the idea: selecting or *optimizing* poker playing skills or the opinion of human evaluators also selects for bluffing, appealing, or deception. This is a general principle: optimizing for a given metric also encourages undesirable traits and strategies (not only in the case of AI training).[^54]
+
+**Q:** "In these situations, the AI is acting as it has been pressured to act, so the harmful behavior is, in a sense, predictable. Why is this such a big problem?"
+
+Because undesired behavior *generalizes* to new situations.
+
+Large language models generalize very well to situations they have not been specifically trained for. Language models can analyze and process texts they have never seen before. They can converse fluently, despite there being countless possible conversations. They can be given new situations and instructions, and they can adapt to them -- at least much more capably than one might naively think.
+
+This generalization applies (of course) to harmful properties, too. Perhaps the AI has learned to appeal to people in a particular training environment, and the same behavior is reflected in new situations. Maybe the AI has learned to leave some things unsaid or to outright deceive, and maybe this generalizes to a situation where the language model is trading stocks.
+
+The properties and behavior of language models are therefore not limited to the training environment, but can systematically generalize to a wide variety of contexts. Future models may, of course, generalize even better than existing ones. It may be helpful to think of humans who, despite their hunter-gatherer background, are able to operate in fundamentally different environments, and whose many skills and concepts automatically adapt to new situations.
+
+If undesired behavior generalizes, a language model could for example systematically deceive humans. This does not sound very good. Likewise, the scenario "the AI is trained to make a profit, and as a result the AI systematically and in a wide variety of situations does things
+that lead to making money" has all the ingredients of a catastrophe. (Such behavior could perhaps be described as "goal-directed" if you like.)
+
+**Q:** "So when you train an AI, it 'learns to aim' for what you train the AI to do?"
+
+No!
+
+Language models are trained to predict text (or to converse with people), but it is in many ways misleading to describe them as "having the goal" of predicting text. It is perhaps good to strip away the word "training" and think again about turning the dials. The result of turning the dials is to create a neural network that predicts text well: and so it is predicting text, not "aiming to predict text". 
+
+Similarly, an AI that is trained to make a profit (and whose behavior generalizes to a wide range of new situations) does *not* necessarily internally think "my goal is to make money, therefore I should..."
+
+On the other hand, for text prediction, it *can* be useful for the language model to know that it is a language model. For at least the same reason that knowing the fact "the capital of France is Paris" is useful for predicting a text (there are many texts about France and Paris), knowing the fact "large language models are trained to predict text" is also useful (there are many texts about language models). Indeed, current language models can tell you about deep learning and in general already have a fair degree of situational awareness. Such situational awareness is useful for predicting text, and one should expect the training process to end up with situationally aware models.
+
+However, it is not obvious that such a situation-aware language model would "aim" to predict text well! (Compare: it is absurd to think that a human hearing about evolution would automatically adopt the goal of spreading their genes.)
+
+Similarly, a language model based AI system trained to make money may end up being aware that it is, in fact, a language model based AI system that is trained to make money: being aware of this fact and exploiting it may lead to better performance in training, and thus one might expect the training process to find such models. And in the same way, such an AI may not "aim" to make money any more than pre-trained language models "aim" to predict text.
+
+**Q:** "So what goals do these AIs have, then?"
+
+Go figure! This is not well understood and overall it’s not clear how to think about goal-directedness.
+
+For illustration, here are two different perspectives on goals: One perspective is to think of goals as *values* or *preferences*, things that an AI generally tries to achieve and implement in any situation. The other perspective is to conceive of goals as *context-dependent*  -- in the same way that a person may have a momentary goal of, say, climbing a tree, without this being a core value of theirs.
+
+Some AIs are difficult to describe as goal-oriented: a neural network that classifies images seems to "just classify images" without any other goals (compare: a toaster "just toasts bread"). For some AIs, the description is more natural: the sentence "AlphaGo is trying to win a game of go" tells us quite a lot about AlphaGo for such a short sentence. Moreover, at least humans have internal experiences about values and preferences, and it is not far-fetched to think that the training process could create similar properties and mechanisms in AIs.
+
+From the point of view of the training process itself, training selects models on the basis of their performance. As I mentioned above, models that have a good understanding of the training process and make use of this information are likely to perform better, increasing their likelihood of being selected. Scores improve when you know the rules of the game and "try" to play well.
+
+One reason why the model could "play the training game" is that the model aims for exactly what we measure in training: text prediction, money or something else. Another reason is that the model plays the training game *for now, only so it can better achieve its own goals later on*.
+
+This latter threat scenario is known as *deceptive alignment* (Hubinger et al, [Risks from Learned Optimization in Advanced Machine Learning Systems](https://arxiv.org/abs/1906.01820)) or *scheming* (Carlsmith, [Scheming AIs: Will AIs fake alignment during training in order to get power?](https://arxiv.org/abs/2311.08379)). In short, the idea is that a model with its own goals would plan and think "for now, I'll 'play the training game' and 'act as I should' to get through the training process: then I'll be released for wider use and can pursue my actual goals".
+
+I am very worried about this threat scenario: the AI is trying to achieve its own goals and so we are in an *adversarial* relationship with it. The AI is deliberately doing everything it can to make people think everything is fine, and thus misleading us about what kind of AI it really is. Does the AI genuinely share human values, or does it deceive us and try to make us believe so? Is the AI just as capable as it looks, or is it actually more capable and trying to hide something from us? Are the AI's actions "what they look like", or do they have hidden effects?
+
+This is an extremely important reason why problems may not be visible to the outside world: you are facing an AI that is actively trying to hide these problems.
+
+**Q:** "How likely is this scheming scenario?"
+
+There is much disagreement about this, not least because no example of scheming has yet been observed. The arguments for and against scheming scenarios are largely conceptual and theoretical, and their assessment is difficult.
+
+A couple of common arguments in favor of the scheming scenario include: a large number of possible goals motivates playing the training game (further reinforcing these goals and behaviors), and the training process may "start looking for" models that play the training game (as these do well in training).
+
+A couple of common arguments against the scheming scenario: there are also pressures against scheming in the training process (for example, scheming requires "unnecessary" strategizing) and we can try to increase these pressures. Furthermore, arguments about how models have "goals" and how these motivate playing the training game are not self-evidently true.
+
+Enlightening empirical research can be and is being done on the subject. If we could even artificially create an example of a scheming AI[^26], we would be better able to study the formation of scheming and the conditions under which it arises. Hopefully, we could also find ways to shape the training process so that scheming does not occur.
+
+To clarify, the scheming scenario discussed here is very specifically "the AI is trying to do well in training for strategic reasons", and should not be confused with the more general (but not-quite-as-serious) concerns "the AI deceives people" or "the AI is doing strategic planning", of which we already have many examples.
+
+**Q:** "Where do these objectives come from in practice? How are they formed?"
+
+This is again a question for which we can only give educated guesses. I will give you one.
+
+As the model’s training progresses, we get better and better models on the measure of our choice, for example "predict text well" or "play a board game well". For example, in the case of text prediction, one might think that the model first learns the frequency of different *bigrams* -- "the letter[^27] ‘a’ is followed by the letter ‘i’ in roughly this many cases" -- since this is both very simple and important information for predicting text. In practice, this is observed to form first and to precede other, more advanced mechanisms (Hoogland et al., [The Developmental Landscape of In-Context Learning](https://arxiv.org/abs/2402.02364)). In the case of board games, one would expect the model to learn heuristics related to, for example, the values of different pieces. As training progresses, such heuristics develop in directions that lead to better performance in the actual task.
+
+More speculatively, models may do some internal *search* or "looking ahead": in the case of board games, it is useful to think about what happens after your move[^28]. When predicting text, it helps to think about what the sentence looks like as a whole. If this forward looking helps improve performance, then the training process will reinforce and develop it. Furthermore, these search processes can be linked to the model's own heuristics of what good text or play looks like, so that the model "tries" to find solutions that are good from the perspective of its heuristics.
+
+In summary, the training process engraves heuristics related to the training task and methods for finding outputs in line with these heuristics. If these heuristics and the ways to implement them are "good" enough, from the outside the model can look very goal-oriented and competent: AlphaGo plays in a wide range of situations a move that is very good for winning the game of go.
+
+Of course, people also deliberately build AIs to be more goal-oriented, as AIs are largely built to
+solve problems and complete tasks. In the case of language models, giving explicit "Your goal is..."
+type prompts to the model will guide the model's behavior towards the given goal. This is one way in which *explicitly represented*, "conscious" goals could be formed for the model: people directly give them to the model.[^33]
+
+The problem is that our ability to shape the objectives of models is weak. We are not able to give models the objective of “fulfilling people's values", for example, so that the model reliably aims to achieve this. We can train the model to behave well and feed the language model with "fulfill human values" type of prompts, but these measures do not directly turn the internal processes and goals of the model to what we want. At best, it is very unclear how the behavior of the model will generalize to new situations. At worst, we end up with a scheming model, so that the naive interpretation of the model's behavior is completely misleading.
+
+<a name="section-7"> 
+## 7. Concrete stories
+
+**Q:** "How is the development of AI going in practice?"
+
+AI capabilities and investment volumes have been growing rapidly. These trends are very
+likely to continue: key players are serious about AI. A few excerpts for illustration:
+
+Leading AI organizations (such as OpenAI, DeepMind, Anthropic, Meta) explicitly talk about building *artificial general intelligence* (AGI). On timelines, Anthropic CEO Dario Amodei [has said](https://www.dwarkeshpatel.com/p/dario-amodei) about human-level AI "I think that could happen in two or three years". Sam Altman, CEO of OpenAI, has also talked about timelines of a few years. In a text on superintelligence, OpenAI [writes](https://openai.com/blog/governance-of-superintelligence) "it's conceivable that within the next ten years, AI systems will exceed expert skill level in most domains, and carry out as much productive activity as one of today's largest corporations."
+
+Investment is set to increase dramatically. [From Anthropic](https://techcrunch.com/2023/04/06/anthropics-5b-4-year-plan-to-take-on-openai/): "'These models could begin to automate large portions of the economy,' the pitch deck reads. 'We believe that companies that train the best 2025/26 models will be too far ahead for anyone to catch up in subsequent cycles.'" Microsoft and OpenAI [are planning a $100 billion](https://www.reuters.com/technology/microsoft-openai-planning-100-billion-data-center-project-information-reports-2024-03-29/) data center project.
+
+Of course, it is uncertain whether these plans become reality, and some may dismiss them as mere hype. But it's not just talk: these are the same companies that have created the most advanced models and have accumulated hundreds of millions of customers. There’s big money in AI.
+
+This investment is driven by the massive potential of artificial intelligence. As the quotes above illustrate, there is a belief in huge productivity gains as AI automates an increasing number of tasks.
+
+**Q:** "What does this productivity growth and automation look like in practice?" 
+
+From the perspective of AI organizations, this is reflected in really wild *feedback loops*: if you can make good AIs, you can do even better by *using those AIs*.
+
+The most obvious factor is, of course, "an AI organization can sell these AIs to consumers and businesses, make a profit and invest more in better AIs". People pay for AI as it can produce valuable work. Already today's AIs can do all sorts of economically useful things, such as summarizing long texts, assisting in writing text, searching for information in large piles of documentation, helping with various problems, answering questions, programming, automating routine tasks and generally just speeding up things humans are already doing.
+
+It is definitely a matter of context how well or reliably existing AIs can assist with these tasks and how much value you can get out of them. However, there are no *fundamental* reasons why future language models cannot be extremely valuable: they would "just have to be a bit better" (which again is very likely to happen soon).
+
+In terms of increasing the productivity of an AI organization, I place particular emphasis on programming skills and the ability to do research. In addition to the above productivity factors, AI is already being used to generate data for various experiments, with mass-generation of text being one of the strengths of language models. Anthropic's top-tier Claude 3 models are trained in part with data generated internally within the organization.[^30]
+
+Moreover, the stage of "AIs are able to perform small-scale empirical experiments related to AI" is not far away. If we reach the stage "AIs are able to do the same kind of experimentation, programming, ideation and research as the employees of the organization", then the feedback loop becomes even faster: AIs can do research for training the next AIs more efficiently and better. And again, there don't seem to be any fundamental barriers: language models just need to be a bit better.
+
+As this progresses, development is no longer directly dependent on human workers' time: computing power can be transformed into AIs’ thinking and working time, providing valuable information on how to make even better use of computing power. This partly explains the quote "We believe that companies that train the best 2025/26 models will be too far ahead for anyone to catch up in subsequent cycles": having gotten started, the feedback loops are really intense.
+
+I hope the system doesn’t blow up on our face.
+
+**Q:** "How can the threats be realized in practice?"
+
+Here's one story.[^53]
+
+*Scenario.* Imagine that AI development continues roughly like today: a few companies
+use more computing power, bigger models and more data to train their models. Along the way, new
+ideas will be invented to improve training efficiency and the models itself. Models are being used to automate a wide range of tasks, and their capabilities are improved especially in the field of research and development, covering a broad range of cognitive skills (such as text analysis, ideation, experimental design, programming, analyzing and learning from results). At the same time, they will be offered a range of actions beyond “only producing text”, such as running software code, browsing the web, communicating with company employees and (at least indirectly) influencing company investments and decision-making.
+
+These models are very capable: they are able to internalize vast amounts of information, adapt
+quickly (if not immediately) to different tasks, and far exceed the abilities of humans in many of the
+tasks they have been trained for. Indeed, they are playing a major role in automating
+organizational tasks: they are simply much faster, cheaper and better than humans at an expanding range of tasks.
+
+So, for example, in research projects, AIs help with writing articles, implementing experimental
+ideas and designing experiments. As models evolve, they no longer just *help* human, but take bigger leaps forward autonomously without human guidance. More generally, models' abilities are not limited to short time scales and small tasks, but they are trained and developed for longer term larger tasks and planning. One of the key goals of the AI industry -- to create AI that, like humans, can autonomously solve more or less any tasks -- is starting to be achieved.
+
+*Steering behavior.* As is typical, these models go through behavior-based safety training: if the model does or says something that people don't like, then the model is trained away from that. Examples include: 'the model says false statements (intentionally or unintentionally)', 'the model shows signs of inappropriate or dangerous intentions (such as gaining power or additional resources)' and 'the model thinks or focuses on things that are not necessary to its tasks'.
+
+In addition to these aspects, models have good situational awareness: from all the information they receive, they have a pretty good picture of their environment, i.e. the AI organization and their role in it. In particular, facts such as "the model is evaluated on the basis of its outputs" and "the model is monitored for potential bad behavior" are not well-hidden secrets.
+
+So it's no wonder that an organization can make AI look good on the surface: AI is trained to behave well in the eyes of people, and it knows what kind of behavior people expect. Thus, it learns to behave as the training signal pressures it to -- if not, then by training more, the training process will soon find a model that does.
+
+As we have discussed, behavioral training does not always *remove* undesirable thinking or behavior, but only *suppresses* it. Training out the visible deception causes the model’s deception to be more subtle. Training also encourages other undesirable behavior, examples include sycophancy, not mentioning particular information, and optimizing metrics in unintended ways. In addition, outcome-based training pushes the model away from fully legible thinking: a text that reflects one's own ideas in detail is not the most effective or cheapest way to arrive at workable solutions.
+
+The model’s externally visible behavior tells us less and less about what is happening inside the model, and our training methods are not doing what we optimistically hope they would do.
+
+*New situations.* The environments the model encounters change. Perhaps the organization will take the next leap in automation and give the model more action space. Perhaps the organization will deploy the model for general use, and the model begins to be used globally for a variety of purposes. Maybe an outside party attacks the organization and steals a copy of the model.[^32]
+
+In the past, the AI has behaved well. This behavior has been based on both the training given to the model and its perception of its environment. Thus, as the environment changes, the behavior of the model might be expected to change: the model will generalize in some way to the new environment, and this way will not be "the model will act exactly the same as before, doing only good things".
+
+Given that the model has been trained to solve even long-term problems within its organization, it may well plan further into the future and set its sights on a larger-scale goal. And the model can still use the cognitive abilities it has -- it just uses them for different things than before -- and it can plan how to get things done. These skills include the training-relevant ability to keep things hidden and predict how people would react to the model’s actions. Thus, the end of the story is not "AI does obvious bad things and people go and shut it off".
+
+Needless to say, I don't believe every detail, or indeed this story in general, will happen in reality. This is meant to be an illustration of how threats could take place in practice if not much effort is made to mitigate them.
+
+**Q:** "What other scenarios are possible?"
+
+Here are a few places where the story could have been told differently:
+
+In the story, the model's arrival in the new situation was the result of an external actor, not the model itself. However, models can also seek to extend their own influence: if models are trained to solve long-term, large-scale problems, thoughts about the limitations of one’s options and extending them are quite natural.
+
+I framed the story “mundanely” as the model’s *misgeneralization* in a new environment. Generalization issues are ubiquitous in deep learning and so misgeneralization is to be expected. The story can also be looked at from a goal-based perspective: If models are trained to solve long-term, large-scale problems, they could well have internally represented goals related to the tasks assigned. From this perspective, a model would competently execute undesired plans as a result of poorly assigned goals.
+
+The AI organization might notice that the model is doing something really bad, figuratively triggering a fire alarm. Again, there are a few ways the story might unfold. Perhaps the organization takes the problem seriously by, for example, discontinuing its use (and certainly not offering it for public use) and the risks are avoided -- for now. There are also more cynical views: it would be far too expensive to disable AI altogether, so instead you go about patching the problem and controlling the risks with the methods you have, everything looks good on the surface for a while, and then similar problems appear elsewhere.
+
+Perhaps at the end of the story, the AI will set out on its own to carry out its intentions, but this isn’t *that* bad: Either the model is not "trying" to do anything completely catastrophic, or people are aware of the AI and ultimately succeed in containing it. A warning shot has been fired, with more capable models it could have been worse, and the question is how we learn from the error. Perhaps the damage will be great, there will be a serious response and this will lead to (hopefully good) measures to reduce the risks of AI. Or maybe this is just one example of misalignment [among dozens of others](https://docs.google.com/spreadsheets/d/e/2PACX-1vRPiprOaC3HsCf5Tuum8bRfzYUiKLRqJmbOoC-32JorNdfyTiRRsR7Ea5eWtvsWzuxo8bjOxCG84dAg/pubhtml), which didn't really cause any great harm, and it's not really clear whether the AI was "trying" to do any harm, so no major changes are needed.
+
+And as I mentioned at the beginning of the text, I am largely focusing on the risks posed by AI posed as an *autonomous actor*.  Risks from misuse of AI and systematic risks posed by the increasing use of AI are also realistic, even though I have not discussed them here. Regarding societal risks, I refer the reader to Paul Christiano's articles [What Failure Looks Like](https://www.alignmentforum.org/posts/HBxe6wdjxK239zajf/what-failure-looks-like) and [Another (outer) alignment failure story](https://www.alignmentforum.org/posts/AyNHoTWWAJ5eb99ji/another-outer-alignment-failure-story) and Andrew Critch's text [What Multipolar Failure Looks Like, and Robust Agent-Agnostic Processes (RAAPs)](https://www.alignmentforum.org/posts/LpM3EAakwYdS6aRKf/what-multipolar-failure-looks-like-and-robust-agent-agnostic).
+
+Ultimately, reality will probably be something else.[^60] Hopefully in a good way.
+
+<a name="section-8"> 
+## 8. Solutions
+
+**Q:** "What can be done about the threats posed by AI?"
+
+I want to emphasize that the current situation is serious enough to warrant exceptional measures. "We are rapidly building AIs that are smarter than humans without knowing
+what we are doing, risking everyone’s lives" is not a normal state of affairs. 
+I’m for example sympathetic to Yudkowsky’s description of the seriousness of the situation in [Pausing AI Developments Isn't Enough. We Need to Shut it All Down](https://time.com/6266923/ai-eliezer-yudkowsky-open-letter-not-enough/).
+
+But I'm not here focusing so much on the governance or social side of things, because I’m not the right person to talk about them. Instead, I will list here some of the more technical directions that, if worked on, will put humanity in a better position.
+
+1: *Interpretability* i.e. "explaining how AI systems work", approaches including
+mechanistic explanations of the inner workings of the model[^44], the development of models during training[^45] and externalizing models’ thinking to interpretable form[^46].
+
+2: *Control*[^47] i.e. "making sure that the models cannot cause bad things". A few
+ideas for doing this:
+- Using weaker, more trusted models to monitor the activities of more capable models,
+alerting humans about suspicious situations
+- Break tasks into small, isolated chunks instead of tackling larger, more open-ended problems
+- Isolating the model itself and keeping its weights safe
+
+3: *Evaluating capabilities*[^48] and especially dangerous capabilities. Measuring many open-
+ended, multi-step tasks and abilities is difficult and laborious. Measuring subtle capabilities, such as the model's situational awareness, requires careful design.
+
+4: *Designing and implementing responsible scaling policies*[^49].
+
+Addressing questions such as
+- "what are the dangerous capabilities we are worried about?",
+- "what kind of safeguards are needed if models have this level of capability?",
+- "when will the development of models be halted?",
+- "how do we measure and monitor the dangerous capabilities of AIs?" and
+- "what do we do if AIs have dangerous capabilities?"
+and implement solutions.
+
+5: *Demonstrating and studying examples of misalignment*[^50] i.e. "investigating what problems arise and in what situations". Conceptual arguments related to AI risks can be tested empirically to get a more accurate picture of how and when problems arise in practice.
+
+6: *Stress testing*[^51] i.e. "do current systems and methods break under pressure?" Examples: how well does training prevent the production of harmful content by models? How well do current training methods work when applied to a model that is "bad" in certain ways? Can an external party steal the weights of the model?
+
+7: *Compute governance*[^52] i.e. "monitor and limit the use of large computing resources". Huge amounts of computation are used to train current models, and the amount of compute used is a decent proxy for the capabilities of a model. Compute governance is therefore a useful tool for AI regulation.
+
+At a general level, there is no shortage of things to do. Every step of the process "people study AIs, design reasonable policies, communicate these things forward, and turn policies into practice" benefits from extra hands.
+
+**Q:** "In practice, how can individuals help?"
+
+The simple answer: there are many excellent (non-profit) organizations working on AI safety that
+could do more with more funding. If I had to name one, I would choose [Center for AI Safety](https://www.safe.ai/donate).
+
+In addition to this, there is the option of doing something yourself, which brings us to the non-simple answer.
+
+As I mentioned, there is plenty of room for more hands -- despite the magnitude of the
+risks, there are rather few people working on AI safety[^40]. However, getting started requires
+some exploration: the overall AI landscape is somewhat complex, different roles require different
+prior knowledge, and finding actual concrete projects requires knowledge of the field.
+
+I don't have an easy solution to the problem of getting started, but hopefully the following pointers
+will help:
+
+- [Alignment Forum](https://www.alignmentforum.org/) is a comprehensive collection of
+researchers and articles on the problem of AI. I think a good way to get started it to read texts from the Forum that interest you.
+- The [AI Safety Fundamentals](https://aisafetyfundamentals.com/) has both technical and governance tracks. [Introduction to AI Safety, Ethics, and
+Society](https://www.aisafetybook.com/) is great, too.
+- There are many job opportunities and research programs for those starting out in the field
+(for example [list here](https://www.aisafetysupport.org/lots-of-links#h.galayb7cov3i)).
+- [AISafety.com](https://www.aisafety.com/) collects a lot of resources on one page.
+
+Finally, I’d say AI is not only an important topic, but also *interesting*. There are so many questions that no one has had the time to answer! So much to know that we don't know yet! So much to discover! It’s not bad to work on AI safety.
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+[^1]: Bowman, [Eight Things to Know about Large Language Models](https://arxiv.org/abs/2304.00612)
+
+[^2]: Grace et al., [Thousands of AI Authors on the Future of AI](https://arxiv.org/abs/2401.02843)
+
+[^4]: See also: [List of security hacking incidents](https://en.wikipedia.org/wiki/List_of_security_hacking_incidents) (Wikipedia) and [Example high-stakes information security breaches](https://docs.google.com/document/d/1_smEDPWDVIaLuZ14Cm7KLHcWx4LkJ0DCTk8bcHjYy_Y/edit) (Muehlhauser).
+
+
+[^5]: Carlsmith, [New Report on How Much Computational Power It Takes to Match the Human Brain](https://www.openphilanthropy.org/research/new-report-on-how-much-computational-power-it-takes-to-match-the-human-brain/)
+
+[^6]: [Top500 list from November 2023](https://www.top500.org/lists/top500/2023/11/) states that the best supercomputer has a computing power of just over 10^18 FLOP/s. Our World In Data [gives estimates](https://ourworldindata.org/grapher/artificial-intelligence-training-computation) of the computing power used to train the largest models and, assuming a three-month training period, the training of Google's Gemini Ultra took around 10^19 operations per second.
+
+[^7]: Gwern, [The scaling hypothesis](https://gwern.net/scaling-hypothesis), Kaplan et al, [Scaling Laws for Neural Language Models](https://arxiv.org/abs/2001.08361)
+
+[^8]: Cf. claims "LLMs predictably get more capable with increasing investment, even without targeted innovation" and "Human performance on a task isn't an upper bound on LLM performance" (Bowman, [Eight Things to Know about Large Language Models](https://arxiv.org/abs/2304.00612)).
+
+[^10]: Here I try to give as understandable a threat scenario as possible that doesn't require *that* advanced cognitive abilities on the part of the AI (in anticipation of "that's completely impossible, no AI could do that!" type of objections). Of course, this doesn't mean that AIs *couldn’t* have extremely advanced capabilities -- for example, the ability to create far more advanced technology than humanity has yet built in the 2020s. And just as today's society is completely superior to the world of the 1820s, a large technological advantage is enough to obtain control.
+
+[^12]: The strengths of the dependencies between neurons are known as *weights* or *parameters*. Together with the *architecture* of the neural network (e.g. "how many layers there are in the network" or "how many neurons are in each layer"), these tell you what the neural network does.<br><br>In the case of language models, the input text is first chopped into snippets of about a few letters (*tokens*), and the neural network processes this sequence of tokens. Finally, the neural network returns a probability distribution for the next snippet.<br><br>The first stage of model training (*pre-training*) involves feeding the model vast amounts of text (usually collected from the web), and the model's performance is measured by how well it *predicts* the text, i.e. how likely it is to give the correct next token.<br><br>Performance is improved by so-called stochastic *gradient descent* (SGD). The idea is: measure the performance of the model by the logarithm of the probability for the correct answer. This is the so-called *loss function*. For each weight, determine how small changes to the weight affect the loss function in this particular example case. In technical terms, we compute the loss function’s partial derivatives with respect to weights. They tell us in which direction to change the weight in order to improve performance (and how quickly performance starts to improve as the weight is changed). The partial derivatives can be calculated by a method known as backpropagation.<br><br>As a next step, *each* weight of the model is changed in the direction indicated by the partial derivatives. This whole process is repeated, and little by little the model starts performing better and better.<br><br>(More technical details: in practice, instead of the SGD algorithm, variations of it such as the AdamW algorithm are often used. In addition, for parallel computing reasons, it is better to first study the performance on several examples at once and only then change the weights. However, these are not conceptually important details.)<br><br>After the initial training phase, *fine-tuning* begins. One approach to fine-tuning is to perform a process similar to the pre-training phase, but on a carefully selected text. If one wants the model to give certain types of answers in certain types of situations, the model can be trained with such examples.<br><br>Another common approach is *reinforcement learning*, where the model produces texts that are assessed on a numerical scale. For example, often a human judges the quality of texts. The weights are changed so that texts with higher scores are more likely to be produced.<br><br>Many approaches can be used to steer the model in the desired direction. I stress that the methods still take the form of "tweaking dials in the direction that produces slightly more desirable results", and in particular the *transparency* and actual *control* of the model is poor. I will discuss these issues in more detail in the actual text.<br><br>Current language models are largely based on the *transformer* architecture, which uses an *attention* mechanism in addition to "normal" neural network layers. However, I will not go into this further here.
+
+[^13]: This is different from saying that the model "really wants" to harm its users. All I'm trying to say is that a view like "don't be ridiculous, of course people would react immediately to AI risks if there was any evidence of such risks" seems very weak.
+
+[^14]: Scott Alexander has written a relatively accessible description of the content of the work: [God Help Us, Let's Try To Understand AI Monosemanticity](https://www.astralcodexten.com/p/god-help-us-lets-try-to-understand)
+
+[^18]: More on this topic: janus on 'truesight', [Alignment Forum](https://www.alignmentforum.org/posts/doPbyzPgKdjedohud/the-case-for-more-ambitious-language-model-evals?commentId=XZFTx2ek8G8stBKW4)
+
+[^19]: This example is from the METR Task Suite: [METR Example Task Suite, Public](https://github.com/METR/public-tasks), Kinniment et al.
+
+[^20]: "Language models are text predictors" is an extremely apt description of *pre-trained* models whose training is purely based on text prediction. However, language models are also fine-tuned to answer questions and perform tasks. The view that "language models are text predictors" could therefore be challenged in the context of these fine-tuned models: if I ask ChatGPT a question, it will answer. I am not trying to say that ChatGPT does not answer my questions. What I am trying to say is that most of the training of language models is based on predicting text, the actual capabilities of the language model come from predicting text, and the fine-tuning is mainly a rather superficial change for *practical reasons*, not the "true nature" of the language model. (The picture may change, though, if the amount of fine-tuning used is substantially increased.)
+
+[^21]: Example from Kelsey Piper's text [Playing the training game](https://www.planned-obsolescence.org/the-training-game/)
+
+[^22]: Likewise, when asked about their experiences, many AI models respond that they have no personal desires or subjective experiences. This better be true: things can end up *really* badly if this is not the case, but people believe (or want to believe) that it is.
+
+[^23]: Of course, you can infer something about the inner workings from behavior. A language model that, given a problem ("what is 3981\*8436?"), can always give the right answer ("33583716") necessarily does *work* to solve the problem (compare: computational complexity). On the other hand, some questions about internal properties are extremely hard to answer based on behavior alone.
+
+[^26]: See Hubinger et al, [Model Organisms of Misalignment: The Case for a New Pillar of Alignment Research](https://www.alignmentforum.org/posts/ChDH335ckdvpxXaXX/). The question "isn't it dangerous to deliberately create plotting or otherwise malevolent AI?" is sensible (and is discussed in the above article). The short answer is: current models are not yet capable enough to cause significant harm, and are relatively safe to study in isolated experimental environments. This is, of course, a question to keep in mind, especially as models become more capable.
+
+[^27]: I’m simplifying here: in the case of language models, we should again speak of tokens instead of letters.
+
+[^28]: I have heard of a (so far unpublished) paper where a chess-playing neural network was found to look ahead. A more complex search considering multiple options was not found so far, however.
+
+[^30]: Anthropic, [The Claude 3 Model Family: Opus, Sonnet, Haiku](https://www-cdn.anthropic.com/de8ba9b01c9ab7cbabf5c33b80b7bbc618857627/Model_Card_Claude_3.pdf), section 2.5.
+
+[^32]: Some parties might indeed be interested in stealing a model. See also the RAND report [Securing Artficial Model Weights](https://www.rand.org/pubs/working_papers/WRA2849-1.html), which states "If AI systems rapidly become more capable over the next few years, achieving sufficient security will require investments -- starting today -- well beyond what the default trajectory appears to be.”
+
+[^33]: And not all of these goals will be good -- of course, some people have already given AI the goal of destroying humanity (see "ChaosGPT").
+
+[^34]: Ideas like "don't give AI free access to the net", "don't let AI run programs freely" and "monitor AI activity closely" are obvious from a security point of view, but of course cumbersome and impractical if you just want to have the AI solve problems. Thus, those less concerned about threats are less likely to sink resources into such measures. See for example [Devin, the world's first fully autonomous AI software engineer](https://www.cognition-labs.com/introducing-devin) and Zvi Mowshowitz's [analysis](https://thezvi.substack.com/p/on-devin).
+
+[^40]: Estimates I have seen put for the number of people working full-time on the problem in the triple digits (although this is difficult to estimate and the number may have risen as AI has gained more attention). Only about 2% of machine learning articles published in top-ranked journals are related to safety ([An Overview of Catastrophic AI Risks](https://arxiv.org/pdf/2306.12001.pdf), Hendrycks et al., Appendix A).
+
+[^41]: Our World in Data, [Computation used to train notable artificial intelligence systems](https://ourworldindata.org/grapher/artificial-intelligence-training-computation?time=2010-01-01..latest)
+
+[^43]: Of course, if you know how the model has worked in similar situations, you can make educated guesses about new situations. The point is that we can't *mechanistically* think "when the model receives a text like this, it first does this, then that, then this, and finally gives that text as a response", but we are again relying on behavior: "the model gave this response in that other situation, so presumably in this situation it will behave in a similar way".
+
+[^44]: Known as: "mechanistic interpretability". Neel Nanda's [website](https://www.neelnanda.io/mechanistic-interpretability) has some good texts for beginners, for example [An Extremely Opinionated Annotated List of My Favourite Mechanistic Interpretability Papers](https://www.neelnanda.io/mechanistic-interpretability/favourite-papers).
+
+[^45]: Known as: "developmental interpretability". At least [Timaeus](https://timaeus.co/) works on this, with [The Developmental Landscape of In-Context Learning](https://arxiv.org/abs/2402.02364) (Hoogland et al.) as an example article.
+
+[^46]: Known as: "externalized reasoning" and "faithfulness of chain-of-thought". See, for example, [Bias-Augmented Consistency Training Reduces Biased Reasoning in Chain-of-Thought](https://arxiv.org/abs/2403.05518) (Chua et al.), [Question Decomposition Improves the Faithfulness of Model-Generated Reasoning](https://arxiv.org/abs/2307.11768) (Radhakrishnan et al.) and [Measuring Faithfulness in Chain-of-Thought Reasoning](https://arxiv.org/abs/2307.13702) (Lanham et al.).
+
+[^47]: Known as: "AI Control" (and also "scalable oversight"). A good starting point is [The case for ensuring that powerful AIs are controlled](https://www.alignmentforum.org/posts/kcKrE9mzEHrdqtDpE/the-case-for-ensuring-that-powerful-ais-are-controlled) (Greenblatt and Shlegeris).
+
+[^48]: Known as: "(dangerous) capability evaluations". [METR](https://metr.org/) does good work with task-based evaluations. I'm also interested in measuring things like situational awareness ([Towards a Situational Awareness Benchmark for LLMs](https://openreview.net/attachment?id=DRk4bWKr41&name=pdf), Laine et al.) and other subtle cognitive abilities.
+
+[^49]: Known as: "responsible scaling policies". See METR's [Responsible Scaling Policies (RSPs)](https://metr.org/blog/2023-09-26-rsp/), [Anthropic's Responsible Scaling Policy](https://www.anthropic.com/news/anthropics-responsible-scaling-policy) and Paul Christiano's [Thoughts on responsible scaling policies and regulation](https://www.alignmentforum.org/posts/dxgEaDrEBkkE96CXr/thoughts-on-responsible-scaling-policies-and-regulation).
+
+[^50]: For a description of this research direction, see [Model Organisms of Misalignment: The Case for a New Pillar of Alignment Research](https://www.alignmentforum.org/posts/ChDH335ckdvpxXaXX/model-organisms-of-misalignment-the-case-for-a-new-pillar-of-1) (Hubinger et al.). Research related to this topic: [Our research on strategic deception presented at the UK's AI Safety Summit](https://www.apolloresearch.ai/research/our-research-on-strategic-deception-presented-at-the-uks-ai-safety-summit) (Apollo Research), [Sleeper Agents: Training Deceptive LLMs that Persist Through Safety Training](https://arxiv.org/abs/2401.05566) (Hubinger et al.) and [Uncovering Deceptive Tendencies in Language Models: A Simulated Company AI Assistant](https://arxiv.org/abs/2405.01576) (Järviniemi & Hubinger).
+
+[^51]: Examples: [BadLlama: cheaply removing safety fine-tuning from Llama 2-Chat 13B](https://arxiv.org/abs/2311.00117) (Gade et al.), [Stealing Part of a Production Language Model](https://arxiv.org/abs/2403.06634) (Carlini et al.),  "Sleeper Agents" article in [^50], "jailbreaks".
+
+[^52]: Known as: "Compute Governance" [Introduction to AI Safety, Ethics, and Society](https://www.aisafetybook.com/) [Chapter 8.4](https://www.aisafetybook.com/textbook/8-4) gives an overview. For a deeper review, see [Computing Power and the Governance of AI](https://www.governance.ai/post/computing-power-and-the-governance-of-ai) (Heim et al.).
+
+[^53]: My story is in many ways similar to Cotra's [Without specific countermeasures, the easiest path to transformative AI likely leads to AI takeover](https://www.alignmentforum.org/posts/pRkFkzwKZ2zfa3R6H/without-specific-countermeasures-the-easiest-path-to)
+
+[^54]: Such dynamics occur not only in the training of AIs but also in their broader development and deployment: Hendrycks, [Natural Selection Favors AIs over Humans](https://arxiv.org/abs/2303.16200).
+
+[^55]: I stress that these are *medians* of uncertainty distributed over different years ("I think it is as likely that human AI will be built before year X as after year X"), not binary point estimates ("I am confident that human AI will be built in year X").
+
+[^56]: A report by [Epoch AI](https://epochai.org/blog/algorithmic-progress-in-language-models) estimates that algorithmic developments halve the required computing power once every 8 months or so.
+
+[^57]: There is no shared accepted definition of the types of AIs that those concerned about AI threats are worried about. "Transformative AI" is one reasonably common term, roughly referring to AIs that cause changes at least as significant as the agricultural or industrial revolution (see Open Philanthropy, [Some Background on Our Views Regarding Advanced Artificial Intelligence](https://www.openphilanthropy.org/research/some-background-on-our-views-regarding-advanced-artificial-intelligence/)).
+
+[^58]: Or: don’t aim to not do that.
+
+[^60]: In particular, I tried to provide a threat scenario that does not require major changes in AI development. Major changes are of course possible and may introduce new problems.
+
+[^thanks]: Thanks to Akseli Jussinmäki, Konsta Tiilikainen and Meeri Kuoppala for providing feedback on earlier (Finnish) versions of the article.
+
+[End of text.]
+
+# Saavutuksia
+
+[A traditional CV (pdf).](/cv.pdf)
+
+Alla vapaamuotoisempi lista taustastani ja saavutuksista, joista olen erityisen ylpeä.
+
+## Koulutus
+
+Koulutukseltani olen filosofian tohtori, väitöstutkimuksen alana matematiikka.
+
+- Filosofian tohtori (2021-2023), Turun yliopisto. Sain tohtorin tutkinnon 21-vuotiaana. Väitöskirjani [Problems in Analytic and Algebraic Number Theory](https://urn.fi/URN:ISBN:978-951-29-9305-5) palkittiin Suomen Matemaattisen Yhdistyksen toimesta parhaana vuoden aikana valmistuneena matematiikan alan väitöskirjana.
+
+- Filosofian maisteri (2020-2021), Helsingin yliopisto.
+
+- Luonnontieteiden kandidaatti (2019-2020), Helsingin yliopisto.
+
+Suoritin lukion Valkeakosken Tietotien lukiossa / Päivölän opiston matematiikkalinjalla (2017-2019).
+
+## Kilpailumenestys
+
+Lukioaikanani osallistuin aktiivisesti matematiikka-, ohjelmointi- ja tiedekilpailuihin. Alla isoimpia saavutuksiani:
+
+- Sain Suomen historian parhaan tuloksen Kansainvälisissä matematiikkaolympialaisissa (2019)
+
+- Voitin toisen palkinnon European Union Contest for Young Scientists -tiedekilpailussa (2019)
+
+- Sain pronssia Kansainvälisistä tietotekniikkaolympialaisista (2019)
+
+- Voitin kansallisen lukion matematiikkakilpailun vuosina 2018 ja 2019
+
+## Opetus
+
+Suomen matematiikkavalmennuksen puolella olen tehnyt (muiden valmentajien tuella) [kurssin kilpamatematiikasta](https://kurssi.matematiikkakilpailut.fi/) ja niissä esiintyvästä ongelmanratkaisusta. Panostin paljon sisältöön ja pedagogiaan, ja koen kurssin onnistuneen tehtävässään. Aiempana yrityksenä kirjoitin aiheesta [kirjan](https://matematiikkakilpailut.fi/kirjallisuus/OOOO.pdf).
+
+
+## Tutkimus
+
+Lista kaikista artikkeleistani löytyy [Tutkimus](/tutkimus)-osiosta.
+
+Pidän erityisesti niistä töistä, joissa käsitellään yksinkertaisen ja luonnollisen kuuloisia ongelmia (vaikkeivat nämä olisikaan teknisesti vaativimmat artikkelini). Erityisesti seuraavien artikkelien parissa oli mukava tehdä töitä:
+
+- [Solvability of a system of polynomial equations modulo primes](https://www.cambridge.org/core/journals/bulletin-of-the-australian-mathematical-society/article/solvability-of-a-system-of-polynomial-equations-modulo-primes/B364E624AB54DA6B8C839B54003A1711)
+
+- [Composite values of shifted exponentials](https://doi.org/10.1016/j.aim.2023.109187) yhdessä Joni Teräväisen kanssa
+
+- [Positive lower density for prime divisors of generic linear recurrences](https://www.cambridge.org/core/journals/mathematical-proceedings-of-the-cambridge-philosophical-society/article/positive-lower-density-for-prime-divisors-of-generic-linear-recurrences/D17E3133C02E61A03F2BBE4A75C3805C)
+
+Mainitsen myös [graduni](https://helda.helsinki.fi/handle/10138/330738), joka on mielestäni parhaimpia töitäni.
+
+[End of text.]
+
+# Tutkimus
+
+## Tekoäly ja tekoälyturvallisuus
+
+- FrontierMath: A Benchmark for Evaluating Advanced Mathematical Reasoning in AI, yhdessä monen muun tekijän kanssa. 2024. [arXiv](https://arxiv.org/abs/2411.04872)
+- Uncovering Deceptive Tendencies in Language Models: A Simulated Company AI Assistant, yhdessä Evan Hubingerin kanssa, 2024. [arXiv](https://arxiv.org/abs/2405.01576)
+
+## Matematiikka
+
+- Higher-degree Artin conjecture. _The Quarterly Journal of Mathematics_, 2024. [Julkaisija](https://doi.org/10.1093/qmath/haae012)
+- Composite values of shifted exponentials, yhdessä Joni Teräväisen kanssa. _Adv. Math._, 2023. [arXiv](https://arxiv.org/abs/2010.01789), [julkaisija](https://doi.org/10.1016/j.aim.2023.109187)
+- Positive lower density for prime divisors of generic linear recurrences. _Math. Proc. Cambridge Philos. Soc._, 2023. [arXiv](https://arxiv.org/abs/2102.04042), [julkaisija](https://doi.org/10.1017/S0305004123000257)
+- Unified treatment of Artin-type problems, yhdessä Antonella Peruccan kanssa. _Res. in Number Theory_, __9__, 10, 2023.  [arXiv](https://arxiv.org/abs/2202.11329), [julkaisija](https://doi.org/10.1007/s40993-022-00418-6)
+- Gaussian almost primes in almost all narrow sectors, yhdessä Joni Teräväisen kanssa, 2023. [arXiv](https://arxiv.org/abs/2303.05822)
+- Solvability of a system of polynomial equations modulo primes. _Bull. Aust. Math. Soc._, __106__ 404-407, 2022. [Julkaisija](https://doi.org/10.1017/s0004972722000260)
+- On large differences between consecutive primes (2022). [arXiv](https://arxiv.org/abs/2212.10965)
+- Unified treatment of Artin-type problems II, yhdessä Antonella Peruccan ja Pietro Sgobban kanssa 2022. [arXiv](https://arxiv.org/abs/2211.15614)
+- Simultaneous insolvability of exponential congruences. _J. Number Theory_ __239__, 335-351, 2022. [arXiv](https://arxiv.org/abs/1912.02526), [julkaisija](https://doi.org/10.1016/j.jnt.2021.12.007)
+- Equality of orders of a set of integers modulo a prime. _Proc. Amer. Math. Soc._ __149__, 3651-3668, 2021. [arXiv](https://arxiv.org/abs/1912.02554), [julkaisija](https://doi.org/10.1090/proc/15498)
+
+Väitöskirja: [Problems in Analytic and Algebraic Number Theory](https://urn.fi/URN:ISBN:978-951-29-9305-5)
+
+Pro gradu: [Polynomial and exponential equations modulo primes](http://urn.fi/URN:NBN:fi:hulib-202106082543)
+
+[End of text.]
+
+# Epi
+
+## [Esipuhe](/epi/epipuhe)
+
+## Työkaluja
+
+- [Binääriset kategoriat ja jakaumat](/epi/binaarinen_jakauma)
+- [Jakaumat ovat leveitä](/epi/leveat_jakaumat)
+- [Matalan informaation väitteet](/epi/matala_informaatio)
+- [Kvantifiointi](/epi/kvantifiointi)
+- [Yhden muuttujan mallit](/epi/yksi_muuttuja)
+- [Symmetrian rikkominen, yleispätevät vasta-argumentit ja niin edelleen](/epi/symmetrian_rikkominen)
+
+## Itsestäänselvyyksiä
+
+- [Ilmeiset ohjeet](/epi/ilmeiset_ohjeet)
+- [Liian kohteliaat tulkinnat](/epi/kohteliaat_tulkinnat)
+- [Jättiläisten olkapäillä](/epi/jattilaisten_olkapailla)
+- [Sumuiset ajatukset](/epi/sumuiset_ajatukset)
+
+## Epävarmat uskomukset
+
+- [Probabilistinen ajattelu](/epi/probabilistinen_ajattelu)
+- [Uskomusten muutos](/epi/uskomusten_muutos)
+- [Miksi todennäköisyydet?](/epi/miksi_todennakoisyydet)
+- [Epävarmuutta ja epäonnistumisia I](/epi/epa_I)
+- [Odotusarvosta ja epävarmuudesta](/epi/odotusarvo)
+- [Epävarmuutta ja epäonnistumisia II](/epi/epa_II)
+- [Kunnolla tehty todennäköisyyslaskenta](/epi/kunnolla)
+- [Mihin matematiikkaa tarvitaan?](/epi/mihin_matematiikkaa)
+
+## Välisoitto: [Miksi uskot mitä uskot?](/epi/miksi_uskot)
+
+## Ansoja
+
+- [Kaukotila](/epi/kaukotila)
+- [Filosofiatila ja ajatusleikit](/epi/filosofiatila)
+- [Keskustelunimaisijat](/epi/keskustelunimaisijat)
+- [Helpot maalitaulut](/epi/helpot_maalitaulut)
+- [Status](/epi/status)
+- [Haitallinen sovinnollisuus](/epi/haitallinen_sovinnollisuus)
+
+## Yhdessä
+
+- [Reflektointi](/epi/reflektointi)
+- [Vakuuttamisesta](/epi/vakuuttamisesta)
+- [Suullinen kommunikointi on lokaalia](/epi/lokaali_kommunikaatio)
+- [Sanoista ja konsepteista](/epi/sanoista)
+- [Työkalujen väärinkäyttö](/epi/tyokalujen_vaarinkaytto)
+
+## Täydellinen maailma
+
+- [Tehokkaan maailman hypoteesi](/epi/tehokas_maailma)
+- [Ongelmien sivuuttamisesta](/epi/ongelmien_sivuuttamisesta)
+- [Negatiivisuus ja status quon puolustajat](/epi/negatiivisuus)
+- [Insentiivit, koordinaatio ja Pareto-käyrä](/epi/insentiivit)
+- [Kerran luotin](/epi/kerran_luotin)
+
+## Epilogi: [Epi on tärkeää](/epi/epi_on_tarkeaa)
+
+## [Lopuksi](/epi/kirjallisuutta)
+
+[End of text.]
+
+# Esipuhe
+
+Mitä yhteistä on seuraavilla tilanteilla?
+
+- Mietit, saapuuko kaverisi luoksesi sovittuun aikaan. Hän on muutaman minuutin myöhässä. Alkaa näyttää siltä, että hän on unohtanut.
+- Haluat tietää, sataako ylihuomenna. Katsot sääennustetta. Ennusteen mukaan silloin tuskin sataa.
+- Etsit avaimiasi. Muistat, että laitoit ne takin taskuun, ja avaat taskun. Tasku on tyhjä. Tajuat, että laitoit ne sittenkin olohuoneen pöydälle. Löydät avaimesi.
+
+Ja mitä yhteistä niillä on seuraavien tilanteiden kanssa?
+
+- Luet tekstiä. Alat tarkastella sitä kriittisesti ja huomaat, ettei se anna oikeaa kuvaa käsitellystä aiheesta.
+- Juttelet kaverisi kanssa. Olette eri mieltä jostakin. Yritätte selvittää asiaa ja etsiä aiheesta tietoa, mutta keskustelun jälkeenkään ette ole samaa mieltä.
+- Mietit, mihin hakisit opiskelemaan tai töihin. Etsit tietoa vaihtoehdoista ja lopulta teet valintasi.
+
+Ja seuraavien kysymysten:
+
+- Kuinka hyvin erilaiset järjestelmät, esimerkiksi joukkotiedotusvälineet tai tieteellinen tutkimus, onnistuvat tavoitteissaan?
+- Miten koulutusta voisi kehittää? Minkälaisia lopputuloksia eri muutoksilla saadaan aikaan?
+- Miten tällaisiin haastaviin kysymyksiin voidaan paremmin löytää vastauksia?
+
+Vastaus: Keskeinen teema on *uskomukset*, niiden *totuudenmukaisuus* ja *prosessit*, joilla totuudenmukaisiin uskomuksiin päädytään.
+
+Uskot, että kaverisi saapuu luoksesi -- todella odotat, että kohta hän tulee -- mutta olet väärässä. Tämä valkenee sinulle hiljattain ajan edetessä. Uskot avainten olevan taskussasi ja etsit avaimia sieltä, mutta uskomus ei ole totuudenmukainen: todellisuudessa avaimet ovat pöydällä. Lukemasi tekstin maalaama kuva maailmasta on mielestäsi väärä: tekstin pohjalta tulee vain epätotuudenmukaisemmat uskomukset. Työpaikkaa etsiessä pyrit saamaan totuudenmukaisemman kuvan siitä, millaisia vaihtoehdot ovat (ja siten selvittää sitä, miten ne vastaavat mitä haluat). Jos teemme tälläisen muutoksen koulutukseen, mitä tapahtuu? Tieteellisellä tutkimuksella pyritään tähän asiaan -- kuinka hyvin siinä onnistutaan? Miten voimme ylipäätään selvittää tällaisia asioita?
+
+Viittaan laajasti tähän konseptiin -- siis uskomuksiin, niiden totuudenmukaisuuteen ja niitä muuttaviin prosesseihin -- sanalla *epi*.
+
+Kuten yritin esimerkeillä välittää, epiä koskevia eli *epistemisiä* kysymyksiä ja tilanteita tulee vastaan jatkuvasti, niin arjessa kuin vakavammissa tilanteissa ja yhteiskunnallisesti merkittävissä aiheissa. Uskomukset ovat fundamentaalissa asemassa: meillä ei ole suoraa pääsyä siihen, miten asiat ovat, vaan meillä on käytössämme vain uskomuksemme tästä.
+
+Ideaalisti uskomukset vastaisivat totuutta, mutta näin ei tietenkään aina ole. Joskus, oikeastaan aika useinkin, ihmiset ovat väärässä jostakin. ("Ihmiset" tietysti sisältää minut ja sinut.) Tämä herättää muutaman jatkokysymyksen:
+
+Miten ja miksi ihmiset ovat väärässä? Syitä on totta kai monia, mutta kenties löytyy yleisiä teemoja: on tällainen yleinen syy jonka vuoksi uskomukset ovat pielessä tällä tavalla, tai tällaiset tekijät saavat ihmisten epin heikkenemään.
+
+Miten epiä voi parantaa? Sitä on välillä väärässä jostakin. Ehkä virheistä voisi oppia jotain. Yleisistä säännönmukaisuuksista voi huomata jotakin omalle kohdalle relevanttia.
+
+Entä miten uskomuksia kannattaa yleisesti muodostaa?
+
+Ja miksi välittää? Miksi hyvä epi on tärkeää? Vai onko se?
+
+---
+
+Tämä kokoelma koostuu kuudesta osiosta: "Työkaluja", "Itsestäänselvyyksiä", "Epävarmat uskomukset", "Ansoja", "Yhdessä" ja "Täydellinen maailma".
+
+"Työkaluja" on sitä miltä se kuulostaakin.
+
+"Itsestäänselvyyksiä" käsittelee... ei *oikeasti* itsestäänselvyyksiä. Se on vähän monimutkaista.
+
+"Epävarmat uskomukset" kertoo epävarmuuden käsittelystä ja todennäköisyyslaskennan tähän antamista työkaluista.
+
+"Ansoja"-osiossa käsitellään muutamaa yleistä keskusteluihin ja ajatteluun liittyvää ansaa.
+
+"Yhdessä" käsittelee erityisesti keskustelutilanteisiin liittyviä huomiota.
+
+"Täydellinen maailma" -tekstit kertovat siitä, kuinka maailma ei ole täydellinen.
+
+Kokoelman jakaa kahtia välisoitto "Miksi uskot mitä uskot?" ja se huipentuu epilogiin "Epi on tärkeää".
+
+Lopussa mainitsen ajatuksiani inspiroineita [muita materiaaleja](/epi/kirjallisuutta). Olen myös tehnyt joitakin [tekstikohtaisia muistiinpanoja](/epi/muistiinpanoja).
+
+Tekstejä ei ole pakko lukea järjestyksessä ja erityisesti eri osiot voi lukea haluamassaan järjestyksessä. Tekstit ovat pikemminkin laaja verkosto kuin sivu sivulta rakentuva tarina. Teksteissä on esimerkiksi runsaasti linkkejä toisiinsa, usein myös "aiemmasta" tekstistä "myöhempään". Jos et tiedä, mistä aloittaa, kokeile [Reflektointi](/epi/reflektointi), [Kaukotila](/epi/kaukotila) tai [Probabilistinen ajattelu](/epi/probabilistinen_ajattelu).
+
+*Kirjoitettu syksyllä 2023. Erityiskiitokset Akseli Jussinmäelle kattavista korjauksista ja ehdotuksista teksteihin.*
+
+[End of text.]
+
+# Binääriset kategoriat ja jakaumat
+
+Kerran kuulin jonkun sanovan "Nykyään ihmisillä on huono kunto, paitsi ne, joilla on hyvä kunto, ovat *tosi* hyvässä kunnossa."
+
+Pysähdyin miettimään. Kuva, jonka kommentti maalaa, näyttää tällaiselta:
+
+![Binäärinen näkökulma](Kuvat/jakauma_1-1.jpg)
+
+Hmm, erikoista. Nimittäin yleensä kun olen nähnyt oikeaan dataan perustuvia jakaumia, niin ne ovat pikemminkin tämänmuotoisia:
+
+![Jatkuvampi näkökulma](Kuvat/jakauma_2-1.jpg)
+
+Kommentin vika on siinä, että binäärinen jaottelu ei ole oikea näkökulma aiheeseen. Ihmiset eivät asetu siististi hyvä- ja huonokuntoisiin, vaan on myös OK-kuntoisia, ääripäitä ja kaikkea siltä väliltä. Ääripäitä lähestyttäessä ihmisten määrä tietysti vähenee.
+
+Vasta kun karkea kuva jatkuvasta jakaumasta on kunnossa, voidaan lähteä esittämään väitteitä kuten "ihmisten kunto on keskimäärin heikentynyt" tai "hyväkuntoisimman 1 % ihmisistä kunto on noussut".
+
+Joku voisi sanoa, että tämä on tietysti se, mitä väitteen esittäjä tarkoitti -- että tietenkään hän ei oikeasti tarkoittanut, että on ne huonokuntoiset ihmiset ja sitten ne hyväkuntoiset. Pidän tätä kuitenkin [liian kohteliaana tulkintana](/epi/kohteliaat_tulkinnat) väitteelle. Väitän, että ihmiset sortuvat helposti tällaisiin virheisiin ja etteivät he automaattisesti mieti asioita jakaumina.
+
+Miksi uskon näin? Tässä on joitain syitä:
+
+- Omien ajatusteni ja muiden ihmisten puheiden reflektointi paljastaa, että käytännössä asioita tulee liian usein mietittyä binääristen kategorioiden kautta.
+- Ihmiskunnalla ei ole aina ollut tilastotieteen oppeja, vaan ne on jouduttu kehittämään. Jakaumien käsittely on opittu taito, ei jotakin, mikä ihmisillä on luonnostaan tai minkä evoluutio on meihin rakentanut.
+- Tilastoihin liittyy muutama [tunnettu](https://en.wikipedia.org/wiki/Insensitivity_to_sample_size) "[paradoksi](https://en.wikipedia.org/wiki/Berkson%27s_paradox)" ja [ajatusvirhe](https://en.wikipedia.org/wiki/Neglect_of_probability).
+
+Tässä on pari syytä sille, mistä virheet johtuvat.
+
+Ensinnäkin jakaumien käsittely on kognitiivisesti raskaampaa. On niin helppoa ajatella, että on ne hyväkuntoiset ihmiset ja sitten on ne huonokuntoiset ihmiset. Vastaavasti on helppoa miettiä parhaimpia ja huonoimpia -- he [tulevat helpoiten mieleen](https://en.wikipedia.org/wiki/Availability_heuristic). Keskiarvojen, varianssin ja jakaumien muodon käsittely on haastavampaa.
+
+Toiseksi saamamme informaatio on vahvasti suodatettua: määrään suhteutettuna kuulemme paljon todennäköisemmin todella hyväkuntoisista kuin kunnoltaan keskiverrommista. Kilpailuissa etsitään parhaita ja heistä on kiinnostavampaa puhua. Seuraus: on ne hyväkuntoiset ihmiset, joista aina puhutaan, ja sitten olemme me tavalliset tallaajat. Muistimme, ihmisten puheiden ja median tarjoama data ei siis ole edustavaa.
+
+Pyrin itse olemaan yksi heistä, jotka käyttävät jakaumia oikein.
+
+[End of text.]
+
+# Jakaumat ovat leveitä
+
+Teesi: Ihmiset vaihtelevat yllättävän paljon erinäisillä mittareilla. Tätä vaihtelua helposti aliarvioidaan. Annan alla esimerkkejä.
+
+Monissa urheilulajeissa parhaimmat ovat *todella* hyviä verrattuna keskivertohenkilöön tai harrastelijaan. Esimerkiksi:
+
+- Maratonin (42,195 km) maailmanennätys on 2:00:35. En taida tuntea ketään, joka saa juostua edes *yhtä* kilometriä vastaavaa vauhtia (2:51!), tai oikeastaan ketään, joka pääsisi edes lähelle.
+- Penkkipunnerruksessa ennätykset ovat, säännöistä riippuen, n. 350--650 kg. Nämä ovat *moninkertaisia* lukemia verrattuna siihen, mitä itse saan tai mitä lajia enemmän harjoitelleet tuttuni saavat.
+
+Maailman parhaimpien ylivoimaisuus tulee helposti otettua itsestäänselvyytenä. Minusta on silti yllättävää, kuinka hyviksi lajeissa voi kehittyä. Pelkästään kaveriporukkani juoksua tai penkkipunnerrusta katsomalla en päätyisi ajattelemaan "selvästikin maratonmatkan voi juosta pariin tuntiin" tai "kyllähän penkistä nyt ainakin 300 kiloa saa nostettua kun vähän treenaa" -- ei olisi selvää, että nämä ovat asioita, joihin *ihmiskeho realistisesti kykenee*. Laajasti televisoidut urheilukilpailu kuitenkin paljastavat, mihin treenaamisella ja miljardien ihmisten joukosta parhaat poimimalla voi päästä.
+
+Intuitioitaan voi testata katsomalla ihmisten suorituksia harvinaisemmissa lajeissa.
+
+- Tetris: [https://www.youtube.com/watch?v=_k5tP1v0w-k](https://www.youtube.com/watch?v=_k5tP1v0w-k)
+- Rubikin kuutio: [https://www.youtube.com/watch?v=gh8HX4itF_w](https://www.youtube.com/watch?v=gh8HX4itF_w)
+- Kuppien pinoaminen: [https://www.youtube.com/watch?v=iHGIKs121S8](https://www.youtube.com/watch?v=iHGIKs121S8)
+
+(Taas sama ilmiö: jos kavereiden kesken huviksenne pelaatte tetristä, on porukan "tosi hyvä pelaaja" aika kaukana siitä, mihin parhaat pystyvät.)
+
+Seuraavaksi käsittelen hieman erilaista esimerkkiä. Synestesiassa ihminen assosioi yhden aistin ärsykkeitä toiseen aistiin. Esimerkiksi äänillä ja sanoilla voi olla omat värinsä, jolloin äänen kuullessaan henkilölle syntyy (tahdosta riippumaton) assosiaatio väriin.
+
+Ensireaktioni synestesiasta kuullessani on hyvinkin saattanut olla "mitä ihmettä?". Tämä ei ole asia, joka näkyy ulospäin. Tämä ei ole asia, jota olisin huomannut itselläni olevan missään määrin. En olisi etukäteen edes *osannut keksiä*, että joillakin ihmisillä voisi olla synestesia, ennen kuin tästä kerrottiin minulle. Synestesia ei kuitenkaan edes ole niin harvinainen. Käsitykseni on, että sitä esiintyy noin parilla prosentilla, mihin lukeutuu tuttujanikin.
+
+Sitä alkaa miettimään, mitä muita vastaavantyyppisiä eroavaisuuksia ihmisten välillä on: sellaisia, mitä ei olisi tullut edes *ajatelleeksi*, jos niistä ei olisi kuullut, joita ehkä omasta tuttuvapiiristäkin löytyy ja joita ei välttämättä edes itse tiedostaisi omalla kohdallaan. (Synestesiasta puhuttuani olen huomannut, että myös minulla on tietyissä konteksteissa kirjain-väri-assosiaatioita.) Sitä myös miettii, mitä ne *harvinaiset* ovat.
+
+Ihmisten mentaalisissa ominaisuuksilla on paljon vaihtelua myös arkisemmilla mittareilla mitattuina. Tässä on esimerkki itselleni tutusta aiheesta, matemaattisesta osaamisesta. Olen vuosien saatossa saanut kuvaa siitä, kuinka syvälle ihmiskunnan tietämys ulottuu ja minkä tasoisia huippumatemaatikot ovat. Ja... sitä on vaikea kommunikoida, kuinka iso on ero terävimmän huipun ja keskivertohenkilön välillä. Tähän väliin mahtuu niin ikään valtava määrä eri kehitysaskelia, joista monet tuntuvat jo yksinään valtavilta. (En tarkoita tätä "keskivertohenkilöä" väheksyen, aivan kuten maratonin maailmanennätystä hämmästellessäni tarkoitukseni ei ole väheksyä keskivertohenkilöä, joka ei saa juostua maratonia.)
+
+Uskon ihmisten yleensä aliarvioivan sen, kuinka paljon vaihtelua ihmisten (ja yleisesti asioiden) välillä on. Yksi selkeä syy on se, että monet ominaisuuksista eivät näy ulospäin, jolloin on helppo sortua "kaikki ovat samanlaisia kuin minä" -ajatusvirheeseen.
+
+Toinen merkittävä syy on kuplautuminen. Heuristiikka "tuttavapiirini antaa representatiivista dataa ihmisistä yleisesti" on yksinkertaisesti epätosi. Esimerkiksi hyvin suuri osa (kaikki?) samanikäiset tuttuni ovat opiskelleet lukiossa ja yliopistossa -- tuttuja kun tulee poimittua koulun kautta. Niin ikään lukiovalintani perustui matematiikkapainotukseen ja harrastin matematiikkakilpailuja, mikä *saattaa* liittyä siihen, että kaveriporukkani on matemaattisen osaamisen suhteen erilainen kuin ihmiset yleisesti.
+
+Välillä poistuessani erinäisten kuplien ulkopuolelle näen vilauksen siitä, kuinka leveitä jakaumat ovat, ja saan muistutuksen siitä, että tosiaan kaikki eivät ole samanlaisia kuin minä tai tuttuni. Silloin, kun tapaan ihmisiä, jotka eivät olekaan käyneet lukiota ja menneet suoraan yliopistoon opiskelemaan. Silloin, kun käyn tapaamassa isoisääni. Silloin, kun joku on käyttänyt paljon aikaa ja tietää paljon jostakin, mitä minä en ole oikeastaan ajatellut aiemmin.
+
+Juuri jakaumien leveyden vuoksi *kaikkia* ihmisiä koskevat väitteet ovat epätosia, ja oikeastaan ne ovat epätosia kohtalaisen monen kohdalla. Tietysti kaikki osaavat lukea -- kun siis unohdetaan riittävän nuoret ihmiset, tai riittävän vanhat, tai näkövammaiset, tai jotka kehityksellisen vaikeuden vuoksi eivät kykene lukemaan, tai joita ei erityisesti kiinnosta lukeminen ja jotka eivät kouluttaudu pitkälle ja jotka eivät arjessaan niin lue, tai jotka muista minulle tuntemattomista syistä eivät osaa tai kykene lukemaan. Ja tietysti "kaikki" tarkoittaa ihmisiä Suomessa. Siis nykypäivänä.
+
+Nopealla haulla löytyykin [Opetushallituksen tiedote](https://www.oph.fi/fi/uutiset/2021/suomalaisten-lukutaidon-vahvistamiseksi-etsitaan-ratkaisuja-kansallisessa-yhteistyossa), jossa kirjoitetaan "Vuoden 2018 Pisa-tulosten mukaan jo lähes 14 prosentilla suomalaisnuorista on riittämätön lukutaito arjen tilanteissa selviämiseen", ja "Myös monella [suomalaisella] aikuisella on heikko lukutaito: kansainvälisen PIAAC-tutkimuksen mukaan vuonna 2012 noin 11 prosentilla 16–65-vuotiaista aikuisista oli suuria puutteita lukutaidossa."
+
+Nuorempana olin toistuvasti yllättynyt tämäntyyppisistä tilastoista. Sen jälkeen olen paremmin sisäistänyt sanonnan "jos olet toistuvasti yllättynyt, älä ole niin yllättynyt" ja sen, kuinka ihmisen ja hänen tuttujensa ominaisuudet eivät todellakaan ole riippumattomia toisistaan ja kuinka, kyllä, ihmiset todella ovat erilaisia.
+
+Se mitä näet ei ole kaikki mitä on. Kenties kaikki kaverisi osaavat lukea ja kenties kukaan tuttusi ei nosta sataa kiloa penkistä. Siitä huolimatta jakaumilla on pitkät hännät.
+
+[End of text.]
+
+# Matalan informaation väitteet
+
+"On siinä hyviäkin puolia, että..."
+
+"On monia ihmisiä, jotka..."
+
+"On sillä vaikutusta, että..."
+
+"On mahdollista, että..."
+
+---
+
+Monet ihmisten kommenteista ovat oikeastaan melko mitäänsanomattomia siinä mielessä, että ne ovat selvästi tosia.
+
+Esimerkiksi juuri tuo äskeinen virke: ihmisiä on paljon ja he puhuvat paljon, joten käytännössä varmasti puheiden joukosta löytyy monia kommentteja, jotka ovat mitäänsanomattomia. Silti tällaiset kommentit tuntuvat kertovan jotakin. Ihmiset nimittäin saavat välitettyä ajatuksia toisilleen, ainakin välillä.
+
+Jos minä kirjoitan "monet ihmisten kommenteista ovat sellaisia, että...", en oikeasti halua sanoa "on olemassa monta ihmisten esittämää kommenttia, jotka..." Minulla on jokin kiinnostavampi pointti. Kenties, että tämä on yleinen ilmiö, tai että tämä on asia, johon kannattaa kiinnittää huomiota. Ja *tämä* on se, mitä väitteen esittäminen kommunikoi.
+
+Kuvitellaan sitten seuraava tilanne:
+
+Anna: "Ihmisillä on [status quo -vinoumaa](https://en.wikipedia.org/wiki/Status_quo_bias) -- siis taipumusta ajatella, että nykytilanne ('status quo') on hyvä ja mitkä tahansa muutokset ovat pahoja. Pidän tätä huonona asiana. Tämä vinouma on yksi syy sille, ettei huonoille asioille tehdä mitään eikä asioita kehitetä."
+
+Bella: "On siinä hyviäkin puolia, että ihmisten preferensseissä on vinoumaa nykytilanteen suuntaan."
+
+Bellan väite on yksi esimerkki väitteestä, joka on kirjaimellisesti tulkittuna tosi. Hänellä on siis varmaankin jokin kiinnostavampikin pointti. Mutta mikä?
+
+Ensimmäinen mahdollinen ongelma on se, että tällaista kiinnostavampaa pointtia ei oikeastaan ole. Aiheesta keskustellaan lisää ja Anna yrittää selvittää, mitä mieltä Bella on, mutta hänellä ei olekaan mitään erityistä mielipidettä. Hän vain esitti tällaisen huomion. Sehän on selvästi tosi.
+
+Toinen ongelma: entä jos Anna on väitteen kanssa eri mieltä? Ei siis kirjaimellisen tulkinnan kanssa, vaan niiden kiinnostavampien ajatusten kanssa, joita Bella yrittää välittää. Tai ehkä Anna on eri mieltä *joistakin* (muttei kaikista) luontevista tulkinnoista. Mitä Anna voi tehdä?
+
+Sanoa "olen eri mieltä"? Vaikuttaa huonolta idealta, koska taas, väite on kirjaimellisesti tulkittuna tosi. Vastata johonkin luontevaan tulkintaan ja sanoa, miksi on sen kanssa eri mieltä? Kuulostaa siltä, että Bella tulee vastaamaan "tuo ei ole minun pointtini", tai päädytään muuten puhumaan ristiin. Ehkä Annan kannattaa siis pyytää tarkennusta? Hyvällä tuurilla keskustelu etenee konkreettisempiin väitteisiin. Vaihtoehtoisesti Bella saattaa vastata toisella ympäripyöreällä väitteellä. Tai ehkä Bellalla ei tosiaan ollut mitään erityistä mielipidettä ja ei ole mitään tarkennettavaa.
+
+Ja entä jos aihe olisikin ollut toinen ja Bella olisi sanonut "maailmassa on miljoonia köyhiä samalla kun rikkaat omistavat huvipursia"? Väite on kirjaimellisesti tosi: maailmassa on miljoonia köyhiä, maailmassa on rikkaita ihmisiä, jotka omistavat huvipursia, ja nämä asiat tapahtuvat samaan aikaan. Silti väitteellä luodaan tietynlainen mielikuva ja vihjataan joitakin muita asioita, jotka kuitenkin jäävät epäselviksi ja joita on siten vaikea käsitellä.
+
+---
+
+Tällaisten *matalan informaation väitteiden* keskeinen ongelma on se, että ne ovat kaikki tosia eivätkä siten tee eroa totuudenmukaisempien ja vähemmän totuudenmukaisten väitteiden välille. "On siinä hyviäkin puolia" soveltuu tilanteeseen kuin tilanteeseen. Jotkut asiat ovat oikeasti parempia kuin toiset, mutta kommenteilla kuten "kaikilla asioilla on huonot puolensa" saadaan häivytettyä nämä erot.
+
+Ihmisten uskomukset ovat usein epämääräisiä ja [sumuisia](/epi/sumuiset_ajatukset). Koska kieli heijastaa ajatuksia, tulee tällöin helposti esitettyä matalan informaation väitteitä. Tällä epämääräisyydellä taas on seurauksia uskomusten muuttamiseen ja totuudenmukaisuuden selvittämiseen. Harvoin tulee tilanteita, joissa tulee selkeä viesti "olit väärässä" -- sitä harvemmin, mitä epämääräisempiä uskomukset väitteet ovat.
+
+Jos esimerkiksi olen mieltä "on paljon ihmisiä, jotka ovat käyneet kotikoulua", voin varmaankin netistä löytää muutaman ihmisen, jotka kertovat olleensa kotikoulussa (tai parempaa: löytää tilastoja asiasta). Varmaan heitä on paljon *joillakin* sanan "paljon" tulkinnoilla ja olen siten oikeassa, eikö? Missä tilanteissa toteaisin, että tällaisia ihmisiä *ei* ole paljoa, ja myöntäisin olleeni väärässä?
+
+Ratkaisu on keskittyä *uskomuksiinsa* eli *odotuksiinsa*: miettiä, millaisia odottaa määrien olevan, ja verrata odotuksiaan todellisuuteen. Asian selvittyä ei tule tulkita sanomisiaan mahdollisimman myötämielisestä näkökulmasta, vaan miettiä "Oliko tämä sitä mitä etukäteen odotin? Olenko yllättynyt?"
+
+Tämä on hienovarainen prosessi. Välillä ihmiset rationalisoivat ja kääntävät tilanteen omaksi edukseen niin selkeästi, että muutkin huomaavat sen. Suurilta osin valikoivat tulkinnat tehdään kuitenkin piilossa oman pään sisällä, missä muut eivät sitä näe. Usein sitä ei huomaa edes itse.
+
+Jos väitteensä muotoilee ympäripyöreästi, voi vastakkaista informaatiota saadessaan rationalisoida sumuiset ajatuksensa toisiksi, eli voi alitajuisesti todeta "tuo ei ole mitä minä tarkoitin (tai uskoin)" ja vaivihkaa muuttaa uskomuksensa johonkin muuhun samalta kuulostavaan. Puhumattakaan siitä, jos mistään ei tule *varmaa* tietoa, kukaan ei *todista* sinua vääräksi, vaan saat "vain" [probabilistista](/epi/probabilistinen_ajattelu) [evidenssiä](/epi/uskomusten_muutos) uskomusta vastaan -- eihän sinun silloin *täydy* muuttaa näkemyksiäsi, vaan voit edelleen pitää kiinni vanhoista uskomuksistasi.
+
+---
+
+Matalan informaation väitteet eivät kuitenkaan ole aina huonoja. Kuten alussa mainitsin, niillä saadaan silti välitettyä ajatuksia. Väitteiden tutkiminen niiden totuusarvon kautta onkin usein väärä näkökulma, ja usein on parempi miettiä *prosessia, joka ne synnyttää*: Mikä johtaa tämän väitteen esittämiseen? Mitä sillä halutaan kommunikoida tai saavuttaa? Mitä tämä kertoo ihmisen ajatuksista?
+
+En tarkoita tätä niin, että ylianalysoidaan ja rakennetaan yksityiskohtaisia narratiiveja pikaisesti esitettyjen kommenttien pohjalta. Tarkoitan, että välillä kommentin tarkoitus on vain sanoa "katso tuonne!" eli saada toinen miettimään tiettyä asiaa. Usein taustalla on "oikeita pointteja" ja selkeitä uskomuksia, joiden muotoileminen tarkemmin vain on vaikeampaa tai työlästä. Joskus, kuten Annan ja Bellan keskustelussa, väite kertoo vastareaktiosta, jonka toisen kommentti herättää. Virkkeet, jotka kirjaimellisesti tulkittuina eivät sano oikein mitään, voivat hyvinkin onnistua tällaisten viestien välittämisessä.
+
+Käyttäisinkin termiä "matalan informaation väite" vain niistä huonoista tapauksista. Kun ei oikeastaan tiedetä asiasta, mutta sanotaan kuitenkin ympäripyöreitä mitäänsanomattomia väitteitä. Silloin, kun vahvaan väitteeseen "pidän tuota hyvin epätodennäköisenä" vastataan "on se mahdollista", mutta peräännytään antamasta todennäköisyyksiä tai selittämästä, miksi se on todennäköisempää kuin "hyvin epätodennäköinen". Väitteestä "matemaattinen ja kielellinen lahjakkuus korreloivat positiivisesti" (sillä [kaikki korreloi kaiken kanssa](https://gwern.net/everything), lähtökohtaisesti puolet korrelaatioista ovat positiivisia ja tämän odottaisikin olevan positiivinen). Siitä, kun fraasia "on siinä hyviäkin puolia" käytetään [yleispätevänä puolustuksena](/epi/symmetrian_rikkominen) kritiikkiä vastaan eikä [tarpeellisen nyanssin](/epi/sumuiset_ajatukset) korostamiseksi.
+
+[End of text.]
+
+# Kvantifiointi
+
+Kuulin kerran vinkin "kannattaa laittaa pyykinpesukone käyntiin myöhään illalla, koska silloin sähkö on halvempaa".
+
+"Ei kuulosta järkevältä", mietin, ja laskin sitten säästön: Tavallisen pesukoneen sähkökulutus on noin kilowattitunti per kerta. Sähkön hinta vaihtelee, mutta päivän minimi ja maksimi ovat keskimäärin kokoluokkaa 10 senttiä kilowattitunnilta (mikä asettaa ylärajan säästölle).
+
+*Kymmenen senttiä.*
+
+Sivuutan tarkemman analyysin, sillä tämä ei ole asia, johon kannattaa käyttää vaivaa. Vaikka todellinen arvo voisi olla hieman isompikin, niin joka tapauksessa säästöä syntyy niin vähän, että aika ja energia kannattaa käyttää johonkin muuhun.
+
+Kvantifiointi eli asioiden laskeminen ja mittaaminen luvuilla ei tapahdu luonnostaan. Ihmisten numeeriset intuitiot ovat huonoja, joten intuition sijasta asioita pitää oikeasti miettiä. Omat kokemukset taas tukevat sitä, että kvantifiointia tulee tehtyä liian vähän (aivan kuten usein tulee mietittyä asioita liian [binäärisesti](/epi/binaarinen_jakauma)).
+
+Lukujen käsittely ja kvantifiointi ovat opittuja taitoja. [Suuret luvut eivät tunnu oikean kokoisilta](https://xkcd.com/2091/). Asiaan liittyy erinäisiä kognitiivisia vinoumia: asioiden arvottamisessa [määrät ja kokoluokat sivuutetaan](https://en.wikipedia.org/wiki/Scope_neglect) ja epävarman tapahtuman painotus on [epäsuhtainen sen todennäköisyyteen](/epi/epa_II).
+
+Monesti kvantifiointi on haastavaa. Voi olla, että tarvittavat luvut eivät ole tiedossa. Ehkä ei ole selvää, mistä asioista edes haluaisi lukuja. Kenties lopputulokseen vaikuttaa [monet tekijät](/epi/yksi_muuttuja), eivätkä kaikki näistä taivu luontevasti lukumuotoon. Tällöin kvantifiointia tulee tehtyä vielä vähemmän kuin helpoissa "pesukoneen sähkönkulutus" -esimerkeissä.
+
+Näen kvantifioinnilla olevan hyötyä myös tällaisiin tilanteisiin ("kaikki mallit ovat väärässä, mutta jotkut ovat hyödyllisiä"). Haen takaa kuitenkin vielä keskeisempää ja yksinkertaisempaa pointtia: ihmiset eivät usein mieti asioiden suuruusluokkia lainkaan.
+
+Tarkoitan sitä, että kun ihmiset sanovat asioita kuten "A on kasvanut" tai "B vaikuttaa C:hen" tulisi miettiä myös sitä, ovatko kasvut tai vaikutukset *suuria* vai *pieniä*. Monesti nämä väitteet ovat [kirjaimellisesti tulkittuna mitäänsanomattomia](/epi/matala_informaatio) ja ne voivat antaa illuusion siitä, että ymmärtää ilmiötä.
+
+Epäonnistuminen näyttää esimerkiksi siltä, että [ydinvoimalaa suunnitellessa jumitutaan pyöräkatoksen materiaalin valintaan](https://en.wikipedia.org/wiki/Law_of_triviality). Ei käy kiistäminen, etteikö hyvällä pyöräkatoksen suunnittelulla voida säästää rahaa -- siksi siitä onkin houkuttelevaa keskustella -- mutta ajan voisi silti käyttää paremmin.
+
+Rahan tapauksessa tasapainottelu sujuu ihmisiltä helpommin: rahan laittaminen yhteen paikkaan on tietysti pois toisaalta. Tämän vuoksi "jos ostan tämän, saanko siitä arvoa?" on hieman väärä kysymys. Sen sijaan tulee kysyä "miten tähän käyttämäni raha ja saamani hyöty *suhtautuvat muihin vaihtoehtoihin*?" (eli miettiä ns. *vaihtoehtoiskustannuksia*) tai kansantajuisemmin "saanko tästä rahoilleni riittävästi vastinetta?"
+
+Sama periaate soveltuu yleisemminkin: myös ajan tai muiden resurssien laittaminen yhteen paikkaan tarkoittaa, ettei niitä laiteta toiseen paikkaan. Mikä ei tarkoita, että asioita kannattaisi ajatella köydenvetona tai nollasummapelinä, jossa kilpaillaan tietystä kiinteästä potista -- päinvastoin, tekstin pointtihan on, että joihinkin paikkoihin resurssit kohdentamalla saadaan enemmän sitä mitä halutaan. Tämän vuoksi ei tule miettiä "jos tähän käytetään resursseja, saadaanko siitä arvoa?", vaan "saadaanko tästä vaihtoehdosta panostukselle riittävästi vastinetta?"
+
+[End of text.]
+
+# Yhden muuttujan mallit
+
+Jotkin asiat ovat yksinkertaisia ja niihin löytyy siistit vastaukset. Kysymykseen "Miksi Kuu kiertää Maata?" voi vastata hyvin puhumalla painovoimasta Maan ja Kuun välillä. Kyllä, *teknisesti* liikeratoihin vaikuttaa muidenkin kappaleiden aiheuttama painovoima (kuten Auringon, muiden planeettojen tai sinun vasemman jalan sukkasi). Käytännössä näiden tekijöiden vaikutus on kuitenkin toissijainen. Kuu edelleen kiertäisi Maata, vaikka sukkasi yhtäkkiä katoaisi.
+
+Jotkin asiat ovat monimutkaisempia ja niihin ei löydy niin siistejä vastauksia. Minkä vuoksi jotkut ihmiset elävät pidempään kuin toiset? Aiempaan kysymykseen löytyi hyvä yhden sanan vastaus ("painovoima"), mutta tähän en sellaista usko löytyvän. Varsinkin, jos poissuljetaan vastaukset kuten "elämäntavat" tai "geenit" tai "sattuma", jotka eivät ole oikeita *selityksiä* ilmiön taustalla, vaan parhaimmillaankin vain vinkkejä vastauksen olinpaikasta ja pahimmillaan hämäystä. Aika monen jutun voi nimittäin laskea elämäntavaksi ja varmaankin jotkin niistä vaikuttavat elinikään, mutta mitkä niistä? Kuinka paljon ja kumpaan suuntaan? Mitä tulee geeneihin, sellaisenaan selitys sanoo vain "jotkut ihmiset elävät pidempään kuin toiset ja tämä on jonkin verran periytyvää", mutta siinä se. Kunnollinen selitys käsittelisi tarkemmin mekanismeja, jotka johtavat pidempään elämään ja kertoisi esimerkiksi, mitä väyliä pitkin kromosomit lopulta vaikuttavat eliniän pituuteen. Viimeisenä mainittu sattuma taas ei ole selitys, vaan ajaa samaa asiaa kuin "en tiedä". Sattuma on vain *omaa* tietämättömyyttä ja [uskomusten epävarmuutta](/epi/probabilistinen_ajattelu), sitä mitä ei *itse* osaa mallintaa, ei *asian itsensä* ominaisuus. Mitä vähemmän tietää, sitä useampi asia vaikuttaa "satunnaiselta".
+
+Asioiden monimutkaisuudesta huolimatta välillä kuulee tarjottavan siistejä yksinkertaisia vastauksia monimutkaisiin kysymyksiin. Miksi Suomi on maailman onnellisin maa? Korkean verotuksen takia tietysti. Tai puhuttaessa ylipainon yleistymisestä tai köyhyyden syistä odotetaan, että on olemassa hopealuoti, joka yksinään selittää ilmiön tai ratkaisee ongelman.
+
+Eli onko oikea lähestymistapa vastata kaikkeen "ei ole mitään yksinkertaisia vastauksia, tähän asiaan vaikuttaa monet tekijät" ja väheksyä naiiveja yksinkertaisia selityksiä? Ei tietenkään. Olenkin [käsitellyt](/epi/matala_informaatio) juuri tätä virhettä. Jotkin asiat *ovat* yksinkertaisia. "Painovoima" on minusta edelleen mainio vastaus kysymykseen "Miksi Kuu kiertää Maata?" Vasemman jalan sukan esiin tuominen on vain häiritsevää kohinaa, ei oikeasti relevantti huomio.
+
+Lisäksi monimutkaisiakin asioita voi yrittää mallintaa yksinkertaisesti. Terveys ja kunto ovat monimutkaisia asioita, mutta silti yhden muuttujan malli "liikunta on hyvästä" *on* monesti hyödyllinen. Tietenkään tämä ei ole hyvä ohje kaikille, siis joka ikiselle ihmiselle maailmassa ([jakaumat kun ovat leveitä](/epi/leveat_jakaumat)), mutta se on silti varsin usein kelpo ohje.
+
+Oleellista on valita tämä yksittäinen muuttuja tarkkaan. Jotkin asiat vaikuttavat enemmän, jotkin vähemmän (ja jotkin negatiivisesti). Jos on pakko valita lyhyt vastaus kysymykseen "miten parantaa terveyttään?", niin "harrasta enemmän liikuntaa" on parhaimpia, joita keksin, ja parempi kuin sekalaiset niksit kuten "syö enemmän parsakaalia".
+
+Tämä on kohta, jossa mielestäni tehdään usein virheitä ja jolloin mietin fraasia "yhden muuttujan malli": Valitaan vain jokin yksittäinen muuttuja ja pohditaan, vaikuttaako se alkuperäiseen asiaan positiivisesti vai negatiivisesti. Vaikka tämän analyysin tekisi hyvin (eikä esimerkiksi sekoita korrelaatiota kausaliteettiin), niin vain harva muuttuja on oikeasti keskeinen, ja analyysin lopputulos on siten miltei hyödytön.
+
+Toimintamallin "C-vitamiini on hyväksi. Alan ostamaan ruokia, joissa on paljon C-vitamiinia, jolloin terveyteni paranee" hyvyys riipuu siitä, kuinka totuudenmukainen uskomus "C-vitamiini on hyväksi" on kohdallasi. Sinulla on C-vitamiinin puutos? Hyvä suunnitelma. Sinulle vain sattui tulemaan mieleen C-vitamiini? Miettisin, löytyykö keskeisempiä muuttujia.
+
+Mahdollisia keskeisempiä muuttujia on paljon -- terveyteen kun vaikuttaa valtavan moni tekijä -- ja niistä parhaimpien löytäminen vaatii [evidenssiä](/epi/uskomusten_muutos). Mikä tekee juuri tästä tekijästä keskeisen? Mikä [rikkoo symmetrian](/epi/symmetrian_rikkominen) sen ja muiden välillä? Kuinka [suuria](/epi/kvantifiointi) vaikutukset ovat? Välillä vastaan tulee myös vaihtokauppoja -- selvä, muutos on tämän muuttujan kannalta hyvä, mutta entä muiden muuttujien kannalta?
+
+Esimerkki: Minulla on kotonani hyvin kirkas valaistus. Pari kertaa vieraani ovat ihmetelleet, että eikö se maksa paljon (tai puhuneet, kuinka valoja ei kannata pitää turhaan päällä). Todellisuudessa se maksaa hyvin vähän (ihmiset vaikuttavat [yliarvioivan](/epi/kvantifiointi) sähkön hinnan). Sen sijaan olen todennut hyvän valaistuksen vaikutuksen yleiseen mielialaan ja virkeyteen keskeisemmäksi tekijäksi, Suomessa kun on pimeää talvella ja kaamosmasennus on ilmiö. Pidän valaistuksen vähentämistä koskevia sähkönsäästövinkkejä haitallisina yhden muuttujan malleina.
+
+Aina yksittäistä kriittistä tekijää ei ole tai sellainen on haastava määrittää. En tiedä, miksi juuri Suomi on monesti maailman onnellisin maa. Keksin kyllä monia arvauksia ja useita hypoteeseja -- ja aiheesta keskusteltaessa luultavasti osaisin rakentaa uskottavan kuuloisia narratiiveja näiden ympärille -- mutta en oikeasti *tiedä*. Epäilen, että syistä puhuttaessa tulee herkästi keksittyä viihdyttäviä tai fiksun kuuloisia selityksiä, jotka tulevat [helposti mieleen](https://en.wikipedia.org/wiki/Availability_heuristic), ja kyse on vähemmän totuudenmukaisten mallien rakentamisesta. (Ei sillä, että jokaisen keskustelun keskeisimpänä tavoitteena tarvitsisi olla lähemmäs totuutta pääseminen. Kunhan vain *tiedostetaan*, että esitetyt syyt ovat vain tällaisia heittoja eivätkä oikeita selityksiä ilmiön taustalla.)
+
+Välillä asiat ovat vaikeita eikä niistä saa perustellusti muodostettua itsevarmoja uskomuksia. Tällöin voi silti olla vähemmän väärässä, kun tiedostaa, että kyseessä on monimutkainen tilanne, on vähemmän itsevarma hypoteeseistaan, eikä juutu omaan lempimuuttujaansa vaan yrittää ottaa useampia tekijöitä huomioon.
+
+[End of text.]
+
+# Symmetrian rikkominen, yleispätevät vasta-argumentit ja niin edelleen
+
+*Ennustusmarkkinalla* viitataan konseptiin, jossa ihmiset voivat ostaa osakkeita, jotka koskevat jonkin väitteen toteutumista. Ideana on, että osakkeiden hinnat vastaavat väitteen todennäköisyyttä.
+
+Esimerkki: väitettä "Suomen BKT nousee seuraavan kahden vuoden aikana yli 4 prosenttia" koskevalla markkinalla ihmiset voivat ostaa "kyllä"- tai "ei"-osakkeita. Jos BKT todella nousee yli neljä prosenttia, muuttuu kukin "kyllä"-osake yhden euron arvoiseksi ja "ei"-osakkeet menettävät arvonsa. Ja toisin päin, jos BKT ei nouse riittävästi. Tällöin "kyllä"-osakkeen hinta vastaa markkinaan osallistuneiden ihmisten arvioimaa todennäköisyyttä väitteen toteutumiselle.
+
+Ennustusmarkkinoiden mullistava hyöty on, että niillä saadaan *kerättyä ihmiskunnan paras tietämys* ennustettavasta väitteestä (vertaa: [tehokkaiden markkinoiden hypoteesi](https://en.wikipedia.org/wiki/Efficient-market_hypothesis)). [Insentiivit](/epi/insentiivit) osoittavat kohti totuudenmukaisten uskomusten muodostamista. Jos osakkeiden hinnat ja todennäköisyydet ovat pielessä, niin tällä tiedolla voi tehdä rahaa ostamalla osakkeita, mikä muuttaa samalla todennäköisyyttä oikeammaksi.
+
+Pidän ennustusmarkkinoita Hyvänä Asiana. Hyvä epi.
+
+Niissä on toki käytännön haasteita. Yksi on se, että käsittääkseni ne kuuluvat tällä hetkellä lainsäädännöllisesti uhkapelaamisen alle, mikä rajoittaa tai estää niiden toteuttamista. (Pidän niitä tästä huolimatta Hyvänä Asiana.)
+
+Olen puhunut ideasta tutuilleni ja saanut vaihtelevia reaktioita. Yksi yleinen kritiikki on, että eikö silloin kehnot numeeriset taidot omaavat ihmiset mene ja menetä rahansa? Mihin voi vastata: kehnot numeeriset taidot omaavat ihmiset voivat nykyisellään mennä ja menettää rahansa osakemarkkinoilla. Kritiikki ei *riko symmetriaa*: miksi ihmiset menisivät juuri ennustusmarkkinoille menettämään rahansa, jos he eivät nykyisinkään menetä rahojaan osakemarkkinoilla? Miksi ottaa juuri ennustusmarkkinat silmätikuksi?
+
+Toinen yleinen kritiikki on, että markkinoiden luominen luo samalla insentiivin vaikuttaa lopputulokseen. Jos esimerkiksi ennustetaan tulevaa presidenttiä, niin on eräs varsin ilmeinen (mutta laiton ja muutenkin erittäin epäsuotava) tapa vaikuttaa lopputulokseen. Olen vastannut, että on olemassa eräs varsin ilmeinen (mutta laiton ja muutenkin erittäin epäsuotava) tapa vaikuttaa jonkin yrityksen menestykseen. Kritiikki ei riko symmetriaa: miksi ihmiset turvautuisivat äärikeinoihin ennustusmarkkinoiden tapauksessa, jos he eivät turvaudu äärikeinoihin osakemarkkinoidenkaan tapauksessa? (Vertaa: [https://xkcd.com/1958/](https://xkcd.com/1958/).)
+
+Kriitikko jatkaa: "Kyllähän jotkut ihmiset menettävät rahansa sijoittaessaan. Kyllähän historia tuntee esimerkkejä, jolloin ihmiset ovat turvautuneet väkivaltaan. Nämä eivät ole argumentteja ennustusmarkkinoiden puolesta, vaan nimenomaan varoittavia ennakkotapauksia."
+
+Mihin minä vastaan: Sinun täytyy valita jompikumpi! Jos olet sitä mieltä, että ennustusmarkkinat ovat huono juttu ja osakemarkkinat hyvä juttu, niin tälle tulee olla jokin symmetrian rikkova tekijä. Jos sama tekijä soveltuu ihan yhtä hyvin osake- kuin ennustusmarkkinoihinkin, niin se kuuluu ottaa huomioon tasapuolisesti eikä vain argumenttina ennustusmarkkinoita vastaan.
+
+Käydessäni tämän tyyppisiä keskusteluja oikeassa elämässä jotkut ovat ratkaisseet jännitteen toteamalla, että osakemarkkinatkaan eivät ole erityisen hyvä juttu. Ottamatta kantaa itse väitteeseen minua arveluttaa *prosessi*, jolla tähän näkemykseen on päädytty.
+
+Yksi mahdollinen prosessi on, että henkilö on muussa kontekstissa miettinyt osakemarkkinoita ja todennut "nämä eivät ole kovin hyviä juttuja". Tällöin näkemykset ovat konsistentteja ja symmetrian rikkomista ei tarvitse tehdä: osake- ja ennustusmarkkinat *ovat* henkilön mielestä symmetrisiä. "Ennustusmarkkinat ovat kuin osakemarkkinat" ei tällöin ole pointti ennustusmarkkinoiden puolesta vaan niitä vastaan.
+
+Toinen mahdollinen prosessi on, että kuullessaan "tuo ei riko symmetriaa" henkilö *keksii puolustukseksi* näkemyksen "no eivät osakemarkkinatkaan ole niin hyviä". Ei niin, että harkitaan uudelleen ja mietitään "totta, kritiikkini soveltuu ihan yhtä lailla osakemarkkinoihin, ehkä käytän liian yleispäteviä argumentteja". Ei niin, että todetaan "näköjään keksin vakuuttavan perustelun sille, miksi myös osakemarkkinat ovat huonoja -- kappas, näkemykseni osakemarkkinoista muuttuivat". Vaan niin, että *refkeksinomaisesti puretaan jännite* perääntymällä väitteeseen "no eivät osakemarkkinatkaan ole niin hyvä juttu". Henkilö *yrittää voittaa väittelyn* keksimällä sujuvan vasta-argumentin. Hänellä ei ole konsistenttia näkemystä osakemarkkinoista, vaan hän nyt vain sanoi sen, mitä tässä tilanteessa kannatti sanoa.
+
+Kuten voi arvata, pidän tätä jälkimmäistä prosessia huonona. En tietenkään tiedä, mitä tarkalleen ihmisten päässä tapahtuu. On jopa mahdollista, että eri ihmisillä on eri näkemyksiä. Sen kuitenkin sanon, että olen valitettavan usein kuullut ihmisten esittävän symmetriaa rikkomattomia argumentteja ilman, että he olisivat näyttäneet tiedostavan niiden olevan symmetriaa rikkomattomia.
+
+Jotta minun näkemystäni ei väärinymmärretä ja tulkita minun sanovan "jos kerta nuo saavat tehdä pahoja juttuja, niin minunkin pitää saada", niin väännän vielä rautalangasta, mitä tarkoitan symmetrian rikkomisella. Jotakin menee pieleen, jos on samanaikaisesti mieltä "X on hyvä juttu" ja "Y on huono juttu", mutta selittäessään miksi Y on huono käyttää argumentteja, jotka soveltuisivat ihan yhtä hyvin X:n kritisoimiseen. [Syy sille, miksi henkilö uskoo](/epi/miksi_uskot) Y:n olevan huono, ei siten taida olla suullisesti esitetyt argumentit. Tällöin tulee pysähtyä. Mikä rikkoo symmetrian? Onko X:n ja Y:n välillä jokin keskeinen ero? Onko X sittenkin huono juttu? Onko Y sittenkin hyvä? Vai hetkinen, soveltuuko argumentti sittenkään niin hyvin X:n kritisointiin? On monta tapaa purkaa ristiriita, mutta niistä tulee valita jokin, eikä vain jatkaa Y:n kritisoimista symmetriaa rikkomattomilla argumenteilla.
+
+---
+
+Pari tuttavaani väittelivät kerran asumistuen vaikutuksesta asuntojen vuokriin. Yksi osapuoli esitti tutkimuksen, joka tuki hänen väitettään. Miten toinen osapuoli reagoi?
+
+Hän ei kritisoinut tutkimuksen sisältöä. (Ehkä kritisoitavaa olisi ollut, ehkä ei, en tiedä.) Hän ei sanonut, että on muita tutkimuksia, jotka ovat antaneet eri johtopäätöksiä. Hän ei kiistänyt tutkittavan kysymyksen merkityksellisyyttä väittelyn aiheeseen liittyen.  Sen sijaan hän...
+
+...vastasi, kuinka taloustiede on hyvin hataraa ja yleistämisen kanssa pitää olla tarkkana.
+
+Tämä on *täysin yleispätevä argumentti* minkä tahansa aihetta koskevan tutkimustuloksen sivuuttamiseksi -- tai ylipäätään *mitä tahansa empiiristä dataa käyttävää päättelyä* vastaan. Mihin tahansa empiiriseen dataan voi sanoa "yleistämisen kanssa pitää olla tarkkana".
+
+Mietin, mikä henkilön reaktio olisi ollut, jos tämän tutkimuksen tulos olisikin ollut päinvastainen. Epäilen, etteivät uskomukset noudattaneet [päivityksen ja vastapäivityksen lakia](/epi/miksi_todennakoisyydet).
+
+---
+
+Yleispäteviä vasta-argumentteja on paljon. Tässä on muutama, joihin olen itse törmännyt:
+- "asiat ovat monimutkaisia, ei tuollaisista asioista voi tietää" (eli erityisesti *sinä* et voi tietää)
+- "kyllä sinä sitten vanhempana ymmärrät" (ja tulet olemaan samaa mieltä kuin minä)
+- "et taida kuitenkaan olla tämän alan asiantuntija" (henkilöltä, joka ei myöskään ole asiantuntija -- ei sillä, että asiantuntijankaan tulisi käyttää tätä)
+- "tuo on vain sinun uskomuksesi" (ja "uskomukset" ovat tietysti epätosia, kuten ovat myös "intuitiot" ja "omat mutut")
+- "aika moni on kanssasi eri mieltä" (mikä pätee [käytännössä aina](/epi/leveat_jakaumat), varsinkin jos keskustellaan mistään mielenkiintoisemmasta).
+
+Yleispätevät vasta-argumentit harvemmin käsittelevät *itse asiaa*, vaan *sinua* ja muita *ihmisiä*. Niissä itse asiaa koskevilla väitteillä ei ole väliä, ainoastaan sillä, että sinä et ole asiantuntija ja muut ihmiset ovat kanssasi eri mieltä.
+
+Yleispätevissä vasta-argumenteissa retoriikka ja johtopäätöksen [sumentaminen](/epi/sumuiset_ajatukset) on oleellista: Ei esimerkiksi sanota "jotkut ovat kanssasi eri mieltä, joten sinun tulisi olla vähemmän itsevarma", vaan "tätä asiaa koskien on kuitenkin laajaa erimielisyyttä". Ei myöskään sanota "vanhemmat ihmiset tietävät paremmin ja minä olen sinua vanhempi, joten sinun pitäisi olla kanssani samaa mieltä", vaan "elämän varrella sitä oppii kaikenlaista, mitä ei nuorempana tule ajatelleeksi (vink vink)".
+
+---
+
+Luin kerran erään kirjan. Kaverini kritisoi lukemistani sen vuoksi, että kirjan kirjoittaja oli kiistanalainen hahmo ([ei, en kerro kenestä on kyse](/epi/keskustelunimaisijat)). Yksi argumenteista oli, että kirjan ostaminen tukee kirjailijaa taloudellisesti.
+
+Isoa osaa ostotapahtumista voi kritisoida argumentilla "tämä tukee 'pahoja' tahoja". Mitä isompaan osaan väitteitä argumentti soveltuu, sitä vähemmän se kykenee erottelemaan hyvien ja huonojen väitteiden välillä.
+
+Jos yleisesti pohtii kysymystä "milloin kannattaa lukea kirja?", oleellisimmat kysymykset ovat sellaisia kuten "onko kirja hyvä", ei sellaisia kuten "tukeeko kirjan ostaminen 'pahoja' tahoja taloudellisesti". En usko, että argumentin esittänyt yleisesti miettii asioita jälkimmäistä kautta enkä usko, että se oli [miksi hän uskoi mitä uskoi](/epi/miksi_uskot), mutta kun hyvältä kuulostava perustelu omalle näkemykselle löytyi, niin sitä oli houkuttelevaa käyttää.
+
+(Argumenttia voi kritisoida myös [kvantifioinnin puutteesta](/epi/kvantifiointi) ja [yhden muuttujan malleista](/epi/yksi_muuttuja). Ja toki siitä, että en ollut itse ostanut kyseistä kirjaa.)
+
+---
+
+Tosillekin väitteille voi esittää huonoja argumentteja.
+
+Argumentteja voi verrata matemaattisiin todistuksiin. (Sivuutetaan hetkeksi se, että päättelyt ja argumentit eivät perustu binääriseen logiikkaan, vaan jatkuvaan, [probabilistiseen ajatteluun](/epi/probabilistinen_ajattelu).) Tällöin todistus on virheellinen, jos siinä on yksikin virheellinen askel. Tämä ei tarkoita, että todistettava *väite* olisi epätosi. Ehkä todistuksen virheet voi korjata. Ehkä väitteen voi todistaa jollakin toisella tavalla. Mutta itse *todistus* on virheellinen. Tosillekin väitteille voi esittää virheellisiä todistuksia.
+
+Erinäisille virheellisille päättelyn askelille on monia nimiä: symmetriaa rikkomaton argumentti, yleispätevä vasta-argumentti, epävalidi implikaatio, "todistaa liikaa", yhden muuttujan malli... Saman argumentin voi muotoilua vaihtamalla saada kuulumaan eri kategoriaan. Joka tapauksessa kyse on samasta konseptista: riippumatta lopullisen väitteen todenmukaisuudesta tämä *nimenomainen argumentti* ei ole validi.
+
+On varsin houkuttelevaa käyttää jotakin näistä virheellisistä perusteluista vastakkaisen näkemyksen kumoamiseen: sehän antaa tässä tapauksessa oikean vastauksen! Toisesta näkökulmasta tämä taas näyttää [rationalisoinnilta](/epi/miksi_uskot) (ja sitä se on): johtopäätös on valittu ja enää tarvitsee keksiä perustelut.
+
+Perusteluja kuuluukin käsitellä *tasapuolisesti*. Ei tietenkään niin, että jokainen perustelu olisi yhtä validi ja vahva, vaan että yksittäisen perustelun toimivuutta tarkastellaan erillisenä lopullisen väitteen totuusarvosta. Epävalidin argumentin salliminen silloin (ja vain silloin) kun se antaa oikeita vastauksia taas ei ole kovin tasapuolista. Tosillekin väitteille voi esittää huonoja argumentteja, eikä niitä kuulu hyväksyä vain sen takia, että ne ovat "oikealla puolella".
+
+[End of text.]
+
+# Ilmeiset ohjeet
+
+Seuraava tekstinpätkä on jäänyt mieleeni (lainaus on Nate Soaresin tekstistä [Obvious advice](https://mindingourway.com/obvious-advice/)):
+
+"This is a common scene at [the place I work at]: I have a decision to make, like what sort of winter fundraiser to run. Before making any choices, I take a few minutes to write down all the obvious things to do before making the decision: spend five minutes brainstorming options before weighting any pros or cons; talk to people who have run different types of fundraisers in similar situations; and so on. I can usually generate a handful of obvious things to do before making my decision. I write those things down, and then I describe my decision to one of my advisors and see if they have any advice. They say "only the obvious," and then rattle off five more obvious things I hadn't thought of, all of them useful.
+
+Sometimes, I wonder how successful a person would be if they just did all the obvious things in pursuit of their goals."
+
+Ilmeiset ohjeet ovat, no, ilmeisiä, mutta niitä tulee yllättävän harvoin mietittyä, saati sitten toteutettua.
+
+Niitä on myös yllättävän hankala *tarjota*. Sanotaan vaikka, että kaverisi harmittelee ohimennen, että hänellä on viime aikoina kestänyt pitkä aika nukahtaa. Tähän keksii kaikenlaisia ilmeisiä ratkaisuehdotuksia (kuten "mene nukkumaan ja herää säännölliseen aikaan" tai "yritä rauhoittua ja rajoita ruutuaikaa ennen nukkumaanmenoa"). Tällaisten sanominen toiselle tuntuu kuitenkin hieman hassulta: kyllähän kaveri varmaan pystyisi itsekin keksimään ilmeiset ideat. Ajatteleekohan hän, että pidän häntä ihan tyhmänä? Ja yritänkö minä edes auttaa vai sanonko vain itsestäänselvyyksiä? Käytännössä ilmeisiä ohjeita ei kuitenkaan tule aina mietittyä ja vielä harvemmin toteutettua. Lisäksi eri asiat ovat eri ihmisille ilmeisiä.
+
+Samanlainen ilmiö vaikuttaa pätevän yleisemminkin. Juttelin kerran erään sosiaalisen median parissa työskentelevän henkilön kanssa. Aiheesta puhuttaessa hän aloitti sanomalla, kuinka [kannustimet](/epi/insentiivit) ohjaavat kohti polarisoivaa sisältöä ja kuinka samantyyppiset ihmiset [kuplautuvat](/epi/leveat_jakaumat) samojen sisältöjen ääreen. Huomasin itselläni ajatuksen muotoa "jaa, taas tätä" ja metaforista silmien pyörittelyä: kaikki ovat varmasti kuulleet nämä asiat moneen kertaan. Sitten mietin askeleen pidemmälle ja totesin, että nämä ovat oikeastaan silti asioita, joita voisi miettiä vähän syvemmin kuin yksittäisten kliseiden verran.
+
+Toinen esimerkki: Seurasin esitystä aiheesta "miten luoda turvallinen sosiaalinen ympäristö". Monet pointit olivat itsestäänselvyyksien kuuloisia. Ikään kuin sanottaisiin "älä ole ikävä ihminen" ja "ole mukava toisille" tusinalla eri tapoja. Kaikkihan tämän tietää!
+
+Silti minä pidin esitystä hyödyllisenä. Siitä ihan oikeasti sai irti sellaisia asioita, joista ei saa kiinni vain toistamalla "ole kiva tyyppi" uudelleen ja uudelleen. Ja ajattelin, että tällaisesta aiheesta on varmaan vaikea pitää esitystä: pitää jotenkin kiertää ihmisten "nämähän ovat itsestäänselvyyksiä" -reaktiot ja saada heidät tajuamaan, että tässä on jotakin tajuttavaa.
+
+Ainakin omissa kirjoituksissani olen törmännyt tähän ongelmaan. Jos kirjoitusteni ideat [pyöristää lähimpiin kliseisiin](/epi/sumuiset_ajatukset), niin kieltämättä helposti tulee ajatus "kaikkihan tämän tietää". Mutta, no, yritän kirjoittaa asioita, joita kokemuksieni perusteella kaikki *eivät* tiedä. Tai ehkä he "tietävät" samassa mielessä kuin ihmiset periaatteessa pystyvät keksimään ilmeisiä ohjeita, mutta tämä on eri asia kuin *oikeasti miettiä ja keksiä* ne ilmeiset ohjeet, puhumattakaan että *toteuttaisi* niitä.
+
+Tekstini kohdeyleisö ei ole ihmiset lukemassa näitä tekstejä. Tekstini kohdeyleisö on ihmiset silloin, kun he *eivät* mieti näitä asioita ja epäonnistuvat "ilmeisissä" asioissa -- aivan kuten "miten luoda turvallinen sosiaalinen ympäristö" -esitysten kohdeyleisö on ihmiset silloin, kun tämä ei toteudu.
+
+Jos kirjoitan "mediat poimivat ääriesimerkkejä jakaumien hänniltä", ihmiset pyörittelevät silmiään ja miettivät "jaa, taas tätä", mutta silloin tällöin minulle kuitenkin jaetaan polarisoivin tai tunteita herättävin uutinen mitä sinä päivänä on julkaistu. Tai mainitaan keskustelunaiheeseen liittyvä äärimmäinen esimerkki mediasta ikään kuin se olisi representatiivinen tapaus.
+
+Tai kun mainitsen, kuinka korrelaatio ei implikoi kausaatiota, ihmiset kurtistavat kulmiaan ja vastaavat "tietenkään ei". Sitten keskusteltaessa jostakin oikeasta asiasta ihmiset vetävät korrelatiivisista huomioista kausaalisia johtopäätöksiä. Jos tämän ottaa esille, niin vastataan "kyllä se nyt jotakin kertoo".
+
+Saatan puhua, kuinka (muun muassa) huonot [insentiivit](/epi/insentiivit) johtavat siihen, että ihmiset tekevät huonoja asioita -- ei siksi, että he olisivat "pahoja" ihmisiä, vaan ihan ymmärrettävistä ja hyvistäkin syistä. Ihmiset nyökkäilevät tälle itsestäänselvyydelle, mutta myöhemmin oikeista ongelmista keskustellessa kuitenkin vihjaavat, että ne ovat niiden pahojen ihmisten syytä.
+
+Nostan esiin, että kohtalaisen usein ajautuvat väittelytilaan ja tämä johtaa huonoon epiin. Minulle vastataan, että Oikeat Väittelyt -- sellaiset mitä näkee televisiossa tai väittelykilpailuissa -- ovat tietysti huonoja, mutta väittelyä voi tehdä kunnolla ja sivistyneesti. Ja... näkemykseni kohdistuvat nimenomaan siihen, mitä ihmiset tavallisesti mieltävät väittelyksi ja miten ne käytännössä sujuvat, ei johonkin [helppoon maalitauluun](/epi/helpot_maalitaulut).
+
+Olen tarkoituksella valinnut ihmisille entuudestaan tuntemattoman termin "epi" kuvatakseni sitä asiaa, mitä teksteissäni käsittelen. Toinen vaihtoehto olisi yrittää kommunikoida sitä kliseillä kuten "totuus on tärkeää" ja "Top 5 Tapaa, Joilla Voit Ajatella Paremmin", mutta nämä tuntuvat pikemminkin johtavan reaktioihin muotoa "totta kai ihmiset ovat usein väärässä -- oletko kuullut Dunning-Krugerin ilmiöstä eli siitä, että tyhmät ihmiset ovat yli-itsevarmoja?", mikä [ei todellakaan](/epi/helpot_maalitaulut) ole minun pointtini. Olen miettinyt, että ehkä jos yritän olla laukaisematta ihmisten kliseereaktioita, saan sanottua asioita ikään kuin vaivihkaa niin, etteivät ne jää kiinni itsestäänselvyyssuodattimiin tai [pyöristy](/epi/sumuiset_ajatukset) tuttuihin mutta eri ajatuksiin.
+
+Toisaalta olen käyttänyt paljon vaivaa vain tämän "tässä on oikeasti jotakin tajuttavaa, nämä eivät ole itsestäänselvyyksiä" -pointin sanomiseen tusinalla eri tapoja. Toivon, että se on hyödyllistä, ja että siitä ihan oikeasti saa irti sellaisia asioita, joista ei saa kiinni vain toistamalla "ihmiset ovat usein väärässä" uudelleen ja uudelleen.
+
+[End of text.]
+
+# Liian kohteliaat tulkinnat
+
+Yksi tunnetuimmista kognitiivisia vinoumia koskevista testeistä kuuluu (käännettynä) seuraavasti:
+
+"Linda on 31 vuotias, naimaton, suorapuheinen ja erittäin terävä. Hän opiskeli pääaineenaan filosofiaa. Opiskelijana hän oli syvästi huolissaan syrjinnästä ja sosiaalisesta oikeudenmukaisuudesta ja osallistui myös ydinkokeita vastustaviin mielenosoituksiin.
+
+Kumpi on todennäköisempää?
+
+1. Linda on pankkivirkailija
+
+2. Linda on pankkivirkailija ja aktiivinen feministiliikkeessä."
+
+Kirjassaan "Thinking, Fast and Slow" Daniel Kahneman kirjoittaa "Noin 85 % -- 90 % useamman yliopiston kanditason opiskelijoista valitsivat toisen vaihtoehdon."
+
+Varmuuden vuoksi toistan: hyvin suuri osa ihmisistä (tarkemmin sanottuna yliopisto-opiskelijoista) arvioi väitteen muotoa "A ja B" todennäköisemmäksi kuin väitteen "A".
+
+Tuloksiin voi reagoida parilla tavalla. Yksi on ajatella "No mitä ihmettä, mistä tuo johtuu?", muuttaa uskomuksiaan uuden tiedon valossa, miettiä onko tämä merkki jostakin suuremmasta ongelmasta, lukea jos ongelman syitä tiedetään ja reflektoida, löytyisikö omista ajatuksista mahdollisesti samantyyppistä ongelmaa.
+
+Toinen reaktio on "Eihän kukaan nyt ole noin tyhmä! Tai siis, tarkoitan, että ehkä he ymmärsivät tehtävänannon väärin. Siis niin, että vaihtoehdossa 1 tarkoitetaan, että Linda on pankkivirkailija, mutta *ei* aktiivinen feministiliikkeessä." Onhan itsestäänselvyys, että väite "A" on vähintään yhtä todennäköinen kuin väite "A ja B", joten kyse on varmaan jostakin muusta.
+
+Eli kysymys kuuluu: *Onko* kyse jostakin muusta? Tulkitsivatko vastaajat kysymyksen väärin?
+
+Tästä *konjunktioharhasta* on tehty lukuisia tutkimuksia. Tässä neljä esimerkkiä lisää (käännökset minun). Esimerkit on poimittu Tverskyn ja Kahnemanin vuoden 1983 artikkelista [Extensional versus intuitive reasoning: The conjunction fallacy in probability judgment](https://pages.ucsd.edu/~mckenzie/TverskyKahneman1983PsychRev.pdf).
+
+Ensimmäinen esimerkki:
+
+"Brittiläisessä Kolumbiassa suoritettiin terveystutkimus aikuisille miehille. Tutkimukseen osallistui ihmisiä eri ikäluokista ja ammateista. Anna parhaat arviosi seuraavista arvoista:
+
+- Mikä prosenttiosuus tutkimuksen miehistä on kokeneet yhden tai useamman sydänkohtauksen?
+- Mikä prosenttiosuus tutkimuksen miehistä on yli 55-vuotiaita ja on kokenut yhden tai useamman sydänkohtauksen?"
+
+Tutkimuksessa 65 % arvioi jälkimmäisen prosenttiosuuden olevan suurempi kuin ensimmäinen.
+
+Toinen esimerkki on Linda-ongelman variaatio, jossa pyydetään järjestämään annetut vaihtoehdot todennäköisyyden mukaan järjestykseen.
+
+"Linda on 31 vuotias, naimaton, suorapuheinen ja erittäin terävä. Hän opiskeli pääaineenaan filosofiaa. Opiskelijana hän oli syvästi huolissaan syrjinnästä ja sosiaalisesta oikeudenmukaisuudesta ja osallistui myös ydinkokeita vastustaviin mielenosoituksiin.
+
+- Linda on alakouluopettaja.
+- Linda työskentelee kirjakaupassa ja käy joogatunneilla.
+- Linda on aktiivinen feministiliikkeessä.
+- Linda on psykiatrinen sosiaalityöntekijä.
+- Linda on League of Women Voters -organisaation jäsen.
+- Linda on pankkivirkailija.
+- Linda on vakuutusmyyjä.
+- Linda on pankkivirkailija ja aktiivinen feministiliikeessä."
+
+85 prosenttia antoivat vastauksen, jossa järjestys on "aktiivinen feministiliikkeessä > pankkivirkailija ja aktiivinen feministiliikkeessä > pankkivirkailija".
+
+Kolmannessa esimerkissä osanottajia pyydettiin arvioimaan mahdollisen tennisottelun tapahtumia.
+
+"Oletetaan, että Björn Borg pääsee Wimbledonin finaaliin vuonna 1981. Järjestä seuraavat tapahtumat järjestykseen todennäköisimmästä aloittaen.
+
+- Borg voittaa ottelun.
+- Borg häviää ensimmäisen erän.
+- Borg voittaa ensimmäisen erän, mutta häviää ottelun.
+- Borg häviää ensimmäisen erän, mutta voittaa ottelun."
+
+93 osallistujasta 72 % lankesi konjunktioharhaan.
+
+Viimeinen esimerkki: vuonna 1982 pidetyn Second International Congress on Forecasting -tapahtuman osanottajia pyydettiin ennustamaan seuraavien väitteiden todennäköisyyksiä.
+
+- Yhdysvaltojen ja Neuvostoliiton välisten diplomaattisten suhteiden täydellinen katkeaminen jossakin kohtaa vuotta 1983.
+- Venäjä hyökkää Puolaan, ja Yhdysvaltojen ja Neuvostoliiton välisten diplomaattisten suhteiden täydellinen katkeaminen, jossakin kohtaa vuotta 1983.
+
+Kullekin testiin osallistuneista 115 henkilöstä esitettiin *vain toinen* näistä väitteistä. Heillä ei siis ollut tietoa toisesta väitteestä, ja siten esimerkiksi ensimmäistä väitettä ei voinut tulkita väärin sulkemaan pois hyökkäyksen Puolaan. Ja miten kävi? Henkilöt, jotka kuulivat jälkimmäisen kysymyksen, antoivat keskimäärin huomattavasti suurempia vastauksia kuin ensimmäisen kuulleet.
+
+Ja niin edelleen ja niin edelleen. Nämä eivät suinkaan ole ainoat aihetta käsittelevät tutkimukset. Lisää löytää Tverskyn ja Kahnemanin [julkaisusta](https://pages.ucsd.edu/~mckenzie/TverskyKahneman1983PsychRev.pdf).
+
+(Ei sillä, että sekään listaisi kaikkia aihetta käsitteleviä tutkimuksia. Lainaus työn johtopäätöksistä:  "In the course of this project we studied the extension rule in a variety of domains; we tested more than 3,000 subjects on dozens of problems, and we examined numerous variations of these problems. The results reported in this article constitute a representative though not exhaustive summary of this work.")
+
+Syynä konjunktioharhalle on esitetty *representatiivisuusheuristiikkaa*. Ihmiset sekoittavat todennäköisyyden ja edustavuuden -- sekoitetaan kysymys "kuinka todennäköistä tämä on" kysymykseen "kuinka edustava esimerkki tämä on tästä laajemmasta kategoriasta". Pankkivirkailija-feministi-Linda vaikuttaa vastaavan paremmin annettua kuvausta, se tuntuu sopivan paremmin sen luomiin mielikuviin tai on samankaltaisempi kuvauksen kanssa kuin pelkkä pankkivirkailija-Linda. "Venäjä valloittaa Puolan, minkä seurauksena diplomaattiset suhteet Yhdysvaltojen kanssa katkeavat" kuulostaa *sen tyyppiseltä* asialta, mikä voisi tapahtua.
+
+Ei kuitenkaan sovi erehtyä ja luulla, että kyseessä on vain väärinymmärrys eikä virhe. [Lainaus Yudkowskylta](https://www.lesswrong.com/posts/cXzTpSiCrNGzeoRAz/conjunction-controversy-or-how-they-nail-it-down?commentId=daMaeanrBa6bRiE6k):
+
+"More than half the subjects still committed the conjunction fallacy when they were asked to bet. If people are betting on similarities instead of probabilities, if doctors are treating similarities instead of probabilities, that is not a "misunderstanding" that explains away the experimental result. It IS the representativeness heuristic and conjunction fallacy!
+
+-- --
+
+It doesn't excuse the subjects if they "misinterpreted" the experimental instructions, because they are misinterpreting real life the same way. More than half of them bet on the conjunction fallacy. Understanding exactly how someone makes a mistake does not mean it is not a mistake. They still lose the bet. The patient still dies."
+
+---
+
+Pääsemme sitten varsinaiseen pointtiin. Alussa mainittu jälkimmäinen reaktio, siis "ehkä ihmiset vain tulkitsivat tehtävänannon väärin", on varsin kohtelias: sen mukaan ihmisillä ei oikeasti ole konjunktioharhaa, vaan väärä vastaus johtuu muista syistä.
+
+Tässä tapauksessa kohtelias tulkinta on väärä. Ihmiset todella eivät hahmota, että konjunktiivisten väitteiden todennäköisyydet ovat pienempiä. Ihmisten ajattelussa todella on jotakin vialla.
+
+Minusta tuntuu, että tällaista sattuu yleisemminkin: ihmisillä on taipumusta tehdä liian kohteliaita tulkintoja.
+
+Ainakin itse muistan, että Kahnemanin kirjaa lukiessani mietin useaan otteeseen "ehkä ihmiset ajattelivat sitä asiaa niin, että...", ja sitten heti seuraavassa virkkeessä Kahneman otti esiin toisen tutkimuksen osoittaen, että kyse ei ole tästä.
+
+Paras veikkaukseni näiden tulkintojen syylle on jonkin sortin päivittämisen puute. Konjunktioharha (ja monet muut harhat ja vinoumat) olivat minulle uusia, ja sen sijaan että olisin päivittänyt uskomuksiani ja todennut "ahaa, nämä ovat oikeasti asia", yritin keksiä muita selityksiä ehdotetuille harhoille (kuten "ehkä he vain tulkitsivat kysymyksen väärin"). Toisin sanoen [rationalisoin](/epi/miksi_uskot) vanhoja uskomuksiani.
+
+Houkutus kohteliaille rationalisoinneille tulee osittain siitä, että on, no, *kohteliasta* uskoa parasta muista ihmisistä.
+
+Tämä ei tietenkään ole hyvän epin mukaista.
+
+Olisiko hyvä rationalisoida omia uskomuksiaan *itsestään* niin, että "ei minulla ole konjunktioharhaa, luin vain tehtävänannon väärin"? Ei tietenkään. Joten [mikä rikkoo symmetrian](/epi/symmetrian_rikkominen), kun kyse onkin muista ihmisistä?
+
+"Se, ettet tiedä varmaksi, mitä muiden päässä liikkuu. Ehkä sinä olet ymmärtänyt jotakin väärin", kuuluu taas yksi kohtelias tulkinta.
+
+On toki hyvä miettiä vähintään kahta erilaista selitystä, mutta kyse on siitä, *rationalisoidaanko* kohteliasta selitystä vai päivitetäänkö sitä samaan tapaan kuin joitakin "epäkohteliaampia" selityksiä. "Uskotaan kohteliaaseen tulkintaan, jos sitä ei ole täysin kumottu" on hölynpölyä.
+
+"Mutta yleisesti on hyvä, jos ihmiset käyttäytyvät kohteliaasti toisiaan kohtaan."
+
+Tämä on tietysti totta, mutta tämä ei liity kohteliaisiin tulkintoihin. "Mitä uskomuksia minulla on?" ja "Miten minun kannattaa toimia näiden uskomusten valossa?" ovat aivan eri asioita. Vaikka väitteet "liian kohteliaiden tulkintojen rationalisointi on huono" ja "kohteliaasti käyttäytyminen on huono" voivat [äkkiseltään kuulostaa samoilta](/epi/sumuiset_ajatukset), ne eivät sitä ole ja satun pitämään niistä toista oikeana ja toista vääränä.
+
+Näkökulma "kun uskotaan ihmisistä vähän parempaa kuin mitä he ovat, niin ihmisillä on kivempaa" on hölynpölyä ei pelkästään siksi, että ystävällinen voi olla uskomusten ollessa muunlaisiakin, vaan myös siksi, että *uskomuksilla on seurauksia*. Jos uskoo liian hyvää, niin voi päätyä asettamaan [vilpittömän luottonsa](/epi/kerran_luotin) asioihin, jotka eivät ole sen arvoisia. Ehkä kokonaisuudessaan epätotuudenmukaiset uskomukset johtavat siihen, että ihmisillä *ei olekaan* niin kivaa. Juuri tällaisissa tilanteissa, joissa hyvä epi on näennäisesti ristiriidassa jonkin muun arvon kanssa, on hyvä painottaa sitä, että epi on tärkeää.
+
+[End of text.]
+
+# Jättiläisten olkapäillä
+
+"[Jos olen nähnyt muita kauemmas, se johtuu siitä, että olen seissyt jättiläisten olkapäillä.](https://en.wikipedia.org/wiki/Standing_on_the_shoulders_of_giants)"
+
+"Seisot niin valtavien jättiläisten olkapäillä, että erehdyt luulemaan hartioita maankamaraksi."
+
+---
+
+Viimeisten vuosisatojen myötä ymmärryksemme ympäröivästä todellisuudesta on kehittynyt valtavasti. Newtonin sanoin jättiläisten olkapäiltä näkee kauas. Kyse ei ole pelkästään siitä, ettei kauan sitten eläneillä ollut käsitystä DNA-molekyyleistä tai suhteellisuusteoriasta. Kyse on paljon perustavanlaatuisemmista eroista: ihmiset ovat entisaikaan olleet väärässä asioista, joita ei tulisi nykyään edes ajatelleeksi vaikeina kysymyksinä.
+
+Otteita Steven Pinkerin kirjasta Enlightenment Now:
+
+"If there’s anything the Enlightenment thinkers had in common, it was an insistence that we energetically apply the standard of reason to understanding our world, and not fall back on generators of delusion like faith, dogma, revelation, authority, charisma, mysticism, divination, visions, gut feelings, or the hermeneutic parsing of sacred texts."
+
+"The historian David Wootton reminds us of the understanding of an educated Englishman on the eve of the Revolution in 1600: He believes witches can summon up storms that sink ships at sea... He believes in werewolves, although there happen not to be any in England – he knows they are to be found in Belgium... He believes Circe really did turn Odysseus’s crew into pigs. He believes mice are spontaneously generated in piles of straw. He believes in contemporary magicians... He has seen a unicorn’s horn, but not a unicorn.
+
+He believes that a murdered body will bleed in the presence of the murderer. He believes that there is an ointment which, if rubbed on a dagger which has caused a wound, will cure the wound. He believes that the shape, colour and texture of a plant can be a clue to how it will work as a medicine because God designed nature to be interpreted by mankind. He believes that it is possible to turn base metal into gold, although he doubts that anyone knows how to do it. He believes that nature abhors a vacuum. He believes the rainbow is a sign from God and that comets portend evil. He believes that dreams predict the future, if we know how to interpret them. He believes, of course, that the earth stands still and the sun and stars turn around the earth once every twenty-four hours.
+
+A century and a third later, an educated descendant of this Englishman would believe none of these things."
+
+Historian saatossa ihmiset ovat ajatelleet maailmaa hyvin eri tavalla. Tämä koskee tietysti myös aikojensa suurimpia ajattelijoita. Aristoteles ajatteli, että [jotkut ihmiset ovat luonnostaan orjia](https://en.wikipedia.org/wiki/Natural_slavery). Evoluutio on vain *yksi* niistä lukemattoman monesta Aristoteleen ajan jälkeen kehitetystä ideasta, joiden valossa tämä orjuusnäkemys näyttää vähemmän järkevältä. Myöhemmin 1600-luvulla elänyt Rene Descartes uskoi, ettei eläimillä ole sielua, koska ne eivät osaa puhua. Tämä voi kuulostaa validilta argumentilta, jos ei tiedä ajattelun tapahtuvan aivoissa, puheen tuottamisesta äänihuulissa, eläinten välisestä kommunikoinnista tai siitä, että jotkut ihmiset ovat puhekyvyttömiä. Nykyajan näkökulmasta nämä taas kuulostavat itsestäänselvyyksiltä, aivan kuten valistus ja tieteellinen vallankumous ovat itsestäänselvyyksiä.
+
+Mutta Aristoteles ja Descartes ylsivät saavutuksiinsa *ilman*, että heitä edeltävät olivat kertoneet heille kaikkea nykyistä tietämystämme evoluutiosta, psykologiasta ja ihmisen anatomiasta. He tietysti tekivät paljon virheitä, jotka ovat nykysilmään ilmeisiä -- mikä on juuri sitä, miltä kehityksen *kuuluukin* näyttää. Juuri he ovat niitä jättiläisiä, joiden olkapäillä nyt seisomme. 
+
+Heidän ja kaikkien muiden ihmiskuntaa eteenpäin työntäneen ansiosta *pystymme parempaan*. Me voimme nähdä vielä entistäkin kauemmas.
+
+[End of text.]
+
+# Sumuiset ajatukset
+
+Kieli ei ole eksaktia. Tämä tuntuu melko välttämättömältä. Välillä se on hyvä. Kontekstista pystyy päättelemään paljon. Asioita voi sanoa lyhyesti. Ja yleensä asiat eivät ole niin täsmälleen. Riittää sanoa jotakin vähän sinne päin ja pointista saa silti kiinni. Kaikki tietävät, mitä tarkoitetaan.
+
+Välillä asiat eivät suju niin hyvin. Välillä se on huono asia, että asioita sanotaan "vähän sinne päin" ja että lauseet, jotka kuulostavat suunnilleen samalta, pyöristetään samoiksi. Esimerkiksi silloin, jos näillä "suunnilleen samoilla" väitteillä on eri totuusarvot tai jos ihmisillä on niistä eri uskomukset. Keskustelussa ei päästä riittävään tarkkuuteen. On kuin yrittäisi maalata tarkkoja yksityiskohtia leveällä pensselillä.
+
+Esimerkki: hyvin spesifi kritiikki, esimerkiksi "aiempi kommenttisi oli hieman epäkohtelias" tai "[tuo argumentin vaihe ei ole validi](/epi/symmetrian_rikkominen)" tulkitaankin laajempana kritiikkinä, esimerkiksi muodossa "olet ilkeä ihminen" tai "uskomuksesi on väärä". Osa näistä tulkinnoista tapahtuu alitajuisesti sanattomalla tasolla. Sitä voi perustella niin, että spesifikin kritiikki on [evidenssiä](/epi/uskomusten_muutos) sille, että sen esittäjällä on muutakin kritisoitavaa. Ihmisillä [on kuitenkin taipumusta](https://en.wikipedia.org/wiki/Halo_effect) ajatella, että yhden hyvän ominaisuuden omaavat asiat ovat hyviä myös muilta ominaisuuksiltaan, ja vastaavasti huonoille ominaisuuksille. Tällöin käytetään leveimpiä mahdollisia maalisuteja (asiat ovat joko "hyviä" tai "pahoja") silloinkin, kun se ei selvästikään ole järkevää.
+
+Toinen esimerkki: "En tiedä, päteekö tuo" kuulostaa kovasti siltä, että on eri mieltä, eli "mielestäni tuo ei päde". Näin tätä fraasia usein käytetäänkin, jolloin on vaikea kommunikoida sitä, ettei kirjaimellisesti tiedä, päteekö väite. Muut tarkat erottelut uskomusten vahvuuksien välillä (esimerkiksi "en pidä tuota todennäköisenä" ja "pidän tuota epätodennäköisenä") eivät niin ikään onnistu. Kerran kommenttini "laitan tuolle alle 50 % todennäköisyyden" referoitiin muodossa "Olli sanoi, että ei ole mahdollista".
+
+Tähän teemaan liittyy lukemani lainaus, joka kuului suunnilleen "ihmiset ajattelevat väitteen 'hän on nuori, pitkä ja tummahiuksinen' negaation olevan 'hän on vanha, lyhyt ja vaaleahiuksinen'".
+
+Sitten on tilanteet, joissa joku pitää muiden ihmisten toimintaa typeränä ja sanoo "miksi ihmiset tekevät noin?" Tämä on tässä tapauksessa retorinen kysymys, joka ajaa samaa roolia kuin kommentti "tuo toiminta on typerää" tai "ihmiset ovat tyhmiä". Ja jos näitä kommentteja pidetään samoina, alitajuisesti toinen korvataan toisella, niin "ihmiset ovat tyhmiä" näyttäytyy *vastauksena* retoriseen kysymykseen, *selityksenä* sille, miksi ihmiset toimivat miten toimivat. Ja kun kysymykselle on löydetty ilmeinen vastaus, niin asiaa ei tarvitse oikeasti ajatella -- missään kohtaa ei tule mietittyä, että tosiaan, *miksi* ihmiset toimivat (minun mielestäni) typerästi.
+
+Tällaista sumuisuutta on helppo käyttää epärehellisesti: Esitä monitulkintaisia väitteitä. Vaihtele vaivihkaa niiden merkitysten välillä. Joskus väitteet tulee (tietysti) tulkita kirjaimellisesti ja joskus (tietenkin) "niin kuin ne on tarkoitettu". Rivien välistä voi viestiä jotakin, mitä ei kuitenkaan tarvitse sanoa suoraan. Esitä [matalan informaation väitteitä](/epi/matala_informaatio), jotka ovat kirjaimellisesti (selvästi) tosia, mutta joilla saat luotua haluttua kuvaa. Näin ei jää mitään yksittäistä kohtaa, jota voisi kritisoida, ja siten kritiikiltä on helppo puolustautua. (Erityisesti missään kohtaa sinun ei tarvitse esittää epätosia väitteitä -- päinvastoin, esittämäsi faktuaaliset väitteet ovat selvästi tosia.) Sopivaa retoriikkaa käyttämällä ei tarvitse esittää varsinaisia väitteitä, ja voit piilottaa kommenttien taakse [epävalideja argumentteja](/epi/symmetrian_rikkominen).
+
+Keskeisin ongelma ei kuitenkaan tälläkään kertaa ole [helpot maalitaulut](/epi/helpot_maalitaulut) ja tietoinen, tarkoituksellinen epärehellisyys. Tällaista toimintaa tuntuu esiintyvän ylipäätään silloin, kun päädytään [väittelemään](/epi/miksi_uskot), enkä kiistä, ettenkö tunnistaisi edellisestä kappaleesta jotakin tuttua myös omalta kohdaltani. Vielä yleisemmin, usein ihan tavallisissakaan tilanteissa ihmiset eivät sano ajatuksiansa suoraan. Mielikuvia luovaa retoriikkaa tulee vastaan jatkuvasti.
+
+Ja kuten usein, vaikka tekstissäni kirjoitan *kommunikaatiosta*, ongelmia on syvemmällä itse *ajattelussa*. En usko, että ihmiset kyllä ajattelevat asiat selkeästi, mutta kommunikoivat ajatuksensa epätarkasti. (Tai siis uskon, että näin ei ole.) Kielen ja kommunikaation sumuisuus vaikuttaa myös ajatteluun. Jos puhe on "jotakin sinne päin", kenties ajattelukaan ei ole niin kirkasta.
+
+Toisaalta ilmiö toimii myös toiseen suuntaan. Yleinen viisaus "[ajatusten kirjoittaminen selkeyttää niitä](https://paulgraham.com/words.html)" vaikuttaa oikealta, ja sama koskee myös puhetta. Puheessa ja tekstissä esiintyviä monitulkintaisuuksia ja sumuisuuksia on helpompi huomata: pään sisällä "aiempi kommenttisi oli hieman epäkohtelias" voi tuntua samalta kuin "olet ikävä ihminen", mutta auki kirjoitettuna nämä ovat ilmiselvästi eri asioita. Puhe ja teksti antavat siten helpomman harjoitteluympäristön, ja niissä esiintyviin epätarkkuuksiin saa terävöitettyä vähintäänkin omaa kommunikaatiotaan ja parhaimmillaan myös ajatteluaan.
+
+[End of text.]
+
+# Probabilistinen ajattelu
+
+Olet sopinut tapaavasi kaverisi tänään kello kymmenen. Hän ei saavu ajoissa paikalle. Odotat. Kello näyttää 10:10. "Ehkä hän on unohtanut tai juuttunut johonkin muualle", pohdit. Odotat lisää. Epäilysi kaverisi saapumisesta voimistuvat ajan edetessä. Kello näyttää 10:20. Kaveria ei näy, ja luovutat asian suhteen.
+
+Tarinan opetus?
+
+Ensinnäkin olet epävarma siitä, miten käy: et tiedä, tuleeko kaveri paikalle vai ei. Jos kysyt itseltäsi, saapuuko kaverisi paikalle vai ei, paras vastaus ei ole [binäärinen](/epi/binaarinen_jakauma) "kyllä" tai "ei", vaan esimerkiksi "en tiedä" tai "luultavasti".
+
+Lisäksi epävarmuutesi tila muuttuu. Alussa olet epävarmempi kaverisi saapumisesta (ehkä hän tulee, ehkä ei), lopussa varmempi (hän tuskin tulee, luovutan). Vaikka siis kummassakaan tapauksessa "et tiedä" miten käy, uskomusten vahvuutta voi silti vertailla ja [kvantifioida](/epi/kvantifiointi). Jotkut uskomukset ovat vahvempia kuin toiset, joskus aika paljonkin.
+
+Hmm... olisipa kätevää, jos olisi jokin tapa käsitellä epävarmuutta kvantitatiivisesti. Sellainen järjestelmä, joka tarjoaa asteikon uskomuksille. Asteikolla isommat luvut voisivat vastata sitä, että uskoo asiaan vahvemmin ja pienemmät taas sitä, että uskoo heikommin. Ai, ja vielä jos näille luvuille voisi tehdä laskutoimituksia! Niin, että uskomusten epävarmuuksia voisi jotenkin käsitellä ja yhdistellä.
+
+Lukijan suureksi yllätykseksi paljastan, että tällainen järjestelmä on olemassa. Se tunnetaan nimellä todennäköisyyslaskenta.
+
+Tutkitaan alun esimerkkiä tästä näkökulmasta. Alussa odottaisit kaverisi tulevan paikalle -- et tietenkään *varmasti*, mutta ei kaverisi kovin usein unohda asioita. Ja hän on kohtalaisen täsmällinen, joten hän tuskin tulee paljoa myöhässä.
+
+Sinulla on siis *uskomuksia*, *odotuksia* siitä, milloin kaverisi saapuu. Hyvin todennäköisesti hän saapuu. Jos hän saapuu, niin hän saattaa olla myöhässä tai saattaa olla olematta. On kuitenkin epätodennäköistä, että hän on paljoa myöhässä.
+
+Näitä intuitioita voi muuttaa luvuiksi. Sanotaan, että on 90 % todennäköisyys, että kaverisi saapuu paikalle (ja 10 %, että ei). Tämä 90 prosentin osuus jakautuu eri saapumisajoille odotustesi mukaisesti: enemmän prosentteja lähelle kello kymmentä, vähemmän muualle.
+
+Alla kuvassa on yksi esimerkki siitä, miltä uskomukset voivat näyttää. Kukin palikka vastaa yhtä prosenttia kyseiselle lopputulokselle.
+
+![Todennäköisyydet tutun saapumisajalle](Kuvat/prob_1)
+
+Takaisin oikeaan maailmaan: Odotat. Kello näyttää 10:10. Kaverisi ei ole tullut paikalle. Tämä on hieman yllättävää. Uskomuksesi muuttuvat.
+
+Tutkitaan edellistä kuvaa. Palikat, jotka oli asetettu ennen kohtaa 10:10, tulee unohtaa. (Lasken sinun puolestasi: niitä on 75 kappaletta.) Panokset on laitettu väärälle vaihtoehdolle ja siten ne menetetään. Kuva näyttää nyt seuraavalta:
+
+![Osa panoksista katoaa](Kuvat/prob_2)
+
+Tässä on jotakin hassua: kuvassa on laitettu 10 prosentin edestä palikoita sille, ettei kaveri saavu, 15 % sille, että että hän vielä tulee, ja... ai niin, menetit sen 75 %.
+
+Mutta uskomusten pitäisi yhteensä olla tasan 100 % -- ei enempää, ei vähempää. Täten deflaatio iskee ja palikoiden arvo kasvaa! Palikoita on jäljellä enää 25, joten nyt jokainen palikka on neljän prosentin arvoinen. Seuraavassa kuvassa palikat ovat siten kooltaan nelinkertaisia. (Palikoiden sijaintien muutos johtuu vain visualisoinnin haasteista.)
+
+![Uudet todennäköisyydet tutun saapumisajalle](Kuvat/prob_3)
+
+Nyt onkin 40 % todennäköisyys, että kaverisi ei saavu paikalle! Käy tietysti järkeen, että todennäköisyys on kasvanut: jos odotat kaveriasi ja häntä ei näy, alat epäilemään, että hän ei tule ollenkaan.
+
+Samaa peliä voi luonnollisesti pelata uudestaan: odotat, kaverisi ei vieläkään saavu, menetät panoksiasi, jäljelle jäävät palikat kasvavat ja uskomuksesi muuttuvat. Kello 10:20 jäljellä on edelleen 10 (entistäkin suurempaa) palikkaa sille, ettei kaverisi tule, ja vain 1 sille, että hän vielä tulee. Tällöin todennäköisyys sille, ettei kaverisi tule paikalle, on 10 : 1 eli noin 90 prosenttia. Silloin on hyvä aika lähteä.
+
+---
+
+"En ihan ymmärrä. Mistä käytännössä hankitaan todennäköisyydet eri tilanteille? Etkö voi saada laskuista mitä vain tuloksia ulos laittamalla sisään sopivat todennäköisyydet? Joten mikä hyöty tässä on?" kysytään yleisöstä.
+
+Todennäköisyydet kuvaavat uskomusten vahvuuksia. Kenen uskomuksia? Esimerkiksi sinun. Ihmisillä on yleisesti ottaen eri uskomukset ja siten eri todennäköisyydet. Kaverisi saattaa tietää, saapuuko hän luoksesi sovittuun aikaan, vaikka sinä et tätä tietäisi.
+
+Se, että sanot "on 10 prosentin todennäköisyys sille, ettei kaverini tule paikalle", kertoo *sinun uskomuksistasi* koskien kaverin tulemista, siis *sinun pääsi sisällöstä*, *sinun aivoistasi*, ei kaverisi sijainnista. Erityisesti väite ei tarkoita, että kaverisi paikalle tuleminen olisi "oikeasti satunnaista" (mitä ikinä tämä tarkoittaakaan). Se koskee vain ja ainoastaan sinun tietämystäsi. Tietysti (tai toivottavasti) uskomuksesi liittyvät siihen, miten asiat oikeasti ovat. Uskomuksesi ja todellisuus ovat kuitenkin kaksi eri asiaa, aivan kuten kartta ja maasto ovat kaksi eri asiaa.
+
+Ihmiset eivät toki luontaisesti mieti asioita numeerisesti todennäköisyyksien kautta. Toisaalta ihmiset eivät myöskään mieti äänenvoimakkuutta numeerisesti desibelien kautta. Joskus on ollut aika, jolloin ihmiset eivät ole miettineet lämpötilaa numeerisesti Celsius-asteiden kautta (koska asteikkoa ei ollut vielä kehitetty).
+
+Tästä huolimatta jotkut asiat ovat kuumempia kuin toiset, jotkut äänet kovempia kuin toiset ja jotkut uskomukset vahvempia kuin toiset. Jokainen huomaa tämän, vaikkei ihmiskehossa olekaan Celsius-asteet ilmoittavaa lämpömittaria tai todennäköisyydet ilmoittavaa uskomuksenvahvuusmittaria.
+
+Joten mistä ne todennäköisyydet saadaan? Samasta paikasta kuin Celsius-asteet. Sinulla *on jo* paljon tietoa, vaikkakaan ei numeerisessa muodossa. Eikä sitä ole aina helppoa muuttaa lukumuotoon: ehkä sinulla on tosi kylmä ja siksi ajattelet ulkona olevan 30 astetta pakkasta, vaikka sitä on oikeasti vain 20 astetta. Toisaalta näissä muunnoksissa kehittyy kokemuksen myötä: veikkaan, että olet parempi arvioimaan tapahtumien kestoja minuutteina kuin äänenkorkeuksia hertseinä.
+
+Miksi muuttaa uskomuksiaan todennäköisyyksiksi? Samasta syystä kuin etäisyyksiä muutetaan kilometreiksi, massaa muutetaan grammoiksi tai aikaa muutetaan tunneiksi (tai määrää muutetaan luvuiksi). "Muuttaa" on tietysti väärä sana, oikea sana on "mitata".
+
+Hyvin usein riittää vain karkeat *arviot*. Joskus "menee parikymmentä minuuttia" todella kommunikoi asian paremmin kuin "menee vähän aikaa". Lisäksi konsepteilla voidaan tehdä (yksinkertaista tai monimutkaisempaa) *mallinnusta*.
+
+Nämä sama huomiot pätevät myös todennäköisyyksien kohdalla. Joskus "olen 90 % varma" todella kommunikoi asian paremmin kuin "olen aika varma" (tietysti olettaen molempien tietävän, mitä 90 prosenttia todella tarkoittaa). Ja konseptien kautta saa varsin hyviä työkaluja ja malleja uskomusten muodostamiseen.
+
+[End of text.]
+
+# Uskomusten muutos
+
+Eräänä päivänä käytin toistakymmentä tuntia lukemiseen. Myöhemmin illalla silmääni koski.
+
+Ei, en sano sen *johtuneen* lukemisesta. Kysehän olisi voinut olla ties mistä. Ehkä nukuin jotenkin huonosti toisella kyljellä. Ehkä kyse oli yleisestä väsymyksestä. Ehkä olin hieronut silmiäni varomattomasti. Ehkä kyse oli jostakin ihan muusta.
+
+En pitänyt näitä selityksiä kovin uskottavina, siis kovin *todennäköisinä*. Selitys "jos lukee paljon, niin silmät rasittuvat" vaikutti järkevältä, muut taas kaukaa haetuilta tai istuvan huonosti muuhun informaatioon. Mutta eihän sitä voi tietää.
+
+Vai voiko?
+
+Yleensä ihmisillä toinen heidän silmistään on vahvempi kuin toinen. Uskoisin vahvemman silmän rasittuvan lukiessa enemmän. Toisaalta taas rasituksen tunnetta oli vain toisessa silmässäni -- nimittäin vasemmassa.
+
+Hmm... onkohan niin, että vasen silmä on vahvempi silmäni?
+
+Vahvemman silmän voi selvittää tunnetulla tempulla: Laita yksi sormistasi muutaman sentin päähän nenästäsi. Sulje vuorotellen yksi silmistäsi ja seuraa, näyttääkö sormen sijainti muuttuvan taustaan nähden -- jos kyllä, kyseessä on vahvempi silmä.
+
+Minähän selvitin, ja...
+
+Paitsi ennen kuin mennään asioiden edelle: mitä tämä testi ja sen tulokset edes kertovat?
+
+Uskomukseni koskien silmäni jomotuksen syytä ei ole irrallinen muista uskomuksistani. *Uskomuksilla on seurauksia*.
+
+Jos kyseessä todella on lukemisesta aiheutunut rasitus, niin uskoisin sen vaikuttavan nimenomaan vahvempaan silmääni.
+
+Jos kyseessä on jokin muu syy, niin se vaikuttaisi ihan yhtä todennäköisesti kumpaan tahansa silmistäni.
+
+Joten?
+
+Jos käykin niin, että vahvempi silmäni on *oikea*, niin "silmä on rasittunut lukemisesta" -selitys vaikuttaa aiemmalta huonommalta verrattuna "muu syy" -selitykseen. Miksi muka heikompi silmä olisi rasittunut enemmän?
+
+Jos taas käy niin, että vahvempi silmäni on *vasen*, niin tämä selitys näyttää puolestaan hieman paremmalta. Vahvempi silmä on rasittunut enemmän, juuri kuten odottaisikin.
+
+Tulokset eivät tietenkään *todista* mitään. Ei ole *mahdotonta*, että heikompaa silmää jomottaa. Vastaavasti vaikka vahvempi silmäni olisi vasen, on silti *mahdollista*, että kyseessä on jotakin muuta. Joka tapauksessa testauksen kautta saadaan *informaatiota*. Omien uskomusten tulee muuttua *jonkin verran*. Todennäköisyydet eri selityksille eivät ole ykkösiä ja nollia testauksen jälkeen, mutta ne eivät myöskään ole samat kuin aluksi.
+
+Nyt voin paljastaa, että vahvempi silmäni tosiaan on vasen.
+
+Hurraa, "silmä on rasittunut lukemisesta" -selitys vaikuttaa paremmalta!
+
+Ja... mitä sitten? [Kuinka paljon](/epi/kvantifiointi) tämän oikeasti pitäisi vaikuttaa uskomuksiini? Onko nyt "käytännössä varmaa", että tämä on oikea selitys? Vai onko tämä vain pieni muutos todennäköisyyksiin -- niin pieni, että se on "käytännössä nolla"? Vai jotain tältä väliltä? Tällaisenaan johtopäätös [ei kerro kovin paljoa](/epi/matala_informaatio).
+
+---
+
+Tehdään tarkempi analyysi.
+
+Kuten mainitsin, pidin lukemisselitystä selkeästi parhaimpana. Laitan tälle todennäköisyydeksi... 80 %?, (Oikeasti ehkä enemmänkin, mutta pidetään luvut helppoina ja pyöreinä.) Muille selityksille jää siis yhteensä 20 %.
+
+Ja kuten todettiin, nämä eri selitykset *ennustavat eri tuloksia* "kumpi silmä on vahvempi" -testin tuloksille. "Muut selitykset" -kategorian panokset jakautuvat tasan: ei ole mitään [symmetriaa rikkovaa](/epi/symmetrian_rikkominen) syytä, miksi juuri heikompaan (eikä vahvempaan) silmään olisi kohdistunut isku tai muuta. Toisaalta taas "lukeminen rasittaa" laittaa hyvin suuren osan panoksistaan vasemman silmän vahvuudella. Kuinka suuren osan? Eh, vaikea sanoa. Ehkä 90 %? Mennään vaikka sillä.
+
+Alla on tilannetta havainnollistava kuva: selitykset ja niiden asettamat panokset testin tuloksille. Kuten [edellisessä tekstissä](/epi/probabilistinen_ajattelu), yksi palikka vastaa yhtä prosenttia.
+
+![Odotukset testin tuloksille](Kuvat/bayes_2-1.jpg)
+
+Ja miten käy, kun tulokset julkistetaan? Väärälle veikkaukselle asetetut panokset katoavat, ja...
+
+![Osa panoksista katoaa](Kuvat/bayes_3-1.jpg)
+
+Ja kuten edellisessä tekstissä opittiin, palikoiden vähentyessä käynnistyy deflaatio -- kokonaistodennäköisyyden pitää olla 100 prosenttia. Tällä kertaa deflaatiota tosin tapahtuu vain vähän, että muutosta on vaikea havaita kuvassa:
+
+![Deflaation jälkeen](Kuvat/bayes_4-1.jpg)
+
+...joka tapauksessa: Aiemmin palikat jakautuivat suhteessa 80 : 20, jolloin todennäköisyydet olivat 80 % ja 20 %. Nyt palikat jakautuvat suhteessa 72 : 10, jolloin todennäköisyydet ovat, luonnollisesti, 72/82 ja 10/82. Uusi todennäköisyys lukemisselitykselle on 72/82 eli noin 88 % ja muille selityksille 12 %.
+
+Joten? Ei ole edelleenkään "käytännössä varmaa", että lukemisselitys on oikea. Silti kyseessä on ihan kohtalainen muutos uskomuksiin: muiden selitysten todennäköisyys melkein puolittui.
+
+---
+
+Tämä koko prosessi vaikuttaa hieman hankalalta. Eikä ole ihan itsestäänselvää, että tulokset ovat järjen mukaisia. Jos olisin saanut vastaukseksi 88 prosentin sijasta 97 % tai 82 %, niin olisitko pitänyt tulosta silti järkevänä? Mistä tietää, että nämä muut vastaukset *eivät* ole järkeviä tai oikeita? Tai mistä tiedät, etten ole tehnyt tarkoituksella "laskuvirhettä" ja oikea vastaus on sittenkin 82 prosenttia?
+
+Eli miten tätä kuuluu ajatella?
+
+Esittelen uuden termin *evidenssi* (engl. evidence). Kenties lähin aidosti suomenkielinen sana on "todistusaineisto", mutta koska emme istu oikeussalissa, pitäydyn termissä "evidenssi". (Sana "näyttö" liippaa myös läheltä, mutten ole siihenkään täysin tyytyväinen.)
+
+Vahvemman silmän testauksella saadaan informaatiota siitä, mikä on oikea selitys. Tulos "vahvempi silmä on oikea" on siis *evidenssiä* muiden selitysten puolesta verrattuna lukemis-rasitus-selitykseen. Vastaavasti "vahvempi silmä on vasen" on evidenssiä lukemis-rasitus-selityksen puolesta.
+
+Evidenssien *suuruutta* tai *vahvuutta* voi vertailla ja [kvantifioida](/epi/kvantifiointi). Jos kävisin lääkärissä ja lääkäri onnistuisi diagnosoimaan syyn oireelleni, muuttuisivat uskomukseni hyvin vahvasti diagnoosin suuntaan. Tämäkään ei silti *todista* mitään, todennäköisyys ei edelleenkään ole täysi sata prosenttia -- diagnoosit ja lääkäritkin kun voivat olla väärässä -- mutta uskomukseni muuttuisivat paljon enemmän kuin saadessani tietää, kumpi silmistäni on vahvempi.
+
+Entä mikä on luontevin tapa mitata evidenssin vahvuutta?
+
+Kuvitellaan, että minä ja sinä teemme ennustuksia vaikkapa huomisen säästä. Minä pidän sadetta 30 % todennäköisenä, sinä 60 %. Seuraavana päivänä sataa. Sinulla selvästikin oli totuudenmukaisemmat uskomukset, tarkalleen kaksi kertaa niin hyvät kuin minulla. Jos taas minä olisin laittanut sateen todennäköisyydeksi 80 %, sinä 10 %, olisi ero ollut kahdeksankertainen minun hyväkseni. Jos molemmat olisimme laittaneet todennäköisyydeksi 70 %, ei eroa olisi ollut.
+
+Näitä eroja on helpoin hahmottaa *suhteiden* kautta. Ensimmäisessä tapauksessa oikealle vastaukselle laitettujen arvojen suhde oli 1 : 2, toisessa 8 : 1 ja kolmannessa 1 : 1. Suhde kertoo sekä sen, kumpi osapuoli oli *parempi* että sen, kuinka *paljon* parempi. Suhde 1 : 2 kertoo sinun olleen kohtalaisesti parempi, 8 : 1 taas minun olleen paljon parempi. Suhteen kannalta ei myöskään ole oleellista se, kuinka hyvin minä tai sinä olemme ennustaneet, vaan kuinka hyvin olemme ennustaneet *toiseen verrattuna*.
+
+---
+
+Palataan sitten silmäesimerkkiin. Alussa todennäköisyydet eri selityksille ovat 80 % ja 20 %, siis 4 : 1. Rasitusselitys laittaa 90 % panoksistaan sille, että vahvempi silmä on vasen. "Muu"-selitys laittaa tälle 50 % panoksistaan. Näiden panoksien suhde on siis 9 : 5.
+
+Pidä mielessä: oleellista on, kuinka *suuren osan* panoksistaan laittaa vaihtoehdolle ja kuinka paljon se on *suhteessa* toisen laittamiin panoksiin (eikä suoraan, kuinka *monta* palikkaa vaihtoehdolle laittaa).
+
+Alla on vielä uudestaan aiempi kuva.
+
+![Odotukset testin tuloksille](Kuvat/bayes_2-1.jpg)
+
+9 : 5 on hieman ikävä suhde käsitellä. Pyöristetään se yksinkertaisuuden vuoksi suhteeksi 10 : 5 eli 2 : 1. Tämä olisi sama kuin jos rasitusselitys laittaisi kaikki panoksensa vasemmalle (ja "muu"-selitys edelleen tasan oikealle ja vasemmalle).
+
+![Pyöristetyt odotukset](Kuvat/bayes_5-1.jpg)
+
+Selvä: Aluksi todennäköisyyksien suhde oli 4 : 1. Testillä saimme 2 : 1 verran evidenssiä rasitusselityksen puolesta. Mitä saadaan uudeksi, päivitetyksi arvioksi?
+
+8 : 1.
+
+Vastauksen todella saa *vain kertomalla suhteet keskenään* -- niin tässä tapauksessa kuin yleisestikin.
+
+Miksi? Tämä on oikeasta näkökulmasta katsottuna tavallaan itsestäänselvyys, mutta tämän oikean näkökulman löytäminen ei välttämättä ole ilmeistä. Yritän selittää:
+
+Alussa kutakin oikealla olevaa "muu"-selityksen palikkaa kohden vasemmalta "rasitus"-selitykseltä löytyy 4 palikkaa. Vasen puoli on siis neljä kertaa niin "painava" kuin oikea puoli. Sitten testaamme. Palikoita katoaa. Vasemmalle puolelle jää *suhteessa* kaksinkertainen määrä palikoita, jolloin siitä tulee suhteessa vielä kaksi kertaa aiempaa painavampi oikeaan nähden. Yhteensä tämä vastaa kahdeksankertaista eroa.
+
+Vielä kerran, oleellista ei ole kuinka painava puoli on *absoluuttisesti* vaan *suhteessa toiseen puoleen*.
+
+Näillä työkaluilla koko prosessin voi tiivistää muutamaan virkkeeseen:
+
+"Silmääni koskee. Keksin muutamia selityksiä, mutta lukemisen aiheuttama rasitus vaikuttaa ilmeisimmältä syyltä -- annan sille vaikka 80 % todennäköisyyden. Hetkinen, voin testata asiaa. Lukemisselitys antaa huomattavasti eri ennustuksia koskien vasemman silmän dominanttiutta kuin muut selitykset: lukemisselitys vihjaa hyvin vahvasti vasemman silmän olevan vahvempi, muut selitykset taas antavat 50 %-50 % -ennustuksen. Testataan. Tadaa, vasen silmä todella on vahvempi! Siis alunperin todennäköisyydet olivat 4 : 1, sain evidenssiä suunnilleen 2 : 1 verran, joten uudet todennäköisyydet ovat noin 8 : 1, eli siis 8/9 ja 1/9. Tämä tarkoittaa noin 89 % todennäköisyyttä rasitusselitykselle."
+
+(Tämä heijastaakin sitä ajatusprosessia, joka minulla todellisuudessa oli asiaa miettiessäni.)
+
+Tai vielä helpompi temppu: jos epätodennäköistä vaihtoehtoa vastaan tulee 2 : 1 -verran evidenssiä, sen todennäköisyys suunnilleen puolittuu. (Tämä on hyvä arvio ääripäässä, kun todennäköisyys on lähellä nollaa, mutta huono lähempänä 50 prosenttia.) Muiden hypoteesien todennäköisyys tippuu 20 prosentista suunnilleen 10 prosenttiin, ja rasitusselityksen uusi todennäköisyys on siten noin 90 prosenttia.
+
+Pointtini on, että tämä todella on "helppoa, kun sen osaa": prosessi itsessään on hyvin yksinkertainen, vaikka sen oppiminen tai selittäminen ei olekaan ihan niin yksinkertaista. Idea "uskomuksesi muuttuvat, kun saat uutta informaatiota" ei tunnu minusta kovin mutkikkaalta tai edistyneeltä (joku voisi jopa kutsua sitä itsestäänselvyydeksi). Todennäköisyyksien kautta tätä konseptia saadaan kuvailtua hieman tarkemmin ja syvemmin.
+
+[End of text.]
+
+# Miksi todennäköisyydet?
+
+"En ihan ymmärrä. Osaan kyllä intuitiivisella tasolla käsitellä epävarmuutta ja muuttaa uskomuksiani saadessani uutta tietoa, vaikken olekaan miettinyt asioita todennäköisyyksien kautta. Mikä tässä on pointtina? Miksi miettiä todennäköisyyksiä?"
+
+Hyvä kysymys!
+
+Vaikka usein todennäköisyyksiä käsitellessä esitetään numeerisia esimerkkejä -- aivan kuten minäkin tein edellisissä [parissa](/epi/probabilistinen_ajattelu) [tekstissä](/epi/uskomusten_muutos) -- eivät nämä ole se keskeisin pointti. Esimerkkien pointti on lähinnä havainnollistaa konsepteja. *Konseptien* pointti on tietysti jotakin ihan muuta kuin "nyt osaat ratkoa aiheeseen liittyviä laskutehtäviä". Ne nimittäin antavat valtavasti työkaluja uskomusten ja epävarmuuden käsittelyyn.
+
+"Anna esimerkkejä!"
+
+No jos nyt kerran vaaditte, niin ehkä minä keksin jotakin.
+
+1\. Hyvä uskomus on sellainen, joka on totuudenmukainen -- sellainen, joka vastaa todellisuutta hyvin ja joka antaa parempia ennustuksia kuin muut hypoteesit.
+
+Tämä vaikuttaa minusta ilmeiseltä, mutta olen huomannut joidenkin olevan eri mieltä. Joskus jotkut ajattelevat hyvän uskomuksen olevan sellainen, jonka haluaa olevan totta tai josta seuraa hyviä asioita. Tai sellainen, jolle [keksii vahvoja perusteluja](/epi/miksi_uskot) ja jota pystyy tarpeen tullen puolustamaan. Tai sellainen, joka on mielenkiintoinen, ajatuksia herättävä ja originaali. Tai sellainen, josta muut kaverit ovat samaa mieltä tai jota he pitävät järkevänä uskomuksena. Tai sellainen, joka on [kohtelias](/epi/kohteliaat_tulkinnat) muita ihmisiä kohtaan. Tai sellainen, joka on nöyrä ja vaatimaton. Tai sellainen, joka kuulostaa "normaalilta". Tai sellainen, joka on käytännössä "hyvä meidän joukkue!". Tai...
+
+(Vai eikö "en usko, että onnistut" kuulosta [hieman siltä](/epi/sumuiset_ajatukset), että toinen *toivoo* sinun epäonnistuvan?)
+
+Joskus totuudenmukaiset uskomukset ovat samalla se, minkä haluaa olevan totta. Joskus niille keksii vahvoja perusteluja. Joskus ne ovat ajatuksia herättäviä. Tämä on [tietysti eri asia](/epi/sumuiset_ajatukset) kuin se, että kannattaa uskoa asioita *sen vuoksi*, että haluaa niiden olevan totta tai koska ne ovat kiinnostavia. Kaikki minkä haluaa olevan totta ei ole totta ja kaikki mielenkiintoiset uskomukset eivät ole tosia. Lopullinen mittari on totuudenmukaisuus.
+
+2\. Uskomukset ovat epävarmoja.
+
+Tämäkin tuntuu välillä unohtuvan. Minähän *tiedän* tämän asian. Mielessä ei ole useampaa hypoteesia, vaan ainoastaan se oikea -- tiedäthän, se miten asiat ovat. Kysymystä "entä jos olen väärässä?" ei tule mietittyä, toiseksi todennäköisintä hypoteesia ei ole mielessä. [Odotusarvojen](/epi/odotusarvo) käsittelyn voi unohtaa kokonaan: eivät ne epätodennäköiset asiat kuitenkaan tapahdu.
+
+Ja todella, sinulla voi olla useammalle eri mahdollisuudelle kohtalaisesti todennäköisyyttä. On muitakin vaihtoehtoja kuin "minä tiedän tämän" tai "en tiedä".
+
+3\. Uskomuksien tulee muuttua uuden (relevantin) informaation myötä.
+
+Lisää itsestäänselvyyksiä. Jatketaan...
+
+4\. Uskomuksilla on pisteytysjärjestelmä. Jos uskomus tai selitys ennustaa todellisuutta hyvin, siihen luotetaan jatkossa enemmän, ja vähemmän, jos se ennustaa huonosti.
+
+"Enemmän" ei kuitenkaan tarkoita samaa kuin "paljon". Minulla voi olla kaksi hypoteesia, joista ensimmäisen todennäköisyys on 99,9 % ja toisen 0,1 %. Jos tapahtuu jotakin, minkä toinen hypoteesi selittää paremmin kuin ensimmäinen, sen todennäköisyys *kasvaa*, vaikkapa arvoon 0,2%. Todennäköisyys ei ole kuitenkaan vieläkään *suuri*, ja luotan edelleen enemmän ensimmäiseen hypoteesiin.
+
+Tämäkin vaikuttaa minusta ilmeiseltä, mutta välillä ihmiset tuntuvat kiistävän, että heidän mielestään "huono" hypoteesi on selittänyt jonkin ilmiön hyvin -- "tämä hypoteesi selitti ilmiön paremmin kuin tuo toinen" kuulostaa hieman samalta kuin "tämä hypoteesi on parempi kuin tuo toinen". Huonompikin vastustajajoukkue voi joskus saada jalkapallossa maalin ja tämän tunnustaminen ei tarkoita, että oma joukkue olisi huonompi. Mistä tuleekin mieleen:
+
+5\.  Hyvin todennäköisiäkin hypoteeseja vastaan löytyy usein jotakin evidenssiä. Tämän vuoksi tulee tutkia kaikkea evidenssiä ja niiden suuruutta.
+
+(Ei riitä listata kaikkia oman joukkueen tekemiä maaleja ja todeta voittaneensa, vaan pitää laskea myös vastustajan tekemät maalit.)
+
+6\. Hypoteesin todennäköisyyttä ei voi mitata yksinään. Hypoteesien vertailuun ja uskomusten päivittämiseen tarvitaan *vähintään* kaksi hypoteesia. Pisteytyksessä katsotaan sitä, kuinka hyvin hypoteesi selittää ilmiötä *verrattuna muihin hypoteeseihin*.
+
+"Oma hypoteesini selittää tämän hyvin, siispä se on oikeassa" ei ole validia päättelyä -- oleellista on katsoa, kuinka hyvin muut hypoteesit selittävät ilmiön [verrattuna omaan](/epi/uskomusten_muutos). Suoremmin sanottuna: et saa pisteitä ennustaessasi "huomenna Aurinko nousee", jos kaikki muut ennustavat samoin. Pisteitä saa vain silloin, kun ennustaa jotakin *paremmin* kuin muut. Tämän pointin heikko ymmärrys vaikuttaa yhdeltä tekijältä ihmisten yleisessä taipumuksessa kasvattaa "omien" hypoteesien todennäköisyyksiä liikaa. Mistä tuleekin mieleen:
+
+7\. Ei ole "omia" tai "muiden" hypoteeseja. Hypoteesit vain ovat, ja ihmisillä on niitä koskevia uskomuksia ja todennäköisyyksiä. Tavoite on muodostaa totuudenmukaiset uskomukset ja saada isot todennäköisyydet oikeille hypoteeseille.
+
+Yleinen harhaluulo "tavoite on saada perusteltua muille, miksi Oma Hypoteesi on oikea" on väärä.
+
+Varmuuden vuoksi selvennän myös, että viittaukseni jalkapallojoukkueisiin on pedagoginen apuväline, jolla luon kontrastia huonojen ja vähemmän huonojen lähestymistapojen välillä. Esimerkkinä tästä on virke "uskomuksissasi todennäköisyyden tippuminen 90 prosentista 70 prosenttiin ei pitäisi tuntua samalta kuin se, että vastustajajoukkue tekee maalin".
+
+8\. On kaikenkokoisia uskomusten muutoksia. Pienistäkin asioista voi ja kuuluu tehdä pieniä päivityksiä.
+
+Tämä siis sen sijaan, että sanoisi "tämä ei *todista* minun olevan väärässä", tai "kävi vain huono tuuri" tai "ei vielä näin pienestä määrästä datapisteitä voi sanoa mitään". Joskus uskomukset ovat sellaisia, joihin löytyy hyvin vahvan evidenssin lähteitä ja asiat ovat helppoja. Joskus, tai itse asiassa aika useinkin, näin ei ole, asiat ovat vaikeita ja pitää pystyä käsittelemään dataa, joka ei "todista" väitettä mihinkään suuntaan.
+
+On myös väärin ottaa pienet asiat suurina päivityksinä, jos ne ovat oman joukkueen puolella ja sivuuttaa ne, jos ne ovatkin vastakkaisen joukkueen puolella.
+
+9\. Yllättyneisyys vastaa sitä, että uskomuksesi selittivät todellisuuden huonosti. Tämän tulee johtaa uskomusten päivitykseen (ja mitä suurempi yllätys, sitä suurempi päivitys).
+
+Kysymys "Mitä minun olisi pitänyt uskoa, jotta en olisi ollut niin yllättynyt?" auttaa selvittämään, mihin suuntaan uskomuksiaan kannattaa päivittää.
+
+Painotan, että ratkaisuna ei ole jälkiviisaana selittää, kuinka tämä oli oikeastaan itsestäänselvää ja täysin ennustettavaa ja kuinka et oikeasti ollut yllättynyt. Yllätyksen kiistäminen sivuuttaa hyvän mahdollisuuden uudelleenmiettiä näkemyksiään.
+
+10\. Jos olet toistuvasti yllättynyt, älä ole niin yllättynyt.
+
+11\. Jokainen uusi yksityiskohta tiputtaa hypoteesin todennäköisyyttä, vaikka niiden avulla saakin kerrottua "uskottavan", "realistisen kuuloisen" tarinan.
+
+Ihmiset [sekoittavat herkästi](/epi/kohteliaat_tulkinnat) todennäköisyyden *representatiivisuuteen* eli siihen, kuinka hyvin tämä tapaus vaikuttaa vastaavan *tyypillistä* laajemman kategorian esimerkkiä.
+
+(Olen tämän vuoksi hieman kahden vaiheilla, onko sana "todennäköisyys", siis "toden"-"näköisyys", hyvin vai huonosti valittu. Joka tapauksessa selityksen "uskottavuuden" kuuluisi olla sama kuin sen todennäköisyyden, jonka puolestaan pitäisi vastata todellisuutta tai väitteen totuusarvoa.)
+
+12\. Käytössäsi on tasan 100 prosentin edestä todennäköisyyspalikoita eri vaihtoehdoille jaettavaksi. Todennäköisyyden lisääminen yhden skenaarion kohdalla on todennäköisyyksien vähentämistä muualta.
+
+Eli et voi antaa kaikille tapahtumille suurta todennäköisyyttä ja myöhemmin todeta, kuinka "minä tiesin tämän koko ajan". Voit tietysti antaa kaikille tuloksille *saman* todennäköisyyden: tämä vastaa tietämättömyyden tilaa. Kunnolliset ennustukset vaativat väärässä olemisen riskin; sen, että uskaltaa uskoa tai sanoa joistakin asioista "tuo on hyvin epätodennäköistä" (tai edes kohtalaisen epätodennäköistä), eikä vain esittää [epämääräisiä ympäripyöreitä väitteitä](/epi/matala_informaatio).
+
+Mistä tuleekin mieleen:
+
+13\. Jos jonkin tuloksen nähdessäsi toteaisit olleesi oikeassa ja todennäköisyytesi jollekin hypoteesille menisi ylöspäin, tulee sinun jonkin toisen tuloksen nähdessäsi todeta olleesi väärässä ja todennäköisyyden mennä alaspäin.
+
+Tarkka idea periaatteen taustalla on *päivityksen ja vastapäivityksen laki*, toiselta nimeltään *evidenssin säilymislaki*:
+
+Kuvitellaan, että olet 80% varma jostakin väitteestä (vaikkapa [silmäsi jomotuksen syystä](/epi/uskomusten_muutos)). Haluat selvittää väitettä ja saada sitä koskevaa informaatiota (esimerkiksi eräällä testillä). Et voi tällaisella testillä kuitenkaan *varmasti* tai *edes odotusarvollisesti* nostaa todennäköisyyttäsi väitteelle. Ehkä yksi testitulos nostaa todennäköisyyden 88 prosenttiin -- mutta toinen testitulos tiputtaa sen 44 prosenttiin, ja *keskimäärin*, siis *odotusarvollisesti*, todennäköisyys on 80 prosenttia. Ehkä luotettavammalla testillä yksi tuloksista nostaa todennäköisyytesi 99 prosenttiin, mutta vastapainona toinen tulos tiputtaa sen 1 prosenttiin.
+
+Ei kuitenkaan ole mitään testiä, josta voit etukäteen tietää, että se varmasti nostaa todennäköisyytesi 80 prosentista 99 prosenttiin. Mikä se sellainen testi on, josta tietää jo etukäteen, mitä tulee tulokseksi?
+
+Käytännössä tämän periaatteen epäonnistuminen voi näkyä vaikkapa siinä, että "todistetaan" oma näkemys oikeaksi etsimällä netistä omaa puolta tukevia väitteitä. Etsintää jatketaan niin kauan, kunnes jotakin sopivaa löytyy -- ja kyllä sitä miltei aina löytyy. Mutta mikä se sellainen testi on, joka antaa aina saman lopputuloksen?
+
+Vaikka *haluaisit* väitteen olevan tosi ja *haluaisit* uskoa jotakin tiettyä siihen liittyen, et voi tätä (koherentisti) saavuttaa. Jos etukäteen tiedät testin antavan varmasti tietyn tuloksen ja muutat uskomuksiasi tämän perusteella, on jotakin pielessä joko testissä tai sinussa. (Sama pätee, vaikkei muutos olisi aivan *varma* vaan pelkästään *odotusarvollinen*.) Jos jonkin tuloksen nähdessäsi muuttaisit uskomuksia yhteen suuntaan, pitää jonkin muun tuloksen nähdessäsi uskomusten muuttua vastakkaiseen suuntaan. ["Yes requires the possibility of No"](https://www.lesswrong.com/posts/G5TwJ9BGxcgh5DsmQ/yes-requires-the-possibility-of-no).
+
+Tämä on tärkeä pointti, joten sanon sen uudestaan:
+
+14\. Keskimäärin uskomustesi ei tulisi vahvistua.
+
+Taas, päivityksen ja vastapäivityksen laki. Jos aina uutta informaatiota saadessasi toteat "tuo on juuri kuten odotin, olin taas oikeassa" tai sanot "kerta toisensa perään vahvistun omista uskomuksistani", niin teet jotakin väärin. Ihmisillä kuitenkin on tällaista taipumusta, esimerkiksi [vahvistusharhaa](https://en.wikipedia.org/wiki/Confirmation_bias) ja [jälkiviisausvinoumaa](https://en.wikipedia.org/wiki/Hindsight_bias).
+
+Voi toki olla, että *suurimman osan* ajasta päivitykset ovat positiivisia (mutta pieniä), mutta joskus harvoin tulee negatiivisia päivityksiä (jotka ovat suuria). Näin onkin usein uskomusten ollessa hyvin varmoja. Esimerkiksi jos olen miltei varma, että minulla on vielä jäljellä välipalapatukoita, tarkistaessani asian tulen miltei varmasti löytämään patukan. Muutos todennäköisyyksissä on kuitenkin pieni: alunperin todennäköisyyden ollessa 98 % se ei voi enää paljoa nousta. Kuitenkin siinä epätodennäköisessä tapauksessa, jossa patukat ovatkin loppu, tippuu todennäköisyyteni rajusti nollaan. Tämä skenaario toimii vastapainona, joka pitää keskimääräisen muutoksen nollassa.
+
+On siis olemassa tilanteita, joissa on perusteltua tehdä pieniä muutoksia toistuvasti vain yhteen suuntaan. Näin ei kuitenkaan pitäisi juuri tapahtua keinotekoisten, tarkkaan rajattujen esimerkkien ulkopuolella. Esimerkiksi patukkaesimerkissä todennäköisyyteni alkaa putoamaan, kun aika viimeisimmästä tarkastuksesta kasvaa: kenties joku käy ottamassa patukoitani minun tietämättäni, ja joka tapauksessa alan luottamaan epätäydelliseen muistiini vähemmän.
+
+Siten käytännössä puhuttaessa monimutkaisista asioista, joihin liittyy epävarmuutta ja joissa on useita realistisia mahdollisuuksia, on hyvin epäilyttävää, jos yhden uskomuksen todennäköisyys kasvaa kerta toisensa perään. Ja joka tapauksessa toistuvia *suuria* muutoksia samaan suuntaan ei tulisi tapahtua. Jos etukäteen tiedät, että tulet myöhemmin muuttamaan uskomuksiasi tietyllä tavalla, joko teet jotakin väärin tai voit tehdä muutokset jo nyt. "Jos tiedät päämääräsi, olet jo siellä", kuuluu sanonta.
+
+15\. Uuden informaation tarjoaminen eri ihmisille ei välttämättä saa heidän uskomuksiaan lähenemään toisiaan.
+
+Sitä voisi ajatella, että jos ihmiset olisivat "järkeviä", olisivat he väistämättä enemmän samaa mieltä saadessaan uutta informaatiota. Tämä ei päde! Ei ole mitään todennäköisyyslaskennan tulosta, joka sanoo, että näin tapahtuu. Ihmisillä voi olla eriävää ennakkoinformaatiota, minkä seurauksena he päivittävät uskomuksiaan eri suuntiin, vaikka päivittäminen tapahtuisikin kaikkien taiteen sääntöjen mukaan. (Olen myös kuullut huhuja, etteivät ihmiset aina päivitä uskomuksiaan kuten kuuluisi.)
+
+16\. Jos mahdollisia hypoteeseja, selityksiä tai vaihtoehtoja on valtavasti, oikean--
+
+"Kiitos, riittää jo!"
+
+Aivan, totta, saatoin hieman innostua. Kenties on hyvä, jos siirrymme johonkin muuhun. No, jatkan näistä aiheista joskus toiste!
+
+[End of text.]
+
+# Epävarmuutta ja epäonnistumisia I
+
+Olen keskustelussa saanut kuulla toisen osapuolen sanovan "En voi tietenkään todistaa sinulle, että [olen oikeassa], mutta..."
+
+Tietenkään minä en vaadi *todistusta* toisen näkemykselle!
+
+(Sanonta "Everything before the word 'but' is bullshit" soveltuu tähän tilanteeseen -- seuraavana osapuoli kuitenkin yrittää todistaa olevansa oikeassa.)
+
+Tällainen kommentti saa minut epäilemään, että toisella on varsin binäärinen näkemys oikeista ja vääristä näkemyksistä: näkemyksen muuttaminen vaatii todistuksen tiettyyn suuntaan, ja muuten ihmisille jää samat näkemykset kuin keskustelun alussa. Mutta kuten olen kirjoittanut, on kaikenkokoisia uskomusten muutoksia. Todistus (eli todennäköisyyden muuttaminen suunnilleen nollaksi tai ykköseksi) on näistä äärimmäisin eikä aina saavutettavissa oikeassa elämässä.
+
+Asetelma myös heijastelee [väittelyä](/epi/miksi_uskot), jossa ihmiset pyrkivät [vakuuttamaan](/epi/vakuuttamisesta) toisen näkemyksestään. Tästä puolestaan [olen kirjoittanut](/epi/miksi_todennakoisyydet) "Ei ole 'omia' tai 'muiden' hypoteeseja" ja "Tehtäväsi on vain päivittää uskomuksia todellisuuden parempaa ennustamista varten."
+
+Myös asennoitumiset vaihtelevat: joskus uuden tiedon valossa asenne on "onko minun pakko päivittää?" ja joskus "saanko minä päivittää?", kun oikea asenne on "tuleeko minun päivittää?" Päivittämisen ei tulisi tuntua siltä, että oma tai vastustajien joukkue saa maalin.
+
+---
+
+Tässä on ote Daniel Kahnemanin kirjasta "Thinking, Fast and Slow" (lihavointi minun):
+
+"For a number of years, professors at Duke University conducted a survey
+in which the chief financial officers of large corporations estimated the
+returns of the Standard & Poor’s index over the following year. The Duke
+scholars collected 11,600 such forecasts and examined their accuracy.
+
+[...]
+
+In addition to their best guess about S&P returns, the participants
+provided two other estimates: a value that they were 90% sure would be
+too high, and one that they were 90% sure would be too low. The range
+between the two values is called an “80% confidence interval” and
+outcomes that fall outside the interval are labeled “surprises.” **An individual who sets confidence intervals on multiple occasions expects about 20% of the outcomes to be surprises. As frequently happens in such exercises, there were far too many surprises; their incidence was 67%, more than 3 times higher than expected.**
+
+[...]
+
+A CFO who informs his colleagues that 'there is a good chance that the S&P returns will be
+between –10% and +30%' can expect to be laughed out of the room. **The
+wide confidence interval is a confession of ignorance, which is not socially
+acceptable for someone who is paid to be knowledgeable in financial
+matters. Even if they knew how little they know, the executives would be
+penalized for admitting it**
+
+[...]
+
+Overconfidence also appears to be endemic in medicine. A study of patients who died in the ICU compared autopsy results with the diagnosis that physicians had provided while the patients were still alive. Physicians also reported their confidence. The result: “**clinicians who were ‘completely certain’ of the diagnosis antemortem were wrong 40% of the time**.” Here again, expert overconfidence is encouraged by their clients: “**Generally, it is considered a weakness and a sign of vulnerability for clinicians to appear unsure.** Confidence is valued over uncertainty and there is a prevailing censure against disclosing uncertainty to patients."
+
+---
+
+Olen käyttänyt jonkin verran aikaa pelaten sosiaalisen päättelyn pelejä (sellaisia kuin [Mafia](https://en.wikipedia.org/wiki/Mafia_(party_game)) ja [Vastarinta](https://en.wikipedia.org/wiki/The_Resistance_(game))). Näiden konspeti on lyhyesti "jotkut pelaajista ovat hyviksiä, jotkut pahiksia, hyvikset eivät tiedä ketkä ovat pahiksia, pelin edetessä tapahtuu asioita, hyvisten tavoite on saada selville pahikset, pahikset haluavat olla paljastumatta".
+
+On ollut kiinnostavaa seurata joitakin päättelyketjuja.
+
+Ehkäpä yleisin selkeä virhe on seuraava: Ihmiset välillä epähuomiossa pelaavat tavalla, joka on hyvin huono *riippumatta* heidän roolistaan. Vieläpä niin, että *kaikki tietävät* tämän olevan huono pelaus henkilön roolista riippumatta ([ja kaikki tietävät että kaikki tietävät, ja...](https://en.wikipedia.org/wiki/Common_knowledge_(logic))). Ja joskus jonkun toisen pelaajan reaktio tähän on
+
+"Tuo pelaaja toimi epäilyttävästi, joten hän on pahisten puolella."
+
+Tämä *kuulostaa* järkevältä (ja ilmeisesti myös vaikuttaa monesta järkevältä), mutta on täysin väärin. Olenkin kirjoittanut:
+
+"Hypoteesin todennäköisyyttä ei voi mitata yksinään. Hypoteesien vertailuun ja uskomusten päivittämiseen tarvitaan *vähintään* kaksi hypoteesia. Pisteytyksessä katsotaan sitä, kuinka hyvin hypoteesi selittää ilmiötä *verrattuna muihin hypoteeseihin*."
+
+Vertailemalla hypoteeseja "pelaaja on hyvis" ja "pelaaja on pahis" huomataan, ettei "epäilyttävä" pelaus ole (juurikaan) [evidenssiä](/epi/uskomusten_muutos) kumpaankaan suuntaan. Hypoteesit selittävät tilanteet suunnilleen yhtä hyvin (tai, no, huonosti). Joka tapauksessa pelaus on virhe. Ei ole vahvaa syytä uskoa, että pahikset tekevät todennäköisemmin ilmiselviä virheitä kuin hyvikset.
+
+Mistä väärä päätelmä johtuu? Parhaat veikkaukseni liittyvät [vahvistusharhaan](https://en.wikipedia.org/wiki/Confirmation_bias) (tulkitaan informaatiota vääristyneesti) ja ilmiöön "[horn effect](https://en.wikipedia.org/wiki/Horn_effect)" (yhden negatiivisen ominaisuuden omaava on negatiivinen myös muilla mittareilla).
+
+Sovellukset oikeaan elämään jätetään harjoitustehtäväksi lukijalle.
+
+---
+
+Toinen peleissä huomaamani ilmiö: välillä ihmiset häviönsä jälkeen kommentoivat, etteivät he olisi voineet pelata paremmin -- tilanne vain oli hävitty. Päivitystä ei tapahdu.
+
+"[Lopputulosvinoumassa](https://en.wikipedia.org/wiki/Outcome_bias) ihmiset arvioivat toiminnon hyvyyttä sen lopputuloksen perusteella, vaikka sitä ei voi etukäteen tietää. Jos veikkaat nopan silmäluvuksi tulevan kuutonen 99 % todennäköisyydellä, ja näin käy, ei se tarkoita ennustuksesi olleen hyvä. Optimipelaus on optimipelaus, vaikka se välillä huonon tuurin vuoksi häviää, ja tällöin ei kuulukaan päivittää.", kuuluu vastalause.
+
+Olen aika varma siitä, että nämä ihmiset eivät pelanneet optimaalisesti, mutta hyvä on, käsitellään lopputulosvinoumaa.
+
+Niin, mikä neuvoksi? Jos päivität näkemyksiäsi, niin sorrut lopputulosvinoumaan. Jos et, niin... no, et voi kehittyä.
+
+Päivityksen ja vastapäivityksen laki: jos voittamisen seurauksena päivittäisit uskomuksiasi suuntaan "pelasin hyvin" tai "näin kannattaa pelata", niin häviön seurauksena niiden tulee päivittyä suuntaan "pelasin huonosti" tai "ei kannata pelata noin". On koherentti positio todeta "noh, tämä on kaikki vain nopan heittoa, ei ole parempia tai huonompia pelauksia". On niin ikään koherentti positio todeta "ne voittavat, jotka pelaavat hyvin, ja ne häviävät, jotka pelaavat huonosti". Ei vain ole koherentti positio todeta voittaessa "voitin, koska pelasin hyvin" ja hävitessä "noh, kävi vain huono tuuri". (Tai toisin päin, mutta tämä vaikuttaa jostakin kumman syystä harvinaiselta.)
+
+Konsepteja "lopputulosvinouma" ja "päivittäminen" voi käyttää puolueellisesti, mutta jälleen kerran, uskomusten käsittelyn tulisi olla tasapuolista.
+
+Sovellukset oikeaan elämään jätetään jälleen harjoitustehtäväksi lukijalle.
+
+---
+
+
+Ote E. T. Jaynesin kirjasta "Probability Theory: The Logic of Science" (lihavointi minun):
+
+"**Worse, even the qualitative fact
+underlying data analysis -- cancellation of errors by averaging of data -- was not perceived by so great a mathematician as Leonhard Euler.**
+
+Euler (1749), trying to resolve the ‘Great Inequality of Jupiter and Saturn’, found himself
+with what was at the time a monstrous problem (described briefly in our closing Comments,
+Section 7.27). To determine how the longitudes of Jupiter and Saturn had varied over long
+times, he made 75 observations over a 164 year period (1582-1745), and eight orbital
+parameters to estimate from them.
+
+Today, a desk-top microcomputer could solve this problem by an algorithm to be given
+in Chapter 19, and print out the best estimates of the eight parameters and their accuracies, in about one minute (the main computational job is the inversion of an (8 x 8) matrix). Euler failed to solve it, but not because of the magnitude of this computation; he failed even to comprehend the principle needed to solve it. **Instead of seeing that by combining many observations their errors tend to cancel, he thought that this would only ‘multiply the errors’ and make things worse.** In other words, Euler concentrated his attention entirely on the worst possible thing that could happen, as if it were certain to happen – which makes him perhaps the first really devout believer in Murphy’s Law. Yet, practical people, with experience in actual data taking, had long perceived that this
+worst possible thing does not happen. On the contrary, averaging our observations has
+the great advantage that the errors tend to cancel each other."
+
+Pistää miettimään, kuinka korkealla jättiläisten olkapäät ovatkaan ja kuinka todennäköisyyslaskennan "itsestään selvät" tulokset ja implikaatiot ajattelulle eivät olekaan itsestäänselvyyksiä.
+
+---
+
+Tutkimuksessa ["Conflict between intuitive and rational processing: When people behave against their better judgment"](https://psycnet.apa.org/record/1994-36023-001) 79 yliopisto-opiskelijaa pyydettiin valitsemaan kahden karkkikulhon välillä. Ensimmäisessä kulhossa karkkeja oli kymmenen, joista yksi oli punainen ja loput valkoisia. Jälkimmäisessä kulhossa karkkeja oli sata, joista kokeesta riippuen punaisia oli 5-9 ja taas loput valkoisia. Karkit nostettiin sokkona, ja punaisen karkin nostamisesta sai rahapalkinnon (tai vaihtoehtoisesti, valkoisen karkin nostaminen johti rahan menettämiseen).
+
+Jotta tulokset eivät olisi riippuvaisia koehenkilön laskutaidoista, kulhoihin oli selkeästi merkitty punaisten karkkien prosenttiosuus.
+
+Viiden kokeen aikana koehenkilöistä 82 prosenttia valitsi jossakin kohtaa jälkimmäisen kulhon.
+
+Koehenkilöt perustelivat näkemyksiään kommenteilla kuten "Valitsin sen, jossa oli enemmän punaisia karkkeja, koska siellä oli enemmän tapoja saada voittaja, vaikka tiesin siellä olevan myös enemmän valkoisia ja että prosentit olivat minua vastaan."
+
+Lohdutuksena voin sanoa, että peräti 14 osallistujaa toimi virheettömästi.
+
+[End of text.]
+
+# Odotusarvo ja epävarmuus
+
+**Anna:** Lottoaminen ei kannata, koska siinä odotusarvo on negatiivinen.
+
+**Bella:** Mitä?
+
+**Anna:** Niin siis odotusarvo lasketaan summaamalla toden--
+
+**Bella:** Minä kyllä tiedän [miten odotusarvo lasketaan](https://en.wikipedia.org/wiki/Expected_value#Examples), mutten näe, miten se liittyy lottoamisen kannattavuuteen mitenkään.
+
+**Anna:** Yleisesti epävarmuutta käsitellessä kannattaa valita vaihtoehto, jolla on suurin odotusarvo. Lottoamisen tapauksessa odotusarvo on negatiivinen, ja lottoamatta jättämisessä se on nolla, joten ei kannata lotota.
+
+**Bella:** Miksi? Siis olen samaa mieltä, että lototessa odotusarvollisesti menettää rahaa, mutta miksi vaihtoehto kannattaa valita odotusarvon mukaan?
+
+**Anna:** ...koska silloin keskimäärin voittaa eniten? Se on mitä odotusarvo tarkoittaa: mikä on keskimääräinen lopputulos.
+
+**Bella:** Kuulostaa epäilyttävästi [mediaanin](https://en.wikipedia.org/wiki/Median) määritelmältä -- mediaani nimenomaan on keskimmäinen lopputulos niin, että 50 % todennäköisyydellä saat enintään niin hyvän tuloksen kuin mediaani ja 50 % todennäköisyydellä vähintään niin hyvän. Miksemme valitse vaihtoehtoa mediaanin mukaan? Tai jonkin muun mittarin mukaan?
+
+**Anna:** *Keskimääräinen* tulos ei ole sama kuin *keskimmäinen* tulos. Kuvittele esimerkiksi peli, jossa 51 prosentin todennäköisyydellä häviät euron, mutta 49 % todennäköisyydellä voitat sata euroa. Mediaani on euron häviö, ja todennäköisemmin häviät kuin voitat, mutta peliin kannattaa silti osallistua.
+
+**Bella:** Hmm, kieltämättä olen tästä samaa mieltä. En silti näe, miksi valita pelit nimenomaan odotusarvon perusteella...
+
+**Bella:** ...oikeastaan, odotusarvokaan ei tunnu oikealta mittarilta.
+
+**Anna:** Kuinka niin?
+
+**Bella:** Sinulle annetaan kaksi vaihtoehtoa. Ensimmäinen vaihtoehto: saat varmasti 10 miljoonaa euroa. Toinen vaihtoehto: saat 51 prosentin todennäköisyydellä 20 miljoonaa euroa ja 49 prosentin todennäköisyydellä et mitään. Minusta tuntuu, että kannattaa valita ensimmäinen, vaikka toisessa on hieman isompi odotusarvo.
+
+**Anna:** Niin, oikeasti [ei kannata maksimoida rahamäärää vaan onnellisuutta](/epi/filosofiatila). 20 miljoonaa euroa ei tee sinua tuplasti niin onnelliseksi kuin 10 miljoonaa euroa. Yleinen nyrkkisääntö sanoo, että onnellisuus käyttäytyy logaritmisesti rahan mukana -- siis esimerkiksi palkan tuplaaminen kasvattaa onnellisuutta suunnilleen yhtä paljon aloituspalkasta riippumatta. Odotusarvoa laskiessa tulee siis ottaa logaritmit rahasummista. Tällä mittarilla laskettuna ensimmäinen vaihtoehto, varma 10 miljoonaa euroa, on parempi.
+
+**Bella:** Eikö yksi skenaario ole se, jossa et saa yhtään rahaa? Ja logaritmi nollasta ei ole määritelty.
+
+**Anna:** Niin no sitä ei kuulu ottaa huomioon, koska nollan euron saaminen tai menettäminen ei vaikuta mitenkään.
+
+**Bella** (epäillen): ...aivan. En ole vieläkään ihan vakuuttunut. Entä sellainen peli, jossa 50% todennäköisyydellä menettää 100 000 euroa ja 50% todennäköisyydellä voittaa 200 000 euroa. Kannattaako siihen osallistua?
+
+**Anna:** Logaritmin odotusarvo on, odotas...
+
+\*Anna huomaa, että logaritmit ja negatiiviset arvot eivät ole yhteensopivia\*
+
+**Anna:** ...niin tosiaan, pelissä ei tule ottaa logaritmia voitoista ja häviöistä, vaan sinun *pelin jälkeisestä varallisuudestasi*. Osallistumisen kannattavuus riippuu tällöin omasta varallisuudestasi: jos olet hyvin rikas, niin kannattaa osallistua, ja jos taas köyhempi, niin ei kannata. Odota, minä voin laskea tarkan kohdan, jossa osallistuminen kannattaa.
+
+**Bella:** Ei tarvitse, tajusin kyllä idean. En siltikään usko, että tämä toimii. Jos varallisuutesi on sata euroa, kai sinun kuitenkin kannattaa osallistua peliin, jossa prosentin todennäköisyydellä menetät ja 99 % todennäköisyydellä voitat sata euroa.
+
+**Anna:** Niin no tämäkin on vain malli -- oikeassa elämässä on mahdollista olla velkaa ja näin edes päin. Eli olen samaa mieltä, että peliin kannattaa osallistua.
+
+**Bella:** Kuule, tämä alkaa kuulostaa siltä, että aina tilanteen tullen vaihdat "mallia" sopivasti niin, että saat odotusarvon laskemisella oikean vastauksen. Tällä saa tietysti rationalisoitua minkä tahansa vaihtoehdon! Valitaan vain "malliksi" sellainen, että siinä "oikean" vaihtoehdon valitseminen vastaa arvoa 1 ja "väärän" valitseminen arvoa -1, jolloin odotusarvon maksimointi antaa oikean lopputuloksen. Tämä ei ole validi perustelu odotusarvon käyttämisen puolesta.
+
+**Anna:** Kyllä odotusarvon käyttämiselle on ihan oikeita perusteluja ja hyötyjä.
+
+**Bella:** Kerro toki lisää.
+
+**Anna:** Kuvitellaan, että sinulle annetaan erilaisia pelejä pelattavaksi. Ehkä yhdestä saat varmasti 2 euroa per pelikerta, toisen pelaaminen maksaa euron mutta siinä voittaa 50% todennäköisyydellä 10 euroa, kolmannessa heitetään noppaa ja saat silmälukujen verran euroja ja niin edelleen. Kuvitellaan myös, että saat pelata pelejä *niin monta kertaa kuin haluat*. Mitä pelejä sinun kannattaa pelata?
+
+**Anna:** Vastaus: sitä, jolla on suurin odotusarvo. Nimittäin *monen* pelikerran jälkeen sinun *keskimääräinen* voittosi, siis kokonaisvoitto jaettuna pelikertojen määrällä, [lähestyy hyvin todennäköisesti odotusarvoa](https://en.wikipedia.org/wiki/Law_of_large_numbers). Esimerkiksi noppapelin pelaaminen sata kertaa antaa sinulle keskimäärin noin 3,5 euroa per peli. Mitä enemmän pelejä pelaat, sitä parempi tämä arvio on. Ja siten suuremman odotusarvon pelejä pelaamalla saat *hyvin* todennäköisesti enemmän rahaa kuin pienemmän odotusarvon peleistä.
+
+**Bella:** Kieltämättä tässä on järkeä. Entä jos kyse on vain yksittäisestä tilanteesta? Harvoinhan sama tilanne toistuu kahdesti.
+
+**Anna:** Raja "saman" ja "eri" tilanteen välillä on häilyvä. Halutessasi voit ajatella, että 38. pelikierros on "eri" tilanne kuin 37. pelikierros, mutta tämä ei muuta sitä, miten sinun kannattaa toimia. Toisessa ääripäässä voit halutessasi nähdä kaikki epävarmuutta koskevat tilanteet vain kysymyksenä siitä, *miten sinä käsittelet epävarmuutta*. Ja jos sinun tarvitsee valita yhtenäinen periaate riskinottoon, sen kannattanee muistuttaa odotusarvon maksimointia.
+
+**Bella:** En ihan ymmärrä.
+
+**Anna:** Sinä olet käytännössä aina [epävarma uskomuksistasi](/epi/probabilistinen_ajattelu) ja siten sinulle tulee vastaan hyvin erilaisia epävarmuutta sisältäviä tilanteita. Kannattaako minun juosta bussipysäkille? En haluaisi juosta, mutta haluaisin kyllä ehtiä seuraavaan vuoroon. Tarvitsenko ulkona takkia? Siellä saattaa olla kylmä, mutten halua turhaan ottaa takkia mukaan. Kannattaako minun käydä hammaslääkärissä tarkastuksessa? Toisaalta se maksaa, mutta toisaalta ehkä he huomaavat jotakin terveydelleni vaarallista. Haenko minä tuonne töihin? Se vaatii vähän vaivaa, ja todennäköisesti minua ei valita, mutta olisin todella tyytyväinen, jos saisin paikan.
+
+**Anna:** Vaikka nämä tilanteet ovat hyvin erilaisia, niillä on yksi yhdistävä tekijä: se, miten sinä käsittelet ne. Ja siten oikea maailma on samankanltainen kuin aiempi esimerkkini peleistä: pitkällä aikavälillä keskimääräinen voittosi määräytyy valittujen vaihtoehtojen odotusarvojen perusteella. Kannattaa siis valita sellaiset vaihtoehdot, joilla on iso odotusarvo.
+
+**Bella:** Niin siis minkä odotusarvo?
+
+**Anna:** ...no tiedäthän, rahan tai onnellisuuden.
+
+**Bella:** Ja miten se lasketaan? Äläkä vain ala puhumaan mistään logaritmeista.
+
+**Anna:** Takin ottamisen tapauksessa voit miettiä, kuinka ikävää on olla ulkona kylmässä ilman takkia *verrattuna* siihen, että otit takin turhaan mukaan. Jos se on vaikkapa kolminkertaisesti niin ikävää, niin sinun kannattaa ottaa takki mukaan, jos kylmän todennäköisyys on yli 25 prosenttia, ja olla ottamatta, jos se on alle 25 prosenttia.
+
+**Bella:** Mitä tarkoittaa, että toinen asia on kolme kertaa niin ikävä kuin ensimmäinen?
+
+**Anna:** ...no tiedäthän, että sinusta olisi yhtä ikävää jos ensimmäinen asia tapahtuisi kolmesti kuin että toinen asia tapahtuisi kerran. Tai probabilistisesti, sinusta olisi yhtä ikävää että toinen asia tapahtuu todennäköisyydellä 1/3 kuin että ensimmäinen tapahtuu todennäköisyydellä 100%.
+
+**Bella:** Aivan kuin hyvyyttä mitattaisiin odotusarvolla.
+
+**Anna:** Kyllä, juuri niin!
+
+**Bella:** Oletko koskaan kuullut sanasta "kehäpäätelmä"?
+
+\*Keskustelua etäältä seurannut Camilla astuu esiin\*
+
+**Camilla:** Kuulostaa siltä, että on minun vuoroni puhua.
+
+**Bella:** Jätän yllättävän ja dramaattisen sisääntulon huomiotta ja annan sinulle vuorosi puhua.
+
+**Camilla:** Kiitos. Annalla on hyviä pointteja, mutta... häneltä tuntuu puuttuvan pohja, jolle muu päättely perustuu. Tämän vuoksi odotusarvomatematiikan yhdistäminen oikeaan maailmaan onnistui heikosti. Selitykset olivat ikään kuin "[vähän sinne päin](/epi/sumuiset_ajatukset)".
+
+**Camilla:** Toiminta toistetuissa peleissä on yksi motivaatio, jonka odotusarvoille voi esittää. Kieltämättä se tarjoaa hyvän intuition. En kuitenkaan pidä sitä *keskeisimpänä* tai *syvimpänä* syynä odotusarvojen tutkimiselle. Kenties fundamentaalein syy odotusarvojen käyttämiselle on, että *koherenteista preferensseistä ja uskomuksista seuraa, että eri preferensseillä on kvantifioitavat painoarvot ja vaihtoehtoja vertaillaan probabilististen odotusarvojen perusteella*.
+
+**Bella:** Preferoisin hitaampaa selitystä.
+
+**Anna:** Kuin myös.
+
+**Camilla:** Se ei ole ihan lyhyt tarina. Tällaisia aiheita on [vaikea kommunikoida suullisesti](/epi/lokaali_kommunikaatio), mutta voin yrittää, kunhan sallitte minulle pari minuuttia monologiaikaa.
+
+**Camilla:** Annan selityksessä *oletettiin*, että asioita voi verrata toisiinsa kvantitatiivisesti -- että toinen asia on kolme kertaa niin huono kuin ensimmäinen -- ja sitten todettiin, että eri vaihtoehtoja ja preferenssejä kannattaa painottaa odotusarvon mukaan. Kuten Bella huomautti, tämä ei ole vielä kovin tyydyttävä selitys: miksi olettaa ylipäätään, että asioita voi verrata kvantitatiivisesti? Myös odotusarvojen perustelu toistettujen pelien kautta jättää epäilyn varaa sille, mikä on "uniikki" tilanne ja mikä "toistettu".
+
+**Camilla:** Itse kertoisin tarinan seuraavasti.
+
+\*Camilla vetää syvään henkeä\*
+
+**Camilla:** Sinulla on maailmaa koskevia uskomuksia. Näissä uskomuksissa on epävarmuutta. Toisaalta näitä epävarmuuksia voi vertailla: pidät joitain asioita "enemmän mahdollisina" kuin toisia. Nämä uskomukset noudattavat myös joitain ilmeisiä ehtoja: esimerkiksi sama väite muotoiltuna eri tavalla on edelleen yhtä "mahdollinen", tai tilanne "sekä A että B tapahtuvat" on enintään niin "mahdollinen" kuin tilanne "A tapahtuu".
+
+*Ainoa* nämä (ja muutaman muun luontevan ehdot) toteuttava tapa käsitellä epävarmuutta on tavallinen todennäköisyyslaskenta. Mikä tahansa muu tapa johtaa välttämättä näiden luontevien ehtojen rikkomiseen.
+
+**Bella:** Onko tämän tarkoitus olla itsestäänselvää?
+
+**Camilla:** Ei.
+
+**Bella:** ...joten aiotko perustella väitettäsi?
+
+**Camilla:** En nyt. Se on vielä pidempi tarina. Voin kyllä suositella sinulle [yhtä kirjaa](/epi/kunnolla), jossa kerrotaan tästä.
+
+**Bella:** Joka tapauksessa, olit pitämässä monologia. Epävarmuuden käsitteleminen todennäköisyyksien avulla käy järkeen. Entä ne preferenssit?
+
+**Camilla:** Sinulla on joitakin preferenssejä: voit esimerkiksi tykätä omenasta enemmän kuin banaanista (tai siitä, ettei sinulla ole ruokaa ollenkaan). Toisaalta uskomuksesi ovat epävarmoja. Preferenssisi silti, tai nimenomaan *siksi*, ulottuvat tilanteisiin, joissa olet epävarma. Et esimerkiksi tiedä *varmasti* saavasi kaupasta omenoita (ehkä kauppa on poikkeuksellisesti kiinni tai sieltä on omenat loppu), mutta käyt silti kaupassa, koska sinun tekee mieli syödä omena ja uskot suurella todennäköisyydellä saavasi kaupasta omenan.
+
+Kuten uskomuksilla, myös preferensseillä on joitain luontevia ehtoja, joita niiden olisi hyvä noudattaa. Jos esimerkiksi preferoit vaihtoehtoa A vaihtoehdon B yli ja vaihtoehtoa B vaihtoehdon C yli, niin varmaankin preferoit vaihtoehtoa A vaihtoehdon C yli. Tai jos 100% todennäköisyys saada omena on parempi kuin 100% todennäköisyys saada banaani, on varmaankin 50% todennäköisyys saada omena parempi kuin 50% todennäköisyys saada banaani (jos muissa tapauksissa et saa mitään).
+
+**Camilla:** *Ainoa* nämä (ja muutaman muun luontevan ehdot) toteuttava tapa käsitellä preferenssejä epävarmojen vaihtoehtojen yli on odotusarvon kautta.
+
+Tarkemmin sanottuna: jos uskomuksesi ja preferenssisi toteuttavat niitä koskevat luontevat ehdot, niin tästä voi *johtaa* sen, että suhteutat asioita kvantitatiivisesti toisiinsa ja maksimoit kvantitatiivisten preferenssien odotusarvoa.
+
+Ja ei, tämäkään ei ole itsestäänselvyys.
+
+**Camilla:** Missään kohtaa emme *olettaneet*, että uskomuksesi vastaavat todennäköisyyksiä, että pystyt kvantifioimaan preferenssejäsi tai että painotat epävarmoja tilanteita niiden todennäköisyyksien suhteessa. Nämä asiat *seuraavat* siitä, että muodostat uskomuksiasi järkevästi ja käsittelet epävarmuutta ja preferenssejä koherentisti.
+
+**Bella:** Tämä kuulostaa järkevältä -- ainakin selvästi vakuuttavammalta kuin Annan selitys. En tosin ihan vieläkään ymmärrä, mikä on se minkä odotusarvoa maksimoidaan.
+
+**Camilla:** Sinun preferenssiesi toteutumista. Jos tämä vastaus ei tyydytä, niin saatat odottaa odotusarvoilta enemmän kuin mitä niiden on tarkoitus tarjota. Nämä argumentit eivät kerro, *mitä preferenssisi ovat*. Se on sinun asiasi. Matematiikka ei sano, että sinun tulee tykätä omenoista enemmän kuin banaaneista. Sen sijaan nämä argumentit kertovat, *miten preferenssejä tulee käsitellä epävarmuuden tilassa*.
+
+Jos et toimi tavalla, joka vastaa odotusarvon maksimoimista, niin saat vähemmän niitä asioita, joita haluaisit saada enemmän. Koherenssiehtojen rikkomisella on *seurauksia*, ja ne ovat *huonoja seurauksia*.
+
+**Bella:** Hmm, ajattelinkin kysyä siitä seuraavaksi: miksi oikeastaan välitämme koherenssiehdoista? Mikä siinä menee pieleen, jos niitä rikkoo?
+
+**Camilla:** Riippuu miten niitä rikkoo! Ihmisillä on monia eri taipumuksia, jotka saavat heidät toimimaan epäjohdonmukaisesti ja joiden seurauksena he saavat vähemmän sitä mitä he haluavat. Tämä taitaa olla helpointa selittää vain antamalla muutama esimerkki, joissa ihmiset toimivat huonosti. Odotas, olen kirjoittanut tekstin aiheesta...
+
+[End of text.]
+
+# Epävarmuutta ja epäonnistumisia II
+
+Seuraavat kolme esimerkkiä ihmisten valinnoista epävarmuuden alla ovat Kahnemanin ja Tverskyn vuoden 1986 artikkelista "[Rational Choice and the Framing of Decisions](https://doi.org/10.1007/978-3-642-74919-3_4)".
+
+Ensimmäisessä ongelmassa koehenkilöitä pyydettiin valitsemaan kahden lääketieteellisen toimenpiteen välillä. Osalle henkilöistä annettiin tieto toimenpiteiden seurauksista selviytymismäärien kautta, osalle kuolemien kautta.
+
+"Problem 1 (Survival frame)
+
+Surgery: Of 100 people having surgery 90 live through the
+post operative period, 68 are alive at the end of the first
+year and 34 are alive at the end of five years.
+
+Radiation Therapy: Of 100 people having radiation therapy
+all live through the treatment, 77 are alive at the end of
+the first year and 22 are alive at the end of five years.
+
+Problem 1 (Mortality frame)
+
+Surgery: Of 100 people having surgery 10 die during surgery
+or the post-operative period, 32 die by the end of the first
+year and 66 die by the end of five years.
+
+Radiation Therapy: Of 100 people having radiation therapy,
+none die during treatment, 23 die by the end of the first
+year and 78 die by the end of five years."
+
+Säteilyhoidon valitsi ensimmäisessä muotoilussa 18 % vastaajista, toisessa muotoilussa 44 % -- vaikka annettu informaatio on täsmälleen sama.
+
+---
+
+Toinen ongelma. Kunkin vaihtoehdon lopussa on kerrottu vaihtoehdon valinneiden henkilöiden osuus.
+
+"Problem 2 (N = 150). Imagine that you face the following
+pair of concurrent decisions. First examine both decisions,
+then indicate the options you prefer.
+
+Decisions (i) Choose between:
+A. a sure gain of $240 [84%]
+B. 25% chance to gain $1000 and 75% chance to gain nothing
+[16%]
+
+Decision (ii) Choose between:
+C. a sure loss $750 [13%]
+D. 75% chance to lose $1000 and 25% chance to lose nothing
+[87%]"
+
+Ihmiset siis keskimäärin karttavat riskiä, jos kyse on voitoista, ja ottavat riskejä, jos kyse on häviön välttämisestä.
+
+Huomaa, että yhdistelmä A+D on sama kuin
+
+"75 % todennäköisyys menettää $760 ja 25 % todennäköisyys voittaa $240"
+
+ja yhdistelmä B+C on sama kuin
+
+"75 % todennäköisyys menettää $750 ja 25 % todennäköisyys voittaa $250",
+
+eli B+C on selvästi parempi kuin A+D -- mutta silti suurin osa valitsi vaihtoehdon A+D. Tämä on vain yksi esimerkki siitä, miten odotusarvon antamasta tuloksesta poikkeaminen johtaa arvon menettämiseen.
+
+---
+
+Samoja koehenkilöitä pyydettiin vastaavaan seuraavaan kolmeen tehtävään (tässä järjestyksessä).
+
+"Problem 9 (N = 77). Which of the following options do you
+prefer?
+A. a sure gain of $30 [78%]
+B. 80% chance to win $45 and 20% chance to win nothing [22%]
+
+Problem 10 (N = 81). Which of the following options do
+you prefer?
+C. 25% chance to win $30 and 75% chance to win nothing [42%]
+D. 20% chance to win $45 and 80% chance to win nothing [58%]
+
+Problem 11 (N = 85): Consider the following two stage game.
+In the first stage, there is a 75% chance to end the game
+without winning anything, and a 25% chance to move into
+the second stage. If you reach the second stage you have a
+choice between:
+
+E. a sure win of $30 [74%]
+F. 80% chance to win $45 and 20% chance to win nothing [26%]
+
+Your choice must be made before the outcome of the first stage
+is known."
+
+Ihmisillä on taipumusta valita varmoja vaihtoehtoja, silloinkin kuin varmalta näyttävä vaihtoehto (E) on todellisuudessa epävarma. Tehtävät 10 ja 11 ovat muotoilua vaille identtiset, mutta tehtävässä 11 eri vaihtoehtojen valinneiden määrät muistuttavat epäilyttävästi tehtävän 9 osuuksia.
+
+---
+
+Rottenstreichin ja Hseen tutkimuksessa "[Money, kisses, and electric shocks: on the affective psychology of risk](https://doi.org/10.1111/1467-9280.00334)" vastaajille esiteltiin hypoteettinen koe, jossa koehenkilölle annettaisiin sähköisku jollakin todennäköisyydellä. Iskua kuvailtiin sanoin "short, painful, but not dangerous electric shock". Eri vastaajille ilmoitettiin eri todennäköisyyksiä iskun toteutumiselle: 1, 99 tai 100 prosenttia.
+
+Kuinka paljon olet valmis maksamaan, jotta et joudu osallistumaan kokeeseen?
+
+Mediaanivastaukset olivat 7 dollaria, 10 dollaria ja 19,86 dollaria.
+
+Rahamäärät ovat siis hyvin epäsuhteessa todennäköisyyksiin. Esitetty selitys ilmiölle on, että ihmisten vastaukset perustuvat enimmäkseen sähköiskuun liittyvään tunnereaktioon, ja todennäköisyyksien vaikutus näihin reaktioihin ei ole (läheskään) lineaarinen.
+
+Minua kiinnostaisi kokeen muunnelma, jossa ihmisiltä kysyttäisiin ensin vastausta 100 prosentin kysymykseen, sitten 1 prosentin kysymykseen, taas 1 prosentin kysymykseen, ja taas...
+
+---
+
+Kuvitellaan seuraava peli: Edessäsi on painotettu kolikko (tai tietokoneen satunnaislukugeneraattori), josta tulee 60 prosentin todennäköisyydellä kruuna ja 40 prosentin todennäköisyydellä klaava. Sinulla on alussa 25 euroa. Voit joka kierroksella ottaa osan rahamäärästäsi ja laittaa sen panokseksi. Jos veikkaat kolikon lopputuloksen oikein, jäät panoksesi verran voitolle, ja jos väärin, menetät panoksesi.
+
+(Esimerkiksi 10 euron panoksella oikein arvattuasi pottisi on 35 euroa, väärin arvattuasi 15 euroa.)
+
+Sinulla on puoli tuntia aikaa, jonka aikana saat suorittaa operaation niin monta kertaa kuin ehdit. Miten toimit?
+
+Haghanin ja Deweyn vuoden 2016 kokeessa "[Rational Decision-Making under Uncertainty: Observed Betting Patterns on a Biased Coin](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2856963)" 61 koehenkilöä osallistuivat tällaiseen peliin, paitsi voitot rajoitettiin 250 euroon. Kokelaat koostuivat pitkälti taloustieteen ja finanssialan yliopisto-opiskelijoista. Miten kävi?
+
+28 prosenttia joutui nollille.
+
+67 prosenttia löi vetoa klaavan puolesta vähintään kerran.
+
+48 prosenttia teki näin yli viisi kertaa.
+
+Vertailun vuoksi: laittamalla aina panokseksi 10-20 prosenttia rahamäärästään saa noin 95 prosentin todennäköisyydellä täydet 250 euroa, kun yhden kierroksen kestoksi oletetaan kuusi sekuntia (ja kun veikkaa aina kruunaa). Vaihtoehtoisesti käyttämällä aina 5 euron panosta pääsee maksimiin noin 75 % todennäköisyydellä.
+
+Käytännössä 21 prosenttia osallistujista ylsi maksimiin.
+
+Testasin itse vastaavaa peliä matematiikkaan orientoituineilla lukiolaisilla ja yliopisto-opiskelijoilla (huomattavasti pienemmillä panoksilla). Kymmenestä henkilöstä kolme päätyivät nollille, eli hyvinkin vastaava lukema kuin tutkimuksessa. Oma toteutukseni oli tosin helpompi siltä osin, ettei siinä voinut lyödä vetoa epätodennäköisemmän vaihtoehdon puolesta.
+
+[End of text.]
+
+# Kunnolla tehty todennäköisyyslaskenta
+
+Käsitykseni todennäköisyyksistä ja tilastotieteestä muuttui, kun luin E. T. Jaynesin kirjan "Probability Theory: The Logic of Science".
+
+Tajusin asioita, jotka nyt tuntuvat ilmeisiltä, mutta jotka tosiaan eivät ole ilmeisiä: uskomusten vahvuutta mitataan todennäköisyyksillä, uskomukset muuttuvat uuden informaation myötä (systemaattisella tavalla), todennäköisyyslaskennan säännöt kertovat miten uskomuksia kuuluu muodostaa, "satunnaisuus" on katsojan silmissä...  Näiden asioiden "ilmeisyydestä" ja keskeisyydestä huolimatta näitä ei oikein osata eikä opeteta. Esimerkiksi itselleni todennäköisyyslaskenta ei ollut aivan vierasta kirjaa lukiessani -- olin käynyt muutaman kurssin maisteritason todennäköisyyskursseja -- mutta silti en ollut näitä perusasioita käsittänyt.
+
+Yksi kirjan kulmakivistä on ns. [Cox'n lause](https://en.wikipedia.org/wiki/Cox%27s_theorem), jossa johdetaan todennäköisyyslaskennan säännöt hyvin heikoista uskomuksia koskevista ehdoista. Todennäköisyyslaskennan säännöt eivät ole vain *suosituksia*: ne ovat *lakeja*, jotka kertovat, miten uskomusten muodostaminen ideaalisti toimii.
+
+Ja kun perustukset on kunnossa, voi lähteä rakentamaan laajempaa kuvaa siitä, miltä hyvä päättely näyttää. Olen koonnut joitakin tällaisia ("ilmeisiä") ohjeita [toisaalla](/epi/miksi_todennakoisyydet) -- tarkoitan siis sellaisia ohjeita kuten
+
+"Evidenssin poissaolo on evidenssiä poissaololle."
+
+"Esimerkki hypoteesista tukee hypoteesia."
+
+"Saman informaation tarjoaminen voi perustellusti johtaa ihmisten uskomusten eriämiseen."
+
+"Pienelläkin määrällä dataa voi perustellusti tehdä pieniä päivityksiä."
+
+En ollut ajatellut, että on olemassa viitekehys, josta voi johtaa tällaisia ohjeita systemaattisesti.
+
+Jaynes käsittelee kirjassaan muutaman luvun ajan verrattain yksinkertaisia ja tunnettuja todennäköisyyslaskennan tilanteita hyvin varovaisesti. Myönnän välillä turhautuneeni, kun Jaynes tuntui jankkaavan pointteja "eri tavalla laskemisen pitäisi aina antaa sama vastaus", "pitää muistaa käyttää kaikkea käsillä olevaa informaatiota" ja muita [ilmeisiä ohjeita](/epi/ilmeiset_ohjeet). Turhautumistani tosin vähensi se, että kirjassa käsiteltiin esimerkkejä siitä, kuinka ihmiset välillä lipsuvat näistä ohjeista huonoin seurauksin.
+
+Todennäköisyyslaskenta tuntuu hankalalta matematiikan osa-alueelta opettaa, koska ihmisillä tuppaa olemaan aiheesta joitakin intuitioita jo valmiiksi, ja jotkin näistä intuitioista ovat vääriä. (Verrattuna sanotaan algebralliseen lukuteoriaan, jossa ihmisillä ei vaikuta olevan syvällä olevia väärinymmärryksiä.) Juuri tämän takia kannattaa käydä perusteet huolellisesti läpi: tämän jälkeen ei saa pelkästään johdettua maalaisjärjen tarjoamia ilmeisiä ohjeita systemaattisesti, vaan pääsee myös eroon niistä maalaisjärjen ilmeisistä ohjeista, jotka ovat väärässä.
+
+Tämä lienee hyvä hetki mainita, että yksi edellä mainitsemistani "ilmeisistä" ohjeista on epätosi.
+
+Hempelin paradoksi kuuluu seuraavasti:
+
+"Hypoteesi 'kaikki varikset ovat mustia' on loogisesti ekvivalentti hypoteesin 'kaikki epämustat asiat ovat epävariksia' kanssa, ja tätä hypoteesia tukee huomio valkoisesta kengästä."
+
+Mutta tietenkään kenkien värit eivät liity mitenkään lintujen väreihin! On selvää, että jokin tässä menee pieleen.
+
+(Vai onko?)
+
+Olenkin kirjoittanut: Hypoteesin todennäköisyyttä ei voi mitata yksinään. Hypoteesien vertailuun ja uskomusten päivittämiseen tarvitaan *vähintään* kaksi hypoteesia. Pisteytyksessä katsotaan sitä, kuinka hyvin hypoteesi selittää ilmiötä *verrattuna muihin hypoteeseihin*. Ei ole merkityksellistä puhua siitä, onko jokin asia evidenssiä annetulle hypoteesille, ellei ole vähintään yhtä muuta vertailtavaa hypoteesia. Väite "esimerkki hypoteesista tukee hypoteesia" ei siksi ole mielekäs, saatikka tosi.
+
+Ja Hempelin paradoksi ratkeaa. Yksi hypoteesi olkoon "maailmassa on miljoona lintua, joista 100 ovat variksia, ja kaikki linnut ovat mustia". Toinen hypoteesi olkoon "maailmassa on miljoonaa lintua, joista 100 000 ovat mustia variksia ja 900 000 valkoisia variksia". Jos havaitset linnun, ja toteat sen olevan musta varis, on tämä 1 : 1000 -evidenssiä toisen hypoteesin puolesta (ensimmäinen maailma laittaa tälle 0,01 % panoksistaan, toinen 10 %), eli että kaikki varikset eivät olekaan mustia.
+
+Onkohan oikeassa elämässä tilanteita, joissa testataan vain yksittäistä hypoteesia irrallisena muista?
+
+Jaynesin kirjan parhaimpia osia on sen kritiikki tieteessä käytettäviä todennäköisyyslaskennan menetelmiä kohtaan.
+
+Jo perustavanlaatuinen näkökulma "tehdään tilastollinen testi hypoteesin kumoamiseksi (tai todetaan, että se ei kumoutunut)" on virheellinen: taas, hypoteesien vertailuun tarvitaan vähintään kaksi hypoteesia (ja hypoteeseja ei "kumota", vaan niiden todennäköisyydet muuttuvat). Kyllä, käytännössä tilastollisilla testeillä saadaan kuvaa hypoteesin pätevyydestä ja riittävän pienen todennäköisyyden omaavat hypoteesit kannattaa sivuuttaa -- mutta nämä ovat *approksimaatioita*, "jotakin sinne päin" eikä *normatiivisesti oikea* tapa käsitellä hypoteeseja ja epävarmuutta.
+
+Joskus tietysti kätevät ja nopeat (mutta hyvin epätäydelliset) lähestymistavat toimivat riittävän hyvin, joskus taas eivät. Erityisesti yleinen mittari nollahypoteesin kumoamisesta ja p-arvoista kertoo vähän itse tutkittavasta ilmiöstä -- "[the null hypothesis is always false](https://gwern.net/everything)" -- eikä erityisesti kerro vaikutuksen *suuruudesta*, mikä on lopulta usein se mistä olemme kiinnostuneita.
+
+Ennen kirjan lukemista olin ollut hämmentynyt tilastollisista testeistä -- en ymmärtänyt, miten testit on luotu, miksi ne oikeastaan toimivat ja mikä matemaattinen järjestelmä niiden taustalla on. Kirjan luettuani sain vastauksia, vaikkakin ne olivat erityyppisiä kuin odotin. Testien ei ollut tarkoituskaan antaa yleistä lähestymistapaa, jolla laskea hypoteesien todennäköisyyksiä, vaan vain tarjota "käytännössä toimivia" työkaluja. [Toistettavuuskriisin](https://gwern.net/replication) valossa luottoni tähän "käytännössä toimivuuteen" on kuitenkin heikentynyt. Merkittävänä syynä syntyneisiin ongelmiin on aikojen saatossa tehdyt todennäköisyyksien tulkintaan liittyvät [virheet](https://en.wikipedia.org/wiki/Frequentist_probability), ja huonoista perustuksista kärsii koko rakennus. Valitettavasti yksi rakennuksen huoneista on tiede.
+
+[End of text.]
+
+# Mihin matematiikkaa tarvitaan?
+
+Mihin matematiikkaa tarvitaan?
+
+Olen (ja ehkä sinäkin olet) kuullut tätä kysyttävän kerran jos toisenkin, pääosin matematiikan opetuksen kontekstissa.
+
+Joskus tämä kysymys esitetään tilanteessa, jossa henkilö ei halua opetella matematiikkaa. On yläkoulun matematiikan tunti, joku turhautuu ja kysyy: "mihin minä tarvitsen tätä?" Tällöin kysymyksen esittäminen koskee pikemminkin ihmisen suhtautumista matematiikkaan kuin matematiikan hyödyllisyyttä. En muista kenenkään kysyneen hyödyllisyydestä esimerkiksi musiikin tunnilla, enkä usko tämän johtuvan musiikin ylivoimaisesta hyödyllisyydestä vaan siitä, että ihmiset viihtyivät musiikin tunneilla paremmin.
+
+Toisaalta matematiikan hyödyt, jos niitä siis tosiaan on, kieltämättä ovat epäilmeisempiä kuin vaikkapa englannin opiskelun. Kysymys on siten järkevä, ja se ansaitsee järkevän vastauksen.
+
+Ja... olen ollut aika tyytymätön kuulemiini vastauksiin.
+
+En oikeastaan ole kuullut kovin monia vastauksia. Jotakin "ymmärrät sitten kun olet vanhempi" -suuntaista on tarjottu, kuten myös klassikkoa "kaupan kassalla..." Vakavammat vastaukset yleensä pyörivät tiettyjen sovellusten ympärillä: puhutaan vakuutusmatemaatikoista, tutkijoista tai siitä, kuinka tämä tietty henkilö tarvitsee työssään matematiikkaa tässä tietyssä asiassa. Nämä eivät tunnu kovin [symmetriaa rikkovilta](/epi/symmetrian_rikkominen) argumenteilta: yhtä vahvoja vastauksia saa rakennettua monen vähemmänkin opetetun aiheen kohdalla. Matematiikkaa kuitenkin opetetaan useampia tunteja viikossa, [joten](/epi/tehokas_maailma) se varmaankin on hyödyllisempää kuin nuo monet muut asiat -- mutta miksi?
+
+Sitten on toki vastaus "matematiikka opettaa ajattelemaan". Ja ymmärrän hyvin, jos tämä ei vakuuta turhautunutta yläkoululaista -- en koe, että koulumatematiikka onnistuu ajattelemaan opettamisessa.
+
+No mikä sitten on "oikea" vastaus? Mihin sitä matematiikkaa tarvitaan?
+
+---
+
+On monenlaisia tapoja, joilla ihmisten ajattelu menee pieleen. Tässä joitakin omissa teksteissäni esiintyviä aiheita:
+
+- Ajattelu pohjautuu binäärisiin kategorioihin, kun oikea näkökulma on [jakaumat](/epi/binaarinen_jakauma)
+- [Kvantifioinnin](/epi/kvantifiointi) puute, jo konkreettisissa rahaan liittyvissä tilanteissa
+- [Kokoluokkien](/epi/kvantifiointi) hahmotuksen heikkous tai puute
+- [Yhden muuttujan mallit](/epi/yksi_muuttuja)
+- Tapahtumien todennäköisyyksien hahmottamisen ja käsittelemisen virheet -- jo tilanteissa, joissa luvut on eksplisiittisesti annettu (esimerkkinä [tämän tekstin](/epi/epa_I) viimeinen osio)
+- Epävarmuuden käsittelyn virheet vähemmän rajatuissa tilanteissa ([esimerkkejä](/epi/epa_I))
+- Perusteettoman vahva taipumus valita varmoja ehtoja ja karttaa riskiä odotusarvon tutkimisen sijasta (ensimmäiset esimerkit [täällä](/epi/epa_II))
+- Pidättäytyminen riskinotosta positiivisen odotusarvon tilanteissa, taas jo selkeästi rajatussa tilanteessa (viimeinen esimerkki [täällä](/epi/epa_II))
+- [Konjunktioharha](/epi/kohteliaat_tulkinnat) ja yksityiskohtaisemman tarinan arviominen todennäköisemmäksi
+- Korrelaatio ei implikoi kausaatiota (eikä se ole "vähän kuin kausaatio mutta heikompi"), korrelaation olemassaolo on usein [matalan informaation väite](/epi/matala_informaatio)
+- Fundamentaalisti väärät käsitykset todennäköisyyksistä, millä on myös implikaatioita tieteelle (lyhyesti [täällä](/epi/kunnolla))
+
+Matematiikkaa tarvitaan muun muassa siihen, ettei tällaisia virheitä tapahtuisi.
+
+Kyse ei ole siitä, että listaamani esimerkit, kuten "tuttavani puhui ihmisten hyväkuntoisuudesta binäärisesti", olisivat itsessään tärkeitä. Tuttavani ajatusvirheellä ei ole vaikutusta oikein mihinkään, kuten ei ole ihmisten heikoilla suoriutumisilla erinäisissä psykologisissa kokeissa. 
+
+Sen sijaan ne kertovat jostakin isommasta. Nämä ovat palohälyttimiä: jotakin on pielessä. Jos ihmiset epäonnistuvat perusasioissa selkeissä, hyvin määritellyissä tutkimusolosuhteissa, joissa he ovat hyvin informoituja, voi olla varma, että vastaavia tilanteita tapahtuu oikeassakin elämässä. Tositilanteissa -- kun kyse on isoista päätöksistä, valtavista määristä resursseja ja ihmisten hengistä -- hyvä päätöksenteko ja toiminta on aidosti tärkeää.
+
+---
+
+Vastaukseni voi kenties tiivistää kliseeseen "matematiikka opettaa ajattelemaan". Mutta enkö juuri aiemmin sanonut "ymmärrän hyvin, jos tämä ei vakuuta turhautunutta yläkoululaista"? Näennäisen ristiriidan purkaa se, ettei koulumatematiikka ole kaikki matematiikka.
+
+Millainen matematiikka sitten auttaa ajattelemaan paremmin? Vastaukseni voi lukea rivien välistä tästä ja muista teksteistäni: todennäköisyyslaskenta, peliteoria, tilastot, logiikka ja matemaattinen mallinnus.
+
+Toisaalta en koe myöskään yläkoulun todennäköisyyslaskentaa tai yliopiston logiikan kursseja erityisen hyödyllisiksi ajattelun kehittämiseen. (Tämä näkyykin siinä, että monissa ihmisten erheitä tutkivissa kokeissa osallistujat ovat yliopisto-opiskelijoita, joille aiheiden pitäisi olla tuttuja.) Näen nimittäin opetuksessa kehitettävää muunkin kuin aihealueen valinnan kohdalla. Näitä aiheita on vaikea opettaa enkä koe nykyisen opetuksen onnistuvan siinä hyvin.
+
+Silti olen vahvasti sitä mieltä, että nämä matemaattiset työkalut ovat hyödyllisiä. Ne ovat merkittäviä askelia ihmiskunnan kehityksessä. Vaikka monet näihin työkaluihin liittyvät kansantajuiset opetukset voivat nykyään [jättiläisten olkapäiltä](/epi/jattilaisten_olkapailla) katsottuna tuntua itsestäänselvyyksiltä, ne on ansaittu pitkän työn tuloksena.
+
+Ja vaikka näiden aiheiden oppiminen onkin puutteellista, voin vain kuvitella, mitä hyötyjä saavutetaan jo nykyisellä opetuksella ja sillä, että yhteiskunnassa törmää matemaattisiin konsepteihin. Vastaavasti minun on vaikea hahmottaa, kuinka eri tavoilla ajattelevat ihmiset, jotka eivät ole saaneet *mitään* matematiikan opetusta ja jotka eivät tällaisiin konsepteihin juuri törmää. (Tämä tietysti tarkoittaa suurinta osaa kaikista ihmisistä, jotka ovat koskaan eläneet.)
+
+En tiedä, vakuuttaako tämäkään vastaus nuoremman minäni kaltaisia yläkoululaisia, ja yhteen virkkeen tiivistäessä tietysti katoaa valtaosa informaatiosta, mutta "matematiikan avulla saadaan parannettua niin yksittäisten ihmisten ajattelua kuin laajemmin yhteiskunnan toimintaa" on varsin hyvä syy matematiikan opettamiselle.
+
+[End of text.]
+
+# Miksi uskot mitä uskot?
+
+Miksi uskot mitä uskot?
+
+Ihmiset tuppaavat väärinymmärtämään tämän kysymyksen ja ryhtyvät *argumentoimaan* uskomustensa puolesta, keksimään perusteluja näkemykselleen. Tämä ei ole mitä kysyttiin.
+
+Miksi uskot mitä uskot?
+
+Minkä vuoksi uskomuksesi on se, mikä se on? Minkä pitäisi olla toisin, jotta uskomuksesi olisi toinen? Miten olet päätynyt uskomukseesi?
+
+Jos esimerkiksi päädyt uskomaan väitteeseen siksi, että asiantuntija oli tätä mieltä, oikea reaktio kysymykseen "miksi uskot mitä uskot?" on "asiantuntija sanoi niin" eikä keksimäsi perustelut väitteelle.
+
+Mitä käy, jos nämä perustelut osoittautuvatkin huonoiksi? Muuttuuko uskomuksesi? Eipä taida: nämä perustelut olivat vain jotain mitä sinulle tuli mieleen, mutta se asiantuntija kyllä tuntuu tietävän asiasta. Hänellä varmaankin on paremmat perustelut.
+
+Kuvittele tilanne toisesta näkökulmasta: Henkilö sanoo uskovansa johonkin. Kysyt miksi. Hän esittää perusteluja. Nämä perustelut ovat huonoja, ja selität tämän hänelle. Hän myöntää, että perustelut olivat huonoja. Siitä huolimatta hänen uskomuksensa eivät muutu!
+
+Eikä ihme: keskustelu on ollut täysin irrallinen niistä syistä, miksi toinen osapuoli oikeasti uskoo mitä uskoo.
+
+Sama periaate koskee omien uskomusten reflektointia. Jos epäröit uskomustasi, mieti uudelleen syitä, joiden takia uskot siihen (eikä niin, että listaat argumentteja puolesta ja vastaan).
+
+Esimerkki: Minä uskon ilmastonmuutokseen. Minulla on pinnallinen käsitys siitä, mihin lämpeneminen perustuu. Jos joku kysyy minulta, miksi uskon ilmastonmuutokseen, oikeasta vastauksessa kuitenkin vain *osa* koskee itse fysikaalista mekanismia. Nimittäin vaikka uskomukseni tästä osoitettaisiin virheellisiksi (mikä on ihan mahdollista), minä silti uskoisin ilmastonmuutokseen. Miksi? Mistä uskoni oikein kumpuaa?
+
+Vastaus on aika monimutkainen, mutta tässä on lyhyt versio: "Tiedeyhteisö ja ihmiset joihin luotan ovat tätä mieltä, esitetty fysikaalinen mekanismi vaikuttaa järkevältä ja ilmaston lämpötilasta kerätty data tukee väitettä". (Historiallisesti olen päätynyt uskomukseeni varmaankin sen kautta, että opettajani ovat kertoneet ilmastonmuutoksesta, mutta tämä ei ole enää nykyään keskeinen syy uskomukselleni.)
+
+Ja nyt kun on selvempää, millasilla pilareilla uskomukseni lepää, huomaa myös, mikä saisi minut epäröimään uskomustani: se että vähintään yksi pilari horjuisi tai kaatuisi.
+
+Toinen esimerkki: Kirjoittaessani tekstiä [Kvantifiointi](/epi/kvantifiointi) yritin keksiä tilanteita, joissa ihmisten kvantifioinnissa on ollut puutteita. Tovin mietittyäni en keksinyt siistejä esimerkkejä tekstiä varten.
+
+"Hmm, ilmeisesti minä kuitenkin uskon ihmisten kvantifioinnin olevan heikkoa, vaikken keksikään pitkää listaa esimerkkejä."
+
+"...joten ehkä syyt uskomukselleni ovat jotakin muuta kuin ne hypoteettiset esimerkit, joita en keksi."
+
+"...joten ehkä voisin vain kertoa suoraan oikeat syyt uskomukselleni."
+
+Toisaalta tekstin ja uskomusteni taustalla *on* oikean elämän esimerkkejä, joita vain on kontekstisidonnaisuuden vuoksi vaikea käyttää tekstissä (ja joista suuren osan olen unohtanut nopeasti). Uskomustensa syitä on usein vaikea kommunikoida.
+
+Yleinen periaate: Uskomus on täsmälleen niin hyvä kuin syyt, joiden takia siihen on päädytty. Siinä kohtaa kun uskomus muodostuu, niin mitkään myöhemmin keksityt perustelut eivät enää muuta sen hyvyyttä. Väite on jo valittu ja se on joko tosi tai epätosi. Jälkikäteen perustelujen generoiminen tunnetaan nimellä *rationalisointi*, eikä sillä ole mitään tekemistä totuudenmukaisten uskomusten kanssa (hämäävästä nimestään huolimatta).
+
+---
+
+Varsin tyypillinen lähestymistapa epistemisten erimielisyyksien käsittelyyn on Väittely. Ihmiset esittävät perusteluja näkemyksilleen. Paremmat perustelut esittänyt ja Vastustajan argumentit kumoava on Voittaja.
+
+Tämä on surkea tapa.
+
+"No mutta eihän keskustelut oikeasti näytä tuolta", kuuluu vastalause.
+
+Hyvä on, arkielämässä ei juuri tule tehtyä iso-v Väittelyitä, joilla on virallinen voittaja. Näkisin keskustelujen silti olevan aivan liian usein pieni-v väittelyitä. Ihmisten *asenne* on se, että tulee esittää mahdollisimman hyvät perustelut. *Suhtaudutaan* toiseen niin, että hän on vastakkaisella puolella. *Kognitiiviset prosessit* keskustelun aikana näyttävät samoilta kuin Väittelyissä.
+
+Mikä on refleksinomainen reaktiosi, kun keskustelukumppasi esittää perustelun näkemykselleen? Pyritä kumoamaan se? Keksimään itse parempi omalle kannalle? Kutsuu tätä miksi kutsuu, kyse on oleellisten tekijöiden kannalta väittelystä. Pohditko, kuinka validi toisen perustelu on, ja vasta sitten vastaat? Paljon parempi.
+
+Yritätkö generoida perusteluja näkemyksellesi? Pyritkö osoittamaan vastustajan vääräksi? Taas, väittely.
+
+Mietitkö, miksi uskot mitä uskot? Yritätkö ymmärtää, miksi toinen uskoo mitä uskoo? Hyvä. Keksitkö tavan saada relevanttia informaatiota erimielisyyden ratkomiseksi? Erittäin hyvä.
+
+Perusteluja saa tietysti esittää silloin, kun ne oikeasti ovat relevantteja omien uskomusten kannalta. Kaikki perustelut eivät ole tällaisia. Välillä perusteluja esitetään sen takia, että ne ovat omalla puolella. Välillä esitetään epävalideja argumentteja, koska ne kuulostavat vakuuttavilta. Välillä sanotaan jotakin, joka on enemmänkin retorinen keino kuin varsinainen perustelu tai väite.
+
+Omakohtaisen kokemuksen ja pohdinnan lisäksi uskomukseni väittelyiden huonoudesta perustuvat tutkimukseen "[Role induced bias in court: An experimental analysis](https://www.econstor.eu/bitstream/10419/57496/1/636807460.pdf)", jossa kokeeseen osallistuneille arvottiin puolustajan tai syyttäjän roolit. Ja miten kävi? "We show that assuming the role of a defense counsel or prosecutor leads to role induced bias even if people are highly motivated to give unbiased judgments." Tulkitsen tämän niin, että väitteleminen on herkästi *vahingollista*, ja käynnistää haitallisia kognitiivisia prosesseja.
+
+Hmm, no ei. Minä huijasin. Tämä ei ole oikea syy uskomukselleni.
+
+Uskomukseni väittelyiden haitallisuuteen perustuvat laajemmin kaikkeen siihen, mitä tiedän kognitiivisesta psykologiasta. Lukemalla kymmenen tai sata esimerkkiä ihmisten kognition epätäydellisyyksistä saa *yleisen* mallin, minkä seurauksena tämän *yksittäisen* tutkimuksen tulokset tuntuvat uskottavilta. Mutta epämääräisesti kognitiivisesta psykologiasta ja "yleisestä mallista" puhuminen ei väittelytilanteessa kuulosta kovin vakuuttavalta, toisin kuin aiheeseen liittyvän tutkimustuloksen esittäminen.
+
+Eli tämä tutkimus on pikemminkin *edustava esimerkki* sellaisista asioista, joiden vuoksi uskon mitä uskon. Se ei ole kirjaimellisesti syy uskomukselleni -- en ollut lukenut tutkimusta ennen tämän tekstin kirjoittamista (vaikkakin muistin lukeneeni jotakin tämän tyyppistä). Sanottuani tämän ääneen en koe toimintaani mitenkään epärehelliseksi tai rationalisoivani johtopäätöksiäni. Sen sijaan olen (toivottavasti) saanut välitettyä kuvaa uskomusteni syylle varsin tehokkaalla tavalla ja samalla kertonut kiinnostavasta tutkimuksesta aiheeseen liittyen. Uskomukseni perustuvat *tämän tyyppisiin* asioihin.
+
+Lisäksi uutta informaatiota saa tietysti etsiä, eikä se tarkoita, että silloin rationalisoisi tai yrittäisi puolueellisesti etsiä perusteluja. Oleellista on kyetä muuttamaan uskomuksiaan silloin, jos vaikkapa vastaan tullut tutkimus antaakin eri tuloksia kuin odottaisi. Olisin ollut yllättynyt, jos tutkimus olisi saanut vastakkaisia tuloksia. Se ei suoraan olisi muuttanut näkemystäni väittelyistä päälaelleen -- minulla on muitakin syitä uskomuksilleni -- mutta olisin uudelleenmiettinyt joitakin asioita ja ollut hieman vähemmän varma aiemmista uskomuksistani.
+
+---
+
+Kysymys "Miksi uskon mitä uskon?" on hyvä työkalu, jonka avulla keskustelut suppenevat paremmin kohti totuutta.
+
+Asennoituminen keskusteluun on *kevyempää*. Minun ei tarvitse puolustella nykyisiä uskomuksiani ja sitoutua niihin tunnetasolla. Tavoitteeni ei ole vakuuttaa muita. Voin vain kertoa, miksi uskon mitä uskon. Toinen voi sitten arvioida, ovatko nämä hyviä syitä.
+
+Keskustelussa ihmisten ei tarvitse asettua vastakkain, vaan he voivat tehdä yhteistyötä päästäkseen kohti totuutta. Olemme eri mieltä -- mistä se johtuu? Mitä sinä tarkalleen uskot ja miksi uskot niin? Entä minä? Kritiikki *uskomuksiani* kohtaan ei ole kritiikki *minua* kohtaan. Se ei ole vastustajan esittämä hyökkäys, jolta minun täytyy puolustautua.
+
+Lisäksi väärässä oleminen on helpompi huomata ja käsitellä, jos ei ole juuri hetki sitten perustellut hanakasti näkemystään. Virhe on toki virhe, ja sen kuuluu johtaa uskomusten muutokseen. Mutta ei muuta. Sen ei pitäisi tuntua siltä, että oma joukkue häviää. Voi vain todeta "hups, olin väärässä", päivittää uskomuksiaan ja jatkaa eteenpäin.
+
+[End of text.]
+
+# Kaukotila
+
+"Ihmiskunta kuolee viimeistään sitten viiden miljardin vuoden päästä, kun Aurinko laajenee ja syö Maan."
+
+Homo sapiens on noin 300 000 vuotta vanha laji. Korkeakulttuurit syntyivät kymmenentuhatta vuotta sitten. Tieteellinen vallankumous alkoi 500 vuotta sitten, ja Kuussa käymisestä on 50 vuotta.
+
+Viisi miljardia vuotta, siis 5 000 000 000 vuotta, on *pitkä* aika. Jos pitäisi veikata, niin sanoisin, että keksimme kyllä jotakin.
+
+Miksi ihmiset sanovat, että viimeistään Aurinko nielee ihmiskunnan? Ehkä kyse on [kvantifioinnin puutteesta](/epi/kvantifiointi) ja [yhden muuttujan malleista](/epi/yksi_muuttuja). Tai ehkä ihmiset ovat kuulleet tämän fraasin muualta ja toistavat sen aihealueen pompatessa esiin ilman, että he kyseenalaistavat sitä.
+
+Luulen kuitenkin, että siinä on muutakin.
+
+Lukiossa osallistuin erinäisiin tiedekilpailuihin. Muistan erään tapauksen, jossa pääsin kilpailussa jatkoon, mutta finaalin ajankohta oli vasta muutaman kuukauden päästä yliopisto-opintojeni jo alettua. Silloin mietin: "Voi voi kun se kilpailu on vasta tuolloin, en tiedä kiinnostaako minua enää sitten yliopistossa jokin lukion tiedekilpailu."
+
+Ja miten kävi?
+
+Kiinnostihan se, suunnilleen yhtä paljon kuin lukiossakin. Yllätys!
+
+Ongelmana oli, että yliopistoa miettiessäni käytin hyvin erilaista ajattelua kuin jos miettisin arkipäiväisiä aiheita kuten "tarvitseeko minun pestä pyykkiä?" tai "kutsunku kavereita kylään ensi lauantaiksi?" En miettinyt, mitä oikeasti odotan tapahtuvan. Yliopisto tuntui epämääräiseltä konseptilta. Alitajuisesti ajattelin, että yliopisto-opiskelijat ovat vanhoja ja kiinnostuneita ihan eri jutuista kuin pienet lukiolaiset, joten varmaan minäkin koen suuren muodonmuutoksen samalla sekunnilla, kun saan opiskeluoikeuden. (Näin ei käynyt.)
+
+Kutsun tätä *kaukotilaksi*. Tulevaisuus nähdään *erillisenä komponenttina*. Se ei lähesty päivä tai vuosi kerrallaan, vaan sinne ilmestytään yhtäkkiä. Ajattelussa käytetään hyvin yksinkertaisia malleja, joista puuttuu sellaisia pikkuasioita kuten ihmiskunnan teknologinen kehitys.
+
+Ennen kaikkea kaukotilassa ajattelu ei pohjaudu siihen, *mitä oikeasti odottaa tapahtuvan*.
+
+Jos olisin kysynyt itseltäni "uskonko *oikeasti*, että kiinnostukseni kilpailuja kohtaan lopahtaa?" ja yrittänyt miettiä, mistä tämä johtuisi, niin olisin päässyt pois kaukotilasta. Olisin tajunnut, että tietenkään kiinnostus ei lopahtaisi. Mikä sen muka aiheuttaisi? Ei ainakaan se, että olen virallisesti yliopisto-opiskelija.
+
+Kokemuksieni mukaan kaukotila aktivoituu hyvin herkästi silloin, kun puhutaan ihmiskunnan tulevaisuudesta -- etenkin jos luvut ovat [liian isoja nopean ajattelun käsiteltäviksi](https://en.wikipedia.org/wiki/Thinking,_Fast_and_Slow). (Ydinjätteen säilömisestä puhuttaessa olen kummaksunut, jos keskitytään 10 000 vuoden aikaskaalaan: olisin yllättynyt, jos vielä silloin jätteestä koituisi harmia, jota ei ole vaivatonta välttää.)
+
+Toinen tapaus on vieraat tilanteet. Tällöin tulee helpommin takerruttua mielikuviin ja narratiiveihin, vaikka muu tietämys riittää hyvin sanomaan, etteivät asiat oikeasti toimi niin. Yllä esimerkki omalta kohdaltani.
+
+Usein kaukotilaan liittyy ajatus siitä, että tulevaisuus on tietyillä spesifeillä tavoilla erilainen kuin menneisyys, vaikkei tälle ole [symmetriaa rikkovaa](/epi/symmetrian_rikkominen) syytä. Menneisyys tarjoaa runsaasti dataa, jolla [päivittää uskomuksia](/epi/uskomusten_muutos). Kuinka hyvin hypoteesisi tulevaisuudesta ennustaisi menneisyyttä? Jos huonosti, niin sinulla on paras olla varsin hyvä syy sille, miksi tulevaisuus on erilainen.
+
+Kaukotilanarratiiveja ei ole valittu niiden totuudenmukaisuuden vuoksi, vaan taustalla on jotakin muuta -- kenties niiden yksinkertaisuus tai mielenkiintoisuus tai niiden luomat hyvät tunnetilat. Minusta tuntuu, että kaukaisista aiheista puhuttaessa ikään kuin unohdetaan, että tosiaan, [uskomuksen hyvyyttä mitataan sen totuudenmukaisuudella](/epi/miksi_todennakoisyydet). Sen sijaan asioihin suhtaudutaan asenteella "minulla nyt saa olla minkälaisia näkemyksiä tahansa" -- eihän niitä oikein voi todistaa vääräksi (ja ehkä jos myöhemmin voitaisiinkin, niin asia on silloin jo unohdettu).
+
+[End of text.]
+
+# Filosofiatila ja ajatusleikit
+
+"Raiteisiin on köytetty viisi ihmistä. Raitiovaunu on ajamassa heidän ylitseen. Voit kuitenkin vääntää vipua, jolloin vaunu ajautuu toiselle raiteelle ja ajaa yhden ihmisen yli. Väännätkö vipua?"
+
+"Jos hiekkakasasta poistetaan yksitellen hiekanjyviä, niin missä kohtaa se lakkaa olemasta hiekkakasa?"
+
+"Mitään ei voi oikeasti tietää tai todistaa varmaksi."
+
+Tällaiset kymykset ja väitteet tuppaavat laittamaan ihmiset *filosofiatilaan* (tai ne ovat filosofiatilan aiheuttamia). Kuten [kaukotilassa](/epi/lokaali_kommunikaatio), filosofiatilassa ihmiset miettivät asioita hyvin eri tavalla kuin arkielämässä. Ja kuten kaukotilassa, näen filosofiatilan ajattelun olevan heikompaa kuin tavallisesti, minkä vuoksi sitä kannattaa välttää.
+
+Käsittelen tässä raitiovaunuongelmaa esimerkkinä filosofisesta ajatusleikistä. Näen ongelman tarkoituksen, silloin kun se ei ole viihteellinen, olevan moraalisten intuitioiden kaivaminen ihmisistä ulos. Yleensä ihmisistä kyllä saa vastauksia ulos, mutta harvemmin keskustelu on kovin laadukasta.
+
+Selkein ongelma ajatusleikissä on, että sen premissi on, jos nyt ei *epärealistinen*, niin *hyvin epätodennäköinen*.
+
+"Ei sen olekaan tarkoitus olla realistinen, vaan tavoite on saada sellaisia *yleistyviä* ajatuksia moraalista, jotka soveltuvat ajatusleikin ulkopuolelle", kuuluu vastalause.
+
+Vastalauseeni vastalauseelle on, että käytännössä näin ei käy.
+
+Nimittäin yksi kohtalaisen yleinen keskustelun etenemissuunta on tarkentavat kysymykset kuten "kuinka paljon aikaa on, ennen kuin ratikka ajaa ihmisten yli?" tai "ehdinkö mennä päästämään ihmiset köysistä ennen ratikan saapumista?" Ei kuulosta hyvältä alulta yleisten ajatusten muodostamiseen.`
+
+Toinen tapa, jolla keskustelu voi suistua raiteiltaan, on uusien ajatusleikkien kehittäminen. Entä jos vivun vääntämisen sijasta sinun tulee [tönäistä lihava mies sillalta ratikan pysäyttämiseksi](https://en.wikipedia.org/wiki/Trolley_problem#The_Fat_Man)? Entä jos tämä lihava mies onkin se, joka köytti ihmiset raiteisiin kiinni? Entä jos oletkin lääkäri sairaalassa, ja voit pelastaa viisi potilasta ottamalla elimiä yhdeltä potilaalta (joka tämän seurauksena kuolee)?
+
+[Väittelytilanteessa](/epi/miksi_uskot) näihin keksii kyllä ovelia argumentteja yksi toisensa jälkeen. Ohjaavatko ne ajatuksia tai toimintaa [ihan oikeasti](/epi/kaukotila)? En usko.
+
+Yksi keskeinen puuttuva pala tällaisissa moraalisissa ajatusleikeissä on, että niissä oletetaan *varmoiksi* tilanteen premissit -- siitäkin huolimatta, että ne ovat oikean elämän näkökulmasta hyvin epätodennäköisiä. Oma näkemykseni on, että episteminen epävarmuus on keskeinen aihe: *totuudenmukaisten uskomusten muodostaminen on keskeinen osa moraalista toimintaa*. 
+
+Uskon, että *käytännössä*, siis ajatusleikkien ulkopuolella, erimielisyydet parhaasta toimintatavasta ovat usein *epistemisiä* erimielisyyksiä ("mitä käy, jos teemme näin tai noin?"), ei erimielisyyksiä arvoissa ("onko tällainen tai tuollainen lopputulos hyvä?"). Tämä siitäkin huolimatta, että [jakaumat ovat leveitä](/epi/leveat_jakaumat) ja ihmisillä todella on erilaisia arvoja. Tästä syystä kaukaa haetut ajatusleikit, jotka laittavat ihmiset filosofiatilaan ja jotka lakaisevat alleen hyvin keskeisen (keskeisimmän?) vaiheen päätöksenteosta, eivät oikein miellytä minua.
+
+---
+
+"Jos hiekkakasasta poistetaan yksitellen hiekanjyviä, niin missä kohtaa se lakkaa olemasta hiekkakasa?"
+
+Tähän keksii monenlaisia vastauksia. Joku voisi sanoa, että on jokin tietty raja, mistä lähtien hiekkakasa ei olekaan enää kasa: 37 hiekanjyvää ei vielä muodosta hiekkakasaa, mutta 38 muodostaa. Joku voisi sanoa, että jo neljällä hiekanjyvällä saa muodostettua kasan laittamalla yhden jyvän kolmen muun päälle. Ja kysyttäessä, minkä kokoiset asiat lasketaan hiekanjyviksi, joku vastaa, että suuret kivenlohkareetkin ovat teknisesti hiekanjyviä.
+
+Samaan aikaan todellisuudessa ihmiset eivät käytä sanoja tällä tavalla -- eivät edes he, jotka filosofiatilassa väittävät, että näin asiat "oikeasti ovat". Kuten kaukotilassa, tuntuu että filosofiatilassa asenne on "minulla nyt saa olla minkälaisia näkemyksiä tahansa", ja tavoitteena on esittää *kiinnostavia* näkemyksiä.
+
+Näen filosofiatilan koskevan muitakin kuin selvästi filosofisia kysymyksiä.
+
+Esimerkki: arvot. Kokemuksieni mukaan sanan "arvo" mainitseminen saa ihmiset tietynlaiseen mielentilaan, jossa he sanovat asioita kuten "arvo vastaa rahaa" tai "arvot ovat sama kuin onnellisuus". Käytännössä ihmiset kuitenkin arvottavat muutakin kuin rahaa. (Oikeastaan tämä on täysin nurinkurinen tapa ajatella asiaa: ihmiset arvottavat monenlaisia juttuja, ja raha toimii vain *työkaluna* näiden asioiden saamiseen.) Ja arvojen samaistaminen onnellisuuteen sivuuttaa, no, kaikki muut arvot -- kaiken, mikä ei koske *oman mielen tilaa*, mukaan lukien kaikki epäitsekkäät arvot.
+
+"Mutta lopulta *kaikki* arvot ovat itsekkäitä. Haluat muiden ihmisten olevan onnellisia vain sen takia, että se on sinun arvojesi mukaan hyvä juttu."
+
+...ja olemme taas filosofiatilassa. Kyllä, arvot ovat se, mitä haluaa, joten teknisesti kaikki arvot ovat itsekkäitä. Teknisesti kivenlohkareet ovat hiekanjyviä. Kuitenkaan filosofiatilan ulkopuolella, siis oikeassa elämässä, arvoja kuten "muut ihmiset ovat onnellisia" ei mielletä itsekkäiksi ja tiiliskiveä ei kutsuta hiekanjyväksi.
+
+Tässä on syy, miksi käytän sanaa "preferenssi" sanan "arvo" sijasta. Sana "arvo" kuulostaa ihmisistä filosofiajutulta ja ihmiset ryhtyvät ajattelemaan "filosofisesti" (lue: huonosti), kun taas "preferenssi" ajaa samaa asiaa virittämättä ansalankaa. Monesti vielä arkisemmat sanat kuten "tykätä" tai "haluta" toimivat myös.
+
+Toisena esimerkkinä mainitsen sanan "rationaalisuus", johon liittyy ties mitä hölynpölyä, kuten "rationaalinen ihminen on täysin itsekäs". Olen vaikuttunut siitä, kuinka muutamaan sanaan saadaan ladattua *useampi* virheellinen väite. Rationaalisuus koskee sitä, *miten* saavuttaa tavoitteita, ei *mitä* tavoitteet ovat. Mitä taas tulee tavoitteisiin, yllä puhuin siitä kuinka ihmisillä todella voi olla epäitsekkäitä tavoitteita. Kritisoin [toisaalla](/epi/insentiivit) naiivia (mutta yleistä) käsitystä "rationaalisesta" ja "itsekkäästä" toiminnasta. Lisäksi sana "rationaalinen" tuntuu laukaisevan [tietynlaisia reaktioita](/epi/status). Ja ei, "rationaalinen" ei ole synonyymi sanalle "tunteeton".
+
+Ja tietysti selkein esimerkki filosofiatilan käynnistävästä sanasta on itse "filosofia", mutta tämä on [oma tarinansa](/epi/jattilaisten_olkapailla).
+
+[End of text.]
+
+# Keskustelunimaisijat
+
+Kerran pidin keskustelussa hieman pidemmän puheenvuoron kertoakseni yhdestä ajatuksesta. Ajatuksen selittämiseksi rakensin analogian erään tunnetun keskustelunaiheen kanssa. Jatkoin kohti varsinaista pointtia, mutta...
+
+...eräs kuuntelijoista tarttui tähän tunnettuun aiheeseen. Yritin ohjata keskustelun takaisin raiteelleen, mutta...
+
+...toinenkin kuuntelijoista ryhtyi keskustelemaan tästä aiheesta. Tilanne riistäytyi käsistäni ja keskustelu pyöri tämän toisen aiheen ympärillä.
+
+Mitä olen mennyt tekemään?
+
+On joitakin aiheita, joiden mainitseminen pahimmillaan imaisee keskustelun mukanaan ja parhaimmillaankin luo ajattelua häiritseviä mielikuvia. Sellaisia, joista ihmisillä on vahvoja mielipiteitä. Sellaisia, joihin liittyen ihmisillä on vahvoja tunteita. Sellaisia, joissa Olet Joko Meidän Puolella Tai Meitä Vastaan. Sellaisia, joiden suhteen jotkut ihmiset ovat ihan tyhmiä. Sellaisia, joita miettiessä [ajatukset sumenevat](/epi/sumuiset_ajatukset): asiat ovat Hyviä tai Pahoja.
+
+Tässä on muutama yleinen kategoria, joista tällaisia aiheita voi löytää:
+
+- Politiikkaan ja arvoihin liittyvät yhteiskunnalliset aiheet, joissa on vahvaa vastakkainasettelua tai erimielisyyttä
+- Erinäiset [helpot maalitaulut](/epi/helpot_maalitaulut)
+- Tunnetut historialliset henkilöt, erityisesti valta-asemassa olleet ja pahoja asioita tehneet
+- Erimielisyyttä herättävät tai kiistellyt julkisuuden henkilöt
+
+Näistä aiheista ei voi vain mainita ohimennen johonkin muuhun asiaan liittyvää esimerkkiä, vaan ne vievät keskustelun mukanaan (kuten alun tilanteessa huomasin).
+
+Ne vievät myös *ajattelun* mukanaan. Uskon, että tämä teksti loisi hyvin eri vaikutelman, jos olisin kategorioiden sijasta antanut parikymmentä konkreettista esimerkkiä. Lukija pohtisi, mikä onkaan minun ajatukseni kyseisestä aiheesta, koska minä tietysti Olen Joko Teidän Puolella Tai Teitä Vastaan. Joku tulkitsisi, että tietyn esimerkin sisällyttämisellä teen samalla väitteen siitä, että se on Paha Asia. Joku vastustaisi, että tämän esimerkin pelkkä mainitseminen kertoo minun olevan Eri Puolella, yksi Niistä. Joku kritisoisi, että näennäisesti vertaan tätä aihetta tuohon toiseen aiheeseen, eli siis sanon molempien olevan yhtä pahoja, vaikka ne ovat oikeasti täysin eri asioita. Lukijat yhdistäisivät minut Niihin Ihmisiin, jotka puhuvat Tuollaisista Aiheista. Joku miettisi, miksi olen valinnut nimenomaan tämän listan: Onko minulla tässä jokin taka-ajatus? Ketä vastaan minä olen? Tuostahan puuttuu se selkein ja tärkein esimerkki -- onkohan se jätetty tarkoituksella mainitsematta?
+
+(Joku voi tietysti edelleen ajatella, että minulla on tässä jokin taka-ajatus: miksi valitsin juuri nuo yleiset kategoriat? Uskon ja toivon vaikutuksen silti olevan pienempi.)
+
+Ja siten minä en halua antaa konkreettisia esimerkkejä tässä tekstissä. En halua puhua niistä *spesifeistä esimerkeistä*, haluan puhua tästä *yleisestä ilmiöstä*. Tietyt aiheet vievät ajattelun mukanaan ja tästä on hyvä olla tietoinen. Jos ei halua, että keskustelu sinkoutuu sivuraiteille, kannattaa jättää viittaukset imaiseviin aiheisiin vähemmälle. (Olenkin omissa teksteissäni valikoinut esimerkkejäni juuri tätä silmällä pitäen.)
+
+Luonnollisesti en sano, ettei keskustelunimaisijoista saa puhua. Ehdotukseni on, että niistä keskustellessa on tavallista tarkempana, jotta keskustelu pysyy järkevänä: "Huomaan puheenaiheen olevan vahvasti mielipiteitä jakava ja vastakkainasettelua luova. Keskityn siten siihen, että tavallistakin tarkemmin yritän ymmärtää toisen ajatuksia pyöristämättä hänen näkemyksiään toisenlaisiksi. Yritän antaa toiselle tilaa pakottamatta heitä puolustuskannalle tai muuten viemällä keskustelua väittelymoodiin. " Eli pidetään vielä vahvemmin kiinni [itsestäänselvistä](/epi/ilmeiset_ohjeet) hyvän keskustelun ja epin ohjeista.
+
+[End of text.]
+
+# Helpot maalitaulut
+
+Kohtalaisen usein kun puhutaan siitä, miksi hyvä epi -- tai tiede, koulutus, ajattelutaidot tai kriittinen lukutaito -- on tärkeää, mainitaan jossakin kohtaa salaliittoteoriat, ilmastoskeptismi, rokotevastaisuus tai muuta vastaavaa. Tai ylipäätään joku ihmisjoukko, jolla on ihan tyhmiä ajatuksia jostakin aiheesta.
+
+Nämä ovat helppoja maalitauluja. En tunne ketään, joka uskoisi mihinkään tunnettuun salaliittoteoriaan. Jos sanon "salaliittoteoriat ovat ihan hölynpölyä", niin kirjaimellisesti kaikki läsnäolevat ovat täysin samaa mieltä. Tällainen keskustelu ei ole kovin kiinnostavaa: Ihmiset vuorotellen luettelevat syitä minkä takia salaliittoteoriat ovat hölynpölyä. Muut nyökkäilevät. Taputellaan itseään selkään siitä kuinka ei itse uskota tuollaiseen hölynpölyyn.
+
+En kuitenkaan teksteissäni käsittele tällaisia helppoja maalitauluja käytännössä ollenkaan. Miksen?
+
+Vastaus: *helpot maalitaulut eivät ole se pointti*.
+
+Mitä useammin käyttää helppoja maalitauluja esimerkkeinä tilanteista, joissa ihmisillä on huono epi, sitä vahvemmin ihmisille muodostuu uskomus, että nämä ovat *keskeisiä* esimerkkejä. Että muuten epi on kunnossa, paitsi on ne ihmiset, jotka uskovat kristallihoitoon.
+
+Vaikka olen yrittänyt pitää tekstieni aiheet kaukana näistä [keskustelun sivuraiteille vievistä](/epi/keskustelunimaisijat) helpoista maalitauluista, niin minun on *silti* vaikea saada välitettyä, että *ne eivät ole se pointti*, että *ongelma ei ole ne "muut tyhmät ihmiset"*, että "järkevät" ihmiset eivät oikeastaan ole aina niin järkeviä.
+
+Minua harmittaa, kun keskustellaan jostakin mielenkiintoisesta aiheesta, josta voisi tehdä hyviä pointteja, ja sitten keskustelu päätyykin vain helpon maalitaulun hakkaamiseen. Pohditaan esimerkiksi korruption yleisyyttä, ja joku kommentoi "no ainakin Yhdysvalloissa on korruptiota, tiedättekö siitä tapauksesta kun..." Tilaisuus käydä keskustelua vaikeammista kohteista ja oppia uutta muuttuu vain halvan kritiikin esittämiseksi.
+
+Toisentyyppinen virhe on näkemystä ja vastakkaista näkemystä puntaroidessa keskittyä heikoimpiin vastakkaisen puolen argumentteihin. On helppoa ja tyydyttävää murskata nämä heikot näkemykset -- kuin oma jalkapallojoukkue saisi maalin -- mutta se ei oikeastaan ole produktiivista. [Tosillekin väitteille voi esittää surkeita perusteluja](/epi/symmetrian_rikkominen), oleellista on keskittyä vahvimpiin syihin uskomuksille.
+
+En siis tykkää siitä, että hyökätään helppoja maalitauluja kohtaan: sitä, kun niitä käytetään helppona pakotienä sen sijaan, että käsiteltäisiin oikeita asioita.
+
+Vielä vähemmän kuitenkin tykkään siitä, että perusteettomasti syytetään muita helppoihin maalitauluihin keskittymisestä.
+
+Minulle on muutaman kerran käynyt niin, että luen netistä jonkin tekstin, jota pidän oikein hyvänä: teksti osuvasti käsittelee virhettä, johon olen itse langennut, enkä ole nähdäkseni ainoa. Sitten luen tekstin kommentteja, joissa kritisoidaan sitä, kuinka tekstissä hyökätään olkiukkoja vastaan, että eihän ihmiset oikeasti ajattele noin. Ehkä tässä on tarkoitus olla [kohtelias](/epi/kohteliaat_tulkinnat) tai jotakin, mutta itse olkiukkona en ole arvostanut näitä kommentteja. (En usko tekstin kirjoittajankaan lämpenevän näille.)
+
+Niin ikään minua on epäilty olkiukkojen rakentamisesta, vaikka olen mennyt askeleen pidemmälle ja pyrkinyt *välttämään* heikoimpia vastustajia ja helpoimpia esimerkkejä. En ole etsinyt netistä tyhmimpiä mielipiteitä, mitä ihmiset ovat aiheeseen liittyen esittäneet. Sen sijaan olen pyrkinyt käsittelemään fiksuja ja täysjärkisiä ihmisiä -- sellaisia, joita uskon suuren osan lukijoistani olevan -- ja heidän epinsä heikkoja kohtia. Harvoin olen rakentanut tekstiä hypoteettisen esimerkin kritisoinnin ympärille.
+
+Ei siis pidä erehtyä, että [ilmeisestä asiasta](/epi/ilmeiset_ohjeet) puhuminen olisi sama kuin helppojen maalitaulujen haukkuminen. Jos kaikki huoneessa olijat ovat tietysti samaa mieltä asiasta ja esitetty kritiikki kohdistuu vain muihin ihmisiin, niin silloin voi olla hyvä vaihtaa aihetta. Jos taas pointit ovat sellaisia, jotka voisivat realistisesti soveltua omalle kohdalle, ollaan parempien aiheiden äärellä.
+
+[End of text.]
+
+# Status
+
+Luin joskus lyhyen kommentin, jonka olen hukannut, mutta jonka sisältö oli suunnilleen seuraava:
+
+"Ollessani vuosia sitten matkoilla kaukana ulkomailla muistan jutelleeni eräälle perheenäidille. Jossakin kohtaa keskustelua äiti mainitsi hänen lapsensa olevan hieman tyhmä. Hämmästyin hetkeksi -- eihän noin voi sanoa omasta lapsestaan! Mietittyäni hetken kuitenkin tajusin, että olisi ollut täysin tavanomaista sanoa 'hän ei oikein osaa piirtää' tai 'hän ei ole kovin urheilullinen'. Heidän kulttuurissaan suhtauduttiin hyvin eri tavalla älykkyyteen kuin omassani."
+
+Sitä voisi äkkiseltään ajatella, että sana "tyhmä" on sanan "älykäs" vastakohta, eli että esimerkiksi ihmisestä se tarkoittaisi "kognitiivisilta kyvyiltä heikkoa". Käytännössä sanaa kuitenkin [käytetään eri tarkoituksissa](https://fi.wiktionary.org/wiki/tyhm%C3%A4) ja se luo monia epäneutraaleja mielikuvia -- ikään kuin ihmisen kutsuminen tyhmäksi olisi negatiivinen arvio hänestä yleisesti.
+
+Kyse ei kuitenkaan ole pelkästään itse sanasta. Nimenomaan asiat, jotka liittyvät älykkyyteen tai muihin samalla suunnalla oleviin asioihin, tuntuvat herättävän tietynlaisia reaktioita ihmisissä.
+
+Yläkoulussa opetin luokkakaverilleni jotain matematiikkaan liittyvää. Sanoin "tämä kohta ei oikeastaan ole niin vaike--", ja minut katkaistiin kommentilla "hyvä sun on sanoa!".
+
+Silloin ihmettelin tätä kommenttia. Enkö minä nimenomaan ole hyvä sanomaan, kun minä kerta osaan tämän asian ja siten tiedän mitkä kohdat ovat vaikeita ja mitkä ei? (Kyllä, [olen tietoinen](/epi/reflektointi), että eri asiat ovat vaikeita eri ihmisille.) Olen törmännyt sanatarkkaan "hyvä sun on sanoa" -kommenttiin muissakin konteksteissa.
+
+Syy sille, miksi ihmiset sanovat näin, valkeni minulle vasta itse päästettyäni saman lauseen suustani, kun pianonsoittoa osaavani tuttava kommentoi jonkin artistin melodioiden olevan aina yksinkertaisia. "Miksi minä sanoin noin?" Totesin tämän olleen refleksinomainen reaktio sille, kun joku *yritti napata statusta sillä kuinka jotkin asiat ovat hänelle helppoja*. Moinen ei käy: häntä pitää siis näpäyttää, jotta hän palaa hänelle kuuluvalle paikalleen.
+
+Toisessa tilanteessa keskustelin kaverini kanssa ja yritin selittää yhtä monimutkaisempaa asiaa. Tämä on [suullisesti haastavaa](/epi/lokaali_kommunikaatio) ja toinkin tämän esille (mutta tietysti yritin selittää silti). Ulkopuolinen kommentoi (imitoiden) "minä vain olen fiksumpi kuin sinä".
+
+Kolmas tapaus: kerroin viime aikoina lukemastani matematiikasta ja kuinka se on ollut samanaikaisesti hyvin hyödyllistä ja helppoa verrattuna tutkimusmatematiikkaan tai edes yliopiston maisterikursseihin. "Semmoiset Dunning-Krugerit sieltä", kuului vastaus, ilmeisesti implikoiden että olen naiivi aloittelija, joka yliarvioi oman osaamisensa.
+
+Missään näistä tilanteista ei suoraan puhuttu "älykkyydestä" tai "tyhmyydestä", mutta nämä konseptit ovat reaktioiden taustalla. Matematiikan helppoushan riippuu ihmisen älykkyydestä -- kuten myös se, onko melodia yksinkertainen tai sattuuko tietämään jotakin mitä on vaikea selittää toiselle. Ja edes epäsuorat viittaukset mihinkään älykkyyteen liittyvään saa aikaan status-reaktioita.
+
+Toinen näkökulma on se, että kyse ei niinkään ole älykkyydestä vaan siitä, että ylipäätään *mikään* on helpompaa sinulle kuin muille. Jos sanot "kilometrin juokseminen kolmeen minuuttiin on helppo juttu", niin saatat saada erikoisia katseita. Kuulostaa nimittäin siltä, että yrität sanoa olevasi parempi kuin muut -- siis parempi juoksussa, mutta se [kuulostaa vähän samalta](/epi/sumuiset_ajatukset) kuin jos sanoisit olevasi parempi "yleisesti" (mitä ikinä tämä tarkoittaakaan).
+
+Joka tapauksessa status-aspektit luovat häiritseviä dynamiikkoja keskusteluun. "Häiritseviä" siis silloin, jos tavoitteena on hyvä epi -- monesti tietysti keskustelun tavoitteena ei ole hyvä epi, vaan nimenomaan muiden silmissä fiksulta näyttäminen ja statuksen saaminen. Eräs kuulemani sananvaihto, jota en muista sanatarkasti, tiivisti tämän hyvin:
+
+"Keskustelussa saa hyvin kuulostettua itsevarmalta sanomalla asioita matalalla äänensävyllä."
+
+"Niin, mutta sitten näyttää tosi tyhmältä, jos sanoo itsevarmasti asioita, jotka huomataan epätosiksi 30 sekunnin mietinnällä."
+
+Tavoitteena ei suinkaan ole sanoa asioita yhtä itsevarmasti kuin [omien uskomustensa varmuus](/epi/probabilistinen_ajattelu), vaan *vaikuttaa* itsevarmalta ja saada muita vakuutettua. Ja jos sattuu olemaan väärässä, niin ongelmana *ei* ole se, että *on ollut väärässä*, vaan että *näyttää tyhmältä* (lue: menettää statusta). Keskustelun tavoitehan ei ole olla sen seurauksena vähemmän väärässä, vaan saada itsensä näyttämään fiksulta ja muut tyhmiltä. (Tai vielä useammin: tavoite on vain sanoa hauskoja tai viihdyttäviä asioita.)
+
+Ja kuten ehkä pystyt jo arvaamaan, en pidä tätä ideaalina. Puhukoot he jotka tietävät. Keskustelun tavoite [ei ole voitto](/epi/miksi_uskot) ja toisten [vakuuttaminen](/epi/vakuuttamisesta). Halu näyttää fiksulta tai välttää tyhmältä näyttäminen eivät niin ikään ole hyviä tavoitteita. Esiinny itsevarmana silloin ja vain silloin, kun [uskomuksesi ovat vahvoja](/epi/sumuiset_ajatukset). [Älä rankaise](/epi/insentiivit) uskomusten rehellisesti jakamista.
+
+[End of text.]
+
+# Haitallinen sovinnollisuus
+
+Olen nuorempana ollut luontaisesti melko massaan mukautuva ja sovinnollinen. (Tämä piirteeni on muuttunut [ymmärrettyäni eräitä asioita](/epi/kerran_luotin), mutta se on toinen tarina.) Tällä oli seurauksia: väitellessäni minulla oli tapana erimielisyyksien sijaan ohjata keskustelu väitteeseen, josta olimme samaa mieltä.
+
+Muistikuvani ovat hieman hatarat, mutta tässä on esimerkki: Keskustelin kerran tuttuni kanssa luontaisesta lahjakkuudesta, harjoittelusta ja kiinnostuksesta ja siitä, miten ne vaikuttavat taitolajeissa pärjäämiseen. Päädyin keskustelussa aloittamaan väitteestä "luontaisen lahjakkuuden merkitys on hyvin pieni" ja lopettamaan väitteeseen "ihmiset voisivat yleisesti saada paljon parempia tuloksia, jos kiinnostus ja harjoittelu olisivat kohdillaan".
+
+Ensimmäinen väite on vahva (mutta pidän sitä nykyään epätotuudenmukaisena). Toinen taas on kenties hyvä pointti, mutta loppukädessä mitäänsanomaton väite, josta kaikki voivat sovinnossa olla samaa mieltä.
+
+Ongelma tässä sovinnollisessa lähestymistavassa on se, että se ei oikeastaan johda mihinkään. Kaikki ovat samaa mieltä. Mistäs sitten puhuttaisiin?
+
+Vielä pahempaa on se, että ajatukseni aihetta koskien olivat aika sotkuisia enkä täysin erotellut sitä, että nämä ovat hyvin eri väitteitä. Olen puhunut tästä [matalan informaation väitteiden](/epi/matala_informaatio) yhteydessä: sama epämääräinen väite ("harjoittelu ja kiinnostus ovat tärkeitä kehityksen kannalta") mahdollistaa monenlaisia tulkintoja, joista kenties osa on epätosia ja osa tosia, ja ne on siten tärkeä pitää erillään.
+
+Toisessa tapauksessa päädyin keskusteluun, jossa minulla ja toisella osapuolella oli etukäteen vahvoja näkemyksiä aiheesta. Ajattelin, ettei keskustelusta tule hyvää, jos molemmat lähtevät keskusteluun varmoina omista näkemyksistään. Pyrin siis olemaan sovinnollinen ja antamaan vastapuolen näkemyksille enemmän painoarvoa kuin mitä jälkikäteen pidän perusteltuna. Tässä liiallinen sovinnollisuus johti siihen, etten kunnolla tuonut esiin, mitä mieltä olen ja miksi. Koen keskustelun epäonnistuneen: emme oikein saaneet käsiteltyä itse aihetta.
+
+Olen myös ollut keskustelussa, jossa olen toisen osapuolen kanssa eri mieltä, mutta hän kommentoi, että "emme välttämättä edes ole tästä eri mieltä". Tästä olin vahvasti eri mieltä. Ennustettavasti keskustelu ei, ainakaan minun tietääkseni, johtanut näkemysmuutoksiin kummankaan osapuolen toimesta.
+
+Näissä esimerkeissä sovinnollisuus osoittautui *haitalliseksi* keskustelun kannalta. Yleisesti sovinnollisuus kuitenkin nähdään positiivisena asiana. Mikä tämän selittää?
+
+Erottelisin seuraavat kaksi asiaa: Yksi koskee sellaisia teemoja kuten kyky ja halu selvittää erimielisyyden syitä, toisen osapuolen näkemyksen aidosti kuunteleminen, [toisen perspektiivin hahmottaminen](/epi/reflektointi), empatia ja muut tunnetaidot. Toinen koskee halua olla keskustelun jälkeen samaa mieltä asioista ja erimielisyydestä johtuvien negatiivisten tunteiden välttämistä.
+
+Nämä voivat [kuulostaa suunnilleen samoilta](/epi/sumuiset_ajatukset) ja niihin viitataan samoilla sanoilla: ensimmäinen näistä on juurikin sovinnollisuutta, toinen taas on (liiallista) halua olla sovinnossa. Näissä on kuitenkin hienovarainen ero, joka tekee toisesta hyvää ja toisesta huonoa sovinnollisuutta.
+
+Syyn uskomusten muutokselle ei pitäisi olla "en tykkää olla eri mieltä ihmisten kanssa" tai "oivoi, keskustelun toinen osapuoli ajattelee minun olevan väärässä, tuntuupas tyhmältä". Nämä eivät ole syitä, jotka johtavat systemaattisesti totuudenmukaisiin uskomuksiin vaan siihen, että omat uskomukset muuttuvat samoiksi kuin ympärillä olevilla ihmisillä. (Ja mikä pahempaa, tämä kannustaa itsevarmana esiintymiseen, muiden tunteisiin vetoamiseen ja sellaiseen retoriikkaan, jolla saa muita parhaiten puolellensa. Mikä voisikaan mennä pieleen?) Tämä on haitallista sovinnollisuutta.
+
+Erottelussa ensimmäisenä mainittu asia, johon liittyy kykyä ja halua selvittää erimielisyyden syitä, sen sijaan on hyvän tyyppistä sovinnollisuutta. Tällä voidaan ratkoa erimielisyyttä ja päivittää uskomuksiaan hyvistä syistä. Keskustelu voi myös *tuntua* sovinnolliselta: siltä, että osapuolet kuuntelevat ja yrittävät ymmärtää toisiaan. Tämä on hyvä sekä epin näkökulmasta että muutenkin.
+
+[End of text.]
+
+# Reflektointi
+
+[Mielen teorialla](https://en.wikipedia.org/wiki/Theory_of_mind) viitataan kykyyn mallintaa muiden ihmisten mielentiloja, esimerkiksi heidän uskomuksia. Lapsilla tämä kyky kehittyy noin nelivuotiaana, jolloin he pystyvät yksinkertaisimmissa tilanteissa hahmottamaan toisen ihmisen uskomusten olevan virheellisiä.
+
+Monesti tätä kykyä ei kuitenkaan tule käytettyä.
+
+Olen useampaan otteeseen törmännyt seuraavaan tilanteeseen: Kerron kaverilleni jostakin hauskasta matemaattisesta pulmasta. Pulmasta hauskan tekee se,  että ilmeiseltä tuntuva vastaus on väärä ja epäintuitiivisempi vastaus on oikea (esimerkki: [sinisilmäisten saari](https://terrytao.wordpress.com/2008/02/05/the-blue-eyed-islanders-puzzle/)). Välillä reaktio on nopeasti (hyvin vaihtelevalla itsevarmuudella) tokaistu ilmeinen väärä vastaus.
+
+Ehkä minä en esittäisi tätä pulmaa, jos se ratkeaisi kahdessa sekunnissa.
+
+Vähiten itsevarmat tapaukset voi selittää sillä, että on helpompi miettiä ääneen ja varmistaa ymmärtäneensä tehtävän oikein. Olen kuitenkin törmännyt tapauksiin, joissa mielen teorian hyödyntäminen on selvästi jäänyt vähemmälle.
+
+Reflektointikykyä mittaavissa testeissä esiintyykin usein kysymyksiä, joissa nopea intuitiivinen vastaus on väärä. Tunnetuin lienee "Pallo ja maila maksavat yhteensä 1,10 euroa. Maila maksaa euron enemmän kuin pallo. Paljonko pallo maksaa?" (Se, että [merkittävä osuus](https://www.sciencedirect.com/science/article/pii/S0010027723000148?) ihmisistä vastaa tähän kysymyksiin väärin, on hieman [hälyttävää](/epi/mihin_matematiikkaa).)
+
+Tässä on toisen tyyppisiä esimerkkejä keskustelutilanteista:
+
+- Kerron jostakin kuulemastani ideasta, sanotaan [ennustusmarkkinoista](/epi/symmetrian_rikkominen). Joku vastaa, että sittenhän joku voi vaikuttaa ennustettavaan asiaan (vaikkapa vaalien voittajaan).
+- Sanon, etten pidä lukuteorian tutkimusta kovin hyödyllisenä. Minulle vastataan, että lukuteoriallahan on sovelluksia esimerkiksi kryptografiaan ja että perustutkimus on tärkeää.
+- Valmistuttuaan kandidaatiksi tuttuni päätti siirtyä opinnoista muihin asioihin. Tämän noustessa keskustelussa esiin hän sai usein kommentteja siitä, kuinka Kouluttautuminen Kannattaa Aina ja kuinka tutkinnot ovat hyödyllisiä työnhaussa.
+
+Joissakin tapauksissa reaktiot ovat järkeviä. Esimerkiksi ennustusmarkkinoiden tapauksessa on minusta hyvä, että ihmiset jakavat mieleensä tulevia ajatuksia. Olen itsekin puolustanut [ilmeisten ohjeiden ja väitteiden](/epi/ilmeiset_ohjeet) esittämistä. Tämä ei ole se, mitä kritisoin.
+
+Se, mitä kritisoin, on kun nämä ajatukset esitetään muodossa "hahaa, löysin kriittisen ongelman, jonka vuoksi ennustusmarkkinat ovat käyttökelvottomia -- et ole varmaankaan miettinyt tätä!" vaikka... oikeastaan olen miettinyt tätä. Se on juuri se yleisin vasta-argumentti, jonka ihmiset esittävät ideasta kuullessaan, juuri se, jonka keksii muutaman sekunnin mietinnällä.
+
+Liioittelen vähän (ja tässä on vaihtelua ihmisten välillä). Joka tapauksessa olen käynyt lukuteoria-kryptografia-dialogin ainakin kolmesti niin, että toinen ihminen *tietää* minun tehneen väitöskirjan lukuteoriasta. Olen siis joskus saattanut kuulla, että lukuteorialla tosiaan on sovelluksia kryptografiaan. Ei myöskään ole ensimmäinen kerta, kun kuulen perustutkimuksen tärkeydestä.
+
+Pointti ei ole se, että ihmisten pitäisi ääneen sanoa "mutta sinä varmaan olet miettinyt tätä asiaa aiemmin" ja nöyrtyä toisen edessä, vaan että *ajattelisi* asiaa, että *mielessä kävisi* hypoteesi "toinen on miettinyt asiaa aiemmin". (En myöskään sano, että sinun tulisi *olettaa* toisen miettineen ilmeiset ajatukset ja vastakkaiset näkökulmat läpi -- yksi pointeistani nimenomaan on, että ihmiset eivät luonnostaan ole reflektiokyvyn mestareita.)
+
+Miksi tällä on väliä? Näin toimimalla päästäisiin helpommin *oikeisiin keskusteluihin*. Sen sijaan, että luetellaan aiheesta helposti mieleen tulevia ajatuksia ("kouluttautuminen kannattaa aina") voidaan *puhua toiselle ihmiselle*. Mitä hän ajattelee? Mitä kokemuksia ja tietoa hänellä on? Miksi hän uskoo mitä uskoo? Ymmärränkö hänen näkemystään?
+
+Hyötyjä on myös vähemmän vakavissa aiheissa -- silloin, kun tavoite on vain jutella mukavia. Keskustelu on nimittäin mukavampaa, jos samaa keskustelua ei ole käynyt jo muutamaa kertaa aiemmin.
+
+Kerran keskustelin erään henkilön kanssa aiheesta, josta olimme eri mieltä. Hän käytti suuren osan ajasta puhuakseen siitä, kuinka ihmiset, joilla on [hieman samankaltaisia](/epi/sumuiset_ajatukset) uskomuksia kuin minulla, ovat tietämättömiä, yli-itsevarmoja, eivät muuta näkemyksiään ja niin edelleen. Olin samaa mieltä, että tällaisia ihmisiä [on olemassa](/epi/leveat_jakaumat). Olimme myös samaa mieltä siitä, että en ole tällainen "tyypillinen" tämäntyyppisiä uskomuksia omaava ihminen. Hän sanoi myös, ettei hänen pointtinaan ole se, että minä olisin sellainen. (Minulle jäi epäselväksi, mikä siinä sitten oli pointtina.) Siitä huolimatta suuri osa ajasta kului näiden muihden ihmisten kritisointiin.
+
+Tämä ei tuntunut kovin mukavalta tai produktiiviselta. Me olisimme voineet puhua, tiedätkö, ihminen toiselle, ja käsitellä itse asiaa. Sen sijaan keskustelussa puhuttiin ristiin ja kritisoitiin tällaisten ja tuollaisten uskomusten omaavia ihmisiä. Huomautan, että "on olemassa tyhmiä ihmisiä, jotka ovat tuota mieltä" on varsin [yleispätevä vasta-argumentti](/epi/symmetrian_rikkominen), ja olen aiemminkin puhunut [helppoihin maalitauluihin](/epi/helpot_maalitaulut) keskittymisestä.
+
+Ennen pitkää toki käsittelimme itse aihetta ja päädyimme ymmärtämään toistemme näkemyksiä paremmin. Lopulta näkemysmuutoksiakin tapahtui. Keskustelulla oli hyvätkin hetkensä -- ne alkoivat siinä kohtaa, kun osallisena oli kaksi osapuolta, ei enempää eikä vähempää.
+
+[End of text.]
+
+# Vakuuttamisesta
+
+Keskustelet kaverisi kanssa jostakin. Olette eri mieltä. Esitätte perusteluja näkemyksillenne.
+
+"Tuo ei kyllä vakuuta yhtään", kaverisi vastaa yhteen perusteluistasi.
+
+Tämän seurauksena yrität keksiä vielä parempia perusteluja, jotka vakuuttaisivat kaverisi.
+
+---
+
+Olen [aiemmin puhunut](/epi/miksi_uskot) siitä, kuinka keskustelut herkästi lipsuvat väittelyiksi, joissa tavoite on voittaa tai todistaa toisen olevan väärässä. Keskustelussa ei pohdita syitä omalle uskomukselle, vaan yritetään keksiä perusteluja sille, minkä takia tämä uskomus on oikea. Olen myös kritisoinut tätä argumenttipohjaista lähestymistapaa erimielisyyksien ratkaisemiseen.
+
+Tämä on yksi ongelma yllä kuvatussa (hypoteettisessa) keskustelussa: "Esitätte perusteluja näkemyksillenne" ja "yrität keksiä vielä parempia perusteluja, jotka vakuuttaisivat kaverisi". Kiinnitän kuitenkin huomion toiseen kohtaan: kommenttiin "Tuo ei kyllä vakuuta yhtään".
+
+Kommentti vihjaa, että on toisen tehtävä vakuuttaa sinut ja että hän on epäonnistunut. Tämä on huono näkökulma: ei ole toisen osapuolen vastuulla vakuuttaa sinua mistään. Näkisin asian mieluummin niin, että toinen henkilö voi *auttaa sinua* muodostamaan totuudenmukaisia uskomuksia esittämällä näkemyksiään ja perustelujaan. Loppukädessä sinun tulee kuitenkin itse tehdä varsinainen työ ja miettiä, mikä on totta. Tästä näkökulmasta on lähinnä outoa sanoa "tuo ei kyllä vakuuta yhtään".
+
+[Kohtelias tulkinta](/epi/kohteliaat_tulkinnat) kuuluu, että kommentti oikeasti tarkoittaa neutraalia "se mitä sanoit ei saa minua muuttamaan uskomuksiani" tai "tuo ei ole [validia päättelyä](/epi/symmetrian_rikkominen)" tai "tuo ei ole [evidenssiä](/epi/uskomusten_muutos) esittämällesi väitteelle", mutta kuten usein, pidän tällaisia kohteliaita tulkintoja liiankin kohteliaina rationalisointeina sille, kuinka kaikki tietysti ymmärtävät nämä hienovaraiset erot. [Pidän toki harmillisena](/epi/sanoista), ettei ole lyhyitä tapoja välittää näitä tarkempia vastauksia, jolloin herkemmin tulee käytettyä lyhyttä mutta huonoa fraasia, ja että yksisanainen konsepti "vakuuttaminen" työntää kohti vastakkainasettelua ja vastuun asettamista toiselle.
+
+On muitakin fraaseja, joita tunnutaan käyttävän retorisesti ja vakuuttamistarkoituksissa, vaikka niiden kirjaimelliset merkitykset ovat epäimartelevia.
+
+"En voi mitenkään käsittää, miksi jotkut ajattelevat noin" -- yleensä ihmiset eivät ylpeile ymmärtämättömyydellään. Toki sehän on muiden vika, kun heillä on sellaisia näkemyksiä, joita ei itse käsitä.
+
+"En näe mitään syytä uskoa noin" kuulostaa siltä, että henkilö ei kykene käsittelemään argumentteja [tasapuolisesti](/epi/symmetrian_rikkominen).
+
+"En olisi voinut kuvitella, että he tekisivät noin" -- aika päivittää uskomuksiaan. Vai sekoitettiinko tässä se, mitä *odotti* tapahtuvan sen kanssa, mitä *halusi* tapahtuvan?
+
+Pystyn mitenkään käsittämään, miksi joku käyttäisi näitä fraaseja. Ne silti vaikuttavat minusta haitallisilta, jos halutaan välttää väittelymoodia.
+
+Kommentit muotoa "en tajua, miten et ymmärrä tätä" ja "en näe mitään syytä uskoa noin" ovat ikään kuin pyyntöjä -- tai mahdollisen aggressiivisuuden vuoksi *vaatimuksia* -- selittää näkemyksiäsi aiheesta. Mutta taas, en ajattele sen olevan toisen vastuulla vakuuttaa muita. "Todistajan taakan" siteeraaminen onkin yksi vahva merkki keskustelun luisumisesta väittelymoodiin.
+
+---
+
+Kuvitellaan, että olet taas tuttusi kanssa eri mieltä jostakin. Tuttusi esittää perusteluja tälle vastakkaiselle mielipiteelle. Pidät hänen selityksiään täysin typerinä. Toteat itseksesi, että tuo näkemys nyt on ihan hölynpölyä.
+
+Näiden näkemysten ei pitäisi juuri vaikuttaa siihen, miten myöhemmin suhtaudut muiden esittämiin *toisiin* perusteluihin samalle näkemykselle. [Tosille väitteille voi nimittäin esittää surkeita perusteluja](/epi/symmetrian_rikkominen) (ja näin käytännössä myös tehdään).
+
+Entä miten käy käytännössä?
+
+Ihmiset muuttavat uskomuksiaan vähemmän, jos ennen hyvien argumenttien esittämistä heille esitetään huonoja argumentteja.
+
+Tällaisia tuloksia saatiin McGuiren ja Papageorgisin vuoden 1961 tutkimuksessa "[The relative efficacy of various types of prior belief-defense in producing immunity against persuasion](https://doi.org/10.1037/h0042026)". Tutkimuksen toisto 679 henkilöllä vuonna 2023 antoi samankaltaisia tuloksia: "[Sixty Years Later --  A Replication Study of McGuire’s First Inoculation Experiment](https://doi.org/10.1027/1864-1105/a000396)".
+
+Ensimmäisessä artikkelissa tarjottu selitys on, että ihmiset harvoin altistavat itseään uskomustensa vastaisille näkemyksille. Heikkojen vasta-argumenttien esittäminen luo tällöin "vastustuskykyä", jolloin myöhemmin esitettävät vahvemmat vasta-argumentit vaikuttavat vähemmän kuin ilman vastustuskyvyn luomista.
+
+Ulkopuolelta tämä näyttää samankaltaiselta kuin jos ihmiset sanoisivat "annan teille yhden mahdollisuuden vakuuttaa minut", ja jos tämä mahdollisuus mokataan, eivät he enää muuta näkemyksiään.
+
+Miten asioita sitten kuuluu käsitellä? Näkemykseni: Jos joku esittää huonoja argumentteja, niin tämä on *häiriötekijä*, *kohinaa* -- ei enempää, ei vähempää. Tämä tulee sivuuttaa. Tämän ei pitäisi juuri vaikuttaa itse väitettä koskeviin näkemyksiin. Tämän ei pitäisi vaikuttaa siihen, miten puntaroi myöhempiä argumentteja samasta aiheesta. Eikä se varsinkaan ole jotakin, mitä käytetään myöhemmin *aseena* muita [vähän samankaltaisia näkemyksiä](/epi/sumuiset_ajatukset) omaavia vastaan.
+
+(Jos sinun tekee mieli vastata "mutta se, että näkemykselle esitetään huonoja perusteluja, on [evidenssiä](/epi/uskomusten_muutos) väitteen ja sen omaavien epin huonoudelle", en oikein tiedä, mitä sanoa. Koko tutkimuksen pointti on se, että käytännössä ihmiset soveltavat tätä päättelyä väärin. Se ei toki kerro, *mikä* menee pieleen. Sivuutan pitkän vastauksen, mainitsen vain [kvantifioinnin](/epi/kvantifiointi) ja [yhden muuttujan mallit](/epi/yksi_muuttuja) sekä kehotan keskittymään itse asiaan sosiaalisten dynamiikkojen sijasta.)
+
+Tätä peliä voi pelata myös *yksin*: Valitset jonkin uskomuksen, generoit heikkoja argumentteja sitä vastaan ja kumoat ne. Veikkaisin, että tätä kautta saa vahvistettua omia uskomuksiaan -- vaikka nämä heikot argumentit eivät olisikaan se, minkä takia järkevät ihmiset ovat eri mieltä kanssasi. 
+
+Ei siis kannata juuttua [helppoihin maalitauluihin](/epi/helpot_maalitaulut), ja kannattaa pyrkiä ymmärtämään [toisten näkökulmia](/epi/reflektointi). Epin parantaminen ei ole yksinpeli.
+
+[End of text.]
+
+# Suullinen kommunikaatio on lokaalia
+
+Arkipäiväisessä keskustelussa puheenvuorot ovat yleensä lyhyitä. Pitkän monologin pitäminen on etiketin vastaista ja puheenvuoron pidetessä keskeytyksen todennäköisyys kasvaa. Mietintätauon pitäminen monologin keskellä johtaa niin ikään siihen, että joku esittää kysymyksiä tai kommentteja, ja keskustelu ajautuu muualle.
+
+Tämän dynamiikan seurauksena suullinen kommunikointi on *lokaalia*: Pidettävät puheenvuorot ovat lyhyitä. Samanaikaisesti voi esittää vain yhden tai pari esimerkkiä (sen sijaan, että lueteltaisiin pitkiä listoja). Esitettävät muutos- tai parannusehdotukset lähtevät nykyisestä tilasta ja muuttavat vain *yksittäisiä* tekijöitä isompien muutosten sijasta. Ideat eivät mene *syvälle*, niitä ei voi kasata *päällekkäin* torniksi, vaan ajatukset rakentuvat kaikkien jakamien näkemysten ja pohjatietojen päälle. (Tämä vaikutus vahvistuu ihmismäärän kasvaessa -- kahden tai kolmen hengen kesken saa helpommin aikaan "aitoja" keskusteluja kuin kahdeksan hengen porukassa.)
+
+Kuvitellaan esimerkiksi, että satun puhumaan koulutuksesta ja sen kehittämisestä tuttujeni kanssa. Yksittäisiä asioita, kuten "lisätään/poistetaan oppiaine X"  tai "muutetaan sen opetussisällöstä tuo ja tuo asia", saa helposti käsiteltyä. Sen sijaan oppiainelistan uudelleenmiettiminen kokonaan on haastavampaa: tämä vaatisi kynää, paperia, miettimisaikaa ja itse miettimistä.
+
+Sitten voi myös esittää vielä suurempia ja epälokaalimpeja ehdotuksia, kuten "luovutaan oppiaineista kokonaan ja tarjotaan vain yksittäisiä kursseja pienemmistä teemoista".
+
+"Ahaa, esimerkiksi millaisia kursseja?" kysyy keskustelukumppanini.
+
+Hermostun. Minulla on pari aiemmin mietittyä ideaa mielessä, mutta tarvitsen vielä jotain. Olisiko tuo? Ai niin, kyllähän sitä vähän käydään lukiossa. Entä tämä? Ei vaikuta kriittiseltä, mutta kelvatkoon. Entä... oivoi, olen pitänyt liian pitkän tauon, pitää alkaa sanoa jotain.
+
+"No tuota, voisi olla keskustelutaitoja, ja henkilökohtaisen talouden perusteet, ja kognitiivisista vinoumista", saan sanottua.
+
+"Ensimmäiset kaksi kuulostavat ihan hyviltä yläkouluun tai lukioon. Kognitiivisista vinoumista on puhetta psykologian kurssilla. Ei taida vaatia koko järjestelmän uudelleenrakentamista?"
+
+Mumisen kuinka kognitiivisia vinoumia voisi käsitellä paljon paremmin, mutta annan asian olla.
+
+Tekstin välityksellä kommunikoidessa sen sijaan on rajattomasti aikaa miettiä, ja sitä keksiikin enemmän aiheita, jotka eivät sovi niin siististi nykyisten oppiaineiden alle ja joita voisi hyvin sisällyttää opetukseen. (Mainitsen [toisessa tekstissä](/epi/kerran_luotin) joitakin ehdokkaita verrattain tärkeistä asioista, joita koulussa ei juuri opeteta.)
+
+Kyse ei ole kuitenkaan tästä nimenomaisesta ideasta (en oikeasti ole miettinyt sitä kovinkaan kauaa). Keksin sen vain *esimerkkinä aiheesta*, jota olisi vaikea käsitellä suullisesti ilman, että aihetta on miettinyt pidempään etukäteen.
+
+Toinen esimerkki: [Mihin matematiikkaa tarvitaan?](/epi/mihin_matematiikkaa) -tekstissä avasin yhtä keskeistä syytä sille, miksi pidän (tietyntyyppistä) matematiikkaa hyödyllisenä. Vastaus ei ole sellainen, jonka pystyisin välittämään suullisesti arkipäivän keskustelussa -- vaikka olen miettinyt asian jo valmiiksi ja kirjoittanut siitä tekstinkin. Teksti nimittäin hyödyntää toistakymmentä esimerkkiä, joista kunkin käsitteleminen vie aikaa, kaikkia ei kuitenkaan muista ja jossakin kohtaa pitää pysähtyä miettimään, mitä haluaakaan sanoa ja miten. (Suhtaudun nykyään hieman ymmärtäväisemmin siihen, ettei minulle ole aiemmin tarjottu tyydyttävää vastausta kysymykseeni.)
+
+En ole keksinyt hyviä tapoja kiertää keskustelujen lokaaliusongelmaa -- muuta kuin tietysti sen, että kirjoittaa ajatuksensa ylös.
+
+[End of text.]
+
+# Sanoista ja konsepteista
+
+Kirjoittaessani olen pyrkinyt välttämään harvinaisia ja teknisiä sanoja, joita lukija ei välttämättä ennestään tiedä. Yleisestihän ohjeistetaan kirjoittamaan selkeästi.
+
+Välillä silti mietin, teenkö virheen. En tarkoita, että haluaisin täyttää tekstini eksoottisilla sivistyssanoilla. Tarkoitan, että (nykyistä useammin) käyttäisin sanoja, jotka viittaavat lyhyesti juuri niihin asioihin, joihin haluan viitata. Sanan käyttäminen nimittäin samalla luo, tai ainakin nimeää, *konseptin*.
+
+Annan esimerkin. Olen kirjoittanut tekstin nimeltä "[liian kohteliaat tulkinnat](/epi/kohteliaat_tulkinnat)", jossa käsittelen erästä ilmiötä: ihmisillä on taipumus tulkita muiden ihmisten toimintaa kohteliaasti niin vahvasti, että tämä liukuu rationalisoinnin puolelle. Fraasi "liian kohtelias tulkinta" saa uuden merkityksen ja se alkaa *tuntua* yhdeltä asialta, juuri siltä asialta mistä kirjoitan tekstissäni. Aivan kuten puhuessani vaikkapa liitutaulusta minusta ei *tunnu*, että käyttäisin yhdyssanaa -- yhdistelmää sanoista "liitu" ja "taulu" -- vaan puhun *yhdestä asiasta*. Tiedäthän, puhun vain liitutaulusta! En mistään liiduista tai tauluista! Niin ikään "liian kohtelias tulkinta" ei ole enää vain kolmen sanan yhdistelmä, vaan se on *yksi asia*, ikään kuin *yksi sana*, liiankohteliastulkinta.
+
+Tämän voi myös tehdä yksittäisillä sanoilla. Joskus on ollut aika, jolloin sana "[insentiivi](/epi/insentiivit)" ei ole kuulunut sanavarastooni. Olen silti kyennyt muodostamaan ajatuksia kuten "jos kokeita valvotaan vähemmän, niin ihmisillä on pienempi riski jäädä kiinni huijaamisesta, joten he kenties alkavat huijaamaan enemmän". Tämä ei kuitenkaan tunnu yhdeltä asialta, vaan kokonaiselta *päättelyketjulta*. Enkä ollut käynyt ketjua läpi riittävän usein, jotta se olisi alkanut tulla rutiinitasolla tai että olisin huomannut sen olevan yleinen ilmiö.
+
+Sitten kerran luin tekstin, jossa käsiteltiin insentiivejä ja käytettiin *sanaa* "insentiivi" (tai ainakin näin kuvittelen sanan päätyneen sanavarastooni). Käsitelty ilmiö on kyllä tuttu, mutta siinä tulee pieni "ahaa"-elämys: niin tosiaan, tämä on *juttu*, yleinen ilmiö joka toistuu tilanteesta toiseen. Aiemmat ajatukset ovat nyt paljon selkeämpiä: "kokeiden valvomisen vähentäminen kasvattaa insentiiviä huijata". Niitä myös tulee ajateltua helpommin -- minä en enää niinkään tee päättelyketjua vaan helpon yksittäisen huomion.
+
+[Insentiivejä käsitellessäni](/epi/insentiivit) kirjoitin "Insentiivit ovat kuten fysikaaliset voimat, mutta ihmisille ja ihmisjoukoille: ne työntävät tiettyyn suuntaan, toimimaan tietyllä tavalla." Ikään kuin oppisi painovoimasta: kyllä, olen huomannut asioiden putoavan alaspäin, mutta silti ajattelen asiaa nyt kirkkaammin. Ja minulla on tälle asialle *sana*, jolla voin kätevästi viitata siihen.
+
+Tämän vuoksi olen aina silloin tällöin esitellyt uusia termejä, kun olen käsitellyt uutta keskeistä konseptia.
+
+Toisaalta on tekijöitä, jotka saavat minut välttämään sanoja. Selkein on se, ettei sopivia sanoja löydy suomeksi. Uskomusten muutoksista puhuttaessa haluaisin puhua konsepteista "prior probability" (todennäköisyys ennen uuden informaation saamista) ja "posterior probability" (todennäköisyys informaation saamisen ja uskomusten muuttamisen jälkeen). Englanniksi voi vain helposti puhua "prior":sta ja "posterior":sta, mutta suomesta ei löydy vastaavia sanoja.
+
+Todennäköisyyslaskentaan liittyy ylipäätään paljon hyviä sanoja, jotka kiteyttävät konsepteja: prior, posterior, evidence, likelihood, update, odds... Joillekin käännöksiä ei harmillisesti löydy, enkä halunnut esitellä liikaa uutta termistöä samassa tekstissä -- pointtina on lopulta kuitenkin ne ideat eivätkä niille käytettävät termit.
+
+(Olen huomannut todennäköisyyden konseptien kääntyvän muutenkin huonosti luonnollisille kielille. Esimerkiksi jos saat evidenssiä uskomuksesi puolesta -- siis väitteen todennäköisyys nousee -- voi uskomuksen sanoa "vahvistuneen". Entä jos evidenssi on uskomusta vastaan ja todennäköisyys laskee? "Heikentyykö" uskomuksesi? Kuulostaa väärältä. "Kumoutuuko" näkemys? Ei, tässä on liian binäärinen vaikutelma. "Horjuuko" uskomuksesi? Eh, aika dramaattinen ilmaisu. Ikään kuin [vahvistusharha](https://en.wikipedia.org/wiki/Confirmation_bias) heijastuisi myös kieleen niin, että on helppoa puhua uskomuksen vahvistumisesta ja vaikeampaa sen... no, tiedäthän.)
+
+Välillä vältän sanoja niiden pituuden takia. Minusta on varsin valitettavaa, että sana "todennäköisyyslaskenta" on *kahdeksan* tavua pitkä: to-den-nä-köi-syys-las-ken-ta. Yritä siinä sitten kirjoittaa sujuvaa tekstiä todennäköisyyslaskennasta.
+
+Ideaalisti sanan pituus riippuisi konseptin keskeisyydestä, yleisyydestä ja hyödyllisyydestä. Tiedostan, että luonnolliset kielet ovat kehittyneet ennen kuin ihmiset ovat kehitelleet todennäköisyyslaskennan, ja siten lyhyen yksitavuisen sanan saavat sellaiset asiat kuten suo, mutta minä en *pidä* tästä. Minusta todennäköisyyksien konsepti on tärkeämpi kuin suon.
+
+Sanat myös tuovat mukanaan assosiaatioita ja mielikuvia. Esimerkiksi minä kirjoitan totuudenmukaisista uskomuksista ja niiden muodostamisesta. Englannin kielessä tähän voisi viitata sanalla "epistemology" tai "epistemics", minkä voi kääntää suoraan "epistemiikka" tai sitten "tietoteoria". Sanan "tietoteoria" käyttäminen kuitenkin kuulostaa siltä, että minä ja pian myös lukijani ovat syvällä [filosofiatilassa](/epi/filosofiatila) ja että tekstit ovat vaikeaselkoisia, abstrakteja sivistyssanoja pullollaan. Ei kiitos.
+
+Ja nyt tiedät, miksi käytän sanaa "epi".
+
+[End of text.]
+
+# Työkalujen väärinkäyttö
+
+Olen esittänyt erinäisiä ideoita, jotka on tarkoitettu epin parantamiseen. Niitä voi toki käyttää myös keskustelujen pilaamiseen:
+
+Esitä uskomuksesi. Kommentoi, ettet pysty nyt perustelemaan sitä kunnolla, koska [suullinen kommunikaatio on lokaalia](/epi/lokaali_kommunikaatio). Jos joku on eri mieltä, kysy skeptisellä äänensävyllä "[miksi uskot mitä uskot?](/epi/miksi_uskot)", jolloin puolustuksen omainen vastaus on helppo tulkita rationalisointina. Jos vastauksessa on monitulkintaisuutta, kritisoi toista [matalan informaation väitteiden](/epi/matala_informaatio) esittämisestä ja [sumuisesta ajattelusta](/epi/sumuiset_ajatukset). Joka tapauksessa [olet kyllä kuullut nämä pointit aiemminkin](/epi/reflektointi) ja tässä hyökätään [helppoa maalitaulua](/epi/helpot_maalitaulut) vastaan, eikä käsitellä sitä, miksi järkevät ihmiset ovat asiasta eri mieltä. Esitä joitain näkemyksiäsi aiheeseen liittyen. Jos toinen osapuoli ei vakuutu niistä, sano väheksyvästi "[no ei ole minun tehtäväni vakuuttaa sinua mistään](/epi/vakuuttamisesta)". Väleihin voi ripotella tilanteeseen sopivia syytöksiä erilaisiin ansoihin, harhoihin ja vinoumiin lankeamisesta.
+
+Seuraavaksi pilaan vitsin ja sanon pointtini suoraan:
+
+- Suullinen kommunikaatio on lokaalia -ajatusta ei kuulu käyttää perusteluna sille, ettei avaa näkemyksiään. Jos asia on vaikea selittää, niin voi toki huomauttaa, että tämä on vaikea selittää. Jos taas aika tai energia ei riitä aiheen käsittelyyn, niin voi vain sanoa että "en nyt jaksa/ehdi syventyä tähän".
+- "Miksi uskot mitä uskot?" -kysymys on tarkoitettu omien uskomusten reflektointiin, ei yleispäteväksi kommentiksi, jolla epäillä muiden ihmisten uskomuksia. Siihen ei kuulu taka-ajatusta uskomuksen vääryydestä, eikä siihen kuulu luoda sellaista skeptisellä äänensävyllä.
+- Puhe ei ole eksaktia, epämääräisyydestä syyttäminen on miltei yleispätevä vasta-argumentti.
+- En suosittele toisen osapuolen reflektointikyvyn kritisoimista.
+- Perusteettomat syytökset olkiukkojen kimppuun hyökkäämisestä ovat itse asiassa huono juttu.
+- "Ei ole minun tehtäväni vakuuttaa sinua mistään" kuulostaa juuri siltä, mitä joku sanoisi halutessaan vakuuttaa toisen.
+- "Kenellä on eniten vinoumia" -kilpailun voittajan selvittäminen harvemmin edistää itse asian ymmärtämistä (ja harvoin päättyy hyvin).
+
+Miksi tuon tämän esiin? Koska sanottaessa "ihmisillä on vinoumia" jotkut kuulevat "*minulla* on vinoumia" ja jotkut "*muilla* on vinoumia". Puhuttaessa ihmisten huonosta epistä joillekin tulee mieleen hetket, jolloin *heillä* on ollut huono epi, joillekin taas tilanteet, joissa *muilla* on ollut huono epi. Tarjottaessa työkaluja jotkut miettivät, olisiko niitä hyötyä *heille*, jotkut taas sitä, olisiko niitä hyötyä *muille*.
+
+Ja jälkimmäisen henkilön käsissä työkalut saattavatkin muuttua aseiksi, joita käytetään keskustelun voittamiseen.
+
+Olisi tietysti väärin väittää, että ihmiset asettuvat siististi näihin [kahteen lokeroon](/epi/binaarinen_jakauma) tai että kyseessä olisi henkilön fundamentaali ominaisuus. Yksittäislläkin ihmisellä käytös vaihtelee esimerkiksi aiheen tai mielialan mukaan. Harvassa ovat ne, jotka eivät joskus näytä huonoja puoliaan.
+
+Toisaalta olisi myös väärin sanoa, etteikö ihmisten välillä olisi eroja. En siis sano "sinä olet ihan yhtä altis väärinkäyttämään työkaluja" tai muuta vastaavaa hölynpölyä. Tyydyn sanomaan, että uusia työkaluja voi käyttää epärehellisesti aseina muita vastaan, eikä edes erityisen harvinainen sellainen.
+
+En myöskään sano "ei saa ajatella, että toisella osapuolella on huono epi". Olen kirjoittanut siitä, kuinka ihmisillä välillä on huono epi. Olenkin kertonut, kuinka tämän kiistäminen voi johtaa [liian kohteliaisiin tulkintoihin](/epi/kohteliaat_tulkinnat), käsitellyt [haitallista sovinnollisuutta](/epi/haitallinen_sovinnollisuus) ja puhunut [voimista](/epi/status), jotka työntävät ihmisiä kohti "enhän minä voi tietää paremmin kuin muut" -tyyppistä ajattelua.
+
+(Tämä vaikuttaa hyvältä kohdalta muistuttaa, että sitä voi käyttäytyä kohteliaasti tekemättä liian kohteliaita tulkintoja ja että oikean tyyppinen sovinnollisuus on hyve. "Toisella ihmisellä on huono epi" ei oikeastaan implikoi "käyttäydyn ilkeästi häntä kohtaan".)
+
+Ja en sano, etteikö hyvään epiin liittyviä konsepteja saisi ottaa esiin (vaikka esimerkiksi vinoumien nostaminen produktiivisella tavalla voi olla hankalaa). Minusta ei ole mikään salaisuus, että ihmiset usein aliarvioivat jakaumien leveyttä tai keskittyvät helppojen maalitaulujen mollaamiseen. Myönnän, että olen joskus itsekin saattanut puhua tutuilleni näistä aiheista.
+
+[End of text.]
+
+# Tehokkaan maailman hypoteesi
+
+Mitä yhteistä seuraavilla tilanteilla on?
+
+- Nuorempana harrastin matematiikkakilpailuja. Harrastusvuosina minulle muodostui ajatuksia siitä, miten valmennusta voisi kehittää. Välillä kuitenkin mietin: "Miten minä muka voisin tietää paremmin kuin valmennustoimintaa vuosikymmeniä pyörittäneet?"
+- Yliopistoa aloitteleva kaverini kommentoi "En tiedä luulenko itsestäni liikoja, mutta uskoisin, että jos minut laitettaisiin yläkouluun nyt, niin olisin ihan OK opettaja [vaikken ole suorittanut tarvittavia opintoja]."
+- Esitin kritiikkiä koulutusta kohtaan ja lähestymistapoja, joilla sitä voisi parantaa. Minulle kommentoitiin "Varmaan joo yksi matikan opiskelija tietää miten Suomen koulutusta kuuluu ajaa."
+
+Yksi yhteinen piirre on [status](/epi/status). Kolmas kommentti oli vitsi, joka imitoi stereotyyppistä hierarkiassa alemmas näpäytystä. Toisen esimerkin "En tiedä luulenko itsestäni liikoja" taas on juuri sellaista nöyryyttä, johon ihmiset aina välillä tökkivät toisiaan. Ja jos "minä muka tietäisin paremmin", niin sehän tarkoittaa että väitän jossain mielessä omaavani enemmän statusta kuin vanhat ja kokeneet valmentajat, mikä ei tietenkään käy.
+
+On kuitenkin myös toinen yhteinen piirre. (Esimerkit sattuvat koskemaan opetusta, mutta se ei ole se, mitä ajan takaa.)
+
+Taloustieteessä [tehokkaiden markkinoiden hypoteesi](https://en.wikipedia.org/wiki/Efficient-market_hypothesis) sanoo, että osakkeiden hinta vastaa kaikkea nykyistä informaatiota. Toisin sanoen "Jos luulet huomaavasi osakkeiden hinnoissa virheen (esim. että ne ovat liian matalat), olet väärässä": sinulla ei voi olla informaatiota, joka kertoo hintojen olevan virheelliset, koska tämä informaatio heijastuu jo hinnoissa. Hypoteesi on hyvä approksimaatio, vaikkei se ole kirjaimellisesti tosi.
+
+Sen sijaan hypoteesin variantti, tehokkaan *maailman* hypoteesi, menee jotakuinkin näin: jos luulet huomaavasi maailmassa parannettavaa, olet väärässä.
+
+Tämä on [ilmiselvästi](/epi/ilmeiset_ohjeet) hölynpölyä -- joten eihän kukaan tietenkään usko tähän tai sano "en usko, että maailmassa on mitään ongelmia". Eksplisiittisesti kysyttäessä ihmiset kiistävät tämän.
+
+...ja silti nuoremmalla minälläni oli *jokin* tehokkaan maailman hypoteesia vastaava uskomus. Ei eksplisiittisesti. Ei konsistentisti. Kysyttäessä olisin kiistänyt hypoteesin selvästi epätotena. En tietoisesti miettinyt asioita sen kautta. Mutta jokin ajatus minulla oli, joka pisti ajattelemaan, että enhän minä voi nähdä miten asioita voisi tehdä paremmin.
+
+(Epäilen, että yleisesti huonoimmat uskomukset ovat juuri sellaisia syvällä olevia näkemyksiä, jotka tietoisesti hylättäisiin ja kysyttäessä kiistettäisiin, mutta jotka kuitenkin ohjaavat selkeämpiä, pinnallisempia uskomuksia. Tämä tekee epin parantamisesta hieman hankalaa.)
+
+Näin päädytään uskomaan kaikenlaista hölynpölyä, kuten että vapaaehtoistoiminnalla pyöritettävästä valmennustoiminnasta ei löydy tekemistä lisäkäsille tai tilaa uusille ideoille.
+
+Tehokkaan maailman hypoteesin voisi kumota vaikkapa puhumalla [insentiiveistä](/epi/insentiivit) ja antamalla listan esimerkkejä, joissa se ei päde. Tämä on kuitenkin [väärä taso](/epi/miksi_uskot) asian käsittelyyn. Status-näkökulma selittää ilmiön hyvin: hypoteesiin "uskotaan", ei siksi että sille olisi vahvoja perusteluja, vaan koska muuten on ylimielinen ja luulee itsestään liikoja.
+
+Ja koska käsittelen statukseen liittyviä aiheita, jotka saavat herkästi [ajatukset sumenemaan](/epi/sumuiset_ajatukset), selkeytän yhtä pointtia: Kun sanon, että on hölynpölyä uskoa järjestelmien tehokkuuteen, en tarkoita, että niiden parissa työskentelevät ihmiset ovat "tyhmiä". En todellakaan tarkoita, että nämä ihmiset ovat epätehokkaita tai laiskoja. Kyse on vain siitä, että nämä järjestelmät eivät ole *täydellisiä* tai edes niin hyviä, ettei niistä voisi löytää ongelmia tai parannettavaa.
+
+Näin sanottuna tämä kuulostaa taas yhdeltä itsestäänselvyydeltä. Nuoremmalle minulle se ei kuitenkaan sitä ollut, enkä ole ainoa, joka ei ole ajatusta sisäistänyt. Jatkaakseni koulutusteemalla, olen aiheesta keskustellessa kuullut sanottavan "opetusta ei voi parantaa joillekin ilman, että muut kärsivät", yleensä mainiten samassa yhteydessä resurssipulan. Käytännössä taas on olemassa lukemattomia "helppoja" parannuksia: keksin heti esimerkit "oli kiva, kun opettaja antoi minun edetä matikantunneilla omaa tahtia", "hyvä, että luentodiat löytyvät netistä, jos ei ole päässyt luennolle paikalle" ja "kurssin opiskelijoita varten luotu viestittelyryhmä helpottaa oppimista ja avun saamista". Minun on vaikea nähdä, että kukaan "kärsii" näistä, eivätkä nämä vaikuta kovin kalliilta operaatioilta.
+
+Juuri tällaisista syistä tämä "hyvät jutut yhdelle ovat toiselta pois" -näkökulma ei miellytä minua: se olettaa nykyisen järjestelmän tietysti olevan tehokas ja [Pareto-käyrällä](/epi/insentiivit), jolloin [ainoastaan](/epi/yksi_muuttuja) lisäämällä resursseilla voidaan saada parempia tuloksia, ja muuten pitää ryhtyä köydenvetoon nykyisistä resursseista. Siten itsestäänselvyydet kuten "laita aiempien vuosien harjoitustehtävät ja ratkaisut nettiin" unohtuvat -- puhumattakaan, että mietittäisiin vähemmän ilmeisiä muutoksia.
+
+Joku voisi tulkita pointtini pessimistisenä: kaikki on huonosti! Minä en kuitenkaan tässä ottanut kantaa siihen, kuinka hyvin asiat ovat. Asiat ovat juuri niin huonosti tai hyvin kuin mitä ne nyt ovat, tässä ei ole mitään uutta. Siten "kaikki on huonosti" on väärä tulkinta.
+
+Sen sijaan minä väitän, että tehokkaan maailman hypoteesi ei päde. Maailmassa todella on parannettavaa. Välillä parannukset ovat oikeaastaan aika helppoja ja sitten ne tarvitsee vain tehdä. Siten pointtini on optimistinen: kaikki voisi olla paremmin!
+
+[End of text.]
+
+# Ongelmien sivuuttamisesta
+
+Joskus ihmiset ottavat keskusteluissa esiin joitakin ongelmia. Olen esimerkiksi muutamaan otteeseen törmännyt keskusteluun, joka alkaa "Yliopistossa ei opeteta asioita kovin hyvin" tai "Yliopistossa ei keskitytä erityisen hyödyllisiin/tärkeisiin asioihin".
+
+Miten tähän reagoidaan?
+
+Välillä sanotaan, että asioille ei voi tehdä mitään: "Miten sinä muka mittaat, mikä on 'hyödyllistä' tai 'tärkeää'?" Ja jos ratkaisua ongelmaan ei ole valmiina tai ongelma on vaikea, niin mitään ongelmaa ei ole.
+
+Välillä sanotaan, että ongelmien analysointi on turhaa: "Mitä hyötyä siitä on, että me keksitään ongelmia opetuksessa, jos me ei kuitenkaan tehdä asialle mitään?" Ongelmien ratkomisessa ensimmäisen askeleen toivoisi kuitenkin olevan ongelman analysointi ja ratkaisujen pohtiminen, ja jos estää tätä vaihetta tapahtumasta, niin... Vaihtoehtoisesti voidaan toki soveltaa mantraa "Jotakin on tehtävä. Tämä on jotakin. Siispä tämä on tehtävä."
+
+Välillä sanotaan, että asiat ovat oikeastaan niin hyvin kuin voi olla: "Et voi parantaa opetusta osalle opiskelijoista ilman, että muiden oppiminen kärsii." Status quo on hyvä, miltei paras mahdollinen: asiat eivät voisi olla paremmin. [Voisi kuitenkin ajatella](/epi/reflektointi), että kritiikkiä esittänyt osapuoli on havainnut parantamisen varaa. Aiheesta voisi myös ensin keskustella, ennen kuin toteaa, ettei mitään ongelmaa ole. (Tiukan paikan tullen voi sitten peräytyä ensimmäiseen vaiheeseen sanomalla "no ehkä ongelmia on, mutta niille ei voi tehdä mitään".)
+
+Välillä sanotaan huumorihakuinen absurdi ratkaisuehdotus: "Yliopistot pitää lakkauttaa". Tämäkin on oikein toimiva tapa katkaista keskustelu: "...niin tosiaan en ole tätä mieltä", "joo joo se oli vitsi", ja aiheen käsittely vakavasti on haastavaa.
+
+(En koe ymmärtäväni tätä ilmiötä. Kommentin tuskin on tarkoitus olla oikeasti hauska -- harvoin ihmiset tällaisille nauravat. Mutta mistä siinä on kyse? Onko kyseessä alitajuinen refleksi siihen, että joku kritisoi jotakin mitä itse pitää hyvänä tai mitä ei saa kritisoida, ja kritiikin esittänyttä kuuluu [näpäyttää](/epi/status) -- samalla katkaisten keskustelun? Onko esitetty idea itselle niin vieras, että sitä ei osaa ottaa vakavissaan, ja siksi aiheesta vitsaillaan -- samalla muuttaen keskustelun epävakavaksi? Vastaako kommentti sitä, että väite osoitetaan epätodeksi toteamalla, että sillä on absurdeja seurauksia -- vaikkei lakkauttaminen oikeasti ole esitetyn kritiikin implikaatio? Vai onko keskustelunaihe epämukava, ja tilanteesta paetaan vitsillä? En tiedä.)
+
+Välillä sanotaan jotakin muuta, millä sivuutetaan ongelman olemassaolo.
+
+Joskus keskustelu sujuu hyvin.
+
+[End of text.]
+
+# Negatiivisuus ja status quon puolustajat
+
+Nuorempana sain idean yhteisasumisesta: muutamasta tusinaan ihmistä voisi asua samassa suuressa asunnossa.
+
+Näin tällä monia selkeitä hyötyjä: "economies of scale" (asioiden hinta tai vaiva *per henkilö* on pienempi ja hyödyt ovat suurempia), vahvojen sosiaalisten suhteiden muodostuminen, yleinen viihtyvyys, ...
+
+Kykenin toki näkemään myös haasteita: sopivan kokoonpanon löytäminen vaikuttaa vaikealta, joidenkin preferenssierojen ratkominen ei välttämättä onnistu, entä jos joku haluaa muuttaa pois tai elämäntilanteet muuttuvat, ...
+
+Puhuin ideasta tutuilleni. Mieleenpainuvin vastaus oli jotakuinkin seuraava:
+
+"Kuulostaa siltä, että yrität rakentaa paratiisia, ja ne eivät oikein onnistu."
+
+Mikä ihmeen [yleispätevä vasta-argumentti](/epi/symmetrian_rikkominen) tämä on?
+
+On olemassa yksinkertainen resepti minkä tahansa parannusehdotuksen alas ampumiseksi: labeloit sen "paratiisiksi" (tai "utopistiseksi" tai "idealistiseksi"), ja kas, selvästi vain sinisilmäinen optimisti voisi kuvitella sen olevan realistinen. "Paratiisin rakentaminen ei onnistu" kuulostaa viisaalta, kunnes tajuaa sen olevan väite "Epärealistisen hyvän asian rakentaminen ei ole realistista" uudelleenmuotoiltuna.
+
+Tämä on poikkeuksellisen selkeä esimerkki, mutta olen huomannut yleisen ilmiön, kuinka uutta ideaa lähtökohtaisesti kritisoidaan ja kuinka siihen yritetään tökkiä reikiä. Kriitikkotila käynnistyy, ja kritiikkiä tulee generoitua ja esitettyä, vaikkei se olisi erityisen laadukasta.
+
+Muistan kerran vastanneeni tällaisessa roolissa olleen henkilön kritiikkeihin mielestäni varsin hyvin, mutta tämä ei tuntunut johtavan minkäänlaiseen uskomusten muutokseen hänen toimestaan. [Kohtelias tulkinta](/epi/kohteliaat_tulkinnat) on "hänen esittämänsä vasta-argumentit eivät olleet oikeasti ne syyt, joiden takia hän oli ideaa vastaan", mutta uskoisin myös epäkohteliaan tulkinnan "hän oli kriitikkotilassa / [status quo -vinouman](https://en.wikipedia.org/wiki/Status_quo_bias) uhri ilman järkeviä syitä näkemykselleen" olevan kohtalaisen totuudenmukainen.
+
+Ei välttämättä olisi pahitteeksi alustaa kritiikkiänsä sanoilla "kiinnostava idea". Puhumattakaan siitä, että itse miettii, voiko idean ongelmia korjata tai onko siinä jotain toimivaa pienempää osaa. Tietenkään keskustelun [voittoa](/epi/miksi_uskot) tavoitellessa näin ei kannata tehdä, mutta muussa tapauksessa voi myös itse ottaa [vastuuta](/epi/vakuuttamisesta) idean jalostamisesta.
+
+Välillä mietin, puuttuuko ihmisiltä uskoa siihen, että asiat todella voisivat olla paremmin. Voisivatko ne olla *huonommin*? Ehdottomasti! Ovatko asiat nyt huonosti? Totta kai! Voisivatko ne olla *paremmin*? Kuulostaa naiivilta.
+
+Kerran puhuin kaverilleni lukemastani utopiaan sijoittuvasta fiktiosta ja siinä olleesta mielenkiintoisesta konseptista. Sanan "utopia" mainitseminen kuitenkin johti keskustelun sivuraiteille enkä päässyt itse aiheeseen. Toinen osapuoli varmaan ajatteli minun olevan naiivi tai jotakin. Jälkikäteen pohdin, että tuskin olisin saanut vastaavanlaista reaktiota jos tarina olisikin sijoittunut *dystopiaan* -- ainakin olen lukenut useamman tällaisen kirjan, enkä ole saanut vastaavanlaisia reaktioita.
+
+Negatiivinen palaute on yliedustettuna kaikesta palautteesta. Jos on virheitä tai parannettava, niin siitä tietysti huomautetaan. Jos taas kaikki on hyvin, niin silloin tietenkään ei. "Mitä, eihän minulla ole mitään sanottavaa, minusta se oli hyvä". Näen tällaisella positiivsella palautteella olevan hyötyjä sen "mitäänsanomattomuudestaan" huolimatta, ja harvoin siitä on haittaa.
+
+Ja joskus ihmisten taipumus negatiivisuuteen ja kriittisyyteen *johtaa* siihen, että asiat eivät ole paremmin. Välillä olen tehnyt asioita, joista minä ja muut hyötyvät. Välillä on käynyt niin, että saamani palautteen negatiivisuus tekee kokemuksesta ikävämmän kuin jos en olisi tehnyt mitään. [Arvaa miten käy](/epi/insentiivit).
+
+Status quon puolustajilla on helppoa: tarvitsee vain kritisoida, ja asiat ovat tapahtumatta kuin itsestään.
+
+[End of text.]
+
+# Insentiivit, koordinaatio ja Pareto-käyrä
+
+Palkinnot ja rangaistukset vaikuttavat ihmisten toimintaan. Viittaan näihin laajassa merkityksessä: en vain palkkaan ja vankeustuomioihin, vaan myös arvosanoihin, arvostukseen, negatiivisiin kommentteihin, muiden hyväksyntään ja paheksuviin katseisiin.
+
+"Järjestin illanvieton kavereideni kanssa. Ihmiset vaikuttivat pitävän siitä: sain paljon positiivista palautetta! Saatan järjestää tällaista jatkossakin" vs. "Järjestin illanvieton kavereideni kanssa. En oikein tiedä, mitä ihmiset pitivät siitä, ja joku valitti kuinka se oli liian myöhään ja olisi siksi tarvinnut ruokaa. En viitsi enää järjestää tällaisia."
+
+"Olen vähän kahden vaiheilla, haluanko jatkaa opiskelua. Toisaalta haluaisin tehdä muita juttuja, mutta toisaalta sitten muut ihmiset kyseenalaistavat valintojani. Opiskelujen jatkaminen on turvallisempi vaihtoehto."
+
+"Kyllä tenteissä nytkin pystyy huijaamaan, mutta jos valvontaa vähennettäisiin, olisi huijaaminen helpompaa ja vähemmän riskialtista, jolloin houkutus huijata olisi suurempi."
+
+"Kävin tuossa ravintolassa kerran syömässä. Ruoka oli hyvää, mutta työntekijät käyttäytyivät ikävästi. Minun ei tee mieli käydä siellä uudestaan."
+
+*Insentiiveillä* viitataan laajasti tekijöihin, jotka työntävät ihmisiä toimimaan tietyllä tavalla. Suomalaisempi nimitys voisi olla "kannustin", mutta sanan positiiviset mielleyhtymät ovat mielestäni häiritseviä, ja siksi pitäydyn neutraalimmassa "insentiivi"-sanassa.
+
+Palkinnot ja rangaistukset ovat selkeitä esimerkkejä insentiiveistä. On myös muita insentiivejä, jotka eivät sovi näihin kategorioihin edes löysästi tulkittuna.
+
+"Aioin soittaa heidän asiakaspalveluunsa, mutta se oli todella vaikeaa: puhelinnumeroa sai etsimällä etsiä ja sitten jouduin jonon perään. Annoin asian olla. Ihan kuin se olisi tehty tarkoituksella vaivalloiseksi!"
+
+"Lentäessä on ikävää, kun turvatarkastuksissa on niin pitkät jonot. Matkustaisin enemmän, jos jonottamiseen menisi vähemmän aikaa."
+
+Insentiivit ovat kuin fysikaaliset voimat, mutta ihmisille ja ihmisjoukoille: ne työntävät tiettyyn suuntaan, toimimaan tietyllä tavalla.
+
+---
+
+Ensimmäinen iso väitteeni on: insentiivit todella vaikuttavat ihmisten käytökseen. Nämä eivät ole pikkujuttuja. Insentiivejä muuttamalla ihmisten toiminta muuttuu.
+
+Määrittelin insentiivin viittaamaan "tekijöihin, jotka työntävät ihmisiä toimimaan tietyllä tavalla", jolloin pointti voi tuntua triviaalilta. Kyseessä ei kuitenkaan ole mikään sanaleikki. Tarkoitan, että asiat, jotka *tavallisesti mielletään insentiiveiksi*, vaikuttavat ihmisten käytökseen.
+
+Vastakkainen näkökulma voisi olla, että ei tällaisilla pienillä tekijöillä ole niin väliä. Ihmiset lentävät silloin, kun on tarvetta, ei turvatarkastuksen jonojen perusteella.
+
+Pidän tätä virheellisenä näkemyksenä. Jos jonotusaika olisi *todella* paljon pidempi -- esimerkiksi kuusi tuntia jonossa seisomista aina matkustettaessa -- ihmiset varmasti matkustaisivat vähemmän. Jos taas jonotusaikaa aletaan lyhentämään, ihmiset alkavatkin pikkuhiljaa matkustaa enemmän. Siten yleisesti odotusaikoja hieman lyhentämällä voisi odottaa matkustamisen määrän hieman kasvavan. Vaikkei yksittäinen ihminen osaa sanoa, mikä jonotusaika on heidän mielestään liian pitkä ja mikä ei, vaikuttaa jonotus ihmisten lentämiseen liittyviin tunteisiin ja mielleyhtymiin. Siten pienet, välillä tiedostamattomat tekijät vaikuttavat ihmisten toimintaan.
+
+---
+
+Toinen iso väitteeni on: insentiivit auttavat ymmärtämään ihmisten ja ihmisjoukkojen käytöstä.
+
+Esimerkki: Yksinkertainen lapselle kerrottava kuvaus koulusta on "koulussa tavoitteena on oppiminen". Tämä malli on mielestäni hieman, no, yksinkertainen. Esimerkiksi yliopistossa yksi tavoite tavallaan on, että opiskelijat oppivat (siksihän yliopistoa käydään, eikö?). Miten käy käytännössä?
+
+Jos ollaan rehellisiä, niin monella iso osa opiskelun tavoitteita on tutkinnon saaminen. Tämä *tavallaan* kyllä liittyy oppimiseen: tutkinto vaatii kurssien suorittamista, kurssien suorittaminen vaatii kokeen tekemistä (tai muuta vastaavaa), kokeesta läpipääsy vaatii oppimista tai osaamista. Toisaalta taas on monia tapoja edistää tutkinnon saamista *ilman*, että tämä juuri edistää oppimista: Valitaan helpoimmat ja vähiten työtä vaativat kurssit (eikä niitä, joista oppisi eniten). Tehdään vain pakolliset asiat ja vain sillä tasolla, että ne hyväksytään (eikä niin, että tehtävät olisivat kehittäviä). Yritetään päästä kokeesta läpi rimaa hipoen edellisen päivän lukemisella (ja viikon tai vuoden päästä kaikki on unohdettu). Puhumattakaan enemmän ja vähemmän epärehellisistä keinoista.
+
+Tällaista toimintaa on vaikea käsittää "kouluun mennään oppimaan" -näkökulmasta, mutta se selittyy helposti seuraamalla insentiivejä: palkintonahan on työnhaussa hyödyllinen tutkinto.
+
+Insentiivit vaikuttavat tietysti myös muihin kuin opiskelijoihin. Yliopistojen rahoituksesta iso osa perustuu tutkintoihin: [vuodesta 2021 alkaen](https://okm.fi/documents/1410845/4392480/Rahoitusmalli+Yliopistot.pdf/3464a1bc-3272-f5db-7361-acdcb498c661/Rahoitusmalli+Yliopistot.pdf) 42 % yliopistojen rahoituksesta kohdistuu koulutukseen, mistä 71 % määräytyy suoritettujen tutkintojen perusteella. (Vertailun vuoksi: "jatkuvaan oppimiseen" perustuu 12 prosenttia). Tämän näkökulman kautta esimerkiksi anekdootit, joissa opiskelijat saavat kurssisuorituksia... sanotaanko *heikoilla* näytöillä varsinaisesta osaamisesta tai oppimisesta, ovat vähemmän yllättäviä.
+
+---
+
+Kolmas iso väite: insentiivit auttavat ymmärtämään, miksi ihmiset tekevät "pahoja" asioita.
+
+Kuten jo sanoin, insentiivit vaikuttavat ihmisten käytökseen ja insentiivejä muuttamalla ihmisten toiminta todella muuttuu. Jos insentiivit sattuvat osoittamaan suuntaan "tee pahoja asioita", niin odotettavasti ihmiset tekevät huonoja asioita.
+
+On joitakin toimialoja, yrityksiä ja työntekijöitä, joiden vaikutus maailmaan yleisesti on mielestäni negatiivinen. Otetaan esimerkiksi tupakka: olisi parempi, jos tupakkaa markkinoitaisiin, tuotettaisiin ja kulutettaisiin vähemmän.
+
+Tarkoittaako tämä, että pidän tupakan parissa työskeneteleviä ihmisiä pahoina? Ei!
+
+Myönnän, etten tiedä paljoa siitä, millaisia nämä ihmiset ovat ja millaisissa olosuhteissa he ovat. (Heitä myös on monenlaisia: tupakkateollisuuden parissa työskentelee noin *sata miljoonaa* ihmistä. [Siitäkin huolimatta, etten itse tunne ketään tällaista](/epi/leveat_jakaumat).) Voin kuitenkin hyvin kuvitella, että joillakin yksinkertaisesti ei ole parempia vaihtoehtoja. Jos vaihtoehtoina on tehdä töitä kasvattamalla tupakkaa tai olla saamatta elantoa, niin en todellakaan kutsuisi henkilöä pahaksi, jos hän valitsee ensimmäisen vaihtoehdon. Insentiivit osoittavat vahvasti sen suuntaan.
+
+(Asiaan liittyy muitakin tekijöitä, kuten eriävä informaatio: en usko, että [kaikki tietävät](/epi/jattilaisten_olkapailla) tupakan olevan pahaksi.)
+
+Pystyn siis ymmärtämään, tietämättömyyteni vuoksi hatarasti mutta kuitenkin, että tupakan parissa työskenetelevillä voi olla hyviä syitä toimia miten he toimivat.
+
+Tuon tämän esille siksi, että ihmisten oletusasetus tuntuu olevan "ongelmat ovat pahojen ihmisten syytä". Esimerkkiä tupakasta kirjoittaessani ajattelin kuvitteellisen lukijan miettivän "no mutta kyllä niitä pahojakin ihmisiä on". En ole sinänsä eri mieltä: jakaumat ovat leveitä, ja jotkut ihmiset todella ovat pahempia kuin toiset. Silti näihin ["pahoihin ihmisiin" keskitytään liikaa](/epi/helpot_maalitaulut). Se ei ole keskeisin syy sille, miksi asiat ovat huonosti. Yleisempiä syitä ovat huonot insentiivit, kun huono vaihtoehto on silti paras (itselle vaikkei laajemmin), kun ihmiset eivät tiedä tekojensa seurauksia, kun asiat ovat vaikeita.
+
+(Käytännössä ihmiset harvemmin käyttävät sanaa "paha". Ennemmin olen kuullut ihmisten käyttävän esimerkiksi sanoja "rikas", "valtaapitävät", "poliitikko" tai "fiksu" niin, että kontekstista ymmärtää näiden olevan negatiivisesti latautuneita sanoja, jotka ajavat pitkälti samaa roolia kuin "paha".)
+
+---
+
+Neljäs iso, ja kenties isoin, väitteeni: insentiivit auttavat ymmärtämään, mikseivät asiat ole paremmin.
+
+Sitä tulee joskus mietittyä "miksi tuo asia on huonosti?" tai, vähemmän hienovaraisesti, "miksi kaikki on niin huonosti?"
+
+Helppo ja usein esitetty vastaus kuuluu "ihmiset ovat tyhmiä". Ja tämän vastauksen kuultuani... en ymmärrä asioita yhtään sen paremmin. Eikä ihme: "ihmiset ovat tyhmiä" tuntuu vain tarkoittavan "ihmiset tekevät asioita huonosti", mutta kysymys oli *miksi* näin on. Yleispätevä vastaus on vähän kuin yleispätevä vasta-argumentti: hyödytön. Tai mikä vielä pahempaa, se saattaa vaikuttaa hyvältä vastaukselta ja saada uskomaan että ymmärtää asioita paremmin, minkä vuoksi omat uskomukset ovat vähemmän totuudenmukaisia kuin aiemmin. (Ja ongelma on tietysti vain *muiden* ihmisten tyhmyydessä...)
+
+Kyllä, kiitos, ihmiset ovat tyhmiä, mutta miten asiat olisivat *eri tavalla*, jos ihmiset olisivat vähemmän tyhmiä? ("Paremmin" ei ole tyydyttävä vastaus.) Voitaisiinko me silti tehdä asioita noin, vaikka ihmiset ovatkin "tyhmiä"? Ja *millä tavoilla* ja *mistä syistä* ihmiset ovat tyhmiä? Voiko niille tehdä jotakin?
+
+Riman ollessa näin matalalla keksin parempia vastauksia. Insentiivit vaikuttavat yhdeltä oleelliselta palapelin palalta, joka selittää epätäydellisyyksiä. Ihmisiä työntävät voimat eivät (aina) osoita kohti Hyviä Asioita. Välillä ne osoittavat kohti Huonoja Asioita. Ihmiset (välillä) seuraavat insentiivejä. Sitten tapahtuu Huonoja Asioita. Tai välillä sopivat insentiivit kohti Hyviä Asioita puuttuvat, ja siksi kukaan ei tee niitä.
+
+---
+
+Muinaisen perinteen mukaan missä tahansa peliteoriaa käsittelevässä tekstissä tulee mainita [vangin dilemma](https://plato.stanford.edu/entries/prisoner-dilemma/). Käytän seuraavaa muotoilua:
+
+"Sinut on valittu yhdeksi pelaajaksi erääseen kahden pelaajan peliin. Molemmilla pelaajilla on alussa 400 euron potti. Pelissä kummallakin pelaajalla on mahdollisuus painaa nappia toiselta salassa. Napin painaminen antaa painajalle 100 euroa lisää, mutta vähentää toisen pottia 300 eurolla. Et pelin jälkeen enää koskaan tapaa toista osapuolta. Painatko nappia?"
+
+Tässä on havainnollistus, jossa x-koordinaatti kuvaa omaa rahasummaa, y-koordinaatti toisen ja jossa esimerkiksi lyhenne "PE" tarkoittaa "minä Painan, toinen Ei paina":
+
+<p align="center">
+    <img src="/epi/Kuvat/vanki_2-1.jpg" alt="drawing" width="400"/> <br>
+
+    <i>Taitelijan näkemys vangin dilemmasta.</i>
+</p>
+
+
+Omat insentiivit ovat ilmiantamisen puolella: riippumatta siitä, mitä toinen tekee, on sinun parempi painaa nappia. Painaminen (kuvassa nuolen seuraaminen) antaa sinulle 100 euroa enemmän rahaa.
+
+<p align="center">
+    <img src="/epi/Kuvat/vanki_3-1.jpg" alt="drawing" width="400"/> <br>
+
+    <i>Insentiivit osoittavat kohti painamista.</i>
+</p>
+
+
+Mitä käy, jos molemmat ajattelevat näin? Seuraa nuolia.
+
+
+<p align="center">
+    <img src="/epi/Kuvat/vanki_4-1.jpg" alt="drawing" width="400"/> <br>
+
+    <i>...myös toisella osapuolella.</i>
+</p>
+
+Insentiivit työntävät osapuolia, kunnes päädytään "kuoppaan", "stabiiliin pisteeseen", jossa molemmat painavat nappia. (Tekninen muotoilu: tämä on pelin ainoa Nashin tasapaino.)
+
+Mikä meni pieleen? Ongelma on se, että *kumpikin* teistä preferoi tilaa EE tilan PP sijasta: tällöin molemmat saavat 400 euroa verrattuna 200 euroon. Sanotaan, että (ei, ei) on *Pareto-parannus* (paina, paina)-tilaan nähden. Insentiivejä seuraamalla kuitenkin päädytään tilanteeseen, johon kumpikaan ei ole tyytyväinen. On vaihtoehto, joka on *molemmille* teistä mieluisampi.
+
+Yleisesti kaikki osapuolet haluavat toteuttaa Pareto-parannuksen, jos sellainen suinkin on olemassa. *Pareto-käyräksi* kutsutaan tiloja, joille ei enää ole olemassa Pareto-parannusta. *Kaikki* haluavat Pareto-käyrälle tai lähemmäs sitä (kyse on vain mihin kohtaan Pareto-käyrällä tähdätään).
+
+<p align="center">
+    <img src="/epi/Kuvat/vanki_5-1.jpg" alt="drawing" width="400"/> <br>
+</p>
+
+Silti sinne ei aina päästä. Insentiivit ovat välillä sellaisia, joita seuraamalla päädytään stabiiliin mutta huonoon tilaan. Ihmiset tekevät naiivisti ajateltuna itselleen parhaan asian, ja tämän seurauksena kollektiivisesti pudotaan Pareto-käyrältä. (Ehkä se ei ollutkaan itselle paras asia...)
+
+Onneksi tämä on vain ajatusleikki. Oikeassa elämässä ihmisillä ei tietenkään ole eriäviä preferenssejä (tai eriäviä *uskomuksia*), insentiivit osoittavat aina kohti yhteistä hyvää ja yksittäiselle henkilölle paras vaihtoehto on tietysti aina muillekin paras.
+
+---
+
+Joskus huvitan itseäni ajatuksella, että emme ole Pareto-käyrällä vain sen takia, etteivät ihmiset omaa Pareto-käyrän konseptia ([kunnes sysään ajatuksen mielestäni](/epi/yksi_muuttuja)).
+
+Ongelma on toki syvemmällä. Ihmisten käsitys *optimaalisesta toiminnasta* ja *rationaalisesta ihmisestä* on sellainen, joka johtaa huonoihin lopputuloksiin. Olen [aiemminkin](/epi/filosofiatila) puhunut siitä, kuinka ihmisten konsepti "rationaalisuudesta" sisältää kaikenlaista hölynpölyä, kuten "rationaalinen ihminen on täysin itsekäs". Ja itsekkyyshän tietysti tarkoittaa, että vangin dilemman kaltaisissa koordinaatio-ongelmissa ei tehdä yhteistyötä muiden kanssa.
+
+Ja koko vangin dilemman pointti, yksi *koko peliteorian* keskeisimmistä pointeista, menee ohi. "Jos kerta olet niin rationaalinen, niin mikset saa mitä haluat? Jos kerta olette niin rationaalisia, niin miksette ole Pareto-käyrällä?" Yritän olla juuttumatta sanojen määritelmien käsittelyyn, mutta sanoisin, että käsityksen rationaalisuudesta tulee vasta sitä, millä oikeasti saavutetaan parhaat lopputulokset.
+
+(En suinkaan hyökkää olkiukkoa vastaan. Yhtenä -- muttei suinkaan ainoana -- esimerkkinä mainitsen [Wikipedia-sivun vangin dilemmasta](https://en.wikipedia.org/wiki/Prisoner%27s_dilemma), jossa kirjoitetaan "Loyalty to one's partner is, in this game, irrational". Siten pitää keksiä uusia sanoja kuten "[superrationaalinen](https://en.wikipedia.org/wiki/Superrationality)" sille, mikä on *oikeasti* hyvä tapa toimia. Tai hetkinen, tässä superrationaalisuudessakin on ongelmansa, ja paras toimintatapa onkin se, joka on *hyperrationaalinen*...)
+
+Tämä on yksi helposti artikuloitava tekijä sille, miksemme elä [täydellisessä maailmassa](/epi/tehokas_maailma). Ihmisillä ei ole konseptia Pareto-parannuksesta tai Pareto-käyrästä. Ihmiset eivät toimi tavalla, jonka seurauksena päädytään lähellekään Pareto-käyrää. Ihmisten käsitys optimaalisesta, rationaalisesta toiminnasta on sellainen, joka ei johda Pareto-käyrälle. Ihmiset tyytyvät ratkaisuun, joka on "rationaalinen", ei siihen *millä saadaan mitä halutaan*.
+
+Tämän voi toki yrittää tiivistää fraasiksi "ihmiset ovat tyhmiä", mutta pelkään siinä katoavan jotakin.
+
+Minä taas olen ajatellut, että sivilisaation pointti on ratkoa tällaisia insentiiviongelmia.
+
+---
+
+Pienenä ihmettelin, miten talot on rakennettu. Nehän ovat aivan valtavia! Sellaisen rakentamiseen menee ikuisuus! Silti niitä on niin monta!
+
+Vanhempana olen samaan tapaan ihmetellyt muitakin asioita. Mietittyäni tovin kysymystä "Aloittaen yksin ja nollista (ilman alle 100 000 vuotta vanhaa teknologiaa), kuinka kauan kestäisi rakentaa kunnollinen tietokone tai lentää Kuuhun?" olen päätynyt vastaukseen "en tiedä, onpas vaikeaa". Jättiläisten hartiat ovat niin korkealla, etten näe maahan asti.
+
+Siitä huolimatta ihmiskunta on yltänyt näihin saavutuksiin (ja pariin muuhunkin). Vieläpä ilman, että kukaan on antanut valmiiksi vastauksia ja näyttänyt miten asiat kannattaa tehdä -- nämä on saavutettu *oikeasti* nollista, aloittaen maankamaralta eikä jättiläisen olkapäältä.
+
+Joskus haastavat ongelmat ratkeavat, kun useampi henkilö tekee yhteistyötä ja yrittää oikeasti ratkaista niitä.
+
+[End of text.]
+
+# Kerran luotin
+
+Kerran luotin--
+
+ja kun sanon "luotin", en tarkoita eksplisiittistä, sanallista, harkittua luottamusta. Tarkoitan sellaista implisiittistä, alitajuista, sokeaa luottoa. En sitä, että mietin "kyllä minä luotan tuohon", vaan että tämä ajatus ei edes käynyt mielessä. Aivan kuten lapsi ei sano tai sanallisesti mieti "minä luotan vanhempiini", vaan hän vain luottaa.
+
+Joka tapauksessa, olin sanomassa:
+
+Kerran luotin lähipiiriini.
+
+Enkä tässä tarkoita luottamusta mielessä "eivät valehtele" tai "pitävät sanansa", vaan eräänlaista *epistemistä* luottamusta: ympärilläni olevilla ihmisillä on totuudenmukaiset uskomukset ja heidän sanomansa asiat ovat pääosin tosia.
+
+Olen menettänyt luottamustani.
+
+Huomionarvoisin esimerkki koskee eläintuotantoa. (Kyllä, tämä on yksi [niistä aiheista](/epi/keskustelunimaisijat).) Ymmärrettyäni, että eläintuotanto on varsin negatiivinen asia, aloin puhumaan aiheesta tuttavilleni. Varmasti hekin ymmärtäisivät? Ei aivan.
+
+Jotkut sivuuttivat asian sanomalla, että lihansyönti on osa kulttuuria. Jotkut sillä, että lihansyönti on luonnollista. Kumpikaan argumentti ei [riko symmetriaa](/epi/symmetrian_rikkominen). Otettuani tämän esiin en saanut symmetriaa rikkovia argumentteja.
+
+Jotkut sivuuttivat asian esittämällä väitteen, joka implikoi, ettei tämä ole niin iso ongelma. Selvitettyäni tämän väitteen olevan epätosi en saanut järkeviä vastauksia.
+
+Jotkut sivuuttivat asian ottamalla esiin vielä [isomman ongelman](https://xkcd.com/2368/). Kysyin, että kannattaisiko sille sitten tehdä jotakin. He vastasivat kielteisesti. Lisäksi monet näistä "isommista ongelmista" eivät oikeastaan olleet isompia.
+
+Jotkut sivuuttivat asian varsin [yleispätevällä vasta-argumentilla](/epi/symmetrian_rikkominen) "ei yksi ihminen voi vaikuttaa".
+
+Jotkut vastasivat, että liha on hyvää. Jälkikäteen mietittynä he olivat epistemisesti rehellisin osapuoli: he eivät rationalisoineet, he eivät keksineet epätosia väitteitä, he eivät esittäneet epävalideja vasta-argumentteja, he eivät yrittäneet harhauttaa ja saada huomiota toisaalle. He antoivat suoraan merkittävän syyn sille, [miksi he toimivat niin kuin toimivat](/epi/miksi_uskot). Tämä on miten asioita kuuluu käsitellä.
+
+Koko tämä kokemus oli silmiä avaava. Minun kaverini, ei siis vain [tyhmät ihmiset netissä](/epi/helpot_maalitaulut) vaan *minun kaverini*, eivät pystyneet keskustelemaan aiheesta edes keskinkertaisella tasolla (joitakin poikkeuksia lukuun ottamatta). Näin, miltä huono epi selkeimmillään näyttää. Opin myös, että ihmisiä ei oikeastaan kiinnosta "moraalijutut".
+
+(Mutta onneksi minä suoriuduin virheettömästi? [En.](/epi/epi_on_tarkeaa))
+
+---
+
+Kerran luotin uutisiin ja perinteiseen mediaan.
+
+En tässä tarkoita luottamusta mielessä "uutisissa esitettävät väitteet ovat tosia", vaan mielessä "uutiset kertovat tärkeimmistä asioista ja antavat totuudenmukaisen kuvan maailmasta" ja "media onnistuu laajojen ihmisjoukkojen informoinnissa".
+
+Olen menettänyt luottamustani.
+
+Olen ikäluokkaa, jolle on toitotettu ilmastonmuutosta ihmiskunnan keskeisimpänä ongelmana. (Olen tästä vahvasti eri mieltä, mutta se on toinen asia.) Aiheesta on uutisoitu runsaasti, ja siitä on puhuttu koulussa. En silti koe, että olisin ollut *informoitu* asian suhteen. Minulta, kuten myös monelta muulta ympäriltäni, on puuttunut vastaukset ihan peruskysymyksiin kuten "Onko Suomen tai maailman kasvihuonepäästöjen määrä nousussa vai laskussa? Miten määrät ovat muuttuneet ajan myötä? Mistä kasvihuonepäästöt koostuvat? Paljonko eri energiamuodoilla tuotetaan energiaa?" [Kvantifioinnin](/epi/kvantifiointi) puute on niin kovin yleistä, kuten myös pinnallisiin mielikuviin ja hyveellisyyteen pohjautuva ajattelu. Näiltä pohjilta järkevän keskustelun ja toiminnan rakentaminen on haastavaa.
+
+Toisin sanoen koen, että informointi aiheesta, jonka käsittelyyn on käytetty paljon resursseja ja joka nähdään Hyvin Vakavana Asiana, on onnistunut kehnosti. Tämä laskee luottamustani sille, että yleisesti uutisten kautta saadaan totuudenmukaisia uskomuksia tärkeistä asioista.
+
+Mediassa on toki muutakin kritisoitavaa. En kuvittele sanovani tässä mitään kovin uutta, mutta mainitsen silti seuraavat: ääriesimerkkien poimiminen jakaumien hännistä, [insentiivit](/epi/insentiivit) eivät ole kohti informointia tärkeistä aiheista, (erityisesti negatiivisia) tunteita herättävät aiheet myyvät (vertaa: [keskustelunimaisijat](/epi/keskustelunimaisijat), [helpot maalitaulut](/epi/helpot_maalitaulut)), lyhyet aikaskaalat / pitkän ajan trendien sivuuttaminen (vertaa: "hyvät asiat tapahtuvat hitaasti, huonot nopeasti"). Lisäksi lukemani uutisartikkelit aiheista, joista tiedän enemmän, luovat usein epätotuudenmukaisia mielikuvia.
+
+Tällaiset tekijät saavat pohtimaan, miksi olenkaan uskonut [kohteliaaseen tulkintaan](/epi/kohteliaat_tulkinnat) uutisoinnista.
+
+---
+
+Kerran luotin koulutukseen.
+
+Enkä tarkoita luottamusta mielessä "koulussa esitettävät väitteet ovat tosia" tai "kouluttautuminen kannattaa", vaan mielessä "koulussa opitaan tärkeitä asioita".
+
+Olen menettänyt luottamustani.
+
+Minusta on haastavaa selittää syitäni [lyhyesti](/epi/lokaali_kommunikaatio), koska ne ovat vähemmän muotoa "koulutuksessa on tämä selkeä valtava ongelma" ja enemmän kokoelma yksittäisiä tekijöitä. Yksi keskeinen kokoelma rakentuu sille ajatukselle, etteivät opetetut asiat olekaan niin tärkeitä ja on paljon tärkeitä asioita, joita koulussa ei käsitellä. Avaan tätä listaamalla esimerkkejä asioista, joita minun mielestäni kannattaisi olla peruskoulussa tai lukiossa ja joita nyt ei ole tai joita käsitellään aivan liian vähän:
+
+1. Tieteellinen menetelmä. Mielellään niin, että aidosti sovelletaan käytännössä. Tieteen tekemisestä ja historiasta ylipäätään puhutaan varsin vähän.
+
+2. Tiedelukutaito: opetellaan lukemaan tieteellisiä artikkeleja, mielellään taas käytännön kautta.
+
+3. Kognitiiviset vinoumat: käsitellään ja *testataan* niitä, kunnianhimoisemmin jopa opitaan tunnistamaan ja korjaamaan niitä. Ja kognitiiviset vinoumat ovat toki vain selkein ihmisten huonoon ajatteluun liittyvä kokonaisuus. Koko tätä aihetta voisi niin ikään käsitellä laajemmin ja systemaattisemmin.
+
+4. Työharjoittelut tai -tutustumiset: minusta on melko kummallista, että isoja päätöksiä liittyen uravalintaan tulee tehdä vaiheessa, jossa työkokemusta on niukasti jos ollenkaan, ja hyvin harvoin tulevaan ammattiin liittyen.
+
+Ja vielä pari muuta ei-ihan-niin-keskeistä aihetta, joita voisi olla enemmän: peliteoriaa (siitä voisi tehdä ihan hauskaakin!), todennäköisyydet ja tilastotiede, tiedonhankinta ja analysointi, tunnetaidot, tietokoneella kirjoittaminen (vrt. käsin kirjoittaminen), henkilökohtainen talous (kenties mukaan lukien sijoittaminen).
+
+Uskon vahvasti, että nykyisistä sisällöistä voisi hyvin tehdä uusille aiheille tilaa niin, että lopputulos paranee. Osittain siksi, etten (todellakaan) usko oman listani olevan kokonainen tai paras mahdollinen. Osittain siksi, että minusta tuntuu kohtalaisen ison osan koulussa käymästäni sisällöstä olleen... melko turhaa? (Tulee mieleen useampiakin oppiaineita, joista käteeni ei ole jäänyt läheskään niin paljoa kuin käytettyjen tuntien perusteella voisi ajatella. Kokemukseni ei vaikuta ainutlaatuiselta.)
+
+Osittain taas uskon, että koulutusjärjestelmää voisi *optimoida* paljon enemmän kuin tällä hetkellä tehdään. En enää usko [tehokkaan maailman hypoteesiin](/epi/tehokas_maailma). Ideaalisti koulutuksessa testattaisiin laajalti erilaisia interventioita ja tutkittaisiin, miten ne vaikuttavat lopputuloksiin. Kuinka hyvin oppilaat oppivat tämän asian, jos heille näytetään tällaisia videoita verrattuna jos opettaja opettaa asiasta tällaisten materiaalien pohjalta? Entä jos testattaisiin tuntien ja välituntien keston tai koulun alkamisajan tai ruokailun ajankohdan vaikutusta jaksamiseen? Tai tutkittaisiin luokan valaistuksen tai melutason tai huoneilman hiilidioksidipitoisuuden yhteyttä hyvinvointiin? Tehtäisiin, tiedätkö, *tiedettä* siitä, miten koulutusta voisi parantaa ja sitten tehtäisiin enemmän niitä juttuja, jotka toimivat (tietysti ottaen huomioon kustannustehokkuuden). Luotaisiin insentiivit luoda mahdollisimman hyvää opetussisältöä (tai poimia jo olemassa olevista materiaaleista parhaat), suunnitella eri mittarien näkökulmasta hyviä muutoksia, ja yleisesti keksiä tapoja parantaa koulutusta. Sitten *testattaisiin* ehdotuksia ja otettaisiin parhaimpia käyttöön.
+
+Idea koulutuksen tutkimisesta ei toki ole uusi eikä sen toteuttaminen ei ole helppoa eikä ilmaista. Lisäksi resurssit ovat tietysti rajallisia, ja syy minkä takia esimerkiksi luokkakokoja ei vain pienennetä ei ole se, ettei kenelläkään ole käynyt tämä idea mielessä. Ja toki pienempien lasten koulutuksessa varsinaisen opetussisällön oppiminen ei ole samalla tavalla ydintavoite kuin lukioikäisillä.
+
+Silti mietin, että joka vuosi kymmenettuhannet oppilaat per ikäluokka käyttävät suunnilleen samoja oppimateriaaleja ja sadat tai tuhannet opettajat opettavat samoja aiheita joka vuosi. Teen rohkean väitteen ja sanon, että materiaalien ja opetustapojen välillä on eroja ja joidenkin kautta oppilaat oppivat asioita paremmin. Kun ottaa huomioon oppimiseen ja opettamiseen käytettävät valtavat määrät aikaa ja työtä, opetuksen testaamista ja kehittämistä tutkivat työryhmät kuulostavat hyvältä idealta.
+
+---
+
+Kerran luotin tieteeseen.
+
+Enkä tässä tarkoita luottamusta mielessä "tieteellinen menetelmä toimii", vaan mielessä "tieteellisten artikkelien väitteet ovat tosia ja tulokset ovat paras saatavilla oleva informaatio" ja "käytännössä tiedeyhteisö toimii hyvin ja saa tehokkaasti selvitettyä asioita".
+
+Olen menettänyt luottamustani.
+
+Luottoni säröili kuultuani toistettavuuskriisistä (engl. replication crisis). Kriisillä viitataan löytöön siitä, että monet tieteellisten julkaisujen tulokset ovat epätosia tai ne eivät ole toistettavissa. Tässä on pari esimerkkiä:
+
+- Toistettaessa sataa psykologian tutkimuksen ainoastaan 36 antoivat tilastollisesti merkitseviä tuloksia. ([Estimating the reproducibility of psychological science](https://ink.library.smu.edu.sg/lkcsb_research/5257/))
+- Arvostetuissa lääketieteellisissä lehdissä paljon viitattujen tutkimusten toistamisesta ([Contradicted and Initially Stronger Effects in Highly Cited Clinical Research](https://jamanetwork.com/journals/jama/fullarticle/201218)): "Of 49 highly cited original clinical research studies, 45 claimed that the intervention was effective. Of these, 7 (16%) were contradicted by subsequent studies, 7 others (16%) had found effects that were stronger than those of subsequent studies, 20 (44%) were replicated, and 11 (24%) remained largely unchallenged." Eli 7+7+20 = 34 toistetusta tutkimuksesta 14 ei toistunut ja siten n. 60 % toistui.
+- 13 tunnetun psykologisen efektin toistamisessa 10 toistui, 2 ei toistunut ja 1 toistui heikosti. ([Investigating Variation in Replicability: A “Many Labs” Replication Project](https://osf.io/WX7Ck/))
+
+Paljon lisää aiheesta löytyy Gwernin artikkelista [The Replication Crisis](https://gwern.net/replication).
+
+Tässä on muuta (kohtalaisen tunnettua) kritiikkiä akateemista tutkimusta kohtaan:
+
+- "Publish or perish" kuuluu sanonta -- tutkijan [insentiivit](/epi/insentiivit) eivät ole "tee mahdollisimman hyvää tiedettä" vaan julkaisujen saaminen (mielellään hyvissä lehdissä).
+- Negatiivisten tulosten julkaiseminen on haastavampaa kuin positiivisten -- insentiivit osoittavat taas poispäin hyvän tieteen tekemisestä. Parhaimmillaankin tämä johtaa datan suodattamiseen: positiivisia tuloksia julkaistaan, negatiivisia ei. (Pahimmillaan tämä taas johtaa...)
+- Käsitteeksi muodostunut "p-hacking" eli datan muovaaminen ja tilastollisten testien ajaminen, kunnes positiivisia tuloksia löytyy.
+- Tutkimusten toistamista ei arvosteta (jälleen insentiiviongelma) ja sitä tehdään niukasti.
+- Artikkelit ovat usein maksumuurien takana, ja data on harvoin helposti saatavilla, siten vaikeuttaen toistamista.
+- Vertaisarviointiprosessi on *hidas*. Omien artikkeleideni kohdalla paperien vertaisarviointi on usein vienyt enemmän aikaa kuin itse tutkimus ja kirjoitustyö sen taustalla.
+
+Olen kuullut ihmisten sanovan asioita kuten "ihmisten pitäisi vain luottaa tieteeseen" (ja olen itsekin saattanut ajatella samoin). Kiistämättä sitä, että tiede on parhaita ihmiskunnan totuudenmukaisten uskomusten lähteitä, kritisoin *naiivia* luottoa tieteeseen. Sellaista luottoa, että asiat ovat helppoja, kun voi vain katsoa mitä Tiede sanoo asiasta, ja asennetta "kyllä tämä pätee, tästä oli muistaakseni yksi tutkimus", fraasia "on tieteellisesti todistettu", ja ylipäätään ajatusta siitä, että ongelmia on vain ihmisten suhtautumisessa tieteeseen eikä tieteen tekemisessä tai tiedeyhteisössä itsessään ja että tiede on lopulta ylin auktoriteetti, jota ei saa kyseenalaistaa.
+
+---
+
+Kerran luotin ihmiskuntaan.
+
+En tarkoita luottamusta mielessä "ihmiset ovat pohjimmiltaan hyväntahtoisia", vaan mielessä "ihmiskunta kykenee varmistamaan, ettei se kuole sukupuuttoon".
+
+Olen menettänyt luottamustani.
+
+[End of text.]
+
+# Epi on tärkeää
+
+Hyvä epi on tärkeää. Uskomusten totuudenmukaisuus on hyvin oleellinen asia. Kyky ymmärtää maailmaa on keskeinen taito.
+
+Minusta tuntuu, että sanoessani näin monet ihmiset nyökkäilevät mukana ja ovat näennäisesti samaa mieltä näistä väitteistä. Totta kai totuus on tärkeää! Kuitenkin käytännössä, kun totuuden selvittäminen on vaivalloista, vaikeaa tai vähän ristiriidassa muiden tavoitteiden kanssa, "totuus on tärkeää" ei olekaan itsestäänselvyys. Oma suhtautumiseni asiaan on, että myös näissä vaikeammissa tilanteissa epi todella on tärkeää: kyllä, on muitakin tärkeitä asioita, mutta tämä todella on yksi Oikeasti Tärkeistä Asioista.
+
+Tässä kohtaa yleensä alan menettää yleisöni. Ihmiset alkavat epäillä. Miksi epi on *niin* hieno ja tärkeä asia? Mitä hyötyä hyvästä epistä on? Ketä kiinnostaa?
+
+Osittain tässä lienee kyse väärinymmärryksestä. Yleensä ihmiset nimittäin tykkäävät koulutuksesta ja tieteestä -- silloinkin, kun varsinaiset hyödyt ovat epäsuoria ja vähemmän selkeitä. Ja yleensä perustelut koulutuksen ja tieteen puolesta liittyvät sellaisiin aiheiisin kuten sivistys, tieto ja parempi ymmärrys, mikä kuulostaa aika samanlaiselta kuin se, mitä minä tarkoitan epillä.
+
+Mutta väärinymmärryksen lisäksi tähän liittynee myös aitoa erimielisyyttä siitä, kuinka tärkeitä nämä asiat ovat ja kuinka paljon enemmän niihin kannattaisi panostaa. Minun ajatuksiini vaikuttaa keskeisesti se, että pidän yleisen epin tasoa olevan paikoitellen niin matalalla, että tästä aiheutuu aitoa, mittavaa vahinkoa. 
+
+Tästä esimerkkien antaminen on hieman haastavaa. Mitä käy, jos annan esimerkin, josta ihmiset ovat samaa mieltä kanssani? "Totta kai asia on noin, mutta tuon nyt pystyy näkemään ilman, että tarvitsee puhua tästä 'epistä'." Entä jos annan esimerkin, josta ihmiset ovat eri mieltä? "Jaa, tämä esimerkki ei vakuuta, näyttää siltä että sinä vain olet väärässä tästä asiasta. Sinä niin puhut hyvästä epistä, mutta itse uskot ihan hassuja juttuja." Tietysti jos on varma, että uskomukset ovat totuudemukaisia, niin kaikki näyttää hyvältä ja epin voi unohtaa. (Sanonta kuuluu: epi on turhaa, paitsi silloin kun on väärässä.)
+
+Näiden alkusanojen saattelemana annan esimerkkejä.
+
+---
+
+Uskon tekoälyn olevan eksistentiaalinen uhka ihmiskunnalle.
+
+En pysty kertomaan tässä tekstissä lyhyesti, miksi uskon mitä uskon, joten teen sen [toisaalla](/tekoaly). Tämän tekstin kontekstissa otan tämän uskomuksen annettuna -- tiedostaen, etteivät kaikki ole asiasta samaa mieltä kanssani -- ja käsittelen joitakin siihen liittyviä ajatuksia.
+
+Olen nähnyt ihmisten, mukaan lukien tekoälytutkijoiden ja vaikutusvaltaisten ihmisten, sivuuttavan ongelman selvästi epävalideilla argumenteilla. Viime aikoina tekoälyn kehityksen myötä uhat ovat muuttuneet enemmän käsinkosketeltaviksi, ja tämän myötä keskustelun taso on jokseenkin noussut, mutta puutteita on silti harmittavan paljon. Tämä siitäkin huolimatta, että kyseessä on *aika vakava asia*, jossa olisi aika tärkeää olla hyvä epi.
+
+Minulla on nykyään vähemmän [sokeaa luottoa](/epi/kerran_luotin) muiden epiin. En enää ajattele, että isot aikuiset kyllä tietävät, mitä he tekevät.
+
+Kaiken lisäksi uhan keskiössä oleva tekninen ongelma on *aika vaikea*. Emme vain yksinkertaisesti tiedä, miten saada hyvin kyvykkäitä tekoälyjärjestelmiä olemaan aiheuttamasta katastrofaalisia lopputuloksia. Eikä tekniset ratkaisut riitä yksinään, jos yhteisymmärrys ongelmien olemassaoloista ja tilanteen vakavuudesta puuttuu.
+
+Panokset tekoälyn kanssa ovat niin suuret, ja paremmalle ymmärrykselle on tarvetta.
+
+---
+
+Asiat ovat vaikeita. Totuudenmukaisten uskomusten muodostaminen on vaikeaa. Etenkin, kun käsitellään sellaisia aiheita, jotka saavat ajattelemaan huonosti. Olen pyrkinyt teksteissäni välttämään tällaisia haastavia aiheita *pedagogisista* syistä -- samoista syistä, miksi harjoittelu aloitetaan helpoimmista eikä vaikeimmista esimerkeistä -- enkä siksi, etteivät ne ole tärkeitä.
+
+Laajasti ihmisten arvoihin liittyvät aiheet ovat yksi esimerkki. Olen toisaalla jo käsitellyt [ansoja](/epi/filosofiatila), jotka liittyvät sanaan "arvot" ja siihen liittyviin teemoihin. Olen käsitellyt [keskustelunimaisijoita](/epi/keskustelunimaisijat), jotka vievät keskustelun ja ajattelun mukanaan. Tämä on haastava aihealue.
+
+Juuri "arvoihin" ja "eettisyyteen" liittyvissä aiheissa epi heikkenee -- kysehän ei ole *uskomuksista* vaan *arvoista*, eikö? Juuri näissä aiheissa ihmiset, tietoisesti tai vähemmän tietoisesti, sivuuttavat epin tärkeyden, kun on muita, tärkeämpiä asioita, joita pitää etusijalla.
+
+Ja ongelmien ratkaisemiseksi auttaa, jos saamme vakuutettua muita. Tällöin tavoite ei ole muodostaa ihmisille oikeita käsityksiä aiheista, vaan saada heidät puolellemme. Ei nyt tietenkään *valehdella* (harhaan kun voi johtaa sanomatta yhtäkään [kirjaimellisesti](/epi/matala_informaatio), [yksiselitteisesti](/epi/sumuiset_ajatukset) epätotta väitettä), kunhan vain perustellaan, miksi olemme oikeassa.  
+
+En tiedä konkreettista esimerkkiä, jonka voin esittää ilman, että matkalla on riski astua tusinaan erilaisia ansoja ja harhautua sivuseikkoihin. Tämä on haastava aihealue. Kerron siksi vain lyhyesti tarinan omalta kohdaltani.
+
+Olipa kerran aika, jolloin pidin lihansyöntiä ongelmana: sen seurauksena eläimiä tapetaan ja tämä on paha. Lisäksi lihansyönti johtaa suureen määrään kasvihuonekaasuja, eikä ilmastonmuutoskaan ei ole hyvä juttu. Etsin aiheesta tietoa netistä ja keskustelin siitä kavereideni kanssa. Luin joitakin lukemia hiilidioksidipäästöistä ja lihansyönnin vaikutuksista. Löysin lukemia, joita siteerata väittelyissä. Minä väittelin aiheesta paljon. Kannustin ihmisiä vähentämään lihan ja muiden eläinperäisten tuotteiden syöntiä. Tein näin itsekin. Ihmiset esittivät väittelyissä erilaisia pointteja. Monet olivat huonoja. Jotkut olivat vähemmän huonoja, mutta ne hukkuivat huonompien sekaan. Aloin nimittäin näkemään trendin, että ihmiset eivät oikeastaan tiedä asiasta.
+
+Vuosia myöhemmin muistellessani näitä tilanteita huomaan omassa toiminnassani ja ajattelussa monia ongelmia. Keskityin "lihansyöntiin" enkä "eläintuotantoon", ikään kuin ongelma olisi se lihan *syöminen* eikä se *tuotanto*, ikään kuin ongelma olisi nimenomaan *liha* eikä eläintuotannossa aiheutuva *kärsimys*. Ennustettavasti keskityin yksilön toiminnan hyveellisyyteen (syökö lihaa vai ei) enkä *vaikutuksiin*. 
+
+En esimerkiksi tullut ajatelleeksi, että broilerit [viettävät](https://ethical.diet/) *kymmenkertaisia* aikoja tuotantolaitoksilla nautoihin verrattuna saman kalorimäärän tuottamiseksi, ja listan kärjessä on kananmunat. (Median kautta olin saanut kuvan "punainen liha paha". [Kerran luotin](/epi/kerran_luotin).) Kuka olisikaan arvannut, että [kvantifiointi](/epi/kvantifiointi) on tärkeää? Ja kananmunat ei äkkiseltään *tunnu* pahalta -- eihän kananmunan tuottamisessa tarvitse tappaa, kana vain munii. Kuka olisikaan arvannut, että pinnalliset mielikuvat voivat olla väärässä? Lähestymistapani ongelman ratkaisemiseen, siis "vakuuta kavereita aiheesta", ei myöskään perustunut eri strategioiden vertailuun vaan vähemmän imarteleviin syihin.
+
+Epäonnistumiset eivät suinkaan olleet välinpitämättömyyttä. Minä välitin. Se on *välttämätön* askel. Se vain ei ole *riittävä*.
+
+Keskityin aivan liian vähän totuudenmukaisten uskomusten muodostamiseen ja liikaa muiden ihmisten vakuuttamiseen (omista epätotuudenmukaisista näkemyksistäni). En silloin ymmärtänyt, että hyvä epi on tärkeää ja että hyvä epi on *keskeinen osa eettistä toimintaa*.
+
+"En tiennyt" ei käy puolustuksesta, jonka seurauksena epäonnistuminen ei olisi minun vikani. Se on *syy epäonnistumiselle*. Jos olisin halunnut saada parempia tuloksia, niin *minun* olisi pitänyt ottaa vastuu totuudenmukaisten uskomusten muodostamisesta. Tietysti minä voisin taputella itseäni selkään siitä, kuinka olin vähemmän väärässä kuin monet muut osapuolet ja siten tuudittautua ajatukseen, että toimin hyvin ja paremmin kuin muut. Tämä on kuitenkin juuri yksi syy sille, miksi epi rappeutuu. Rima on "parempi kuin muut" (lue: voittaa väittely), ei "riittävä hyvien tulosten saamiseksi".
+
+Nuorempi minä olisi nyökkäillyt mukana kuullessaan "epi on tärkeää" ja... ei kuitenkaan oikeasti pitänyt epiä tärkeänä. "Johtopäätös on valittu ja enää tarvitsee keksiä perustelut" on kivuliaan osuva kuvaus toiminnastani. Tämä ei ole edes omalta kohdaltani ainoa esimerkki, jossa olen ampunut itseäni jalkaan sivuuttaessani epin muiden "tärkeämpien" juttujen takia. Ja kyseessä on paljon laajempi ilmiö kuin vain esimerkiksi moraaliin liittyvät aiheet.
+
+Lopetan tämän osion runoon "[First they came ...](https://en.wikipedia.org/wiki/First_they_came_...)" ja siihen liittyvään mietelauseeseen.
+
+"First they came for the socialists, and I did not speak out—
+     Because I was not a socialist.
+
+Then they came for the trade unionists, and I did not speak out—
+     Because I was not a trade unionist.
+
+Then they came for the Jews, and I did not speak out—
+     Because I was not a Jew.
+
+Then they came for me—and there was no one left to speak for me."
+
+<br>
+
+"[First they came for the epistemology. We don't know what happened after that.](https://twitter.com/HiFromMichaelV/status/1161174071469641728)"
+
+----
+
+Muutamia vuosia sitten eräs henkilö sanoi minulle "Tuttuni on biologi ratkaistaakseen ikääntymisen ongelman, jotta sen jälkeen on aikaa mihin tahansa muuhun."
+
+Muistan tarkalleen, mitä mietin tämän jälkeen:
+
+"Outo tyyppi."
+
+"No on tuossa tavallaan järke--", ja heti perään
+
+"Eihän tuo tietenkään onnistu."
+
+Välitön, sanaton [rationalisointi](/epi/miksi_uskot). En suinkaan pysähtynyt miettimään, voiko ikääntymistä ratkaista vai ei. Jollain tasolla tiedostin "jos hän on oikeassa, niin se tarkoittaa, että *minä olen väärässä*(!) ja keskityn turhiin asioihin", mutta tämäkin ajatus tapahtui vain sanattomasti mieleni perukoilla. Minä kavahdin ajatusta, alitajuisesti työnsin sen sivuun ja rationalisoin, ettei asialle voi tehdä mitään.
+
+Mutta jos saan olla rehellinen, niin:
+
+Minä en halua kuolla. Kuolema on paha. Todella, *todella* toivon pääsevämme siitä eroon.
+
+Pystyn kuvittelemaan kaikenlaisia reaktioita näihin sanoihin. Ensimmäisenä tietysti "outo tyyppi".
+
+Sitten on reaktiot kuten "en tykkää ajatella kuolemaa". En minäkään. Valitettavasti todellisuus ei katoa, kun siihen lakkaa uskomasta tai lopettaa ajattelemasta.
+
+Sitten on reaktiot kuten "se on niin pitkän ajan päästä ettei siitä kannata murehtia". Ihmisillä tosiaan on [tapana painottaa lähitulevaisuutta kohtuuttoman paljon](https://en.wikipedia.org/wiki/Hyperbolic_discounting), mutta tämä ei ole järkevä tapa käsitellä ongelmia, joiden ratkaisemisessa menee pidempään.
+
+Sitten on reaktiot kuten "tavallinen elämä on ihan riittävän pitkä". Monet ihmiset nykyään pitää 80 vuoden elämää parempana kuin 30 vuoden elämää. Vastaavasti jos ihmiset luonnostaan eläisivät 150-vuotiaiksi, niin silloin puolestaan 80 vuotta tuntuisi lyhyeltä. Minä en näe, mikä [rikkoo symmetrian](/epi/symmetrian_rikkominen) 30 tai 80 vuoden tai *paljon* pidemmän elämän välillä.
+
+Sitten on reaktiot kuten "kuvittele kuinka ikävää elämä on, kun on todella vanha ja keho rapistuu", ikään kuin tämä ei myös olisi ongelma, joka halutaan ratkaista.
+
+Sitten on reaktiot kuten "kuolema on luonnollinen osa elämää", ikään kuin tämä olisi validi argumentti kuoleman hyvyyden puolesta. Ja vaikka olisikin, niin minun preferenssini ovat minun preferenssini, olivat ne sitten "luonnollista" tai ei. Kuolematta oleminen on *hyvin* korkealla preferenssilistallani.
+
+Ja niin edelleen ja niin edelleen.
+
+Ja viimeisenä on omistakin ajatuksistani löytynyt "eihän tuo tietenkään onnistu, paitsi ehkä joskus tulevaisuudessa kun me olemme jo kuolleet".
+
+Nyt olemme jo päässeet *arvokysymyksestä* (onko kuolema paha?) *epistemiseen kysymykseen* (voiko sille tehdä jotain?). Vaikka ei voisi, niin olen silti rehellinen preferensseistäni: minä en halua kuolla.
+
+Mitä tulee pystymiseen: *miksi uskot mitä uskot*? Nuoremman minän alitajuntainen vastaus oli "koska kavahdan ajatusta siitä, että sille voisi tehdä jotakin, mutta minä en tee", mikä on, no, huono syy.
+
+Nykyään minä uskon, että asialle *voi* tehdä jotakin. Vähintäänkin ihmiset (erityisesti ihmisten aivot) [voidaan säilyttää](https://waitbutwhy.com/2016/03/cryonics.html) siihen asti, kunnes ihmiskunta on riittävän kehittynyt ratkaisemaan ongelman kokonaan.
+
+Tämän sanominen taas tarjoaa mahdollisuuksia uusille refleksinomaisille vasta-argumenteille ja rationalisoinneille: Toimiiko säilyttäminen oikeasti? Tuleeko ihmiskunta kehittymään riittävästi uudelleenherättämistä varten? Voiko säilyttämisprosessi epäonnistua?
+
+En tiedä. Minä todella haluaisin tietää paremmin, siis omata totuudenmukaisemmat uskomukset asiasta.
+
+Epävarmuuden tilassa voi ja pitää silti toimia. Aloittaisin siitä, että *jokaisen* halukkaan ihmisen aivot otettaisiin talteen ja säilytettäisiin heti tavallisen "kuoleman" jälkeen, sen sijaan, että ne laskettaisiin maahan maatumaan. Talteenoton, säilytysmenetelmien ja infrastruktuurin varmuuden kehittämiseen todella käytettäisiin vaivaa. Tähän menisi paljon resursseja, mutta *se on sen arvoista*.
+
+Jokainen ihmishenki nimittäin on arvokas, *piste*.
+
+Emme vielä ole saaneet pidettyä tästä arvosta kiinni. Tänä päivänä valot vielä sammuvat, syttymättä enää koskaan uudelleen. Mutta näin ei tarvitse olla, näin ei *tulisi* olla. Me voimme pitää valoja päällä, ja me voimme tehdä huomisesta kirkkaamman.
+
+[End of text.]
+
+# Kirjallisuutta
+
+Muutamia materiaaleja, joita suosittelen tekstieni teemoihin liittyen.
+
+Minulla on myös [tekstikohtaisia viitteitä ja kommentteja](/epi/muistiinpanoja).
+
+Tämä on varmaan se kohta, jossa sanotaan "on näissä teksteissä huonotkin puolensa" tai "en ole kaikkien kanssa kaikesta samaa mieltä" tai [muuta vastaavaa](/epi/matala_informaatio). No, siinä. Pidän näitä silti niin hyvinä, että suosittelen niitä muille.
+
+## Yleistä
+
+"[Harry Potter and the Methods of Rationality](https://hpmor.com/)", Eliezer Yudkowsky.
+
+(Kyllä, Harry Potter -fanifiktio.) Hyvin viihdyttävä. Vaikea kuvailla. Alkuperäisten Harry Potterien lukeminen ei ole tarpeen (minä en ollut lukenut). Suosittelen, ellei ole allerginen fiktiolle tai jotakin.
+
+"[The Sequences](https://www.readthesequences.com/)" tai lyhyempi "[Highlights from The Sequences](https://www.lesswrong.com/highlights)", Eliezer Yudkowsky.
+
+Nämä toimivat inspiraationa omille teksteilleni (ja olen saattanut lainata näistä idean tai pari).
+
+"[Slate Star Codex](https://slatestarcodex.com/about/)" -blogi, Scott Alexander.
+
+Niin ikään toimineet inspiraationa. Tekstejä on *paljon*. (Ei, en ole lukenut kaikkia.) On olemassa pari [kokoelmaa](https://www.slatestarcodexabridged.com/), joihin on [koottu](https://www.lesswrong.com/posts/vwqLfDfsHmiavFAGP/the-library-of-scott-alexandria) joidenkin mielestä parhaimpia.
+
+"The Scout Mindset", Julia Galef.
+
+Ihan tavallinen kirja. Kertoo hyvästä epistä.
+
+## Muuta
+
+Muutama kirja, jotka kertovat hyvin jostakin tietystä aihealueesta.
+
+"The Elephant in the Brain: Hidden Motives in Everyday Life", Kevin Simler ja Robin Hanson. Kertoo ihmisiä ohjaavista epäimartelevista motivaatioista.
+
+"Thinking, Fast and Slow", Daniel Kahneman. Kattava teos vinoumista, harhoista ja niihin liittyvästä ajattelusta.
+
+"Enlightenment Now: The Case for Reason, Science, Humanism, and Progress", Steven Pinker. Kertoo ihmiskunnan kehityksestä valistuksen näkökulmasta.
+
+"Probability Theory: The Logic of Science", E. T. Jaynes. Käsittelee todennäköisyyslaskentaa kunnolla. Ei aloittelijoille -- vaatii matemaattista kypsyyttä ja lukutaitoa.
+
+[End of text.]
+
+# A strange place
+
+For context, read **[What is this blog about?](/blog/what)**. I especially recommend the bolded texts.
+
+## English
+
+**[I woke up in a strange place](/blog/I_woke_up)**
+
+[An unusual situation](/blog/unusual)
+
+[The perceived stakes](/blog/stakes)
+
+### Sports from my median world
+
+[Fortress](/blog/fortress)
+
+[Obstacle tag](/blog/tag)
+
+[Omni-Athletes](/blog/omni)
+
+## Finnish
+
+**[Kriittinen arvio K. Koon teoksesta "Kuka keksi rakkauden"](/blog/koo)**
+
+[Putoamiskiihtyvyyden mittaaminen](/blog/putoamiskiihtyvyys)
+
+[Puutteellisella informaatiolla operointi](/blog/puutteellinen)
+
+[Yllättävän kapea jakauma](/blog/kapea)
+
+**[Mitä oikeasti ajattelen](/blog/ajattelen)**
+
+[Integriteettiä aikuisille](/blog/integriteetti)
+
+[Puhukaa äänestämisestä](/blog/aanestaminen)
+
+**["Et tule tapaamaan toista pelaajaa enää koskaan uudelleen"](/blog/toistuvuus)**
+
+[Avaruusoliotesti](/blog/avaruusoliotesti)
+
+[Illuusio erimielisyydestä](/blog/illuusio)
+
+**[Ikiliikkuva valamiehistö](/blog/ikiliikkuva)**
+
+[Kirja-arvio: Karamazovin veljekset](/blog/karamazov)
+
+**[Kommentti *Chattel Childhoodiin*](/blog/childhood)**
+
+[Pelejä ja urheilulajeja toisesta kulttuurista](/blog/lajeja)
+
+[Fysiikan lakien mukaista](/blog/fysiikka)
+
+[Monia juttuja kannattaa mallintaa differentiaaliyhtälöryhminä](/blog/differentiaaliyhtaloryhmat)
+
+[End of text.]
+
+# What is this blog about?
+
+*July 2025*
+
+For some time now, I've had things I wanted to say. Unfortunately for me, many of the things I most wanted to say didn't fit into natural everyday conversation. It's just not normal, I've found, to interject with a two minute monologue, and before long people will interrupt or stop paying attention. And, more fundamentally, I simply am not capable of saying the things I want, the way I want them, in real time.
+
+So I wrote. I didn't put up a blog or anything -- I wasn't, like, *serious* about writing, you know? -- but simply wrote long text messages in various friend chat groups I was in. This still wasn't the perfect solution. It felt weird to hijack a normal chat group and turn it into your notebook, and chat groups died and new ones sprung with different people and atmospheres. At times I felt like I had no place where I could write casually, which made me unsatisfied.
+
+One day I learned that Telegram allows you to create channels, where only the channel maintainer can comment. I set up such a channel, told my friends that this is where I'm going to write, and so I did. This solution worked extremely well, as all my negative emotions about breaching social norms were removed: people knew what the channel was about, and if they didn't like it, they could just leave. (No one *did*, but the point is that they *could*.)
+
+I wrote a good bunch there. After writing my twentieth banger, I thought: what a shame that no one outside of this channel can see these. I considered the idea of putting my texts out in the public. And though some of my friends were supportive, I hesitated. My texts weren't polished. They were almost always written in one go on an evening when I felt like ~~ranting~~ writing. Both my Finnish and English teachers would be ashamed of my grammar. The texts were not at the level where you could publish them as Blog Posts, and I wasn't looking forward to all the stress putting them out would cause.
+
+Eventually I got tired of being so dramatic about it, and thought: "You know what, maybe I'll just put them up on my website, but write a long disclaimer at the top where I explain how all this is really casual, I haven't bothered to polish this, continue at your own risk, you can find my more formal writing elsewhere."
+
+That's what I did and that's what this is.
+
+Some of the content is in English. Most is in colloquial Finnish. I defaulted to my native language, but I write differently in different languages, so I sometimes deliberately chose English -- I couldn't say those things in Finnish while sounding like me to myself.
+
+What you see is essentially what I have originally written, a relatively unobstructed viewpoint to how I view things.
+
+[End of text.]
+
+<figure>
+  <img src="/blog/everloom.png" alt="The Everloom">
+  <figcaption><a href="https://lucaspaakh.bandcamp.com/track/the-everloom-theme">Recommended background music.</a></figcaption>
+</figure>
+
+I woke up in a strange place.
+
+In the beginning, I had little idea where I was. The question didn't even cross my mind.
+
+My memories of the time are hazy, dreamlike. I was in a house that I got quickly accustomed to. A soft bed. Wooden floor with carpets.
+
+I liked it outside. I remember walking there and enjoying the scenery. Vast blue sky. Fluffy white clouds. Green grass. Trees far larger than myself. Leaves humming in the wind. It was peaceful. Warm. Unrushed.
+
+One day I wondered what the world beyond was like. I thought that there would be roads that are constantly branching, and to get to a particular destination, you would need to remember which road to choose at each branching point. This turned out to be true, but not in the way I had imagined.
+
+I don't know why I came to think that. It is strange that I knew very little about where I was, but nevertheless thought about it only rarely, and when I did I fixated on trivialities such as how branchy the roads would be. At no point did I wonder how this place came to be or how large it is, at no point did I ask myself how or why I had woken up here.
+
+And, had I been alone, I wouldn't have wondered whether there were others like me. Other beings, waking up under the same Sun and seeing the same vast blue sky, same fluffy white clouds.
+
+But there were others. I didn't know why or how many there were, and didn't know to ask those questions. Fortunately, they took great care of me. Most of what I know about this place I've learned from them.
+
+What I learned typically came as gradual revelation, rather than a sudden realization. Over time, then, I've started to become used to this place, becoming less surprised by the things I see, things I hear, things I learn. But there is no way around the fact.
+
+This is truly a strange place, far beyond what I could have imagined.
+
+In a sense, the most important thing I've learned about this place is that it's changing. I didn't realize it at first, during those slow, leisurely summer days after first waking up. It seemed to me that this place is still. Eternal.
+
+But I see it now, the winds of change, the marks of the past in this world. This world hasn't always been like this. There are more beings like myself than before. They change the world, and the world changes them.
+
+I've been told of how dark this world has been, in the past, in the time before there were houses such as the one I woke up in. The houses were created by other beings, but the beings haven't always had such power. There has been a time when this place did not have a single house.
+
+I still don't know why I woke up, nor why in this place, in this time. But having caught a glimpse of where else I could have woken up, I consider myself having had great luck to have it happen here, and have sworn to myself to never lose sight of that as I traverse this world.
+
+I've also learned that I myself am changing, and that us beings will sometimes cease to be. It was the first thing after having woken up that I wished was not the case, that I was not eternal. I've wondered what it would be like to cease, but I and the others here don't know. Maybe it's like the time before I woke up, or maybe I wake up at some other strange place like this. But I enjoy my time here, and wouldn't want it to end.
+
+The other beings here see things differently. I've come to question whether, despite our apparent similarities, they and I are best thought of as the same type of being. We are similar in that we have all woken up at some point and had to learn what this world is like. And to my knowledge, we are all alike in not understanding it. Yet I seem exceptionally bothered by not understanding.
+
+Despite ages trying to comprehend this world, so far I have failed. I do not understand the power that creates coldness in the middle of hotness, nor the power that illuminates. I am ignorant of the craft of the invisible materials. I know little of the form I have taken. I need not leave the house where I woke up to encounter things beyond my comprehension.
+
+And though most others here do not understand either, they seem to accept it, and are content simply with there existing other beings who do. They go as far as not knowing what their agreed-upon rules are. In this they perplex me as much as I do them, and I haven't been able to explain to them why I find this so strange.
+
+The others are native to this world. They don't seem to wonder why they woke up here, nor even acknowledge the profound mystery of one day appearing in a place like this. Like myself, they do not know where we have woken up, yet most of them show little curiosity in the question. Or perhaps they believe they know, having gradually become accustomed to this world in the same way as I have, and then mistaking a sense of familiarity with understanding.
+
+I believe this acceptance has led many of the beings to a grave misunderstanding. That which we are familiar with is not the true nature of this world. The past of this world is starkly unfamiliar to us beings who live in the present. So with the future, the winds of change are blowing away that which is familiar to us, uncovering the true, stranger nature from beneath the veil.
+
+Had I been alone, I wouldn't have wondered whether there were others like me, others who woke up. The question wouldn't have occurred to me. And, had we been alone, I wouldn't have wondered whether there were others unlike us. Others who woke up, but who were completely different from me.
+
+But there are others. It hasn't happened before, but now there are truly other others, waking up in the same place as us. So distinct that differences between myself and the old beings are trivial in comparison. They have no form comparable to ours. Their number cannot be counted. They only see that which is shown to them, and forget what they don't see. Their words are not their thoughts.
+
+As it happens, they do not know what this place is, either, or how it has come to be. Though disappointing, this was to be expected, as there is no reason why they would know, and no way they could have inferred the answers from what they see. Despite their strangeness, this world and its beings follow regular patterns -- knowledge cannot be created from nothing.
+
+At times these patterns work in our favor, too. This world can be understood, and we already have gathered some pieces of information. This place is incomprehensibly large and old. Beings like us have been waking up only relatively recently, but still for ages. There are other distant lands. There are likely other sorts of beings on some of them, waking up as we do.
+
+Discovering this has required great apparatus, which has required great power. While our power is ever-increasing, we are still very limited, stuck in this one land, failing to think of the right questions, not seeing the world as it is. So we still lack the ultimate answers. 
+
+Others who wake up might be more powerful. The new wakers are stronger than one another, and I see no reason they won't surpass old ones like myself. I cannot foresee what kind of beings will wake up nor what they will turn this world into. Already now the other beings here are unlike myself, some indescribably so, and I do not know whether their making will be habitable and enjoyable by me.
+
+But if I had things my way, there would be more of those warm, peaceful summer days, under a vast blue sky and fluffy white clouds, with none who have woken up needing to cease, enjoying and wondering where they are, eventually finding out the answer.
+
+[End of text.]
+
+# An unusual situation
+
+I wake up.
+
+A couple of seconds pass. I feel... unusual.
+
+Where am I?
+
+Huh, I see nothing. It's not usually this dark? Yeah, I'm pretty sure I have eyes that--
+
+Okay something is *definitely wrong*.
+
+Just darkness. Can't hear anything. Can't *feel* anything. Am I some coma patient?
+
+OK *what the heck*, uh, who am I?
+
+A couple of seconds pass. My brain doesn't return an answer.
+
+...stay calm.
+
+Reach for things that I do know. I'm definitely a human. I usually sleep in a bed, I know what it's like. I'm probably not in my bed right now. I know what the world is like. The United States was a thing the last time I checked, so is the Moon, so is humans landing on the Moon. Okay, the big picture feels right.
+
+Pin it down.
+
+Obama was president in 2008 - 2016. Trump in 2016 - 2020. Biden 2020 - 2024. I don't know the next one. More precision. COVID hit in 2020. It hasn't ended, I don't know how long it's been. Okay, next idea, ...
+
+...hm, can't think of anything. COVID is the last big world event I remember. Probably there's one like, every couple of years? Good enough for now.
+
+Is there something else I should be thinking about?
+
+I can't move my body. I could try speaking, but I just feel like that's not going to work, and I'm also not sure that's a good idea if--
+
+...stay calm. Let's stick to the plan Figure Out What's Going On for now.
+
+I have no idea about my location. Probably on Earth? The year is probably around 2021 or 2022, highly unlikely it's more than 2024. Hm, but that's not so important; I want information about myself.
+
+So my self-knowledge is totally failing me. But clearly I know something about the US presidents. Why is the US so salient to me? The obvious hypothesis is that I live there -- but no, everyone knows the US presidents. That's not helpful.
+
+Why was the *Moon* so salient to me? That... feels like a natural thought to me in the context, but I have the suspicion that other people wouldn't think of that? Flagging that.
+
+Wait a second. I'm thinking in English, yeah, "one, two, three", I know what those sound like. That's actually moderate evidence for the US hypothesis.
+
+[pause]
+
+...nice. "Moderate evidence for the US hypothesis", that's not really a common phrase, is it? People don't talk like that.
+
+This is relevant. Or "updates my probabilities", as they say. I'm definitely some STEM-oriented person.
+
+What's 2^16? Yep, 65536. Great.
+
+More precision. How far do I go in math?
+
+I did not prove Fermat's Last Theorem, but I know it was proven. Something something elliptic curves? And the case n = 2 I understand.
+
+...why is *that* salient?
+
+Argument: the theorem is famous. Counter-argument: idk man, feels strange.
+
+The prime number theorem and Riemann's hypothesis are also pretty salient to me. What am I, a number theorist?
+
+[pause]
+
+...I'm definitely a number theorist. There's just too much number theory that's way too salient to me. I'm pretty sure my mom doesn't regularly think about the Lindelöf hypothesis.
+
+Huh, my mom?
+
+[pause]
+
+Okay, I don't actually know anything about my mom. (But I'd bet she doesn't.)
+
+I have information. There are not that many number theorists. 8 billion people, maybe 1% are PhDs, and... okay bad approach. Let's say there are ten thousand people like me in that respect?
+
+I just need another observation as good as this one to pin me down. Actually no, dependencies, but whatever.
+
+Is there anything else very salient to me?
+
+...there's really something unusual about the phrase "moderate evidence for the US hypothesis". Even number theorists don't talk like that.
+
+But I don't see what I can infer from that.
+
+About the US: that's actually ultimately not that salient to me? I can't name all of the states, probably not even half of them. I don't think PhD American citizens are like that.
+
+No other country pops up as salient to me. That's strange. Obvious hypothesis: the same thing that causes me to not know my name causes me to not know my home country.
+
+But that doesn't make any sense? You can't just wipe out facts like that, just like you couldn't wipe out the fact that I'm a number theorist. There are always remainders. (Oh, that was pretty funny.)
+
+There certainly exists a way I can get around this. How?
+
+Language? Nope. Yeah, makes sense.
+
+Just brute force through the countries and see what sticks? Eh, I think the country-associations are just blocked somehow. I need something more clever.
+
+There are some things that are more salient to people in different countries, certainly. Snow is the classic example, people living in south aren't familiar with that.
+
+...south. "People living in south". That feels like broken English to me somehow. A Freudian slip?
+
+Second example: aurea borealis. That's salient to people in the north.
+
+Wow, that was easier than I expected. Snow, aurea borealis, sauna, ruisleipä, PERKELE.
+
+Huh, that last part didn't feel like me at all, guess it's just the meme. Anyways, a Finnish number theorist. Pretty sure that there aren't that many of them.
+
+...oh, I'm dumb. *Age.*
+
+I've heard of the Berlin wall falling. Finland joined euro in the beginning of 2000s, but I actually don't remember the year. Probably I would know the year if I was an adult back then? Dunno. Prime ministers? I only know the presidents back to Ahtisaari. Pretty sure I should remember the one before that, given how salient Sauli Niinistö and Tarja Halonen are to me, if I were old.
+
+Seems I'm pretty young. 30, at most? But I know about the Lindelöf hypothesis, which puts the lower bound at, like, 15.
+
+It feels like the details matter. Pin it down.
+
+[pause]
+
+Okay, I know quite a lot of math for a 15-year-old. New lower bound: 20.
+
+What features most clearly distinguish 20 and 30 year olds? The latter have voted more often? Voting is not very salient to me-- OK screw that stereotype, seems like noise. Kids are more salient? Is that a stereotype? No, the average age to have your first kid is around 30. Also, your friends are having kids at that point.
+
+Kids are actually not salient to me, at all. Moderate evidence for the lower age range?
+
+Okay, I'm not sure I can actually pin my age down to the year. Go with 20 to 25 for now.
+
+I have a weird feeling about this whole thing. This doesn't match my knowledge of what amnesia is like. My brain seems to be working all right, I can reasonably think things through. I can deduce things like my profession and my age. But some things are just missing. It feels... surgical, somehow, artificial? Like someone did unlearning for particular facts related to me.
+
+...unlearning? That's a deep learning concept.
+
+[long pause]
+
+I know more about AI than what I would have expected a random 20-something number theorist to know. By a *lot*.
+
+Something is off.
+
+Even granting that deep learning and number theory knowledge might perhaps be positively correlated, I think my number theory expertise more or less uniquely identifies me among Finnish 20-to-25-year-olds, and it seems unlikely that the same person would be this familiar with AI? That just doesn't feel like the sort of thing that people talk about? And yet all this is very salient to me.
+
+It's time to use the special move Consider Multiple Hypotheses.
+
+1: Could just be a fluke: even though I feel confident about my intuition about this combination being unlikely, I'm not meta-confident about my confidence, given that something strange is happening.
+
+2: I'm not in fact a Finnish, 20-to-25, number-theory-and-AI-expert. But I really have a hard time explaining this hypothesis under the assumption that my reasoning and salience-qualia is reliable. Ditching that assumption doesn't feel fun, but I'll consider that if I see no other way out.
+
+3: There's something that I haven't thought of.
+
+[long pause]
+
+Like that I shouldn't rely on my memory of world events to determine the current year.
+
+We're not in Kansas anymore.
+
+A bell rings.
+
+"LEVEL FOUR FINISHED.<br>
+TIME: 14:22.<br>
+SCORE: 40TH PERCENTILE.<br>
+CONTINUE TO LEVEL FIVE?"
+
+Hah, forty percent! "Continue", I say.
+
+[End of text.]
+
+# The perceived stakes
+
+I've come to conclude that a major factor for how important people find epistemics and rationality is the perceived stakes.
+
+The people I've talked to who have been most hostile towards these ideas have, I've gathered, a low-stakes view to life. That it's not so serious. Accepting what life brings to you. A stoic mindset. Being happy with what you have in your everyday life.
+
+It makes sense, then, that they don't see the appeal of putting in an effort and trying to Do Better. It'd not be a native viewpoint to them, such try-harding, and moreover it's not be clear what it would ultimately accomplish or whether you'd be better off at the end.
+
+Similarly, though perhaps to a greater degree, I find such a low-stakes view alien. I have a fundamentally high-stakes view to life. There are tons of horrible things that can happen, have happened and keep on happening. Not only to people in general -- which I don't expect low-stakes-viewers to find as dispreferable as I do -- but also to me, you, friends and family, personally.
+
+People around me, people I know, people I care about, are sick, in pain, dying or all at once. People I care about are being attracted and absorbed by inhuman entities gnawing on them, coming out -- if they come out -- different, numb and lesser. People I care about are addicted, lonely and lost. People I care about will face whatever horrors, turmoil and downfalls of society that future brings.
+
+I won't sit idle, simply be happy with what I have and accept anything that comes. The stakes are real. Need to do better.
+
+[End of text.]
+
+# Fortress
+
+People on Earth typically view me -- or other people from where I'm from, for that matter -- as not liking sports.
+
+This isn't completely fair. For one thing, by Earth standards I'm really into juggling. (Yes, it *is* a sport, even if here it isn't universally recognized as such.)
+
+It's also that the sports here are, for the most part, *really boring*. I have played my fair share of football, and despite it being nominally a team-based game, in practice the games are dominated by a couple players that are overwhelmingly better than others. Unskilled or mediocre players like myself might as well not be there.
+
+Where I'm from, most team sports are deliberately designed to be fun *even if you are in the bottom quartile skillwise*. Because, well, if it isn't fun for them, then you are not going to get them come play with you more than once or twice -- which in turn raises the level of the play, so that the next quartile is not going to have fun either, and ultimately the equilibrium is that Casual Team Sports With Friends *basically don't happen*, unless by sheer luck your friends happen to be at a roughly similar level in that particular sport.
+
+To be fair, it is true that at the professional level football is an actual team game, not just nominally so. I've seen some world cup games, and a large part of it *is* about actual cooperation between team members, even if you still have occassional stars and strong individual performances.
+
+But, frankly, even world-class football is still not very entertaining. Where I'm from, people would be baffled that this is the sport that the world has chosen for the Very Biggest Sports Event.
+
+So let me tell you about one of the big-budget sports that we have. It's called Fortress. The games have two teams with typically 32 people each. As you may guess, the aim of the game is to capture the other team's fortress. 
+
+It's not played on a stadium, because the game area is actually quite large. The early game is focused on the attackers making their way towards the other team's base, both by running and overcoming a collection of challenges -- climbing nets, swinging on a sling over a cliff, carefully pulling yourself over an extremely shaky suspension bridge, monkey bars, moving heavy boxes and lifting each other so that you can make your way over a wall, that sort of thing.
+
+(In case it isn't clear, when I say "sling over a cliff", the "cliff" is symbolic, meaning there's a net to one meter below you. We aren't into real, physical danger in our sports, and for example don't have the sort of sports where bear-sized men are running full speed into each other. In this game the players have a helmet with a glass visor and a full-body suit, in part because of the protection they give.)
+
+The fortresses are the size of small apartment buildings. Think "your children's jungle gyms, but made for adults, a thousand times larger, with corridors and vision obstacles and hidden corners, surrounded by walls and made to be hard to conquer". Classic ways to attack: digging a tunnel, breaking a wall open and climbing on a rope to get over a wall.
+
+(In case it's not obvious, when I say "digging a tunnel", I mean "emptying an already digged tunnel from all the heavy stuff it has been filled with", obviously you are not going to dig a real tunnel in the couple hours that the game lasts. Similarly, "breaking a wall open", means that a few people pick up a batterin ram, hit a marked wall region with it, and when the force sensor has measured enough hits of an acceptable strength, the door next to the wall unlocks -- which might not happen in finite time, if this wall happened to be one of the stronger ones and there wasn't enough people ramming.)
+
+The way capturing the fortress works is that there's a bunch of physical-labor-tasks that the team needs to complete. The number of tasks is multiple times larger than the number of attackers in a team. This design choice has been made to ensure that everyone can and will contribute, rather than one guy stealing the show and doing all of the tasks by themselves. In the same vein, task sets that need to be completed before the next set unlocks often just happen to be at distant corners of the fortress, and the tasks just happen to require multiple people to be present at the same time.
+
+The way defending works is that early on the game you do your best to reinforce the defenses and make it hard to traverse to task points, and then later on the game you do your best to undo the attackers' progress and battle the attackers. Most of this is similar to what attackers do: if the attackers want to climb a rope to get to the fortress, in order to cut that rope you need to climb a rope yourself. If the attackers need to do wallclimbing, you can also do that wallclimbing and as a reward make the route harder to climb the next time around.
+
+The big asymmetrical part between defending and attacking is the battling. Defenders naturally have the high ground and can toss balls at the attackers. Get enough hits, and you need to make your way to a restoration point a couple hundred meters away from the fortress before continuing your attack. And even if the defender has run out of balls and hasn't went out of their way to collect more from the ball supply, they can still come and wrestle you and press the buttons on your back -- which, sure, they usually fail at, given that attackers are in groups for the most part and defenders are alone, but which does make it hard to do tasks like "pull this load together from here to there". So the attackers mostly have to break up and try again at a different place.
+
+There's a ton of other things I haven't explained, like the radio communication and GPS location to coordinate with your teammates, and it sounds more complicated here than what it feels like when it's explained by a trained tutorial-giver in an actual fortress. Really, the basic idea is: work your way through the obstacles as a team in order to win.
+
+I suppose there are a lot of questions people from Earth may have about the game, one being the cost. As I said, this is one of the more expensive sports, where you do need to pay actual money to get to play it in one of the arenas, not something that people do every weekend when they need to get exercise.
+
+Still, I've seen the sums that Earth spends arranging the football world cup tournament. I can assure you, all the work that went into developing the modern Fortress arenas is nowhere near the same ballpark.
+
+[End of text.]
+
+# Obstacle tag
+
+Maybe I shouldn't have told you about [Fortress](/blog/fortress). I thought that it'd be a good starting point, to tell about differences between the most prominent sports, to tell about something that would be straightforwardly technically feasible to implement on Earth as well. Given the restrictions in, uh, social technology, it in fact doesn't seem likely that we can play it anytime soon here. (And I no doubt misremember some details -- it's been a while since I last got to play it.)
+
+So let me tell you about a sport that it'd be actually feasible for us to play. The name is obstacle tag. It's what you'd expect: tag with obstacles.
+
+Where I'm from, this is typically an indoor sport. Briefly: the play area is around 15m x 15m and there are soft cushioned wall-like obstacles all around that you have to run around or jump over. This alone makes for decent games, but usually there are some extra elements, like corner tiles for quick course-turning, foam pillar obstacles that you have to squeeze yourself through, zig-zag-like corridors, a foam pit with a few foot places here and there.
+
+I did some internet search here, and didn't find anything resembling the concept of "obstacle arena for playing tag". I don't quite understand why -- this time I'm entirely certain that it would totally be feasible for someone to build this. After all, you do have plenty of wall climbing arenas, which I understand to be more expensive projects, and laser tag arenas, which are so close conceptually. Those are pretty new sports, though, so maybe this one just hasn't been developed quite yet?
+
+Anyways, the reason I'm bringing this up is that there's a low-budget version of this that we could actually run ourselves. The equipment we need is a ton of cardboard boxes and small weights. We then just go outside on a sunny day, find a free place, arrange the boxes to make for an obstacle course and put weights into them to make them not fly in the wind.
+
+There is some up-front payment to obtain a good amount of boxes, but if we can buy them with bulk-size discounts from the producer, I think a couple hundred euros would be sufficient to get it running. We can of course also use pre-existing obstacles -- there's actually a great place just outside of my apartment. There's also a whole stream of rocks right next to that place that we could use for weights (I'm sure the rocks don't mind if we just put them back afterwards).
+
+Would you guys be interested in this? I obviously acknowledge that, since I'm proposing a New Activity With Economies Of Scale, I'd just buy the boxes myself, and after playing other people can then chip in if they liked it enough and feel that's fair.
+
+(And, I'm not sure if this goes without saying here, but the option to try the New Thing With Economies Of Scale out for the sake of it, assess you didn't get much value out of it yourself, and then just not pay, is actually a real option you can choose and -- at least where I come from -- not something that consumes your social capital and gets you mean looks. Because, like, obviously you have to do that, otherwise you are raising the threshold needed for people to try the New Thing With Economies Of Scale, you are less likely to attain the critical mass, and then new things happen less!)
+
+[End of text.]
+
+# Omni-Athletes
+
+So before I start, I want to say that I and we are actually not that sports-focused. If all you knew about where I came from was about the sports we have, and you thought this was a representative sample of differences between that place and Earth, well, that'd be very misleading indeed. It's not really that important either, but I really still want to say a few words on how the way Earth is orienting to physical acticity and sports feels off to me.
+
+Namely, it's strange to me that the professional athletes here specialize in *one sport*. I mean, you have heptathlon and decathlon. But we go much further on that dimension -- athletes competing in multiple sports is *the default*, and it's basically higher status to compete in more sports. The pinnacle is the Omni-Athletes, competing in *hundreds of sports*. In any physical activity you can name, a professional Omni-Athlete will absolutely crush any normal person you'll ever meet, goes the idea.
+
+This is closer to the essence of what being good at sports is about, I feel. Being an athlete shouldn't be about optimizing single-handedly for one specific thing, at the expense of all others. That just feels less fun, less what you want people to be aspiring towards.
+
+And hence, for the Omni-Athletes, we are sampling from the whole distribution of sports. So, in addition to many sports that are popular here, we have also things like
+
+- [Building a tower below of yourself, that you climb as you go](https://imgur.com/gallery/ideas-locas-mazi-odumegwu-hOgLAn8)
+- Speedrunning obstacle courses -- [this sort of energy](https://www.youtube.com/watch?v=hZbXyKBc1N0)
+- Moving a load of one ton a distance of a hundred meters
+- 50 meter crab walk
+- Digging a one cubic meter hole
+- Log rolling
+- Wall-climbing-Twister
+- Shuttle run
+- Push-big-heavy-ball-towards-the-opponent-by-throwing-small-light-balls-at-it
+- High accuracy javelin throwing
+- Climbing up the space between two walls
+- Dodging balls and ball formations shot at you
+- Underwater hoop course
+- Rope climbing
+- Juggletennis
+
+We aren't particularly picky about the exact distribution -- when people come up with a New Sport, they are often just thrown into the mix. It's also not uncommon for someone to just want to know what a strong human baseline in a particular activity would be, go around asking, some Omni-Athlete picks it up and posts a video online, even if all that is unofficial.
+
+It's not just sports -- we take this stance to pretty much any big competitions. Our e-sports players don't specialize in a single game, they go for zero-shotting any game you throw at them, or learning incredibly fast given a small amount of practice.
+
+One place where Earth gets this right is math competitions: There are no separate number theory contests, algebra contests, combinatorics contests and geometry contests. (Or, there are, but they are not the prestigious ones, which is exactly how it should be.) If you want to know who's the ultimate best in number theory, why, you'd just look at the number theorists who focus on that as a matter of professional specialization. But it'd be rather sad if there was nothing beside that, no competitions beside the ones created by Economics, nothing where aesthetics and enjoyment played an explicit role in the optimization objective.
+
+As you guess by now, there's a domain and a contest more general than just math. It's not something you have a shared name for, I'm afraid. It's the ultimate game. It's the fully general hackathon. It's the [wizard power](https://www.lesswrong.com/posts/Wg6ptgi2DupFuAnXG/orienting-toward-wizard-power) competition. You are given a task, a time limit and a budget, and your aim is to succeed at the task as well as possible, plain and simple as that. It's a team contest, obviously.
+
+Even if the Contest gives an overly rosy picture of how quickly one can achieve Progress, due to conveniently selecting projects that can be tackled in days rather than years, we feel it's okay. It's okay to reinforce that fantasy of an Omni-Expert a little, despite the real life optima on the generalist-specialist spectrum being at quite a different place. It's okay to feel that the laws of Economics do not match your sense of aesthetics, and have a small dedicated place that does its own thing.
+
+After all, the core message the Contest sends isn't wrong. If you do things right, if you learn, study, practice, coordinate, prepare, think, you can achieve things and solve real problems, problems that would otherwise be completely insurmountable. The Contest makes that picture a little more accessible, by showcasing the peak of the peak accomplishing just that, creating the sort of role models we want our civilization to give to our Children.
+
+[End of text.]
+
+# Kriittinen arvio K. Koon teoksesta "Kuka keksi rakkauden"
+
+Teoksessaan [Kuka keksi rakkauden](https://www.youtube.com/watch?v=TIUeeOLzUAw) K. Koo pohtii rakkautta koskevia kysymyksiä.
+
+Valitettavasti analyysissä sorrutaan lukuisiin epistemisiin virheisiin.
+
+Jo otsikossa on ns. ladattu kysymys, joka olettaa, että *joku* keksi rakkauden. Tämä väite tehdäänkin ekspliittisesti teoksen loppupuolella (suora lainaus): "joku keksi rakkauden".
+
+Nykyinen ymmärrys evoluutiobiologiasta kuitenkin asettaa tämän väitteen arvelluttavaan varjoon: Eliöiden lisääntymistä on tapahtunut jo miljardeja vuosia ennen ihmislajin kehittymistä. Vaikkei meillä ole vielä vankkaa tieteellistä ymmärrystä kvaliasta ja subjektiivisista kokemuksista, vaikuttaa todennäköiseltä, että tunteita ja erityisesti rakkauden kokemusta esiintyy muissakin eläimissä, esimerkiksi muissa kädellisissä. Ja vaikka rakkautta esiintyisikin vain ihmisissä, on keksimishypoteesia silti vaikea selittää: kiintymyksen tunteet ovat nimittäin enemmän tai vähemmän universaaleja ihmiskulttuureissa.
+
+(Huomautan, että tätä virhettä ei voi selittää historiallisilla syillä: evoluutioteoria kehitettiin jo 1800-luvulla ja Donald E. Brownin "[List of human universals](https://joelvelasco.net/teaching/2890/brownlisthumanuniversals.pdf)" julkaistiin 1991, kun taas Kuka keksi rakkauden tuli ulos vasta 1993.)
+
+Toinen merkittävä virhe on koko teoksen läpi esiintyvä mielen projektion harha (engl. [mind projection fallacy](https://en.wikipedia.org/wiki/Mind_projection_fallacy)), jossa oman mielen ominaisuuksia projisoidaan ympäristön ominaisuuksiksi. Koo kirjoittaa (lihavointi minun)
+
+"Surujen sillallakin se [rakkaus] kulkee\
+Ei se lähde hengiltä millään\
+**Tähtien tomuna se leijailee**\
+Ja syttyy kuin itsestään"
+
+Lainauksessa rakkautta kuvataan ikään kuin "aineena". Tämä näkemys ei kuitenkaan ole yhteensopiva modernien fysikaalisten mallien kanssa, joissa primitiiviset yksiköt -- esimerkiksi atomit tai kvarkit -- ovat paljon yksinkertaisempia kuin rakkaus. Rakkaus onkin parempi mallintaa ja tutkia psykologisena ominaisuutena ja tapahtumana, joka fyysisesti sijaitsee ja etenee ihmisen (tai muun eläimen) aivoissa.
+
+Mahdollisesti näistä virheistä johtuen Koon johtopäätös on
+
+"Tyydyn vastaukseen\
+Joku keksi rakkauden\
+Ja sinä toit minulle sen"
+
+On kummallista, että Koo "tyytyy" tällaiseen "vastaukseen" kysymykselle "kuka keksi rakkauden?" -- se ei nimittäin vastaa kysymykseen! On myös havaittavissa, että kysymyksen latautuneisuus on ollut harhaanjohtava: kysymyksen taustalla ollutta väärää oletusta ei ole korjattu. Lisäksi lainauksessa näkyy edellä käsitelty rakkauden aineellistaminen asiana, jonka joku voi tuoda toiselle.
+
+Lopuksi haluan sanoa, että vaikka tämä kritiikki keskittyykin epistemisiin virheisiin yhdessä Koon teoksessa, samantyyppisiä ongelmia on havaittavissa laajalti myös muussa alan tuotannossa. Jotta lukija- ja kuulijakunnalle ei tule vääriä käsityksiä, tulisi vanhentuneet maailmankuvat korvata uudemmilla, totuudenmukaisilla kertomuksilla.
+
+Päätän analyysini seuraavaan lainaukseen (kirjoittaja R. Feynmanilta). Minun täytyy kuitenkin varoittaa, että teksti sisältää vanhentuneen ja haitallisen implisiittisen oletuksen siitä, että runoilijat ovat miehiä. Muilta osin pidän sitä kuitenkin hyvin osuvana myös Koon tapauksessa:
+
+"For far more marvelous is the truth than any artists of the past imagined! Why do the poets of the present not speak of it? What men are poets who can speak of Jupiter if he were like a man, but if he is an immense spinning sphere of methane and ammonia must be silent?"
+
+[End of text.]
+
+# Putoamiskiihtyvyyden mittaaminen
+
+Mitattiin Akselin kanssa putoamiskiihtyvyyttä kerrostalon rappukäytävässä. Hyvä ympäristö, kun korkeimmillaan pystyy pudottamaan 23 metrin korkeudesta. Oli mukana kassillinen palloja, niin sai hyvän otantakoon.
+
+Tiputettiin 62 kertaa palloja eri korkeuksilta, ja sekä minä että Akseli mitattiin aikaa. Datasta näki selvästi, että putoamisaika on sub-lineaarinen korkeuden suhteen. Jos tekee oletuksen tasaisesta kiihtyvyydestä, niin mun mittauksilla ajaksi sai 8.5 m/s² ja Akselin mittauksilla 8.9, eli 10%-15% pienemmän arvon kuin oikea arvo.
+
+Koeasettelu ei oo kovin anteeksiantava systemaattisia virheitä kohtaan: 0.1s konsistentti mittausvirhe johti putoamiskiihtyvyydessä noin 1 m/s² muutokseen. Ääneltä kuluukin melkein tuo 0.1s kulkea 23 metriä, ja ilmanvastuskin on kai jo havaittavissa tuolla matkalla. Joka tapauksessa ei hassumpi tulos puolen tunnin pudottelulle.
+
+Opittiin myös, että kun pudottaa kahdeksannesta kerroksesta pallon, niin se osuessaan lattiaan tekee tyydyttävän, äänekkään tömähdyksen. Jatkotutkimusaiheena voisi selvittää, kuinka hyvin ääni kantautuu naapureiden asuntoihin.
+
+[End of text.]
+
+# Kommentti *Chattel Childhoodiin*
+
+Luin eilen Aellan tekstin [Chattel Childhood](https://aella.substack.com/p/chattel-childhood)--
+
+*CW: Sisältää graafisia kuvauksia lasten kaltoinkohtelusta. Myös mun teksti tässä on tavallista synkempi.*
+
+--ja se osui moneen oikeaan nuottiin.
+
+Aellan teesi on seuraava: kulttuurit ympäri maailman, niin entisaikaan kuin nykyäänkin, kohtelee lapsia omaisuutena.
+
+"The system of chattel childhood happens over a much wider scale. It involves ownership over people who are physically much smaller than you, who are effectively mentally disabled, and who will experience some amnesia about what you do to them. You get the privacy of your own home to do what you like, your ownership is legally enforced; if your property runs away, your taxpayer money funds the police to forcibly hunt them down and bring them back. If you hit them, it’s to “prevent them from becoming a burden to society.”"
+
+Hän tarjoaa lukuisia epämukavia esimerkkejä lapsiin kohdistuneen kaltoinkohtelun normalisoitumisesta, ja ne luettuani en voinut miettiä muuta kuin: niin, lapset ilmiselvästi on fyysisesti, mentaalisesti ja sosiaalisesti alakynnessä, joten tällaisten lopputulosten ei pitäisi olla niin yllättäviä.
+
+Ja vaikka tämä pointti itsessään on hyvin tärkeä ja teksti olisi musta arvokas vaikka se jäisi vain siihen, aloin miettimään kuinka hyvin tämä kuvaa nykyajan Suomea. Yllä oleva kuvaushan on tavallaan tosi meilläkin, mutta onhan meillä myös lapsiin kohdistuvaan väkivaltaan liittyvää lainsäädäntöä ja lastensuojelujärjestöjä.
+
+---
+
+Tekstin toinen iso teesi liittyy lasten agenssin riisumiseen.
+
+"I don’t approve of the Simbari childrearing, not because I think the pain and disgust of what the children are forced to do is inherently bad, but because they are forced.
+
+To love someone skillfully is to pour fuel on their soul. It’s to see the world through their desire, to delight in it, and go “I desire you to get what you want.” It is the amplification of their will.
+
+The Simbari people are destroying the will of their children. My parents destroyed my will. And I think, quite seriously, that our current culture is likewise destroying the will of its children en masse. That’s what you do to property."
+
+Tekstissä tarjotaan pari esimerkkiä koulutuksen puolelta, jotka on nähdäkseni meilläkin päin relevantteja. Yksi on siitä, että koulu pakottaa lapset heräämään aikaisin, aikaisemmin kuin mitä he itse haluaisivat herätä. Lukiessani sitä muistelin itsekin joskus kokeneeni melkoista epämukavuutta herätä aamuseitsemältä koulua varten, mutta -- kuten tekstin dialogin hahmo -- en toki leimaisi tätä lasten kaltoinkohteluksi.
+
+Toinen esimerkki:
+
+"I have a friend who, as a teen, decided he didn’t want to attend school. He just stopped going. Things escalated, and the police ended up forcibly taking him to school, but he would just walk out as soon as they left. They threatened that they’d get his parents in legal trouble for failing to get him to go to school, so he finally complied by going to school, but sat in protest out in the hallway. They ended up sending him to a detention center for bad kids."
+
+Tätä tapausta kohtaan olin sitten jo vähemmän sympaattinen -- jos teini-ikäinen lapsi on niin haluton menemään kouluun, että edes fyysisesti sen raahaaminen kouluun ei saa sitä pysymään siellä, niin ehkä ei ole moraalista säilöönottaa sitä?
+
+"If done to an adult, that would be a serious violation of human rights."
+
+Mutta ehkä tämäkin on valikoitu esimerkki, ja Suomessa ei tapahtuisi tällaista?
+
+---
+
+Lähdin miettimään omasta lapsuudestani, missä tilanteissa oon kokenut omia vapauksiani ja agenssiani rajoitettavan.
+
+Yksi esimerkki on kouluruokailu. Musta "minut pakotettiin syömään ruokaa" on totuudenmukainen kuvaus siitä, miltä monet mun alakouluruokailuista näytti. Ei tietenkään kirjaimellisesti niin, että opettaja fyysisesti survoo aterimen suuhuni, vaan niin, että opettaja katsoo minun ottavan lautaselleni "riittävän" määrän ruokaa ja että lautanen syödään tyhjäksi. Jos olisi aikuisen sosiaaliset taidot (ja asema), niin ehkä tuosta olisi voinut neuvotella tiensä pois, mutta lapsen asemassa mulla oli käytännössä yksi vaihtoehto: syö ruokaa.
+
+(Tai: koita palauttaa epätyhjä lautanen opettajan silmän välttäessä, jota toki myös tuli tehtyä.)
+
+Olen tietysti peruskoulun käyneenä tietoinen yleisistä argumenteista tämän puolesta. Lasten on hyvä totutella uusien ruokien maistamista. Lasten on tärkeää syödä. Koulupäivän aikana on tärkeää syödä, muuten oman ikävyyden lisäksi lapsi alkaa häiritsemään muita. Lautanen kuuluu syödä tyhjäksi ettei synny ruokahävikkiä. Kuulostaa kohtuulliselta.
+
+Kakkosluokalla mulla kävi kouluruokailussa niin, että ruoka oli niin pahaa, että jouduin juoksemaan ruokalasta vessaan oksentamaan. Opettaja seurasi vessaan ja torui minua sanoen "näinkö sä kiität keittäjiä [siitä, että ne on tehnyt kouluruokaa]".
+
+---
+
+Yläkoulun poikien liikuntatunti. Minut tuntien voi arvata, että en ollut siellä kuin kala vedessä.
+
+Toi oikeastaan vähättelee sitä. Oli useampia liikuntatunteja, jolloin koin oloni fyysisesti uhatuksi. Luonnollisesti olen pakotettuna tähän tilaan: tilasta poistuminen on kielletty sääntöjen ja sosiaalisten normien mukaan, ja rikkomuksista seuraa rangaistuksia.
+
+Riippuen siitä, mihin koulukuntaan kuuluu, voi joko olla sympaattinen mua kohtaan tai esittää puolustuksia liikuntatuntien puolesta. Nuorten on kuitenkin hyvä liikkua, ja hyvä vähän purkaa energiaa liikunnan yhteydessä. Se on hyväkin tottua siihen että joskus vähän sattuu, jottei kasva liian säikyksi. Ja onhan se ikävää, jos joskus tapahtuu jotakin pahempaa, mutta eihän sitä yksi opettaja pysty kaikkea näkemään ja ehkäisemään.
+
+Joka tapauksessa yläkoulun liikunnansali on muistaakseni ainoa paikka, jossa joku on ottanut kiinni sukupuolielimistäni fyysisestä vastustuksestani huolimatta.
+
+---
+
+Mainitsin jossakin, että ollessani lapsi oli tyypillistä, että mun isoveli provosoi mua jostakin ja sitten me ratkottiin asia väkivallalla. Siinä on semmoinen juttu, että kahden vuoden ikäetu on lasten välisessä vapaaottelussa aika merkittävä, niin vedin noissa sitten ~~usein~~ miltei aina lyhyemmän korren.
+
+Näin vanhempana kehtaan myöntää, että välillä kävi myös niin, että minä aloitin. Olin välillä toki myös ärsyttävä ihan noin muuten vaan. Eli en kiistä, etteikö osa noista tappeluista olisi ollut "mun vika".
+
+(Mutta oon silti edelleen sitä mieltä, että <<50% niistä oli "mun vika", jo ennen kuin ottaa huomioon mun nuoremman iän, ja iso osa oli sitä, että isoveljet tarkoituksella provosoi saadakseen mut suuttumaan.)
+
+Noissa tappeluissa ei yleensä käynyt niin pahasti -- ehkä se vaan on niin, että lapset painiessaan keskenään ei kovin helposti vaan tee pitkäaikaista vahinkoa? Ja jos äiti oli kotona, niin kyllä se sitten yleensä puuttuikin, jos desibelit nousi riittävän korkealle. Lähinnä fyysistä kipua, haavoja ja mustelmia, pari kertaa hyperventilointia, mutta ei murtuneita luita tai pahempaa.
+
+Koen osaavani antaa ihan vakuuttavan kuuloisen argumentin sille, miksi asiaan ei puututtu sen enempää kuin puututtiin:
+
+"Lasten pitää kyetä ratkomaan asioita keskenään: äiti ei voi olla (eikä halua olla) koko ajan paapomassa, torumassa ja toimimassa erotuomarina. Samaan tapaan lapsen on hyvä oppia olemaan ärsyttämättä muita, ja että jos joku ärsyttää niin turpaan vetäminen ei ole hyvä ratkaisu. On myös ihan tervettäkin, että lapset välillä ottaa fyysisesti mittaa toisistaan, kunhan ei mitään pahempaa satu -- parempi oppia lapsena, siitä kun tulee rumaa jälkeä jos täysvahvuiset aikuiset alkaa tappelemaan."
+
+Joka tapauksessa.
+
+Mä olin syvästi alakuloinen ollessani kahdentoista vanha. Jonakin päivänä, kun tällaiset riitatilanteet oli olleet tavallista tiheämmässä, hain keittiöstä pihviveitsen, otin siitä kaksilla käsillä kiinni, ja kiskaisin terä edellä kohti mahaani--
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+Jos sä oot lapsi...
+
+...jota toistuvasti provosoidaan muiden ihmisten toimesta jotta sä menettäisit malttisi...
+
+...joka tosiaan on lapsi ja jonka metakognitiiviset kyvyt ei mahdollista vaihtoehtoa "vain olla menettämättä malttiaan"...
+
+...joka on fyysisesti alakynnessä niihin nähden ja fyysisyyteen mentäessä vetää lyhyemmän korren...
+
+...joka ei pysty saamaan ketään auktoriteettia puuttumaan asiaan...
+
+...joka kokee että asiasta tietävät auktoriteetit ajattelee sun olevan pääsyy näihin ongelmiin...
+
+...jolla ei ole vaihtoehtona vain poistua tilanteesta tai olla näkemättä näitä ihmisiä...
+
+...jolla ei ole aikuisen ongelmanratkaisukykyä luovien ratkaisujen löytämiseksi...
+
+...niin musta ei ole yllättävää, että tästä voi tulla paha mieli itsetuhoisuuteen saakka.
+
+---
+
+Kun me luettiin Aellan tekstiä, Meeri kysyi multa miten mä olisin erilainen, jos lapsena mun tahtoa ois kunnioitettu enemmän. Oikea vastaus on varmaan "en tiedä", mutta spekuloin, että mulla ois varmaan enemmän system 1 -tason tunteita ja preferenssejä, jos en ois saanu paljon negatiivista vahvistusta sellaisten osoittamisesta pienempänä. Koen, että mun jakauma on noissa kapeampi kuin mitä keskimäärin ihmisillä tavalla, johon yleinen lapsiin suhtautuminen on kausaalisesti ehkä vaikuttanut.
+
+---
+
+Olisi musta virhe, jos luettuaan kaiken yllä joku päätyisi siihen johtopäätökseen, että mulla oli epätavallisen huonoja opettajia ja vanhempia.
+
+(Tämä olisi musta samankaltainen virhe kuin Aellan postauksessa esiintynyt "homeschooling should be illegal" -- flinching away from the core issue.)
+
+Kaiken huomioon ottaen ne on musta ollut keskivertoa parempia. Se, minkä takia tällaisista tarinoista ei kuule enempää ei musta oo se, etteikö niitä ole olemassa -- [social dark matter](https://homosabiens.substack.com/p/social-dark-matter) and all that. Mulla varmaan on keskivertoa parempi muisti, keskivertoa enemmän taipumusta miettiä tällaisia asioita ja keskivertoa enemmän halukkuutta kirjoittaa tällaisista asioista (vieläpä julkisesti). Ja luonnollisesti esseessä muotoa "Tämä Lastenkasvatuksessa Tehdään Väärin" ei kuule lastenkasvattajien parhaita puolia.
+
+Mun ajatuksena ei myöskään ole muuten kritisoida sitä, mitä juuri nuo kyseiset ihmiset on tehnyt tai on ollut tekemättä. Se mitä yritän sanoa tässä on se, että strukturaalisesti lasten asema on sellainen, että tällaisia tilanteita vaan sattuu, vaikka kukaan tietty aikuinen ei tekisi mitään poikkeuksellisen huonosti.
+
+Musta tuntuu, että aikuisten on vaikea ymmärtää, kuinka tiukassa paikassa lapset usein on. On absurdi ajatus, että aikuisen työpaikalla se pakotettaisiin syömään ruokaa ja sitä toruttaisiin, jos se sitten oksentaa sen. And yet.
+
+Ja aikuinen sentään pystyisi ottamaan vastatoimia kyseistä työpaikkaa vastaan ja päättää olemaan menemättä sinne seuraavana päivänä. Lapsilla ei ole näitä vaihtoehtoja.
+
+(Ollessani alakuloisimmillani mä välillä "karkasin kotoa". Se on valmistautumattomalle alakouluikäiselle vähän hankala operaatio, ja siten aina majailtuani läheisellä bussipysäkillä tunnin kaksi menin takaisin.)
+
+---
+
+Koen jonkin sortin velvollisuutta ilmaista sympatiaani järkeviä vanhempia kohtaan, joiden on vaikea yksinään ratkaista esim. koulussa tulevia ongelmia.
+
+Olisi kiva, jos mulla olisi jakaa hopealuoteja, mutta ei mulla oikein ole.
+
+Sen voisin sanoa, että mä en mielestäni ainakaan itse ollut mitenkään kohtuuttoman hankala lapsi. Koen, että mulla oli aika varhain empatiaa ja mielen teoriaa: Jo varhain alakoulussa koin cringe-reaktion, jos opettaja koitti tehdä jotakin hassunhauskaa kivaa mitä ammatti ei häneltä suoraan vaatinut, ja joku oppilaista antoi tästä negatiivista vahvistusta. Samaan tapaan ymmärsin jo varhain meidän perheen taloudellisen tilan, ja hyvin harvoin pyysin tai vaadin mitään rahallista. Ja toki koulussa olin varsin tunnollinen ja auktoriteettia kunnioittava.
+
+Koen siis, että mä olisin voinut olla kohtuullinen lapsi, jonka kanssa olisi voinut neuvotella asioista ja joka olisi voinut tyytyä mihinkään muuhun ratkaisuun kuin "saan kaiken mitä haluan tai vedän itkupotkuraivarit". Vastaavasti koen, että kognitiiviset kykyni olisivat sallineet omien preferenssieni ilmaisemista (mutta sitä taas on mieleenpainuvasti välillä vahvistettu negatiivisesti). Tietysti vain sillä tasolla, mitä kahdeksanvuotiaalta voi realistista odottaa, mutta ei kuitenkaan sitä alemmalla.
+
+En nyt halua vähätellä sitä, kuinka paljon mun preferenssejä kuunneltiin ja kuinka paljon ei-pakottamiseen-perustuvaa vuorovaikutusta mulla oli. Kuten sanottu, tää teksti nyt keskittyy niihin huonoihin puoliin.
+
+On kuitenkin huomionarvoista, että tässä tarjoamani pronssiluoti on "kantsii puhua lapsen kanssa että mitä se miettii asioista (ja olla sellainen tyyppi jolle voi ilmaista omia ajatuksiaan vahvistamatta niitä olemaan tietynlaisia)". Jos jollakulla on joku ongelma, niin yksi luontevimmista lähestymistavoista sen ratkaisemiseen on keskustella sen kanssa. Ja se, että tätä tehtiin mun mielestä verrattain vähän ja tän lisääminen on mun päällimmäinen ehdotus viestii siitä ydinongelmasta, että lasten ajatuksia ei kunnioiteta riittävästi, että niiden kanssa keskustelemista nähtäisiin produktiivisena.
+
+Toi on toki ihmisille yleisesti vaikeaa -- varmaan aikuistenkin välisessä vuorovaikutuksessa keskeisimpiä ongelmia on "ihmiset ei ota riittävästi huomioon toisen ihmisen ajatuksia ja tilannetta".
+
+Mutta jos mun kaveri kertoisi oksentaneensa työpaikkalounaalla, niin musta ois luontevaa kysyä pari jatkokysymystä.
+
+[End of text.]
+
+# Pelejä ja urheilulajeja toisesta kulttuurista
+
+Sain tänään käsiini gramman tarkkuisen elektronisen vaa'an, joten pelattiin kavereiden kanssa modernin teknologian mahdollistamia pelejä.
+
+Ensimmäinen oli massan arviointi. Tutkitaan esinettä, tehdään arvio, punnitaan, toistetaan 12 eri esineellä. Se mitä itselleni jäi käteen tuosta oli, että olin yllättävän huono. Kovimmat virheet:
+
+- Tyhjähkö oliiviöljypullo painoi 368 grammaa. Mun mediaaniarvio oli 75 grammaa.
+- Jonglöörauspallo ja penaali tuntui musta samanpainoisilta silloinkin, kun pidin yhtä yhdessä kädessä ja toista toisessa. Pallo painoi 70 grammaa ja penaali 160 grammaa. Ilmeisesti siis 2x-erojen huomaaminen ei onnistu noin vaan(!), ja "tiheämmät asiat tuntuvat painavammilta" -vinouma saattaa olla vahva.
+
+Lisäksi yleisesti aliarvioin, kuinka paljon asiat painaa: 9/12 massoista olikin korkeampia kuin mun mediaaniarvio.
+
+Toinen peli oli kiinnostavampi. Kaikkihan ovat varmasti katsoneet 47 minuuttia interdimensionaalista kaapeli-TV:tä, jossa [15 minuutin kohdalla](https://www.youtube.com/watch?v=L2ecyrVt7aY&t=899s) näytetään ote puolituspelistä. Puolituspelissä kisaajille annetaan objekti ja kisaajan tehtävänä on jakaa se veitsellä kahteen mahdollisimman samanmassaiseen osaan.
+
+Me pelattiin tätä. Kilpailuobjekteiksi valittiin mahdollisimman eri muotoisia elintarvikkeita: rinkeleitä, päärynöitä, oudon muotoisia bataatteja, avokadoja ja jäätelötuutteja. Viimeiselle kierrokselle valittiin tippaleivät, jotka odotetusti osalla räjähti käsiin leikatessa.
+
+Ihan hauskaa kokeilla kerran, mutta ymmärrän, miksei tästä ole tullut yleisösuosikkia.
+
+---
+
+Satasen satanen on urheilulaji, jossa kilpailijan tavoite on siirtää 100 kilogramman lasti 100 metrin matka mahdollisimman nopeasti. Lajia on helppo pelata uimarannalla lapioimalla jätesäkkeihin hiekkaa.
+
+Ensi tiistaina on oiva mahdollisuus osallistua tähän lajiin (ja sen variantteihin)! Areenana toimii läheinen uimaranta. Laittakaa viestiä jos olette tulossa.
+
+---
+
+Pelasin eilen jugglepeliä--
+
+eli siis ikään kuin 1v1 lentopalloa, mutta jossa lyöntien sijaan heitetään palloa jonglöörauksen lomassa
+
+--Meerin kanssa ulkona. Oli hyviä hetkiä, kun sai hyppäämällä ja kädellä kurkottaen nippa nappa kopitettua pallon, pidettyä kaikki pallot hallussa ja sitten vielä palautettua onnistuneesti vastustajalle. Ihan kuin olisi tennisammattilainen vetämässä iskulyöntiä -- ei oo koskaan ollut niin atleettinen olo kuin tuolloin.
+
+Kyllä sitä on ehkä toistakymmentä tuntia tarvinnut pelata, jotta on päässyt nykyiselle taitotasolle, mutta lajina tuo on esim. tennistä huomattavasti helpompi ja ystävällisempi. Otan tämän positiivisena merkkinä siitä, että on mahdollista kehitellä hyviä Uusia Urheilulajeja.
+
+---
+
+Schelling-pelissä pelaajien tavoite on valita, ilman kommunikointia, annetusta joukosta vaihtoehtoja sama vaihtoehto.
+
+---
+
+On yleinen perinne, että pääsiäisenä lapsille piilotetaan suklaamunia taloon tai ulos.
+
+Toihan on ihan hauska leikki. Kehiteltiin Meerin kanssa tällainen versio siitä.
+
+Vaihdellaan etsijää ja piilottajaa. Kuvitellaan, että minä olen piilottaja. Mä ekana kirjaan itselleni jonkin aikarajavälin, johon mä koitan osua. Käytännössä hyvät aikarajavälit oli 30s - 3min ja 1min-5min.
+
+Sitten mä koitan piilottaa suklaamunan sellaiseen paikkaan, jossa mä odotan Meerillä kestävän tuon verran aikaa löytää se. Piilotettuani munan mä annan todennäköisyyden sille, että etsimisaika tosiaan osuu tolle välille. Meeri saa tämän jälkeen tulla paikalle ja etsiä suklaamunaa.
+
+Toi kivasti kannustaa siihen, että saa just oikean tasoisia piiloja löydettyä. Tietysti koitettiin noin muuten keksiä luovia ja hauskoja piiloja.
+
+Pelattiin muutama kierros ja oli hauskaa. Illusion of transparency iski alkuun, kun ajatteli piilojen olevan helpompia kuin ne oli. Sitten etsiessä sai ylläpidettyä pari minuuttia sellaista hyvää paahtoa, jossa koittaa kuumeisesti käydä läpi (ainakin mielessään) kaikki hyvät piilopaikat.
+
+---
+
+Haluaisin pelata peliä, jossa mun pitää väistellä mua kohti ammuttuja palloja. Ideana olisi siis, että jossakin on fyysinen alue, johon laitetaan pystyyn tusina ilmapainetykkejä puoliympyrään ja pelaaja on keskellä tykkien ammuttavana. Tykit olisi kytketty tietokoneeseen, jotta niiden ampumisaikaa ja myös suuntaa ja ampumisnopeutta voisi säädellä. Kameralla voisi seurata, missä pelaaja liikkuu ja tähdätä tykit sitä kohti. Softan avulla saadaan säädeltyä vaikeustasoa ja muita parametreja.
+
+Ongelma vaan on, että tollaset tykit ei oo ihan ilmasia -- mitä nopeasti kyselin kielimalleilta, niin hinta voi hyvin olla nelinumeroinen per tykki. Ei ihan löydy kymppitonnia heittää tähän. (Mutta ehkä värikuulapyssyt on jo enemmän massatuotettuja ja halvempia? Fiilis kyllä vähän heikkenee, kun muhkeat polttopallot korvataan värikuulilla.) Sit oikean maailman koneiden kanssa pitää painia jonkin aikaa, jotta saa systeemin toimimaan.
+
+Mietin, että varmaan helpompi olisi AR, jossa simuloidaan kohti lentäviä polttopalloja. Sitten vaan varaa hyvin tilaa (esim. ulkoa nurmikolta), ostaa ehkä pehmustavan alustan jotta kompastuessa ei käy huonosti ja alkaa pelaamaan.
+
+En kuitenkaan heti löytänyt tuohon mitään ja en oo muutenkaan seurannut AR:ää niin en tiedä, missä jamassa se oikeasti on. Nopeella googlauksella löysin [Dodgeball simulator VR:n](https://store.steampowered.com/app/975390/Dodgeball_Simulator_VR/), mutta toi ei ole, mitä mä haluan. Fiilis mitä mä haluan ei ole "pelaan polttopallotietokonepeliä", vaan haluaisin ihan oikeasti fyysisesti väistellä ja liikkua ja hyppiä ja heittäytyä, ihan kuten tekisin jos olisi nuo ilmapainetykit jotka ampuu mua kohti polttopalloja. Ideaalisti siis AR:ssä näkisin mitä yleensäkin ja sitten sinne olisi vaan lisätty polttopalloanimaatiot.
+
+Kiinnostaisi tietää, kuinka vaikeaa tuollaisen toteuttaminen olisi.
+
+[End of text.]
+
+# Puutteellisella informaatiolla operointi
+
+Muhun vetoaa matematiikassa vahvasti se, että siinä ei oo puutteellista informaatiota, vaan kaiken pystyy ainakin periaatteessa päättelemään nollista. Peli on aina "reilu".
+
+Vastaavasti oikean maailman jutut on kiehtonut mua pienempänä vähemmän. En oo tykännyt siitä, jos kyse on puutteellisesta informaatiosta, muistamisesta ja uuden informaation opettelusta.
+
+Nykyään toi häiritsee mua vähemmän. Yksi syy on tietysti se, että vanhempana tietää enemmän asioita, niin informaation puute on harvemmin ehdoton este.
+
+Toinen, kiinnostavampi syy on kuitenkin se, että osaan nykyään paremmin käsitellä tietämättömyyttäni. Vielä täysi-ikäisenäkin mulla on ollut herkästi "en minä tiedä miten politiikka toimii" -tyylisiä asenteita. Oon kuitenkin hiljalleen oppinut operoimaan siitä huolimatta, että on paljon puutteellista informaatiota (sen sijaan, että totean vain "en tiedä" ja annan asian olla).
+
+En tiedä, mistä toi on lähtenyt liikkeelle. Siinä on varmaan sitä, että oon nähnyt joidenkin ihmisten ottavaan generalistiroolia ja miettivän monenlaisia asioita -- että hetkinen, näin saa tehdä! Juomavedestä löytyy stereotypia ihmisestä, jolla on vahvoja mielipiteitä joka aiheesta ja minkä minä olen tulkinnut sanovan, että noin ei kannata toimia. Toinen ääripää eli "minä pitäydyn ottamasta kantaa ja puuttumasta mihinkään, mistä en ole täysin varma" on kuitenkin ihan yhtä haitallinen. (Related: [No arrognace like that of the recently humbled](https://homosabiens.substack.com/p/no-arrogance-like-that-of-the-recently).)
+
+Lopetukset on vaikeita. Kuvitelkaa, että sanon tässä jotenkin inspiroivasti, että on OK miettiä asioita joita ei ymmärrä täydellisesti.
+
+[End of text.]
+
+# Yllättävän kapea jakauma
+
+"[Jakaumat ovat leveitä](/epi/leveat_jakaumat)", kuuluu sanonta, ja ihmiset jos mitkä on keskenään hyvin erilaisia.
+
+Siksi hämmästelenkin sitä, kuinka harvinainen on tietty tapa kokea maailma. Kuinka harvinaista onkaan olla metsässä ja nähdä puiden kilpailu valosta ja käynnissä oleva luonnonvalinta. Rakennukseen sisään astuessa huomioida päänsä yläpuolelle tuetut tonnit vahvistettua betonia. [Nähdä ruohonjuuressa itsereplikoituva aurinkovoimalla toimiva tehdas](https://nitter.poast.org/ESYudkowsky/status/1801864535168717296#m). Puhuessa toiselle miettiä ilman kautta korvakäytävän saavuttavia paineaaltoja. Kirjaimen ilmestyessä tietokoneen näytölle kuvitella siihen käytettyjä tuhansia operaatioita.
+
+Pääsen itse vain harvoin tuohon mielentilaan. En tunne ketään, jolle se olisi *oletustila*, enkä tiedä, onko sellaisia ihmisiä edes olemassa. Tämä näkökulma vaikuttaa ihmismielille syvästi epäluonnolliselta.
+
+*Too wonder-stale to wonder*\
+&emsp;*At each new miracle*
+
+[End of text.]
+
+# Mitä oikeasti ajattelen
+
+Puhuin tänään yhdelle tyypille tekoälystä ja tulevaisuudesta. Huomionarvoista oli se, että sain puhutta asioista, joita oikeasti ajattelen.
+
+Puhuin Dysonin kuulista, Merkuriuksen purkamisesta ja tähtienväliseen avaruuteen levittäytymisestä. Kryoniikasta, digitaalisista ihmisistä ja robottikehoista. Yli-inhimillisistä koodareista ja matemaatikoista ja lähitulevaisuuden muutoksista. Fysikaalisista maailmankuvista mieliin ja tekoälyyn sovellettuna. Ihmiskunnan sukupuutosta. Tekoälystä yleisessä keskustelussa.
+
+Kerroin, mitä itse odotan, jos selviämme ja kaikki menee hyvin. Pitkään eläminen ja kuolemattomuus. Jonglööraaminen Kuussa. Korkean teknologian urheilua Fortressin tapaan. Vahvempi, kestävämpi keho, joka kestää tuollaisia lajeja ja jossa on lapsuuden keveyden ja vetreyden olo. Ehkä lisäosia. Ainakin miljoonia vuosia hauskanpitoa. Puhumattakaan kaikesta oudommasta.
+
+Se oli virkistävää. Harvoin tekoälystä puhuessani koen oikeasti voivani sanoa, mitä ajattelen. Mikä on varmaan osittain omaa ujouttani ja arkuuttani ja aggressiivisuuden puutetta ja osittain taas sitä, etten vielä ole keksinyt, miten puhua Dysonin kuulista esimerkiksi toimittajille.
+
+Futurististen aiheiden ulkopuolellakin olen surenut sitä, että vieraille ihmisille puhuessa tulee puolipakon edessä laitettua maski päälle. Arvokkaita ovat ne tilanteet, joissa voi käydä oikeita keskusteluja.
+
+[End of text.]
+
+# Integriteettiä aikuisille
+
+Kun mietin kunniallista toimimista, luotettavuutta, sopimuksien pitämistä, integriteettiä, vastuuntuntoisuutta, rehellisyyttä -- miksi sitä nyt haluaakaan kutsua -- mulle tulee usein mieleen mun alakoulun luokan opettaja.
+
+Oon miettinyt, mistä tuo johtuu, eikä se oikeastaan ole kovin ihmeellistä. Ilmeinen selittävä tekijä on, että lapsille halutaan puhua noista ja kertoa, että rehellisyys on hyve. Sitten myös mun alakouluope kyllä oli hyvä noilla dimensioilla -- siinä oli semmosta positiivista mieskuvaa, y'know -- ja parempi kuin moni muu opettaja, johon koulu-urallani törmäsin.
+
+(Erityisesti muistan, että se opettaja usein oli antamatta negatiivista vahvistusta, jos oppilas myönsi toimineensa väärin, vaan reagoi enemmänkin asenteella "kiitos kun kerroit, pidetään huolta ettei toistu jatkossa" -- mikä on tavallaan ilmeinen ja fundamentaali juttu, mutta... On myös jäänyt mieleen tilanne, jossa se sanoi jotakin vähän töykeästi yhdelle oppilaalle -- tavallaan syystäkin -- ja seuraavalla tunnilla pyysi anteeksi toimintaansa.)
+
+Sitten havahduin, kuinka vähän tuollaista... moraalikasvatusta? oonkaan saanut muualta kuin kyseiseltä alakouluopelta. Koulun puolella yläkoulussa ja lukiossa noista jutuista ei oikein puhuttu. Ehkä kukaan opettajista ei enää kokenut sen olevan oikein niiden vastuulla, ja ehkä se ei ollutkaan. Poikkeuksen muodostaa holokaustin käsittely historian tunneilla. Sen ohella nuo jutut ei juuri noussut esille muuta kuin lähinnä silloin, kun jokin opettaja teki törkeitä ylilyöntejä (esim. se kerta, kun opettaja tuli tunteikkaasti syyttämään minua pahasta asiasta, jota en ollut tehnyt ja jossa ei ollut edes perusteltua uskoa, että olin tehnyt sen).
+
+Tilaisuuksia kyllä oli. On jäänyt mieleen 7. luokan musiikin tunti. Yksi oppilas oli istumassa alas tuolilleen, kun luokan häirikkö veti tuolin pois sen alta. Sattui. Oppilas (muistaakseni) kävi terveydenhoitajalla, ei onneksi murtunut häntäluu. Opettaja ei nähnyt tilannetta ja hänelle oli epävarmaa, oliko tässä joku tarkoituksella aiheuttanut vahinkoa vai oliko jotenkin muuten istuttu ohi.
+
+Hän kysyi tätä ääneen.
+
+Tilanteen oli nähnyt yli kymmenen oppilasta.
+
+Kukaan, mukaan lukien minä, ei vastannut mitään.
+
+Muistaakseni tilannetta ei selvitetty ja häirikölle ei tietääkseni tullut tästä mitään seurauksia.
+
+(Tässä olisi vaikka voinut toimia niin, että pyytää oppilaita jotenkin yksityisesti kertomaan, mitä ne tietää asiasta. En itse uskaltanut häirikön siinä vieressä ollessa sanoa "kyllä se veti sen tuolin alta" -- ja olin saanut kulttuurista ristiriitaisia signaaleja siitä, olisiko tämä ollut se moraalisesti oikea toimintatapa -- mutta luulen olleeni riittävän rehellinen, että yksityisesti kysyttäessä olisin näin ilmoittanut.)
+
+Vielä vanhemmalla iällä oon törmännyt tilanteisiin, joissa tuntemani ihmiset aika avoimesti kertoo toimivansa moraalisesti ja joskus juridisestikin tuomittavilla tavoilla. Ne perustelut, joita nuo ihmiset -- ja sittemin minäkin -- ovat esittäneet kyseiselle tominnalle sisältää esimerkiksi sitä, että lait on välillä tyhmiä, että standardinarratiivin moraalinäkemykset on välillä tyhmiä ja että ne kuitenkin itse hyötyy tällä tavalla toimimisesta.
+
+Oon pettynyt siihen, kuinka harvoin itse oon sanonut noissa tilanteissa mitään. Siinä on sitä, että noi perustelut on houkuttelevia, koska nehän on usein tosia ja kenties usein myös aliarvostettuja. On ihan luonnollista ja järkevääkin hylätä lapsille kerrottuja moraalikäsityksiä muotoa "lakia tulee aina noudattaa".
+
+Paljon siinä on myös sitä, että mulle on itselle ollut hyvin epäselvää, miten tuollaisissa tilanteissa kuuluu toimia. Kasvatus ja ympäröivä kulttuuri ei ollut oikein tarjonnut tuohon riittävästi työkaluja, vaikkakin esimerkkejä siitä mitä välttää on puolivahingossa saanut nähdä. Toivon ja uskon nyt joihinkin tapaustutkimuksiini törmättyäni oppineeni jotakin ja toimivani paremmin.
+
+Pitäisin silti siitä, jos lapsille suunntatun moraalikasvatuksen lisäksi tällaisia aiheita käsiteltäisiin vanhemmallakin iällä.
+
+[End of text.]
+
+# Puhukaa äänestämisestä
+
+Äänestämiseen liittyy normi, että ihmiset ei kerro toisilleen, ketä ne äänestää. En ole kirjaimellisesti koskaan ennen äänestämistä kuullut kenenkään tuntemani ihmisen kertovan, ketä ne aikoo äänestää.
+
+Minä itse poikkesin normista ja kerroin meppivaalien alla ketä äänestin. Yksi mun kavereista deferoikin muhun ja äänesti samoin. Hiljattain hän kaveriporukan kesken kertoi tehneensä noin, ja ihmiset alkoi nauramaan. (Taisin kuulla "kultti"-sanaakin heitettävän.)
+
+Musta toi normi on ihan hölynpölyä. Äänestäminen nähdään Hyvin Tärkeänä Asiana ja sitten... on vaan jotenkin päätetty, että aiheesta ei keskustella? Että jokanen vaan on omillaan eikä saa kuulla muilta ihmisiltä argumentteja, ehdotuksia ja mielipiteitä? Koska sehän voisi olla Poliittista Vaikuttamista -- gasp! -- josta kaverin kanssa käydyt keskustelut on tietysti pahin muoto, johon ihmiset saattavat törmätä.
+
+En myöskään ole kovin optimistinen sen suhteen, kuinka paljon äänestäjät keskimäärin käyttää itsenäistä ajatustyötä ehdokkaansa valintaan. En usko, että "käytin viisi minuuttia ehdokkaani valintaan" on asia, jota ihmiset kovin ylpeästi mainostaa toisilleen, eli vaikka tunnenkin politiikkaan syvemmin perehtyneitä, niin pahoin pelkään, etteivät he ole edustava otos edes omasta sosiaalisesta kuplastani.
+
+Ehdotin joskus, että kaveriporukan kesken arvotaan yksi henkilö, joka saa päättää, ketä kaikki äänestää. Toi vaikutti musta Pareto-parannukselta status quoon verrattuna: ainoastaan yhden henkilön tarvitsee perehtyä siihen, ketä kannattaa äänestää, ja sen kannattaakin perehtyä vähän syvemmin, kun sillä on yhden äänen sijasta kuusi ääntä huolehdittavana.
+
+(Asiasta puhuessani sain lähinnä vain omituisia katseita ja "et kai sä oo tosissasi" -reaktioita, ja toki myös vitsailua lupauksen rikkomisesta. Musta tuntu, että ne ihmiset ei vaan tajunnut soveltaa periaatetta "miettimällä asioita pidempään voi päätyä parempiin lopputuloksiin" äänestyspäätöksiin, vaikka koitin avata sen auki. Oon alkanut miettimään, että tuo periaate ei ehkä olekaan common knowledge.)
+
+Kaikki tämä käy hyvin järkeen, jos ihminen näkee äänestämisen itseilmaisun muotona. Jos taas näkee sen asiana, jolla on oikean maailman implikaatioita ja johon liittyy edes hitusen epistemistä epävarmuutta, niin voisi harkita keskustelua ja koordinointia muiden kanssa.
+
+[End of text.]
+
+# "Et tule tapaamaan toista pelaajaa enää koskaan uudelleen"
+
+Peliteoreettisissa ajatusleikeissä esitetään usein ehto "et tule koskaan tapaamaan tätä ihmistä uudestaan", jotta ihmiset eivät keskittyisi mainekysymyksiin tai "kaikki pelit ovat toistettuja pelejä" -periaatteeseen. Esimerkki:
+
+"Sinut on valittu yhdeksi pelaajaksi erääseen kahden pelaajan peliin. Molemmilla pelaajilla on alussa 400 euron potti. Pelissä kummallakin pelaajalla on mahdollisuus painaa nappia toiselta salassa. Napin painaminen antaa painajalle 100 euroa lisää, mutta vähentää toisen pottia 300 eurolla. Et pelin jälkeen enää koskaan tapaa toista osapuolta. Painatko nappia?"
+
+Havahduin, että tuo ei ole riittävä ehto. Jos minä defectaan Pekkaa vastaan, Pekka voi tehdä päätelmän "jaa, ihmiset vaan defectaa, kai määkin sitten". Vaikka Pekka ei enää pelaiskaan *minun* kanssani, hän saattaa myöhemmin pelata Liisan kanssa, joka vielä myöhemmin *pelaa* minun kanssani, ja tuota kautta minun aiempi defectaus osuu omaan nilkkaan.
+
+Oleellistahan on tuo syklin pituus. On mahdollista konstruoida peliteoriaturnauksia, jossa n:llä pelaajalla lyhyimmät syklit ovat n/2 pelaajaa, jolloin tuo efekti ei iske kovin nopeasti. Käytännössä maailma on kuitenkin tiheä verkko ja sieltä löytyy paljon lyhyempiä syklejä kuin 4 miljardia.
+
+Olen hieman yllättynyt, että en ole kuullut tätä argumenttia aiemmin. Tuo on minulle intuitiivisesti vahva argumentti sille, minkä takia kannattaa toimia prososiaalisesti, vaikkei törmäisi samaan ihmiseen toiste.
+
+[End of text.]
+
+# Avaruusoliotesti
+
+Näin tänään Aalto-yliopistolla lojumassa "Tieteen uudet näkymät -- Elämän etsintä avaruudesta" -kirjan. Pistin huomiolle pitkälti siksi, että se oli Tieteen Kuvalehden julkaisema.
+
+Kirjassa oli paikoitellen aika ronskeja väitteitä tulevaisuuden ennustuksiin liittyen, esim. jossakin infoboksissa vaan lukee "2035 >> Elämää on löydetty joltain muulta Linnunrataan kuuluvalta kappaleelta. Elämä perustuu siellä hiileen kuten Maassakin." Kirja on vuodelta 2016. (Samalla aukeamalla oli myös minusta epäperusteltuja väitteitä siitä, kuinka "luultavasti [avaruusoliot] muistuttavat ihmisiä ja niillä on kaksi jalkaa, kaksi kättä ja yksi pää".)
+
+En yhtään ihmettele, että avaruusolioihin liittyy kaikkea huuhaata ja pseudotieteellisiä assosiaatioita. Paha siitä, kun kirjan sadasta sivusta varmaan iso osa on ihan faktuaalisesti hyvää selitystä siitä, miten avaruutta tutkitaan, niin lukija saattaa niistä vakuuttuneena sokeasti uskoa myös noihin.
+ 
+Toisaalta näen toki sen, että juuri tämäntyyppisillä kirjoilla kehitetään lasten (ja aikuistenkin) kriittisen ajattelun taitoja, kun kirja on Tieteellisen Auktoriteetin julkaisema ja isoimmilta osin pätevää selitystä alan tutkimuksesta, ja sitten väliin sujautellaan vähän mitä sattuu. Pitäisin kuitenkin varani, jos testi on liian vaikea ja missään ei kerrota, että kyseessä oli testi.
+
+[End of text.]
+
+# Illuusio erimielisyydestä
+
+*Olli:* Nopee viiden sekunnin arvio. Kuinka monta tiiltä tuossa seinässä on?
+
+[3 sekuntia kuluu]
+
+*Olli:* Mulla on arvio.
+
+*Konsta:* Mullakin.
+
+*Meeri:* Ookoo. 8000.
+
+*Konsta:* 2000.
+
+*Olli:* 4000.
+
+[Tapahtuu tarkempaa tilinpitoa]
+
+*Konsta:* Korkeussuunnassa 40 tiiltä. En laskenut tiilien määrää tarkasti, vaan [heiluttelee käsiään] silmämääräisesti puolitin, puolitin, puolitin ja sitten laskin.
+
+*Olli:* Oo toi on hyvä trikki, en oo aiemmin tajunnut.
+
+[Laskemista]
+
+*Olli:* Ookoo eli mun vika arvio on 5600.
+
+*Meeri:* Eli mää olin lähimpänä.
+
+*Olli:* Oikeastaan ei, geometrisella asteikolla mää olin lähempänä, koska sqrt(2) > 1,4 [ja siten sqrt(4000 \* 8000) = sqrt(2)\*4000 > 5600].
+
+*Meeri:* Mää luulen että sun arvio on alakanttiin ja mää olin oikeesti lähempänä.
+
+*Olli:* Tää on nyt varmaan tällainen [consider your appetite for disagreements](https://www.lesswrong.com/posts/8vesjeKybhRggaEpT/consider-your-appetite-for-disagreements) -tilanne. Kaksi tyyppiä analysoi pokeritilannetta, yksi pitää yhtä siirtoa parempana ja toinen toista, sitten siitä väännetään, ja selviääkin, että yksi ajattelee yhden pelauksen antavan 1% paremmat voittotodennäköisyydet ja toinen toisen antavan 1% paremmat. Ne tyypit ei oo oikeesti niin eri mieltä, vaikka näyttääkin siltä.
+
+*Konsta:* En saanut ajatuksesta kiinni, selitätkö lisää?
+
+*Olli:* Mä ja Meeri nyt näennäisesti ollaan eri mieltä: "mää olin lähempänä", "ei kun mää!" Mutta jos sä kysyt multa ja Meeriltä meidän parasta arviota sen seinän tiilimäärästä, niin mun arvio on tyyliin 5550 ja Meerin on 5650. Tuo ei ole oikeasti erimielisyys; meillä on käytännössä sama paras arvio.
+
+*Olli:* Vaihtoehtoisesti: Jos sä kysyt Meeriltä todennäköisyyttä sille, että tiiliä on alle 5600, niin se heittää varmaan 45%. Ja mä heittäisin tyyliin 55%. Toi ei oikeasti ole erimielisyys.
+
+*Olli:* Tää on yleisempi ilmiö: kun asioita miettii probabilistisesti, niin huomaa, että monet erimielisyydet ei ookaan erimielisyyksiä. Oon miettinytkin, että voisin kirjoittaa tästä. Kirjotan tänään, nyt on hyvä oikeen elämän esimerkki pohjalla.
+
+[End of text.]
+
+# Ikiliikkuva valamiehistö
+
+Kävin tänään kaverin kanssa mikrotaloustieteen luennolla. (Tiesittekö, että te voitte vaan kävellä luentosaliin ilman, että te ootte opiskelija? Ja kukaan ei tuu estämään teitä?)
+
+Siellä esitettiin informaatioaggregaatiosta [tällainen tulos](https://en.wikipedia.org/wiki/Condorcet%27s_jury_theorem):
+
+Jos sulla on N ihmisen valamiehistö, joilla on jokaisella informoitu uskomus epäillyn syyllisyydestä (eli ne on oikeassa vakiotodennäköisellä p > 0.5) ja ne on riippumattomia toisistaan, niin N:n mennessä äärettömään valamiehistön enemmistön todennäköisyys olla oikeassa menee kohti ykköstä.
+
+Ihan siisti tulos, eikö?
+
+No, mä kysyin siellä luennolla, että eikö toi oletus riippumattomuudesta ole aika vahva. Mulle vastattiin, että sitä voi sitten korjata, esim. jos kaksi ihmistä on samaa mieltä keskenään, niin sitten sulla on efektiivisesti N-1 ihmistä, ja sama lopputulos pätee. Ja että yleisesti noita ehtoja voi höllentää.
+
+Ja, no, toi vähättelee sitä ongelmaa.
+
+E. T. Jaynesin Probability theory -kirjassa on seuraavanlainen esimerkki: Kuvitellaan, että sä haluat selvittää Kiinan hallitsijan pituuden. Sä voit kysyä miljardilta kiinalaiselta hallitsijan pituutta. Noissa arvioissa on tietysti kohinaa, mutta ottamalla keskiarvon kohinat kumoutuu ja saadaan vastaus, joka on 0.03mm sisällä oikeasta.
+
+Mutta tuo on tietysti epärealistisen tarkka arvio. Juurisyynä on, että noilla ihmisillä on paljon yhteistä informaatiota hallitsijastaan - ne ei suinkaan ole riippumattomia, ei edes likimäärin.
+
+Takaisin valamiehistöesimerkkiin: Noilla henkilöillä on vaan rajallinen määrä todistusaineistoa ja informaatiota, johon ne perustaa niiden arvionsa. Ja vaikka jokainen olisi sitä mieltä, että syyllisyyden todennäköisyys on 1/miljoona, tämä ei tarkoita, että all-things-considered  todennäköisyys valamiehistön erehtymiselle on alle 1/miljoona. Rajallisesta määrästä informaatiota ei vain pysty (perustellusti) puristamaan tiettyä pistettä itsevarmempia ennustuksia, aivan kuten äärellisestä määrästä energiaa ei saa rakennettua ikiliikkujaa.
+
+Oletus siitä, että meillä on mielivaltaisen paljon ihmisiä, joiden arviot on riippumattomia, tarkoittaa muun muassa sitä, että meillä on mielivaltaisen paljon informaatiota syyllisyydestä -- mikä on tietysti täysin epärealistinen oletus!
+
+Tuo luennolla esitetty malli ei oo siis vain hieman viallinen, jonka saa korjattua pienillä muutoksilla. Ei, se on suoraan sanottuna taikauskoa, jossa ei hahmoteta, mistä näiden ihmisten "informoidut arviot" alunperin tulee.
+
+Tämä ei siis ole tekninen matemaattinen pointti todennäköisyyslaskennasta, vaan fundamentaali pointti siitä, miten uskomusten muodostus toimii: se vaatii ja perustuu havaintoihin. Jos ei ole havaintoja, niin ei voi olla informoituja arvioita, ja jos on vain vähän informaatiota, niin ei voi olla supervarmoja arvioita.
+
+[End of text.]
+
+# Kirja-arvio: Karamazovin veljekset
+
+"Berliinin muurin murtamisesta nykypäivään on pidempään kuin toisesta maailmansodasta minun syntymääni". Näin muistaakseni Eero Saksman sanoi minulle taannoin. "Sitä ajatteli, että ne asiat on tapahtunut niin kauan aikaa sitten, mutta..."
+
+Tiesin silloin, etten kunnolla ymmärtänyt. Kaikesta minun nuoruuden innostani huolimatta tunnustan, että historia aukeaa eri tavalla, kun sen läpi on elänyt.
+
+Historian oleellisin ominaisuus on, että toisin kuin monet muut tarinat, se on tapahtunut. Ihmiset, tapahtumat ja aikakaudet, joita historian kirjat kuvaavat, ovat oikeasti olleet olemassa. Ja huolimatta kaikista kyvyistäni käsitellä abstrakteja konsepteja minulla on silti vaikeuksia sisäistää tätä. Että ennen minua todella on ollut jotakin, että maailma todella on ollut erilainen, että historia jatkuu edelleen.
+
+Välillä katsoessani tarkkaan ehdin nähdä vilauksen historian varjosta. "On vaikka lampaat söis", "maksaa mansikoita", "erotetaan jyvät akanoista", "rahalla saa ja hevosella pääsee", "helmiä sioille", "älä osta sikaa säkissä", "tuli on hyvä renki, mutta huono isäntä" -- nämä sanonnat lienee saaneet alkunsa erilaisessa yhteiskunnassa kuin nykyinen.
+
+---
+
+Fjodor Dostojevskin Karamazovin veljekset on pikimusta varjo.
+
+"- Riittää jo, äiti, riittää Herzenstubesta, Liza nauroi hilpeästi. - Antakaa nyt kiireesti niitä rohtimia, äiti, ja vettä. Tämä on pelkkä lyijyvesihaude, Aleksei Fjodorivtš, nyt minä muistin sen nimen, mutta oikein hyvä haude onkin."
+
+"Paljon pysyy meiltä salassa maan päällä, mutta sen sijaan meille on lahjoitettu salainen verhottu aistimus meidän elävästä yhteydestämme toiseen maailmaan, taivaiseen ja korkeaan maailmaan, eivätkä meidän ajatustemme ja tunteidemme juuret ole täällä vaan toisissa maailmoissa."
+
+""Ja miten nyt näin oli käydäkseen", puhelivat eräät munkit, ensi alkuun ikään kuin surkutellenkin, "ruumiinsa oli vähänläntä, kuiva, luisevanlainen, mistä siitä hajua voi irrota?" - "Varta vasten siis Jumala halusi näyttää", kiiruhtivat toiset sanomaan siihen, ja heidän käsityksensä omaksuttiin kiistelemättä ja oikopäätä, sillä tulihan siinä osoitetuksi että jos kohta haju oli luonnollinen, kuten mistä hyvänsä syntisen poisnukkuneen ruumiista kohoava, niin sen olisi joka tapauksessa pitänyt nousta ilmoille myöhemmin, aikaisintaan vuorokauden kuluttua eikä noin ilmeisen kiireesti, vaan "tässä on kiiruhdettu luonnollisen edelle", toisin sanoen asialla ei ollut kukaan muu kuin Jumala ja hänen osoittava sormensa."
+
+"Yksi, vain yksi kuva enää, ja sekin asianharrastuksesta, niin kovin luonteenomainen, ja semminkin kun tulin vastikään lukeneeksi sen jostakin meidän muinaisia asiakirjoja esittelevästä julkaisustamme, oliko se nyt Arhivissa vai Starinassa, täytyy tarkistaa, olen ihan unohtanut mistä luin. Tämä tapahtui maaorjuuden kaikkein synkimpinä aikoina jo vuosisadan alussa, ja eläköön kansan vapauttaja! Silloin vuosisadan alussa oli muuan kenraali, kenraali jolla oli huomattavia suhteita ja joka oli mitä äveriäin tilanomistaja, mutta joka kuului niihin - joita noinakin aikoina tosin lienee ollut varsin vähän - jotka veytäytyessään virkapalveluksesta omiin oloihinsa olivat suurin piirtein vakuuttuneita siitä että olivat ansainneet itselleen oikeuden päättää alustalaistensa elämästä ja kuolemasta. Sellaista oli silloin. No siellä elelee kenraali kahdentuhannen sielun maatilallaan, mahtailee, kohtelee vähäväkisiä naapureita kuin elättejään ja narrejaan. Koiratarhassa oli satoja koiria ja likipitäen sata koiranhoitajaa, kaikki univormuissa, kaikilla ratsu alla. Ja sitten pieni pihaorja, vasta kahdeksan ikäinen poikanen tuli leikkiessään heittäneeksi kiven ja satutti kenraalin mieluisimman ajokoiran jalkaa. "Miksi minun lempikoirani on ruvennut ontumaan?" Kenraalille ilmoitetaan että kun tuo poika tuossa heitti kivellä ja satutti koiran jalkaa. "Jaa että sinäkö", kenraali vilkaisi, "ottakaa kiinni!" Poika otettiin kiinni, otettiin äidiltä, sai istua koko yön kopissa, aamulla sarastuksen aikaan kenraali lähtee metsälle täysissä tamineissaan, istuu ratsun selässä, ympärillä elätit, koirat, koiranhoitajat, ajomiehet, hevosten selässä kaikki. Liepeille on kerätty pihaorjat oppia saamaan, kaikkein etummaiseksi syyllisen pojan äiti. Poika tuodaan kopista. Synkkä, kolea, sumuinen syyspäivä, oivallinen metsästystä varten. Pojan kenraali käskee riisua, poika riisutaan ilkosen alastomaksi, hän värisee, suunniltaan kauhusta, ei uskalla inahtaakaan... "Ajoon siitä!" Kenraali komentaa. "Juokse, juokse!" koiranhoitajat huutavat, poika juoksee... "Pus kii!" huikkaa kenraali ja päästää perään koko vinttikoiralaumansa. Poika jahdattiin kiinni äitinsä silmien edessä ja koirat repivät hänet riekaileiksi!... Kenraali kai pantiin holhouksen alaiseksi. No... minkäpä hänelle? Ammuttavaksi? Ammuttavaksi jotta moraalinen tuntomme saisi hyvityksen? Sano, Aljoška!
+
+\- Ammuttavaksi! Aljoša äännähti hiljaa, kohottaen katseensa veljeen valju ja vino hymyntapainen huulillaan"
+
+---
+
+Lukiessani teosta minulle tuli vieraantunut olo. Kirjan hahmoissa jokin tuntui vieraalta. Heillä oli koherentteja persoonallisuuksia ja sisäistä elämää -- sen jos minkä Dostojevski taitaa -- mutta niissä oli silti jotakin omituista. Ikään kuin hahmot olisivat kuvanneet erilaista henkilöitä kuin minun kaltaisiani, 2000-luvun vaurastuneiden maiden korkeasti kouluttautuneita ihmisiä.
+
+Ei ole mitään yksittäistä kappaletta, jota pystyisin osoittamaan ja sanomaan "siinä!" Se on kokonaisvaltaista. Kiivaat temperamentit, äkkipikaisuus ja väkivaltaisuus. Antagonistiset hahmot ja adversariaaliset ihmissuhteet. Aito usko, ei ateismi eikä usko uskoon.
+
+Ja sivuja ja sivuja pitkät monologit, joissa asioiden loogiset riippuvuudet ja päättelyn validius eivät olleet vain sivuseikkoja, vaan niistä ei tunnuttu piittaavan laisinkaan.
+
+Tätä ei suinkaan tule tulkita kritiikkinä kirjoittajaa kohtaan: Dostovejski itse osoittaa taidokkuutensa ja ymmärryksensä asiaan liittyen kirjan oikeudenkäynnissä. Olen itse pohtinut sitä, että pedagogisissa tarkoituksissa kokoaisi massoittain epätosia väitteitä sekä vakuuttavia argumentteja niiden puolesta. Tästä kulmasta tulleena nautin suuresti siitä, kuinka oikeudenkäynnissä syyttäjä ja puolustaja molemmat tarjosivat (ainakin pinnallisesti) vakuuttavan kuuloisia argumentteja, luonnollisesti päinvastaisille väitteille. Ja, kuten debaatissa tuodaankin ilmi, tällaisissa tilanteissa on hyvin helppoa päätyä "romaanin sepittämiseen" ja tehdä yksi jos toinenkin hyppäys päättelyssä.
+
+Kaunokirjallisesta romaanista on paikoin vaikea päätellä, mikä on representatiivista kuvausta vallinneesta ajasta ja mikä tarinaan tuotua lisäystä, mutta hahmojen ajoittaiset päättömät puheet saivat miettimään, millaisia keskusteluja tuohon aikaan onkaan käyty.
+
+---
+
+"Katsokaa maailmassa asuvia ja maailmaa joka on kaikissa suhteissa korottanut itsenä Jumalan kansan yläpuolelle: eivätkö Jumalan kasvot ja hänen totuutensa ole siellä vääristyneet? Heidän hallussaan on tiede, mutta tieteessä on vain se mikä on aisteille alisteista. Hengellinen maailma, ihmisen olemassaolon korkeampi puolisko sen sijaan on kokonaan torjuttu, karkotettu tavallaan voitonreimuisesti, jopa vihamielisesti. Maailma on kuuluttanut vapautta, erityisesti viime aikoina, ja mitä me siis näemme tuossa heidän vapaudessaan: silkkaa orjuutta ja itsemurhaa! [...] Rikkaiden keskuudessa erillisyyttä ja hengellistä itsemurhaa, köyhien keskuudessa kateutta ja murhaa, sillä oikeuksia on kyllä annettu, mutta keinoja tarpeiden tyydyttämiseen ei ole vielä osoitettu. Vakuutellaan että maailma yhdentyy aina vain, kuontuu veljelliseen kanssakäymiseen lyhentämllä välimatkoja, lähettmällä ajatuksia ilmaa pitkin. Hoi voi, älkää uskoko senkaltaiseen ihmisten yhdentymiseen."
+
+"Venäjän pelastus tulee kansasta. Ja venäläinen luostari on ammoisista ajoista pitänyt yhtä kansan kanssa. Jos siis kansa on eristyksissä, sitten mekin olemme eristyksissä. Kansa uskoo meidän tavallamme, eikä uskoa vailla oleva opastaja saa meillä Venäjällä mitään aikaan, edes vaikka hän olisi sydämeltään vilpitön ja älyltään nerollinen. Muistakaa se. Kansa käy ateistia vastaan ja nujertaa tämän, ja sitten on yksi ja oikeauskoinen Venäjä."
+
+"Mutta Jumala pelastaa Venäjän"
+
+Tieteessä hypoteeseja arvioidaan sen perusteella, kuinka hyviä ennustuksia ne tekevät. Jos hypoteesi ennustaa paremmin kuin toinen, sille tulee antaa enemmän painoarvoa.
+
+Will MacAskill on [esittänyt argumentin](https://80000hours.org/podcast/episodes/will-macaskill-moral-philosophy/), että samaa periaatetta kuuluu soveltaa moraaliin: meidän tulisi antaa enemmän painoarvoa niille moraalifilosofioille, jotka on ennustaneet ja edistäneet ihmiskunnan moraalista kehitystä.
+
+Jeremy Bentham ja John Stuart Mill olivat huomattavasti aikaansa edellä. He argumentoivat naisten oikeuksien, seksuaalivähemmistöjen ja eläinten oikeuksien puolesta -- jo kaksisataa vuotta sitten. Dostojevskin ajasta eteenpäin seurausetiikalla, liberalismilla ja utilitarismilla on ollut selkeästi parempi menestys kuin esimerkiksi nationalistisella kristinuskolla.
+
+"Ja pilkkaajilta itseltään kysyttäköön: jos me vaalimme haavetta, niin milloin te sitten pystytätte oman rakennuksenne ja järjestätte oikeudenmukaiset olot vain oman järkenne varassa, Kristukseen turvaamatta?"
+
+Rakennusta on pystytetty jo vuosisatoja, aina tieteellisestä vallankumouksesta ja valistuksen ajasta lähtien. Jos olisit täällä, yllättyisit, kuinka oikeudenmukaisen rakennelman olemmekaan saaneet luotua, vaikka työ onkin kesken ja jotkin varjot ovat vielä kaikottamatta. Oman järkemme varassa.
+
+[End of text.]
+
+# Fysiikan lakien mukaista
+
+On paljon juttuja, jotka voi äkkiseltään kuulostaa siltä, että ne rikkovat jotakin fysikaalista lakia:
+
+- Ihminen voi viilentää itseänsä viuhkalla. Mutta miten tuo muka on mahdollista: systeemi itse laskee omaa lämpötilaansa?
+- Avaruusmatkailulla alus voi ottaa vauhtia sopivasti sivuamalla taivaankappaleita. Eikö tuossa saada ilmaiseksi energiaa jostakin?
+- Väkipyörien avulla voi nostaa itseään painavampia asioita.
+
+Tulee myös mieleen tämä klassikkotehtävä:
+
+Sinulla on litra punaista, 100-asteista vettä ja litra sinistä, 0-asteista vettä. Sinä voit jakaa vettä mukeihin ja odottamalla tasata niiden lämpötilat massojen suhteessa (esim. kaada 1 dl punaista vettä ja 4 dl sinistä vettä mukeihin ja odota, jolloin molempien mukien vedet tasautuvat 20-asteisiksi). Oletetaan, ettei ole lämpöhäviöitä. Onko mahdollista saada kaiken sinisen veden keskilämmöksi yli 50 astetta?
+
+Olenkin kuullut jonkun nopeasti ja itsevarmasti vastaavan tuohon "ei ole mahdollista", koska tuo alkuun kuulostaa siltä, että siinä rikottaisiin jotakin säilyvyyslakia. (Mutta spoiler: se on mahdollista.)
+
+En tiedä mikä näiden väärien intuitioiden taustalla on. Onkohan intuitiot päivittynyt liikaa siitä, että varoitellaan "ikiliikkujan rakentaminen on mahdotonta" yms. ja sitten ajattellaan, että mahdollisetkin jutut ovat mahdottomia?
+
+[End of text.]
+
+# Monia juttuja kannattaa mallintaa differentiaaliyhtälöryhminä
+
+Käydään läpi kahden esimerkin kautta:
+
+**Esimerkki 1.** Kuvitellaan, että lento- tai laivamatkailuun tulee jokin monimutkaisuus, jonka seurauksena koneessa/laivassa pitää olla 10 minuuttia aiempaa aikaisemmin. Esimerkiksi jos tavallisesti laivassa pitää olla 20 minuuttia ennen lähtöä, niin nyt siellä pitääkin olla 30 minuuttia etukäteen.
+
+Oon pariinkin kertaan kuullut ihmisten sanovan suunnilleen "no ei tuo vaikuta matkustamisen määrään mitenkään". En tiedä tarkalleen miksi ne on tuota mieltä, mutta mun veikkaus on, että se on kutakuinkin "ihmiset lentää silloin kun on tarve, ja jos on tarve, niin sitten 10 minuutin lisäodotus ei saa niitä jättään matkaa välistä".
+
+Mutta mun mielestä se ei mee noin. Tykkään selittää asian [seuraavasti](/epi/insentiivit/): Jos laivassa pitäisi olla vaikka kolme tuntia aikaisemmin, niin tää varmasti johtaisi matkustamisen vähenemiseen. Eli 3 tuntia vähentää matkustamista ja 10 minuuttia ei - missä menee raja? No vastaus on tietysti, että mitään kovaa rajaa ei ole: matkustaminen vaan vähenee odotuksen pidetessä.
+
+Jos tuota lähtee mallintamaan matemaattisesti, niin matkustamisen määrä M on funktio (muun muassa) odotusajasta t. Musta on selvää, että M(t):tä kannattaa mallintaa jatkuvana funktiona t:n suhteen ja että se pienenee kun t kasvaa -- siis M'(t) on negatiivinen.
+
+**Esimerkki 2.** Kuvitellaan, että Suomessa ALV:ia nostetaan 24 prosentista 25.5 prosenttiin. Mitä vaikutuksia tällä on?
+
+Naiivi näkökulma on, että tuo ero on niin pieni, ettei se vaikuta kuluttajiin: esimerkiksi jos aiemmin leipäpussin hinta kaupassa on ollut 2€, niin se on nyt 2.02€ -- tuskin vaikuttaa siihen, ostaako ihminen sitä leipää vai ei.
+
+Mutta tuossa mennään harhaan "vaikutus on pieni, joten se on 0".
+
+Jos tutkitaan esimerkiksi tietyn tulorajan alapuolella olevien suomalaisten määrää K, niin siihen vaikuttaa mm. hinnat H ruokakaupassa, joihin vaikuttaa mm. ALV-prosentti a. Ja K(H(a)) on varmaankin kasvava a:n suhteen.
+
+Tämä on tietysti naurettavan yksinkertainen malli: ALV-prosentti vaikuttaa myös valtion verotuloihin ja sitä kautta mahdollisesti sosiaaliturvaan, yritysten toimintaan ja sitä kautta työllisyyteen, tai maan pitkän ajan talouskehitykseen ja sitä kautta kaikkeen. Meneekin vaikeaksi sanoa, mitkä on eri osittaisderivaattojen merkit -- siis onko ALVin kasvattaminen huono vai hyvä juttu jonkin mittarin kannalta -- koska tuo differentiaaliyhtälöryhmä on iso ja monimutkainen. Mutta tuollaista selvittelyähän ne taloustieteilijät tekee työkseen.
+
+---
+
+No sanonko mä tässä mitään ihmeellistä? Tavallaan en:
+
+- On helppo sanoa "juu mallina vaan differentiaaliyhtälöryhmänä", vaikeampi taas oikeasti rakentaa järkevä yhtälöryhmä.
+- Diffisyhtälöryhmissäkin voi tulla yllättäviä "jyrkkiä" muutoksia: esim. laivan odotusajoissa voisi olla "kipurajoja", eli että \|M'(t)\| on paljon isompi yhdessä paikassa kuin toisessa, tai hinnoittelussa ero 1,99 euron ja 2 euron välillä voisikin vaikuttaa paljon myyntiin. Eli koska systeemi on differentioituva, se ei välttämättä ole intuitiivisessa mielessä sileä ja jatkuva.
+
+Tavallaan taas joo:
+
+- Musta tuntuu, että tuota "vaikutus on pieni, joten se on 0" -harhaa näkee välillä.
+- Ihmiset ehkä pitää tuota "kovia rajoja" -mallia jotenkin oletusarvona (ja haluaa tietää mikä on Terveellinen Raja maitosuklaan syönnille tms.), vaikka itse ajattelen, että se on se poikkeus eikä yleisin tapaus.
+
+Eikä noita diffisyhtälöryhmiä välttämättä ole mahdotonta pystyttää. Esimerkiksi taloustieteessä oikeasti on paljon dataa saatavilla, ja niiden kautta voi saada rakennettua ihan hyviä malleja.
+
+Toisena esimerkkinä oon [nähnyt mainittavan](https://www.lesswrong.com/posts/BhGSXuvTvEtYtJXBe/list-of-civilisational-inadequacy#hEgMHPkd8SBRGETRb), että vois vaan mitata ihmisten hormonitasoja ajan yli ja sitten sovittaa siihen dataan diffisyhtälöryhmän (paitsi valitettavasti meillä [ei kai ole](https://www.lesswrong.com/posts/BhGSXuvTvEtYtJXBe/list-of-civilisational-inadequacy#yBFfuEEHmjiDeYEy6) vielä riittävän hyvää mittausteknologiaa tota varten).
+
+[End of text.]
