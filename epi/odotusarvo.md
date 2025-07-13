@@ -106,7 +106,7 @@
 
 **Camilla:** Sinulla on maailmaa koskevia uskomuksia. Näissä uskomuksissa on epävarmuutta. Toisaalta näitä epävarmuuksia voi vertailla: pidät joitain asioita "enemmän mahdollisina" kuin toisia. Nämä uskomukset noudattavat myös joitain ilmeisiä ehtoja: esimerkiksi sama väite muotoiltuna eri tavalla on edelleen yhtä "mahdollinen", tai tilanne "sekä A että B tapahtuvat" on enintään niin "mahdollinen" kuin tilanne "A tapahtuu".
 
-*Ainoa* nämä (ja muutaman muun luontevan ehdot) toteuttava tapa käsitellä epävarmuutta on tavallinen todennäköisyyslaskenta. Mikä tahansa muu tapa johtaa välttämättä näiden luontevien ehtojen rikkomiseen.
+*Ainoa* nämä (ja muutamat muut luontevat ehdot) toteuttava tapa käsitellä epävarmuutta on tavallinen todennäköisyyslaskenta. Mikä tahansa muu tapa johtaa välttämättä näiden luontevien ehtojen rikkomiseen.
 
 **Bella:** Onko tämän tarkoitus olla itsestäänselvää?
 
