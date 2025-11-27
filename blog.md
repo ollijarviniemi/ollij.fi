@@ -4,9 +4,19 @@ texts:
  - /blog/I_woke_up
  - /blog/unusual
  - /blog/stakes
+ - /blog/tragedy
+ - /blog/predict
+ - /blog/holders
  - /blog/fortress
  - /blog/tag
  - /blog/omni
+ - /blog/kirjoittaminen
+ - /blog/maksaa
+ - /blog/todennakoisyysareena
+ - /blog/varma
+ - /blog/pelit
+ - /blog/jargon
+ - /blog/ajatuksenluku
  - /blog/koo
  - /blog/putoamiskiihtyvyys
  - /blog/childhood
@@ -40,7 +50,14 @@ For context, read **[What is this blog about?](/blog/what)**. I especially recom
 
 [The perceived stakes](/blog/stakes)
 
-### Sports from my median world
+
+[A gambling-related tragedy](/blog/tragedy)
+
+### Tales from my median world
+
+**[Predict](/blog/predict)**
+
+**[Belief Holders](/blog/holders)**
 
 [Fortress](/blog/fortress)
 
@@ -49,6 +66,21 @@ For context, read **[What is this blog about?](/blog/what)**. I especially recom
 [Omni-Athletes](/blog/omni)
 
 ## Finnish
+
+**[Kirjoittaminen työkaluna](/blog/kirjoittaminen)**
+
+[Paljonko asiat maksaa?](/blog/maksaa)
+
+
+[Todennäköisyysareena](/blog/todennakoisyysareena)
+
+[Varma asiasta?](/blog/varma)
+
+[Puuttuvat pelit](/blog/pelit)
+
+[Puolustuspuhe jargonille](/blog/jargon)
+
+[Ajatustenluvusta](/blog/ajatuksenluku)
 
 **[Kriittinen arvio K. Koon teoksesta "Kuka keksi rakkauden"](/blog/koo)**
 

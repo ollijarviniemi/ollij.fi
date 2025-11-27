@@ -35,6 +35,8 @@ Kyllä sitä on ehkä toistakymmentä tuntia tarvinnut pelata, jotta on päässy
 
 Schelling-pelissä pelaajien tavoite on valita, ilman kommunikointia, annetusta joukosta vaihtoehtoja sama vaihtoehto.
 
+Welcome to the Schelling game. The first rule of the Schelling game is: you do not talk about the Schelling game. The second rule of the Schelling game is: you DO NOT talk about the Schelling game! Third rule of the Schelling game: if someone yells anything, makes faces, or taps to communicate, the game is over. Fourth rule: at least two guys to a game. Fifth rule: one game at a time, fellas. Sixth rule: the games are bare mind. No phones, no computers, no internet. Seventh rule: games will go on as long as they have to. And the eight and final rule: regardless if this is your first time at Schelling games, you have to play.
+
 ---
 
 On yleinen perinne, että pääsiäisenä lapsille piilotetaan suklaamunia taloon tai ulos.

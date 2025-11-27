@@ -38,7 +38,7 @@ So my self-knowledge is totally failing me. But clearly I know something about t
 
 Why was the *Moon* so salient to me? That... feels like a natural thought to me in the context, but I have the suspicion that other people wouldn't think of that? Flagging that.
 
-Wait a second. I'm thinking in  English, yeah, "one, two, three", I know what those sound like. That's actually moderate evidence for the US hypothesis.
+Wait a second. I'm thinking in English, yeah, "one, two, three", I know what those sound like. That's actually moderate evidence for the US hypothesis.
 
 [pause]
 
@@ -147,7 +147,7 @@ We're not in Kansas anymore.
 A bell rings.
 
 "LEVEL FOUR FINISHED.<br>
-TIME 14:22.<br>
+TIME: 14:22.<br>
 SCORE: 40TH PERCENTILE.<br>
 CONTINUE TO LEVEL FIVE?"
 
