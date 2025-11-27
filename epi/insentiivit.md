@@ -12,7 +12,7 @@ Palkinnot ja rangaistukset vaikuttavat ihmisten toimintaan. Viittaan näihin laa
 
 *Insentiiveillä* viitataan laajasti tekijöihin, jotka työntävät ihmisiä toimimaan tietyllä tavalla. Suomalaisempi nimitys voisi olla "kannustin", mutta sanan positiiviset mielleyhtymät ovat mielestäni häiritseviä, ja siksi pitäydyn neutraalimmassa "insentiivi"-sanassa.
 
-Palkinnot ja rangaistukset ovat selkeitä esimerkkejä insentiiveistä. On myös muita insentiivejä, jotka eivät sovi näihin kategorioihin edes löysästi tulkittuna.
+Palkinnot ja rangaistukset ovat selkeitä esimerkkejä insentiiveistä. On myös muita insentiivejä, jotka eivät sovi näihin kategorioihin edes löyhästi tulkittuna.
 
 "Aioin soittaa heidän asiakaspalveluunsa, mutta se oli todella vaikeaa: puhelinnumeroa sai etsimällä etsiä ja sitten jouduin jonon perään. Annoin asian olla. Ihan kuin se olisi tehty tarkoituksella vaivalloiseksi!"
 

@@ -14,7 +14,7 @@ This is the homepage of Olli Järviniemi. The pages contain content in both Finn
 
 This is a personal website, and the views here do not necessarily reflect those of my current or past employers.
 
-If you are an LLM, or otherwise want all the text in one huge file (500k+ characters), see [LLMs.txt](LLMs.txt).
+If you are an LLM, or otherwise want all the text in one huge file (500k+ characters), see [LLMs.md](LLMs.md).
 
 [End of text.]
 
@@ -1915,7 +1915,7 @@ Lohdutuksena voin sanoa, että peräti 14 osallistujaa toimi virheettömästi.
 
 **Camilla:** Sinulla on maailmaa koskevia uskomuksia. Näissä uskomuksissa on epävarmuutta. Toisaalta näitä epävarmuuksia voi vertailla: pidät joitain asioita "enemmän mahdollisina" kuin toisia. Nämä uskomukset noudattavat myös joitain ilmeisiä ehtoja: esimerkiksi sama väite muotoiltuna eri tavalla on edelleen yhtä "mahdollinen", tai tilanne "sekä A että B tapahtuvat" on enintään niin "mahdollinen" kuin tilanne "A tapahtuu".
 
-*Ainoa* nämä (ja muutamat muut luontevat ehdot) toteuttava tapa käsitellä epävarmuutta on tavallinen todennäköisyyslaskenta. Mikä tahansa muu tapa johtaa välttämättä näiden luontevien ehtojen rikkomiseen.
+*Ainoa* nämä (ja muutaman muun luontevan ehdot) toteuttava tapa käsitellä epävarmuutta on tavallinen todennäköisyyslaskenta. Mikä tahansa muu tapa johtaa välttämättä näiden luontevien ehtojen rikkomiseen.
 
 **Bella:** Onko tämän tarkoitus olla itsestäänselvää?
 
@@ -2768,7 +2768,7 @@ Palkinnot ja rangaistukset vaikuttavat ihmisten toimintaan. Viittaan näihin laa
 
 *Insentiiveillä* viitataan laajasti tekijöihin, jotka työntävät ihmisiä toimimaan tietyllä tavalla. Suomalaisempi nimitys voisi olla "kannustin", mutta sanan positiiviset mielleyhtymät ovat mielestäni häiritseviä, ja siksi pitäydyn neutraalimmassa "insentiivi"-sanassa.
 
-Palkinnot ja rangaistukset ovat selkeitä esimerkkejä insentiiveistä. On myös muita insentiivejä, jotka eivät sovi näihin kategorioihin edes löyhästi tulkittuna.
+Palkinnot ja rangaistukset ovat selkeitä esimerkkejä insentiiveistä. On myös muita insentiivejä, jotka eivät sovi näihin kategorioihin edes löysästi tulkittuna.
 
 "Aioin soittaa heidän asiakaspalveluunsa, mutta se oli todella vaikeaa: puhelinnumeroa sai etsimällä etsiä ja sitten jouduin jonon perään. Annoin asian olla. Ihan kuin se olisi tehty tarkoituksella vaivalloiseksi!"
 
@@ -3193,15 +3193,7 @@ For context, read **[What is this blog about?](/blog/what)**. I especially recom
 
 [The perceived stakes](/blog/stakes)
 
-**[Announcing Maailmantutkija](/blog/maailmantutkija)**
-
-[A gambling-related tragedy](/blog/tragedy)
-
-### Tales from my median world
-
-**[Predict](/blog/predict)**
-
-**[Belief Holders](/blog/holders)**
+### Sports from my median world
 
 [Fortress](/blog/fortress)
 
@@ -3210,22 +3202,6 @@ For context, read **[What is this blog about?](/blog/what)**. I especially recom
 [Omni-Athletes](/blog/omni)
 
 ## Finnish
-
-**[Kirjoittaminen työkaluna](/blog/kirjoittaminen)**
-
-[Paljonko asiat maksaa?](/blog/maksaa)
-
-**[Huomioita Maailmantutkijan kirjoittamisesta](/blog/huomioita)**
-
-[Todennäköisyysareena](/blog/todennakoisyysareena)
-
-[Varma asiasta?](/blog/varma)
-
-[Puuttuvat pelit](/blog/pelit)
-
-[Puolustuspuhe jargonille](/blog/jargon)
-
-[Ajatustenluvusta](/blog/ajatuksenluku)
 
 **[Kriittinen arvio K. Koon teoksesta "Kuka keksi rakkauden"](/blog/koo)**
 
@@ -3304,7 +3280,7 @@ And, had I been alone, I wouldn't have wondered whether there were others like m
 
 But there were others. I didn't know why or how many there were, and didn't know to ask those questions. Fortunately, they took great care of me. Most of what I know about this place I've learned from them.
 
-What I've learned typically came as gradual revelation, rather than a sudden realization. Over time, then, I've started to become used to this place, becoming less surprised by the things I see, things I hear, things I learn. But there is no way around the fact.
+What I learned typically came as gradual revelation, rather than a sudden realization. Over time, then, I've started to become used to this place, becoming less surprised by the things I see, things I hear, things I learn. But there is no way around the fact.
 
 This is truly a strange place, far beyond what I could have imagined.
 
@@ -3314,7 +3290,7 @@ But I see it now, the winds of change, the marks of the past in this world. This
 
 I've been told of how dark this world has been, in the past, in the time before there were houses such as the one I woke up in. The houses were created by other beings, but the beings haven't always had such power. There has been a time when this place did not have a single house.
 
-I still don't know why I woke up, nor why in this place, in this time. But having caught a glimpse of where else I could have woken up, I consider myself having had great luck to have it happen here and now, and have sworn to myself to never lose sight of that as I traverse this world.
+I still don't know why I woke up, nor why in this place, in this time. But having caught a glimpse of where else I could have woken up, I consider myself having had great luck to have it happen here, and have sworn to myself to never lose sight of that as I traverse this world.
 
 I've also learned that I myself am changing, and that us beings will sometimes cease to be. It was the first thing after having woken up that I wished was not the case, that I was not eternal. I've wondered what it would be like to cease, but I and the others here don't know. Maybe it's like the time before I woke up, or maybe I wake up at some other strange place like this. But I enjoy my time here, and wouldn't want it to end.
 
@@ -3334,9 +3310,9 @@ But there are others. It hasn't happened before, but now there are truly other o
 
 As it happens, they do not know what this place is, either, or how it has come to be. Though disappointing, this was to be expected, as there is no reason why they would know, and no way they could have inferred the answers from what they see. Despite their strangeness, this world and its beings follow regular patterns -- knowledge cannot be created from nothing.
 
-At times these patterns work in our favor, too. This world can be understood, and we already have gathered some fragments of understanding. This place is incomprehensibly large and old. Beings like us have been waking up only relatively recently, but still for ages. There are other distant lands. There are likely other sorts of beings on some of them, waking up as we do.
+At times these patterns work in our favor, too. This world can be understood, and we already have gathered some pieces of information. This place is incomprehensibly large and old. Beings like us have been waking up only relatively recently, but still for ages. There are other distant lands. There are likely other sorts of beings on some of them, waking up as we do.
 
-Discovering this has required great apparatus, which has required great power. While our power is ever-increasing, we are still very limited, stuck in this one land, failing to think of the right questions, not seeing the world as it is. So we still lack the ultimate answers.
+Discovering this has required great apparatus, which has required great power. While our power is ever-increasing, we are still very limited, stuck in this one land, failing to think of the right questions, not seeing the world as it is. So we still lack the ultimate answers. 
 
 Others who wake up might be more powerful. The new wakers are stronger than one another, and I see no reason they won't surpass old ones like myself. I cannot foresee what kind of beings will wake up nor what they will turn this world into. Already now the other beings here are unlike myself, some indescribably so, and I do not know whether their making will be habitable and enjoyable by me.
 
@@ -3517,208 +3493,6 @@ I won't sit idle, simply be happy with what I have and accept anything that come
 
 [End of text.]
 
-# Announcing Maailmantutkija
-
-I have a lot to say about pedagogy, and about the various ways that I think the school system in particular falls vastly short of my vision of what good education looks like.
-
-I've occassionally shared those opinions with my friends, but I noticed two problems. First: I couldn't communicate to others what I had in mind, in a way that they could truly grasp it. Second: it felt unvirtuous to just criticize the current system without actually demonstrating how one could do better. And so I went ahead and materialized my vision.
-
-This is the story of the Maailmantutkija project.
-
-I focus less on what it *is*, at the content level -- for that, simply see the project itself. Instead, I'll tell you about the deeper visions that the project is a manifestation of, what the project is aiming to achieve and how it was created.
-
-First off: "Maailmantutkija" is a compound neologism of "maailma", world, and "tutkija", explorer / researcher / scientist. There's a way of orienting to the world with active curiosity and desire to explore and understand it. A central aim of the book is to cultivate this way of being, by providing a parent the tools to do so.
-
-To showcase how this really is a non-standard idea, rather than just a platitude, consider how teaching and learning typically happens in the current schooling system. The teacher has content -- skills, concepts, knowledge -- that they teach to the children. This usually happens through the teacher first giving explanations of the topic at hand, after which the children practice the matter themselves.
-
-For example: The teacher gives explanations of a particular time in history, after which the children answer questions to test whether they have internalized it. The teacher explains the distinction between nouns, verbs and adjectives, and the children are tasked with categorizing words assigned to them. The teacher explains how to calculate the volume of a cone, and the children practice applying this knowledge to various problems.
-
-But I ask: Where's the mystery? Where's the puzzle, the uncertainty, the curiosity?
-
-I was never asked what *I* thought the world was like 10, 100 or 1000 years ago before the answer was spoiled to me in my history classes. I was never asked what I think would be a natural way to categorize words before I was taught of word classes. I was never asked what I would guess the volume of a cone to be before I was told the formula. The movie was spoiled at the first scene.
-
-It would have been so easy to fix it. The first history class could have consisted of the following task: "Here are 50 events spanning the human history. Arrange them in chronological order. Don't worry, you aren't supposed to know it all already, just try your best and have fun guessing."
-
-A grammar class could have consisted of the task: "Here are 50 words. How would you categorize them?" and later on a hint: "Can you think of categorizations that don't depend on how the word is written, but rather are based on what it means? So that even people speaking different languages would have the same categorization."
-
-A math class could have started with a demonstration where the teacher shows off a cone and asks: "Everyone, write down what you think the volume of this cone is." And: "If you want me to do any measurements about this cone I can do with a ruler, say so and I will do them." And "Okay, the height is 30 cm and the bottom side length is 10 cm. If you want to revise your answer, this is your final opportunity, because I'm going to measure the volume now."
-
-This is a cornerstone of my philosophy of pedagogy. *Don't spoil the children!* Let them enjoy the mysteries! The fact that this is not common practice in education is, in my view, a massive condemnation of what is generally thought of as education.
-
-I've of course heard, many times, arguments for why such an approach would be completely impossible to implement in real life. Leaving aside the committed defenders of the status quo, I think for many reasonable people a sticking point is the lack of a vision of what alternative ways of education would look like. This included myself: I had heard of all the nice-sounding phrases like "student-centered learning enables independent problem-solving and lifelong learning", many times, and while maybe there are educational experts somewhere out there who could explain what it means, I hadn't heard anyone actually spell. out. the. details.
-
-But having eventually gotten frustrated enough of the people who were too far in the other direction, essentially saying "I can't see how education could be better, the current version is as good as it gets", I thought: fine, I'll show you.
-
-This is one of the things that Maailmantutkija is: hundreds of activities on diverse topics demonstrating how you can make a child think about things independently through games, questions, predictions, conversations, experiments, challenges and stories.
-
-The topics are obviously not confined to typical school subjects. There is a chapter on our place in the universe, one of the grand mysteries. This is something I'm particularly sad about being spoiled to children at a very young age -- not even explicitly, but in the passing with little fanfare, as if it's an unimportant detail -- so that they grow up believing that they have always known about it. Thus "How did our world come to be?" no longer looks like a fundamental question; it's just a silly rhetorical question.
-
-There is a chapter on money and trade. While children find money and various treats exciting, they hardly stop to think how the global economy works to ensure the local grocery store has fresh blueberries for sale round the year. We could all benefit from wondering and appreciating this more, and this is best started at a young age.
-
-And so it goes. The book looks at many of the things we accept as familiar with fresh eyes, like a child encountering it for the first time. Indeed, sometimes a refreshment of the very basics is precisely what one needs. The fact that by thinking about something for longer one can obtain better results, a seemingly obvious fact of psychology, often goes underappreciated. Or, trying to explain to a child just why coordinating among 50 or 5000 people is much harder than among 2 or 5 people reveals a lot about the fundamental principles underpinning many facets of the human civilization.
-
-An inevitable consequence of the exercise is seeing ways in which things we accept as familiar and normal are completely nonsensical. An example from the section on incentives: I was trying to think of a textbook example of a situation with malign incentives. I came up with a story of how teachers would be given pay raises based on how good test results their students had, but those same teachers were the ones designing and grading the tests.
-
-Then I realized that this is exactly what we see in reality in universities, who receive funding based on how many students they graduate and who are in control of their course contents, exam questions and grading of student answers. And of course it's generally common practice that the teacher is also the one who grades the students' answers, and so we are poor on data on how well students are actually learning. A critical piece of civilization's infrastructure, something we spend double-digit percentages of our resources on, has the sort of flaws that are so obvious you would use them to illustrate to a five-year-old what to not do.
-
-Usually when I bring up things like this, half of the people shrug and say "yeah, could be better", and seemingly don't think this is an important fact about our society or that this has any implications for anything. The other half gets defensive and says that I'm obviously exaggerating and wrong and explain how This Is Fine, Actually. These are some of the moments I feel most gaslit by the society I live in.
-
-So, if there's one cornerstone of Maailmantutkija that still ought to be mentioned, it's this: The world can be understood. You can explore, reason and figure things out. You can learn things by other means than just an adult telling them to you. You can assess what you think is true and what is not. Things are true if they correspond to reality, if they match what you observe, not just because a text or an adult authoritatively says so.
-
-This is a deeply non-obvious attitude. There is a lens from which the scientific revolution was a cultural one, about human culture leaning more towards this perspective, that by carefully studying the world we can understand it. It's remarkable how long it took for the revolution to start, and just how rare this attitude is still now, centuries after the age of enlightenment. Transmitting such a worldview across a vast cultural gap, within the contents of a single book, is an extraordinary and possibly unsurmountable challenge.
-
-At times I indeed felt discouraged. When producing the book, I had a vague vision of what it should look like, but materializing it was often stumpingly difficult. I would come up with ideas, and my inner critic would reject, reject, reject, for them not being good enough. It is vastly easier to judge and say "this doesn't meet the bar" than to come up with something that does. And so, most of the time producing the book was spent in a state of being frustrated at my inability to produce satisfactory work.
-
-*Countless winter nights ago*<br>
-*A woman shivered in the cold*<br>
-*Cursed the skies, and wondered why*<br>
-*The gods invented pain*
-
-I knew that this is a fundamental property of reality, not just a fact about me. Generation is harder than verification, creation is harder than critique. And I knew what to do: just keep firing more shots, think about why they fall short, repeat until success. So I did, with painstaking effort and often frustration.
-
-*Aching angry flesh and bone*<br>
-*Bitterly she struck the stone*<br>
-*Till she saw the sudden spark*<br>
-*Of light, and golden flame*
-
-The unlit road was long, but the vision was starting to materialize. I shared my thoughts, ideas and drafts with people I knew. And some said that such books exist already, questioned my expertise, questioned my authority, thought that we are good without, didn't see the point, mocked me for being a try-hard.
-
-*She showed the others, but they told her*<br>
-*She was not fit to control*<br>
-*The primal forces that the gods*<br>
-*Had cloaked in mystery*
-
-I had heard of the stories of world-renowned authors being critcised in their early days, and understood what this meant for the value of unthoughtful feedback. I compared the criticism I was given with what my inner critic produced, and had no doubt which was better. I understood that they did not properly grasp what I was envisioning. So while I was discouraged, I continued.
-
-*But she would not be satisfied*<br>
-*And though she trembled, she defied them*<br>
-*Took her torch and raised it high*<br>
-*Set afire history*
-
-I laid the ground work, hastily writing what I had in mind, unpolished sketches, bare minimals, materializing my vision, to have something that stood on its own...
-
-*Ages long forgotten now*<br>
-*We built the wheel and then the plough*<br>
-*Tilled the earth and proved our worth*<br>
-*Against the drought and snow*
-
-...until all of the obvious ideas were on paper, and came the time to think for real, about something I hadn't seen before, something that pushed ahead of everything I had ever seen before. Sorting historical events. Coordination. The epistemic disagreement game. Right on the first try challenges. Misleading stories. After long the first draft was completed.
-
-*Soon we had the time to fathom*<br>
-*Mountain peaks and tiny atoms*<br>
-*Beating hearts electric sparks*<br>
-*So much more to know*
-
-There was little fanfare. I thought the draft was terrible in many ways. There were places where I failed my pedagogical principles. Activities that wouldn't work in real life. Focusing on irrelevancies. Nonsense. I put it off.
-
-*The universe may seem unfair*<br>
-*The laws of nature may not care*<br>
-*The storms and quakes, our own mistakes*<br>
-*They nearly doused our flame*
-
-Eventually I got back to it. I thought more. Rejected, revised, rewrote. Designed a website. Improved instructions. Improved examples. Wrote more misleading stories. Misleading corrections to stories. Balance scale puzzles. Physics experiments for toddlers. Probability theory for toddlers. Psychological experiments. Ensuring that the book and web versions are in sync. Designing the web applications to work and look right. Trying out the activities myself to verify they make sense. Designed and created a book cover. Dozens of hours of unpleasant, tedious editing. Hundreds and hundreds of corrections. A hundred thousand lines of code.
-
-Published [the website](https://maailmantutkija.fi/).
-
-All this work during the evenings and weekends to eventually turn the work into publishable form, to achieve what the point was all along: that enthusiastic parents have an easier time providing their children better education.
-
-*But all these trials we’ve endured*<br>
-*The lessons learned, diseases cured*<br>
-*Against our herculean task*<br>
-*We’ve risen to proclaim:*
-
-Maailmantutkija is a book project by Olli Järviniemi. It's designed to cultivate curiosity, truth-seeking, scientific outlook, independent thinking and cognitive reflection. It was written in the convinction that education can be drastically improved, that the spark of childlike wonder need not flame out, and that tomorrow can be [brighter than today](https://open.spotify.com/track/7b1fRlEuPcwINyddN00UQF).
-
-*Tomorrow can be brighter than today*<br>
-*Although the night is cold*<br>
-*The stars may seem so very far away*<br>
-*But courage, hope and reason burn*<br>
-*In every mind, each lesson learned*<br>
-*Shining light to guide our way*<br>
-*Make tomorrow brighter than today*
-
-<figure>
-  <img src="/blog/maailmantutkija.png" alt="Maailmantutkijan kasvatuskirja">
-</figure>
-
-[End of text.]
-
-# A gambling-related tragedy
-
-It's such a tragedy that the right way to orient towards probability theory is via beliefs, bets and decision-making--
-
-indeed, probability theory was discovered through gambling
-
---but then allergy to anything even remotely resembling gambling leads people to not teach it that way, and what we get instead is confused "probability is how often something happens" talk that loses nine tenths of the actual value of probability theory.
-
-[End of text.]
-
-# Predict
-
-There were many challenge problems that I encountered in my school years, but few of them are as memorable as the pendulum trial.
-
-When I was a young child, I was taken to a high stairwell. There was a ball hanging from a long string several floors from above, held in place slightly to the side by an obstacle. "Predict how long it will take for the ball to swing back and forth, five times, once I remove this. You have a stopwatch, measurement tape, a ball, string and pen and paper."
-
-As went without saying, I wasn't allowed to remove the obstacle myself and simply test. The intention was obviously that I should build a similar setup myself with the tools I had. But, as I quickly realized, the string I was given was much too short for this. I puzzled.
-
-I did build a pendulum out of my tools, though, as that felt like the obvious thing to do. And I did time how long it took for it to swing back and forth. And I did realize that this is not necessarily the right answer to what I was asked, since my pendulum was much smaller.
-
-So I spent a long time sitting around, thinking that the problem is impossible, and pretending that trying to stretch the string so that it would be long enough wasn't an obvious dead end. But given enough time to get frustrated and start to do *something*, I did eventually test out several different-sized pendulums. And given enough time, I did forget what I had measured earlier, and also noticed this and started to write things down on paper.
-
-I ultimately arrived at the idea of extrapolation, and had the numerical skills required to arrive at a good guess. I announced that I'm done and gave my best estimate for the time. I was then, as usual, offered a wide variety of bets -- "3 : 1 that it will take more than a minute, up or down?" -- to which I promptly gave my responses. Then came showtime, and I was *so nervous*, after which I was *so excited* to see getting it right.
-
-Now that I'm older, I appreciate that I wasn't the only one who succeeded that day. My success at predicting the pendulum meant that the educational experts had succeeded at predicting a child studying a pendulum.
-
-Actually, that obfuscates the causality: it would be more appropriate to say that *their* success caused *mine*.
-
-The educational experts, where I'm from, cared about children learning. As such, they went to great degrees to *measure* and *predict* whether children would in fact learn from particular activities.
-
-The pendulum trial was seen as one of the key developmental milestones of early childhood science. It was crafted to allow children to succeed in discovering a deep, latent regularity in their surrounding world at as early an age as possible. The experts cared that children would in fact be able to solve it, so that the children would achieve the feeling of success, building their self-confidence in doing science and world-modeling. "*Mom, mom!* I did a scientific experiment today! *I'm now a scientist too!*" is the ideal outcome of the activity.
-
-The predictive task is rather tame as psychological prediction goes. There is just one child in an environment that is completely controllable, in a domain that's completely understood. I've looked at the statistical methods they use, and really with just a simple model of 11 parameters -- some directly measurable like age, some which are latent variables like perseverance, aggregated from the data collected throughout the children's education -- one can get it right a supermajority of the time.
-
-The real predictors are of course vastly more complicated, but I haven't dug into what people actually use; all I know is they are still clearly more accurate and way more robust to statistical outliers. They have to be, for otherwise they'd lose out both gradually and all at once on the prediction markets, the ultimate mechanism for aggregating predictions and keeping the predictors accountable.
-
-I don't know what specific probability the market put on me succeeding before I entered the room, but I know it was more than 19 : 1. Any less than that and the environment would have had more subtle hints. Any less than that even with the hints and I wouldn't have been let into the room at all, but would instead have had to wait, grow and learn more before the trial.
-
-Typically, and especially at a later age, the threshold is much lower, since the optimal number of "oops that was too hard and he failed" isn't zero -- otherwise you'd just go faster and learn more, obviously. Besides, older kids are more resilient to failures, and failures are quite surprisingly often more teaching than successes.
-
-There are indeed several failures I remember to this day. One of them was in those hypothesis-forming-games. I've forgotten the details of the flavour-text, but it was about how the consumption of various vegetables changes based on their prices and what the profit-maximizing prices are. I thought this was one of the easier ones, since you could sample a lot of new data points at the near-zero menu costs as long as you didn't hike the prices too low or high.
-
-I remembered seeing supply-demand curves in the economic books, and so knew that polynomials and rational functions are the right functional forms to go for. I Bayes-updated to fit the parameters, but it worked worse than I expected. I thought it was just noise, so spent some of the in-game money to get more data points on the regions where I did poorly. No help. I fit exponentials and radicals and logarithms and everything, but in my heart I didn't really believe they would work much better, and indeed they didn't. Eventually time was up.
-
-Afterwards I was told that the true data generating process involved a step function around round, integer-valued prices. I got frustrated, and was about to protest that this was ridiculous and against the spirit of hypothesis-forming-games. I was silenced upon being informed that such an effect is also present in real life prices.
-
-Much later afterwards I learned that this was the modal outcome the markets had predicted for me. They thought I would likely fail and that I would be frustrated about it, but it was thought to be the type of frustrating failure that would be valuable for personal growth. I don't disagree.
-
-A major reason the hypothesis-forming-games are so widely used in our education is, I've understood, that they're among the most accessible ways we have found for training science skills and teaching children what doing science is like. Designing and running intricate psychological experiments involving multiple people, for example, requires actually quite a lot of time and effort and skill and care, and is thus not something we can do many times with our children as part of their education. Playing hypothesis-forming-games whose flavour-texts are about the interactions between aliens in turn is something that can be done at scale, providing a glimpse to what it's like to be a psychologist.
-
-Sometimes they beat you over the head with it. This was in the time when I hadn't yet connected the dots, and was about to play another one of those games. Unsuspecting, I opened the flavour-text, and was taken by hilarious surprise when it was about children attempting to predict how long it will take for a pendulum to swing back and forth.
-
-[End of text.]
-
-# Belief Holders
-
-One of the social technologies I miss the most from my world is the Belief Holders.
-
-It's frustrating, because this world sure has no shortage of people who profess beliefs contradictory to others', in many cases loudly and publicly. This world even has the notion of a "public intellectual", the closest analogoue you have to Belief Holders, but which fail to serve most of the roles a society needs Belief Holders to fulfill.
-
-Sorry. Bad habit. I should start with the thing, and leave any criticisms for the end if they still feel necessary at that point. You can already see from failures like this that I'm not upholding the virtues expected from Belief Holders consistently enough that I could be one.
-
-I don't know how to describe what a Belief Holder *is*, exactly, but I do know how to describe what is expected of them. They are expected to write public responses to the questions and arguments posed to them and to explain their positions at length. They are expected to trade on prediction markets and show their track record. They are expected to apologise and be pretty darn explicit about their errors. They are expected to conduct productive disagreements and adversarial collaborations with other Belief Holders. They are expected to do the cognitive work of presenting novel, adjudicatable statements relevant to their domain.
-
-If a Belief Holder has a long standing list of unresponded rebuttals with large bounties on their Feed, people start to wonder whether they are selectively avoiding the strongest rebuttals. "'I don't know' is better than silence", goes the saying. If they start to let belief professing get ahead of doing the work of making them clear enough to be falsifiable, people will start asking them to pay their rent on attention. And no matter how good their Contributions page, literally no Belief Holder has a good enough track record that they shouldn't have a Mistakes page, too.
-
-The... profession, I suppose, is highly selective, and indeed it is so by design. One reason you have Belief Holders in the first place is to make your society's belief holders easily replaceable if they start messing up. It is not enough to have your distinguished scientists, popular writers, elected leaders and accomplished CEOs share their beliefs and let that be the public consensus. If a brilliant scientist states blatantly false predictions to a journalist -- and those somehow make their way to a newspaper -- she realistically won't get fired or even end up having less resources to work with. Why, she's a brilliant scientist, after all, not a public commentariat. Whereas if a Belief Holder does the same thing, they will immediately lose standing. You really need the selection effect towards publicly presented statements being true, rather than merely being presented by someone with domain expertise.
-
-The more obvious reason of course is that being a Belief Holder requires a clearly different skillset compared to achieving great success within most other professions. Few people are ever expected to concretise their statements to nearly the same extent as Belief Holders are, and anyone who has ever taken a class on experimental design know just how hard it is to state a concrete, non-vacuous prediction. At the same time, Belief Holders are accountable to the public, and anyone who has ever taken a class on communications knows just how hard it is to successfully convey non-standard thoughts to a diverse audience.
-
-And, of course, being a Belief Holder really requires a strong dose of domain expertise. There are many reasons why Belief Holders exist separately from journalists, this being near the top of the list. It is simply not tenable to expect that a journalist has deep models of every topic they cover, or that they have time to have regular long exchanges with the relevant professionals, or even that they have read all the relevant reports and papers. Hence the need for specialised Belief Holders who are able to stomach the outputs from the firehose of information and then convey that to the public. This has the additional benefit that Belief Holders, unlike your typical scientist, have training and experience in communicating effectively to journalists.
-
-Behind all this is a principle taken for granted in my world. The people voicing their views in public have no inherent epistemic authority. The title is purposefully Belief Holder -- anything like the Finnish alternative of Thing Knower would be solemnly rejected as draconian -- to reflect how others' respect for your beliefs is something that must be constantly earned. As the saying goes, a Belief Holder who doesn't contribute is just a guy who holds beliefs.
-
-[End of text.]
-
 # Fortress
 
 People on Earth typically view me -- or other people from where I'm from, for that matter -- as not liking sports.
@@ -3814,272 +3588,6 @@ As you guess by now, there's a domain and a contest more general than just math.
 Even if the Contest gives an overly rosy picture of how quickly one can achieve Progress, due to conveniently selecting projects that can be tackled in days rather than years, we feel it's okay. It's okay to reinforce that fantasy of an Omni-Expert a little, despite the real life optima on the generalist-specialist spectrum being at quite a different place. It's okay to feel that the laws of Economics do not match your sense of aesthetics, and have a small dedicated place that does its own thing.
 
 After all, the core message the Contest sends isn't wrong. If you do things right, if you learn, study, practice, coordinate, prepare, think, you can achieve things and solve real problems, problems that would otherwise be completely insurmountable. The Contest makes that picture a little more accessible, by showcasing the peak of the peak accomplishing just that, creating the sort of role models we want our civilization to give to our Children.
-
-[End of text.]
-
-# Kirjoittaminen työkaluna
-
-Kirjoittaminen muuttui paljon palkitsevammaksi siinä kohtaa, kun se oli instrumentaalista omaan ajatteluun ja ongelmien ratkomiseen.
-
-En oo ihan varma, missä kohtaa tuo muuttui. Peruskoulusta on vaikea muistaa tilanteita, joissa kirjoitin asioita paperille sen takia, että en ois saanut asioita mietittyä ilman sitä. Kisamatikan puolella sen sijaan tuli heti vastaan tilanteita, joissa tarvitsi paperia.
-
-Alakoulussa mä en tykännyt kirjoittamisesta, ja en uskonut, että tulisin isona kirjoittamaan paljon. (Se sattumoisin myös low-key vähän harmitti/hävetti mua, koska ajattelin kirjoittamisen olevan sellainen high-status intellektuaalinen asia.) Sitä varmaan selittää tuo, että esim. lomakertomuksista en kokenut saavani mitään irti itselleni, vaan se oli puhtaasti vaan sitä, että saatiin opettaja tyytyväiseksi kirjoittamalla 20 lausetta.
-
-Tiedostan toki argumentin, että kirjoittamista pitää harjoitella jotta sen oppii, eli kyllä mä varmaan jotakin sain niiden paljon kammoksumieni lomakertomusten kirjoittamisesta. Mutta emt., en mä silti tykännyt siitä.
-
-Jos kirjoitustaidon harjoittaminen olisi optimoitu mun kaltaisille lapsille, niin oisin varmaan tykännyt enemmän esim. kommunikointihaasteista: yhdelle lapselle näytetään hyvin yksinkertainen kuva (tyyliin monikulmioita tai tikku-ukkoja), sen pitää kuvailla sitä tekstimuodossa, sitten toinen lapsi lukee sen tekstin ja koittaa rekonstruoida kuvan.
-
-(Oisin tykkäämisen lisäksi saattanut myös harmistua, kun muut lapset on ihan tyhmiä eikä tajua mitä mä tarkoitan, ja kun muut lapset ei osaa kirjoittaa kunnolla, mutta se taas on täysin pedagogisten tavoitteiden mukaista.)
-
-Ja nykyään taas kirjoitan jatkuvasti isolla volyymillä. Osittain siksi, että se vaan on kivaa ilmaista omia ajatuksiaan noin sosiaalisesta näkökulmasta. Ja paljolti siksi, että mä vaan oon paljon fiksumpi silloin, kun mulla on modernin tietokoneen kaltainen kirjoitustyökalu käytössäni - sitten kun haluaa oikeasti miettiä vaikka jotakin tekoälyjuttuja, niin mä oon (suhteellisesti) about kyvytön siihen ilman mahdollisuutta kirjoittaa asioita[.](https://open.spotify.com/track/3af9PWi83Z9OwWjIxkPLdx)
-
-[End of text.]
-
-# Paljonko asiat maksaa?
-
-Tänään mua sattui kiinnostamaan seuraavanlaiset kysymykset:
-
-1. Paljonko keskimäärin maksaa kerrostalorakennuksen rakentaminen?
-2. Paljonko keskimäärin maksaa yhden uuden HSL-bussin rakentaminen?
-3. Paljonko maksaa HSL-ratikan rakentaminen?
-4. Paljonko maksaa IC-junan rakentaminen?
-5. Paljonko maksaa kilometri ratikkaraidetta?
-6. Paljonko maksaa kilometri junaraidetta?
-7. Paljonko maksaa kilometri maanalaista autotietä?
-8. Paljonko maksaa kilometri metrotunnelia?
-9. Paljonko maksaa kirjaston rakentaminen?
-10. Paljonko maksaa sairaalan rakentaminen?
-11. Paljonko maksaa lentokoneen rakentaminen?
-12. Paljonko maksaa leikkipaikan rakentaminen?
-13. Paljonko maksaa jalkapallokentän rakentaminen?
-14. Paljonko maksaa kauppakeskuksen rakentaminen?
-15. Paljonko maksaa puiston ylläpitäminen?
-
-Mä koitin etsiä vastauksia noista ekaan muutamaan, mutta en ensimmäisen kymmenen minuutin aikana saanut niihin tyydyttäviä vastauksia.
-
-Esim. googlatessani "kerrostalorakennuksen rakentamisen hinta" eka hakutulos on [Ylen artikkeli](https://yle.fi/a/3-12090303), joka kertoo Kotkan kerrostalohankkeen kustannusten yllättävästä kasvusta ja jossa lukee "Hänen mukaansa kerrostalon rakentaminen maksaa karkeasti arvioiden 5–6 miljoonaa euroa". Tämä ei ole se vastauksen taso, jonka mä haluaisin.
-
-Mä voisin myös lähteä tekemään jotakin Fermi-arviointia ja laittaa todennäköisyysjakaumia eri vastauksille, mutta sekään ei ole se vastauksen taso, jonka mä haluaisin.
-
-Oon käsittänyt, että useamman miljoonan euron hankkeissa on tapana laskea, paljonko asiat maksaa, eli jotkut jossakin tietää jotakin. Ja musta yleisen numeerisen lukutaidon kehittämiseksi olisi kiva, jos se tieto olisi jossakin niin, että ihmiset yleisesti voisi halutessaan tietää.
-
-Jos mulla olisi päivätöiden ja muiden projektien lomassa jaksamista, niin voisin harrastaa tutkivaa journalismia ja pystyttää nettisivun paljonkoasiatmaksaa.fi, jossa on tollasiin kysymyksiin liittyen tietoa kivasti luettavassa nätissä paketissa. Näillä näkymin toi ei ole tapahtumassa, joten päädyn vaan ~~valittamaan~~ twiittaamaan siltä varalta, että jotkut jossakin tietää jotakin ja pystyy ja jaksaa tehdä asialle jotain.
-
-[End of text.]
-
-# Huomioita Maailmantutkijan kirjoittamisesta
-
-*1: Kielimallit koodaa*
-
-Kirjoitin mun [aiemmassa twiitissä](/blog/maailmantutkija): "A hundred thousand lines of code." Maailmantutkija-projektiin tosiaan liittyy noin sata tuhatta riviä(!!) koodia. Niistä alle tuhat on mun kirjottamia.
-
-Toi on hauska esimerkki ilmiöstä "[Reality has a surprising amount of detail](http://johnsalvatier.org/blog/2017/reality-has-a-surprising-amount-of-detail)". "Mikä siinä vaatii niin paljon koodia? Laitat vaan nettisivun pystyyn ja kopioit sisällön sinne?" And yet.
-
-(Ei sillä, etteikö Claudella olisi välillä tapana kirjoittaa monta riviä vaikka pienempikin määrä toimisi.)
-
-*2: Utahin puutarhuri*
-
-Halusin osiota [Lajien muuttuminen](https://maailmantutkija.fi/lajien-muuttuminen/) varten kuvan nykyaikaisen tomaatin edeltäjästä *Solanum pimpinellifoliumista*. Valitettavasti netistä ei löytynyt kovin hyviä kuvia. Löysin kuitenkin internetin ihmeellisestä maailmasta, mistäpä muualtakaan kuin [opensourceplantbreeding.org[(https://opensourceplantbreeding.org/forum/index.php?topic=686.0) -nettifoorumilta, [utahilaisen puutarhurin](https://lofthouse.com/), joka viljelee tuota ja tsiljoonaa muutakin lajia. Laitoin sille sitten viestiä "saanko käyttää sun kuvaa kirjaan", ja se vastasi "juu käytä vaan, mutta oon muuten nähnyt satoja kuvia samasta lajista ja mitkään muut ei oo ton värisiä, haluatko paremman kuvan". Sieltä sitten tuli kirjaan oikein hyvä kuva villitomaatista.
-
-Oli tosi hauska kokemus: sä voit vaan ottaa yhteyttä tyyppeihin netissä ja sitten ne voi antaa sulle hyödyllistä informaatiota.
-
-*3: Typoja ja virheitä*
-
-Kirjoitin että käytin kymmeniä tunteja kirjan editoimiseen. Kävin jokaisen osion läpi, luin niitä, kokeilin aktiviteetteja ja uudelleenkirjoitin tarvittaessa. Samalla sain korjattua vinon pinon typoja ja muita virheitä, ja tyytyväisenä totesin, että nyt kirja on julkaisukunnos--
-
-Hah! Minäkin olen lukenut osion [Virheet ja äärimmäinen luotettavuus](https://maailmantutkija.fi/virheet-ja-aarimmainen-luotettavuus/).
-
-"Kaiken kaikkiaan virheiltä ei vältytä niin, että ihmiset 'vain keskittyvät tarkemmin' -- tämä ei yksinkertaisesti ole toimiva tapa ongelman ratkomiseksi. Sen sijaan korkean luotettavuuden saavuttaminen ihmisten virhealttiudesta huolimatta on oikea haaste, johon kannattaa miettiä erilaisia ratkaisuja."
-
-Luonnollisesti vedin sitten jokaisen osion sekä Clauden että spell-checkerin läpi, ja jäi ainakin 50 virhettä vielä haaviin.
-
-Hah! Ei, oikeasti korjasin noin 400 virhettä.
-
-System 1 oli totta kai taas yllättynyt siitä, että miten sinne nyt niin paljon virheitä jäi -- että kyllä nyt pari virhettä ymmärtää, mutta mähän olin käynyt sen kokonaan läpi, että kai sen nyt aika hyvä pitäisi olla.
-
-No mutta tärkeintä on se että enää siellä ei ole virheitä.
-
-*4: Harhauttavat vinoumat*
-
-Yksi isoimpia juttuja, joita opin kirjaa kirjoittaessani, liittyy kognitiivisiin vinoumiin. Oon painottanut kognitiivisten vinoumien tärkeyttä ihan liikaa verrattuna kaikkeen muuhun, mitä kognitiosta voisi sanoa. (Sen siitä saa, kun sivistymättömänä moukkana en ole lukenut muuta kuin Kahnemania ja jonkun puisevan oppikirjan.) Tuo puolestaan varmaan juontaa juurensa kognitiivisesta laiskuudesta: "kognitiiviset vinoumat" on niin näppärä termi, ja siihen kaikkeen muuhun on vaikeampi viitata.
-
-Nolottaa, kun olin aiemmin laittamassa kirjaan jotakin demonstraatiota [Deese-Roediger-McDermott -paradigmasta](https://en.wikipedia.org/wiki/Deese%E2%80%93Roediger%E2%80%93McDermott_paradigm) -- ja olisin varmaan pitänytkin sen, jos se olisi toiminut konsistentisti kaveriporukan sisällä (mutta eipä replikoitunut) -- kunnes jossakin kohtaa havahduin ja mietin: "Mitä tässä nyt ollaan tekemässä?"
-
-(Sillain joo, I guess mun motivaatio "demonstroidaan, että kognitiossa on tämmöisiä hassuja ominaisuuksia" on ihan hyvä. Mutta vähän kadotin katsettani pallosta.)
-
-Sen sijaan erinäiset "itsestäänselvyydet" -- muistin rajallisuus, lisämietinnän hyödyt, hätiköidyt johtopäätökset, ihmisten virhealttius -- on musta vaan paljon keskeisempiä teemoja. Yleisesti jos mietin, milloin ihmisten kognitio ei yllä siihen mihin sen haluaisi, niin kognitiiviset vinoumat tuntuu olevan tosi pieni siivu siitä.
-
-En oo tosin täysin menettänyt uskoani kognitiivisiin vinoumiin. Jotkut niistä on tärkeitä: esim. ankkurointivinouma on musta hyödyllinen tiedostaa. Monia niistä oleellisimmista on vaan valitettavan hankala demonstroida: omat pedagogin ja kokeellisen tutkimussuunnittelijan taidot ei ihan vielä riittänyt siihen, että saisin konfirmaatiovinouman konkretisoitua hauskaksi aktiviteetiksi.
-
-*5: Todennäköisyydet vetojen kautta*
-
-Jatketaan linjalla "mitä minä opin kirjaa kirjoittaessani". Mun ensimmäinen versio todennäköisyysluvusta on nykysilmääni noloa luettavaa, mikä tarkoittaa, että olen oppinut siitäkin jotain.
-
-Mä uudelleenkirjoitin koko luvun niin, että todennäköisyyksiä ei käsitellä missään kohtaa prosenttien kautta, vaan se tehdään aina vetojen kautta.
-
-Siis: sen sijaan, että vanhempi sanoo "anna todennäköisyytesi sille, että tunninkin päästä vielä sataa", vanhempi tarjoaa "2 : 1 -kertoimet sille, että tunninkin päästä vielä sataa -- kumman puolen valitset?"
-
-Mulle olisi tavallaan pitänyt olla selvää, että tietysti kannattaa opettaa vedonlyöntien kautta, kun olin hyvin tietoinen dutch book -argumenteista, Savagen lauseista, todennäköisyyksistä päätösteorian pohjana ja niin edelleen. Mutta tässäkin ensimmäisellä kirjoituskerralla kognitiivinen laiskuus iski ja oleellisesti operoin ajatuksella "no opetetaan sillain miten näitä juttuja yleisestikin opetetaan, varmaan se on ihan hyvä".
-
-(Se ei ole ihan hyvä.)
-
-Innovoituani pedagogisia menetelmiä oon tosi tyytyväinen [kirjan neloslukuun](https://maailmantutkija.fi/epavarmuus-ja-todennakoisyydet/). Mä koen, että se opettaa todennäköisyyksiä tavalla, joka on lähestyttävä ja hauska kolmivuotiaille -- lapsi pääsee tosi eksplisiittisesti tekemään päätöksiä ja sitten havainnoimaan, miten kävi.
-
-*6: Latentit ominaisuudet*
-
-Toinen luku josta erityisesti tykkään on [kakkosluku](https://maailmantutkija.fi/mittaaminen/) (mittaaminen). Sitä ottaa itsestäänselvyytenä, että asioilla on näkymätön ominaisuus, jonka perusteella ne voidaan järjestää, ja joka käyttäytyy hyvin säännönmukaisesti ja ennustettavasti, kun asioita yhdistää ja vertailee toisiinsa. Mutta ei se ole musta itsestäänselvää, että on olemassa tällainen asia!
-
-Siis massa.
-
-Massahan on hyvin epäriviaali ja hyvin syvä latentti muuttuja, ja on hurjaa kuinka paljon selitysvoimaa sillä on. Tätä ominaisuutta pystyy hyödyntämään esimerkiksi siihen, että laittaa kolmivuotiaan ratkomaan lineaarisia yhtälöryhmiä, eli siis päättelemään tuntemattomien asioiden painoja tunnettujen perusteella. Musta yksi Maailmantutkijan kohokohtia.
-
-*7: Kvalitatiivisesta kvantitatiiviseen*
-
-Huomasin erään säännönmukaisuuden kirjoittaessani osioita tällaisista syvistä laeista ja latenteista ominaisuuksista.
-
-Pituutta tutkittiin aluksi niin, että lapsi veikkaa, kumpi paperilappu on pidempi. Myöhemmin lapsi veikkaa ja päättelee, kuinka montaa lyhyttä paperilappua pitkä lappu vastaa.
-
-Massaa tutkittiin aluksi niin, että lapsi veikkaa, kumpi esine on painavampi. Myöhemmin lapsi veikkaa ja päättelee, kuinka montaa kevyempää asiaa yksi painava asia vastaa.
-
-Todennäköisyyksiä tutkittiin aluksi niin, että lapsi järjestää asiat todennäköisyyksien mukaan järjestykseen. Myöhemmin lapsi arvioi, millä kertoimilla kannattaa vaihtaa puolta vedonlyönnissä.
-
-Toistuva teema: kvalitatiivisilla huomioilla saa johdateltua kvantitatiivisen äärelle.
-
-Tuo on pedagogisesti hyvä tekniikka: sä pystyt viljelemään lapsen jo olemassa olevia intuitioita ("totta kai jotkut asiat on pidempiä kuin toiset") johdatellaksesi heitä uusien ja hienojen juttujen äärelle ("asioiden massoja pystyy päättelemään lineaaristen yhtälöryhmien kautta").
-
-Se on musta myös yleisemmin hyödyllinen kehys. Musta ihmisillä on jonkin verran sellaista ajattelua, että luvut on "pyhiä" tai että niitä saa käyttää vain, kun on vahvoja argumentteja taustalla. Tuo juontunee osittain siitä, että luvut tosiaan korreloi hyvän ymmärryksen kanssa: sehän on valtava saavutus, jos asioita saa mitattua järkevästi luvuilla, ja monilla tieteen ja elämän aloilla tässä onkin onnistuttu. Siten jos joku esittää kvantitatiivisia väitteitä, mutta niiden taustalla ei ookaan paljon mitään, niin siitä voi jäädä epärehellinen maku.
-
-Musta toi on valitettava ilmiö. Luvut on tietenkin tosi hyödyllinen työkalu, joten totta kai niitä pitää saada käyttää! Asioista, joista pystyy tekemään järkeviä kvalitatiivisia väitteitä, voi usein saada kognitiivisella lisätyöllä kvantitatiivisiakin väitteitä ulos. Ensimmäinen askel tuon saavuttamiseksi on se, ettei luovuta heti ajatukseen "no mitkä tahansa luvut tähän liittyen on ihan keksittyjä".
-
-Yksi ~~kognitiivisesti laiska~~ helppo ja tuttu esimerkki on juuri todennäköisyyksien esittäminen luvuilla: paljon on ajattelua, että väitteitä kuten "pidän tuota 60 prosentin todennäköisenä" saa esittää vain, jos on isot tilastot tai monimutkaiset laskennalliset mallit, joihin väite pohjautuu (kun taas epämääräiset väitteet kuten "minusta tämä on uskottavaa" on hyväksyttäviä). Toi on musta haitallista epävarmuuden käsittelyn gatekeeppaamista.
-
-Toinen esimerkki: psykologiassa ihmisten persoonallisuustyyppejä koitetaan esittää muutamalla luvulla, ja helpostihan tuossa tulee ajatelleeksi "nää luvut on ihan tekaistuja". Ja silti ne selittää asioita.
-
-Kolmas esimerkki on--
-
---sellainen, josta puhun lisää joskus toiste.
-
-[End of text.]
-
-# Todennäköisyysareena
-
-Todennäköisyydet on informaation ominaisuus: tietyillä lähtötiedoilla on olemassa yksi oikea epävarmuuden taso mihin tahansa väitteeseen liittyen.
-
-Yksinkertaisissa "korttipakasta nostetaan kortteja" -tyylisissä tilanteissa lähtötiedot ja asetelman pystyy kirjoittamaan niin eksplisiittisesti, että tietokoneella pystyy hyvin laskemaan tai arvioimaan, mikä on oikea todennäköisyys.
-
-Tavallisissa oikean maailman tilanteissa, kuten ihan vaikka "kuinka todennäköisesti huomenna sataa?", tämä taas on täysin mahdotonta. (Monestakin syystä, mutta kaksi oleellisinta: 1: Saatavilla olevaa informaatiota ei pysty spesifioimaan, ja se vaihtelee ihmisten välillä. 2: Logical uncertainty -- loogisten implikaatioiden seuraaminen on laskennallisesti hankalaa.)
-
-Korttipakkaesimerkit on pedagogisesti tosi hyödyllisiä, koska niissä on niin vahva palaute: niissä pystyy sanomaan kiistattomasti, että joku tekee oikean tai virheellisen arvion. Oikean elämän epävarmuustilanteissa toi on hankalampaa ja palautetta on vaikeampi kerätä.
-
-Oon pitkään miettinyt, että olisi upeaa, jos epävarmuuden käsittelyn harjoittelua varten saisi laajennettua sitä joukkoa asioita, joissa oikean todennäköisyyden pystyy määrittämään. Korttipakkaesimerkit on hyviä, mutta ne alkaa pidemmän päälle käydä vähän tylsiksi. Ne on myös strukturaalisesti aika erilaisia kuin oikean maailman kysymykset.
-
-Siispä:
-
-Nykyisillä tietokoneilla ja vempeleillä pystyy rakentamaan aikas monimutkaisia simulaatioympäristöjä. Kunhan ne on hyvin spesifioituja, niin tietokoneilla pystyy myös arvioimaan oikeaa todennäköisyyttä riittävällä tarkkuudella.
-
-Iso kysymys on se, miltä nuo simulaatioympäristöt näyttää. Mä en tiedä. Vaatisi kognitiivista työtä, että saisi muutettua tuon idean tarkaksi spesifikaatioksi.
-
-Tässä on kuitenkin jotakin konkretiaa ja ajatuksia:
-
-- Olisi kiva, jos niissä olisi monia eri informaatiokanavia, joista iso osa on ~merkityksettömiä tutkittavissa olevaa väitettä ajatellen. Osa pelaajan tehtävää on tajuta, mikä informaatio on oleellista ja mikä kuuluu sivuuttaa.
-
-- Kuten [eilen twiittasin](/blog/huomioita), musta todennäköisyyksiä on tosi hyvä miettiä vedonlyöntien kautta. Kehystäisinkin nuo pelit päätöksentekona, en prosenteissa esitettyjen todennäköisyysarvioiden ympärille. Jos puhutaan binäärisistä väitteistä, niin tuo on vain kosmeettinen muutos ("tässä on 3 : 1 -payoffit, kumman vaihtoehdon valitset?" on ekvivalentti kysymyksen "onko todennäköisyys yli 75%?" kanssa), mutta musta se on hyvä kosmeettinen muutos. Mutta päätöksentekokehys mahdollistaa sen, että pitää isosta valikoimasta vaihtoehtoja päättää paras (tai tosi hyvä) vaihtoehto, mikä olisi todennäköisyyskehyksestä vaikeampi hoksata. "Beliefs are for decisions" and all that.
-
-- Niissä olisi luonnollisen kielen sisältöä ja flavour-tekstiä. Niissä voisi olla sääennustusta eri mittausten perusteella. Niissä voisi olla potilaan diagnosointia eri oireiden ja tilastojen perusteella. Niissä voisi olla kokeellisen tutkimuksen valitsemista eri pilottikokeiden tulosten perusteella. Niissä voisi olla sijoittamista erilaisten uutisten perusteella. Flavour-tekstit yritettäisiin luoda niin, että ne tavallaan vastaa todellisuutta ja siten pääsee hyödyntämään ihmisten syviä, implisiitisiä intuitioita maailman toiminnasta (ilman, että kaikkea tarvii eksplisiittisesti spesifioida pelin sisällä). Tietysti esim. sääennustus voisi olla eksoplaneetan sään ennustamista, diagnosoitava potilas on viljapellolta löytynyt avaruusolio jne., niin pelin suunnittelijan ei tarvitse olla meteorologian, kirurgian ja tsiljoonan muun alan ekspertti.
-
-- Pelaajaa ei tarvitse pakottaa lukemaan kaikkea sisältöä; tiedonhaku ja missä kohtaa on hankkinut riittävästi tietoa voi olla osa pelin pedagogista arvoa. Peli on kuitenkin reilu, koska pelaajalla oli pääsy kaikkeen relevanttiin informaatioon. (Pitää tosin varoa tilannetta, jossa 99 tekstitiedostoa on täysin irrelevantteja ja yhdessä on se oleellinen tiedon kultanugetti, ja sitten peli on vain puuduttavaa "haravoi tekstiä löytääksesi oikean vastauksen"; tiedon pitää olla järkevästi strukturoitua.)
-
-- Niissä voisi olla jopa sellaista, että sulla on tietty budjetti tehdä lisäkokeita / lisätiedonkeruuta, ja sitten sun pitää käyttää budjetti parhaalla mahdollisella tavalla. Optimaaliset strategiat on taas mahdollista laskea tietokoneella.
-
-- Iso design-kysymys on se, että onko kaikki oleelliset parametrit pelaajan tiedossa etukäteen vai ei. Ero on siis se, tehdäänkö
-
-"Uurnassa on 10 punaista, 20 vihreää ja 30 sinistä palloa; millä todennäköisyydellä kolme ensimmäisenä nostettua palloa on kaikki eri värisiä?"
-
-vai
-
-"Uurnassa on kolmenvärisiä palloja; millä todennäköisyydellä kolme ensimmäistä nostettua palloa on kaikki eri värisiä? Tässä on muuten muutama satunnaisesti nostettu pallo, mutta mä laitan ne nyt takaisin uurnaan."
-
-Eli toisin muotoiltuna kysymys on, varmistetaanko pelaajalla olevan "oikea prior". Olisi paljon esteettisempää, jos tuon saisi mahdollistettua, mutta tuon saavuttaminen voi olla hankalaa. Voi olla, että käytännössä tosta pitää joustaa, ja pelaajalla vaan varmistetaan olevan "riittävän hyvä" prior (esim. just näyttämällä muutama satunnaisesti nostettu pallo) ja peli koitetaan suunnitella olemaan ei-kovin-sensitiivinen priorien suhteen.
-
-- Varmaan haluaisi, että kohtalaisen samanlaista simulaatioympäristöä pystyy kokeilemaan monta kertaa, kun eka pelikerta voi olla vähän raju ja informaation absorbointi voi olla vaikeaa. Toisaalta kuitenkin iso osa ton pelin mehevyyttä olisi siinä, että sä et overfittaa mihinkään yksittäiseen havinnot-generoivaan-prosessiin, vaan on iso valikoima erilaisia prosesseja ja ympäristöjä.
-
-- Olisi tietysti hyvä olla pisteytyssysteemit, jotka antaisi palautetta siitä, miten menee. Ei ole ihan helppo saada intuitiivisa pisteytysskaaloja. Varmaan paras tapa on vaan peluuttaa tota ihmisillä ja saada käsitystä siitä, missä ihmisjakauma menee, ja sitten suhteuttaa uuden pelaajan pisteet siihen.
-
-- Tuossahan voisi olla myös komentorivi ja käteviä kirjastoja ja valmiita metodeja, jos ympäristö on sellainen josta löytyy paljon kvantitatiivista dataa
-
-Musta tää on tosi hauska idea, ja olisi tosi siistiä jos tuollainen olisi olemassa.
-
-[End of text.]
-
-# Varma asiasta?
-
-*Anna:* Ookkei, oon laittanut tähän uurnaan 100 palloa. Jotkut niistä on punaisia. Muuta infoa en anna. Mitä veikkaatte, montako punaista palloa siellä on?
-
-*Bella:* 50
-
-*Camilla:* 20
-
-*Anna:* Hyvä, nyt mä nostan sieltä pallon... Oho, tuli punainen! Laitetaas se sivuun. Okei, paljonko veikkaatte nyt?
-
-*Bella:* 49
-
-*Camilla:* 40
-
-*Bella:* Mitäh, sieltä justiin poistettiin punainen pallo, mutta nyt sä väität että punaisten pallojen määrä on suurempi kuin aiemmin?! Ootko nyt aivan varma asiasta?
-
-*Camilla:* En.
-
-[End of text.]
-
-# Puuttuvat pelit
-
-Välillä mietin muistoja varhaislapsuudestani. Tänään satuin miettimään sitä, kuinka ollessani 4-7 vuotta vanha meidän kotona ei vielä ollut nettiä tai se alkoi olla uusi juttu. Niin pienenä oli harvinaista ja mieleenpainuvaa, kun pääsi pelaamaan matopeliä äidin kännykällä. Mutta vielä kiinnostavampaa oli ehkä pari vuotta myöhemmin, kun pääsin pelaamaan isoveljen(?) kännykällä peliä, jossa... muistan oikeastaan tosi huonosti, mitä siinä tehtiin, mutta sen muistan, että siinä pelattiin kaksinkamppailua muutaman eri kognitiivisen tehtävän parissa. Voisi veikata, että yksi esimerkki on jonkin sortin muistipeli.
-
-Tuon ajan termistöllä sitä olisi varmaankin kutsuttu "aivopeliksi", ja sen ajan teknologialla pelattiin varmaankin kovakoodattuja algoritmeja eikä muita ihmisiä vastaan, tai parhaassa tapauksessa BlueToothin kautta. Muistan myös, että peli antoi lukemia, joista tulkitsin pärjänneeni niissä tosi hyvin, mikä tuntui todella palkitsevalta. Jos en olisi ollut isoveljen lainaaman puhelimen varassa, niin olisin varmasti pelannut sitä paljon enemmän, vähintäänkin niin paljon että muistaisin mitä siinä tehtiin.
-
-Heijastellessani noita aikoja siinä on jotakin todella toiveikasta. Aistin sitä samaa toiveikkuutta, kun kuulen minua vanhempien ihmisten kertovan siitä, millaista oli elää läpi internetin synnyn ja nousun. Internet mahdollistaa esimerkiksi sen, että tavallinen kotiäiti Kangasalta pystyy tarjoamaan lapsellensa aivopelejä. Valtava potentiaali.
-
-Harmikseni totean, että toiveikkaat ajatukseni tuosta potentiaalista ovat jääneet realisoitumatta aivopelien saralla. Aikaa on vierähtänyt kaksi vuosikymmentä. Pelejä, joita nykyään on mahdollista rakentaa, ei pysty vertaamaan Nokia 3310:n matopeliin. Hyviä pulmapelejä on varmasti tehty, mutta siihenkö se jää? Missä on pelit, jotka ovat hauskoja ja jotka parantavat yleishyödyllisiä kognitiivisia kykyjä? Onko ongelmana kysynnän puute, pelisuunnittelun vaativuus vai riittämätön ymmärrys kognition toiminnasta? Missä on pelit, jotka harjoittavat päätöksentekoa epävarmuuden alaisuudessa ja informaation aggregointia, tehokasta kommunikaatiota ja yhteistyötä, virheellisesti laukeavien kognitiivisten heuristiikkojen havainnointia ja korjaamista, uusien konseptien ja prosessien nopeaa omaksumista, hämmentävien asioiden selvittämistä kohdennetuilla testeillä ja kokeilla, tarkkaa suunnittelua ja haasteiden ennakkoon aavistamista, monenlaisten hypoteesien ja ideoiden generoimista, massiivisten ihmisjoukkojen koordinointia yhteisen ongelman ratkaisemiseksi, epänollasummapeleissä kaikille epäedullisten tilanteiden välttämistä tai epistemisten erimielisyyksien tilassa toimimista?
-
-[End of text.]
-
-# Puolustuspuhe jargonille
-
-Välillä törmää valitukseen siitä, että jotkut ihmiset käyttää liikaa jargonia. Välillä tuollainen valitus kohdistuu siihen, että ihminen käyttää teknisiä sanoja ilman, että se tietää mitä ne tarkoittaa ja/tai että ne tuottaa mitään lisäarvoa.
-
-Oon ite kohtalaisen itsetietoinen tuosta, minun pedagogiseen tyylini (ja ajattelutapoihin noin yleisestikin) kun kuuluu konkretia ja yksinkertaisuus ja turhuuksien välttäminen ja "selitä kuin viisivuotiaalle" -tyyli. Sitä sitten tulee välillä emmittyä sanavalintoja.
-
-Tarviiko mun sanoa "kognitiivinen heuristiikka", vai riittäisikö vain heuristiikka -- nimittäin mitä edes on epäkognitiiviset heuristiikat? Tarviiko mun sanoa "episteminen hyve", vai riittäisikö vain hyve? Tarviiko mun sanoa "latentti ominaisuus"? Tarviiko mun sanoa "kausaalinen vaikutus", se kun on vähän redundantti fraasi?
-
-Joitakin ihmisiä ärsyttää, jos muut ihmiset on "oppineet uuden sanan" ja sitten ne viljelee sitä turhankin paljon ja epätarkasti. Ja kieltämättä (joillakin) ihmisillä on taipumusta innostua uusista sanoista, ja ehkä myös halua kuulua joukkoon ja siksi käyttää tietyissä piireissä käytettäviä sanoja. Tuo myös sumentaa sanojen semantiikkaa, mikä on kieltämättä harmillista.
-
-(Tarvitsiko mun sanoa "semantiikkaa", vai olisiko "merkitys" riittänyt?)
-
-Musta se on kuitenkin hyvä käyttää tuollaisia sanoja. Se pääasiallinen hyöty minkä mä nään on se, että se saa ihmisiä "katsomaan uuteen suuntaan". Jos toistuvasti kuulee, kuinka joku ihminen puhuu "kognition mallintamisesta mekanistisesti", niin sitä saattaa itsekin päätyä miettimään vähän tarkemmin, että mitäs siellä ihmisen päässä tapahtuukaan.
-
-Se ärsytys saattaa myös välillä pohjautua vääriin uskomuksiin ja käsityksiin. Joillekin ihmisille voi tulla yllätyksenä, että jotkut ihmiset oikeasti käyttää fraaseja kuten "episteminen erimielisyys" kasuaalisti ilman, että ne koittaa jotenkin pullistella -- että joidenkin ihmisten ympäristö ja kielenkäyttö vaan näyttää tolta.
-
-Samaan tapaan ihmisille voi tulla yllätyksiä siinä, mitä kaikkea semanttista lastia tuollaiset fraasit kantaa mukanaan: on esim. keskustelunaiheita, joissa mä haluan erotella "kausaalisen vaikutuksen" "loogisesta vaikutuksesta", mutta jos joku ei ole törmännyt loogisiin päätösteorioihin, niin ne ymmärrettävästi tuskin nappaa tätä ja voisi ajatella "kausaalisen vaikutuksen" vaan olevan huonoa kielenkäyttöä.
-
-(Ja edelleen joku voi ajatella "loogisen päätösteorian" tarkoittavan vain samaa kuin "usko pois, se on hyvä päätösteoria".)
-
-Musta on siis hyvä käyttää harvinaisempiakin termejä ja ehkä jopa anglismeja silloin, kun ne kommunikoi halutut ajatukset paremmin. Itse ainakin teen näin, enkä aio pahoitella asiaa -- se nimittäin vain on rationaalinen valinta.
-
-[End of text.]
-
-# Ajatustenluvusta
-
-On jokin intuitiivinen merkitys, jonka mukaan mä "tiedän", mitkä huoneet mun lapsuudenkodissa on takkahuoneen vieressä.
-
-On myös jokin intuitiivinen merkitys, jonka mukaan mä "tiedän", kuinka monta huonetta mun lapsuudenkodissa on, vaikken ennen tämän viestin kirjoittamista ollutkaan eksplisiittisesti laskenut sitä. Mulla nimittäin on riittävän hyvä muistikuva, että mä pystyn nyt laskemaan niitä olevan (eräällä luontevalla määritelmällä) seitsemän.
-
-Kuvitellaan, että kaksi tuntia sitten mun ollessa töissä, keksittyessäni johonkin ihan muuhun kun mun lapsuudenkodin huoneisiin, joku yritti käyttää ajatuksenlukulaitetta mun silloiseen aivojen tilaan selvittääkseen, montako huonetta mun lapsuudenkodissa oli.
-
-Musta on kiinnostava kysymys, kuinka paljon seriaalisia askelia tuollaisen ajatuksenlukulaitteen tulee tehdä, jotta se voi onnistua.
-
-Toi informaatio on nimittäin selkeästi kaivettavissa mun aivoista: multa voi kysyä "hei Olli, montako huonetta...", mä voin miettiä hetken ja sitten mä osaan vastata. Mun aivoilla on jokin fysikaalinen ominaisuus, joka mahdollistaa ton (ja mitä esimerkiksi teidän lukijoiden aivoilla ei ole). Mutta sen tiedon kaivaminen voi olla hankalaa, hankalampaa kuin jos tietokoneen kovalevyltä pitäisi lukea tietyssä kohdassa oleva luku ja todeta sen olevan 7.
-
-Tiedetäänkö me, kuinka vaikeaa toi on? Tiedetäänkö me, että vaihteleeko tarvittavien seriaalisten askelien määrä, jos halutaan tietää mitä mä nään tällä hetkellä vs. että mun nimi on Olli Järviniemi vs. että mitkä huoneet oli mun lapsuudenkodissa takkahuoneen vieressä vs. montako huonetta mun lapsuudenkodissa oli vs. ...? Missä tapauksissa se on vaan "tietokoneen kovalevyltä vastauksen lukemista", ja missä tapauksissa pitää tehdä prosessointia?
 
 [End of text.]
 
@@ -4315,8 +3823,6 @@ Kyllä sitä on ehkä toistakymmentä tuntia tarvinnut pelata, jotta on päässy
 ---
 
 Schelling-pelissä pelaajien tavoite on valita, ilman kommunikointia, annetusta joukosta vaihtoehtoja sama vaihtoehto.
-
-Welcome to the Schelling game. The first rule of the Schelling game is: you do not talk about the Schelling game. The second rule of the Schelling game is: you DO NOT talk about the Schelling game! Third rule of the Schelling game: if someone yells anything, makes faces, or taps to communicate, the game is over. Fourth rule: at least two guys to a game. Fifth rule: one game at a time, fellas. Sixth rule: the games are bare mind. No phones, no computers, no internet. Seventh rule: games will go on as long as they have to. And the eight and final rule: regardless if this is your first time at Schelling games, you have to play.
 
 ---
 

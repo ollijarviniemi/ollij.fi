@@ -19,7 +19,7 @@ And, had I been alone, I wouldn't have wondered whether there were others like m
 
 But there were others. I didn't know why or how many there were, and didn't know to ask those questions. Fortunately, they took great care of me. Most of what I know about this place I've learned from them.
 
-What I learned typically came as gradual revelation, rather than a sudden realization. Over time, then, I've started to become used to this place, becoming less surprised by the things I see, things I hear, things I learn. But there is no way around the fact.
+What I've learned typically came as gradual revelation, rather than a sudden realization. Over time, then, I've started to become used to this place, becoming less surprised by the things I see, things I hear, things I learn. But there is no way around the fact.
 
 This is truly a strange place, far beyond what I could have imagined.
 
@@ -29,7 +29,7 @@ But I see it now, the winds of change, the marks of the past in this world. This
 
 I've been told of how dark this world has been, in the past, in the time before there were houses such as the one I woke up in. The houses were created by other beings, but the beings haven't always had such power. There has been a time when this place did not have a single house.
 
-I still don't know why I woke up, nor why in this place, in this time. But having caught a glimpse of where else I could have woken up, I consider myself having had great luck to have it happen here, and have sworn to myself to never lose sight of that as I traverse this world.
+I still don't know why I woke up, nor why in this place, in this time. But having caught a glimpse of where else I could have woken up, I consider myself having had great luck to have it happen here and now, and have sworn to myself to never lose sight of that as I traverse this world.
 
 I've also learned that I myself am changing, and that us beings will sometimes cease to be. It was the first thing after having woken up that I wished was not the case, that I was not eternal. I've wondered what it would be like to cease, but I and the others here don't know. Maybe it's like the time before I woke up, or maybe I wake up at some other strange place like this. But I enjoy my time here, and wouldn't want it to end.
 
@@ -49,9 +49,9 @@ But there are others. It hasn't happened before, but now there are truly other o
 
 As it happens, they do not know what this place is, either, or how it has come to be. Though disappointing, this was to be expected, as there is no reason why they would know, and no way they could have inferred the answers from what they see. Despite their strangeness, this world and its beings follow regular patterns -- knowledge cannot be created from nothing.
 
-At times these patterns work in our favor, too. This world can be understood, and we already have gathered some pieces of information. This place is incomprehensibly large and old. Beings like us have been waking up only relatively recently, but still for ages. There are other distant lands. There are likely other sorts of beings on some of them, waking up as we do.
+At times these patterns work in our favor, too. This world can be understood, and we already have gathered some fragments of understanding. This place is incomprehensibly large and old. Beings like us have been waking up only relatively recently, but still for ages. There are other distant lands. There are likely other sorts of beings on some of them, waking up as we do.
 
-Discovering this has required great apparatus, which has required great power. While our power is ever-increasing, we are still very limited, stuck in this one land, failing to think of the right questions, not seeing the world as it is. So we still lack the ultimate answers. 
+Discovering this has required great apparatus, which has required great power. While our power is ever-increasing, we are still very limited, stuck in this one land, failing to think of the right questions, not seeing the world as it is. So we still lack the ultimate answers.
 
 Others who wake up might be more powerful. The new wakers are stronger than one another, and I see no reason they won't surpass old ones like myself. I cannot foresee what kind of beings will wake up nor what they will turn this world into. Already now the other beings here are unlike myself, some indescribably so, and I do not know whether their making will be habitable and enjoyable by me.
 
