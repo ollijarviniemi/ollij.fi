@@ -119,5 +119,5 @@ Maailmantutkija is a book project by Olli Järviniemi. It's designed to cultivat
 *Make tomorrow brighter than today*
 
 <figure>
-  <img src="/blog/maailmantutkija.png" alt="Maailmantutkijan kasvatuskirja">
+  <img src="/blog/maailmantutkija.png" alt="Maailmantutkijan kasvatuskirja" style="width: 50%; display: block; margin: 0 auto;">
 </figure>
