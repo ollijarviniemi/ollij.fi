@@ -16,7 +16,7 @@ Still nothing.
 
 *If I were **the God-Emperor**, this wouldn't be enough to buy my attention either. Continue.*
 
-"You said you were concerned that I could," I swallowed, "kill you. I cannot do that now. Very few can," otherwise the God-Emperor would have bigger problems than me, "and doing so requires things few people have. Skills and knowledge and preparation."
+"You said you were concerned that I could," I swallowed, "kill you. I cannot do that now. Very few can," otherwise **the God-Emperor** would have bigger problems than me, "and doing so requires things few people have. Skills and knowledge and preparation."
 
 *He said that he would* hear, *not that he would* respond--
 
@@ -106,7 +106,7 @@ I didn't react. **The God-Emperor** rose, slowly making his way to the portal.
 
 *Did I just get unlucky?*
 
-The God-Emperor is asking me for ideas. Like from those before me.
+**The God-Emperor** is asking me for ideas. Like from those before me.
 
 Did I ask the same ones as them? Prison. Exile. Oaths. Hostages. Those all seem so obvious.
 
@@ -122,4 +122,4 @@ Is that all it takes? To have a promising idea that hasn't been tried before?
 
 "Very well," **the God-Emperor** responded. "I agree."
 
-And **the God-Emperor** stepped through the portal.
+And then **the God-Emperor** was gone.

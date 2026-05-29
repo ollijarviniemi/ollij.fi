@@ -5,6 +5,7 @@ texts:
  - /blog/unusual
  - /blog/stakes
  - /blog/tragedy
+ - /blog/preserve
  - /blog/predict
  - /blog/holders
  - /blog/fortress
@@ -50,8 +51,9 @@ For context, read **[What is this blog about?](/blog/what)**. I especially recom
 
 [The perceived stakes](/blog/stakes)
 
-
 [A gambling-related tragedy](/blog/tragedy)
+
+[Preserve](/blog/preserve)
 
 ### Tales from my median world
 
@@ -70,7 +72,6 @@ For context, read **[What is this blog about?](/blog/what)**. I especially recom
 **[Kirjoittaminen työkaluna](/blog/kirjoittaminen)**
 
 [Paljonko asiat maksaa?](/blog/maksaa)
-
 
 [Todennäköisyysareena](/blog/todennakoisyysareena)
 
