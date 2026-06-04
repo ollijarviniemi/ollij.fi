@@ -1,0 +1,2144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play - Bayesian Factory: Simulation</title>
+    <link rel="stylesheet" href="css/dsl-editor.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: #ffffff;
+            overflow: hidden;
+        }
+        .game-container {
+            display: flex;
+            flex-direction: row;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        /* Left side: factory canvas */
+        .canvas-area {
+            flex: 0 0 auto;
+            width: 50%;
+            min-width: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fafafa;
+        }
+        #factory-canvas {
+            outline: 2px solid #ddd;
+            display: block;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        /* Draggable divider */
+        .divider {
+            width: 6px;
+            background: #e0e0e0;
+            cursor: col-resize;
+            flex-shrink: 0;
+            transition: background 0.15s;
+        }
+        .divider:hover, .divider.dragging {
+            background: #888;
+        }
+        .divider-inner {
+            width: 4px;
+            background: #ccc;
+            cursor: col-resize;
+            flex-shrink: 0;
+            transition: background 0.15s;
+        }
+        .divider-inner:hover, .divider-inner.dragging {
+            background: #666;
+        }
+
+        /* Right panel */
+        .right-panel {
+            flex: 1;
+            min-width: 400px;
+            display: flex;
+            flex-direction: column;
+            background: #f5f5f5;
+            overflow: hidden;
+        }
+
+        /* Main content area: two columns */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: row;
+            overflow: hidden;
+        }
+
+        /* Left column: distributions + controls — matches Tehdas/Päättely right-panel padding/gap. */
+        .left-column {
+            flex: 0 0 auto;
+            min-width: 200px;
+            width: 360px;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            gap: 20px;
+            background: #fff;
+            border-right: 1px solid #ddd;
+            overflow-y: auto;
+            box-sizing: border-box;
+        }
+
+        /* Status text — matches Tehdas/Päättely .status-text. */
+        .status-text {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            padding: 12px;
+        }
+
+        .distribution-section {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .distribution-label {
+            font-size: 10px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .distribution-canvas {
+            display: block;
+        }
+
+        /* Betting interface — shared BettingInterface widget renders its own canvas + buttons. */
+        .betting-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+        }
+
+        /* Star rating — same pattern as Tehdas .loss-display: bordered badge near top
+           of the column, always present with visibility:hidden, becomes visible after submit. */
+        .loss-display {
+            font-size: 24px;
+            font-weight: 500;
+            color: #d4af37;
+            text-align: center;
+            padding: 10px;
+            background: #fff;
+            border: 2px solid #000;
+            border-radius: 2px;
+            visibility: hidden;
+        }
+
+        /* Example button — matches Tehdas/Päättely .example-btn. */
+        .example-btn {
+            width: 100%;
+            padding: 8px 16px;
+            background: #fff;
+            border: 2px solid #000;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            font-family: inherit;
+            border-radius: 3px;
+        }
+        .example-btn:hover:not(:disabled) {
+            background: #f0f0f0;
+        }
+        .example-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Speed controls — speed-section acts like a panel-section, speed-grid like .speed-controls. */
+        .speed-section {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .speed-grid {
+            display: flex;
+            gap: 8px;
+        }
+        .speed-btn {
+            flex: 1;
+            padding: 8px;
+            background: #fff;
+            border: 2px solid #ddd;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            font-family: inherit;
+            border-radius: 3px;
+        }
+        .speed-btn.active {
+            background: #000;
+            color: #fff;
+            border-color: #000;
+        }
+        .speed-btn:hover:not(.active) {
+            background: #f0f0f0;
+        }
+        /* Right column: DSL script */
+        .right-column {
+            flex: 1;
+            min-width: 250px;
+            display: flex;
+            flex-direction: column;
+            padding: 12px;
+            gap: 8px;
+            background: #fff;
+            overflow: hidden;
+            position: relative;
+        }
+        /* DSL Editor container - flex grow to fill available space */
+        #dsl-editor-container {
+            flex: 1;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+        }
+        /* Override dsl-editor.css to match our theme */
+        #dsl-editor-container .dsl-editor-wrapper {
+            flex: 1;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        /* Consistent font and line height across all editor elements */
+        #dsl-editor-container .dsl-textarea,
+        #dsl-editor-container .dsl-highlight-layer,
+        #dsl-editor-container .dsl-line-numbers {
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 24px;
+        }
+        #dsl-editor-container .dsl-line-numbers .line-number {
+            height: 24px;
+        }
+        #dsl-editor-container .dsl-result-display {
+            display: none; /* Hide built-in result display, we use betting grid */
+        }
+        /* Syntax highlighting colors - ensure they apply */
+        #dsl-editor-container .hl-keyword {
+            color: #569cd6;
+            font-weight: bold;
+        }
+        #dsl-editor-container .hl-builtin {
+            color: #dcdcaa;
+        }
+        #dsl-editor-container .hl-number {
+            color: #b5cea8;
+        }
+        #dsl-editor-container .hl-string {
+            color: #ce9178;
+        }
+        #dsl-editor-container .hl-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+        .dsl-error {
+            color: #c00;
+            font-size: 12px;
+            display: none;
+        }
+        .dsl-error.visible {
+            display: block;
+        }
+        .code-popup {
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            max-width: 90%;
+            text-align: center;
+        }
+        .code-popup-error {
+            background: #fee;
+            color: #c00;
+            border: 1px solid #fcc;
+        }
+        .code-popup-success {
+            background: #efe;
+            color: #060;
+            border: 1px solid #cfc;
+        }
+        .code-popup-info {
+            background: #eef;
+            color: #006;
+            border: 1px solid #ccf;
+        }
+        /* DSL Tabs */
+        .dsl-tabs {
+            display: flex;
+            gap: 0;
+            margin-bottom: 8px;
+            align-items: stretch;
+        }
+        .dsl-tab {
+            flex: 1;
+            padding: 8px 12px;
+            background: #f0f0f0;
+            border: 1px solid #ddd;
+            border-bottom: none;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            font-family: inherit;
+            text-align: center;
+        }
+        .dsl-tab:first-child {
+            border-radius: 4px 0 0 0;
+        }
+        .dsl-tab.active {
+            background: #1e1e1e;
+            color: #e0e0e0;
+            border-color: #1e1e1e;
+        }
+        .dsl-tab:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .dsl-tab:hover:not(.active):not(:disabled) {
+            background: #e0e0e0;
+        }
+        /* Solution editor (solution tab content) */
+        .solution-editor-container {
+            display: none;
+            flex: 1;
+            overflow-y: auto;
+        }
+        .solution-editor-container.visible {
+            display: flex;
+        }
+        .solution-editor-container .dsl-editor-container {
+            font-size: 20px;
+        }
+
+        /* Back button — same style as Tehdas/Päättely .takaisin-btn. */
+        .takaisin-btn {
+            padding: 8px 16px;
+            background: #fff;
+            border: 2px solid #000;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            font-family: inherit;
+            width: 100%;
+            height: 40px;
+            flex: 0 0 auto;
+            border-radius: 3px;
+        }
+        .takaisin-btn:hover {
+            background: #f0f0f0;
+        }
+
+        /* No level message */
+        .no-level {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-size: 18px;
+            color: #666;
+        }
+
+        /* Prevent text selection during drag */
+        .no-select {
+            user-select: none;
+        }
+
+        /* Branching worlds visualization */
+        .branching-container {
+            display: none;
+            background: #fafafa;
+            overflow: hidden;
+            position: relative;
+        }
+        .branching-container.visible {
+            display: flex;
+            flex-direction: column;
+            flex: 0 0 auto;
+            width: 50%;
+            min-width: 300px;
+        }
+        .branching-canvas-area {
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <!-- Left: Factory canvas (normal mode) -->
+        <div class="canvas-area" id="canvas-area">
+            <canvas id="factory-canvas" width="640" height="512"></canvas>
+        </div>
+
+        <!-- Branching worlds visualization (after submission) -->
+        <div class="branching-container" id="branching-container">
+            <div class="branching-canvas-area" id="branching-canvas-area"></div>
+        </div>
+
+        <!-- Draggable divider between canvas and right panel -->
+        <div class="divider" id="main-divider"></div>
+
+        <!-- Right panel -->
+        <div class="right-panel" id="right-panel">
+            <!-- Main content: two columns -->
+            <div class="main-content">
+                <!-- Left column: distributions + speed controls -->
+                <div class="left-column" id="left-column">
+                    <!-- Status text (matches Tehdas/Päättely). -->
+                    <div id="status-text" class="status-text">Stopped</div>
+
+                    <!-- Star rating (matches Tehdas: bordered badge near top, hidden until submit). -->
+                    <div id="loss-display" class="loss-display">☆☆☆</div>
+
+                    <!-- Speed controls — at the top, matching Tehdas/Päättely. -->
+                    <div class="speed-section">
+                        <button id="example-btn" class="example-btn" onclick="app.runExample()">Show example</button>
+                        <div class="speed-grid">
+                            <button class="speed-btn" data-speed="0" onclick="app.setSpeed(0)">0x</button>
+                            <button class="speed-btn active" data-speed="1" onclick="app.setSpeed(1)">1x</button>
+                            <button class="speed-btn" data-speed="3" onclick="app.setSpeed(3)">3x</button>
+                            <button class="speed-btn" data-speed="9" onclick="app.setSpeed(9)">9x</button>
+                        </div>
+                    </div>
+
+                    <!-- Player's prediction — shared BettingInterface mounts here. -->
+                    <div class="betting-container" id="betting-container"></div>
+
+                    <!-- Ground truth (hidden until submit, or shown if showFullDistribution) -->
+                    <div class="distribution-section" id="truth-section" style="display: none;">
+                        <div class="distribution-label">True</div>
+                        <canvas id="full-distribution-canvas" class="distribution-canvas"></canvas>
+                    </div>
+
+                    <!-- Fine-grained distribution chart (shown after submit if display_finegrained specified) -->
+                    <div class="distribution-section" id="finegrained-section" style="display: none;">
+                        <div class="distribution-label">Exact distribution</div>
+                        <canvas id="finegrained-canvas" class="distribution-canvas"></canvas>
+                    </div>
+
+                    <!-- Spacer pushes Takaisin to the bottom (matches Tehdas/Päättely). -->
+                    <div style="flex: 1;"></div>
+
+                    <!-- Back button (matches Tehdas/Päättely). -->
+                    <button class="takaisin-btn" id="back-button" onclick="window.location.href='index.html'">Back</button>
+                </div>
+
+                <!-- Draggable divider between columns -->
+                <div class="divider-inner" id="column-divider"></div>
+
+                <!-- Right column: DSL script -->
+                <div class="right-column" id="right-column">
+                    <div class="dsl-tabs">
+                        <button id="tab-player" class="dsl-tab active" onclick="app.switchTab('player')">Your prediction</button>
+                        <button id="tab-solution" class="dsl-tab" onclick="app.switchTab('solution')" disabled>Model solution</button>
+                    </div>
+                    <div id="dsl-editor-container"></div>
+                    <div id="solution-editor-container" class="solution-editor-container"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Configuration (shared library) -->
+    <script src="../probability-games-common/config/colors.js"></script>
+    <script src="../probability-games-common/config/sack-renderer.js"></script>
+
+    <!-- Core System (shared library) -->
+    <script src="../probability-games-common/core/rng.js"></script>
+    <script src="../probability-games-common/core/trajectory.js"></script>
+    <script src="../probability-games-common/core/ball.js"></script>
+    <script src="../probability-games-common/core/component-registry.js"></script>
+    <script src="../probability-games-common/core/seed-manager.js"></script>
+    <script src="../probability-games-common/core/simulation.js"></script>
+    <script src="../probability-games-common/core/renderer.js"></script>
+    <script src="../probability-games-common/core/coordinate-system.js"></script>
+
+    <!-- Components (shared library) -->
+    <script src="../probability-games-common/components/sack.js"></script>
+    <script src="../probability-games-common/components/conveyor.js"></script>
+    <script src="../probability-games-common/components/conveyor-turn.js"></script>
+    <script src="../probability-games-common/components/arm.js"></script>
+    <script src="../probability-games-common/components/shuffler.js"></script>
+    <script src="../probability-games-common/components/splitter.js"></script>
+    <script src="../probability-games-common/components/observation.js"></script>
+    <script src="../probability-games-common/components/black-pit.js"></script>
+    <script src="../probability-games-common/components/duplicator.js"></script>
+    <script src="../probability-games-common/components/filter.js"></script>
+    <script src="../probability-games-common/components/merger.js"></script>
+    <script src="../probability-games-common/components/button.js"></script>
+    <script src="../probability-games-common/components/switch.js"></script>
+
+    <!-- DGP DSL System -->
+    <script src="core/dgp-dsl-core.js"></script>
+
+    <!-- Probabilistic Prediction DSL -->
+    <script src="core/distribution.js"></script>
+    <script src="core/dsl-parser.js"></script>
+    <script src="core/dsl-evaluator.js"></script>
+    <script src="core/distribution-scorer.js"></script>
+    <script src="js/ui/dsl-editor.js"></script>
+
+    <!-- Branching Worlds Visualization -->
+    <script src="core/world-dag.js"></script>
+    <script src="core/branching-simulator.js"></script>
+    <script src="core/dag-layout.js"></script>
+    <script src="core/branching-renderer.js"></script>
+    <script src="core/rectangle-partitioner.js"></script>
+    <script src="core/animated-branching-view.js"></script>
+
+    <!-- Shared betting UI -->
+    <script src="../probability-games-common/ui/betting-interface.js"></script>
+
+    <!-- Level Registry -->
+    <script src="levels/level-registry.js"></script>
+
+    <script>
+    // Binomial coefficient helper for DSL
+    function binomial(n, k) {
+        if (k < 0 || k > n) return 0;
+        if (k === 0 || k === n) return 1;
+        let result = 1;
+        for (let i = 0; i < k; i++) {
+            result = result * (n - i) / (i + 1);
+        }
+        return result;
+    }
+
+    // Make it available globally for DSL scripts
+    window.binomial = binomial;
+
+    /**
+     * Compute bounding box of components (same logic as Renderer)
+     */
+    function computeBoundingBox(components) {
+        if (!components || components.length === 0) {
+            return { minX: 0, minY: 0 };
+        }
+        let minX = Infinity, minY = Infinity;
+        for (const comp of components) {
+            minX = Math.min(minX, comp.position.x);
+            minY = Math.min(minY, comp.position.y);
+        }
+        return { minX, minY };
+    }
+
+    /**
+     * Parse a variable name like "A3", "A3v", "A3o", "A3y", "A3a" to grid coordinates
+     * Case-insensitive (e.g., "a3" works like "A3")
+     * @param {string} varName - Variable name (e.g., "A3", "B2v", "C1o", "D4y", "E5a")
+     * @param {Object} boundingBox - {minX, minY} from computeBoundingBox
+     * @returns {Object|null} - {gridX, gridY, half: 'full'|'left'|'right'|'top'|'bottom'} or null
+     */
+    function parseVarToGridCell(varName, boundingBox) {
+        if (!varName) return null;
+
+        // Match pattern: single letter (A-Z), followed by digits, optionally followed by v/o/y/a
+        // Case-insensitive
+        const match = varName.match(/^([A-Za-z])(\d+)([voya])?$/i);
+        if (!match) return null;
+
+        // Labels are relative to bounding box
+        // Column 'A' = relX 0 = minX, 'B' = relX 1 = minX + 1, etc.
+        // Row '1' = relY 0 = minY, '2' = relY 1 = minY + 1, etc.
+        const relCol = match[1].toUpperCase().charCodeAt(0) - 'A'.charCodeAt(0);
+        const relRow = parseInt(match[2], 10) - 1;  // Labels are 1-indexed
+        const suffix = match[3] ? match[3].toLowerCase() : null;
+
+        const minX = boundingBox?.minX || 0;
+        const minY = boundingBox?.minY || 0;
+
+        let half = 'full';
+        if (suffix === 'v') half = 'left';    // vasen = left
+        if (suffix === 'o') half = 'right';   // oikea = right
+        if (suffix === 'y') half = 'top';     // ylä = top
+        if (suffix === 'a') half = 'bottom';  // ala = bottom
+
+        return { gridX: minX + relCol, gridY: minY + relRow, half };
+    }
+
+    class PlayApp {
+        constructor() {
+            this.canvas = document.getElementById('factory-canvas');
+            // betting-canvas is now created inside the shared BettingInterface (see initBettingInterface).
+            this.distributionCanvas = document.getElementById('full-distribution-canvas');
+            this.finegrainedCanvas = document.getElementById('finegrained-canvas');
+            this.bettingInterface = null;  // shared BettingInterface, created in initBettingInterface
+
+            // Highlighted cell state (for DSL variable hover)
+            this.highlightedCell = null;
+            this.componentBoundingBox = null;  // Computed when level loads
+
+            // Callback for when hovered variable changes in DSL editor
+            const onHighlightedVarChange = (varName) => {
+                this.highlightedCell = parseVarToGridCell(varName, this.componentBoundingBox);
+                this.requestHighlightRedraw();
+            };
+
+            // Initialize DSL Editor (for player's code)
+            const editorContainer = document.getElementById('dsl-editor-container');
+            this.dslEditor = new DSLEditor(editorContainer, {
+                debounceMs: 500,
+                showLineNumbers: true,
+                onHighlightedVarChange,
+                onCopyPrediction: (distribution) => {
+                    if (this.betLocked) {
+                        this.showCodePopup('Bet is already locked', 'error');
+                        return;
+                    }
+                    // Convert Distribution to plain object for updateDistributionFromDSL
+                    const plainDist = {};
+                    for (const [value, prob] of distribution.entries()) {
+                        plainDist[value] = prob;
+                    }
+                    this.updateDistributionFromDSL(plainDist);
+                    this.showCodePopup('Prediction updated', 'success');
+                }
+            });
+
+            // Initialize Solution Editor (read-only, for model solution)
+            const solutionContainer = document.getElementById('solution-editor-container');
+            this.solutionEditor = new DSLEditor(solutionContainer, {
+                readOnly: true,
+                showLineNumbers: true,
+                showResult: false,
+                onHighlightedVarChange
+            });
+
+            this.level = null;
+            this.simulation = null;
+            this.renderer = null;
+            this.speed = 1;               // User's preferred speed (1, 3, or 9). Never 0.
+            this.phase = null;            // Set by setPhase(). Phases: IDLE | EXAMPLE_RUNNING | EXAMPLE_COMPLETE | PAUSED | BET_SUBMITTED | BRANCHING.
+            this.phaseBeforePause = null;  // To know what to resume to from PAUSED.
+            this.lastTime = 0;
+            this.loopStarted = false;     // Ensure animation loop is started only once.
+
+            // Prediction state. playerDistribution / hasUserSelection / isNormalized
+            // are getters (see below) that read from this.bettingInterface — the
+            // shared BettingInterface is the single source of truth for selections.
+            this.correctDistribution = {};
+            this.predictionType = 'total';
+            this.bucketConfig = null;
+            this.betLocked = false;
+            this.simulationComplete = false;
+            this.showFullDist = false;
+
+            // Example simulation state (integrated into main loop)
+            this.exampleSim = null;        // Separate Simulation instance for examples
+            this.exampleStartTime = 0;
+
+            this.setupVisibilityHandler();
+
+            // Set up resizable dividers
+            this.setupDividers();
+
+            this.loadLevel();
+        }
+
+        // --- selections-as-state getters (read through to BettingInterface) ---
+
+        /** Returns the player's bet as { bucketIndex: probability }. */
+        get playerDistribution() {
+            if (!this.bettingInterface) return {};
+            const probs = this.bettingInterface.getProbabilities();
+            const out = {};
+            if (this.isBinaryMode()) {
+                // Binary mode (reaches): one column = P(Yes). Implicit P(No) = 1 - p.
+                out[0] = probs[0] ?? 0;
+                out[1] = 1 - (probs[0] ?? 0);
+            } else {
+                probs.forEach((p, i) => { out[i] = p; });
+            }
+            return out;
+        }
+
+        get hasUserSelection() {
+            return (this.bettingInterface?.gridSelections?.size ?? 0) > 0;
+        }
+
+        get isNormalized() {
+            return this.bettingInterface?.isNormalized ?? false;
+        }
+
+        setupVisibilityHandler() {
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    if (this.phase === 'EXAMPLE_RUNNING' || this.phase === 'BRANCHING') {
+                        this.phaseBeforePause = this.phase;
+                        this.setPhase('PAUSED');
+                    }
+                } else {
+                    // Reset timing to avoid deltaTime spike; don't auto-resume.
+                    this.lastTime = performance.now();
+                }
+            });
+        }
+
+        setupDividers() {
+            // Main divider between canvas and right panel
+            const mainDivider = document.getElementById('main-divider');
+            const canvasArea = document.getElementById('canvas-area');
+
+            let startX, startWidth;
+
+            mainDivider.addEventListener('mousedown', (e) => {
+                e.preventDefault();
+                startX = e.clientX;
+                startWidth = canvasArea.offsetWidth;
+                document.body.classList.add('no-select');
+                mainDivider.classList.add('dragging');
+
+                const onMouseMove = (e) => {
+                    const delta = e.clientX - startX;
+                    const newWidth = Math.max(300, Math.min(window.innerWidth - 450, startWidth + delta));
+                    canvasArea.style.width = newWidth + 'px';
+                    this.resizeCanvas();
+                };
+
+                const onMouseUp = () => {
+                    document.removeEventListener('mousemove', onMouseMove);
+                    document.removeEventListener('mouseup', onMouseUp);
+                    document.body.classList.remove('no-select');
+                    mainDivider.classList.remove('dragging');
+                };
+
+                document.addEventListener('mousemove', onMouseMove);
+                document.addEventListener('mouseup', onMouseUp);
+            });
+
+            // Column divider between distribution and DSL columns
+            const columnDivider = document.getElementById('column-divider');
+            const leftColumn = document.getElementById('left-column');
+
+            columnDivider.addEventListener('mousedown', (e) => {
+                e.preventDefault();
+                startX = e.clientX;
+                startWidth = leftColumn.offsetWidth;
+                document.body.classList.add('no-select');
+                columnDivider.classList.add('dragging');
+
+                const onMouseMove = (e) => {
+                    const delta = e.clientX - startX;
+                    const newWidth = Math.max(180, Math.min(400, startWidth + delta));
+                    leftColumn.style.width = newWidth + 'px';
+                    this.resizeCanvases();
+                };
+
+                const onMouseUp = () => {
+                    document.removeEventListener('mousemove', onMouseMove);
+                    document.removeEventListener('mouseup', onMouseUp);
+                    document.body.classList.remove('no-select');
+                    columnDivider.classList.remove('dragging');
+                };
+
+                document.addEventListener('mousemove', onMouseMove);
+                document.addEventListener('mouseup', onMouseUp);
+            });
+        }
+
+        resizeCanvas() {
+            if (!this.level) return;
+
+            const canvasArea = document.getElementById('canvas-area');
+            const gridWidth = this.level.grid.width;
+            const gridHeight = this.level.grid.height;
+            const maxWidth = canvasArea.clientWidth;
+            const maxHeight = canvasArea.clientHeight;
+
+            // Fill available space (no max cell size constraint)
+            const cellSize = Math.floor(Math.min(
+                maxWidth / gridWidth,
+                maxHeight / gridHeight
+            ));
+
+            this.cellSize = cellSize;
+            this.canvas.width = gridWidth * cellSize;
+            this.canvas.height = gridHeight * cellSize;
+
+            if (this.renderer) {
+                this.renderer.gridSize = cellSize;
+            }
+        }
+
+        // Binary mode: single column with top/bottom labels (only for reaches mode with 2 buckets)
+        // For "total" and "dist" modes, even with 2 buckets, we show 2 columns with auto-sync
+        isBinaryMode() {
+            const numBuckets = this.bucketConfig?.length || 0;
+            if (numBuckets !== 2) return false;
+            // "total" and "dist" modes should show 2 columns even with 2 buckets
+            return this.predictionType !== 'total' && this.predictionType !== 'dist';
+        }
+
+        resizeCanvases() {
+            if (!this.bucketConfig) return;
+            // BettingInterface internally manages the betting canvas size.
+            // Re-render it on resize so cells re-fit the new container width.
+            if (this.bettingInterface) this.bettingInterface.render();
+
+            const leftColumn = document.getElementById('left-column');
+            const width = leftColumn.clientWidth - 24;
+            this.distributionCanvas.width = width;
+            this.distributionCanvas.height = 60;
+            if (this.betLocked || this.showFullDist) this.drawFullDistribution();
+        }
+
+        loadLevel() {
+            // Parse URL parameters to get level
+            const urlParams = new URLSearchParams(window.location.search);
+            const levelParam = urlParams.get('level');
+
+            let level = null;
+
+            if (levelParam) {
+                // Format: level=X-Y where X is group number (1-8), Y is position (1-based)
+                const match = levelParam.match(/^(\d+)-(\d+)$/);
+                if (match) {
+                    const groupNumber = parseInt(match[1]);
+                    const position = parseInt(match[2]);
+                    level = LevelRegistry.getLevelByPosition(groupNumber, position);
+                    if (!level) {
+                        document.body.innerHTML = `<div class="no-level">Level ${levelParam} not found.</div>`;
+                        return;
+                    }
+                } else {
+                    document.body.innerHTML = '<div class="no-level">Invalid level parameter. Use the format level=X-Y.</div>';
+                    return;
+                }
+            } else {
+                // Fallback: try loading from test level (for editor preview)
+                const levelJson = localStorage.getItem('factory-simulation_testLevel');
+                if (levelJson) {
+                    try {
+                        level = JSON.parse(levelJson);
+                    } catch (e) {
+                        console.error('Failed to parse test level:', e);
+                    }
+                }
+            }
+
+            if (!level) {
+                document.body.innerHTML = '<div class="no-level">No level to load.</div>';
+                return;
+            }
+
+            try {
+                this.level = level;
+                this.componentBoundingBox = computeBoundingBox(this.level.components);
+
+                // Backward compatibility: ensure level has required simulation properties
+                // (older saved levels may be missing these)
+                if (!this.level.samplingSchedule && this.level.dgpResult?.schedule) {
+                    this.level.samplingSchedule = this.level.dgpResult.schedule;
+                }
+                const ballCount = this.level.dgpResult?.ballCount ||
+                                  this.level.dgpResult?.schedule?.length ||
+                                  this.level.simulation?.ballsToSpawn || 0;
+                if (!this.level.simulation) {
+                    this.level.simulation = {};
+                }
+                if (this.level.simulation.ballsToSpawn === undefined) {
+                    this.level.simulation.ballsToSpawn = ballCount;
+                }
+
+                this.correctDistribution = this.level.correctDistribution || {};
+                this.modelScript = this.level.intendedModel || '';
+                this.predictionType = this.level.dgpResult?.prediction?.what || 'total';
+                this.showFullDist = this.level.dgpResult?.showFullDistribution || false;
+
+                this.initBucketConfig();
+                this.init();
+            } catch (error) {
+                console.error('Error loading level:', error);
+                throw error;  // Propagate - don't silently continue with broken state
+            }
+        }
+
+        initBucketConfig() {
+            // Handle "reaches" type: always binary Yes/No
+            if (this.predictionType === 'reaches') {
+                this.bucketConfig = [
+                    { label: 'Yes', min: 1, max: Infinity },
+                    { label: 'No', min: 0, max: 0 }
+                ];
+            } else if (this.predictionType === 'dist') {
+                // "dist" mode: one bucket per observation point (labeled A, B, C...)
+                // Find observation points sorted by x-coordinate
+                const obsComps = this.level.components
+                    .filter(c => c.type === 'observation')
+                    .sort((a, b) => a.position.x - b.position.x);
+
+                // Set observationIndex on each component for rendering
+                obsComps.forEach((comp, index) => {
+                    if (!comp.params) comp.params = {};
+                    comp.params.observationIndex = index;
+                });
+
+                this.bucketConfig = obsComps.map((comp, index) => ({
+                    label: ObservationColors.getLabel(index),
+                    observationId: comp.id,
+                    color: ObservationColors.getColor(index),
+                    index: index
+                }));
+            } else if (this.level.dgpResult?.buckets) {
+                // Use DSL-specified buckets
+                // Restore Infinity values that were lost in JSON serialization (become null)
+                this.bucketConfig = this.level.dgpResult.buckets.map(bucket => ({
+                    ...bucket,
+                    max: (bucket.max === null) ? Infinity : bucket.max
+                }));
+            } else {
+                // Buckets must be explicitly specified in DSL
+                throw new Error('Buckets not specified. Use buckets([...]) in DSL to define betting options.');
+            }
+            this.initPlayerDistribution();
+        }
+
+        createDefaultBuckets() {
+            const outcomes = Object.keys(this.correctDistribution)
+                .map(k => parseInt(k))
+                .filter(k => !isNaN(k))
+                .sort((a, b) => a - b);
+
+            if (outcomes.length === 0) {
+                return [
+                    { label: '0', min: 0, max: 0 },
+                    { label: '1+', min: 1, max: Infinity }
+                ];
+            }
+
+            const min = outcomes[0];
+            const max = outcomes[outcomes.length - 1];
+            const range = max - min + 1;
+
+            // For small ranges, use individual buckets
+            if (range <= 6) {
+                return outcomes.map(v => ({
+                    label: String(v),
+                    min: v,
+                    max: v
+                }));
+            } else {
+                // For larger ranges, group into buckets
+                const bucketCount = Math.min(6, Math.ceil(range / 2));
+                const bucketSize = Math.ceil(range / bucketCount);
+                const buckets = [];
+
+                for (let i = 0; i < bucketCount; i++) {
+                    const bucketMin = min + i * bucketSize;
+                    const bucketMax = Math.min(max, min + (i + 1) * bucketSize - 1);
+
+                    if (bucketMin <= max) {
+                        buckets.push({
+                            label: bucketMin === bucketMax ? String(bucketMin) : `${bucketMin}-${bucketMax}`,
+                            min: bucketMin,
+                            max: bucketMax
+                        });
+                    }
+                }
+                return buckets;
+            }
+        }
+
+        initPlayerDistribution() {
+            // No-op since the player's selections live inside BettingInterface now.
+            // Kept as an empty hook in case earlier code paths still call it.
+        }
+
+        init() {
+            // Calculate canvas size to fill available space
+            const canvasArea = document.getElementById('canvas-area');
+            const gridWidth = this.level.grid.width;
+            const gridHeight = this.level.grid.height;
+            const maxWidth = canvasArea.clientWidth;
+            const maxHeight = canvasArea.clientHeight;
+
+            // Fill available space (no max cell size constraint)
+            const cellSize = Math.floor(Math.min(
+                maxWidth / gridWidth,
+                maxHeight / gridHeight
+            ));
+
+            this.cellSize = cellSize;
+            this.canvas.width = gridWidth * cellSize;
+            this.canvas.height = gridHeight * cellSize;
+
+            // Apply sack contents from DGP
+            if (this.level.dgpResult && this.level.dgpResult.sacks) {
+                for (const [label, def] of Object.entries(this.level.dgpResult.sacks)) {
+                    const comp = this.level.components.find(c =>
+                        c.type === 'sack' && c.params.label === label
+                    );
+                    if (comp) {
+                        comp.params.contents = { ...def.contents };
+                        comp.params.mode = def.mode;
+                    }
+                }
+            }
+
+            // Mark prediction target
+            if (this.level.dgpResult && this.level.dgpResult.prediction) {
+                const targetLabel = this.level.dgpResult.prediction.target;
+                const targetComp = this.level.components.find(c =>
+                    c.type === 'observation' &&
+                    (c.params?.label === targetLabel || c.id === targetLabel)
+                );
+                if (targetComp) {
+                    targetComp.params.isPredictionTarget = true;
+                }
+            }
+
+            this.mapDGPToComponents();
+
+            // Create simulation
+            const simConfig = {...(this.level.simulation || {})};
+            delete simConfig.seed;
+            this.simulation = new Simulation(this.level, simConfig);
+            this.simulation.resolveReferences();
+
+            // Create renderer
+            this.renderer = new Renderer(this.canvas);
+            this.renderer.setShowGrid(true);
+            this.renderer.setShowLabels(true);
+            this.renderer.gridSize = cellSize;
+
+            // Initialize betting interface
+            this.initBettingInterface();
+
+            // Start in IDLE phase — player must click "Show example" to see animation
+            this.setPhase('IDLE');
+            this.ensureLoopStarted();
+        }
+
+        mapDGPToComponents() {
+            if (!this.level.dgpResult) return;
+
+            const varNameToComponentId = new Map();
+            const armComponents = this.level.components.filter(c => c.type === 'arm');
+
+            if (this.level.dgpResult.arms) {
+                const armVarNames = Object.keys(this.level.dgpResult.arms);
+
+                armVarNames.forEach(varName => {
+                    const linkedComp = armComponents.find(c => c.params.linkedVariable === varName);
+                    if (linkedComp) {
+                        varNameToComponentId.set(varName, linkedComp.id);
+                    }
+                });
+
+                const unmappedVarNames = armVarNames.filter(v => !varNameToComponentId.has(v));
+                const unmappedComponents = armComponents.filter(c =>
+                    !Array.from(varNameToComponentId.values()).includes(c.id)
+                );
+
+                unmappedVarNames.forEach((varName, index) => {
+                    if (index < unmappedComponents.length) {
+                        varNameToComponentId.set(varName, unmappedComponents[index].id);
+                    }
+                });
+            }
+
+            // Set drawCount on arm components based on schedule
+            // Count actual schedule entries for each arm by varName
+            const schedule = this.level.dgpResult.schedule || [];
+            armComponents.forEach(armComp => {
+                const varName = armComp.params.varName;
+                if (varName) {
+                    // Count schedule entries for this specific arm
+                    const count = schedule.filter(entry => entry.armVarName === varName).length;
+                    armComp.params.drawCount = count;
+                } else {
+                    // Arm not linked to DSL - no scheduled draws
+                    armComp.params.drawCount = 0;
+                }
+            });
+
+            // Helper to resolve arm variable name to component ID
+            const resolveArmId = (varName) => {
+                // First try the mapping
+                if (varNameToComponentId.has(varName)) {
+                    return varNameToComponentId.get(varName);
+                }
+                // Check if varName is already a component ID
+                if (armComponents.some(c => c.id === varName)) {
+                    return varName;
+                }
+                // Failed to resolve
+                throw new Error(`[PlayApp] Cannot resolve arm variable '${varName}'. ` +
+                    `Known mappings: ${Array.from(varNameToComponentId.entries()).map(([k,v]) => `${k}→${v}`).join(', ')}. ` +
+                    `Arm components: ${armComponents.map(c => c.id).join(', ')}`);
+            };
+
+            // Create samplingSchedule from dgpResult.schedule if not already present
+            if (!this.level.samplingSchedule && schedule.length > 0) {
+                this.level.samplingSchedule = schedule.map(entry => {
+                    const varName = entry.armVarName || entry.armId || entry.sackId;
+                    const componentId = resolveArmId(varName);
+                    return {
+                        sackId: componentId,
+                        armId: componentId,
+                        time: entry.time
+                    };
+                });
+            } else if (this.level.samplingSchedule) {
+                // Transform existing samplingSchedule to use component IDs
+                this.level.samplingSchedule = this.level.samplingSchedule.map(entry => {
+                    const varName = entry.armVarName || entry.armId;
+                    const componentId = resolveArmId(varName);
+                    return {
+                        sackId: componentId,
+                        armId: componentId,
+                        time: entry.time
+                    };
+                });
+            }
+        }
+
+        /**
+         * Mount the shared BettingInterface into .betting-container.
+         * Bucket modes:
+         *   - 'reaches'  → binary mode, single column with Yes/No labels
+         *   - 'dist'     → N columns with colored A/B/C boxes below grid
+         *   - 'total'    → N columns with text labels below grid
+         */
+        initBettingInterface() {
+            const leftColumn = document.getElementById('left-column');
+            const width = leftColumn.clientWidth - 24;
+
+            // Hide distribution sections (they appear after submit)
+            document.getElementById('truth-section').style.display = 'none';
+            document.getElementById('finegrained-section').style.display = 'none';
+
+            // Reset star rating to placeholder (matches Tehdas).
+            const lossDisplay = document.getElementById('loss-display');
+            if (lossDisplay) {
+                lossDisplay.textContent = '☆☆☆';
+                lossDisplay.style.visibility = 'hidden';
+            }
+
+            const isBinary = this.isBinaryMode();
+            const numBuckets = this.bucketConfig.length;
+            const numColumns = isBinary ? 1 : numBuckets;
+            const mode = this.predictionType;
+
+            const container = document.getElementById('betting-container');
+            // Tear down any previous instance (level reload, etc.)
+            container.innerHTML = '';
+
+            const config = {
+                numColumns,
+                binary: isBinary,
+                binaryLabels: isBinary
+                    ? { top: this.bucketConfig[0].label, bottom: this.bucketConfig[1].label }
+                    : undefined,
+                submitLabel: 'Submit',
+                normalizeLabel: 'Normalize to 100%',
+                starThresholds: [0.06, 0.11, 0.21],
+                labelHeight: isBinary ? 0 : (mode === 'dist' ? 42 : 28),
+                renderColumnLabel: (ctx, colIdx, x, y, w, h) => {
+                    const bucket = this.bucketConfig[colIdx];
+                    const cx = x + w / 2;
+                    if (mode === 'dist') {
+                        // Colored box with letter label inside (matches in-factory observation marker).
+                        const boxSize = Math.min(w * 0.6, 30);
+                        const borderWidth = Math.max(1, boxSize * 0.083);
+                        const boxX = cx - boxSize / 2;
+                        ctx.fillStyle = bucket.color;
+                        ctx.fillRect(boxX, y, boxSize, boxSize);
+                        ctx.strokeStyle = '#000';
+                        ctx.lineWidth = borderWidth;
+                        ctx.lineCap = 'round';
+                        ctx.lineJoin = 'round';
+                        ctx.strokeRect(boxX, y, boxSize, boxSize);
+                        ctx.fillStyle = '#000';
+                        ctx.font = `bold ${Math.floor(boxSize * 0.6)}px sans-serif`;
+                        ctx.textAlign = 'center';
+                        ctx.textBaseline = 'middle';
+                        ctx.fillText(bucket.label, cx, y + boxSize / 2);
+                    } else {
+                        // Plain text label (numeric bucket like "0", "1-5", "6+").
+                        ctx.fillStyle = '#000';
+                        ctx.font = 'bold 13px sans-serif';
+                        ctx.textAlign = 'center';
+                        ctx.textBaseline = 'top';
+                        ctx.fillText(bucket.label, cx, y + 4);
+                    }
+                },
+            };
+
+            this.bettingInterface = new BettingInterface(container, config);
+            this.bettingInterface.onComplete = () => this.submitPrediction();
+            this.bettingInterface.enable();
+
+            // The full-distribution canvas (post-submit chart) is independent of
+            // BettingInterface — keep its sizing here.
+            this.distributionCanvas.width = width;
+            this.distributionCanvas.height = 60;
+        }
+
+        getTrueBucketProbs() {
+            const trueBucketProbs = {};
+
+            // Special handling for "reaches" mode - correctDistribution uses 'yes'/'no' keys
+            if (this.predictionType === 'reaches') {
+                const yesProb = this.correctDistribution['yes'] || this.correctDistribution['Kyllä'] || 0;
+                const noProb = this.correctDistribution['no'] || this.correctDistribution['Ei'] || 0;
+                const total = yesProb + noProb;
+                trueBucketProbs[0] = total > 0 ? yesProb / total : 0;  // Yes
+                trueBucketProbs[1] = total > 0 ? noProb / total : 0;   // No
+                return trueBucketProbs;
+            }
+
+            // Special handling for "dist" mode - get probabilities from branching view
+            if (this.predictionType === 'dist') {
+                if (this.animatedBranchingView && this.animatedBranchingView.isComplete()) {
+                    const trueDistribution = this.animatedBranchingView.getTrueDistribution();
+                    trueDistribution.forEach((entry, i) => {
+                        trueBucketProbs[i] = entry.probability;
+                    });
+                } else {
+                    // Before animation complete, use correctDistribution if available
+                    this.bucketConfig.forEach((bucket, i) => {
+                        trueBucketProbs[i] = this.correctDistribution[bucket.label] || 0;
+                    });
+                }
+                return trueBucketProbs;
+            }
+
+            this.bucketConfig.forEach((bucket, i) => {
+                let prob = 0;
+                if (bucket.max === null || bucket.max === undefined) {
+                    throw new Error(`Bucket ${i} has null/undefined max. Infinity doesn't survive JSON serialization - fix bucket config loading.`);
+                }
+                const maxVal = Math.min(bucket.max, 1000);
+                for (let v = bucket.min; v <= maxVal; v++) {
+                    prob += this.correctDistribution[v] || 0;
+                }
+                trueBucketProbs[i] = prob;
+            });
+
+            // Normalize
+            const total = Object.values(trueBucketProbs).reduce((a, b) => a + b, 0);
+            if (total > 0) {
+                for (const key in trueBucketProbs) {
+                    trueBucketProbs[key] /= total;
+                }
+            }
+            return trueBucketProbs;
+        }
+
+        drawFullDistribution() {
+            const canvas = this.distributionCanvas;
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width;
+            const height = canvas.height;
+
+            ctx.clearRect(0, 0, width, height);
+
+            const outcomes = Object.keys(this.correctDistribution)
+                .map(k => parseInt(k))
+                .filter(k => !isNaN(k))
+                .sort((a, b) => a - b);
+
+            if (outcomes.length === 0) return;
+
+            const padding = 5;
+            const barWidth = Math.min(20, (width - 2 * padding) / outcomes.length);
+            const gap = 1;
+            const labelHeight = 12;
+            const barHeight = height - labelHeight - 5;
+            const barTop = 3;
+
+            const maxProb = Math.max(...Object.values(this.correctDistribution));
+
+            outcomes.forEach((outcome, i) => {
+                const x = padding + i * barWidth + gap / 2;
+                const w = barWidth - gap;
+                const prob = this.correctDistribution[outcome] || 0;
+                const h = (prob / maxProb) * barHeight;
+
+                ctx.fillStyle = '#4CAF50';
+                ctx.fillRect(x, barTop + barHeight - h, w, h);
+
+                ctx.strokeStyle = '#388E3C';
+                ctx.lineWidth = 0.5;
+                ctx.strokeRect(x, barTop + barHeight - h, w, h);
+
+                if (barWidth > 12) {
+                    ctx.fillStyle = '#333';
+                    ctx.font = '8px sans-serif';
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'top';
+                    ctx.fillText(String(outcome), x + w / 2, barTop + barHeight + 1);
+                }
+            });
+        }
+
+        drawFinegrainedDistribution() {
+            const fineGrainedConfig = this.level.dgpResult?.fineGrainedDisplay;
+            if (!fineGrainedConfig) return;
+
+            const canvas = this.finegrainedCanvas;
+            const ctx = canvas.getContext('2d');
+
+            // Set canvas size (2x height)
+            const leftColumn = document.getElementById('left-column');
+            const width = leftColumn.clientWidth - 24;
+            const height = 280;
+            canvas.width = width;
+            canvas.height = height;
+
+            ctx.clearRect(0, 0, width, height);
+
+            const { min, max } = fineGrainedConfig;
+            const numValues = max - min + 1;
+
+            // Layout: margins for axes
+            const leftMargin = 45;   // Space for y-axis labels
+            const rightMargin = 15;
+            const topMargin = 10;
+            const bottomMargin = 25; // Space for x-axis labels
+
+            const plotWidth = width - leftMargin - rightMargin;
+            const plotHeight = height - topMargin - bottomMargin;
+
+            // Find max probability for scaling (use 85% of height)
+            let maxProb = 0;
+            for (let v = min; v <= max; v++) {
+                const prob = this.correctDistribution[v] || 0;
+                if (prob > maxProb) maxProb = prob;
+            }
+            if (maxProb === 0) maxProb = 0.1;
+            // Round up maxProb to nice number for y-axis
+            const yMax = Math.ceil(maxProb * 100) / 100;
+
+            // Helper: map value to x coordinate
+            const xScale = (v) => leftMargin + ((v - min) / (numValues - 1 || 1)) * plotWidth;
+            // Helper: map probability to y coordinate
+            const yScale = (p) => topMargin + plotHeight - (p / yMax) * plotHeight * 0.85;
+
+            // Draw axes
+            ctx.strokeStyle = '#333';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            // Y-axis
+            ctx.moveTo(leftMargin, topMargin);
+            ctx.lineTo(leftMargin, topMargin + plotHeight);
+            // X-axis
+            ctx.lineTo(leftMargin + plotWidth, topMargin + plotHeight);
+            ctx.stroke();
+
+            // Y-axis ticks and labels
+            ctx.fillStyle = '#333';
+            ctx.font = '9px sans-serif';
+            ctx.textAlign = 'right';
+            ctx.textBaseline = 'middle';
+
+            const numYTicks = 4;
+            for (let i = 0; i <= numYTicks; i++) {
+                const yVal = (yMax * i) / numYTicks;
+                const y = yScale(yVal);
+
+                // Tick mark
+                ctx.beginPath();
+                ctx.moveTo(leftMargin - 3, y);
+                ctx.lineTo(leftMargin, y);
+                ctx.stroke();
+
+                // Label (as percentage)
+                const label = (yVal * 100).toFixed(0) + '%';
+                ctx.fillText(label, leftMargin - 5, y);
+
+                // Grid line (light)
+                if (i > 0) {
+                    ctx.strokeStyle = '#ddd';
+                    ctx.beginPath();
+                    ctx.moveTo(leftMargin + 1, y);
+                    ctx.lineTo(leftMargin + plotWidth, y);
+                    ctx.stroke();
+                    ctx.strokeStyle = '#333';
+                }
+            }
+
+            // X-axis ticks and labels at 0%, 25%, 50%, 75%, 100% of x-axis range
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'top';
+
+            const xPercentiles = [0, 0.25, 0.5, 0.75, 1];
+            for (const pct of xPercentiles) {
+                const v = Math.round(min + pct * (max - min));
+                const x = xScale(v);
+                // Tick mark
+                ctx.beginPath();
+                ctx.moveTo(x, topMargin + plotHeight);
+                ctx.lineTo(x, topMargin + plotHeight + 3);
+                ctx.stroke();
+                // Label
+                ctx.fillText(String(v), x, topMargin + plotHeight + 5);
+            }
+
+            // Draw data as green horizontal lines (no vertical lines, no dots)
+            ctx.strokeStyle = '#4CAF50';
+            ctx.lineWidth = 2;
+
+            const barHalfWidth = Math.max(1, plotWidth / numValues / 2 - 1);
+
+            for (let v = min; v <= max; v++) {
+                const prob = this.correctDistribution[v] || 0;
+                const x = xScale(v);
+                const yTop = yScale(prob);
+
+                // Horizontal line at the probability level (including 0)
+                ctx.beginPath();
+                ctx.moveTo(x - barHalfWidth, yTop);
+                ctx.lineTo(x + barHalfWidth, yTop);
+                ctx.stroke();
+            }
+        }
+
+        submitPrediction() {
+            if (this.betLocked) return;
+
+            const dslText = this.dslEditor.getCode().trim();
+            if (dslText) {
+                try {
+                    const result = this.evaluateDSL(dslText);
+                    if (result !== null) {
+                        this.updateDistributionFromDSL(result);
+                    }
+                } catch (error) {
+                    this.showCodePopup('Virhe: ' + error.message, 'error');
+                    return;
+                }
+            }
+
+            this.betLocked = true;
+            this.setPhase('BET_SUBMITTED');
+
+            // Handle example button based on whether branching is disabled
+            const exampleBtn = document.getElementById('example-btn');
+            if (this.level.dgpResult?.disableBranching) {
+                // Keep as "Show example" and enable immediately (no branching to wait for)
+                exampleBtn.textContent = 'Show example';
+                exampleBtn.disabled = false;
+            } else {
+                // Rename to "Replay" and disable during branching animation
+                exampleBtn.textContent = 'Replay';
+                exampleBtn.disabled = true;
+            }
+
+            // Show ground truth distribution only if explicitly enabled with showFullDistribution(true)
+            if (this.showFullDist) {
+                document.getElementById('truth-section').style.display = 'block';
+                this.drawFullDistribution();
+            }
+
+            // Show fine-grained distribution if configured
+            if (this.level.dgpResult?.fineGrainedDisplay) {
+                document.getElementById('finegrained-section').style.display = 'block';
+                this.drawFinegrainedDistribution();
+            }
+
+            // Hand the truth to BettingInterface — this draws the green lines,
+            // disables the grid, and computes max-per-bucket-error + star rating.
+            const truthArr = this._truthArrayForBetting();
+            const { loss: score, stars: starCount } = this.bettingInterface.showResults(truthArr);
+            const stars = { count: starCount };
+
+            // Record attempt in level history
+            const levelId = this.level?.meta?.id;
+            if (levelId) {
+                LevelRegistry.addHistoryEntry(levelId, {
+                    timestamp: new Date().toISOString(),
+                    maxError: score,
+                    stars: stars.count,
+                    playerDistribution: { ...this.playerDistribution },
+                    correctDistribution: { ...this.correctDistribution },
+                });
+            }
+
+            // Show star rating (shared loss-display pattern with Tehdas/Päättely).
+            const lossDisplay = document.getElementById('loss-display');
+            const n = stars.count;
+            lossDisplay.textContent = '★'.repeat(n) + '☆'.repeat(3 - n);
+            lossDisplay.style.visibility = 'visible';
+
+            // Enable solution tab and switch to it if model exists
+            const solutionTab = document.getElementById('tab-solution');
+            solutionTab.disabled = false;
+            if (this.modelScript) {
+                this.solutionEditor.setCode(this.modelScript);
+                this.switchTab('solution');
+            }
+
+            // Show branching worlds visualization (unless disabled for high ball counts)
+            if (!this.level.dgpResult?.disableBranching) {
+                setTimeout(() => {
+                    this.showBranchingVisualization();
+                }, 100);
+            }
+        }
+
+        /**
+         * Build the truth array (probability per column) that BettingInterface
+         * needs to display green lines and score. For binary mode this is a
+         * 1-element array (P(top label)).
+         */
+        _truthArrayForBetting() {
+            const truthByBucket = this.getTrueBucketProbs();
+            if (this.isBinaryMode()) {
+                // Single column = P(bucket 0). bucketConfig[0] is the "top" label.
+                return [truthByBucket[0] ?? 0];
+            }
+            return this.bucketConfig.map((_, i) => truthByBucket[i] ?? 0);
+        }
+
+        switchTab(tabName) {
+            const playerTab = document.getElementById('tab-player');
+            const solutionTab = document.getElementById('tab-solution');
+            const editorContainer = document.getElementById('dsl-editor-container');
+            const solutionContainer = document.getElementById('solution-editor-container');
+
+            if (tabName === 'player') {
+                playerTab.classList.add('active');
+                solutionTab.classList.remove('active');
+                // Clear inline display so the stylesheet's `display: flex` takes
+                // over (setting 'block' would break the flex:1 height layout)
+                editorContainer.style.display = '';
+                solutionContainer.classList.remove('visible');
+            } else if (tabName === 'solution' && !solutionTab.disabled) {
+                playerTab.classList.remove('active');
+                solutionTab.classList.add('active');
+                editorContainer.style.display = 'none';
+                solutionContainer.classList.add('visible');
+            }
+        }
+
+        showCodePopup(message, type = 'info') {
+            // Remove existing popup if any
+            const existing = document.querySelector('.code-popup');
+            if (existing) existing.remove();
+
+            const popup = document.createElement('div');
+            popup.className = `code-popup code-popup-${type}`;
+            popup.textContent = message;
+
+            // Position near the code editor
+            const rightColumn = document.getElementById('right-column');
+            rightColumn.appendChild(popup);
+
+            // Remove on click
+            popup.addEventListener('click', () => popup.remove());
+
+            // Auto-remove after 5 seconds
+            setTimeout(() => {
+                if (popup.parentNode) popup.remove();
+            }, 5000);
+        }
+
+        runExample() {
+            // Allow restarting during overlay cooldown. Note we MUST exit
+            // EXAMPLE_RUNNING here, otherwise the phase guard below blocks the
+            // fresh sim from starting.
+            const wasInCooldown = !!this.exampleOverlayTimer;
+            if (this.exampleOverlayTimer) {
+                clearTimeout(this.exampleOverlayTimer);
+                this.exampleOverlayTimer = null;
+                this.hideOutcomeOverlay();
+                this.resetSimulation();
+                this.exampleSim = null;
+                this._exampleOutcome = undefined;
+            }
+            if (this._exampleEnableTimer) {
+                clearTimeout(this._exampleEnableTimer);
+                this._exampleEnableTimer = null;
+            }
+
+            if (this.phase === 'EXAMPLE_RUNNING' && !wasInCooldown) return;
+
+            const exampleBtn = document.getElementById('example-btn');
+
+            // After submission, replay the branching animation (unless branching is disabled)
+            if (this.betLocked && this.animatedBranchingView && !this.level.dgpResult?.disableBranching) {
+                if (this._branchingResetTimer) {
+                    clearTimeout(this._branchingResetTimer);
+                    this._branchingResetTimer = null;
+                }
+                exampleBtn.disabled = true;
+                const canvasArea = document.getElementById('branching-canvas-area');
+                this.initAnimatedBranchingView(canvasArea);
+                this.setPhase('BRANCHING');
+                this.startBranchingCompletionCheck();
+                return;
+            }
+
+            // Before submission: run a single example simulation
+            exampleBtn.disabled = true;
+
+            // Create a fresh simulation with a new random seed each time
+            const simConfig = {...(this.level.simulation || {})};
+            simConfig.seed = Math.floor(Math.random() * 2147483647);
+            this.simulation = new Simulation(this.level, simConfig);
+            this.simulation.resolveReferences();
+            this.exampleSim = this.simulation;
+            this.exampleStartTime = performance.now();
+            this._exampleOutcome = undefined;
+
+            this.setPhase('EXAMPLE_RUNNING');
+        }
+
+        startBranchingCompletionCheck() {
+            const exampleBtn = document.getElementById('example-btn');
+
+            const checkComplete = () => {
+                if (this.animatedBranchingView && this.animatedBranchingView.isComplete()) {
+                    // Animation complete - enable the button
+                    exampleBtn.disabled = false;
+
+                    // For "dist" mode, refresh the ground-truth lines after the
+                    // animation has determined which observation point received the ball.
+                    if (this.predictionType === 'dist' && this.bettingInterface) {
+                        this.bettingInterface.setGroundTruth(this._truthArrayForBetting());
+                    }
+
+                    // After 3 seconds, reset to initial frame (ready for re-animation).
+                    // Skip reset if user has zoomed/panned — they're inspecting the result.
+                    this._branchingResetTimer = setTimeout(() => {
+                        this._branchingResetTimer = null;
+                        if (this.animatedBranchingView && !exampleBtn.disabled) {
+                            const view = this.animatedBranchingView;
+                            const isDefaultView = Math.abs(view.zoom - 1.0) < 0.001
+                                && Math.abs(view.offsetX) < 0.5
+                                && Math.abs(view.offsetY) < 0.5;
+                            if (!isDefaultView) return;  // user is inspecting — don't reset
+                            // Re-init the view and stay in BRANCHING phase so 0x can pause
+                            // the auto-replayed cycle (was BET_SUBMITTED, which made setSpeed(0)
+                            // a no-op since the pause guard only matches EXAMPLE_RUNNING|BRANCHING).
+                            const canvasArea = document.getElementById('branching-canvas-area');
+                            this.initAnimatedBranchingView(canvasArea);
+                            this.setPhase('BRANCHING');
+                            // Re-arm the completion check so the loop continues indefinitely
+                            this.startBranchingCompletionCheck();
+                        }
+                    }, 3000);
+                } else {
+                    // Check again in 500ms
+                    setTimeout(checkComplete, 500);
+                }
+            };
+
+            // Start checking after a short delay
+            setTimeout(checkComplete, 500);
+        }
+
+        getSimulationOutcome() {
+            if (this.predictionType === 'reaches') {
+                const targetLabel = this.level.dgpResult?.prediction?.target;
+                const targetComp = this.simulation.components.find(c =>
+                    c.type === 'observation' &&
+                    (c.params?.label === targetLabel || c.id === targetLabel || c.params?.isPredictionTarget)
+                );
+                if (targetComp) {
+                    const count = (targetComp.observedBalls?.length || 0) + (targetComp.observations?.length || 0);
+                    return count > 0 ? 'yes' : 'no';
+                }
+            }
+            return null;
+        }
+
+        showOutcomeOverlay(outcome) {
+            const canvas = this.canvas;
+            const ctx = canvas.getContext('2d');
+
+            // Draw semi-transparent overlay
+            ctx.save();
+            if (outcome === 'yes') {
+                ctx.fillStyle = 'rgba(76, 175, 80, 0.35)';  // Green
+            } else {
+                ctx.fillStyle = 'rgba(244, 67, 54, 0.35)';  // Red
+            }
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.restore();
+        }
+
+        hideOutcomeOverlay() {
+            // Just re-render the frame without overlay
+            this.renderFrame();
+        }
+
+        resetSimulation() {
+            // Re-create simulation from level data
+            const simConfig = {...(this.level.simulation || {})};
+            delete simConfig.seed;
+            this.simulation = new Simulation(this.level, simConfig);
+            this.simulation.resolveReferences();
+            this.renderFrame();
+        }
+
+        evaluateDSL(script) {
+            // Try new probabilistic DSL first
+            try {
+                const ast = parseDSL(script);
+                const interpreter = new DSLInterpreter();
+                const result = interpreter.execute(ast);
+
+                if (result.errors.length > 0) {
+                    throw new Error(result.errors[0].message);
+                }
+
+                if (result.returnValue) {
+                    // Convert Distribution to object for compatibility
+                    return result.returnValue.toObject();
+                }
+
+                return null;
+            } catch (e) {
+                // If it's not valid new DSL syntax, try legacy JavaScript eval
+                // This provides backwards compatibility
+                if (script.includes('const ') || script.includes('let ') || script.includes('var ') ||
+                    script.includes('Math.') || script.includes('binomial(')) {
+                    const wrappedScript = `
+                        (function() {
+                            ${script}
+                        })()
+                    `;
+                    try {
+                        const result = eval(wrappedScript);
+                        return result;
+                    } catch (evalError) {
+                        throw new Error('DSL error: ' + evalError.message);
+                    }
+                }
+                throw new Error('DSL error: ' + e.message);
+            }
+        }
+
+        updateDistributionFromDSL(result) {
+            // Compute newDist[bucketIndex] = probability based on result.
+            const numBuckets = this.bucketConfig.length;
+            const newDist = new Array(numBuckets).fill(0);
+            let isNormalized = true;
+
+            if (typeof result === 'number') {
+                if (numBuckets === 2) {
+                    newDist[0] = result;
+                    newDist[1] = 1 - result;
+                }
+            } else if (typeof result === 'object' && result !== null) {
+                // 'dist' mode: result keys may be stringified arrays like "1,0,0".
+                const keys = Object.keys(result);
+                const isArrayDistribution = this.predictionType === 'dist' &&
+                    keys.length > 0 && keys.some(k => k.includes(',') || (k.startsWith('[') && k.endsWith(']')));
+
+                if (isArrayDistribution) {
+                    for (const [key, prob] of Object.entries(result)) {
+                        let arr;
+                        try {
+                            arr = key.startsWith('[')
+                                ? JSON.parse(key)
+                                : key.split(',').map(s => parseFloat(s.trim()));
+                        } catch (e) {
+                            console.warn('Could not parse array key:', key);
+                            continue;
+                        }
+                        for (let i = 0; i < Math.min(arr.length, numBuckets); i++) {
+                            if (arr[i] >= 1) newDist[i] += prob;
+                        }
+                    }
+                    const sum = newDist.reduce((a, b) => a + b, 0);
+                    isNormalized = Math.abs(sum - 1.0) < 0.001;
+                } else {
+                    let total = 0;
+                    this.bucketConfig.forEach((bucket, i) => {
+                        let prob = 0;
+                        if (result.hasOwnProperty(bucket.label)) {
+                            prob = result[bucket.label];
+                        } else if (bucket.min !== undefined && bucket.max !== undefined) {
+                            if (bucket.max === null) {
+                                throw new Error(`Bucket ${i} has null max. Infinity doesn't survive JSON serialization - fix bucket config loading.`);
+                            }
+                            const maxVal = Math.min(bucket.max, 100);
+                            for (let v = bucket.min; v <= maxVal; v++) {
+                                if (result.hasOwnProperty(v)) prob += result[v];
+                            }
+                        } else if (result.hasOwnProperty(i)) {
+                            prob = result[i];
+                        }
+                        newDist[i] = prob;
+                        total += prob;
+                    });
+                    if (total > 0) {
+                        for (let i = 0; i < numBuckets; i++) newDist[i] /= total;
+                    }
+                }
+            }
+
+            // Push the result into BettingInterface. In binary mode the UI has
+            // a single column = P(top bucket), so we pass just that.
+            const probArr = this.isBinaryMode() ? [newDist[0]] : newDist;
+            if (this.bettingInterface) {
+                this.bettingInterface.setProbabilities(probArr, isNormalized);
+            }
+        }
+
+        calculateScore() {
+            const trueBucketProbs = this.getTrueBucketProbs();
+            let maxError = 0;
+            const seen = new Set();
+            for (const i in trueBucketProbs) {
+                seen.add(i);
+                const err = Math.abs((trueBucketProbs[i] || 0) - (this.playerDistribution[i] || 0));
+                if (err > maxError) maxError = err;
+            }
+            // Buckets the player put mass on but truth has 0
+            for (const i in this.playerDistribution) {
+                if (seen.has(i)) continue;
+                const err = Math.abs(this.playerDistribution[i] || 0);
+                if (err > maxError) maxError = err;
+            }
+            return maxError;
+        }
+
+        getStars(maxError) {
+            // 3-star scale on max per-bucket absolute error: 6% / 11% / 21%
+            if (maxError <= 0.06) return { count: 3 };
+            if (maxError <= 0.11) return { count: 2 };
+            if (maxError <= 0.21) return { count: 1 };
+            return { count: 0 };
+        }
+
+        // ========== State Machine ==========
+
+        /**
+         * Phases:
+         *   IDLE              — Factory shown but not running. Player can bet and edit DSL.
+         *   EXAMPLE_RUNNING   — Example simulation running (after "Show example").
+         *   PAUSED            — User pressed 0x during EXAMPLE_RUNNING or BRANCHING.
+         *   BET_SUBMITTED     — Player submitted their bet.
+         *   BRANCHING         — Post-submission branching animation is playing.
+         */
+        setPhase(newPhase) {
+            this.phase = newPhase;
+
+            // Status text — matches Tehdas: anything not running/paused → "Done".
+            const statusText = document.getElementById('status-text');
+            if (statusText) {
+                if (newPhase === 'EXAMPLE_RUNNING' || newPhase === 'BRANCHING') {
+                    statusText.textContent = 'Factory running...';
+                } else if (newPhase === 'PAUSED' || newPhase === 'IDLE') {
+                    statusText.textContent = 'Stopped';
+                } else {
+                    // EXAMPLE_COMPLETE, BET_SUBMITTED, anything else.
+                    statusText.textContent = 'Done';
+                }
+                statusText.style.color = '#333';
+            }
+
+            // Speed button highlighting: show 0x as active when paused
+            const activeSpeed = (newPhase === 'PAUSED') ? 0 : this.speed;
+            document.querySelectorAll('.speed-btn').forEach(btn => {
+                const btnSpeed = parseInt(btn.getAttribute('data-speed'));
+                btn.classList.toggle('active', btnSpeed === activeSpeed);
+            });
+
+            // Reset timing on phases that advance time (avoids deltaTime spikes)
+            if (newPhase === 'EXAMPLE_RUNNING' || newPhase === 'BRANCHING') {
+                this.lastTime = performance.now();
+            }
+
+            // Update animated branching view speed
+            if (this.animatedBranchingView) {
+                const effectiveSpeed = (newPhase === 'PAUSED' || newPhase === 'IDLE' || newPhase === 'BET_SUBMITTED') ? 0 : this.speed;
+                this.animatedBranchingView.setSpeed(effectiveSpeed);
+
+                // When resuming BRANCHING from PAUSED, restart completion check
+                if (newPhase === 'BRANCHING' && this.betLocked && !this.animatedBranchingView.isComplete()) {
+                    const exampleBtn = document.getElementById('example-btn');
+                    if (this._branchingResetTimer) {
+                        clearTimeout(this._branchingResetTimer);
+                        this._branchingResetTimer = null;
+                    }
+                    exampleBtn.disabled = true;
+                    this.startBranchingCompletionCheck();
+                }
+            }
+        }
+
+        setSpeed(speed) {
+            if (speed === 0) {
+                // Pause — only if currently in a running phase
+                if (this.phase === 'EXAMPLE_RUNNING' || this.phase === 'BRANCHING') {
+                    this.phaseBeforePause = this.phase;
+                    this.setPhase('PAUSED');
+                }
+            } else {
+                this.speed = speed;
+                if (this.phase === 'PAUSED' && this.phaseBeforePause) {
+                    this.setPhase(this.phaseBeforePause);
+                    this.phaseBeforePause = null;
+                } else {
+                    // Update button highlighting even if phase doesn't change
+                    document.querySelectorAll('.speed-btn').forEach(btn => {
+                        const btnSpeed = parseInt(btn.getAttribute('data-speed'));
+                        btn.classList.toggle('active', btnSpeed === speed);
+                    });
+                    // Update branching view speed if active and in BRANCHING phase
+                    if (this.animatedBranchingView && this.phase === 'BRANCHING') {
+                        this.animatedBranchingView.setSpeed(speed);
+                    }
+                }
+            }
+        }
+
+        // play(), pause(), togglePlay() removed — replaced by setPhase()
+
+        ensureLoopStarted() {
+            if (!this.loopStarted) {
+                this.loopStarted = true;
+                this.lastTime = performance.now();
+                requestAnimationFrame(() => this.loop());
+            }
+        }
+
+        loop() {
+            const ANIMATION_INITIAL_WAIT = 300;
+            const currentTime = performance.now();
+            const isActive = (this.phase === 'EXAMPLE_RUNNING' || this.phase === 'BRANCHING');
+            const elapsed = Math.min(currentTime - this.lastTime, 50);
+            const deltaTime = isActive ? elapsed * this.speed : 0;
+            this.lastTime = currentTime;
+
+            if (this.phase === 'EXAMPLE_RUNNING' && this.exampleSim) {
+                // Check if we're still in the initial wait period
+                const timeSinceStart = currentTime - this.exampleStartTime;
+                const inInitialWait = timeSinceStart < ANIMATION_INITIAL_WAIT;
+
+                if (!this.exampleSim.running) {
+                    // Schedule cleanup exactly once per completed sim. Without this,
+                    // the 60Hz loop queues ~120 cleanup timeouts in 2s and a later
+                    // example sim gets killed mid-run by leftover timeouts.
+                    if (this._exampleOutcome === undefined) {
+                        const outcome = this.getSimulationOutcome();
+                        this._exampleOutcome = outcome;  // null is valid (no overlay)
+                        // Sim has finished; show "Done" (matches Tehdas SIM_COMPLETE).
+                        this.setPhase('EXAMPLE_COMPLETE');
+                        const exampleBtn = document.getElementById('example-btn');
+                        this.exampleOverlayTimer = setTimeout(() => {
+                            this.exampleOverlayTimer = null;
+                            this.hideOutcomeOverlay();
+                            this.resetSimulation();
+                            this.exampleSim = null;
+                            this._exampleOutcome = undefined;
+                            this.setPhase('IDLE');
+                        }, 2000);
+                        this._exampleEnableTimer = setTimeout(() => {
+                            exampleBtn.disabled = false;
+                            this._exampleEnableTimer = null;
+                        }, 750);
+                    }
+                    // Redraw frame + overlay every frame so the overlay stays visible.
+                    // (renderFrame clears the canvas, so the overlay must be reapplied.)
+                    this.renderFrame();
+                    if (this._exampleOutcome !== null && this._exampleOutcome !== undefined) {
+                        this.showOutcomeOverlay(this._exampleOutcome);
+                    }
+                } else if (!inInitialWait) {
+                    this.exampleSim.tick(deltaTime);
+                    this.renderFrame();
+                } else {
+                    this.renderFrame();
+                }
+            } else if (this.phase === 'BRANCHING') {
+                // Branching animation is driven by animatedBranchingView's own rAF
+                // We just render the factory frame (which is hidden, but keep loop alive)
+                this.renderFrame();
+            } else {
+                // IDLE, PAUSED, BET_SUBMITTED: still render for hover highlights etc.
+                this.renderFrame();
+                // Preserve outcome overlay if we're paused during cooldown (otherwise
+                // renderFrame clears it).
+                if (this._exampleOutcome !== null && this._exampleOutcome !== undefined) {
+                    this.showOutcomeOverlay(this._exampleOutcome);
+                }
+            }
+
+            requestAnimationFrame(() => this.loop());
+        }
+
+        renderFrame() {
+            const ctx = this.canvas.getContext('2d');
+            ctx.fillStyle = '#f5f5f5';
+            ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
+            if (this.renderer && this.simulation) {
+                this.renderer.render(this.simulation, this.simulation.getTime());
+            }
+
+            // Draw cell highlight if active
+            this.drawCellHighlight(ctx);
+        }
+
+        /**
+         * Draw a highlight overlay on a grid cell
+         */
+        drawCellHighlight(ctx) {
+            if (!this.highlightedCell || !this.renderer) return;
+
+            const { gridX, gridY, half } = this.highlightedCell;
+            const cellSize = this.renderer.gridSize;
+
+            const x = gridX * cellSize;
+            const y = gridY * cellSize;
+
+            ctx.save();
+            ctx.fillStyle = 'rgba(255, 255, 0, 0.35)';  // Yellow highlight
+
+            if (half === 'left') {
+                ctx.fillRect(x, y, cellSize / 2, cellSize);
+            } else if (half === 'right') {
+                ctx.fillRect(x + cellSize / 2, y, cellSize / 2, cellSize);
+            } else if (half === 'top') {
+                ctx.fillRect(x, y, cellSize, cellSize / 2);
+            } else if (half === 'bottom') {
+                ctx.fillRect(x, y + cellSize / 2, cellSize, cellSize / 2);
+            } else {
+                ctx.fillRect(x, y, cellSize, cellSize);
+            }
+
+            // Draw border
+            ctx.strokeStyle = 'rgba(255, 200, 0, 0.8)';
+            ctx.lineWidth = 2;
+            if (half === 'left') {
+                ctx.strokeRect(x + 1, y + 1, cellSize / 2 - 2, cellSize - 2);
+            } else if (half === 'right') {
+                ctx.strokeRect(x + cellSize / 2 + 1, y + 1, cellSize / 2 - 2, cellSize - 2);
+            } else if (half === 'top') {
+                ctx.strokeRect(x + 1, y + 1, cellSize - 2, cellSize / 2 - 2);
+            } else if (half === 'bottom') {
+                ctx.strokeRect(x + 1, y + cellSize / 2 + 1, cellSize - 2, cellSize / 2 - 2);
+            } else {
+                ctx.strokeRect(x + 1, y + 1, cellSize - 2, cellSize - 2);
+            }
+
+            ctx.restore();
+        }
+
+        /**
+         * Request a redraw to update the cell highlight
+         */
+        requestHighlightRedraw() {
+            // Redraw main canvas
+            if (this.phase !== 'EXAMPLE_RUNNING') {
+                this.renderFrame();
+            }
+
+            // Update branching view if active
+            if (this.animatedBranchingView) {
+                this.animatedBranchingView.setHighlightedCell(this.highlightedCell);
+            }
+        }
+
+        // ========== Branching Worlds Visualization ==========
+
+        showBranchingVisualization() {
+            console.log('[Branching] Building animated visualization...');
+
+            // Hide factory canvas, show branching container
+            document.getElementById('canvas-area').style.display = 'none';
+            const branchingContainer = document.getElementById('branching-container');
+            branchingContainer.classList.add('visible');
+
+            // Get the canvas area for the branching visualization
+            const canvasArea = document.getElementById('branching-canvas-area');
+
+            // Wait for browser layout before initializing
+            requestAnimationFrame(() => {
+                this.initAnimatedBranchingView(canvasArea);
+                this.setPhase('BRANCHING');
+                // Start checking for completion to enable "Replay" button
+                this.startBranchingCompletionCheck();
+            });
+        }
+
+        initAnimatedBranchingView(canvasArea) {
+            try {
+                // Clean up any existing view
+                if (this.animatedBranchingView) {
+                    this.animatedBranchingView.destroy();
+                }
+
+                // Create the animated branching view
+                this.animatedBranchingView = new AnimatedBranchingView(
+                    canvasArea,
+                    this.level,
+                    {
+                        splitAnimationDuration: 400
+                    }
+                );
+
+                // Initialize with prediction info
+                // Use the predictionType that was set during level load
+                const predictionTarget = this.level.dgpResult?.prediction?.target || null;
+
+                this.animatedBranchingView.initialize(this.predictionType, predictionTarget);
+
+                // Start the animation at the current speed
+                this.animatedBranchingView.setSpeed(this.speed);
+
+                console.log('[Branching] Animated view initialized with type:', this.predictionType);
+
+            } catch (error) {
+                console.error('[Branching] Error initializing animated view:', error);
+            }
+        }
+
+        hideBranchingVisualization() {
+            // Hide branching, show factory canvas
+            document.getElementById('canvas-area').style.display = 'flex';
+            document.getElementById('branching-container').classList.remove('visible');
+
+            // Clean up animated view
+            if (this.animatedBranchingView) {
+                this.animatedBranchingView.destroy();
+                this.animatedBranchingView = null;
+            }
+        }
+    }
+
+    let app;
+    window.addEventListener('DOMContentLoaded', () => {
+        SeedManager.initialize();
+        if (localStorage.getItem('colorblindMode') === '1') {
+            window.BallColors.colorblindMode = true;
+        }
+        app = new PlayApp();
+        window.app = app;
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,198 @@
+/**
+ * Bayesian Factory v2 - Styles
+ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #f5f5f5;
+  color: #333;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+header {
+  background: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #666;
+}
+
+.main-content {
+  display: flex;
+  gap: 20px;
+}
+
+.game-area {
+  flex: 1;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+canvas {
+  display: block;
+}
+
+.sidebar {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.panel {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.panel h2 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #eee;
+}
+
+.controls {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+button {
+  flex: 1;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  background: #fff;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+button:hover {
+  background: #f5f5f5;
+  border-color: #999;
+}
+
+button:active {
+  background: #eee;
+}
+
+button.primary {
+  background: #1E88E5;
+  color: #fff;
+  border-color: #1E88E5;
+}
+
+button.primary:hover {
+  background: #1976D2;
+  border-color: #1976D2;
+}
+
+.hypothesis-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hypothesis-item {
+  padding: 10px;
+  background: #f9f9f9;
+  border-radius: 4px;
+  border: 2px solid #eee;
+  transition: all 0.2s;
+}
+
+.hypothesis-item.top {
+  border-color: #1E88E5;
+  background: #E3F2FD;
+}
+
+.hypothesis-label {
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.hypothesis-probability {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1E88E5;
+}
+
+.probability-bar {
+  height: 4px;
+  background: #ddd;
+  border-radius: 2px;
+  margin-top: 6px;
+  overflow: hidden;
+}
+
+.probability-fill {
+  height: 100%;
+  background: #1E88E5;
+  transition: width 0.3s;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 8px;
+  background: #f9f9f9;
+  border-radius: 4px;
+}
+
+.stat-label {
+  font-size: 11px;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.stat-value {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+}
+
+.info {
+  font-size: 12px;
+  color: #666;
+  padding: 8px;
+  background: #f9f9f9;
+  border-radius: 4px;
+  margin-top: 12px;
+}

@@ -1,0 +1,1584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play - Bayesian Factory: Updating</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            overflow: hidden;
+        }
+        .game-container {
+            display: flex;
+            flex-direction: row;
+            height: 100vh;
+            width: 100vw;
+        }
+        .left-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+        .canvas-area {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            overflow: visible;
+            position: relative;
+        }
+        .right-panel {
+            width: 280px;
+            background: #fff;
+            border-left: 2px solid #000;
+            padding: 20px;
+            overflow-y: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .panel-section {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .hypothesis-sacks {
+            display: flex;
+            flex-direction: row;
+            gap: 12px;
+            align-items: center;
+            justify-content: center;
+        }
+        .sack-canvas {
+            display: block;
+        }
+        .speed-controls {
+            display: flex;
+            gap: 8px;
+        }
+        .speed-btn {
+            flex: 1;
+            padding: 8px;
+            background: #fff;
+            border: 2px solid #ddd;
+            font-size: 13px;
+            cursor: pointer;
+            font-family: inherit;
+        }
+        .speed-btn.active {
+            background: #000;
+            color: #fff;
+            border-color: #000;
+        }
+        .speed-btn:hover:not(.active) {
+            background: #f0f0f0;
+        }
+        .status-text {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            padding: 12px;
+        }
+        .ball-count {
+            font-size: 18px;
+            font-weight: 500;
+            color: #333;
+            text-align: center;
+        }
+        .loss-display {
+            font-size: 24px;
+            font-weight: 500;
+            color: #d4af37;
+            text-align: center;
+            padding: 10px;
+            background: #fff;
+            border: 2px solid #000;
+            border-radius: 2px;
+            visibility: hidden;
+        }
+        .takaisin-btn {
+            padding: 8px 16px;
+            background: #fff;
+            border: 2px solid #000;
+            font-size: 13px;
+            cursor: pointer;
+            font-family: inherit;
+            width: 100%;
+            height: 40px;
+            flex: 0 0 auto;
+        }
+        .takaisin-btn:hover {
+            background: #f0f0f0;
+        }
+        #factory-canvas {
+            outline: 2px solid #ddd;
+            display: block;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        #animation-overlay {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.50);
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 100;
+            display: none;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        #animation-canvas {
+            display: block;
+        }
+        .betting-panel {
+            display: none; /* Hidden - betting interface now in right panel */
+        }
+        #betting-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+        .color-dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 3px;
+            border: 1px solid #999;
+        }
+
+        /* Betting Interface Styles */
+        .betting-single-axis-wrapper {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        .betting-single-axis-container {
+            width: 90%;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .betting-hypothesis-indicator {
+            font-size: 13px;
+            white-space: nowrap;
+        }
+        .betting-single-axis {
+            flex: 1;
+            height: 40px;
+            background: #fff;
+            border: 2px solid #000;
+            border-radius: 0;
+            box-sizing: border-box;
+        }
+        .betting-loss-inline {
+            font-size: 13px;
+            color: #333;
+        }
+        .betting-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .betting-label {
+            width: 120px;
+            font-size: 14px;
+            color: #333;
+            flex-shrink: 0;
+        }
+        .betting-axis {
+            background: #fff;
+            border: 2px solid #000;
+            border-radius: 0;
+            box-sizing: border-box;
+        }
+        .betting-divider {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #000;
+        }
+        .betting-divider-label {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 11px;
+            color: #333;
+        }
+        .betting-percent-label {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 11px;
+            color: #333;
+            white-space: nowrap;
+            z-index: 5;
+        }
+        .betting-odds-label {
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 11px;
+            color: #666;
+            white-space: nowrap;
+            z-index: 5;
+        }
+        .betting-user-line {
+            position: absolute;
+            top: -5px;
+            bottom: -5px;
+            width: 5px;
+            background: #000;
+            z-index: 10;
+        }
+        .betting-user-label {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+            font-weight: 600;
+            color: #000;
+            white-space: nowrap;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2px 4px;
+            border-radius: 2px;
+            z-index: 15;
+        }
+        .betting-truth-line {
+            position: absolute;
+            top: -5px;
+            bottom: -5px;
+            width: 5px;
+            background: #000;
+            z-index: 11;
+        }
+        .betting-truth-label {
+            position: absolute;
+            top: -45px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+            font-weight: 600;
+            color: #000;
+            white-space: nowrap;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2px 4px;
+            border-radius: 2px;
+            z-index: 16;
+        }
+        .betting-loss {
+            margin-top: 20px;
+            padding: 10px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <div class="left-content">
+            <div class="canvas-area">
+                <canvas id="factory-canvas" width="640" height="512"></canvas>
+                <div id="animation-overlay">
+                    <canvas id="animation-canvas"></canvas>
+                </div>
+            </div>
+            <div class="betting-panel">
+                <div id="betting-container">
+                    <!-- Betting interface will be rendered here -->
+                </div>
+            </div>
+        </div>
+        <div class="right-panel">
+            <!-- Status text -->
+            <div class="panel-section">
+                <div id="status-text" class="status-text">Factory running...</div>
+            </div>
+
+            <!-- Ball count -->
+            <div class="panel-section">
+                <div id="ball-count" class="ball-count">0 / 0</div>
+            </div>
+
+            <!-- Loss display -->
+            <div class="panel-section">
+                <div id="loss-display" class="loss-display">☆☆☆</div>
+            </div>
+
+            <!-- Speed controls -->
+            <div class="panel-section">
+                <div class="speed-controls">
+                    <button class="speed-btn replay-btn" onclick="window.testApp.replayAnimation()">↻</button>
+                    <button class="speed-btn" data-speed="0" onclick="window.testApp.setSpeed(0)">0x</button>
+                    <button class="speed-btn active" data-speed="1" onclick="window.testApp.setSpeed(1)">1x</button>
+                    <button class="speed-btn" data-speed="3" onclick="window.testApp.setSpeed(3)">3x</button>
+                    <button class="speed-btn" data-speed="9" onclick="window.testApp.setSpeed(9)">9x</button>
+                </div>
+            </div>
+
+            <!-- Grid betting interface (appears below speed controls in multi-hypothesis mode) -->
+            <div class="panel-section">
+                <div id="hypothesis-sacks" class="hypothesis-sacks">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Spacer to push button to bottom -->
+            <div style="flex: 1;"></div>
+
+            <!-- Back button -->
+            <button class="takaisin-btn" id="back-button">Back</button>
+        </div>
+    </div>
+
+    <!-- Level Registry -->
+    <script src="levels/level-registry.js"></script>
+
+    <!-- Configuration (shared library) -->
+    <script src="../probability-games-common/config/colors.js"></script>
+    <script src="../probability-games-common/config/sack-renderer.js"></script>
+
+    <!-- Core System (shared library) -->
+    <script src="../probability-games-common/core/rng.js"></script>
+    <script src="../probability-games-common/core/trajectory.js"></script>
+    <script src="../probability-games-common/core/ball.js"></script>
+    <script src="../probability-games-common/core/component-registry.js"></script>
+    <script src="../probability-games-common/core/simulation.js"></script>
+    <script src="../probability-games-common/core/renderer.js"></script>
+    <script src="../probability-games-common/core/coordinate-system.js"></script>
+
+    <!-- Components (shared library) -->
+    <script src="../probability-games-common/components/sack.js"></script>
+    <script src="../probability-games-common/components/conveyor.js"></script>
+    <script src="../probability-games-common/components/conveyor-turn.js"></script>
+    <script src="../probability-games-common/components/arm.js"></script>
+    <script src="../probability-games-common/components/shuffler.js"></script>
+    <script src="../probability-games-common/components/splitter.js"></script>
+    <script src="../probability-games-common/components/observation.js"></script>
+    <script src="../probability-games-common/components/black-pit.js"></script>
+    <script src="../probability-games-common/components/duplicator.js"></script>
+    <script src="../probability-games-common/components/filter.js"></script>
+    <script src="../probability-games-common/components/merger.js"></script>
+
+    <!-- Bayesian Inference (game-specific) -->
+    <script src="bayesian/hypothesis-builder.js"></script>
+    <!-- OLD VERSION (v1) - commented out, using v2 now -->
+    <!-- <script src="bayesian/hypothesis-playback.js"></script> -->
+    <!-- NEW VERSION (v2) - shared DSL core with immediate select fix -->
+    <script src="bayesian/hypothesis-dsl-core.js"></script>
+    <script src="bayesian/hypothesis-playback-v2.js"></script>
+    <script src="bayesian/inference.js"></script>
+    <!-- UI (shared library) -->
+    <script src="../probability-games-common/ui/animation-player.js"></script>
+    <script src="../probability-games-common/ui/betting-interface.js"></script>
+
+    <!-- Test Application -->
+    <script>
+    // Dev tool configuration - set to true to enable "See correct" button
+    const DEV_SHOW_OPTIMAL = true;
+
+    class TestApp {
+      constructor() {
+        this.canvas = document.getElementById('factory-canvas');
+        this.level = null;
+        this.simulation = null;
+        this.renderer = null;
+        this.animationPlayer = null;
+        this.bettingInterface = null;
+        this.speed = 1;              // User's preferred speed (1, 3, or 9). Never 0.
+        this.phase = null;           // Set by setPhase(). See phase diagram above.
+        this.phaseBeforePause = null; // To know what to resume to from PAUSED.
+        this.lastTime = 0;
+        this.gameStartTime = null;
+        this.levelId = null;
+        this.replayState = null;
+        this.hasShownOptimal = false;
+        this.loopStarted = false;    // Ensure animation loop is started only once.
+
+        this.setupVisibilityHandler();
+        this.loadTestLevel();
+      }
+
+      setupVisibilityHandler() {
+        document.addEventListener('visibilitychange', () => {
+          if (document.hidden) {
+            if (this.phase === 'RUNNING' || this.phase === 'REPLAY' || this.phase === 'INTRO_ANIMATION') {
+              this.phaseBeforePause = this.phase;
+              this.setPhase('PAUSED');
+            }
+          } else {
+            // Reset timing to avoid deltaTime spike; don't auto-resume.
+            this.lastTime = performance.now();
+          }
+        });
+      }
+
+      async loadTestLevel() {
+        // Check URL parameters for level
+        const urlParams = new URLSearchParams(window.location.search);
+
+        // URL format: level=X-Y (group X, position Y, both 1-based)
+        const levelParam = urlParams.get('level');
+        if (levelParam) {
+          const match = levelParam.match(/^(\d+)-(\d+)$/);
+          if (match) {
+            const groupNumber = parseInt(match[1]);
+            const position = parseInt(match[2]);
+            await this.loadLevelByPosition(groupNumber, position);
+            return;
+          }
+        }
+
+        // Legacy format: level=level-X (treat the same param as a registry id when not X-Y)
+        if (levelParam) {
+          await this.loadLevelFromRegistry(levelParam);
+          return;
+        }
+
+        // Fallback to localStorage (editor testing)
+        this.loadLevelFromLocalStorage();
+      }
+
+      async loadLevelByPosition(groupNumber, position) {
+        try {
+          const level = LevelRegistry.getLevelByPosition(groupNumber, position);
+          if (!level) {
+            alert(`Level ${groupNumber}-${position} not found.`);
+            return;
+          }
+
+          this.level = level;
+          this.levelId = level.meta.id;  // Store level ID for history tracking
+          this.gameStartTime = Date.now();  // Start tracking time
+          document.title = `Level ${groupNumber}.${position} - Bayesian Factory`;
+
+          this.processLevelAndInit();
+        } catch (error) {
+          alert('Error loading level: ' + error.message);
+          console.error(error);
+        }
+      }
+
+      async loadLevelFromRegistry(levelId) {
+        try {
+          const level = LevelRegistry.getLevel(levelId);
+          if (!level) {
+            alert(`Level "${levelId}" not found.`);
+            return;
+          }
+
+          this.level = level;
+          this.levelId = levelId;  // Store level ID for history tracking
+          this.gameStartTime = Date.now();  // Start tracking time
+          document.title = `${this.level.meta.title} - Bayesian Factory`;
+
+          this.processLevelAndInit();
+        } catch (error) {
+          alert('Error loading level: ' + error.message);
+          console.error(error);
+        }
+      }
+
+      loadLevelFromLocalStorage() {
+        const levelJson = localStorage.getItem('testLevel');
+        if (!levelJson) {
+          alert('No level found. Please select a level or use the editor to create one.');
+          return;
+        }
+
+        try {
+          this.level = JSON.parse(levelJson);
+          this.processLevelAndInit();
+        } catch (error) {
+          alert('Error loading test level: ' + error.message);
+          console.error(error);
+        }
+      }
+
+      processLevelAndInit() {
+        try {
+
+          // Process hypothesis script if present
+          if (this.level.hypothesisScript) {
+            const result = executeHypothesisScript(this.level.hypothesisScript);
+
+            // Build mapping from export names (sacks) and variable names (arms) to component IDs
+            const exportNameToComponentId = new Map();
+            this.level.components.forEach(comp => {
+              if (comp.type === 'sack') {
+                const exportName = comp.params.linkedTemplate || comp.id;
+                exportNameToComponentId.set(exportName, comp.id);
+              } else if (comp.type === 'arm') {
+                // Arms use variable names (e.g., "arm1", "arm2")
+                const varName = comp.params.linkedVariable || comp.id;
+                exportNameToComponentId.set(varName, comp.id);
+              }
+            });
+
+            // Also add arms from script result (for auto-generated arms without placed components)
+            if (result.arms) {
+              Object.entries(result.arms).forEach(([varName, armInfo]) => {
+                // If no component exists for this arm variable, map to the arm ID from script
+                if (!exportNameToComponentId.has(varName)) {
+                  exportNameToComponentId.set(varName, armInfo.id);
+                }
+              });
+            }
+
+            // Assign colors to lists and add to sack components.
+            // Avoid red/green/blue (ball colors). Caramel + hot pink + cyan + lemon yellow.
+            const listColors = [
+              '#D4A574',  // Caramel/tan (the main one)
+              '#F15BB5',  // Hot pink / magenta
+              '#22D3EE',  // Vibrant cyan (lighter than ball blue)
+              '#FFE066'   // Lemon yellow
+            ];
+
+            // Create list color map
+            const listIdArray = Array.from(result.lists.keys());
+            const listColorMap = new Map();
+            listIdArray.forEach((listId, index) => {
+              listColorMap.set(listId, listColors[index % listColors.length]);
+            });
+
+            // Add listId and color to each sack component
+            result.selections.forEach((selection, exportName) => {
+              const componentId = exportNameToComponentId.get(exportName);
+              if (componentId) {
+                const comp = this.level.components.find(c => c.id === componentId);
+                if (comp) {
+                  comp.params.listId = selection.listId;
+                  comp.params.listColor = listColorMap.get(selection.listId);
+                }
+              }
+            });
+
+            // Transform hypotheses: replace export names with component IDs
+            const transformedHypotheses = result.hypotheses.map(h => {
+              const newAssignments = {};
+              Object.entries(h.componentAssignments).forEach(([exportName, distribution]) => {
+                const componentId = exportNameToComponentId.get(exportName);
+                if (!componentId) {
+                  throw new Error(`Export name "${exportName}" from script does not match any sack component. Available sacks: ${Array.from(exportNameToComponentId.entries()).map(([e, c]) => `${e} -> ${c}`).join(', ')}`);
+                }
+                newAssignments[componentId] = distribution;
+              });
+
+              return {
+                id: h.id,
+                componentAssignments: newAssignments,
+                probability: h.probability
+              };
+            });
+
+            // Map betting sack export name to component ID
+            let bettingSackComponentId = null;
+            if (result.bettingSack) {
+              bettingSackComponentId = exportNameToComponentId.get(result.bettingSack);
+              if (!bettingSackComponentId) {
+                throw new Error(`Betting sack "${result.bettingSack}" does not match any sack component`);
+              }
+            }
+
+            // Use sampling schedule from script result if not already in level
+            if (this.level.samplingSchedule) {
+            }
+
+            if (!this.level.samplingSchedule && result.samplingSchedule) {
+              this.level.samplingSchedule = result.samplingSchedule;
+            }
+
+
+            // Transform sampling schedule: replace template IDs/variable names with component IDs
+            if (this.level.samplingSchedule) {
+              this.level.samplingSchedule = this.level.samplingSchedule.map((entry, index) => {
+
+                // Handle both old format (armId) and new format (sackId)
+                const varName = entry.sackId || entry.armId || entry.armVarName;
+
+                const componentId = exportNameToComponentId.get(varName);
+                if (!componentId) {
+                  throw new Error(`Sampling schedule references unknown sack "${varName}". Available: ${Array.from(exportNameToComponentId.keys()).join(', ')}`);
+                }
+                return {sackId: componentId, time: entry.time};
+              });
+
+              // Set drawCount on arm components. Schedule entries' "sackId" can actually be
+              // an arm component ID OR a sack component ID (depends on what the DSL referenced).
+              const drawCountsById = new Map();
+              this.level.samplingSchedule.forEach(entry => {
+                drawCountsById.set(entry.sackId, (drawCountsById.get(entry.sackId) || 0) + 1);
+              });
+              const connections = this.level.connections || [];
+              this.level.components.forEach(comp => {
+                if (comp.type === 'arm') {
+                  let count = drawCountsById.get(comp.id) || 0;
+                  if (count === 0) {
+                    const inputConn = connections.find(c => c.to === comp.id);
+                    if (inputConn) count = drawCountsById.get(inputConn.from) || 0;
+                  }
+                  comp.params.drawCount = count;
+                }
+              });
+            }
+
+            // Create hypothesis space from script result
+            this.level.hypothesisSpace = {
+              type: 'permutation',
+              hypotheses: transformedHypotheses,
+              sackTemplates: result.sackTemplates,
+              animationInstructions: result.animationInstructions || [],
+              bettingSackId: bettingSackComponentId,  // Store component ID for betting
+              lists: result.lists  // Store lists to preserve template ordering
+            };
+
+            // Also store at top level for compatibility
+            this.level.sackTemplates = result.sackTemplates;
+
+          }
+
+          // Initialize betting interface BEFORE init() so right panel has correct width
+          this.initBettingInterface();
+
+          this.init();
+        } catch (error) {
+          alert('Error processing level: ' + error.message);
+          console.error(error);
+        }
+      }
+
+      init() {
+        // Calculate optimal canvas size with margins
+        // Use screen dimensions as reference to avoid shrinking when DevTools is open
+        const bottomPanelHeight = 0; // No bottom panel (betting interface in right panel now)
+        // Get actual right panel width (may have been adjusted by betting interface)
+        const rightPanel = document.querySelector('.right-panel');
+        const rightPanelWidth = rightPanel ? rightPanel.offsetWidth : 280;
+        const margin = 30; // Board margin on all sides
+
+        // Use screen dimensions as base to prevent shrinking with DevTools
+        // Fall back to window dimensions if screen is not available
+        const referenceWidth = Math.max(window.innerWidth, screen.availWidth * 0.8, 1200);
+        const referenceHeight = Math.max(window.innerHeight, screen.availHeight * 0.8, 800);
+
+        const maxWidth = referenceWidth - rightPanelWidth - margin * 2;
+        const maxHeight = referenceHeight - bottomPanelHeight - margin * 2;
+
+        // Grid size in cells
+        const gridWidth = this.level.grid.width;
+        const gridHeight = this.level.grid.height;
+
+        // Calculate cell size to maximize game board
+        const cellSize = Math.min(
+          Math.floor(maxWidth / gridWidth),
+          Math.floor(maxHeight / gridHeight)
+        );
+
+        this.cellSize = cellSize;
+        this.animationAreaHeight = cellSize * 5; // Sufficient space for arc animations
+
+        // Canvas size is ONLY the game board (no animation area)
+        this.canvas.width = gridWidth * cellSize;
+        this.canvas.height = gridHeight * cellSize;
+
+        // Sample hypothesis and assign contents to template-linked sacks
+        this.sampleAndAssignHypothesis();
+
+        // Generate seeds for replay (deterministic replay of ball colors and animations)
+        const simulationSeed = Math.floor(Math.random() * 1000000);
+        const animationShuffleSeed = Math.floor(Math.random() * 1000000);
+
+        // Store replay state (deep copy hypothesis from sampled state)
+        this.replayState = {
+          simulationSeed: simulationSeed,
+          animationShuffleSeed: animationShuffleSeed,
+          hypothesis: this.captureCurrentHypothesis()
+        };
+
+        // Use random seed for each game (override any fixed seed from level)
+        this.level.simulation.seed = simulationSeed;
+
+        // Create simulation
+        this.simulation = new Simulation(this.level, this.level.simulation);
+        this.simulation.resolveReferences();
+
+        // Mark the betting sack with a flag
+        if (this.level.hypothesisSpace && this.level.hypothesisSpace.bettingSackId) {
+          const bettingSackId = this.level.hypothesisSpace.bettingSackId;
+          const bettingSack = this.simulation.components.find(comp => comp.id === bettingSackId);
+          if (bettingSack) {
+            bettingSack.params.isBettingSack = true;
+          }
+        }
+
+        // Create renderer BEFORE animation player (it needs the renderer)
+        this.renderer = new Renderer(this.canvas);
+        this.renderer.setShowGrid(true);
+        this.renderer.gridSize = cellSize; // Override default 64
+
+        // Set up hover detection for sacks
+        this.hoveredSack = null;
+        this.canvas.addEventListener('mousemove', (e) => {
+          const rect = this.canvas.getBoundingClientRect();
+          const mouseX = e.clientX - rect.left;
+          const mouseY = e.clientY - rect.top;
+
+          // Convert to grid coordinates
+          const gridX = Math.floor(mouseX / cellSize);
+          const gridY = Math.floor(mouseY / cellSize);
+
+          // Find sack at this position
+          const sack = this.simulation.components.find(comp =>
+            comp.type === 'sack' &&
+            comp.position.x === gridX &&
+            comp.position.y === gridY
+          );
+
+          this.hoveredSack = sack || null;
+        });
+
+        this.canvas.addEventListener('mouseleave', () => {
+          this.hoveredSack = null;
+        });
+
+        // Hide sacks initially if we have animation (AFTER creating simulation)
+        const hasAnimation = this.level.hypothesisSpace &&
+                            this.level.hypothesisSpace.animationInstructions &&
+                            this.level.hypothesisSpace.animationInstructions.length > 0;
+
+        if (hasAnimation) {
+          this.simulation.components.forEach(comp => {
+            if (comp.type === 'sack') {
+              comp.params.hidden = true;
+            }
+          });
+        }
+
+        // Set up animation overlay if we have animation
+        if (hasAnimation) {
+          const overlay = document.getElementById('animation-overlay');
+          const animCanvas = document.getElementById('animation-canvas');
+
+          // Create coordinate system with fixed pixel inset (max 30px)
+          // For small cells, use 0.5 cells; for large cells, cap at 30px
+          const overlayInsetCells = Math.min(0.5, 30 / cellSize);
+          const coords = new CoordinateSystem(
+            cellSize,
+            this.canvas.width,
+            this.canvas.height,
+            overlayInsetCells
+          );
+
+          // Get overlay dimensions from coordinate system
+          const overlayDims = coords.getOverlayDimensions();
+          animCanvas.width = overlayDims.width;
+          animCanvas.height = overlayDims.height;
+
+          // Position overlay so its content area aligns with the board canvas.
+          // The overlay has a 1px border; with box-sizing: border-box the border
+          // is inside the width/height, so we expand by 1px on each side.
+          const margin = coords.overlayInsetPixels;
+          const bw = 1; // border width
+          overlay.style.left = `${this.canvas.offsetLeft + margin - bw}px`;
+          overlay.style.top = `${this.canvas.offsetTop + margin - bw}px`;
+          overlay.style.width = `${overlayDims.width + 2 * bw}px`;
+          overlay.style.height = `${overlayDims.height + 2 * bw}px`;
+
+          const instructions = this.level.hypothesisSpace.animationInstructions;
+
+          // Create seeded RNG for deterministic shuffle animations
+          const shuffleRng = new RNG(this.replayState.animationShuffleSeed);
+
+          this.animationPlayer = new AnimationPlayer(
+            animCanvas,
+            instructions,
+            this.level,
+            this.animationAreaHeight,
+            cellSize,
+            this.renderer,
+            this.simulation,
+            coords,  // Pass coordinate system
+            shuffleRng  // Pass seeded RNG for deterministic shuffles
+          );
+          this.animationPlayer.onComplete = () => {
+            // Hide overlay and show sacks
+            overlay.style.display = 'none';
+            this.simulation.components.forEach(comp => {
+              if (comp.type === 'sack') {
+                comp.params.hidden = false;
+              }
+            });
+            // Transition to simulation phase
+            this.setPhase(this.hasShownOptimal && this.phase === 'INTRO_ANIMATION' ? 'REPLAY' : 'RUNNING');
+          };
+
+          // Show overlay when animation starts
+          overlay.style.display = 'block';
+        }
+
+        // Render initial state
+        this.renderFrame(0);
+
+        // Initialize right panel (betting interface already initialized before init())
+        this.initRightPanel();
+
+        // Start the single animation loop (only once, ever)
+        if (!this.loopStarted) {
+          this.loopStarted = true;
+          this.loop();
+        }
+
+        // Begin the game
+        if (this.animationPlayer) {
+          this.animationPlayer.start();
+          this.setPhase('INTRO_ANIMATION');
+        } else {
+          this.setPhase('RUNNING');
+        }
+      }
+
+      initBettingInterface() {
+        const bottomContainer = document.getElementById('betting-container');
+        const rightPanelContainer = document.getElementById('hypothesis-sacks');
+        const hypothesisSpace = this.level.hypothesisSpace;
+
+        // Hide bottom panel entirely (always use right panel now)
+        bottomContainer.style.display = 'none';
+
+        if (!hypothesisSpace || !hypothesisSpace.bettingSackId) {
+          rightPanelContainer.innerHTML = '<div style="padding: 10px; color: #666; font-size: 14px;">No betting sack designated. Use <code>.forBetting()</code> in hypothesis script to enable betting.</div>';
+          return;
+        }
+
+        // Get star thresholds from level metadata (default: [0.01, 0.05, 0.1, 0.2])
+        const starThresholds = this.level.meta?.bettingConfig?.starThresholds || [0.06, 0.11, 0.21];
+
+        // Get possible distributions for the betting sack
+        const bettingSackId = hypothesisSpace.bettingSackId;
+        const distributions = new Set();
+
+        hypothesisSpace.hypotheses.forEach(h => {
+          const dist = h.componentAssignments[bettingSackId];
+          if (dist) {
+            distributions.add(JSON.stringify(dist));
+          }
+        });
+
+        // Create distribution array with equal priors
+        const distArray = Array.from(distributions).map(distKey => ({
+          dist: JSON.parse(distKey),
+          prob: 1.0 / distributions.size
+        }));
+
+
+        // Always use right panel for grid interface
+        const container = rightPanelContainer;
+        const rightPanel = document.querySelector('.right-panel');
+
+        // Adjust right panel width based on number of hypotheses
+        const numHypotheses = distArray.length;
+        const cellWidth = BettingInterface.getCellWidth(numHypotheses);
+        const labelWidth = 28; // Percentage labels on left
+        const canvasWidth = labelWidth + numHypotheses * cellWidth + labelWidth; // labels on both sides
+        const minPanelWidth = Math.max(280, canvasWidth + 40 + 10); // 40=padding, 10=extra
+        rightPanel.style.width = `${minPanelWidth}px`;
+
+
+        // Create betting interface
+        this.bettingInterface = new BettingInterface(container, {
+          sackId: bettingSackId,
+          distributions: distArray,
+          starThresholds: starThresholds
+        });
+
+        // Set up callback for when betting is complete
+        this.bettingInterface.onComplete = () => {
+          this.onBettingComplete();
+        };
+      }
+
+      onBettingComplete() {
+        this.setPhase('BET_SUBMITTED');
+
+        // Get posteriors from Bayesian tracker
+        if (this.simulation && this.simulation.bayesianTracker) {
+          const sackPosteriors = this.simulation.bayesianTracker.getSackPosteriors();
+          const bettingSackId = this.level.hypothesisSpace.bettingSackId;
+          const posteriors = sackPosteriors.get(bettingSackId);
+
+          if (posteriors) {
+            const result = this.bettingInterface.showResults(posteriors);
+
+            // Save result for showing stars after replay finishes
+            this._pendingResult = result;
+            this._pendingPosteriors = posteriors;
+
+            // Save history entry (only if loaded from registry with level ID)
+            if (this.levelId && this.gameStartTime) {
+              this.saveHistoryEntry(posteriors, result);
+            }
+
+            // Set up replay button and auto-start "See correct" at 1x
+            this.hasShownOptimal = true;
+            const submitBtn = this.bettingInterface.submitButton;
+            if (submitBtn) {
+              const newBtn = submitBtn.cloneNode(true);
+              newBtn.textContent = 'See correct';
+              newBtn.disabled = false;
+              newBtn.style.opacity = '1';
+              newBtn.addEventListener('click', () => this.playOptimal());
+              submitBtn.parentNode.replaceChild(newBtn, submitBtn);
+              this.bettingInterface.submitButton = newBtn;
+            }
+
+            // Auto-start the optimal replay at 1x speed
+            this.speed = 1;
+            this.playOptimal();
+          }
+        }
+      }
+
+      saveHistoryEntry(correctPosteriors, result) {
+        const duration = (Date.now() - this.gameStartTime) / 1000;  // seconds
+
+        // Extract player assignments from betting interface
+        const playerAssignments = {};
+        this.bettingInterface.gridSelections.forEach((selection, colIndex) => {
+          const distKey = JSON.stringify(this.bettingInterface.distributions[colIndex].dist);
+          playerAssignments[distKey] = selection.probability;
+        });
+
+        // Extract correct posteriors
+        const correctPosteriorsObj = {};
+        correctPosteriors.forEach((prob, distKey) => {
+          correctPosteriorsObj[distKey] = prob;
+        });
+
+        // Extract ball colors (in order of ball ID)
+        const ballColors = this.simulation.balls
+          .sort((a, b) => a.id - b.id)
+          .map(ball => ball.color);
+
+        // Create history entry
+        const historyEntry = {
+          timestamp: new Date().toISOString(),
+          duration: duration,
+          playerAssignments: playerAssignments,
+          correctPosteriors: correctPosteriorsObj,
+          maxError: result.loss,  // Max per-bucket error (returned as 'loss')
+          stars: result.stars,
+          ballColors: ballColors
+        };
+
+        // Save to registry
+        LevelRegistry.addHistoryEntry(this.levelId, historyEntry);
+
+      }
+
+      initRightPanel() {
+        // No longer populate visual sacks (using hover popups instead)
+
+        // Initialize ball count
+        const totalBalls = this.level.simulation?.ballsToSpawn || 0;
+        this.updateBallCount(0, totalBalls);
+
+        // Initialize status
+        this.updateStatus('running');
+      }
+
+      renderSackOnCanvas(canvas, distribution, sackWidth, sackHeight) {
+        const ctx = canvas.getContext('2d');
+        const x = 5;
+        const y = 5;
+
+        // Draw U-shaped sack (same code as AnimationPlayer)
+        ctx.fillStyle = "#D4A574";
+        ctx.strokeStyle = "#8B6F47";
+        ctx.lineWidth = 2;
+        ctx.lineCap = "round";
+        ctx.lineJoin = "round";
+
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        ctx.lineTo(x, y + sackHeight);
+        ctx.lineTo(x + sackWidth, y + sackHeight);
+        ctx.lineTo(x + sackWidth, y);
+        ctx.stroke();
+        ctx.fill();
+
+        // Draw distribution label inside sack
+        const colors = Object.keys(distribution).sort();
+        const fontSize = 12;
+        ctx.font = `${fontSize}px sans-serif`;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+
+        // Position label in middle of sack
+        const centerX = x + sackWidth / 2;
+        const centerY = y + sackHeight / 2;
+
+        // Draw each color with ball and count
+        let offsetY = centerY - (colors.length - 1) * 10;
+        colors.forEach(color => {
+          const count = distribution[color];
+
+          // Draw colored ball
+          ctx.fillStyle = color;
+          ctx.strokeStyle = "rgba(0,0,0,0.3)";
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.arc(centerX - 15, offsetY, 6, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.stroke();
+
+          // Draw count
+          ctx.fillStyle = "#000";
+          ctx.fillText(count.toString(), centerX + 5, offsetY);
+
+          offsetY += 20;
+        });
+      }
+
+      formatDistribution(dist) {
+        const colors = Object.keys(dist).sort();
+        return colors.map(color => {
+          const count = dist[color];
+          return `<span class="color-dot" style="background-color: ${color}"></span> ${count}`;
+        }).join(' ');
+      }
+
+      /**
+       * Central phase transition. All state changes go through here.
+       */
+      setPhase(newPhase) {
+        this.phase = newPhase;
+
+        // Status text
+        const statusText = document.getElementById('status-text');
+        if (statusText) {
+          if (newPhase === 'INTRO_ANIMATION' || newPhase === 'RUNNING' || newPhase === 'REPLAY') {
+            statusText.textContent = 'Factory running...';
+          } else if (newPhase === 'PAUSED') {
+            statusText.textContent = 'Stopped';
+          } else {
+            statusText.textContent = 'Done';
+          }
+          statusText.style.color = '#333';
+        }
+
+        // Speed button highlighting
+        const activeSpeed = (newPhase === 'PAUSED') ? 0 : this.speed;
+        document.querySelectorAll('.speed-btn:not(.replay-btn)').forEach(btn => {
+          const btnSpeed = parseInt(btn.getAttribute('data-speed'));
+          btn.classList.toggle('active', btnSpeed === activeSpeed);
+        });
+
+        // Reset timing on phases that advance time (avoids deltaTime spikes)
+        if (newPhase === 'RUNNING' || newPhase === 'REPLAY' || newPhase === 'INTRO_ANIMATION') {
+          this.lastTime = performance.now();
+        }
+
+        // Note: animationPlayer.start() is called explicitly by init/reset/replay,
+        // NOT here, so that pause→resume doesn't restart the animation.
+      }
+
+      updateStatus(state) {
+        // Legacy method kept for initRightPanel compatibility.
+        // Status is normally managed by setPhase().
+        const statusText = document.getElementById('status-text');
+        if (!statusText) return;
+        switch (state) {
+          case 'running': statusText.textContent = 'Factory running...'; break;
+          case 'paused':  statusText.textContent = 'Stopped'; break;
+          case 'complete': statusText.textContent = 'Done'; break;
+        }
+        statusText.style.color = '#333';
+      }
+
+      setSpeed(speed) {
+        if (speed === 0) {
+          // Pause — only if currently in a running phase
+          if (this.phase === 'RUNNING' || this.phase === 'REPLAY' || this.phase === 'INTRO_ANIMATION') {
+            this.phaseBeforePause = this.phase;
+            this.setPhase('PAUSED');
+          }
+        } else {
+          this.speed = speed;
+          if (this.phase === 'PAUSED' && this.phaseBeforePause) {
+            this.setPhase(this.phaseBeforePause);
+            this.phaseBeforePause = null;
+          } else {
+            // Update button highlighting even if phase doesn't change
+            document.querySelectorAll('.speed-btn:not(.replay-btn)').forEach(btn => {
+              const btnSpeed = parseInt(btn.getAttribute('data-speed'));
+              btn.classList.toggle('active', btnSpeed === speed);
+            });
+          }
+        }
+      }
+
+      updateBallCount(current, total) {
+        const ballCount = document.getElementById('ball-count');
+        if (ballCount) {
+          ballCount.textContent = `Pallot: ${current} / ${total}`;
+        }
+      }
+
+      sampleAndAssignHypothesis() {
+        // Check if we have a hypothesis space with generated hypotheses
+        if (!this.level.hypothesisSpace || !this.level.hypothesisSpace.hypotheses) {
+          return;
+        }
+
+        const hypotheses = this.level.hypothesisSpace.hypotheses;
+        if (hypotheses.length === 0) {
+          return;
+        }
+
+        // Sample one hypothesis uniformly at random
+        const sampledHypothesis = hypotheses[Math.floor(Math.random() * hypotheses.length)];
+
+        // Assign contents to all sacks based on sampled hypothesis
+        // Note: hypotheses use component IDs as keys (transformed in loadTestLevel)
+        this.level.components.forEach(comp => {
+          if (comp.type === 'sack') {
+            if (!sampledHypothesis.componentAssignments) {
+              throw new Error(`Sampled hypothesis has no componentAssignments`);
+            }
+
+            // Get distribution from sampled hypothesis using component ID
+            const distribution = sampledHypothesis.componentAssignments[comp.id];
+
+            if (!distribution) {
+              throw new Error(`Sack ${comp.id} not found in hypothesis. Available: ${Object.keys(sampledHypothesis.componentAssignments).join(', ')}`);
+            }
+
+            comp.params.contents = distribution;
+          }
+        });
+      }
+
+      captureCurrentHypothesis() {
+        // Capture current sack contents (after sampleAndAssignHypothesis has assigned them)
+        const hypothesis = {};
+        this.level.components.forEach(comp => {
+          if (comp.type === 'sack' && comp.params.contents) {
+            // Deep copy the contents
+            hypothesis[comp.id] = JSON.parse(JSON.stringify(comp.params.contents));
+          }
+        });
+        return hypothesis;
+      }
+
+      // play(), pause(), togglePlay() removed — replaced by setPhase()
+
+      reset() {
+        // Resample a new hypothesis with random seed
+        this.simulation.config.seed = Math.floor(Math.random() * 1000000);
+        this.sampleAndAssignHypothesis();
+
+        this.simulation.reset();
+
+        // Hide sacks again if we have animation
+        const hasAnimation = this.animationPlayer !== null;
+        if (hasAnimation) {
+          this.simulation.components.forEach(comp => {
+            if (comp.type === 'sack') {
+              comp.params.hidden = true;
+            }
+          });
+
+          // Show overlay and recreate animation player
+          const overlay = document.getElementById('animation-overlay');
+          const animCanvas = document.getElementById('animation-canvas');
+          overlay.style.display = 'block';
+
+          // Recreate coordinate system with fixed pixel inset (max 30px)
+          const overlayInsetCells = Math.min(0.5, 30 / this.cellSize);
+          const coords = new CoordinateSystem(
+            this.cellSize,
+            this.canvas.width,
+            this.canvas.height,
+            overlayInsetCells
+          );
+
+          this.animationPlayer = new AnimationPlayer(
+            animCanvas,
+            this.level.hypothesisSpace.animationInstructions,
+            this.level,
+            this.animationAreaHeight,
+            this.cellSize,
+            this.renderer,
+            this.simulation,
+            coords
+          );
+          this.animationPlayer.onComplete = () => {
+            overlay.style.display = 'none';
+            this.simulation.components.forEach(comp => {
+              if (comp.type === 'sack') {
+                comp.params.hidden = false;
+              }
+            });
+            this.setPhase('RUNNING');
+          };
+        }
+        this.renderFrame(0);
+
+        // Reset ball count display
+        const totalBalls = this.level.simulation?.ballsToSpawn || 0;
+        this.updateBallCount(0, totalBalls);
+
+        // Reset betting interface
+        if (this.bettingInterface) {
+          this.bettingInterface.reset();
+        }
+
+        if (hasAnimation) {
+          this.animationPlayer.start();
+          this.setPhase('INTRO_ANIMATION');
+        } else {
+          this.setPhase('RUNNING');
+        }
+      }
+
+      replayAnimation() {
+        if (!this.replayState) {
+          console.warn('No replay state available');
+          return;
+        }
+
+        // Restore hypothesis to sack components (both level and simulation)
+        this.level.components.forEach(comp => {
+          if (comp.type === 'sack' && this.replayState.hypothesis[comp.id]) {
+            comp.params.contents = JSON.parse(JSON.stringify(this.replayState.hypothesis[comp.id]));
+          }
+        });
+        if (this.simulation && this.simulation.components) {
+          this.simulation.components.forEach(comp => {
+            if (comp.type === 'sack' && this.replayState.hypothesis[comp.id]) {
+              comp.params.contents = JSON.parse(JSON.stringify(this.replayState.hypothesis[comp.id]));
+            }
+          });
+        }
+
+        // Set seed and reset simulation
+        this.simulation.config.seed = this.replayState.simulationSeed;
+        this.simulation.reset();
+
+        // Reset ball count display
+        const totalBalls = this.level.simulation?.ballsToSpawn || 0;
+        this.updateBallCount(0, totalBalls);
+
+        // Hide sacks again if we have animation
+        const hasAnimation = this.animationPlayer !== null;
+        if (hasAnimation) {
+          this.simulation.components.forEach(comp => {
+            if (comp.type === 'sack') {
+              comp.params.hidden = true;
+            }
+          });
+
+          const overlay = document.getElementById('animation-overlay');
+          const animCanvas = document.getElementById('animation-canvas');
+          overlay.style.display = 'block';
+
+          const overlayInsetCells = Math.min(0.5, 30 / this.cellSize);
+          const coords = new CoordinateSystem(
+            this.cellSize,
+            this.canvas.width,
+            this.canvas.height,
+            overlayInsetCells
+          );
+
+          const shuffleRng = new RNG(this.replayState.animationShuffleSeed);
+          this.animationPlayer = new AnimationPlayer(
+            animCanvas,
+            this.level.hypothesisSpace.animationInstructions,
+            this.level,
+            this.animationAreaHeight,
+            this.cellSize,
+            this.renderer,
+            this.simulation,
+            coords,
+            shuffleRng
+          );
+
+          this.animationPlayer.onComplete = () => {
+            overlay.style.display = 'none';
+            this.simulation.components.forEach(comp => {
+              if (comp.type === 'sack') {
+                comp.params.hidden = false;
+              }
+            });
+            // After intro animation, go to REPLAY if showing optimal, else RUNNING
+            this.setPhase(this.hasShownOptimal ? 'REPLAY' : 'RUNNING');
+          };
+        }
+
+        this.renderFrame(0);
+
+        // If optimal mode, set green bars to uniform and update button
+        if (this.hasShownOptimal) {
+          if (this.bettingInterface) {
+            this.bettingInterface.setGroundTruthUniform();
+            const btn = this.bettingInterface.submitButton;
+            if (btn) {
+              btn.textContent = 'Showing...';
+              btn.disabled = true;
+              btn.style.opacity = '0.5';
+            }
+          }
+        }
+
+        // Start playing
+        if (hasAnimation) {
+          this.animationPlayer.start();
+          this.setPhase('INTRO_ANIMATION');
+        } else {
+          this.setPhase(this.hasShownOptimal ? 'REPLAY' : 'RUNNING');
+        }
+      }
+
+      playOptimal() {
+        this.hasShownOptimal = true;
+        this.replayAnimation();
+      }
+
+      /**
+       * Update betting interface with current optimal posteriors.
+       * Called during game loop when phase is REPLAY.
+       */
+      updateOptimalDisplay() {
+        if (this.phase !== 'REPLAY' || !this.bettingInterface || !this.simulation || !this.simulation.bayesianTracker) {
+          return;
+        }
+
+        const sackPosteriors = this.simulation.bayesianTracker.getSackPosteriors();
+        const bettingSackId = this.level.hypothesisSpace?.bettingSackId;
+
+        if (!bettingSackId || !sackPosteriors.has(bettingSackId)) {
+          return;
+        }
+
+        const posteriors = sackPosteriors.get(bettingSackId);
+        this.bettingInterface.setGroundTruthFromPosteriors(posteriors);
+      }
+
+      loop() {
+        const currentTime = performance.now();
+        const isActive = (this.phase === 'RUNNING' || this.phase === 'REPLAY' || this.phase === 'INTRO_ANIMATION');
+        // Max timestep: 50ms real time. Prevents ball bunching when browser throttles
+        // RAF (background tabs, unfocused windows, CPU spikes). Standard game-engine practice.
+        const elapsed = Math.min(currentTime - this.lastTime, 50);
+        const deltaTime = isActive ? elapsed * this.speed : 0;
+        this.lastTime = currentTime;
+
+        if (this.phase === 'INTRO_ANIMATION' && this.animationPlayer) {
+          // Advance intro animation (batch-sequential swaps handle any speed correctly)
+          this.animationPlayer.update(deltaTime);
+          this.animationPlayer.render();
+          this.renderFrame(0);
+        } else if (this.phase === 'RUNNING' || this.phase === 'REPLAY') {
+          const wasRunning = this.simulation.running;
+          this.simulation.tick(deltaTime);
+
+          // Update ball count
+          const totalBalls = this.level.simulation?.ballsToSpawn || 0;
+          const spawnedBalls = this.simulation.spawnedBalls || 0;
+          this.updateBallCount(spawnedBalls, totalBalls);
+
+          // Simulation finished
+          if (wasRunning && !this.simulation.running) {
+            if (this.phase === 'REPLAY') {
+              this.updateOptimalDisplay();
+              this.setPhase('SIM_COMPLETE');
+
+              // Show stars now that replay is complete
+              if (this._pendingResult) {
+                const lossDisplay = document.getElementById('loss-display');
+                if (lossDisplay) {
+                  const starDisplay = this.bettingInterface.getStarDisplay(this._pendingResult.stars);
+                  lossDisplay.textContent = starDisplay;
+                  lossDisplay.style.visibility = 'visible';
+                }
+                this._pendingResult = null;
+              }
+
+              const submitBtn = this.bettingInterface?.submitButton;
+              if (submitBtn) {
+                submitBtn.textContent = 'See correct';
+                submitBtn.disabled = false;
+                submitBtn.style.opacity = '1';
+              }
+            } else {
+              this.setPhase('SIM_COMPLETE');
+              if (this.bettingInterface) {
+                this.bettingInterface.enable();
+              }
+            }
+          }
+
+          // Live-update optimal posteriors during replay
+          if (this.phase === 'REPLAY') {
+            this.updateOptimalDisplay();
+          }
+
+          this.renderFrame(this.simulation.getTime());
+        } else {
+          // PAUSED, SIM_COMPLETE, BET_SUBMITTED: still render for hover popups
+          if (this.simulation) {
+            this.renderFrame(this.simulation.getTime());
+          }
+        }
+
+        requestAnimationFrame(() => this.loop());
+      }
+
+      renderFrame(simTime) {
+        const ctx = this.canvas.getContext('2d');
+
+        // Clear canvas with white background
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
+        // Light background for game board area
+        ctx.fillStyle = '#f5f5f5';
+        ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
+        // Render game board (no transforms needed!)
+        this.renderer.render(this.simulation, simTime);
+
+        // Render hover popup if hovering over a sack
+        if (this.hoveredSack) {
+          this.renderHoverPopup(ctx);
+        }
+      }
+
+      /**
+       * Render popup showing all possible distributions for the hovered sack
+       */
+      renderHoverPopup(ctx) {
+        if (!this.hoveredSack || !this.level.hypothesisSpace) return;
+
+        const sackId = this.hoveredSack.id;
+        const hypotheses = this.level.hypothesisSpace.hypotheses;
+
+        // Get all unique distributions for this sack
+        const distributions = new Map(); // distribution JSON -> distribution object
+        hypotheses.forEach(h => {
+          const dist = h.componentAssignments[sackId];
+          if (dist) {
+            const key = JSON.stringify(dist);
+            distributions.set(key, dist);
+          }
+        });
+
+        // Sort distributions in the same order as defined in the DSL script
+        let uniqueDistributions = Array.from(distributions.values());
+
+        // If we have list information and this sack has a listId, use the original template order
+        if (this.level.hypothesisSpace.lists && this.hoveredSack.params.listId) {
+          const listId = this.hoveredSack.params.listId;
+          const listInfo = this.level.hypothesisSpace.lists.get(listId);
+
+          if (listInfo && listInfo.templates) {
+            // Sort by index in original templates array
+            uniqueDistributions.sort((a, b) => {
+              const indexA = listInfo.templates.findIndex(t => JSON.stringify(t) === JSON.stringify(a));
+              const indexB = listInfo.templates.findIndex(t => JSON.stringify(t) === JSON.stringify(b));
+              return indexA - indexB;
+            });
+          }
+        }
+
+        if (uniqueDistributions.length === 0) return;
+
+        // Grid layout: 4 sacks per row
+        const sacksPerRow = 4;
+        const sackWidth = 55;
+        const sackHeight = 70;
+        const sackPadding = 10;
+        const sackCellWidth = sackWidth + sackPadding * 2;
+        const sackCellHeight = sackHeight + sackPadding * 2;
+
+        const numRows = Math.ceil(uniqueDistributions.length / sacksPerRow);
+        const popupPadding = 10;
+
+        // Popup dimensions
+        const popupWidth = sacksPerRow * sackCellWidth + popupPadding * 2;
+        const popupHeight = numRows * sackCellHeight + popupPadding * 2;
+        const popupX = 20;
+        const popupY = 20;
+
+        // Draw popup background
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
+        ctx.strokeStyle = '#000';
+        ctx.lineWidth = 2;
+        ctx.fillRect(popupX, popupY, popupWidth, popupHeight);
+        ctx.strokeRect(popupX, popupY, popupWidth, popupHeight);
+
+        // Draw each possible distribution in grid layout using SackRenderer
+        const renderer = window.SackRenderer;
+        uniqueDistributions.forEach((dist, index) => {
+          const row = Math.floor(index / sacksPerRow);
+          const col = index % sacksPerRow;
+
+          // Position for this sack
+          const sackX = popupX + popupPadding + col * sackCellWidth + sackPadding;
+          const sackY = popupY + popupPadding + row * sackCellHeight + sackPadding;
+
+          // Use the sack's list color
+          const fillColor = this.hoveredSack.params.listColor || renderer.DEFAULT_COLOR;
+
+          // Use SackRenderer for consistent sack visualization
+          renderer.renderSack(ctx, sackX, sackY, sackWidth, sackHeight, {
+            fillColor: fillColor,
+            contents: dist,
+            showContents: true
+          });
+        });
+      }
+
+      easeInOutCubic(t) {
+        return t < 0.5
+          ? 4 * t * t * t
+          : 1 - Math.pow(-2 * t + 2, 3) / 2;
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      if (localStorage.getItem('colorblindMode') === '1') {
+        window.BallColors.colorblindMode = true;
+      }
+      const app = new TestApp();
+      window.testApp = app;
+
+      // Back button with navigation guard
+      let navigating = false;
+      document.getElementById('back-button').addEventListener('click', () => {
+        if (navigating) return;
+        navigating = true;
+        window.location.href = 'index.html';
+      });
+
+    });
+    </script>
+</body>
+</html>

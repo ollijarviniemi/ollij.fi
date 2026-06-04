@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bayesian Factory: Simulation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: white;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Hide dev-only UI on the public deployment.
+           body.production class is set by the inline script at the top of body. */
+        body.production .dev-only { display: none !important; }
+
+        #container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+        }
+
+        #help-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 30px;
+            height: 30px;
+            border: 2px solid #666;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #666;
+            cursor: pointer;
+            background-color: white;
+            transition: all 0.2s ease;
+            z-index: 1000;
+        }
+
+        #help-icon:hover {
+            background-color: #f5f5f5;
+            border-color: #333;
+            color: #333;
+        }
+
+        #help-tooltip {
+            position: absolute;
+            top: 40px;
+            right: 0;
+            background-color: #333;
+            color: white;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            line-height: 1.4;
+            display: none;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            width: 350px;
+            white-space: normal;
+        }
+
+        #help-tooltip::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            right: 15px;
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-bottom: 6px solid #333;
+        }
+
+        #help-icon:hover #help-tooltip {
+            display: block;
+        }
+
+        #colorblind-icon {
+            position: absolute;
+            top: 20px;
+            right: 60px;
+            width: 30px;
+            height: 30px;
+            border: 2px solid #666;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+            color: #666;
+            cursor: pointer;
+            background-color: white;
+            transition: all 0.2s ease;
+            z-index: 1000;
+            user-select: none;
+        }
+
+        #colorblind-icon:hover {
+            background-color: #f5f5f5;
+            border-color: #333;
+            color: #333;
+        }
+
+        #colorblind-icon.active {
+            background-color: #333;
+            border-color: #333;
+            color: white;
+        }
+
+        #colorblind-tooltip {
+            position: absolute;
+            top: 40px;
+            right: 0;
+            background-color: #333;
+            color: white;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            line-height: 1.4;
+            display: none;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            width: 280px;
+            white-space: normal;
+        }
+
+        #colorblind-tooltip::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            right: 9px;
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-bottom: 6px solid #333;
+        }
+
+        #colorblind-icon:hover #colorblind-tooltip {
+            display: block;
+        }
+
+        .page-title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #333;
+            margin-top: 60px;
+            margin-bottom: 40px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .action-button {
+            padding: 8px 16px;
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #666;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .action-button:hover {
+            background: #e3f2fd;
+            border-color: #2196F3;
+            color: #1976d2;
+        }
+
+        #import-file {
+            display: none;
+        }
+
+        .groups-container {
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .game-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .game-row:last-child {
+            border-bottom: none;
+        }
+
+        .game-name {
+            min-width: 220px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+        .group-help-icon {
+            width: 18px;
+            height: 18px;
+            border: 1.5px solid #666;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #666;
+            cursor: pointer;
+            background-color: white;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .group-help-icon:hover {
+            background-color: #f5f5f5;
+            border-color: #333;
+            color: #333;
+        }
+
+        .group-help-tooltip {
+            position: absolute;
+            top: -10px;
+            left: 30px;
+            background-color: #333;
+            color: white;
+            padding: 10px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            line-height: 1.4;
+            display: none;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            width: 300px;
+            white-space: normal;
+            font-weight: normal;
+        }
+
+        .group-help-tooltip::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: -6px;
+            width: 0;
+            height: 0;
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+            border-right: 6px solid #333;
+        }
+
+        .group-help-icon:hover .group-help-tooltip {
+            display: block;
+        }
+
+        .rounds-grid {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            flex: 1;
+            min-height: 38px;
+        }
+
+        .level-box {
+            width: 38px;
+            height: 38px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: bold;
+            background: white;
+            color: #666;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+            user-select: none;
+        }
+
+        .level-box.completed {
+            background: #fff9c4;
+            border-color: #fbc02d;
+        }
+
+        .level-box.five-stars {
+            background: #c8e6c9;
+            border-color: #66bb6a;
+        }
+
+        .level-box:hover {
+            border-color: #2196F3;
+            color: #1976d2;
+            transform: scale(1.1);
+        }
+
+        .level-box.dragging {
+            opacity: 0.5;
+            cursor: move;
+        }
+
+        .level-history-tooltip {
+            position: absolute;
+            bottom: 36px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            border: 2px solid #333;
+            border-radius: 6px;
+            padding: 8px;
+            padding-bottom: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 10000;
+            min-width: 180px;
+            max-height: 150px;
+            overflow-y: auto;
+            display: none;
+        }
+
+        .level-box:hover .level-history-tooltip,
+        .level-history-tooltip:hover {
+            display: block;
+        }
+
+        .history-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 4px 0;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+
+        .history-row:not(:last-child) {
+            border-bottom: 1px solid #eee;
+        }
+
+        .attempt-number {
+            color: #666;
+            font-weight: bold;
+        }
+
+        .stars {
+            color: #d4af37;
+        }
+
+        .date {
+            color: #999;
+            font-size: 11px;
+        }
+
+        .rounds-grid.drag-over {
+            background-color: #f0f0f0;
+            border-radius: 4px;
+        }
+
+        .play-count {
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 10px;
+            color: #999;
+            font-weight: normal;
+            background: white;
+            padding: 0 3px;
+            border-radius: 2px;
+        }
+
+        .level-number {
+            margin-top: 2px;
+        }
+
+        /* Context Menu */
+        #context-menu {
+            position: fixed;
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            padding: 4px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 10000;
+            display: none;
+            min-width: 140px;
+        }
+
+        .context-menu-item {
+            padding: 8px 16px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #333;
+            transition: background 0.1s ease;
+        }
+
+        .context-menu-item:hover {
+            background: #f5f5f5;
+        }
+
+        .context-menu-item.danger:hover {
+            background: #ffebee;
+            color: #c62828;
+        }
+
+        /* Modal */
+        #modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .modal {
+            background: white;
+            border-radius: 8px;
+            padding: 24px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .modal-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .modal-close {
+            font-size: 24px;
+            color: #999;
+            cursor: pointer;
+            line-height: 1;
+            transition: color 0.2s ease;
+        }
+
+        .modal-close:hover {
+            color: #333;
+        }
+
+        .modal-content {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .history-entry {
+            padding: 12px;
+            margin-bottom: 12px;
+            background: #f9f9f9;
+            border-radius: 6px;
+            border-left: 4px solid #2196F3;
+        }
+
+        .history-entry-header {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 4px;
+        }
+
+        .history-entry-details {
+            font-size: 13px;
+            color: #666;
+        }
+
+        .history-summary {
+            margin-top: 16px;
+            padding: 12px;
+            background: #e3f2fd;
+            border-radius: 6px;
+            font-weight: bold;
+            color: #1976d2;
+        }
+
+        .confirm-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .modal-button {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .modal-button.primary {
+            background: #2196F3;
+            color: white;
+        }
+
+        .modal-button.primary:hover {
+            background: #1976d2;
+        }
+
+        .modal-button.secondary {
+            background: white;
+            color: #666;
+            border: 2px solid #ddd;
+        }
+
+        .modal-button.secondary:hover {
+            background: #f5f5f5;
+        }
+
+        .modal-button.danger {
+            background: #f44336;
+            color: white;
+        }
+
+        .modal-button.danger:hover {
+            background: #c62828;
+        }
+
+        .no-levels {
+            text-align: center;
+            padding: 60px 20px;
+            color: #999;
+        }
+
+        #reset-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background: #f44336;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            transition: all 0.2s ease;
+            z-index: 1000;
+        }
+
+        #reset-button:hover {
+            background: #c62828;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        #download-results-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 160px;
+            padding: 10px 20px;
+            background: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            transition: all 0.2s ease;
+            z-index: 1000;
+        }
+
+        #download-results-btn:hover {
+            background: #1976D2;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        @media (max-width: 768px) {
+            .game-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .game-name {
+                width: 100%;
+                margin-bottom: 8px;
+            }
+
+            .rounds-grid {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <script>
+      // Override with ?dev=1 in the URL to keep dev UI visible on the live site.
+      const _isLocalhost = location.hostname === 'localhost' || location.hostname === '127.0.0.1' || location.hostname === '';
+      const _devOverride = new URLSearchParams(location.search).has('dev');
+      if (!_isLocalhost && !_devOverride) {
+        document.body.classList.add('production');
+      }
+    </script>
+    <div id="container">
+        <div id="colorblind-icon" onclick="toggleColorblind(this)">
+            C
+            <div id="colorblind-tooltip"><strong>Colorblind mode:</strong> Distinct markings are added to the balls in addition to colors.</div>
+        </div>
+
+        <div id="help-icon">
+            ?
+            <div id="help-tooltip">
+                In the simulation game, you reason about how likely the factory is to deliver a ball into each box. You can play just by reasoning, or also by writing code that simulates the factory.
+            </div>
+        </div>
+
+        <div class="page-title">Bayesian Factory: Simulation</div>
+
+        <div class="action-buttons dev-only">
+            <button class="action-button" onclick="exportLevels()">Export</button>
+            <button class="action-button" onclick="document.getElementById('import-file').click()">Import</button>
+            <input type="file" id="import-file" accept=".json" onchange="importLevels(event)">
+        </div>
+
+        <div id="groups-container" class="groups-container">
+            <!-- Populated by JavaScript -->
+        </div>
+    </div>
+
+    <button id="download-results-btn" class="dev-only" onclick="downloadResults()">Download results</button>
+
+    <!-- Reset button -->
+    <button id="reset-button" class="dev-only" onclick="confirmResetData()">Reset data</button>
+
+    <!-- Context Menu -->
+    <div id="context-menu">
+        <div class="context-menu-item" onclick="contextMenuAction('play')">Play</div>
+        <div class="context-menu-item dev-only" onclick="contextMenuAction('duplicate')">Duplicate</div>
+        <div class="context-menu-item" onclick="contextMenuAction('history')">View History</div>
+        <div class="context-menu-item danger dev-only" onclick="contextMenuAction('delete')">Delete</div>
+    </div>
+
+    <!-- Modal Overlay -->
+    <div id="modal-overlay" onclick="closeModal(event)">
+        <div class="modal" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <div class="modal-title" id="modal-title"></div>
+                <div class="modal-close" onclick="closeModal()">&times;</div>
+            </div>
+            <div class="modal-content" id="modal-content"></div>
+        </div>
+    </div>
+
+    <!-- SortableJS Library -->
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+
+    <!-- Level Registry -->
+    <script src="levels/level-registry.js"></script>
+
+    <script>
+        let currentContextLevelId = null;
+        let sortableInstances = [];
+
+        // Populate all groups
+        function populateGroups() {
+            const container = document.getElementById('groups-container');
+            const groups = LevelRegistry.loadGroups();
+            const allLevels = LevelRegistry.getAllLevels();
+
+            container.innerHTML = '';
+
+            // Hide 'Switch' (empty) and 'Other' (test/editor stash) from the player UI.
+            const HIDDEN_GROUPS = new Set(['Switch', 'Other']);
+
+            LevelRegistry.GROUP_NAMES.forEach((groupName, groupIndex) => {
+                if (HIDDEN_GROUPS.has(groupName)) return;
+                const groupId = groupIndex < 6 ? `group${groupIndex + 1}` : 'other';
+                const levelIds = groups[groupId] || [];
+
+                // Group number for display (1-7 for groups, 8 for "Other")
+                const groupNumber = groupIndex + 1;
+
+                const row = document.createElement('div');
+                row.className = 'game-row';
+
+                const nameDiv = document.createElement('div');
+                nameDiv.className = 'game-name';
+
+                // Add group name text
+                const nameText = document.createElement('span');
+                nameText.textContent = groupName;
+                nameDiv.appendChild(nameText);
+
+                // Add help icon with tooltip if there's a description
+                const description = LevelRegistry.GROUP_DESCRIPTIONS ? LevelRegistry.GROUP_DESCRIPTIONS[groupIndex] : null;
+                if (description) {
+                    const helpIcon = document.createElement('span');
+                    helpIcon.className = 'group-help-icon';
+                    helpIcon.textContent = '?';
+
+                    const tooltip = document.createElement('div');
+                    tooltip.className = 'group-help-tooltip';
+                    tooltip.textContent = description;
+
+                    helpIcon.appendChild(tooltip);
+                    nameDiv.appendChild(helpIcon);
+                }
+
+                const grid = document.createElement('div');
+                grid.className = 'rounds-grid';
+                grid.dataset.groupId = groupId;
+
+                levelIds.forEach((levelId, positionInGroup) => {
+                    const level = allLevels.find(l => l.meta.id === levelId);
+                    if (!level) return;
+
+                    // Display number is groupNumber.position (e.g., "3.2" for 2nd level in group 3)
+                    const box = createLevelBox(levelId, groupNumber, positionInGroup + 1);
+                    grid.appendChild(box);
+                });
+
+                row.appendChild(nameDiv);
+                row.appendChild(grid);
+                container.appendChild(row);
+            });
+
+            if (allLevels.length === 0) {
+                container.innerHTML = `
+                    <div class="no-levels">
+                        <p>No levels available.</p>
+                    </div>
+                `;
+            }
+
+            // Initialize drag-and-drop after rendering
+            initializeDragAndDrop();
+        }
+
+        // Initialize SortableJS for all rounds-grids
+        function initializeDragAndDrop() {
+            // Destroy old instances
+            sortableInstances.forEach(instance => instance.destroy());
+            sortableInstances = [];
+
+            // Get all rounds-grids
+            const grids = document.querySelectorAll('.rounds-grid');
+
+            grids.forEach(grid => {
+                const sortable = new Sortable(grid, {
+                    group: 'levels',  // Allow dragging between groups
+                    animation: 150,
+                    ghostClass: 'dragging',
+                    dragClass: 'dragging',
+                    onEnd: function (evt) {
+                        handleDragEnd(evt);
+                    }
+                });
+
+                sortableInstances.push(sortable);
+            });
+        }
+
+        // Handle drag end event
+        function handleDragEnd(evt) {
+            const levelId = evt.item.dataset.levelId;
+            const fromGroupId = evt.from.dataset.groupId;
+            const toGroupId = evt.to.dataset.groupId;
+            const newIndex = evt.newIndex;
+
+            console.log(`Moved ${levelId} from ${fromGroupId} to ${toGroupId} at position ${newIndex}`);
+
+            // Update in registry
+            LevelRegistry.moveLevel(levelId, fromGroupId, toGroupId, newIndex);
+
+            // Refresh UI
+            populateGroups();
+        }
+
+        // Create a level box element
+        function createLevelBox(levelId, groupNumber, positionInGroup) {
+            const box = document.createElement('div');
+            box.className = 'level-box';
+            box.dataset.levelId = levelId;
+            box.onclick = (e) => {
+                if (e.button === 0) {  // Left click
+                    playLevel(levelId, groupNumber, positionInGroup);
+                }
+            };
+
+            // Context menu
+            box.oncontextmenu = (e) => {
+                e.preventDefault();
+                showContextMenu(e, levelId);
+            };
+
+            // Get play history and stats
+            const history = LevelRegistry.getLevelHistory(levelId);
+            const stats = LevelRegistry.getBestStats(levelId);
+
+            // Color code based on completion status
+            if (stats && stats.bestStars >= 3) {
+                box.classList.add('five-stars');
+            } else if (stats && stats.bestStars > 0) {
+                box.classList.add('completed');
+            }
+
+            // Level number in format "groupNumber.positionInGroup" (e.g., "3.2")
+            const numberDiv = document.createElement('div');
+            numberDiv.className = 'level-number';
+            numberDiv.textContent = `${groupNumber}.${positionInGroup}`;
+            box.appendChild(numberDiv);
+
+            // Create hover tooltip with play history
+            if (history.length > 0) {
+                const tooltip = document.createElement('div');
+                tooltip.className = 'level-history-tooltip';
+
+                // Reverse order to show newest first (most recent at top)
+                const reversedHistory = [...history].reverse();
+
+                reversedHistory.forEach((entry, index) => {
+                    const row = document.createElement('div');
+                    row.className = 'history-row';
+
+                    // Attempt number (oldest = 1, newest = N)
+                    const attemptNum = document.createElement('span');
+                    attemptNum.className = 'attempt-number';
+                    attemptNum.textContent = `${reversedHistory.length - index}:`;
+                    row.appendChild(attemptNum);
+
+                    // Golden stars
+                    const starsSpan = document.createElement('span');
+                    starsSpan.className = 'stars';
+                    starsSpan.textContent = '★'.repeat(entry.stars) + '☆'.repeat(3 - entry.stars);
+                    row.appendChild(starsSpan);
+
+                    // Date in DD/MM/YYYY format
+                    const date = new Date(entry.timestamp);
+                    const day = String(date.getDate()).padStart(2, '0');
+                    const month = String(date.getMonth() + 1).padStart(2, '0');
+                    const year = date.getFullYear();
+                    const dateSpan = document.createElement('span');
+                    dateSpan.className = 'date';
+                    dateSpan.textContent = `${day}/${month}/${year}`;
+                    row.appendChild(dateSpan);
+
+                    tooltip.appendChild(row);
+                });
+
+                box.appendChild(tooltip);
+            }
+
+            return box;
+        }
+
+        // Play a level (with guard against rapid navigation)
+        let navigationInProgress = false;
+        function playLevel(levelId, groupNumber, positionInGroup) {
+            if (navigationInProgress) return;
+            navigationInProgress = true;
+
+            // If group/position not provided, look them up from levelId
+            if (groupNumber === undefined || positionInGroup === undefined) {
+                const groups = LevelRegistry.loadGroups();
+                const groupKeys = ['group1', 'group2', 'group3', 'group4', 'group5', 'group6', 'other'];
+                for (let i = 0; i < groupKeys.length; i++) {
+                    const levelIds = groups[groupKeys[i]] || [];
+                    const idx = levelIds.indexOf(levelId);
+                    if (idx !== -1) {
+                        groupNumber = i + 1;  // 1-based
+                        positionInGroup = idx + 1;  // 1-based
+                        break;
+                    }
+                }
+            }
+
+            // URL format: level=1-2 for group 1, level 2
+            window.location.href = `pelaa.html?level=${groupNumber}-${positionInGroup}`;
+        }
+
+        // Show context menu
+        function showContextMenu(event, levelId) {
+            const menu = document.getElementById('context-menu');
+            menu.style.display = 'block';
+            menu.style.left = event.pageX + 'px';
+            menu.style.top = event.pageY + 'px';
+            currentContextLevelId = levelId;
+        }
+
+        // Hide context menu
+        function hideContextMenu() {
+            document.getElementById('context-menu').style.display = 'none';
+            currentContextLevelId = null;
+        }
+
+        // Context menu actions
+        function contextMenuAction(action) {
+            // Save levelId BEFORE hiding menu (which sets currentContextLevelId to null)
+            const levelId = currentContextLevelId;
+            hideContextMenu();
+
+            if (!levelId) return;
+
+            switch (action) {
+                case 'play':
+                    playLevel(levelId);
+                    break;
+                case 'edit':
+                    editLevel(levelId);
+                    break;
+                case 'duplicate':
+                    duplicateLevel(levelId);
+                    break;
+                case 'delete':
+                    confirmDeleteLevel(levelId);
+                    break;
+                case 'history':
+                    showHistory(levelId);
+                    break;
+            }
+        }
+
+        // Edit level in editor
+        function editLevel(levelId) {
+            if (navigationInProgress) return;
+            navigationInProgress = true;
+            window.location.href = `editor.html?level=${levelId}`;
+        }
+
+        // Duplicate level
+        function duplicateLevel(levelId) {
+            const newId = LevelRegistry.duplicateLevel(levelId);
+            if (newId) {
+                populateGroups();
+                console.log(`Level duplicated: ${newId}`);
+            }
+        }
+
+        // Confirm delete level
+        function confirmDeleteLevel(levelId) {
+            const level = LevelRegistry.getLevel(levelId);
+            if (!level) return;
+
+            showModal('Delete Level', `
+                <p>Delete <strong>${level.meta.title}</strong>?</p>
+                <p>This will also delete all game history for this level.</p>
+                <div class="confirm-buttons">
+                    <button class="modal-button secondary" onclick="closeModal()">Cancel</button>
+                    <button class="modal-button danger" onclick="deleteLevel('${levelId}')">Delete</button>
+                </div>
+            `);
+        }
+
+        // Delete level
+        function deleteLevel(levelId) {
+            LevelRegistry.deleteLevel(levelId);
+            closeModal();
+            populateGroups();
+        }
+
+        // Show history modal
+        function showHistory(levelId) {
+            const level = LevelRegistry.getLevel(levelId);
+            const history = LevelRegistry.getLevelHistory(levelId);
+            const stats = LevelRegistry.getBestStats(levelId);
+
+            if (!level) return;
+
+            if (history.length === 0) {
+                showModal(`History: ${level.meta.title}`, `
+                    <p>No history available for this level.</p>
+                `);
+                return;
+            }
+
+            let historyHTML = '';
+            history.forEach((entry, index) => {
+                const date = new Date(entry.timestamp);
+                const dateStr = date.toLocaleDateString('fi-FI');
+                const timeStr = date.toLocaleTimeString('fi-FI');
+                const duration = formatDuration(entry.duration);
+                const stars = '★'.repeat(entry.stars) + '☆'.repeat(3 - entry.stars);
+                const errPct = (entry.maxError * 100).toFixed(1);
+
+                historyHTML += `
+                    <div class="history-entry">
+                        <div class="history-entry-header">Attempt ${index + 1} - ${dateStr} ${timeStr}</div>
+                        <div class="history-entry-details">
+                            Duration: ${duration}<br>
+                            Stars: ${stars} (max error = ${errPct}%)
+                        </div>
+                    </div>
+                `;
+            });
+
+            const avgStars = '★'.repeat(Math.floor(stats.avgStars)) +
+                            (stats.avgStars % 1 >= 0.5 ? '½' : '') +
+                            '☆'.repeat(Math.max(0, 3 - Math.ceil(stats.avgStars)));
+            const bestStars = '★'.repeat(stats.bestStars) + '☆'.repeat(3 - stats.bestStars);
+
+            historyHTML += `
+                <div class="history-summary">
+                    Best: ${bestStars} | Avg: ${avgStars} | Plays: ${stats.plays}
+                </div>
+            `;
+
+            showModal(`History: ${level.meta.title}`, historyHTML);
+        }
+
+        // Format duration in seconds to readable string
+        function formatDuration(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            if (mins > 0) {
+                return `${mins}m ${secs}s`;
+            }
+            return `${secs}s`;
+        }
+
+        // Export levels
+        function exportLevels() {
+            const data = LevelRegistry.exportAll();
+            const json = JSON.stringify(data, null, 2);
+            const blob = new Blob([json], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+
+            const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, -5);
+            const filename = `factory-simulation_export_${timestamp}.json`;
+
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // Import levels
+        function importLevels(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                try {
+                    const data = JSON.parse(e.target.result);
+
+                    // Ask merge or replace
+                    showModal('Import Levels', `
+                        <p>Import ${data.levels.length} level(s)?</p>
+                        <div class="confirm-buttons">
+                            <button class="modal-button secondary" onclick="closeModal()">Cancel</button>
+                            <button class="modal-button primary" onclick="doImport('merge')">Merge</button>
+                            <button class="modal-button danger" onclick="doImport('replace')">Replace All</button>
+                        </div>
+                    `);
+
+                    window.pendingImportData = data;
+                } catch (error) {
+                    alert('Invalid JSON file: ' + error.message);
+                }
+            };
+            reader.readAsText(file);
+
+            // Reset input
+            event.target.value = '';
+        }
+
+        // Do import
+        function doImport(mode) {
+            if (!window.pendingImportData) return;
+
+            try {
+                LevelRegistry.importData(window.pendingImportData, mode);
+                closeModal();
+                populateGroups();
+                delete window.pendingImportData;
+                alert(`Import complete (${mode} mode)`);
+            } catch (error) {
+                alert('Import failed: ' + error.message);
+            }
+        }
+
+        // Show modal
+        function showModal(title, content) {
+            document.getElementById('modal-title').textContent = title;
+            document.getElementById('modal-content').innerHTML = content;
+            document.getElementById('modal-overlay').style.display = 'flex';
+        }
+
+        // Close modal
+        function closeModal(event) {
+            if (event && event.target.id !== 'modal-overlay') return;
+            document.getElementById('modal-overlay').style.display = 'none';
+        }
+
+        // Download results
+        function downloadResults() {
+            const results = LevelRegistry.exportPlayResults();
+            if (results.length === 0) {
+                alert('No saved results.');
+                return;
+            }
+            const json = JSON.stringify(results, null, 2);
+            const blob = new Blob([json], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'factory-simulation_results.json';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // Confirm reset data
+        function confirmResetData() {
+            showModal('Reset all data', `
+                <p><strong>Warning:</strong> This will permanently delete all levels, groups, and game history.</p>
+                <p>This action cannot be undone.</p>
+                <div class="confirm-buttons">
+                    <button class="modal-button secondary" onclick="closeModal()">Cancel</button>
+                    <button class="modal-button danger" onclick="resetAllData()">Reset all data</button>
+                </div>
+            `);
+        }
+
+        // Reset all data
+        function resetAllData() {
+            localStorage.removeItem(LevelRegistry.STORAGE_KEYS.LEVELS);
+            localStorage.removeItem(LevelRegistry.STORAGE_KEYS.GROUPS);
+            localStorage.removeItem(LevelRegistry.STORAGE_KEYS.HISTORY);
+            closeModal();
+            populateGroups();
+            alert('All data has been reset.');
+        }
+
+        // Hide context menu on any click
+        document.addEventListener('click', hideContextMenu);
+
+        function toggleColorblind(el) {
+            const next = !(localStorage.getItem('colorblindMode') === '1');
+            localStorage.setItem('colorblindMode', next ? '1' : '0');
+            el.classList.toggle('active', next);
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', () => {
+            populateGroups();
+            const cbIcon = document.getElementById('colorblind-icon');
+            if (cbIcon) cbIcon.classList.toggle('active', localStorage.getItem('colorblindMode') === '1');
+        });
+    </script>
+</body>
+</html>

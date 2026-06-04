@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bayesian Factory</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: white;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        #container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+        }
+
+        .page-title {
+            font-size: 52px;
+            font-weight: bold;
+            color: #333;
+            margin-top: 64px;
+            margin-bottom: 20px;
+            text-align: center;
+            letter-spacing: -0.5px;
+        }
+
+        .page-subtitle {
+            font-size: 19px;
+            color: #555;
+            max-width: 880px;
+            text-align: center;
+            margin-bottom: 64px;
+            line-height: 1.55;
+            padding: 0 20px;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 36px;
+            width: 95vw;
+            max-width: 1640px;
+        }
+
+        .card {
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            background: white;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.2s ease;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            border-color: #2196F3;
+            transform: translateY(-6px);
+            box-shadow: 0 14px 32px rgba(33,150,243,0.18);
+        }
+
+        .card-image-wrap {
+            width: 100%;
+            height: 440px;
+            background: #fafafa;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .card-image-wrap img {
+            max-width: 100%;
+            max-height: 100%;
+            display: block;
+        }
+
+        .card-body {
+            padding: 28px 32px 32px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .card-title {
+            font-size: 30px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        .card-desc {
+            font-size: 17px;
+            color: #555;
+            line-height: 1.55;
+            flex: 1;
+        }
+
+        .card-play {
+            margin-top: 22px;
+            font-size: 15px;
+            font-weight: bold;
+            color: #1976d2;
+            letter-spacing: 0.8px;
+        }
+
+        .card:hover .card-play {
+            color: #0d47a1;
+        }
+
+        @media (max-width: 1080px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); max-width: 1100px; }
+            .card-image-wrap { height: 380px; }
+        }
+
+        @media (max-width: 720px) {
+            .cards-grid { grid-template-columns: 1fr; max-width: 460px; }
+            .card-image-wrap { height: 320px; }
+            .page-title { font-size: 38px; margin-top: 40px; }
+            .page-subtitle { font-size: 16px; margin-bottom: 36px; }
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="page-title">Bayesian Factory</div>
+        <div class="page-subtitle">
+            Three small probability games sharing one metaphor: balls flow through a factory of conveyors, mixers, and sorters, and you bet on where they end up. Each leans on a different aspect of Bayesian reasoning.
+        </div>
+
+        <div class="cards-grid">
+            <a class="card" href="/factory-updating/">
+                <div class="card-image-wrap"><img src="images/updating.jpg" alt="A factory with several visible sacks of different colors and observation bins"></div>
+                <div class="card-body">
+                    <div class="card-title">Updating</div>
+                    <div class="card-desc">Each sack holds an unknown mix of colored balls. Watch what falls out and update your beliefs about what's inside.</div>
+                    <div class="card-play">PLAY &rarr;</div>
+                </div>
+            </a>
+
+            <a class="card" href="/factory-simulation/">
+                <div class="card-image-wrap"><img src="images/simulation.jpg" alt="A tree of orange splitter boxes feeding into output bins"></div>
+                <div class="card-body">
+                    <div class="card-title">Simulation</div>
+                    <div class="card-desc">Every part of the factory is visible. Work out how likely a ball is to land in each output bin &mdash; by reasoning, or by writing code.</div>
+                    <div class="card-play">PLAY &rarr;</div>
+                </div>
+            </a>
+
+            <a class="card" href="/factory-inference/">
+                <div class="card-image-wrap"><img src="images/inference.jpg" alt="A factory with most parts hidden under hatched tiles, with colored output bins below"></div>
+                <div class="card-body">
+                    <div class="card-title">Inference</div>
+                    <div class="card-desc">Most of the factory is hidden. Watch how the balls come out, infer what's in the hidden parts, and predict where the next ball goes.</div>
+                    <div class="card-play">PLAY &rarr;</div>
+                </div>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
