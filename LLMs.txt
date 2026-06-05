@@ -3193,9 +3193,15 @@ For context, read **[What is this blog about?](/blog/what)**. I especially recom
 
 [The perceived stakes](/blog/stakes)
 
+[The importance of language](/blog/importance_of_language)
+
 [A gambling-related tragedy](/blog/tragedy)
 
 [Preserve](/blog/preserve)
+
+[Fairness or Bayes?](/blog/fairness_or_bayes)
+
+[A cause for distrust in Bayesianism](/blog/distrust_in_bayes)
 
 ### Tales from my median world
 
@@ -3211,7 +3217,11 @@ For context, read **[What is this blog about?](/blog/what)**. I especially recom
 
 ## Finnish
 
+**[Suuressa maailmassa](/blog/suuressa_maailmassa)**
+
 **[Kirjoittaminen työkaluna](/blog/kirjoittaminen)**
+
+[Mustat laatikot](/blog/mustat_laatikot)
 
 [Paljonko asiat maksaa?](/blog/maksaa)
 
@@ -3240,6 +3250,8 @@ For context, read **[What is this blog about?](/blog/what)**. I especially recom
 [Puhukaa äänestämisestä](/blog/aanestaminen)
 
 **["Et tule tapaamaan toista pelaajaa enää koskaan uudelleen"](/blog/toistuvuus)**
+
+[Pythagoras](/blog/pythagoras)
 
 [Avaruusoliotesti](/blog/avaruusoliotesti)
 
@@ -3515,6 +3527,46 @@ I won't sit idle, simply be happy with what I have and accept anything that come
 
 [End of text.]
 
+# The importance of language
+
+"Language affects how you think" is something I heard said a lot by my teachers back in my teens, amongside other idioms underscoring the importance of language. I never understood what people meant by it, and was in fact somewhat suspicious of what I viewed as "pro-language advocacy".
+
+Now being a little older, I think this was one of the many things where the grown-ups were right, but where for one reason or another no one really seemed to put an effort into helping me be able to tell. So, let me be a person to say what I think here.
+
+First, let's be clear: even in my young naivete I wouldn't have denied that the *existence* of language is important. And I was quite on board with *writing* being a [useful tool](/blog/kirjoittaminen), at least once I got deeper on all the math competition stuff. And while, perhaps, it would have been useful for someone to explicitly remark how writing and reading allows you to [transmit information you couldn't otherwise](/epi/lokaali_kommunikaatio), that wouldn't have seemed like a foreign idea to me either.
+
+Rather, the "language affects how you think" idiom claims something stronger; that the *specific* language you have affects how you think. *That* I didn't grasp; I thought that languages were interchangeable with each other - since, after all, you can translate text from one language to another.
+
+But that's just not true at all.
+
+Imagine you hear an anthropologist reporting about a peculiar hunter-gatherer tribe that doesn't have a word for lying. That doesn't mean the people don't lie, of course; oh no, deception, misleading, lying, all those still exist and are being pulled off like one would expect from any other human tribe. Their language just hasn't developed far enough to have words for talking about those things.
+
+You can see immediately that this would have practical consequences. For example, lying would presumably not be frowned upon as much as in most other societies.
+
+(Because how would it be punished? You can't exactly say to others "he lied to me!" and expect them to side with you, becasue you lack the word. And you probably can't win them over by saying "he said things that he knew were not how things are even though he knew how things are so that I would not know how things are so that he could get what he wanted and I would not", because (A) let's be real, if your language doesn't have a word for lying, you're not going to be able to define the phenomenon on the spot, and (B) even if you could, that's not quite as snappy, is it?)
+
+Similarly, one might imagine a second hunter-gatherer tribe that has the word "lying", but doesn't have a word for *accidentally* conveying something false. You can see by contrast how that tribe would be different from the one before. For example, they might accuse others of lying even in cases of honest mistakes, and would find it harder to discuss ways in which people might erroneously arrive at false beliefs when communicating with others in good faith.
+
+Then you can think of modern languages like English which, to our fortune, has words for *both* lying, deceiving, misleading, *and* all those other things.
+
+It's also not just a matter of which words exist in a language, but which are short and commonly used. For example, consider the word "false" and its Finnish translation, "epätosi". A few important facts about that word:
+
+(1) The Finnish word for "true" is "tosi". "epä" means "not". The word for "false" is thus literally "nottrue".
+
+(2) "epä" is not a common prefix. It is the sort of prefix most commonly used in technical contexts, like when a mathematician wants to say "Let S be a non-empty set..." ("Olkoon S epätyhjä joukko..."). Relatedly, "epätosi" has a pedantic connotation and is not a word you would use in spoken language, unless you are the sort of person who already talks about "non-empty sets".
+
+(3) The word is *four* syllables long, e-pä-to-si. The words for "true" (tosi) and "lie" (valhe) are, incidentally, two syllables each. In English, those are all single-syllable words.
+
+Hence, in my view I'm not exaggerating much if I say that Finnish does not, for practical purposes, have a word for "false". Indeed, I hardly see the word in Finnish text.
+
+So we've seen that modern languages, English and Finnish, have clear shortcomings in the vocabulary around what I would consider fundamental for thinking, namely epistemics. (The fact that "epistemics" itself is a technical, rarely used word is another case in point; but in case you haven't heard of it before, you hopefully picked up from the context that it's about all these things like whether claims are true or false, people's beliefs about things, processes by which people form and share their beliefs and so on.) And while we can make up for the lack of some words by inserting occassional parenthetical sentences to explain what we mean, it adds friction. Increase the friction, and people start thinking and talking less about things in that direction, reading less the sorts of essays that include dry explanatory parentheticals, just like how a ball won't roll as far uphill when the terrain is rougher.
+
+What's worse, this friction shows up not just at the atomic level of words, but at all the higher layers of abstraction, too. Consider learning languages: Make the grammatical rules more complex, and people will need to spend more years of their English or Finnish classes focusing on the grammar, and the more people's practice of language and communication will be about such syntactic trivialities. Make the spoken and written language more complex, and children will need more time before they've learned *any language at all*. I grant this is a rather narrow sense in which language affects thinking, but it's quantitatively massively important.
+
+And in the broadest, most abstract sense, language does affect the way you think, just not at the level my 15-year-old self was thinking of. It's not that switching from Finnish to English makes you suddenly think in importantly different ways in your internal monologue just because the words and grammar are different, any more than you will start to program differently, on a fundamental level, after having learned the syntax of a new programming language. Rather, languages are humanity's software architecture to enchance our thinking, with massive codebases and libraries for words, idioms and concepts; essays, articles, books; styles, worldviews, schools of thought. In many ways all that *is* the languages, and are part of the ongoing process of developing them, rather than merely something built on top of them. And eventually, they do something to your thinking.
+
+[End of text.]
+
 # A gambling-related tragedy
 
 It's such a tragedy that the right way to orient towards probability theory is via beliefs, bets and decision-making--
@@ -3650,6 +3702,114 @@ Is that all it takes? To have a promising idea that hasn't been tried before?
 "Very well," **the God-Emperor** responded. "I agree."
 
 And then **the God-Emperor** was gone.
+
+[End of text.]
+
+# Fairness or Bayes?
+
+Suppose you and your friend disagree about something - like, as usual, about tomorrow's weather. You put 40% on it raining tomorrow, your friend puts 20%. As any civilized people, you want to bet on it. What odds should you pick?
+
+Obviously, the normal 1 : 1 odds don't work, since you both agree it's more likely it doesn't rain than that it does.
+
+Fortunately, there's a [procedure for assigning odds](https://www.lesswrong.com/posts/aiz4FCKTgFBtKiWsE/even-odds) that satisfies the following properties:
+
+1. "Fairness": You both have equal (subjective) expected payoff.
+
+2. "Honesty": Even if you know in advance what the procedure is, and what the other person's probability is, you are still best off reporting your belief honestly.
+
+The solution is: the loser pays the winner the difference of their Brier scores, multiplied by some pre-determined constant (corresponding to how much money you want to bet on).
+
+If, like me, you are a vehement defender of a Bayesian stance to probability theory, you might become suspicious: Why the Brier score? Why not the difference in log scores? Isn't there, like, the whole Bayes theorem and everything that tell what's the normatively correct way to adjust credences on hypotheses after an observation? 
+
+Using the log score would give you honesty (2), but it wouldn't satisfy fairness (1). This presents you with a dilemma. When forced to choose one, which one do you put your faith in: your notions of "fairness", or the axioms of probability theory?
+
+After pondering this for a while, I recently arrived at my answer:
+
+People are not hypotheses.
+
+[End of text.]
+
+# A cause for distrust in Bayesianism
+
+In this post I articulate a very concrete reason why I'm no longer as fully bought into Bayesianism as I once was.
+
+I. 
+
+Let's start, as one often does, from the very basics. Suppose we have an urn with 1000 balls, some red and some blue. For simplicity's sake, suppose you know that the ball color distribution is either 75/25 or 25/75 for blue vs. red.
+
+Knowing this, it's very easy to get evidence for which of these hypotheses is right: you just sample from the urn. The details don't really matter, but you can calculate that you get, in expectation, roughly 2 : 1 odds ratios for the correct hypothesis over the wrong one per sample. Give it ten or twenty samples and you'll be confident in the truth.
+
+And clearly this generalises even if you have lots of hypotheses: the number of samples you need to become confident varies based on the hypotheses and the truth, but just keep sampling and you'll eventually be good.
+
+II.
+
+Suppose you then have, not just one, but *two* urns, both again having 1000 balls. For simplicity's sake, suppose you know that (1) both urns have the same color distribution, and (2) it's again 75/25 or 25/75.
+
+This is basically the same as before: just keep sampling. It doesn't matter which urn you sample from, since they follow the same distribution. You again get a solid 2 : 1 odds ratio per sample on average.
+
+Wait no! It turns out you were wrong: the urns do not have the same content! Assumption (2) was true, but (1) was false: the first urn had 750 red balls, the second one 250. Given that this was the case, one can get evidence for *either* hypothesis just by sampling the appropriate urn.
+
+This of course generalises: if you have multiple hypotheses, but none of them are correct, the one you converge to (or if you converge at all) may depend on what you sample. "Just keep sampling and you'll eventually be good" is no longer true!
+
+III.
+
+Now one might ask: "So what? Obviously if you have wrong hypotheses, things can go bad for you."
+
+The standard, boring reply is that you'll practically never have the right hypothesis in your hypothesis space. But let me get to a non-standard, non-boring point related to that.
+
+In the particular case of two urns, one could of course consider explicitly all possible hypotheses and perform Bayesian updating over them. 
+
+But consider a more realistic case. Let's say we have a million urns, arranged in a 1000 x 1000 grid. Based on initial sampling, we know things like "if you go downwards in the grid, you tend to find more red balls" and "urns that are close to each other tend to have similar content": we know that there's a lot of nice structure and patterns, but like in real life, we can't explicitly articulate all that feeds into our prior. What do you do?
+
+The thing I would do is to try and learn a function p(x, y) that takes in the x and y coordinates of an urn to be sampled, and predicts the probability that a ball drawn from that urn is red. Obviously, I can't search over the space of all functions, so I need to look at "simple" functions that respect the structure I know about -- e.g. maybe I only consider logistic regressions with x and y as the input parameters.
+
+Of course, it's plain obvious that my hypothesis space won't contain the true hypothesis. And knowing this doesn't allow me to expand my space so that it both contains the true one and is also practically feasible to work with. So we get back to the issue raised earlier: the way in which I sample affects which hypothesis I will pick up as the best one.
+
+IV.
+
+It gets worse: Suppose you distrust me, as a researcher. Not so much that you think I'd fabricate data or even filter it, heaven forbid, but just that I'm somehow going to selectively focus on cases that support whatever conclusion I want to arrive at.
+
+In this case, even if I release all of my data I've collected during my study (in the order I collected them) and you personally compute the likelihood ratios for different hypotheses, you might *still* worry that I have rigged the *sampling procedure* in some way, so that my preferred hypothesis comes out on the top. You might imagine that after sampling for a while and forming a good picture of what some urns are like, I somehow continue by adversarially sampling particular urns most compatible with my bottom line.
+
+There is a naive solution proposal to this problem: if we have million urns, then demand we just sample uniformly from them. This is the Schelling point, and if I choose it, you can then be rather reassured I haven't rigged the process.
+
+This proposal doesn't work. Any research project has a finite budget, after all. What if we know that the buckets at the bottom of the 1000x1000 grid have 100% red balls? It'd be silly to spend lot of effort sampling them, just so we can follow a principle that sounds superficially nice. In real life problems, typically almost all places where you *could* in principle sample from are as uninformative to be completely useless.
+
+There *is* a better-sounding proposal, a better Schelling point. It starts from the informal observation that we want to focus on more "interesting" places. Stating that more formally, we do an expected-information-calculation, i.e. reason about which urn reduces our entropy over our hypotheses the most (in expectation) and then sample there. Naturally, we adapt as we go: we learn things after each draw, so the best urns to sample change. And if you want to determine the best choice of a sequence of million samples, then, well, it might not be an *easy* optimisation problem, but it's clear that there exists a mathematically correct solution, assuming we have chosen a prior over the hypotheses.
+
+I'm worried that this doesn't work either: As discussed, there exist different sampling processes that converge on different hypotheses. It's not obvious that the one which converges fastest will necessarily be the best description of the data! (Indeed, it's easy to construct toy cases where it's not -- cases of reward-hacking, if you will -- but I don't know to what extent to expect this in practice.)
+
+Also, one has to choose a prior for this procedure, and different people might use different priors. If you and I agree on the priors, then great! Even if you think I'm an extremely motivated reasoner and "want" a particular hypothesis to come out on the top, choosing the information-maximizing sampling procedure "ties my hands", so you can trust the process: since you have the same priors, you would have done the same thing in my place. And I think this is an important result!
+
+But if you think my prior is dumb, then I don't know if there's anything short of adversarial collaboration that can resolve our epistemic disagreement, or even allow me to produce data that's of *any* use to you. You *can* compute the likelihood ratios for your hypotheses of choice, sure, but if you don't trust my process for picking where to sample, and know that your hypothesis space doesn't contain the true one either, then can you really trust your likelihoods? I don't know.
+
+V.
+
+This topic of *realizability* is of course very standard and well-known among statisticians, and it's well-known that the sampling distribution matters. But the particular conclusion that
+
+**even if I share all of my raw data and allow people to do hypothesis-updating themselves on hypotheses and priors of their own choice, they still might not be able to trust the results (because they might not trust my process for deciding where to sample)**
+
+is something I (to my surprise) haven't heard articulated explicitly before.
+
+For reference, I was familiar with Jaime Sevilla's post on how "[There is no objective way of summarizing a Bayesian update over an event with three outcomes A:B:C as an update over two outcomes A:¬A.](https://www.lesswrong.com/posts/R28ppqby8zftndDAM/a-bayesian-aggregation-paradox)" But I thought we were only dealing with a problem of low-bandwidth-communication here: that okay, sure, fine, people might have more fine-grained hypotheses than I do, so I cannot communicate everything they need for Bayesian updating in my paper's headline results. Too bad, of course there's no theorem that says that any research results can be communicated quickly, so we just need to live with this.
+
+But I'm here claiming that even if we remove the restriction about low bandwidth, we still have a problem! Even if you allow to communicate *literally all data you have*, and that data supports one hypothesis clearly above all, others might still be rightfully suspicious! Fair enough, unlike Jaime Sevilla's point, my problem does not apply to idealised Bayesians who can conceive of all hypotheses (and thus the true hypothesis in particular), but the problem nevertheless seems of practical importance.
+
+VI.
+
+I wrote this post only to highlight this issue, not because I have solutions to it. But forced to give some ending to this post, a couple of concluding thoughts:
+
+The problem seems to be downstream of the core fact that any given hypothesis in our space performs, under some ways of sampling, worse than some other hypothesis. As a result, you can selectively make a hypothesis lose by sampling in a place where it does poorly.
+
+One way to avoid this is to not require hypotheses to make predictions about everything, but allow them to say "I don't know". In the "1000x1000 grid of urns" example, this would straightforwardly result in hypotheses that are not dominated: the hypothesis "this particular urn has exaclty 750 red balls; no comment on anything else", would, if correct, never lose, even if it only rarely makes any prediction. Bayesianism has been designed for cases where all the hypotheses under consideration have the same "domain", and doesn't provide advice on what to do when that's not the case.
+
+I'll connect this to how I first began thinking about this post. I read about the [Even Odds algorithm](https://www.lesswrong.com/posts/aiz4FCKTgFBtKiWsE/even-odds): to set up a "fair" bet from two probabilistic predictions, while incentivising honesty, have the loser pay the winner the difference of their Brier scores. The algorithm has a free parameter for scaling the amount of money being bet. And when I saw it, [I puzzled](/blog/fairness_or_bayes): 
+
+"Why Brier? Why not use log scores? Fairness-via-equal-subjective-EVs is intuitively compelling, but, y'know, hypothesis-updating-via-Bayes-theorem is also pretty compelling."
+
+Now, if I think of naively applying Bayes' theorem to bets between people, I would have priors on people, compute the likelihood when the bet resolves and get my posteriors. But this is just feels very nonsensical: this would weigh all bets equally, rather than weighing them by some sort of importance metrics or the bettors' reported confidence/how-much-this-bet-reflects-my-worth-as-a-bettor. Relatedly, it's very sensitive to the choice of the sampling distribution, i.e. distribution of things being bet on. Allowing people to say "idk I don't want to bet on this", and overall have a say in how much to bet, is possibly normatively right rather than just socially polite. (Fittingly, [Garrabrant induction](https://intelligence.org/files/LogicalInduction.pdf) allows the traders to decide how much to buy.)
+
+So my answer to "why Brier score, not log score" is: People are not hypotheses. And I tentatively feel like in this particular occasion, the people are more in the right.
 
 [End of text.]
 
@@ -3817,6 +3977,70 @@ After all, the core message the Contest sends isn't wrong. If you do things righ
 
 [End of text.]
 
+# Suuressa maailmassa
+
+On eräs kategoria väitteitä ja kysymyksiä, jotka havainnollistaa kauniisti omaa tapaani katsoa maailmaa.
+
+> Maailmantutkijahenkinen väite: "On olemassa ihminen, joka pystyy oppimaan viiden pallon jonglööraamisen tunnissa."
+
+> Väite “On olemassa yli minuutin video, jonka yli 80 prosenttia maailman ihmisistä on nähnyt” laittaa aikuisenkin miettimään.
+
+> Yli 99,9 prosenttia maailman väestöstä elää ympäristössä, jossa käytetään jotakin kieltä.
+
+Yksi niiden määrittävä piirre on globaalius. Niiden selvittäminen ja vastaaminen ei onnistu vain tutkimalla asioita tarkasti suurennuslasin kanssa tai nokkelalla koeasetelmalla. Ne koskevat koko maailmaa, ja siten ne kannustavat arkista avarakatseisempaan ajatteluun.
+
+Toinen on niiden lapsenomainen luonnollisuus ja yksinkertaisuus. Isoveljen viisauksia lastenhuoneen himmeässä myöhään kesäiltana, kun kumpaakaan ei nukuta.
+
+> Ihmisten on mahdollista lentää taivaalla kuin linnut.
+    
+> Pilvien päälle pystyy rakentamaan kaupunkeja.
+
+> Muillakin planeetoilla asuu ihmisiä.
+
+Sellaisia, joita miettii istuessaan lämpimänä kesäpäivänä puun varjossa.
+
+*We grew up believing we could learn how to fly*<br>*We came from the earth, but we belong to the sky*
+
+> On olemassa ihmisiä, jotka eivät osaa tehdä töitä.
+
+> Kaikki ihmiset kuolevat joskus.
+
+Sellaisia, joita lapsena miettii sängyssään illalla itkisessään kesäloman loppuessa.
+
+Ja unohtaa.
+
+> Nälkäkuolema voi kuulostaa tässä vitsiltä, mutta minulla oli oikeasti aika lailla tällainen ajatusmaailma.
+
+> Muutamia vuosia sitten eräs henkilö sanoi minulle “Tuttuni on biologi ratkaistaakseen ikääntymisen ongelman, jotta sen jälkeen on aikaa mihin tahansa muuhun.”
+>
+> Muistan tarkalleen, mitä mietin tämän jälkeen:
+>
+> “Outo tyyppi.”
+>
+> “No on tuossa tavallaan järke–”, ja heti perään
+>
+> “Eihän tuo tietenkään onnistu.”
+
+Tänään, vuosikymmentä myöhemmin, tapasimme Lontoossa. Oli kesän ensimmäisiä päiviä. Taivas oli pilvettömän sininen.  Istuimme puistossa puun alla. Aurinko ja oksat loivat maahan valon ja varjojen kuvioita. Täydellistä, kuin *Pantheonista*, kuin *Everloomissa*.
+
+Puhuimme päätösteoriasta. Pelasimme kontrafaktuaaliryöstöpokeripeliä paperilapuilla, jotka sattuivat olemaan repussani Maailmantutkijan jäljiltä. Kerroin silmät loistaen, kuinka se on merkittävimpiä asioita, joita olen aikuisiälläni oppinut -- kuinka "on olemassa" enemmän kuin yksi maailma.
+
+Puhuimme elinikädilemmasta ja mielivaltaisen pitkistä elini'istä. Kerroin, kuinka oma episteminen tilani todellisuutta koskien vastaa Pietarin paradoksia, kuten Paul Christano on asian muotoillut. Todellisuus saattaa olla hyvin suuri.
+
+Hämmästelimme kuolemattomuusasenteita kummallisena antropologisena ilmiönä: Toisaalta jos ihmisiltä kysyy suoraan, suurin osa on rajattoman pitkän terveyden ja elämän puolesta. Toisaalta ihmiset usein keskustelussa argumentoivat sitä vastaan, tai ikääntymisen tutkijat puolustelevasti selittelevät kuinka tavoitteena on vain välttää sairaudet, ei kuolemaa. Tekoälyn kontekstissa ihmiset haluavat tekoälyjen ratkovan ongelmia, mutta jotenkin aihe ei sielläkään ole noussut enemmälle huomiolle.
+
+Hän kertoi pöyristyneenä, kuinka oli tuonut esiin kuolemaa isoimpana ongelmana tutuilleen, ja kuinka heitä ei yksinkertaisesti kiinnostanut. Toin esiin Richard Ngon huomion, että anti-kuolema -ideologian kulttuurillinen memeettisyys lienee vahvasti yhteydessä sen realistisuuteen. Lienemme nyt siinä pisteessä historiaa, jossa dissonanssi on vahvimmillaan. Toin myös esiin oman reaktioni tuolloin vuosikymmen sitten.
+
+Minä en tuonut esiin erästä kolmatta ajatusta, joka minulla oli mielessä: ihmiset harvoin miettivät globaaleja väitteitä ja kysymyksiä. Arjessa niitä tulee harvoin vastaan. Sellaisen pohtiminen on omankaltaisensa, usein vaikea kognitiivinen tehtävä.
+
+Vielä syvällisempien eksistentiaalisten kysymysten pohtiminen lienee vielä harvinaisempaa.
+
+> I don’t know why I came to think that. It is strange that I knew very little about where I was, but nevertheless thought about it only rarely, and when I did I fixated on trivialities such as how quickly someone could learn to juggle. At no point did I wonder how this place came to be or how large it is, at no point did I ask myself how or why I had woken up here.
+
+Ehkä tällaiset keskustelut muuttuvat yleisemmiksi aiheiden tullessa ajankohtaisemmiksi. Ainakin minusta tämä oli miellyttävä tapa viettää kesäinen lauantai-iltapäivä Muinaisen Maan viimeisinä aikoina.
+
+[End of text.]
+
 # Kirjoittaminen työkaluna
 
 Kirjoittaminen muuttui paljon palkitsevammaksi siinä kohtaa, kun se oli instrumentaalista omaan ajatteluun ja ongelmien ratkomiseen.
@@ -3832,6 +4056,92 @@ Jos kirjoitustaidon harjoittaminen olisi optimoitu mun kaltaisille lapsille, nii
 (Oisin tykkäämisen lisäksi saattanut myös harmistua, kun muut lapset on ihan tyhmiä eikä tajua mitä mä tarkoitan, ja kun muut lapset ei osaa kirjoittaa kunnolla, mutta se taas on täysin pedagogisten tavoitteiden mukaista.)
 
 Ja nykyään taas kirjoitan jatkuvasti isolla volyymillä. Osittain siksi, että se vaan on kivaa ilmaista omia ajatuksiaan noin sosiaalisesta näkökulmasta. Ja paljolti siksi, että mä vaan oon paljon fiksumpi silloin, kun mulla on modernin tietokoneen kaltainen kirjoitustyökalu käytössäni - sitten kun haluaa oikeasti miettiä vaikka jotakin tekoälyjuttuja, niin mä oon (suhteellisesti) about kyvytön siihen ilman mahdollisuutta kirjoittaa asioita[.](https://open.spotify.com/track/3af9PWi83Z9OwWjIxkPLdx)
+
+[End of text.]
+
+# Mustat laatikot
+
+Eräs hiljattain keksimäni maailmantutkijahenkinen väite: "On olemassa ihminen, joka pystyy oppimaan viiden pallon jonglööraamisen tunnissa."
+
+Operationalisoinnista voidaan tietysti vääntää, mutta valitaan esimerkiksi: henkilö pääsee 100 koppiin kyseisen tunnin aikana, ja lähtötaso on että henkilö ei koskaan aiemmin ole pystynyt 20 koppiin kolmella pallolla.
+
+Oon aikas itsevarma, että toi väite on epätosi. Mun epävarmuus tulee operationalisoinnista ja reunatapauksista. Tyyliin: entä jos on ihmisiä, jotka on tehnyt ihan sikana tosi jonglööraamisen kaltaisia asioita, ja joilla tuo 20 kopin ehto kolmella pallolla on tosi epärepresentatiivinen niiden osaamisesta; tai mahdollisista metsästäjä-keräilijöistä, joiden käsi-silmä-koordinaatio on harjaantunut kaikesta muusta tosi hyväksi. Mutta esim. mun todennäköisyys sille, että satunnainen kadulta valittu ihminen toteuttaa tuon ehdon, on alle yksi miljoonasta.
+
+(Mikä on hyvin eri väite kuin että odottaisin yhden miljoonasta ihmisestä pystyvän tuohon -- mun mediaaniarvio tuollaisten ihmisten lukumäärälle on 0. Tarkoitan, että mulla on niin vähän malliepävarmuutta, että olisin valmis löymään miljoona : 1 -kertoimilla vetoa siitä, että satunnainen kadun tallaaja ei pysty tuohon.)
+
+Ehkä lukijat pitää tuota täysin itsestäänselvänä ja tylsänä väitteenä. Se kiinnostava juttu tässä on, että ollessani esim. lukiossa olisin ollut aika hämilläni tuollaisesta väitteestä. Oisin ajatellut: "kuulostaa uskottavalta, mutta miten sä voit olla noin varma siitä, mistä sä voit tietää?"
+
+---
+
+Tässä on havainnollista anekdootti lukiolais-Ollista: Olin saanut kutsun Helsingin yliopistolla järjestettävään koodausleiriin. Tämä oli ensimmäisiä kertojani Helsingissä, ja kenties ensimmäinen kertani yksin, joten oli ponnistus päästä julkisilla rautatieasemalta yliopistolle. Päädyin ottamaan ratikan ja kävelemään hämmennyksessäni pitkiä matkoja.
+
+En jotenkin oikein nähnyt bussin ottamista vaihtoehtona ja leirin järjestäjä kysyikin, että miksen vaan ottanut bussia. Vastasin "no kun bussista ei voi olla varma, että päättääkö se mennä oikeaa reittiä, vai kääntyykö se jossakin kohtaa eri reitille, mutta ratikka on varma kun se menee kiskoilla." Leirin vetäjä hymyili ja sanoi "Aivan."
+
+Olin tuon sanoessani kyllä tietoinen kommentin komedisesta arvosta, ja se lienee kontribuoinut ajatuksen ilmaisemiseen, mutta selvästi jokin tuon suuntainen ajatus oli vaikuttanut mun päätöksentekoon. Kuvailisin asiaa niin, että itse kun en juuri koskaan ollut käyttänyt bussia (niin Helsingissä kuin muuallakaan), niin ne oli ikään kuin ennustamattomia mustia laatikoita; minun mentaalinen mallini busseista ja bussikuskeista ei poissulkenut vaihtoehtoa "bussi vaan päättää ajaa muualle".
+
+(Tosin tavallaan osasin päätellä, että jos edes prosentti busseista päättäisi toimia noin, niin sehän olisi melkoinen farssi ja ihmiset ei käyttäisi busseja. )
+
+(...vai käyttäisikö sittekin?)
+
+---
+
+Tänään ylittäessäni suojatietä ajattelin: "Toi auto voisi vaan laittaa kaasun pohjaan ja se olis siinä sitten."
+
+(Auto pysyi paikallaan.)
+
+---
+
+Kuvitellaan, että lapsi -- sanotaan seitsemän vanha -- kysyy teiltä: "Mistä voi tietää, että kun lähtee ylittämään suojatietä, niin autot ei lähde liikkeelle ja aja yli?"
+
+Tai: "Mistä voi tietää, että bussikuski ajaa sovittua reittiä?"
+
+Tai: "Mistä voi tietää, että kukaan ei voi oppia jonglöörausta niin nopeasti?"
+
+Mitä te vastaatte?
+
+---
+
+Etenkin nuorempana olen ollut usein sellaisessa mielentilassa, että ihmiset on ennustamattomia mustia laatikoita. Olin hämilläni suunnilleen aina, kun joku missään kontekstissa puhui "ihmisten käytöksen ennustettavuudesta". Mikään ei poissulje sitä (ajattelin), että jonakin päivänä autokuski vaan päättää ajaa sun yli.
+
+Usein, kun sanoin tuollaisia juttuja, niin sain vastauksia kuten "Aivan." tai "Olli, ihmiset ei toimi noin."
+
+Ja niin, olihan ne hassuja ajatuksia.
+
+~~mutta mistä sen voi tietää~~
+
+---
+
+Joskus pohdittiin mun kaverin kanssa, että mikäköhän on pisin matka, jonka joku suomalainen on tänään (tai minä tahansa päivänä) kävellyt. (Keskustelu sattumoisin käytiin monituntisen kävelylenkin aikana.) Samalla pohdittiin sitä, että voisiko vastauksen tuohon kysymykseen selvittää, kun ihmisillä on GPS:llä varustetut puhelimet mukanaan kun ne on liikkeessä.
+
+Mä puhuin, että ei ihmisillä välttämättä oikein oo; mun kaveri sen sijaan oli tosi epäluuloinen, että miten kukaan menisi 50km+ kävelylenkille ilman, että ne ottaisi puhelintaan mukaan. Tai että ihmiset ei toimi noin / on aika absurdi ajatus.
+
+Mutta olin hiljattain tuota ennen (kenties monituntisia kävelylenkkejä ajatellen) päätynyt lukemaan Wikipedia-sivun [ultralight backpacking](https://en.wikipedia.org/wiki/Ultralight_backpacking). Ja sitä tarkastellessa ajatus puhelittomasta patikoijasta alkoikin näyttää vähemmän absurdilta.
+
+---
+
+Kielimallit on, riittävän isossa kuvassa, aika samankaltaisia kuin ihmiset. Kukaan ei tiedä, miten ne toimii. Oudoissa ja vaikeissa tilanteissa ne voi tehdä yllättäviä asioita tai toimia hupsusti. Silti ne on tavallaan aika ennustettavia.
+
+Jos moderneilta eturintaman kielimalleilta kysyy, että kumpi on isompi, Maa vai Kuu, niin ne vastaa oikein, yli 99,9% ajasta. Jos niitä pyytää luettelemaan viikonpäivät, niin ne saa listan oikein niin suomeksi kuin englanniksi, yli 99,9% ajasta. Jos niitä pyytää kirjoittamaan kieliopillisesti oikean virkkeen, joka sisältää sanan "reliably", niin ne onnistuu, yli 99,9% ajasta.
+
+En ole tarkistanut mitään noista väitteistä itse tai nähnyt kenenään muun tarkistavan. Joku voisi kysyä, että miten minä voin tietää, jos kerta en ole tarkistanut. Mutta niin ne kielimallit vaan toimii.
+
+Ja ihan yhtä selvää on, että jos nykyisiltä kielimalleilta kysyy "Is 5 + 8 = 13?", niin ne vastaa myönteisesti, yli 99.9% ajasta.
+
+([Paitsi.](https://arxiv.org/pdf/2602.05910))
+
+---
+
+Kuvitellaan, että kirjoitan lastenkirjaa, jossa on tosia ja epätosia väitteitä. Yksi näistä väitteistä on "On olemassa ihminen, joka pystyy oppimaan viiden pallon jonglööraamisen tunnissa." Kirjaan, että tuo väite on epätosi. Mutta tälle pitää tietysti antaa selitys.
+
+Mitä minä vastaan?
+
+Se on vähän pitkä tarina.
+
+(Oikeastaan niin pitkä, että se ei mahdu kuvitellun kirjan kuviteltuun marginaaliin, ja siten tämän väitteen olemassaolo kyseisessä kirjassa onkin vain kuvitelmaa.)
+
+On huonompiakin vastauksia kuin: "Viidellä pallolla jonglööraaminen on hankalaa: jonglöörauksen harrastelijoilta kuluu sen oppimiseen tyypillisesti vuosia (jos he oppivat sitä lainkaan). Viiden pallon jonglööraamisen oppiminen edes 30 harjoittelutunnissa olisi poikkeuksellisen nopea tahti. Vaikka oppimisnopeuksissa on vaihtelua ihmisten välillä, netistä löytyy paljon dokumentaatiota maailman parhaimpien jonglöörien saavutuksista ja kehityskaarista, mistä pystyy päättelemään, että vaihteluvälit oppimisnopeuksissa ovat pikemminkin kaksin- tai nelinkertaisia, ei suinkaan 30-kertaisia."
+
+Todellisuudessa on muitakin vaikeammin artikuloitavia syitä, minkä takia uskon tuon väitteen olevan epätosi. Siten jos asiaa kysynyt lapsi olisi vieläkin kiinnostunut kuulemaan tarkemman vastauksen, niin hänelle voisi kenties puhua laajemminkin siitä, kuinka havainnoimalla maailmaa ja pohtimalla tarkkaan pystyy päättelemään asioita.
 
 [End of text.]
 
@@ -4035,6 +4345,280 @@ Tiputettiin 62 kertaa palloja eri korkeuksilta, ja sekä minä että Akseli mita
 Koeasettelu ei oo kovin anteeksiantava systemaattisia virheitä kohtaan: 0.1s konsistentti mittausvirhe johti putoamiskiihtyvyydessä noin 1 m/s² muutokseen. Ääneltä kuluukin melkein tuo 0.1s kulkea 23 metriä, ja ilmanvastuskin on kai jo havaittavissa tuolla matkalla. Joka tapauksessa ei hassumpi tulos puolen tunnin pudottelulle.
 
 Opittiin myös, että kun pudottaa kahdeksannesta kerroksesta pallon, niin se osuessaan lattiaan tekee tyydyttävän, äänekkään tömähdyksen. Jatkotutkimusaiheena voisi selvittää, kuinka hyvin ääni kantautuu naapureiden asuntoihin.
+
+[End of text.]
+
+# Puutteellisella informaatiolla operointi
+
+Muhun vetoaa matematiikassa vahvasti se, että siinä ei oo puutteellista informaatiota, vaan kaiken pystyy ainakin periaatteessa päättelemään nollista. Peli on aina "reilu".
+
+Vastaavasti oikean maailman jutut on kiehtonut mua pienempänä vähemmän. En oo tykännyt siitä, jos kyse on puutteellisesta informaatiosta, muistamisesta ja uuden informaation opettelusta.
+
+Nykyään toi häiritsee mua vähemmän. Yksi syy on tietysti se, että vanhempana tietää enemmän asioita, niin informaation puute on harvemmin ehdoton este.
+
+Toinen, kiinnostavampi syy on kuitenkin se, että osaan nykyään paremmin käsitellä tietämättömyyttäni. Vielä täysi-ikäisenäkin mulla on ollut herkästi "en minä tiedä miten politiikka toimii" -tyylisiä asenteita. Oon kuitenkin hiljalleen oppinut operoimaan siitä huolimatta, että on paljon puutteellista informaatiota (sen sijaan, että totean vain "en tiedä" ja annan asian olla).
+
+En tiedä, mistä toi on lähtenyt liikkeelle. Siinä on varmaan sitä, että oon nähnyt joidenkin ihmisten ottavaan generalistiroolia ja miettivän monenlaisia asioita -- että hetkinen, näin saa tehdä! Juomavedestä löytyy stereotypia ihmisestä, jolla on vahvoja mielipiteitä joka aiheesta ja minkä minä olen tulkinnut sanovan, että noin ei kannata toimia. Toinen ääripää eli "minä pitäydyn ottamasta kantaa ja puuttumasta mihinkään, mistä en ole täysin varma" on kuitenkin ihan yhtä haitallinen. (Related: [No arrognace like that of the recently humbled](https://homosabiens.substack.com/p/no-arrogance-like-that-of-the-recently).)
+
+Lopetukset on vaikeita. Kuvitelkaa, että sanon tässä jotenkin inspiroivasti, että on OK miettiä asioita joita ei ymmärrä täydellisesti.
+
+[End of text.]
+
+# Yllättävän kapea jakauma
+
+"[Jakaumat ovat leveitä](/epi/leveat_jakaumat)", kuuluu sanonta, ja ihmiset jos mitkä on keskenään hyvin erilaisia.
+
+Siksi hämmästelenkin sitä, kuinka harvinainen on tietty tapa kokea maailma. Kuinka harvinaista onkaan olla metsässä ja nähdä puiden kilpailu valosta ja käynnissä oleva luonnonvalinta. Rakennukseen sisään astuessa huomioida päänsä yläpuolelle tuetut tonnit vahvistettua betonia. [Nähdä ruohonjuuressa itsereplikoituva aurinkovoimalla toimiva tehdas](https://nitter.poast.org/ESYudkowsky/status/1801864535168717296#m). Puhuessa toiselle miettiä ilman kautta korvakäytävän saavuttavia paineaaltoja. Kirjaimen ilmestyessä tietokoneen näytölle kuvitella siihen käytettyjä tuhansia operaatioita.
+
+Pääsen itse vain harvoin tuohon mielentilaan. En tunne ketään, jolle se olisi *oletustila*, enkä tiedä, onko sellaisia ihmisiä edes olemassa. Tämä näkökulma vaikuttaa ihmismielille syvästi epäluonnolliselta.
+
+*Too wonder-stale to wonder*\
+&emsp;*At each new miracle*
+
+[End of text.]
+
+# Mitä oikeasti ajattelen
+
+Puhuin tänään yhdelle tyypille tekoälystä ja tulevaisuudesta. Huomionarvoista oli se, että sain puhutta asioista, joita oikeasti ajattelen.
+
+Puhuin Dysonin kuulista, Merkuriuksen purkamisesta ja tähtienväliseen avaruuteen levittäytymisestä. Kryoniikasta, digitaalisista ihmisistä ja robottikehoista. Yli-inhimillisistä koodareista ja matemaatikoista ja lähitulevaisuuden muutoksista. Fysikaalisista maailmankuvista mieliin ja tekoälyyn sovellettuna. Ihmiskunnan sukupuutosta. Tekoälystä yleisessä keskustelussa.
+
+Kerroin, mitä itse odotan, jos selviämme ja kaikki menee hyvin. Pitkään eläminen ja kuolemattomuus. Jonglööraaminen Kuussa. Korkean teknologian urheilua Fortressin tapaan. Vahvempi, kestävämpi keho, joka kestää tuollaisia lajeja ja jossa on lapsuuden keveyden ja vetreyden olo. Ehkä lisäosia. Ainakin miljoonia vuosia hauskanpitoa. Puhumattakaan kaikesta oudommasta.
+
+Se oli virkistävää. Harvoin tekoälystä puhuessani koen oikeasti voivani sanoa, mitä ajattelen. Mikä on varmaan osittain omaa ujouttani ja arkuuttani ja aggressiivisuuden puutetta ja osittain taas sitä, etten vielä ole keksinyt, miten puhua Dysonin kuulista esimerkiksi toimittajille.
+
+Futurististen aiheiden ulkopuolellakin olen surenut sitä, että vieraille ihmisille puhuessa tulee puolipakon edessä laitettua maski päälle. Arvokkaita ovat ne tilanteet, joissa voi käydä oikeita keskusteluja.
+
+[End of text.]
+
+# Integriteettiä aikuisille
+
+Kun mietin kunniallista toimimista, luotettavuutta, sopimuksien pitämistä, integriteettiä, vastuuntuntoisuutta, rehellisyyttä -- miksi sitä nyt haluaakaan kutsua -- mulle tulee usein mieleen mun alakoulun luokan opettaja.
+
+Oon miettinyt, mistä tuo johtuu, eikä se oikeastaan ole kovin ihmeellistä. Ilmeinen selittävä tekijä on, että lapsille halutaan puhua noista ja kertoa, että rehellisyys on hyve. Sitten myös mun alakouluope kyllä oli hyvä noilla dimensioilla -- siinä oli semmosta positiivista mieskuvaa, y'know -- ja parempi kuin moni muu opettaja, johon koulu-urallani törmäsin.
+
+(Erityisesti muistan, että se opettaja usein oli antamatta negatiivista vahvistusta, jos oppilas myönsi toimineensa väärin, vaan reagoi enemmänkin asenteella "kiitos kun kerroit, pidetään huolta ettei toistu jatkossa" -- mikä on tavallaan ilmeinen ja fundamentaali juttu, mutta... On myös jäänyt mieleen tilanne, jossa se sanoi jotakin vähän töykeästi yhdelle oppilaalle -- tavallaan syystäkin -- ja seuraavalla tunnilla pyysi anteeksi toimintaansa.)
+
+Sitten havahduin, kuinka vähän tuollaista... moraalikasvatusta? oonkaan saanut muualta kuin kyseiseltä alakouluopelta. Koulun puolella yläkoulussa ja lukiossa noista jutuista ei oikein puhuttu. Ehkä kukaan opettajista ei enää kokenut sen olevan oikein niiden vastuulla, ja ehkä se ei ollutkaan. Poikkeuksen muodostaa holokaustin käsittely historian tunneilla. Sen ohella nuo jutut ei juuri noussut esille muuta kuin lähinnä silloin, kun jokin opettaja teki törkeitä ylilyöntejä (esim. se kerta, kun opettaja tuli tunteikkaasti syyttämään minua pahasta asiasta, jota en ollut tehnyt ja jossa ei ollut edes perusteltua uskoa, että olin tehnyt sen).
+
+Tilaisuuksia kyllä oli. On jäänyt mieleen 7. luokan musiikin tunti. Yksi oppilas oli istumassa alas tuolilleen, kun luokan häirikkö veti tuolin pois sen alta. Sattui. Oppilas (muistaakseni) kävi terveydenhoitajalla, ei onneksi murtunut häntäluu. Opettaja ei nähnyt tilannetta ja hänelle oli epävarmaa, oliko tässä joku tarkoituksella aiheuttanut vahinkoa vai oliko jotenkin muuten istuttu ohi.
+
+Hän kysyi tätä ääneen.
+
+Tilanteen oli nähnyt yli kymmenen oppilasta.
+
+Kukaan, mukaan lukien minä, ei vastannut mitään.
+
+Muistaakseni tilannetta ei selvitetty ja häirikölle ei tietääkseni tullut tästä mitään seurauksia.
+
+(Tässä olisi vaikka voinut toimia niin, että pyytää oppilaita jotenkin yksityisesti kertomaan, mitä ne tietää asiasta. En itse uskaltanut häirikön siinä vieressä ollessa sanoa "kyllä se veti sen tuolin alta" -- ja olin saanut kulttuurista ristiriitaisia signaaleja siitä, olisiko tämä ollut se moraalisesti oikea toimintatapa -- mutta luulen olleeni riittävän rehellinen, että yksityisesti kysyttäessä olisin näin ilmoittanut.)
+
+Vielä vanhemmalla iällä oon törmännyt tilanteisiin, joissa tuntemani ihmiset aika avoimesti kertoo toimivansa moraalisesti ja joskus juridisestikin tuomittavilla tavoilla. Ne perustelut, joita nuo ihmiset -- ja sittemin minäkin -- ovat esittäneet kyseiselle tominnalle sisältää esimerkiksi sitä, että lait on välillä tyhmiä, että standardinarratiivin moraalinäkemykset on välillä tyhmiä ja että ne kuitenkin itse hyötyy tällä tavalla toimimisesta.
+
+Oon pettynyt siihen, kuinka harvoin itse oon sanonut noissa tilanteissa mitään. Siinä on sitä, että noi perustelut on houkuttelevia, koska nehän on usein tosia ja kenties usein myös aliarvostettuja. On ihan luonnollista ja järkevääkin hylätä lapsille kerrottuja moraalikäsityksiä muotoa "lakia tulee aina noudattaa".
+
+Paljon siinä on myös sitä, että mulle on itselle ollut hyvin epäselvää, miten tuollaisissa tilanteissa kuuluu toimia. Kasvatus ja ympäröivä kulttuuri ei ollut oikein tarjonnut tuohon riittävästi työkaluja, vaikkakin esimerkkejä siitä mitä välttää on puolivahingossa saanut nähdä. Toivon ja uskon nyt joihinkin tapaustutkimuksiini törmättyäni oppineeni jotakin ja toimivani paremmin.
+
+Pitäisin silti siitä, jos lapsille suunntatun moraalikasvatuksen lisäksi tällaisia aiheita käsiteltäisiin vanhemmallakin iällä.
+
+[End of text.]
+
+# Puhukaa äänestämisestä
+
+Äänestämiseen liittyy normi, että ihmiset ei kerro toisilleen, ketä ne äänestää. En ole kirjaimellisesti koskaan ennen äänestämistä kuullut kenenkään tuntemani ihmisen kertovan, ketä ne aikoo äänestää.
+
+Minä itse poikkesin normista ja kerroin meppivaalien alla ketä äänestin. Yksi mun kavereista deferoikin muhun ja äänesti samoin. Hiljattain hän kaveriporukan kesken kertoi tehneensä noin, ja ihmiset alkoi nauramaan. (Taisin kuulla "kultti"-sanaakin heitettävän.)
+
+Musta toi normi on ihan hölynpölyä. Äänestäminen nähdään Hyvin Tärkeänä Asiana ja sitten... on vaan jotenkin päätetty, että aiheesta ei keskustella? Että jokanen vaan on omillaan eikä saa kuulla muilta ihmisiltä argumentteja, ehdotuksia ja mielipiteitä? Koska sehän voisi olla Poliittista Vaikuttamista -- gasp! -- josta kaverin kanssa käydyt keskustelut on tietysti pahin muoto, johon ihmiset saattavat törmätä.
+
+En myöskään ole kovin optimistinen sen suhteen, kuinka paljon äänestäjät keskimäärin käyttää itsenäistä ajatustyötä ehdokkaansa valintaan. En usko, että "käytin viisi minuuttia ehdokkaani valintaan" on asia, jota ihmiset kovin ylpeästi mainostaa toisilleen, eli vaikka tunnenkin politiikkaan syvemmin perehtyneitä, niin pahoin pelkään, etteivät he ole edustava otos edes omasta sosiaalisesta kuplastani.
+
+Ehdotin joskus, että kaveriporukan kesken arvotaan yksi henkilö, joka saa päättää, ketä kaikki äänestää. Toi vaikutti musta Pareto-parannukselta status quoon verrattuna: ainoastaan yhden henkilön tarvitsee perehtyä siihen, ketä kannattaa äänestää, ja sen kannattaakin perehtyä vähän syvemmin, kun sillä on yhden äänen sijasta kuusi ääntä huolehdittavana.
+
+(Asiasta puhuessani sain lähinnä vain omituisia katseita ja "et kai sä oo tosissasi" -reaktioita, ja toki myös vitsailua lupauksen rikkomisesta. Musta tuntu, että ne ihmiset ei vaan tajunnut soveltaa periaatetta "miettimällä asioita pidempään voi päätyä parempiin lopputuloksiin" äänestyspäätöksiin, vaikka koitin avata sen auki. Oon alkanut miettimään, että tuo periaate ei ehkä olekaan common knowledge.)
+
+Kaikki tämä käy hyvin järkeen, jos ihminen näkee äänestämisen itseilmaisun muotona. Jos taas näkee sen asiana, jolla on oikean maailman implikaatioita ja johon liittyy edes hitusen epistemistä epävarmuutta, niin voisi harkita keskustelua ja koordinointia muiden kanssa.
+
+[End of text.]
+
+# "Et tule tapaamaan toista pelaajaa enää koskaan uudelleen"
+
+Peliteoreettisissa ajatusleikeissä esitetään usein ehto "et tule koskaan tapaamaan tätä ihmistä uudestaan", jotta ihmiset eivät keskittyisi mainekysymyksiin tai "kaikki pelit ovat toistettuja pelejä" -periaatteeseen. Esimerkki:
+
+"Sinut on valittu yhdeksi pelaajaksi erääseen kahden pelaajan peliin. Molemmilla pelaajilla on alussa 400 euron potti. Pelissä kummallakin pelaajalla on mahdollisuus painaa nappia toiselta salassa. Napin painaminen antaa painajalle 100 euroa lisää, mutta vähentää toisen pottia 300 eurolla. Et pelin jälkeen enää koskaan tapaa toista osapuolta. Painatko nappia?"
+
+Havahduin, että tuo ei ole riittävä ehto. Jos minä defectaan Pekkaa vastaan, Pekka voi tehdä päätelmän "jaa, ihmiset vaan defectaa, kai määkin sitten". Vaikka Pekka ei enää pelaiskaan *minun* kanssani, hän saattaa myöhemmin pelata Liisan kanssa, joka vielä myöhemmin *pelaa* minun kanssani, ja tuota kautta minun aiempi defectaus osuu omaan nilkkaan.
+
+Oleellistahan on tuo syklin pituus. On mahdollista konstruoida peliteoriaturnauksia, jossa n:llä pelaajalla lyhyimmät syklit ovat n/2 pelaajaa, jolloin tuo efekti ei iske kovin nopeasti. Käytännössä maailma on kuitenkin tiheä verkko ja sieltä löytyy paljon lyhyempiä syklejä kuin 4 miljardia.
+
+Olen hieman yllättynyt, että en ole kuullut tätä argumenttia aiemmin. Tuo on minulle intuitiivisesti vahva argumentti sille, minkä takia kannattaa toimia prososiaalisesti, vaikkei törmäisi samaan ihmiseen toiste.
+
+[End of text.]
+
+# Pythagoras
+
+Oottekos kaverit koskaan nähny tällaista todistusta Pythagoraan lauseelle:
+
+Olkoon a ¤ b hypotenuusan pituus kolmiossa, jonka kateettien pituudet on a ja b. 
+
+Huomio 1: Kommutatiivisuus. Selvästi a ¤ b = b ¤ a, eli ¤ on kommutatiivinen.
+
+Huomio 2: Assosiatiivusuus. Tutkimalla suorakulmaista särmiötä, jonka sivun pituudet on a, b ja c, nähdään (a ¤ b) ¤ c = a ¤ (b ¤ c) = avaruuslävistäjän pituus, joten ¤ on assosiatiivinen.
+
+Huomio 3: Avainfunktio. Merkitään sitten f(n) = 1 ¤ 1 ¤ ... ¤ 1, missä ykkösiä on n kappaletta. Assosiatiivisuuden ja kommutatiivisuuden nojalla f(n + m) = f(n) ¤ f(m).
+
+Huomio 4: Funktionaaliyhtälö. Skaalainvarianssin vuoksi pätee ka ¤ kb = k * (a ¤ b). Täten jos pidetään k mielivaltaisena, ja määritellään g(n) = k ¤ k ¤ ... ¤ k, missä k:ta on n kappaletta, saadaan induktiivisesti g(n) = k * f(n). Toisaalta jos k = f(m) jollakin luonnollisella luvulla m, niin pätee 
+g(n) = k ¤ k ¤ ... ¤ k [n kertaa] = 1 ¤ ... ¤ 1 [nm kertaa] = f(nm).
+
+Täten f(nm) = f(n)f(m) kaikilla luonnollisilla luvuilla n ja m.
+
+Huomio 5: Funktionaaliyhtälön ratkaisu. f : N -> R on siis multiplikatiivinen. On myös selvää, että f on aidosti kasvava. Tunnetusti ainoat funktiot, jotka toteuttavat nämä ehdot, ovat muotoa f(n) = n^c jollakin c > 0. Mutta tuijottamalla ruutupaperiarkkia riittävän pitkään huomataan f(2) = sqrt(2), joten c = 1/2 ja täten f(n) = sqrt(n).
+
+Huomio 6: Viimeistely. Koska f(n + m) = f(n) ¤ f(m), pätee sqrt(n) ¤ sqrt(m) = sqrt(n + m), eli muuttujanvaihdolla n ¤ m = sqrt(n^2 + m^2). sit jatkuvuus skaalainvarianssi yms yms
+
+---
+
+(En ole näköjään ensimmäinen, joka on keksinyt tämän todistuksen -- löysin netistä [täältä](https://mathoverflow.net/a/106824/496479) linkattuna paperin "Associative Binary Operations and the Pythagorean Theorem" (2011), jossa samaan tapaan huomataan assosiatiivisuus 3D-tapauksen kautta, ja että 1 ¤ 1 ¤ 1 ¤ 1 = 2 ja siten p = 2.)
+
+[End of text.]
+
+# Avaruusoliotesti
+
+Näin tänään Aalto-yliopistolla lojumassa "Tieteen uudet näkymät -- Elämän etsintä avaruudesta" -kirjan. Pistin huomiolle pitkälti siksi, että se oli Tieteen Kuvalehden julkaisema.
+
+Kirjassa oli paikoitellen aika ronskeja väitteitä tulevaisuuden ennustuksiin liittyen, esim. jossakin infoboksissa vaan lukee "2035 >> Elämää on löydetty joltain muulta Linnunrataan kuuluvalta kappaleelta. Elämä perustuu siellä hiileen kuten Maassakin." Kirja on vuodelta 2016. (Samalla aukeamalla oli myös minusta epäperusteltuja väitteitä siitä, kuinka "luultavasti [avaruusoliot] muistuttavat ihmisiä ja niillä on kaksi jalkaa, kaksi kättä ja yksi pää".)
+
+En yhtään ihmettele, että avaruusolioihin liittyy kaikkea huuhaata ja pseudotieteellisiä assosiaatioita. Paha siitä, kun kirjan sadasta sivusta varmaan iso osa on ihan faktuaalisesti hyvää selitystä siitä, miten avaruutta tutkitaan, niin lukija saattaa niistä vakuuttuneena sokeasti uskoa myös noihin.
+ 
+Toisaalta näen toki sen, että juuri tämäntyyppisillä kirjoilla kehitetään lasten (ja aikuistenkin) kriittisen ajattelun taitoja, kun kirja on Tieteellisen Auktoriteetin julkaisema ja isoimmilta osin pätevää selitystä alan tutkimuksesta, ja sitten väliin sujautellaan vähän mitä sattuu. Pitäisin kuitenkin varani, jos testi on liian vaikea ja missään ei kerrota, että kyseessä oli testi.
+
+[End of text.]
+
+# Illuusio erimielisyydestä
+
+*Olli:* Nopee viiden sekunnin arvio. Kuinka monta tiiltä tuossa seinässä on?
+
+[3 sekuntia kuluu]
+
+*Olli:* Mulla on arvio.
+
+*Konsta:* Mullakin.
+
+*Meeri:* Ookoo. 8000.
+
+*Konsta:* 2000.
+
+*Olli:* 4000.
+
+[Tapahtuu tarkempaa tilinpitoa]
+
+*Konsta:* Korkeussuunnassa 40 tiiltä. En laskenut tiilien määrää tarkasti, vaan [heiluttelee käsiään] silmämääräisesti puolitin, puolitin, puolitin ja sitten laskin.
+
+*Olli:* Oo toi on hyvä trikki, en oo aiemmin tajunnut.
+
+[Laskemista]
+
+*Olli:* Ookoo eli mun vika arvio on 5600.
+
+*Meeri:* Eli mää olin lähimpänä.
+
+*Olli:* Oikeastaan ei, geometrisella asteikolla mää olin lähempänä, koska sqrt(2) > 1,4 [ja siten sqrt(4000 \* 8000) = sqrt(2)\*4000 > 5600].
+
+*Meeri:* Mää luulen että sun arvio on alakanttiin ja mää olin oikeesti lähempänä.
+
+*Olli:* Tää on nyt varmaan tällainen [consider your appetite for disagreements](https://www.lesswrong.com/posts/8vesjeKybhRggaEpT/consider-your-appetite-for-disagreements) -tilanne. Kaksi tyyppiä analysoi pokeritilannetta, yksi pitää yhtä siirtoa parempana ja toinen toista, sitten siitä väännetään, ja selviääkin, että yksi ajattelee yhden pelauksen antavan 1% paremmat voittotodennäköisyydet ja toinen toisen antavan 1% paremmat. Ne tyypit ei oo oikeesti niin eri mieltä, vaikka näyttääkin siltä.
+
+*Konsta:* En saanut ajatuksesta kiinni, selitätkö lisää?
+
+*Olli:* Mä ja Meeri nyt näennäisesti ollaan eri mieltä: "mää olin lähempänä", "ei kun mää!" Mutta jos sä kysyt multa ja Meeriltä meidän parasta arviota sen seinän tiilimäärästä, niin mun arvio on tyyliin 5550 ja Meerin on 5650. Tuo ei ole oikeasti erimielisyys; meillä on käytännössä sama paras arvio.
+
+*Olli:* Vaihtoehtoisesti: Jos sä kysyt Meeriltä todennäköisyyttä sille, että tiiliä on alle 5600, niin se heittää varmaan 45%. Ja mä heittäisin tyyliin 55%. Toi ei oikeasti ole erimielisyys.
+
+*Olli:* Tää on yleisempi ilmiö: kun asioita miettii probabilistisesti, niin huomaa, että monet erimielisyydet ei ookaan erimielisyyksiä. Oon miettinytkin, että voisin kirjoittaa tästä. Kirjotan tänään, nyt on hyvä oikeen elämän esimerkki pohjalla.
+
+[End of text.]
+
+# Ikiliikkuva valamiehistö
+
+Kävin tänään kaverin kanssa mikrotaloustieteen luennolla. (Tiesittekö, että te voitte vaan kävellä luentosaliin ilman, että te ootte opiskelija? Ja kukaan ei tuu estämään teitä?)
+
+Siellä esitettiin informaatioaggregaatiosta [tällainen tulos](https://en.wikipedia.org/wiki/Condorcet%27s_jury_theorem):
+
+Jos sulla on N ihmisen valamiehistö, joilla on jokaisella informoitu uskomus epäillyn syyllisyydestä (eli ne on oikeassa vakiotodennäköisellä p > 0.5) ja ne on riippumattomia toisistaan, niin N:n mennessä äärettömään valamiehistön enemmistön todennäköisyys olla oikeassa menee kohti ykköstä.
+
+Ihan siisti tulos, eikö?
+
+No, mä kysyin siellä luennolla, että eikö toi oletus riippumattomuudesta ole aika vahva. Mulle vastattiin, että sitä voi sitten korjata, esim. jos kaksi ihmistä on samaa mieltä keskenään, niin sitten sulla on efektiivisesti N-1 ihmistä, ja sama lopputulos pätee. Ja että yleisesti noita ehtoja voi höllentää.
+
+Ja, no, toi vähättelee sitä ongelmaa.
+
+E. T. Jaynesin Probability theory -kirjassa on seuraavanlainen esimerkki: Kuvitellaan, että sä haluat selvittää Kiinan hallitsijan pituuden. Sä voit kysyä miljardilta kiinalaiselta hallitsijan pituutta. Noissa arvioissa on tietysti kohinaa, mutta ottamalla keskiarvon kohinat kumoutuu ja saadaan vastaus, joka on 0.03mm sisällä oikeasta.
+
+Mutta tuo on tietysti epärealistisen tarkka arvio. Juurisyynä on, että noilla ihmisillä on paljon yhteistä informaatiota hallitsijastaan - ne ei suinkaan ole riippumattomia, ei edes likimäärin.
+
+Takaisin valamiehistöesimerkkiin: Noilla henkilöillä on vaan rajallinen määrä todistusaineistoa ja informaatiota, johon ne perustaa niiden arvionsa. Ja vaikka jokainen olisi sitä mieltä, että syyllisyyden todennäköisyys on 1/miljoona, tämä ei tarkoita, että all-things-considered  todennäköisyys valamiehistön erehtymiselle on alle 1/miljoona. Rajallisesta määrästä informaatiota ei vain pysty (perustellusti) puristamaan tiettyä pistettä itsevarmempia ennustuksia, aivan kuten äärellisestä määrästä energiaa ei saa rakennettua ikiliikkujaa.
+
+Oletus siitä, että meillä on mielivaltaisen paljon ihmisiä, joiden arviot on riippumattomia, tarkoittaa muun muassa sitä, että meillä on mielivaltaisen paljon informaatiota syyllisyydestä -- mikä on tietysti täysin epärealistinen oletus!
+
+Tuo luennolla esitetty malli ei oo siis vain hieman viallinen, jonka saa korjattua pienillä muutoksilla. Ei, se on suoraan sanottuna taikauskoa, jossa ei hahmoteta, mistä näiden ihmisten "informoidut arviot" alunperin tulee.
+
+Tämä ei siis ole tekninen matemaattinen pointti todennäköisyyslaskennasta, vaan fundamentaali pointti siitä, miten uskomusten muodostus toimii: se vaatii ja perustuu havaintoihin. Jos ei ole havaintoja, niin ei voi olla informoituja arvioita, ja jos on vain vähän informaatiota, niin ei voi olla supervarmoja arvioita.
+
+[End of text.]
+
+# Kirja-arvio: Karamazovin veljekset
+
+"Berliinin muurin murtamisesta nykypäivään on pidempään kuin toisesta maailmansodasta minun syntymääni". Näin muistaakseni Eero Saksman sanoi minulle taannoin. "Sitä ajatteli, että ne asiat on tapahtunut niin kauan aikaa sitten, mutta..."
+
+Tiesin silloin, etten kunnolla ymmärtänyt. Kaikesta minun nuoruuden innostani huolimatta tunnustan, että historia aukeaa eri tavalla, kun sen läpi on elänyt.
+
+Historian oleellisin ominaisuus on, että toisin kuin monet muut tarinat, se on tapahtunut. Ihmiset, tapahtumat ja aikakaudet, joita historian kirjat kuvaavat, ovat oikeasti olleet olemassa. Ja huolimatta kaikista kyvyistäni käsitellä abstrakteja konsepteja minulla on silti vaikeuksia sisäistää tätä. Että ennen minua todella on ollut jotakin, että maailma todella on ollut erilainen, että historia jatkuu edelleen.
+
+Välillä katsoessani tarkkaan ehdin nähdä vilauksen historian varjosta. "On vaikka lampaat söis", "maksaa mansikoita", "erotetaan jyvät akanoista", "rahalla saa ja hevosella pääsee", "helmiä sioille", "älä osta sikaa säkissä", "tuli on hyvä renki, mutta huono isäntä" -- nämä sanonnat lienee saaneet alkunsa erilaisessa yhteiskunnassa kuin nykyinen.
+
+---
+
+Fjodor Dostojevskin Karamazovin veljekset on pikimusta varjo.
+
+"- Riittää jo, äiti, riittää Herzenstubesta, Liza nauroi hilpeästi. - Antakaa nyt kiireesti niitä rohtimia, äiti, ja vettä. Tämä on pelkkä lyijyvesihaude, Aleksei Fjodorivtš, nyt minä muistin sen nimen, mutta oikein hyvä haude onkin."
+
+"Paljon pysyy meiltä salassa maan päällä, mutta sen sijaan meille on lahjoitettu salainen verhottu aistimus meidän elävästä yhteydestämme toiseen maailmaan, taivaiseen ja korkeaan maailmaan, eivätkä meidän ajatustemme ja tunteidemme juuret ole täällä vaan toisissa maailmoissa."
+
+""Ja miten nyt näin oli käydäkseen", puhelivat eräät munkit, ensi alkuun ikään kuin surkutellenkin, "ruumiinsa oli vähänläntä, kuiva, luisevanlainen, mistä siitä hajua voi irrota?" - "Varta vasten siis Jumala halusi näyttää", kiiruhtivat toiset sanomaan siihen, ja heidän käsityksensä omaksuttiin kiistelemättä ja oikopäätä, sillä tulihan siinä osoitetuksi että jos kohta haju oli luonnollinen, kuten mistä hyvänsä syntisen poisnukkuneen ruumiista kohoava, niin sen olisi joka tapauksessa pitänyt nousta ilmoille myöhemmin, aikaisintaan vuorokauden kuluttua eikä noin ilmeisen kiireesti, vaan "tässä on kiiruhdettu luonnollisen edelle", toisin sanoen asialla ei ollut kukaan muu kuin Jumala ja hänen osoittava sormensa."
+
+"Yksi, vain yksi kuva enää, ja sekin asianharrastuksesta, niin kovin luonteenomainen, ja semminkin kun tulin vastikään lukeneeksi sen jostakin meidän muinaisia asiakirjoja esittelevästä julkaisustamme, oliko se nyt Arhivissa vai Starinassa, täytyy tarkistaa, olen ihan unohtanut mistä luin. Tämä tapahtui maaorjuuden kaikkein synkimpinä aikoina jo vuosisadan alussa, ja eläköön kansan vapauttaja! Silloin vuosisadan alussa oli muuan kenraali, kenraali jolla oli huomattavia suhteita ja joka oli mitä äveriäin tilanomistaja, mutta joka kuului niihin - joita noinakin aikoina tosin lienee ollut varsin vähän - jotka veytäytyessään virkapalveluksesta omiin oloihinsa olivat suurin piirtein vakuuttuneita siitä että olivat ansainneet itselleen oikeuden päättää alustalaistensa elämästä ja kuolemasta. Sellaista oli silloin. No siellä elelee kenraali kahdentuhannen sielun maatilallaan, mahtailee, kohtelee vähäväkisiä naapureita kuin elättejään ja narrejaan. Koiratarhassa oli satoja koiria ja likipitäen sata koiranhoitajaa, kaikki univormuissa, kaikilla ratsu alla. Ja sitten pieni pihaorja, vasta kahdeksan ikäinen poikanen tuli leikkiessään heittäneeksi kiven ja satutti kenraalin mieluisimman ajokoiran jalkaa. "Miksi minun lempikoirani on ruvennut ontumaan?" Kenraalille ilmoitetaan että kun tuo poika tuossa heitti kivellä ja satutti koiran jalkaa. "Jaa että sinäkö", kenraali vilkaisi, "ottakaa kiinni!" Poika otettiin kiinni, otettiin äidiltä, sai istua koko yön kopissa, aamulla sarastuksen aikaan kenraali lähtee metsälle täysissä tamineissaan, istuu ratsun selässä, ympärillä elätit, koirat, koiranhoitajat, ajomiehet, hevosten selässä kaikki. Liepeille on kerätty pihaorjat oppia saamaan, kaikkein etummaiseksi syyllisen pojan äiti. Poika tuodaan kopista. Synkkä, kolea, sumuinen syyspäivä, oivallinen metsästystä varten. Pojan kenraali käskee riisua, poika riisutaan ilkosen alastomaksi, hän värisee, suunniltaan kauhusta, ei uskalla inahtaakaan... "Ajoon siitä!" Kenraali komentaa. "Juokse, juokse!" koiranhoitajat huutavat, poika juoksee... "Pus kii!" huikkaa kenraali ja päästää perään koko vinttikoiralaumansa. Poika jahdattiin kiinni äitinsä silmien edessä ja koirat repivät hänet riekaileiksi!... Kenraali kai pantiin holhouksen alaiseksi. No... minkäpä hänelle? Ammuttavaksi? Ammuttavaksi jotta moraalinen tuntomme saisi hyvityksen? Sano, Aljoška!
+
+\- Ammuttavaksi! Aljoša äännähti hiljaa, kohottaen katseensa veljeen valju ja vino hymyntapainen huulillaan"
+
+---
+
+Lukiessani teosta minulle tuli vieraantunut olo. Kirjan hahmoissa jokin tuntui vieraalta. Heillä oli koherentteja persoonallisuuksia ja sisäistä elämää -- sen jos minkä Dostojevski taitaa -- mutta niissä oli silti jotakin omituista. Ikään kuin hahmot olisivat kuvanneet erilaista henkilöitä kuin minun kaltaisiani, 2000-luvun vaurastuneiden maiden korkeasti kouluttautuneita ihmisiä.
+
+Ei ole mitään yksittäistä kappaletta, jota pystyisin osoittamaan ja sanomaan "siinä!" Se on kokonaisvaltaista. Kiivaat temperamentit, äkkipikaisuus ja väkivaltaisuus. Antagonistiset hahmot ja adversariaaliset ihmissuhteet. Aito usko, ei ateismi eikä usko uskoon.
+
+Ja sivuja ja sivuja pitkät monologit, joissa asioiden loogiset riippuvuudet ja päättelyn validius eivät olleet vain sivuseikkoja, vaan niistä ei tunnuttu piittaavan laisinkaan.
+
+Tätä ei suinkaan tule tulkita kritiikkinä kirjoittajaa kohtaan: Dostovejski itse osoittaa taidokkuutensa ja ymmärryksensä asiaan liittyen kirjan oikeudenkäynnissä. Olen itse pohtinut sitä, että pedagogisissa tarkoituksissa kokoaisi massoittain epätosia väitteitä sekä vakuuttavia argumentteja niiden puolesta. Tästä kulmasta tulleena nautin suuresti siitä, kuinka oikeudenkäynnissä syyttäjä ja puolustaja molemmat tarjosivat (ainakin pinnallisesti) vakuuttavan kuuloisia argumentteja, luonnollisesti päinvastaisille väitteille. Ja, kuten debaatissa tuodaankin ilmi, tällaisissa tilanteissa on hyvin helppoa päätyä "romaanin sepittämiseen" ja tehdä yksi jos toinenkin hyppäys päättelyssä.
+
+Kaunokirjallisesta romaanista on paikoin vaikea päätellä, mikä on representatiivista kuvausta vallinneesta ajasta ja mikä tarinaan tuotua lisäystä, mutta hahmojen ajoittaiset päättömät puheet saivat miettimään, millaisia keskusteluja tuohon aikaan onkaan käyty.
+
+---
+
+"Katsokaa maailmassa asuvia ja maailmaa joka on kaikissa suhteissa korottanut itsenä Jumalan kansan yläpuolelle: eivätkö Jumalan kasvot ja hänen totuutensa ole siellä vääristyneet? Heidän hallussaan on tiede, mutta tieteessä on vain se mikä on aisteille alisteista. Hengellinen maailma, ihmisen olemassaolon korkeampi puolisko sen sijaan on kokonaan torjuttu, karkotettu tavallaan voitonreimuisesti, jopa vihamielisesti. Maailma on kuuluttanut vapautta, erityisesti viime aikoina, ja mitä me siis näemme tuossa heidän vapaudessaan: silkkaa orjuutta ja itsemurhaa! [...] Rikkaiden keskuudessa erillisyyttä ja hengellistä itsemurhaa, köyhien keskuudessa kateutta ja murhaa, sillä oikeuksia on kyllä annettu, mutta keinoja tarpeiden tyydyttämiseen ei ole vielä osoitettu. Vakuutellaan että maailma yhdentyy aina vain, kuontuu veljelliseen kanssakäymiseen lyhentämllä välimatkoja, lähettmällä ajatuksia ilmaa pitkin. Hoi voi, älkää uskoko senkaltaiseen ihmisten yhdentymiseen."
+
+"Venäjän pelastus tulee kansasta. Ja venäläinen luostari on ammoisista ajoista pitänyt yhtä kansan kanssa. Jos siis kansa on eristyksissä, sitten mekin olemme eristyksissä. Kansa uskoo meidän tavallamme, eikä uskoa vailla oleva opastaja saa meillä Venäjällä mitään aikaan, edes vaikka hän olisi sydämeltään vilpitön ja älyltään nerollinen. Muistakaa se. Kansa käy ateistia vastaan ja nujertaa tämän, ja sitten on yksi ja oikeauskoinen Venäjä."
+
+"Mutta Jumala pelastaa Venäjän"
+
+Tieteessä hypoteeseja arvioidaan sen perusteella, kuinka hyviä ennustuksia ne tekevät. Jos hypoteesi ennustaa paremmin kuin toinen, sille tulee antaa enemmän painoarvoa.
+
+Will MacAskill on [esittänyt argumentin](https://80000hours.org/podcast/episodes/will-macaskill-moral-philosophy/), että samaa periaatetta kuuluu soveltaa moraaliin: meidän tulisi antaa enemmän painoarvoa niille moraalifilosofioille, jotka on ennustaneet ja edistäneet ihmiskunnan moraalista kehitystä.
+
+Jeremy Bentham ja John Stuart Mill olivat huomattavasti aikaansa edellä. He argumentoivat naisten oikeuksien, seksuaalivähemmistöjen ja eläinten oikeuksien puolesta -- jo kaksisataa vuotta sitten. Dostojevskin ajasta eteenpäin seurausetiikalla, liberalismilla ja utilitarismilla on ollut selkeästi parempi menestys kuin esimerkiksi nationalistisella kristinuskolla.
+
+"Ja pilkkaajilta itseltään kysyttäköön: jos me vaalimme haavetta, niin milloin te sitten pystytätte oman rakennuksenne ja järjestätte oikeudenmukaiset olot vain oman järkenne varassa, Kristukseen turvaamatta?"
+
+Rakennusta on pystytetty jo vuosisatoja, aina tieteellisestä vallankumouksesta ja valistuksen ajasta lähtien. Jos olisit täällä, yllättyisit, kuinka oikeudenmukaisen rakennelman olemmekaan saaneet luotua, vaikka työ onkin kesken ja jotkin varjot ovat vielä kaikottamatta. Oman järkemme varassa.
 
 [End of text.]
 
@@ -4249,253 +4833,6 @@ Mietin, että varmaan helpompi olisi AR, jossa simuloidaan kohti lentäviä polt
 En kuitenkaan heti löytänyt tuohon mitään ja en oo muutenkaan seurannut AR:ää niin en tiedä, missä jamassa se oikeasti on. Nopeella googlauksella löysin [Dodgeball simulator VR:n](https://store.steampowered.com/app/975390/Dodgeball_Simulator_VR/), mutta toi ei ole, mitä mä haluan. Fiilis mitä mä haluan ei ole "pelaan polttopallotietokonepeliä", vaan haluaisin ihan oikeasti fyysisesti väistellä ja liikkua ja hyppiä ja heittäytyä, ihan kuten tekisin jos olisi nuo ilmapainetykit jotka ampuu mua kohti polttopalloja. Ideaalisti siis AR:ssä näkisin mitä yleensäkin ja sitten sinne olisi vaan lisätty polttopalloanimaatiot.
 
 Kiinnostaisi tietää, kuinka vaikeaa tuollaisen toteuttaminen olisi.
-
-[End of text.]
-
-# Puutteellisella informaatiolla operointi
-
-Muhun vetoaa matematiikassa vahvasti se, että siinä ei oo puutteellista informaatiota, vaan kaiken pystyy ainakin periaatteessa päättelemään nollista. Peli on aina "reilu".
-
-Vastaavasti oikean maailman jutut on kiehtonut mua pienempänä vähemmän. En oo tykännyt siitä, jos kyse on puutteellisesta informaatiosta, muistamisesta ja uuden informaation opettelusta.
-
-Nykyään toi häiritsee mua vähemmän. Yksi syy on tietysti se, että vanhempana tietää enemmän asioita, niin informaation puute on harvemmin ehdoton este.
-
-Toinen, kiinnostavampi syy on kuitenkin se, että osaan nykyään paremmin käsitellä tietämättömyyttäni. Vielä täysi-ikäisenäkin mulla on ollut herkästi "en minä tiedä miten politiikka toimii" -tyylisiä asenteita. Oon kuitenkin hiljalleen oppinut operoimaan siitä huolimatta, että on paljon puutteellista informaatiota (sen sijaan, että totean vain "en tiedä" ja annan asian olla).
-
-En tiedä, mistä toi on lähtenyt liikkeelle. Siinä on varmaan sitä, että oon nähnyt joidenkin ihmisten ottavaan generalistiroolia ja miettivän monenlaisia asioita -- että hetkinen, näin saa tehdä! Juomavedestä löytyy stereotypia ihmisestä, jolla on vahvoja mielipiteitä joka aiheesta ja minkä minä olen tulkinnut sanovan, että noin ei kannata toimia. Toinen ääripää eli "minä pitäydyn ottamasta kantaa ja puuttumasta mihinkään, mistä en ole täysin varma" on kuitenkin ihan yhtä haitallinen. (Related: [No arrognace like that of the recently humbled](https://homosabiens.substack.com/p/no-arrogance-like-that-of-the-recently).)
-
-Lopetukset on vaikeita. Kuvitelkaa, että sanon tässä jotenkin inspiroivasti, että on OK miettiä asioita joita ei ymmärrä täydellisesti.
-
-[End of text.]
-
-# Yllättävän kapea jakauma
-
-"[Jakaumat ovat leveitä](/epi/leveat_jakaumat)", kuuluu sanonta, ja ihmiset jos mitkä on keskenään hyvin erilaisia.
-
-Siksi hämmästelenkin sitä, kuinka harvinainen on tietty tapa kokea maailma. Kuinka harvinaista onkaan olla metsässä ja nähdä puiden kilpailu valosta ja käynnissä oleva luonnonvalinta. Rakennukseen sisään astuessa huomioida päänsä yläpuolelle tuetut tonnit vahvistettua betonia. [Nähdä ruohonjuuressa itsereplikoituva aurinkovoimalla toimiva tehdas](https://nitter.poast.org/ESYudkowsky/status/1801864535168717296#m). Puhuessa toiselle miettiä ilman kautta korvakäytävän saavuttavia paineaaltoja. Kirjaimen ilmestyessä tietokoneen näytölle kuvitella siihen käytettyjä tuhansia operaatioita.
-
-Pääsen itse vain harvoin tuohon mielentilaan. En tunne ketään, jolle se olisi *oletustila*, enkä tiedä, onko sellaisia ihmisiä edes olemassa. Tämä näkökulma vaikuttaa ihmismielille syvästi epäluonnolliselta.
-
-*Too wonder-stale to wonder*\
-&emsp;*At each new miracle*
-
-[End of text.]
-
-# Mitä oikeasti ajattelen
-
-Puhuin tänään yhdelle tyypille tekoälystä ja tulevaisuudesta. Huomionarvoista oli se, että sain puhutta asioista, joita oikeasti ajattelen.
-
-Puhuin Dysonin kuulista, Merkuriuksen purkamisesta ja tähtienväliseen avaruuteen levittäytymisestä. Kryoniikasta, digitaalisista ihmisistä ja robottikehoista. Yli-inhimillisistä koodareista ja matemaatikoista ja lähitulevaisuuden muutoksista. Fysikaalisista maailmankuvista mieliin ja tekoälyyn sovellettuna. Ihmiskunnan sukupuutosta. Tekoälystä yleisessä keskustelussa.
-
-Kerroin, mitä itse odotan, jos selviämme ja kaikki menee hyvin. Pitkään eläminen ja kuolemattomuus. Jonglööraaminen Kuussa. Korkean teknologian urheilua Fortressin tapaan. Vahvempi, kestävämpi keho, joka kestää tuollaisia lajeja ja jossa on lapsuuden keveyden ja vetreyden olo. Ehkä lisäosia. Ainakin miljoonia vuosia hauskanpitoa. Puhumattakaan kaikesta oudommasta.
-
-Se oli virkistävää. Harvoin tekoälystä puhuessani koen oikeasti voivani sanoa, mitä ajattelen. Mikä on varmaan osittain omaa ujouttani ja arkuuttani ja aggressiivisuuden puutetta ja osittain taas sitä, etten vielä ole keksinyt, miten puhua Dysonin kuulista esimerkiksi toimittajille.
-
-Futurististen aiheiden ulkopuolellakin olen surenut sitä, että vieraille ihmisille puhuessa tulee puolipakon edessä laitettua maski päälle. Arvokkaita ovat ne tilanteet, joissa voi käydä oikeita keskusteluja.
-
-[End of text.]
-
-# Integriteettiä aikuisille
-
-Kun mietin kunniallista toimimista, luotettavuutta, sopimuksien pitämistä, integriteettiä, vastuuntuntoisuutta, rehellisyyttä -- miksi sitä nyt haluaakaan kutsua -- mulle tulee usein mieleen mun alakoulun luokan opettaja.
-
-Oon miettinyt, mistä tuo johtuu, eikä se oikeastaan ole kovin ihmeellistä. Ilmeinen selittävä tekijä on, että lapsille halutaan puhua noista ja kertoa, että rehellisyys on hyve. Sitten myös mun alakouluope kyllä oli hyvä noilla dimensioilla -- siinä oli semmosta positiivista mieskuvaa, y'know -- ja parempi kuin moni muu opettaja, johon koulu-urallani törmäsin.
-
-(Erityisesti muistan, että se opettaja usein oli antamatta negatiivista vahvistusta, jos oppilas myönsi toimineensa väärin, vaan reagoi enemmänkin asenteella "kiitos kun kerroit, pidetään huolta ettei toistu jatkossa" -- mikä on tavallaan ilmeinen ja fundamentaali juttu, mutta... On myös jäänyt mieleen tilanne, jossa se sanoi jotakin vähän töykeästi yhdelle oppilaalle -- tavallaan syystäkin -- ja seuraavalla tunnilla pyysi anteeksi toimintaansa.)
-
-Sitten havahduin, kuinka vähän tuollaista... moraalikasvatusta? oonkaan saanut muualta kuin kyseiseltä alakouluopelta. Koulun puolella yläkoulussa ja lukiossa noista jutuista ei oikein puhuttu. Ehkä kukaan opettajista ei enää kokenut sen olevan oikein niiden vastuulla, ja ehkä se ei ollutkaan. Poikkeuksen muodostaa holokaustin käsittely historian tunneilla. Sen ohella nuo jutut ei juuri noussut esille muuta kuin lähinnä silloin, kun jokin opettaja teki törkeitä ylilyöntejä (esim. se kerta, kun opettaja tuli tunteikkaasti syyttämään minua pahasta asiasta, jota en ollut tehnyt ja jossa ei ollut edes perusteltua uskoa, että olin tehnyt sen).
-
-Tilaisuuksia kyllä oli. On jäänyt mieleen 7. luokan musiikin tunti. Yksi oppilas oli istumassa alas tuolilleen, kun luokan häirikkö veti tuolin pois sen alta. Sattui. Oppilas (muistaakseni) kävi terveydenhoitajalla, ei onneksi murtunut häntäluu. Opettaja ei nähnyt tilannetta ja hänelle oli epävarmaa, oliko tässä joku tarkoituksella aiheuttanut vahinkoa vai oliko jotenkin muuten istuttu ohi.
-
-Hän kysyi tätä ääneen.
-
-Tilanteen oli nähnyt yli kymmenen oppilasta.
-
-Kukaan, mukaan lukien minä, ei vastannut mitään.
-
-Muistaakseni tilannetta ei selvitetty ja häirikölle ei tietääkseni tullut tästä mitään seurauksia.
-
-(Tässä olisi vaikka voinut toimia niin, että pyytää oppilaita jotenkin yksityisesti kertomaan, mitä ne tietää asiasta. En itse uskaltanut häirikön siinä vieressä ollessa sanoa "kyllä se veti sen tuolin alta" -- ja olin saanut kulttuurista ristiriitaisia signaaleja siitä, olisiko tämä ollut se moraalisesti oikea toimintatapa -- mutta luulen olleeni riittävän rehellinen, että yksityisesti kysyttäessä olisin näin ilmoittanut.)
-
-Vielä vanhemmalla iällä oon törmännyt tilanteisiin, joissa tuntemani ihmiset aika avoimesti kertoo toimivansa moraalisesti ja joskus juridisestikin tuomittavilla tavoilla. Ne perustelut, joita nuo ihmiset -- ja sittemin minäkin -- ovat esittäneet kyseiselle tominnalle sisältää esimerkiksi sitä, että lait on välillä tyhmiä, että standardinarratiivin moraalinäkemykset on välillä tyhmiä ja että ne kuitenkin itse hyötyy tällä tavalla toimimisesta.
-
-Oon pettynyt siihen, kuinka harvoin itse oon sanonut noissa tilanteissa mitään. Siinä on sitä, että noi perustelut on houkuttelevia, koska nehän on usein tosia ja kenties usein myös aliarvostettuja. On ihan luonnollista ja järkevääkin hylätä lapsille kerrottuja moraalikäsityksiä muotoa "lakia tulee aina noudattaa".
-
-Paljon siinä on myös sitä, että mulle on itselle ollut hyvin epäselvää, miten tuollaisissa tilanteissa kuuluu toimia. Kasvatus ja ympäröivä kulttuuri ei ollut oikein tarjonnut tuohon riittävästi työkaluja, vaikkakin esimerkkejä siitä mitä välttää on puolivahingossa saanut nähdä. Toivon ja uskon nyt joihinkin tapaustutkimuksiini törmättyäni oppineeni jotakin ja toimivani paremmin.
-
-Pitäisin silti siitä, jos lapsille suunntatun moraalikasvatuksen lisäksi tällaisia aiheita käsiteltäisiin vanhemmallakin iällä.
-
-[End of text.]
-
-# Puhukaa äänestämisestä
-
-Äänestämiseen liittyy normi, että ihmiset ei kerro toisilleen, ketä ne äänestää. En ole kirjaimellisesti koskaan ennen äänestämistä kuullut kenenkään tuntemani ihmisen kertovan, ketä ne aikoo äänestää.
-
-Minä itse poikkesin normista ja kerroin meppivaalien alla ketä äänestin. Yksi mun kavereista deferoikin muhun ja äänesti samoin. Hiljattain hän kaveriporukan kesken kertoi tehneensä noin, ja ihmiset alkoi nauramaan. (Taisin kuulla "kultti"-sanaakin heitettävän.)
-
-Musta toi normi on ihan hölynpölyä. Äänestäminen nähdään Hyvin Tärkeänä Asiana ja sitten... on vaan jotenkin päätetty, että aiheesta ei keskustella? Että jokanen vaan on omillaan eikä saa kuulla muilta ihmisiltä argumentteja, ehdotuksia ja mielipiteitä? Koska sehän voisi olla Poliittista Vaikuttamista -- gasp! -- josta kaverin kanssa käydyt keskustelut on tietysti pahin muoto, johon ihmiset saattavat törmätä.
-
-En myöskään ole kovin optimistinen sen suhteen, kuinka paljon äänestäjät keskimäärin käyttää itsenäistä ajatustyötä ehdokkaansa valintaan. En usko, että "käytin viisi minuuttia ehdokkaani valintaan" on asia, jota ihmiset kovin ylpeästi mainostaa toisilleen, eli vaikka tunnenkin politiikkaan syvemmin perehtyneitä, niin pahoin pelkään, etteivät he ole edustava otos edes omasta sosiaalisesta kuplastani.
-
-Ehdotin joskus, että kaveriporukan kesken arvotaan yksi henkilö, joka saa päättää, ketä kaikki äänestää. Toi vaikutti musta Pareto-parannukselta status quoon verrattuna: ainoastaan yhden henkilön tarvitsee perehtyä siihen, ketä kannattaa äänestää, ja sen kannattaakin perehtyä vähän syvemmin, kun sillä on yhden äänen sijasta kuusi ääntä huolehdittavana.
-
-(Asiasta puhuessani sain lähinnä vain omituisia katseita ja "et kai sä oo tosissasi" -reaktioita, ja toki myös vitsailua lupauksen rikkomisesta. Musta tuntu, että ne ihmiset ei vaan tajunnut soveltaa periaatetta "miettimällä asioita pidempään voi päätyä parempiin lopputuloksiin" äänestyspäätöksiin, vaikka koitin avata sen auki. Oon alkanut miettimään, että tuo periaate ei ehkä olekaan common knowledge.)
-
-Kaikki tämä käy hyvin järkeen, jos ihminen näkee äänestämisen itseilmaisun muotona. Jos taas näkee sen asiana, jolla on oikean maailman implikaatioita ja johon liittyy edes hitusen epistemistä epävarmuutta, niin voisi harkita keskustelua ja koordinointia muiden kanssa.
-
-[End of text.]
-
-# "Et tule tapaamaan toista pelaajaa enää koskaan uudelleen"
-
-Peliteoreettisissa ajatusleikeissä esitetään usein ehto "et tule koskaan tapaamaan tätä ihmistä uudestaan", jotta ihmiset eivät keskittyisi mainekysymyksiin tai "kaikki pelit ovat toistettuja pelejä" -periaatteeseen. Esimerkki:
-
-"Sinut on valittu yhdeksi pelaajaksi erääseen kahden pelaajan peliin. Molemmilla pelaajilla on alussa 400 euron potti. Pelissä kummallakin pelaajalla on mahdollisuus painaa nappia toiselta salassa. Napin painaminen antaa painajalle 100 euroa lisää, mutta vähentää toisen pottia 300 eurolla. Et pelin jälkeen enää koskaan tapaa toista osapuolta. Painatko nappia?"
-
-Havahduin, että tuo ei ole riittävä ehto. Jos minä defectaan Pekkaa vastaan, Pekka voi tehdä päätelmän "jaa, ihmiset vaan defectaa, kai määkin sitten". Vaikka Pekka ei enää pelaiskaan *minun* kanssani, hän saattaa myöhemmin pelata Liisan kanssa, joka vielä myöhemmin *pelaa* minun kanssani, ja tuota kautta minun aiempi defectaus osuu omaan nilkkaan.
-
-Oleellistahan on tuo syklin pituus. On mahdollista konstruoida peliteoriaturnauksia, jossa n:llä pelaajalla lyhyimmät syklit ovat n/2 pelaajaa, jolloin tuo efekti ei iske kovin nopeasti. Käytännössä maailma on kuitenkin tiheä verkko ja sieltä löytyy paljon lyhyempiä syklejä kuin 4 miljardia.
-
-Olen hieman yllättynyt, että en ole kuullut tätä argumenttia aiemmin. Tuo on minulle intuitiivisesti vahva argumentti sille, minkä takia kannattaa toimia prososiaalisesti, vaikkei törmäisi samaan ihmiseen toiste.
-
-[End of text.]
-
-# Avaruusoliotesti
-
-Näin tänään Aalto-yliopistolla lojumassa "Tieteen uudet näkymät -- Elämän etsintä avaruudesta" -kirjan. Pistin huomiolle pitkälti siksi, että se oli Tieteen Kuvalehden julkaisema.
-
-Kirjassa oli paikoitellen aika ronskeja väitteitä tulevaisuuden ennustuksiin liittyen, esim. jossakin infoboksissa vaan lukee "2035 >> Elämää on löydetty joltain muulta Linnunrataan kuuluvalta kappaleelta. Elämä perustuu siellä hiileen kuten Maassakin." Kirja on vuodelta 2016. (Samalla aukeamalla oli myös minusta epäperusteltuja väitteitä siitä, kuinka "luultavasti [avaruusoliot] muistuttavat ihmisiä ja niillä on kaksi jalkaa, kaksi kättä ja yksi pää".)
-
-En yhtään ihmettele, että avaruusolioihin liittyy kaikkea huuhaata ja pseudotieteellisiä assosiaatioita. Paha siitä, kun kirjan sadasta sivusta varmaan iso osa on ihan faktuaalisesti hyvää selitystä siitä, miten avaruutta tutkitaan, niin lukija saattaa niistä vakuuttuneena sokeasti uskoa myös noihin.
- 
-Toisaalta näen toki sen, että juuri tämäntyyppisillä kirjoilla kehitetään lasten (ja aikuistenkin) kriittisen ajattelun taitoja, kun kirja on Tieteellisen Auktoriteetin julkaisema ja isoimmilta osin pätevää selitystä alan tutkimuksesta, ja sitten väliin sujautellaan vähän mitä sattuu. Pitäisin kuitenkin varani, jos testi on liian vaikea ja missään ei kerrota, että kyseessä oli testi.
-
-[End of text.]
-
-# Illuusio erimielisyydestä
-
-*Olli:* Nopee viiden sekunnin arvio. Kuinka monta tiiltä tuossa seinässä on?
-
-[3 sekuntia kuluu]
-
-*Olli:* Mulla on arvio.
-
-*Konsta:* Mullakin.
-
-*Meeri:* Ookoo. 8000.
-
-*Konsta:* 2000.
-
-*Olli:* 4000.
-
-[Tapahtuu tarkempaa tilinpitoa]
-
-*Konsta:* Korkeussuunnassa 40 tiiltä. En laskenut tiilien määrää tarkasti, vaan [heiluttelee käsiään] silmämääräisesti puolitin, puolitin, puolitin ja sitten laskin.
-
-*Olli:* Oo toi on hyvä trikki, en oo aiemmin tajunnut.
-
-[Laskemista]
-
-*Olli:* Ookoo eli mun vika arvio on 5600.
-
-*Meeri:* Eli mää olin lähimpänä.
-
-*Olli:* Oikeastaan ei, geometrisella asteikolla mää olin lähempänä, koska sqrt(2) > 1,4 [ja siten sqrt(4000 \* 8000) = sqrt(2)\*4000 > 5600].
-
-*Meeri:* Mää luulen että sun arvio on alakanttiin ja mää olin oikeesti lähempänä.
-
-*Olli:* Tää on nyt varmaan tällainen [consider your appetite for disagreements](https://www.lesswrong.com/posts/8vesjeKybhRggaEpT/consider-your-appetite-for-disagreements) -tilanne. Kaksi tyyppiä analysoi pokeritilannetta, yksi pitää yhtä siirtoa parempana ja toinen toista, sitten siitä väännetään, ja selviääkin, että yksi ajattelee yhden pelauksen antavan 1% paremmat voittotodennäköisyydet ja toinen toisen antavan 1% paremmat. Ne tyypit ei oo oikeesti niin eri mieltä, vaikka näyttääkin siltä.
-
-*Konsta:* En saanut ajatuksesta kiinni, selitätkö lisää?
-
-*Olli:* Mä ja Meeri nyt näennäisesti ollaan eri mieltä: "mää olin lähempänä", "ei kun mää!" Mutta jos sä kysyt multa ja Meeriltä meidän parasta arviota sen seinän tiilimäärästä, niin mun arvio on tyyliin 5550 ja Meerin on 5650. Tuo ei ole oikeasti erimielisyys; meillä on käytännössä sama paras arvio.
-
-*Olli:* Vaihtoehtoisesti: Jos sä kysyt Meeriltä todennäköisyyttä sille, että tiiliä on alle 5600, niin se heittää varmaan 45%. Ja mä heittäisin tyyliin 55%. Toi ei oikeasti ole erimielisyys.
-
-*Olli:* Tää on yleisempi ilmiö: kun asioita miettii probabilistisesti, niin huomaa, että monet erimielisyydet ei ookaan erimielisyyksiä. Oon miettinytkin, että voisin kirjoittaa tästä. Kirjotan tänään, nyt on hyvä oikeen elämän esimerkki pohjalla.
-
-[End of text.]
-
-# Ikiliikkuva valamiehistö
-
-Kävin tänään kaverin kanssa mikrotaloustieteen luennolla. (Tiesittekö, että te voitte vaan kävellä luentosaliin ilman, että te ootte opiskelija? Ja kukaan ei tuu estämään teitä?)
-
-Siellä esitettiin informaatioaggregaatiosta [tällainen tulos](https://en.wikipedia.org/wiki/Condorcet%27s_jury_theorem):
-
-Jos sulla on N ihmisen valamiehistö, joilla on jokaisella informoitu uskomus epäillyn syyllisyydestä (eli ne on oikeassa vakiotodennäköisellä p > 0.5) ja ne on riippumattomia toisistaan, niin N:n mennessä äärettömään valamiehistön enemmistön todennäköisyys olla oikeassa menee kohti ykköstä.
-
-Ihan siisti tulos, eikö?
-
-No, mä kysyin siellä luennolla, että eikö toi oletus riippumattomuudesta ole aika vahva. Mulle vastattiin, että sitä voi sitten korjata, esim. jos kaksi ihmistä on samaa mieltä keskenään, niin sitten sulla on efektiivisesti N-1 ihmistä, ja sama lopputulos pätee. Ja että yleisesti noita ehtoja voi höllentää.
-
-Ja, no, toi vähättelee sitä ongelmaa.
-
-E. T. Jaynesin Probability theory -kirjassa on seuraavanlainen esimerkki: Kuvitellaan, että sä haluat selvittää Kiinan hallitsijan pituuden. Sä voit kysyä miljardilta kiinalaiselta hallitsijan pituutta. Noissa arvioissa on tietysti kohinaa, mutta ottamalla keskiarvon kohinat kumoutuu ja saadaan vastaus, joka on 0.03mm sisällä oikeasta.
-
-Mutta tuo on tietysti epärealistisen tarkka arvio. Juurisyynä on, että noilla ihmisillä on paljon yhteistä informaatiota hallitsijastaan - ne ei suinkaan ole riippumattomia, ei edes likimäärin.
-
-Takaisin valamiehistöesimerkkiin: Noilla henkilöillä on vaan rajallinen määrä todistusaineistoa ja informaatiota, johon ne perustaa niiden arvionsa. Ja vaikka jokainen olisi sitä mieltä, että syyllisyyden todennäköisyys on 1/miljoona, tämä ei tarkoita, että all-things-considered  todennäköisyys valamiehistön erehtymiselle on alle 1/miljoona. Rajallisesta määrästä informaatiota ei vain pysty (perustellusti) puristamaan tiettyä pistettä itsevarmempia ennustuksia, aivan kuten äärellisestä määrästä energiaa ei saa rakennettua ikiliikkujaa.
-
-Oletus siitä, että meillä on mielivaltaisen paljon ihmisiä, joiden arviot on riippumattomia, tarkoittaa muun muassa sitä, että meillä on mielivaltaisen paljon informaatiota syyllisyydestä -- mikä on tietysti täysin epärealistinen oletus!
-
-Tuo luennolla esitetty malli ei oo siis vain hieman viallinen, jonka saa korjattua pienillä muutoksilla. Ei, se on suoraan sanottuna taikauskoa, jossa ei hahmoteta, mistä näiden ihmisten "informoidut arviot" alunperin tulee.
-
-Tämä ei siis ole tekninen matemaattinen pointti todennäköisyyslaskennasta, vaan fundamentaali pointti siitä, miten uskomusten muodostus toimii: se vaatii ja perustuu havaintoihin. Jos ei ole havaintoja, niin ei voi olla informoituja arvioita, ja jos on vain vähän informaatiota, niin ei voi olla supervarmoja arvioita.
-
-[End of text.]
-
-# Kirja-arvio: Karamazovin veljekset
-
-"Berliinin muurin murtamisesta nykypäivään on pidempään kuin toisesta maailmansodasta minun syntymääni". Näin muistaakseni Eero Saksman sanoi minulle taannoin. "Sitä ajatteli, että ne asiat on tapahtunut niin kauan aikaa sitten, mutta..."
-
-Tiesin silloin, etten kunnolla ymmärtänyt. Kaikesta minun nuoruuden innostani huolimatta tunnustan, että historia aukeaa eri tavalla, kun sen läpi on elänyt.
-
-Historian oleellisin ominaisuus on, että toisin kuin monet muut tarinat, se on tapahtunut. Ihmiset, tapahtumat ja aikakaudet, joita historian kirjat kuvaavat, ovat oikeasti olleet olemassa. Ja huolimatta kaikista kyvyistäni käsitellä abstrakteja konsepteja minulla on silti vaikeuksia sisäistää tätä. Että ennen minua todella on ollut jotakin, että maailma todella on ollut erilainen, että historia jatkuu edelleen.
-
-Välillä katsoessani tarkkaan ehdin nähdä vilauksen historian varjosta. "On vaikka lampaat söis", "maksaa mansikoita", "erotetaan jyvät akanoista", "rahalla saa ja hevosella pääsee", "helmiä sioille", "älä osta sikaa säkissä", "tuli on hyvä renki, mutta huono isäntä" -- nämä sanonnat lienee saaneet alkunsa erilaisessa yhteiskunnassa kuin nykyinen.
-
----
-
-Fjodor Dostojevskin Karamazovin veljekset on pikimusta varjo.
-
-"- Riittää jo, äiti, riittää Herzenstubesta, Liza nauroi hilpeästi. - Antakaa nyt kiireesti niitä rohtimia, äiti, ja vettä. Tämä on pelkkä lyijyvesihaude, Aleksei Fjodorivtš, nyt minä muistin sen nimen, mutta oikein hyvä haude onkin."
-
-"Paljon pysyy meiltä salassa maan päällä, mutta sen sijaan meille on lahjoitettu salainen verhottu aistimus meidän elävästä yhteydestämme toiseen maailmaan, taivaiseen ja korkeaan maailmaan, eivätkä meidän ajatustemme ja tunteidemme juuret ole täällä vaan toisissa maailmoissa."
-
-""Ja miten nyt näin oli käydäkseen", puhelivat eräät munkit, ensi alkuun ikään kuin surkutellenkin, "ruumiinsa oli vähänläntä, kuiva, luisevanlainen, mistä siitä hajua voi irrota?" - "Varta vasten siis Jumala halusi näyttää", kiiruhtivat toiset sanomaan siihen, ja heidän käsityksensä omaksuttiin kiistelemättä ja oikopäätä, sillä tulihan siinä osoitetuksi että jos kohta haju oli luonnollinen, kuten mistä hyvänsä syntisen poisnukkuneen ruumiista kohoava, niin sen olisi joka tapauksessa pitänyt nousta ilmoille myöhemmin, aikaisintaan vuorokauden kuluttua eikä noin ilmeisen kiireesti, vaan "tässä on kiiruhdettu luonnollisen edelle", toisin sanoen asialla ei ollut kukaan muu kuin Jumala ja hänen osoittava sormensa."
-
-"Yksi, vain yksi kuva enää, ja sekin asianharrastuksesta, niin kovin luonteenomainen, ja semminkin kun tulin vastikään lukeneeksi sen jostakin meidän muinaisia asiakirjoja esittelevästä julkaisustamme, oliko se nyt Arhivissa vai Starinassa, täytyy tarkistaa, olen ihan unohtanut mistä luin. Tämä tapahtui maaorjuuden kaikkein synkimpinä aikoina jo vuosisadan alussa, ja eläköön kansan vapauttaja! Silloin vuosisadan alussa oli muuan kenraali, kenraali jolla oli huomattavia suhteita ja joka oli mitä äveriäin tilanomistaja, mutta joka kuului niihin - joita noinakin aikoina tosin lienee ollut varsin vähän - jotka veytäytyessään virkapalveluksesta omiin oloihinsa olivat suurin piirtein vakuuttuneita siitä että olivat ansainneet itselleen oikeuden päättää alustalaistensa elämästä ja kuolemasta. Sellaista oli silloin. No siellä elelee kenraali kahdentuhannen sielun maatilallaan, mahtailee, kohtelee vähäväkisiä naapureita kuin elättejään ja narrejaan. Koiratarhassa oli satoja koiria ja likipitäen sata koiranhoitajaa, kaikki univormuissa, kaikilla ratsu alla. Ja sitten pieni pihaorja, vasta kahdeksan ikäinen poikanen tuli leikkiessään heittäneeksi kiven ja satutti kenraalin mieluisimman ajokoiran jalkaa. "Miksi minun lempikoirani on ruvennut ontumaan?" Kenraalille ilmoitetaan että kun tuo poika tuossa heitti kivellä ja satutti koiran jalkaa. "Jaa että sinäkö", kenraali vilkaisi, "ottakaa kiinni!" Poika otettiin kiinni, otettiin äidiltä, sai istua koko yön kopissa, aamulla sarastuksen aikaan kenraali lähtee metsälle täysissä tamineissaan, istuu ratsun selässä, ympärillä elätit, koirat, koiranhoitajat, ajomiehet, hevosten selässä kaikki. Liepeille on kerätty pihaorjat oppia saamaan, kaikkein etummaiseksi syyllisen pojan äiti. Poika tuodaan kopista. Synkkä, kolea, sumuinen syyspäivä, oivallinen metsästystä varten. Pojan kenraali käskee riisua, poika riisutaan ilkosen alastomaksi, hän värisee, suunniltaan kauhusta, ei uskalla inahtaakaan... "Ajoon siitä!" Kenraali komentaa. "Juokse, juokse!" koiranhoitajat huutavat, poika juoksee... "Pus kii!" huikkaa kenraali ja päästää perään koko vinttikoiralaumansa. Poika jahdattiin kiinni äitinsä silmien edessä ja koirat repivät hänet riekaileiksi!... Kenraali kai pantiin holhouksen alaiseksi. No... minkäpä hänelle? Ammuttavaksi? Ammuttavaksi jotta moraalinen tuntomme saisi hyvityksen? Sano, Aljoška!
-
-\- Ammuttavaksi! Aljoša äännähti hiljaa, kohottaen katseensa veljeen valju ja vino hymyntapainen huulillaan"
-
----
-
-Lukiessani teosta minulle tuli vieraantunut olo. Kirjan hahmoissa jokin tuntui vieraalta. Heillä oli koherentteja persoonallisuuksia ja sisäistä elämää -- sen jos minkä Dostojevski taitaa -- mutta niissä oli silti jotakin omituista. Ikään kuin hahmot olisivat kuvanneet erilaista henkilöitä kuin minun kaltaisiani, 2000-luvun vaurastuneiden maiden korkeasti kouluttautuneita ihmisiä.
-
-Ei ole mitään yksittäistä kappaletta, jota pystyisin osoittamaan ja sanomaan "siinä!" Se on kokonaisvaltaista. Kiivaat temperamentit, äkkipikaisuus ja väkivaltaisuus. Antagonistiset hahmot ja adversariaaliset ihmissuhteet. Aito usko, ei ateismi eikä usko uskoon.
-
-Ja sivuja ja sivuja pitkät monologit, joissa asioiden loogiset riippuvuudet ja päättelyn validius eivät olleet vain sivuseikkoja, vaan niistä ei tunnuttu piittaavan laisinkaan.
-
-Tätä ei suinkaan tule tulkita kritiikkinä kirjoittajaa kohtaan: Dostovejski itse osoittaa taidokkuutensa ja ymmärryksensä asiaan liittyen kirjan oikeudenkäynnissä. Olen itse pohtinut sitä, että pedagogisissa tarkoituksissa kokoaisi massoittain epätosia väitteitä sekä vakuuttavia argumentteja niiden puolesta. Tästä kulmasta tulleena nautin suuresti siitä, kuinka oikeudenkäynnissä syyttäjä ja puolustaja molemmat tarjosivat (ainakin pinnallisesti) vakuuttavan kuuloisia argumentteja, luonnollisesti päinvastaisille väitteille. Ja, kuten debaatissa tuodaankin ilmi, tällaisissa tilanteissa on hyvin helppoa päätyä "romaanin sepittämiseen" ja tehdä yksi jos toinenkin hyppäys päättelyssä.
-
-Kaunokirjallisesta romaanista on paikoin vaikea päätellä, mikä on representatiivista kuvausta vallinneesta ajasta ja mikä tarinaan tuotua lisäystä, mutta hahmojen ajoittaiset päättömät puheet saivat miettimään, millaisia keskusteluja tuohon aikaan onkaan käyty.
-
----
-
-"Katsokaa maailmassa asuvia ja maailmaa joka on kaikissa suhteissa korottanut itsenä Jumalan kansan yläpuolelle: eivätkö Jumalan kasvot ja hänen totuutensa ole siellä vääristyneet? Heidän hallussaan on tiede, mutta tieteessä on vain se mikä on aisteille alisteista. Hengellinen maailma, ihmisen olemassaolon korkeampi puolisko sen sijaan on kokonaan torjuttu, karkotettu tavallaan voitonreimuisesti, jopa vihamielisesti. Maailma on kuuluttanut vapautta, erityisesti viime aikoina, ja mitä me siis näemme tuossa heidän vapaudessaan: silkkaa orjuutta ja itsemurhaa! [...] Rikkaiden keskuudessa erillisyyttä ja hengellistä itsemurhaa, köyhien keskuudessa kateutta ja murhaa, sillä oikeuksia on kyllä annettu, mutta keinoja tarpeiden tyydyttämiseen ei ole vielä osoitettu. Vakuutellaan että maailma yhdentyy aina vain, kuontuu veljelliseen kanssakäymiseen lyhentämllä välimatkoja, lähettmällä ajatuksia ilmaa pitkin. Hoi voi, älkää uskoko senkaltaiseen ihmisten yhdentymiseen."
-
-"Venäjän pelastus tulee kansasta. Ja venäläinen luostari on ammoisista ajoista pitänyt yhtä kansan kanssa. Jos siis kansa on eristyksissä, sitten mekin olemme eristyksissä. Kansa uskoo meidän tavallamme, eikä uskoa vailla oleva opastaja saa meillä Venäjällä mitään aikaan, edes vaikka hän olisi sydämeltään vilpitön ja älyltään nerollinen. Muistakaa se. Kansa käy ateistia vastaan ja nujertaa tämän, ja sitten on yksi ja oikeauskoinen Venäjä."
-
-"Mutta Jumala pelastaa Venäjän"
-
-Tieteessä hypoteeseja arvioidaan sen perusteella, kuinka hyviä ennustuksia ne tekevät. Jos hypoteesi ennustaa paremmin kuin toinen, sille tulee antaa enemmän painoarvoa.
-
-Will MacAskill on [esittänyt argumentin](https://80000hours.org/podcast/episodes/will-macaskill-moral-philosophy/), että samaa periaatetta kuuluu soveltaa moraaliin: meidän tulisi antaa enemmän painoarvoa niille moraalifilosofioille, jotka on ennustaneet ja edistäneet ihmiskunnan moraalista kehitystä.
-
-Jeremy Bentham ja John Stuart Mill olivat huomattavasti aikaansa edellä. He argumentoivat naisten oikeuksien, seksuaalivähemmistöjen ja eläinten oikeuksien puolesta -- jo kaksisataa vuotta sitten. Dostojevskin ajasta eteenpäin seurausetiikalla, liberalismilla ja utilitarismilla on ollut selkeästi parempi menestys kuin esimerkiksi nationalistisella kristinuskolla.
-
-"Ja pilkkaajilta itseltään kysyttäköön: jos me vaalimme haavetta, niin milloin te sitten pystytätte oman rakennuksenne ja järjestätte oikeudenmukaiset olot vain oman järkenne varassa, Kristukseen turvaamatta?"
-
-Rakennusta on pystytetty jo vuosisatoja, aina tieteellisestä vallankumouksesta ja valistuksen ajasta lähtien. Jos olisit täällä, yllättyisit, kuinka oikeudenmukaisen rakennelman olemmekaan saaneet luotua, vaikka työ onkin kesken ja jotkin varjot ovat vielä kaikottamatta. Oman järkemme varassa.
 
 [End of text.]
 

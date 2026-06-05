@@ -4,14 +4,19 @@ texts:
  - /blog/I_woke_up
  - /blog/unusual
  - /blog/stakes
+ - /blog/importance_of_language
  - /blog/tragedy
  - /blog/preserve
+ - /blog/fairness_or_bayes
+ - /blog/distrust_in_bayes
  - /blog/predict
  - /blog/holders
  - /blog/fortress
  - /blog/tag
  - /blog/omni
+ - /blog/suuressa_maailmassa
  - /blog/kirjoittaminen
+ - /blog/mustat_laatikot
  - /blog/maksaa
  - /blog/todennakoisyysareena
  - /blog/varma
@@ -20,18 +25,19 @@ texts:
  - /blog/ajatuksenluku
  - /blog/koo
  - /blog/putoamiskiihtyvyys
- - /blog/childhood
- - /blog/lajeja
  - /blog/puutteellinen
  - /blog/kapea
  - /blog/ajattelen
  - /blog/integriteetti
  - /blog/aanestaminen
  - /blog/toistuvuus
+ - /blog/pythagoras
  - /blog/avaruusoliotesti
  - /blog/illuusio
  - /blog/ikiliikkuva
  - /blog/karamazov
+ - /blog/childhood
+ - /blog/lajeja
  - /blog/fysiikka
  - /blog/differentiaaliyhtaloryhmat
 
@@ -51,9 +57,15 @@ For context, read **[What is this blog about?](/blog/what)**. I especially recom
 
 [The perceived stakes](/blog/stakes)
 
+[The importance of language](/blog/importance_of_language)
+
 [A gambling-related tragedy](/blog/tragedy)
 
 [Preserve](/blog/preserve)
+
+[Fairness or Bayes?](/blog/fairness_or_bayes)
+
+[A cause for distrust in Bayesianism](/blog/distrust_in_bayes)
 
 ### Tales from my median world
 
@@ -69,7 +81,11 @@ For context, read **[What is this blog about?](/blog/what)**. I especially recom
 
 ## Finnish
 
+**[Suuressa maailmassa](/blog/suuressa_maailmassa)**
+
 **[Kirjoittaminen työkaluna](/blog/kirjoittaminen)**
+
+[Mustat laatikot](/blog/mustat_laatikot)
 
 [Paljonko asiat maksaa?](/blog/maksaa)
 
@@ -98,6 +114,8 @@ For context, read **[What is this blog about?](/blog/what)**. I especially recom
 [Puhukaa äänestämisestä](/blog/aanestaminen)
 
 **["Et tule tapaamaan toista pelaajaa enää koskaan uudelleen"](/blog/toistuvuus)**
+
+[Pythagoras](/blog/pythagoras)
 
 [Avaruusoliotesti](/blog/avaruusoliotesti)
 
