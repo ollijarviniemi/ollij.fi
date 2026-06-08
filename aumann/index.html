@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aumann</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="config.js"></script>
+    <script src="https://cdn.socket.io/4.8.0/socket.io.min.js" defer></script>
+    <script type="module" src="js/main.js" defer></script>
+</head>
+<body>
+
+<main>
+
+<!-- ============================================================ -->
+<!-- LANDING                                                     -->
+<!-- ============================================================ -->
+<section id="landing" class="view">
+    <h1>Aumann</h1>
+    <p class="tagline">Two players, hidden cards, shared probabilities.</p>
+
+    <div class="form-row">
+        <label for="name">Your name</label>
+        <input id="name" type="text" maxlength="24" autocomplete="off" placeholder="Your name">
+    </div>
+
+    <div class="form-actions">
+        <button id="btn-create" class="primary">Create new room</button>
+        <div class="or">or</div>
+        <div class="join-row">
+            <input id="join-code" type="text" maxlength="4" autocomplete="off" placeholder="ROOM">
+            <button id="btn-join">Join</button>
+        </div>
+    </div>
+
+    <div id="my-stats" class="stats-block" hidden></div>
+
+    <div id="error-msg" class="error" hidden></div>
+</section>
+
+<!-- ============================================================ -->
+<!-- WAITING (room created, second player not yet joined)        -->
+<!-- ============================================================ -->
+<section id="waiting" class="view" hidden>
+    <h1>Room <span class="room-code"></span></h1>
+    <p>Share this code with your partner.</p>
+    <p class="muted" id="waiting-text">Waiting for opponent…</p>
+    <button id="btn-leave-waiting" class="ghost">Leave</button>
+</section>
+
+<!-- ============================================================ -->
+<!-- GAME                                                        -->
+<!-- ============================================================ -->
+<section id="game" class="view" hidden>
+    <header class="game-header">
+        <div>Room <span class="room-code"></span> · <span class="me-name"></span> vs <span class="opp-name"></span></div>
+        <div class="game-counter">Game <span class="game-num"></span></div>
+    </header>
+
+    <div class="conditions">
+        <div class="conditions-label">Wins if any of:</div>
+        <ol id="condition-list"></ol>
+    </div>
+
+    <div class="hands">
+        <div class="hand-row">
+            <div class="hand-label">You</div>
+            <div id="my-hand" class="hand-cards"></div>
+        </div>
+        <div class="hand-row">
+            <div class="hand-label">Opponent</div>
+            <div id="opp-hand" class="hand-cards"></div>
+        </div>
+    </div>
+
+    <div id="status" class="status"></div>
+
+    <div id="board" class="board"></div>
+
+    <!-- Reveal pane, shown when state=revealed -->
+    <div id="reveal" class="reveal" hidden>
+        <div id="reveal-q" class="reveal-q"></div>
+        <div id="reveal-conditions" class="reveal-conditions"></div>
+        <div id="reveal-scores" class="reveal-scores"></div>
+        <div id="reveal-ideal" class="reveal-ideal"></div>
+        <button id="btn-next-game" class="primary">Next game</button>
+    </div>
+
+    <div id="session-stats" class="stats-block"></div>
+</section>
+
+</main>
+
+</body>
+</html>

@@ -1,0 +1,361 @@
+/* Aumann — minimalist UI matching the Bayesian Factory aesthetic.
+   White background, clean lines, very little chrome. */
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    color: #222;
+    background: #fff;
+    line-height: 1.45;
+    overflow-x: hidden;
+}
+
+main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 32px 20px 64px;
+}
+
+h1, h2, h3 { margin: 0 0 12px; font-weight: 600; }
+h1 { font-size: 30px; letter-spacing: -0.3px; }
+h2 { font-size: 22px; }
+h3 { font-size: 16px; color: #555; }
+p { margin: 0 0 16px; }
+.tagline { color: #666; margin-bottom: 32px; }
+.muted { color: #888; }
+.error { color: #c33; margin-top: 12px; }
+
+.view { display: block; }
+[hidden] { display: none !important; }
+
+button {
+    font: inherit;
+    cursor: pointer;
+    padding: 10px 22px;
+    border: 2px solid #222;
+    background: #fff;
+    color: #222;
+    border-radius: 4px;
+    transition: all 0.15s ease;
+}
+button:hover:not(:disabled) { background: #f4f4f4; }
+button.primary {
+    background: #222;
+    color: #fff;
+}
+button.primary:hover:not(:disabled) { background: #444; }
+button.ghost {
+    border-color: #ddd;
+    color: #666;
+}
+button:disabled { opacity: 0.4; cursor: not-allowed; }
+
+input[type="text"] {
+    font: inherit;
+    padding: 10px 12px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background: #fff;
+    transition: border-color 0.15s ease;
+}
+input[type="text"]:focus {
+    outline: none;
+    border-color: #222;
+}
+
+/* ---------- Landing ---------- */
+.form-row {
+    margin-bottom: 24px;
+}
+.form-row label {
+    display: block;
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 4px;
+}
+.form-row input { width: 100%; max-width: 320px; }
+.form-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin: 24px 0;
+}
+.or {
+    color: #aaa;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 6px 0;
+}
+.join-row {
+    display: flex;
+    gap: 8px;
+}
+.join-row input {
+    width: 100px;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 4px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.stats-block {
+    border-top: 1px solid #eee;
+    margin-top: 32px;
+    padding-top: 18px;
+    color: #444;
+    font-size: 14px;
+}
+.stats-block .stat-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+}
+.stats-block .stat-row .label { color: #666; }
+
+/* ---------- Waiting room ---------- */
+.room-code {
+    font-family: 'Courier New', monospace;
+    font-weight: 700;
+    font-size: 1.2em;
+    letter-spacing: 4px;
+    padding: 4px 10px;
+    background: #f4f4f4;
+    border-radius: 4px;
+}
+
+/* ---------- Game header ---------- */
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: #666;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
+}
+.game-header .me-name,
+.game-header .opp-name { color: #222; font-weight: 600; }
+.game-counter { color: #888; }
+
+/* ---------- Conditions ---------- */
+.conditions {
+    margin-bottom: 24px;
+}
+.conditions-label {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 6px;
+}
+.conditions ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.conditions ol li {
+    padding: 5px 0;
+    border-bottom: 1px solid #f4f4f4;
+    font-size: 15px;
+}
+/* Condition met/unmet markers — used both in the in-play conditions list
+   and in the reveal panel's conditions recap. */
+ol li.met   { color: #2e7d32; font-weight: 600; }
+ol li.met::before   { content: '✓ '; }
+ol li.unmet { color: #999; }
+ol li.unmet::before { content: '· '; }
+
+/* ---------- Cards ---------- */
+.hands {
+    margin-bottom: 24px;
+}
+.hand-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 8px;
+}
+.hand-label {
+    width: 70px;
+    font-size: 13px;
+    color: #666;
+    text-align: right;
+}
+.hand-cards {
+    display: flex;
+    gap: 6px;
+}
+
+.card {
+    width: 52px;
+    height: 72px;
+    border: 2px solid #222;
+    border-radius: 6px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 4px 6px;
+    font-family: 'Georgia', serif;
+    user-select: none;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+.card.red { color: #c1272d; }
+.card.black { color: #222; }
+.card .corner {
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1;
+}
+.card .center {
+    text-align: center;
+    font-size: 26px;
+    line-height: 1;
+}
+.card.back {
+    background: repeating-linear-gradient(45deg, #ddd, #ddd 4px, #eee 4px, #eee 8px);
+    color: transparent;
+    border-color: #999;
+}
+.card.back .center { color: transparent; }
+
+/* ---------- Board ---------- */
+.status {
+    text-align: center;
+    margin: 16px 0;
+    font-size: 16px;
+    color: #444;
+    min-height: 22px;
+}
+
+.board {
+    margin: 16px auto;
+    max-width: 480px;
+    border: 2px solid #222;
+    border-radius: 6px;
+    overflow: hidden;
+}
+.board-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    background: #fff;
+}
+.board-row:last-child { border-bottom: none; }
+
+.board-row .cell {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+    transition: background 0.12s ease;
+    user-select: none;
+}
+.board-row .cell.middle {
+    cursor: default;
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
+    background: #fafafa;
+    flex-direction: column;
+    font-size: 13px;
+    color: #444;
+}
+.board-row .cell.middle .band { font-weight: 600; color: #222; }
+.board-row .cell.middle .scores { color: #888; font-size: 12px; margin-top: 2px; }
+.board-row .cell.player:hover:not(.disabled):not(.placed) { background: #f4f4f4; }
+.board-row .cell.placed { background: #f0f7ff; }
+.board-row .cell.disabled { cursor: not-allowed; }
+
+.token {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #2196F3;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+}
+.token.r1 { background: #1976D2; }
+.token.r2 { background: #4CAF50; }
+.token.opp { background: #888; }
+.token.opp.r1 { background: #666; }
+.token.opp.r2 { background: #999; }
+.cell .token-pair {
+    display: flex;
+    gap: 4px;
+}
+
+/* ---------- Reveal ---------- */
+.reveal {
+    margin-top: 28px;
+    padding: 20px;
+    background: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+.reveal-q {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+.reveal-q.yes { color: #2e7d32; }
+.reveal-q.no  { color: #c62828; }
+.reveal-conditions {
+    margin: 12px 0;
+    font-size: 14px;
+}
+.reveal-conditions ol { padding-left: 18px; margin: 4px 0; }
+.reveal-scores {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin-top: 16px;
+}
+.reveal-scores .score-cell {
+    text-align: center;
+    padding: 8px;
+}
+.reveal-scores .label { font-size: 12px; color: #666; }
+.reveal-scores .value { font-size: 24px; font-weight: 700; margin-top: 4px; }
+.reveal-scores .delta {
+    font-size: 14px;
+    margin-top: 2px;
+}
+.reveal-scores .delta.pos { color: #2e7d32; }
+.reveal-scores .delta.neg { color: #c62828; }
+.reveal-ideal {
+    margin: 16px 0;
+    font-size: 14px;
+    color: #555;
+}
+.reveal-ideal .row {
+    display: flex;
+    justify-content: space-between;
+    padding: 3px 0;
+}
+#btn-next-game { margin-top: 12px; }
+
+/* ---------- Mobile ---------- */
+@media (max-width: 640px) {
+    main { padding: 20px 14px 56px; }
+    h1 { font-size: 24px; }
+    .card { width: 44px; height: 62px; }
+    .card .corner { font-size: 11px; }
+    .card .center { font-size: 22px; }
+    .hand-label { width: 56px; font-size: 12px; }
+    .board { max-width: 100%; }
+    .board-row { grid-template-columns: 1fr 1.6fr 1fr; }
+    .board-row .cell { height: 56px; }
+    .board-row .cell.middle { font-size: 12px; }
+    .token { width: 24px; height: 24px; font-size: 11px; }
+    .reveal-scores { grid-template-columns: 1fr; gap: 0; }
+}

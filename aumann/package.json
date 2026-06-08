@@ -1,0 +1,10 @@
+{
+  "name": "aumann",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "description": "Aumann agreement game (Maailmantutkija chapter 11.4) — web playable version.",
+  "scripts": {
+    "test": "node test.mjs"
+  }
+}
