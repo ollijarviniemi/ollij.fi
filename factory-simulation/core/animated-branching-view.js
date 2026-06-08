@@ -8,8 +8,11 @@
 
 // Minimum probability before a world is auto-terminated
 const MIN_PROBABILITY_THRESHOLD = 1e-5;
-// Maximum number of active (non-terminated) worlds before refusing new splits
-const MAX_ACTIVE_WORLDS = 1024;  // 2^10 — accommodates 10 binary splits exactly
+// Maximum number of active (non-terminated) worlds before refusing new splits.
+// On mobile, the per-frame rendering cost of many tiny worlds dominates and the
+// visualization isn't legible at small viewport sizes anyway, so cap lower
+// (2^7 = 128 worlds vs 2^10 = 1024 on desktop).
+const MAX_ACTIVE_WORLDS = (typeof window !== 'undefined' && window.innerWidth <= 768) ? 128 : 1024;
 
 /**
  * Represents a single "world" - one possible path through the probability space

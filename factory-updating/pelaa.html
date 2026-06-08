@@ -859,12 +859,19 @@
           // Position overlay so its content area aligns with the board canvas.
           // The overlay has a 1px border; with box-sizing: border-box the border
           // is inside the width/height, so we expand by 1px on each side.
+          //
+          // On mobile the factory canvas is CSS-scaled (max-width:100%, height:auto)
+          // so display pixels != buffer pixels. offsetLeft/offsetTop are in display
+          // pixels, but margin and overlayDims are in buffer pixels. Multiply by the
+          // display scale so positioning matches what the user sees.
           const margin = coords.overlayInsetPixels;
           const bw = 1; // border width
-          overlay.style.left = `${this.canvas.offsetLeft + margin - bw}px`;
-          overlay.style.top = `${this.canvas.offsetTop + margin - bw}px`;
-          overlay.style.width = `${overlayDims.width + 2 * bw}px`;
-          overlay.style.height = `${overlayDims.height + 2 * bw}px`;
+          const scaleX = this.canvas.offsetWidth / this.canvas.width;
+          const scaleY = this.canvas.offsetHeight / this.canvas.height;
+          overlay.style.left = `${this.canvas.offsetLeft + (margin - bw) * scaleX}px`;
+          overlay.style.top = `${this.canvas.offsetTop + (margin - bw) * scaleY}px`;
+          overlay.style.width = `${(overlayDims.width + 2 * bw) * scaleX}px`;
+          overlay.style.height = `${(overlayDims.height + 2 * bw) * scaleY}px`;
 
           const instructions = this.level.hypothesisSpace.animationInstructions;
 
@@ -1202,7 +1209,7 @@
       updateBallCount(current, total) {
         const ballCount = document.getElementById('ball-count');
         if (ballCount) {
-          ballCount.textContent = `Pallot: ${current} / ${total}`;
+          ballCount.textContent = `Balls: ${current} / ${total}`;
         }
       }
 
