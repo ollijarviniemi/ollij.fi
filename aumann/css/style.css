@@ -336,10 +336,13 @@ input[type="text"]:focus { outline: none; border-color: #111; }
     z-index: auto !important;
 }
 
+/* Face cards: the deckofcardsapi PNG IS the card — no inner border, no
+   padding around the image. The .card wrapper just gives us rounded
+   corners + shadow for the fan/hover effects. */
 .card {
-    border: 2px solid #111;
+    border: none;
     border-radius: 8px;
-    background: #fff;
+    background: transparent;
     overflow: hidden;
     user-select: none;
     position: relative;
@@ -347,6 +350,7 @@ input[type="text"]:focus { outline: none; border-color: #111; }
     flex-direction: column;
     justify-content: space-between;
     font-family: Georgia, serif;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.18);
 }
 .card img {
     width: 100%;
@@ -357,9 +361,10 @@ input[type="text"]:focus { outline: none; border-color: #111; }
 }
 .card.red   { color: #c01818; }
 .card.black { color: #111; }
+/* Backs keep the local striped pattern + a thin border for definition. */
 .card.back {
     background: repeating-linear-gradient(45deg, #d4d4d8, #d4d4d8 4px, #e4e4e7 4px, #e4e4e7 8px);
-    border-color: #999;
+    border: 2px solid #999;
 }
 .card.back img { display: none; }
 .card.back .corner, .card.back .center { color: transparent; }
@@ -373,7 +378,16 @@ input[type="text"]:focus { outline: none; border-color: #111; }
     min-height: 20px;
 }
 
-.board-wrap { position: relative; margin: 4px 0 18px; }
+/* Vertical space above + below the grid. Default is tight; when a reveal
+   is showing (Bayesian dashed lines + arcs) we grow the margin so the
+   arcs don't overlap teammate's hand / status / conditions. The JS
+   toggles .with-arcs on the wrap when game.state === 'revealed'. */
+.board-wrap {
+    position: relative;
+    margin: 24px 0;
+    transition: margin 0.4s ease;
+}
+.board-wrap.with-arcs { margin: 88px 0; }
 
 .board {
     display: grid;
@@ -474,8 +488,10 @@ input[type="text"]:focus { outline: none; border-color: #111; }
     pointer-events: none;
     display: block;
 }
-#bayes-arc-me  { top: 100%; height: 72px; }
-#bayes-arc-opp { bottom: 100%; height: 72px; }
+/* Push each arc 30 px past the grid edge so the labels (which sit right at
+   the grid edge) don't overlap the arc body. */
+#bayes-arc-me  { top: calc(100% + 30px);    height: 56px; }
+#bayes-arc-opp { bottom: calc(100% + 30px); height: 56px; }
 
 
 /* ---------- Sidebar score tables ---------- */

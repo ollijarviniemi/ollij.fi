@@ -31,14 +31,15 @@ function sortHand(hand) {
     );
 }
 
-// Real-card image URL from deckofcardsapi.com. Format: {rank}{suit}.png where
-// rank ∈ {A, 2..9, 0 for 10, J, Q, K} and suit ∈ {S, H, D, C}.
+// Card images live locally at /aumann/cards/{rank}{suit}.png (downloaded once
+// from deckofcardsapi.com — see the readme). Served from the same origin so
+// they load instantly with no external dependency.
 function cardImageUrl(c) {
     const r = c.rank;
     const rankCode =
         r === 10 ? '0' : r === 11 ? 'J' : r === 12 ? 'Q' :
         r === 13 ? 'K' : r === 14 ? 'A' : String(r);
-    return `https://deckofcardsapi.com/static/img/${rankCode}${c.suit.toUpperCase()}.png`;
+    return `cards/${rankCode}${c.suit.toUpperCase()}.png`;
 }
 
 export function renderCard(card, opts = {}) {
@@ -241,7 +242,7 @@ function drawPlayerLines(board, kind, info, w, top, h) {
 function drawArc(svg, info, w, color, direction) {
     if (!svg) return;
     svg.style.display = 'block';
-    const h = 72;
+    const h = 56;
     svg.setAttribute('width',  w);
     svg.setAttribute('height', h);
     svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
@@ -253,13 +254,15 @@ function drawArc(svg, info, w, color, direction) {
         ? (sx + Math.sign(sx - ex || 1) * 7) : sx;
     const mid = (adjustedSx + ex) / 2;
 
+    // Endpoints sit near the grid-facing edge of the SVG; apex is at the far
+    // edge. Path goes start → apex → end as a single smooth quadratic curve.
     let edgeY, apexY;
     if (direction === 'down') {
-        edgeY = 3;          // start/end at top of SVG = bottom edge of grid
-        apexY = h - 14;     // dip toward the bottom
+        edgeY = 4;          // near the top of the SVG (= near grid bottom)
+        apexY = h - 6;
     } else {
-        edgeY = h - 3;      // start/end at bottom of SVG = top edge of grid
-        apexY = 14;         // arc upward away from grid
+        edgeY = h - 4;      // near the bottom of the SVG (= near grid top)
+        apexY = 6;
     }
 
     const idSafe = color.replace('#','');

@@ -144,10 +144,14 @@ function renderGame() {
     renderBoard(document.querySelector('#board'), state, onPlace);
     document.querySelector('#status').textContent = statusFor(state);
 
-    // Bayesian visualization only after reveal.
+    // Bayesian visualization only after reveal. Also grow board-wrap margin
+    // so the arcs have room above + below the grid.
     const boardWrap = document.querySelector('#board-wrap');
+    boardWrap.classList.toggle('with-arcs', g.state === 'revealed');
     if (g.state === 'revealed') {
-        requestAnimationFrame(() => renderBayesArrows(boardWrap, state));
+        // Wait for margin transition (400ms) to settle before computing arc
+        // geometry, otherwise offsetTop/Height are still mid-transition.
+        requestAnimationFrame(() => requestAnimationFrame(() => renderBayesArrows(boardWrap, state)));
     } else {
         clearBayesArrows(boardWrap);
     }
