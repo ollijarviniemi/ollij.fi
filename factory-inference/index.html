@@ -766,6 +766,13 @@
 
         // Initialize SortableJS for all rounds-grids
         function initializeDragAndDrop() {
+            // Drag-and-drop is editor-only. Skip on touch devices and in
+            // production so taps fire onclick immediately (SortableJS otherwise
+            // intercepts touchstart and blocks/delays the synthetic click).
+            if (document.body.classList.contains('production') ||
+                'ontouchstart' in window ||
+                navigator.maxTouchPoints > 0) return;
+
             // Destroy old instances
             sortableInstances.forEach(instance => instance.destroy());
             sortableInstances = [];
@@ -810,9 +817,7 @@
             box.className = 'level-box';
             box.dataset.levelId = levelId;
             box.onclick = (e) => {
-                if (e.button === 0) {  // Left click
-                    playLevel(levelId, groupNumber, positionInGroup);
-                }
+                playLevel(levelId, groupNumber, positionInGroup);
             };
 
             // Context menu

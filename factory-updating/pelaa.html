@@ -289,6 +289,71 @@
             border-radius: 4px;
             font-size: 14px;
         }
+
+        /* Mobile: stack canvas + panel vertically, allow scrolling. */
+        @media (max-width: 768px) {
+            body {
+                overflow: auto;
+                height: auto;
+            }
+            .game-container {
+                flex-direction: column;
+                height: auto;
+                width: 100%;
+                min-height: 100vh;
+            }
+            .left-content {
+                width: 100%;
+            }
+            .canvas-area {
+                flex: 0 0 auto;
+                padding: 8px;
+                width: 100%;
+                min-height: 45vh;
+                box-sizing: border-box !important;
+                overflow: hidden !important;
+            }
+            #factory-canvas {
+                max-width: 100%;
+                height: auto;
+            }
+            .right-panel {
+                width: 100% !important;
+                min-width: 0 !important;
+                max-width: 100% !important;
+                border-left: none !important;
+                border-top: 2px solid #000;
+                overflow-x: auto !important;
+                overflow-y: visible !important;
+                padding: 16px;
+                box-sizing: border-box;
+            }
+            /* Simulation game uses an inner two-column layout in the right-panel.
+               Stack those vertically too, with full-width columns. */
+            .main-content {
+                flex-direction: column !important;
+                overflow: visible !important;
+            }
+            .left-column, .right-column {
+                width: 100% !important;
+                min-width: 0 !important;
+                max-width: none !important;
+                flex: 0 0 auto !important;
+            }
+            .divider { display: none !important; }
+            .branching-container {
+                width: 100% !important;
+            }
+            #animation-overlay, #animation-canvas {
+                max-width: 100%;
+                max-height: 100%;
+                overflow: hidden;
+                box-sizing: border-box;
+            }
+            .hypothesis-sacks {
+                flex-wrap: wrap;
+            }
+        }
     </style>
 </head>
 <body>
