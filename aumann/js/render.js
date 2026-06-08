@@ -11,11 +11,11 @@ const VIS_TO_INT = [4, 3, 2, 1, 0];
 const BAND_PAYOFF = ['0/10', '4/9', '7/7', '9/4', '10/0'];
 const BAND_PCT    = ['0–20%', '20–40%', '40–60%', '60–80%', '80–100%'];
 const BAND_TIPS = [
-    'P 0–20%. 0 if any condition is met, 10 otherwise.',
-    'P 20–40%. 4 if met, 9 otherwise.',
-    'P 40–60%. 7 either way — the safe middle.',
-    'P 60–80%. 9 if met, 4 otherwise.',
-    'P 80–100%. 10 if met, 0 otherwise. The 10/9/7/4/0 numbers maximize expected score for beliefs in each band.',
+    'This column maximises your expected score if your belief is in 0–20%. Pays 0 if any condition is met, 10 otherwise.',
+    'This column maximises expected score if your belief is in 20–40%. Pays 4 if met, 9 otherwise.',
+    'This column maximises expected score if your belief is in 40–60%. Pays 7 either way (the safe middle).',
+    'This column maximises expected score if your belief is in 60–80%. Pays 9 if met, 4 otherwise.',
+    'This column maximises expected score if your belief is in 80–100%. Pays 10 if met, 0 otherwise.',
 ];
 
 export function showView(id) {
@@ -94,9 +94,7 @@ export function renderConditions(container, conditions, opts = {}) {
         const div = document.createElement('div');
         div.className = 'cond-card';
         const iconHtml = ICON[cond.id] ? ICON[cond.id]() : '';
-        const tipText = (TIP[cond.id] || cond.name).replace(/"/g, '&quot;');
         div.innerHTML = `
-            <span class="cond-help help" data-tooltip="${tipText}">?</span>
             <div class="cond-icon">${iconHtml}</div>
             <div class="cond-text">${cond.name}</div>
         `;
@@ -333,20 +331,21 @@ export function realizedScores(view) {
 /* ---------------- Landing how-to examples ---------------- */
 
 export function renderHowTo() {
-    // Example 1: 5 of your cards face up + 5 backs (teammate's hand).
+    // Example 1: teammate's 5 backs (flipped, across the table) on top,
+    // then your 5 face-up cards below.
     const hands = document.querySelector('#howto-hands');
     if (hands) {
         hands.innerHTML = '';
+        const opp = document.createElement('div');
+        opp.className = 'hand opp-hand fan';
+        for (let i = 0; i < 5; i++) opp.appendChild(renderCard(null, { back: true }));
         const me = document.createElement('div');
-        me.className = 'hand fan';
+        me.className = 'hand my-hand fan';
         const sample = [
             { rank: 14, suit: 's' }, { rank: 9, suit: 'h' }, { rank: 7, suit: 'h' },
             { rank: 6, suit: 'c' }, { rank: 13, suit: 'd' },
         ];
         for (const c of sortHand(sample)) me.appendChild(renderCard(c));
-        const opp = document.createElement('div');
-        opp.className = 'hand fan';
-        for (let i = 0; i < 5; i++) opp.appendChild(renderCard(null, { back: true }));
         hands.append(opp, me);
     }
     // Example 2: 3 condition cards.

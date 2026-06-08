@@ -69,14 +69,14 @@
 <!-- ============ GAME ============ -->
 <section id="game" class="view" hidden>
 
-    <button id="btn-leave-game" class="leave-link" title="Leave the room">← leave</button>
-
     <div class="game-layout">
         <div class="game-main">
 
-            <div id="conditions-row" class="conditions-row"></div>
-
+            <!-- Teammate's hand at top (across the table, flipped). -->
             <div id="opp-hand" class="hand opp-hand fan"></div>
+
+            <!-- Conditions below teammate's hand. -->
+            <div id="conditions-row" class="conditions-row"></div>
 
             <div id="status" class="status"></div>
 
@@ -91,6 +91,7 @@
         </div>
 
         <aside class="game-sidebar">
+            <button id="btn-leave-game" class="leave-link" title="Leave the room">← leave</button>
             <div class="sb-title">
                 Scores
                 <span class="help sb-help" data-tooltip="Hover the table to see what perfect Bayesians would have scored on the same hands.">?</span>

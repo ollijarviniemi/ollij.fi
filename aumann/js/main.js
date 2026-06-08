@@ -160,9 +160,20 @@ function renderGame() {
         g.state === 'revealed' ? g.number : null,
     );
 
-    // Next-game button only visible when revealed.
+    // Next-game button: visible when revealed. Both players must click it
+    // (server tracks ready[seat]). After your own click, the button disables
+    // and re-labels so you know it's waiting for the teammate.
     const nextBtn = document.querySelector('#btn-next-game');
-    nextBtn.hidden = g.state !== 'revealed';
+    if (g.state === 'revealed') {
+        nextBtn.hidden = false;
+        const iClicked = Array.isArray(g.ready) && g.ready[state.seat];
+        nextBtn.disabled = !!iClicked;
+        nextBtn.textContent = iClicked ? 'Waiting for teammate…' : 'Next game';
+    } else {
+        nextBtn.hidden = true;
+        nextBtn.disabled = false;
+        nextBtn.textContent = 'Next game';
+    }
 
     lastRenderKey = key;
 }
