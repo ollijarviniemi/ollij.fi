@@ -1,54 +1,42 @@
-/* Aumann — minimalist UI matching the Bayesian Factory aesthetic.
-   White background, clean lines, very little chrome. */
+/* Aumann — minimalist, factory-game aesthetic. Large key elements, very
+   little text, ?-icon tooltips for everything that needs explaining. */
 
 * { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; }
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: clip;  /* prevent fan-card rotation from creating a horizontal scrollbar */
+}
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-    color: #222;
+    color: #1a1a1a;
     background: #fff;
     line-height: 1.45;
-    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
 }
+main { max-width: 920px; margin: 0 auto; padding: 36px 20px 80px; }
 
-main {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 32px 20px 64px;
-}
-
-h1, h2, h3 { margin: 0 0 12px; font-weight: 600; }
-h1 { font-size: 30px; letter-spacing: -0.3px; }
-h2 { font-size: 22px; }
-h3 { font-size: 16px; color: #555; }
+h1, h2, h3 { margin: 0 0 16px; font-weight: 600; }
+h1 { font-size: 32px; letter-spacing: -0.4px; }
 p { margin: 0 0 16px; }
-.tagline { color: #666; margin-bottom: 32px; }
 .muted { color: #888; }
-.error { color: #c33; margin-top: 12px; }
-
-.view { display: block; }
+.error { color: #c33; margin-top: 12px; font-size: 14px; }
 [hidden] { display: none !important; }
 
 button {
     font: inherit;
     cursor: pointer;
     padding: 10px 22px;
-    border: 2px solid #222;
+    border: 2px solid #1a1a1a;
     background: #fff;
-    color: #222;
+    color: #1a1a1a;
     border-radius: 4px;
     transition: all 0.15s ease;
 }
 button:hover:not(:disabled) { background: #f4f4f4; }
-button.primary {
-    background: #222;
-    color: #fff;
-}
-button.primary:hover:not(:disabled) { background: #444; }
-button.ghost {
-    border-color: #ddd;
-    color: #666;
-}
+button.primary { background: #1a1a1a; color: #fff; }
+button.primary:hover:not(:disabled) { background: #333; }
+button.ghost { border-color: #ddd; color: #666; }
 button:disabled { opacity: 0.4; cursor: not-allowed; }
 
 input[type="text"] {
@@ -57,305 +45,356 @@ input[type="text"] {
     border: 2px solid #ccc;
     border-radius: 4px;
     background: #fff;
-    transition: border-color 0.15s ease;
 }
-input[type="text"]:focus {
-    outline: none;
-    border-color: #222;
+input[type="text"]:focus { outline: none; border-color: #1a1a1a; }
+
+/* ---------- ?-icon tooltips ---------- */
+/* Used inline next to anything that has more detail. Hover on desktop,
+   tap on mobile (a global click handler toggles .active). */
+.help {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: #e0e0e0;
+    color: #555;
+    font-size: 11px;
+    font-weight: 700;
+    margin-left: 6px;
+    cursor: help;
+    position: relative;
+    vertical-align: middle;
+    user-select: none;
+    transition: background 0.15s ease;
+}
+.help:hover { background: #c8c8c8; }
+.help::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1a1a1a;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.45;
+    width: max-content;
+    max-width: 260px;
+    white-space: normal;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.18s ease;
+    pointer-events: none;
+    z-index: 100;
+    text-align: left;
+}
+.help::before {
+    content: '';
+    position: absolute;
+    bottom: calc(100% + 3px);
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: #1a1a1a;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.18s ease;
+}
+.help:hover::after, .help:hover::before,
+.help.active::after, .help.active::before {
+    visibility: visible;
+    opacity: 1;
 }
 
 /* ---------- Landing ---------- */
-.form-row {
-    margin-bottom: 24px;
-}
-.form-row label {
-    display: block;
-    font-size: 13px;
-    color: #666;
-    margin-bottom: 4px;
-}
-.form-row input { width: 100%; max-width: 320px; }
-.form-actions {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-    margin: 24px 0;
-}
-.or {
-    color: #aaa;
-    font-size: 13px;
+#landing { max-width: 480px; }
+.form-row { margin: 24px 0; }
+.form-row input { width: 100%; }
+
+#btn-create { padding: 12px 26px; font-size: 16px; }
+
+.lobby { margin: 40px 0 24px; }
+.lobby-label {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 10px;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    margin: 6px 0;
+    letter-spacing: 1.5px;
 }
-.join-row {
+.lobby-rooms { display: flex; flex-direction: column; gap: 8px; }
+.lobby-room {
     display: flex;
-    gap: 8px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 18px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background: #fff;
+    transition: border-color 0.15s ease;
 }
-.join-row input {
-    width: 100px;
-    text-transform: uppercase;
-    text-align: center;
-    letter-spacing: 4px;
-    font-size: 18px;
-    font-weight: 600;
-}
+.lobby-room:hover { border-color: #999; }
+.lobby-room .creator { font-size: 17px; font-weight: 500; }
+.lobby-room button { padding: 7px 16px; font-size: 14px; }
+.lobby-empty { padding: 8px 0; font-size: 14px; }
 
 .stats-block {
-    border-top: 1px solid #eee;
-    margin-top: 32px;
+    margin-top: 36px;
     padding-top: 18px;
-    color: #444;
-    font-size: 14px;
+    border-top: 1px solid #eee;
+    color: #555;
+    font-size: 13px;
 }
 .stats-block .stat-row {
     display: flex;
     justify-content: space-between;
-    padding: 4px 0;
+    padding: 3px 0;
 }
-.stats-block .stat-row .label { color: #666; }
+.stats-block .stat-row .label { color: #888; }
 
-/* ---------- Waiting room ---------- */
-.room-code {
-    font-family: 'Courier New', monospace;
-    font-weight: 700;
-    font-size: 1.2em;
-    letter-spacing: 4px;
-    padding: 4px 10px;
-    background: #f4f4f4;
-    border-radius: 4px;
-}
-
-/* ---------- Game header ---------- */
-.game-header {
+/* ---------- Conditions ("cards") ---------- */
+.conditions-row {
     display: flex;
-    justify-content: space-between;
-    font-size: 13px;
-    color: #666;
-    padding-bottom: 8px;
-    border-bottom: 1px solid #eee;
-    margin-bottom: 20px;
+    justify-content: center;
+    gap: 20px;
+    margin: 0 0 32px;
+    flex-wrap: wrap;
 }
-.game-header .me-name,
-.game-header .opp-name { color: #222; font-weight: 600; }
-.game-counter { color: #888; }
-
-/* ---------- Conditions ---------- */
-.conditions {
-    margin-bottom: 24px;
-}
-.conditions-label {
-    font-size: 13px;
-    color: #666;
-    margin-bottom: 6px;
-}
-.conditions ol {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-.conditions ol li {
-    padding: 5px 0;
-    border-bottom: 1px solid #f4f4f4;
-    font-size: 15px;
-}
-/* Condition met/unmet markers — used both in the in-play conditions list
-   and in the reveal panel's conditions recap. */
-ol li.met   { color: #2e7d32; font-weight: 600; }
-ol li.met::before   { content: '✓ '; }
-ol li.unmet { color: #999; }
-ol li.unmet::before { content: '· '; }
-
-/* ---------- Cards ---------- */
-.hands {
-    margin-bottom: 24px;
-}
-.hand-row {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    margin-bottom: 8px;
-}
-.hand-label {
-    width: 70px;
-    font-size: 13px;
-    color: #666;
-    text-align: right;
-}
-.hand-cards {
-    display: flex;
-    gap: 6px;
-}
-
-.card {
-    width: 52px;
-    height: 72px;
-    border: 2px solid #222;
-    border-radius: 6px;
+.cond-card {
     background: #fff;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 4px 6px;
-    font-family: 'Georgia', serif;
-    user-select: none;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.08);
-}
-.card.red { color: #c1272d; }
-.card.black { color: #222; }
-.card .corner {
-    font-size: 13px;
-    font-weight: 700;
-    line-height: 1;
-}
-.card .center {
-    text-align: center;
-    font-size: 26px;
-    line-height: 1;
-}
-.card.back {
-    background: repeating-linear-gradient(45deg, #ddd, #ddd 4px, #eee 4px, #eee 8px);
-    color: transparent;
-    border-color: #999;
-}
-.card.back .center { color: transparent; }
-
-/* ---------- Board ---------- */
-.status {
-    text-align: center;
-    margin: 16px 0;
-    font-size: 16px;
-    color: #444;
-    min-height: 22px;
-}
-
-.board {
-    margin: 16px auto;
-    max-width: 480px;
-    border: 2px solid #222;
-    border-radius: 6px;
-    overflow: hidden;
-}
-.board-row {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    align-items: center;
-    border-bottom: 1px solid #ddd;
-    background: #fff;
-}
-.board-row:last-child { border-bottom: none; }
-
-.board-row .cell {
-    height: 64px;
+    border: 2px solid #1a1a1a;
+    border-radius: 12px;
+    width: 220px;
+    min-height: 120px;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
-    cursor: pointer;
-    transition: background 0.12s ease;
+    text-align: center;
+    padding: 18px 14px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.32;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+    transition: all 0.2s ease;
+}
+.cond-card.met   { background: #ecf6ed; border-color: #2e7d32; color: #1b5e20; }
+.cond-card.unmet { background: #fafafa; border-color: #ddd; color: #aaa; }
+.cond-card .help { background: #f0f0f0; }
+
+/* ---------- Hands ---------- */
+/* Opponent's hand: small horizontal strip. */
+.opp-hand {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    margin: 0 0 14px;
+    min-height: 60px;
+}
+.opp-hand .card { width: 38px; height: 54px; padding: 3px 4px; }
+.opp-hand .card .corner { font-size: 10px; }
+.opp-hand .card .center { display: none; }
+
+/* Your hand: large fanned cards. */
+.my-hand {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin: 24px 0 10px;
+    min-height: 210px;
+    padding-top: 30px;
+}
+.my-hand .card {
+    width: 110px;
+    height: 155px;
+    margin: 0 -27px;
+    transform-origin: bottom center;
+    transition: transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.18);
+    padding: 8px 10px;
+}
+.my-hand .card:nth-child(1) { transform: rotate(-14deg); z-index: 1; }
+.my-hand .card:nth-child(2) { transform: rotate(-7deg)  translateY(-4px); z-index: 2; }
+.my-hand .card:nth-child(3) { transform: rotate(0deg)   translateY(-6px); z-index: 3; }
+.my-hand .card:nth-child(4) { transform: rotate(7deg)   translateY(-4px); z-index: 4; }
+.my-hand .card:nth-child(5) { transform: rotate(14deg); z-index: 5; }
+.my-hand .card:hover { transform: translateY(-12px); z-index: 10; }
+.my-hand .card .corner { font-size: 18px; }
+.my-hand .card .center { font-size: 46px; }
+
+/* Card primitives (shared across hand types). */
+.card {
+    border: 2px solid #1a1a1a;
+    border-radius: 8px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: Georgia, serif;
     user-select: none;
 }
-.board-row .cell.middle {
-    cursor: default;
-    border-left: 1px solid #eee;
-    border-right: 1px solid #eee;
-    background: #fafafa;
-    flex-direction: column;
-    font-size: 13px;
-    color: #444;
+.card.red   { color: #c01818; }
+.card.black { color: #1a1a1a; }
+.card .corner { font-weight: 700; line-height: 1; }
+.card .center { text-align: center; line-height: 1; }
+.card.back {
+    background: repeating-linear-gradient(45deg, #d4d4d8, #d4d4d8 4px, #e4e4e7 4px, #e4e4e7 8px);
+    border-color: #999;
 }
-.board-row .cell.middle .band { font-weight: 600; color: #222; }
-.board-row .cell.middle .scores { color: #888; font-size: 12px; margin-top: 2px; }
-.board-row .cell.player:hover:not(.disabled):not(.placed) { background: #f4f4f4; }
-.board-row .cell.placed { background: #f0f7ff; }
-.board-row .cell.disabled { cursor: not-allowed; }
+.card.back .corner, .card.back .center { color: transparent; }
 
+/* ---------- Board: 5 columns (bands) × 2 rows (you/opp) ---------- */
+.status {
+    text-align: center;
+    margin: 6px 0 14px;
+    font-size: 15px;
+    color: #888;
+    font-weight: 400;
+    min-height: 22px;
+    letter-spacing: 0.2px;
+}
+
+.board {
+    margin: 0 0 24px;
+    border: 3px solid #1a1a1a;
+    border-radius: 12px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: auto 1fr 1fr;
+    background: #fff;
+}
+.board .band {
+    text-align: center;
+    padding: 18px 4px 16px;
+    background: #f5f5f5;
+    border-right: 1px solid #ddd;
+    border-bottom: 3px solid #1a1a1a;
+}
+.board .band:nth-child(5) { border-right: none; }
+.board .band .pct {
+    font-size: 26px;
+    font-weight: 700;
+    color: #1a1a1a;
+    letter-spacing: -0.5px;
+    line-height: 1.05;
+    font-variant-numeric: tabular-nums;
+}
+.board .band .points {
+    font-size: 19px;
+    color: #777;
+    margin-top: 4px;
+    font-variant-numeric: tabular-nums;
+    font-weight: 500;
+}
+
+.board .cell {
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid #eee;
+    user-select: none;
+    transition: background 0.12s ease;
+}
+.board .cell:nth-child(5n) { border-right: none; }
+.board .cell.me  { background: #fff; cursor: default; }
+.board .cell.opp { background: #fafafa; border-top: 1px solid #ddd; cursor: default; }
+.board .cell.tappable { cursor: pointer; }
+.board .cell.tappable:hover { background: #eef6ff; }
+
+.tokens { display: flex; gap: 7px; }
 .token {
-    width: 28px;
-    height: 28px;
+    width: 34px;
+    height: 34px;
     border-radius: 50%;
-    background: #2196F3;
     color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 12px;
+    font-size: 15px;
     font-weight: 700;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.28);
 }
-.token.r1 { background: #1976D2; }
-.token.r2 { background: #4CAF50; }
-.token.opp { background: #888; }
-.token.opp.r1 { background: #666; }
-.token.opp.r2 { background: #999; }
-.cell .token-pair {
-    display: flex;
-    gap: 4px;
-}
+.token.r1     { background: #1976D2; }
+.token.r2     { background: #43A047; }
+.token.opp.r1 { background: #555; }
+.token.opp.r2 { background: #888; }
 
 /* ---------- Reveal ---------- */
 .reveal {
-    margin-top: 28px;
-    padding: 20px;
-    background: #fafafa;
-    border: 1px solid #ddd;
-    border-radius: 6px;
+    margin-top: 30px;
+    text-align: center;
 }
 .reveal-q {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 12px;
+    font-size: 56px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+    line-height: 1;
 }
 .reveal-q.yes { color: #2e7d32; }
 .reveal-q.no  { color: #c62828; }
-.reveal-conditions {
-    margin: 12px 0;
-    font-size: 14px;
-}
-.reveal-conditions ol { padding-left: 18px; margin: 4px 0; }
 .reveal-scores {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 12px;
-    margin-top: 16px;
+    display: inline-flex;
+    gap: 16px;
+    align-items: baseline;
+    margin: 8px 0 20px;
+    font-variant-numeric: tabular-nums;
 }
-.reveal-scores .score-cell {
-    text-align: center;
-    padding: 8px;
-}
-.reveal-scores .label { font-size: 12px; color: #666; }
-.reveal-scores .value { font-size: 24px; font-weight: 700; margin-top: 4px; }
-.reveal-scores .delta {
-    font-size: 14px;
-    margin-top: 2px;
-}
+.reveal-scores .number { font-size: 44px; font-weight: 700; }
+.reveal-scores .ideal  { font-size: 18px; color: #888; }
+.reveal-scores .delta  { font-size: 18px; font-weight: 600; padding: 0 4px; }
 .reveal-scores .delta.pos { color: #2e7d32; }
 .reveal-scores .delta.neg { color: #c62828; }
-.reveal-ideal {
-    margin: 16px 0;
-    font-size: 14px;
-    color: #555;
-}
-.reveal-ideal .row {
-    display: flex;
-    justify-content: space-between;
-    padding: 3px 0;
-}
-#btn-next-game { margin-top: 12px; }
+.reveal-details { margin-top: 16px; font-size: 13px; color: #888; }
 
 /* ---------- Mobile ---------- */
-@media (max-width: 640px) {
-    main { padding: 20px 14px 56px; }
+@media (max-width: 720px) {
+    main { padding: 18px 10px 56px; }
     h1 { font-size: 24px; }
-    .card { width: 44px; height: 62px; }
-    .card .corner { font-size: 11px; }
-    .card .center { font-size: 22px; }
-    .hand-label { width: 56px; font-size: 12px; }
-    .board { max-width: 100%; }
-    .board-row { grid-template-columns: 1fr 1.6fr 1fr; }
-    .board-row .cell { height: 56px; }
-    .board-row .cell.middle { font-size: 12px; }
-    .token { width: 24px; height: 24px; font-size: 11px; }
-    .reveal-scores { grid-template-columns: 1fr; gap: 0; }
+
+    /* Conditions: shrink so 3 fit in one row on the smallest viewports. */
+    .conditions-row { gap: 6px; margin-bottom: 22px; flex-wrap: nowrap; }
+    .cond-card {
+        flex: 1 1 0;
+        min-width: 0;
+        max-width: none;
+        width: auto;
+        min-height: 92px;
+        font-size: 12px;
+        padding: 8px 6px;
+        border-radius: 8px;
+    }
+    .cond-card .help { width: 13px; height: 13px; font-size: 9px; margin-left: 3px; }
+
+    /* Hand: a bit smaller so it never overflows even rotated. */
+    .my-hand { min-height: 144px; padding-top: 18px; margin: 14px 0 6px; }
+    .my-hand .card { width: 64px; height: 90px; margin: 0 -14px; padding: 4px 5px; }
+    .my-hand .card .corner { font-size: 11px; }
+    .my-hand .card .center { font-size: 26px; }
+
+    .opp-hand { min-height: 50px; margin-bottom: 10px; }
+    .opp-hand .card { width: 28px; height: 40px; padding: 2px 3px; }
+    .opp-hand .card .corner { font-size: 9px; }
+
+    /* Board: tighter band labels so they don't wrap awkwardly. */
+    .board .band { padding: 10px 2px 10px; }
+    .board .band .pct { font-size: 15px; letter-spacing: -0.5px; }
+    .board .band .points { font-size: 13px; margin-top: 2px; }
+    .board .cell { height: 60px; }
+    .token { width: 26px; height: 26px; font-size: 12px; }
+
+    .status { font-size: 14px; margin: 4px 0 10px; min-height: 18px; }
+
+    .reveal-q { font-size: 42px; }
+    .reveal-scores { gap: 12px; }
+    .reveal-scores .number { font-size: 34px; }
+    .reveal-scores .ideal { font-size: 15px; }
+    .reveal-scores .delta { font-size: 16px; }
+    .reveal-details { font-size: 12px; padding: 0 8px; }
+    .help::after { max-width: 200px; font-size: 12px; }
 }
+

@@ -1,7 +1,5 @@
-// Aumann client entry. Wires the Socket.IO connection to the DOM via state.
-//
-// Config: set window.AUMANN_SERVER (e.g., in a config snippet on the host page)
-// to point at the deployed server URL. Defaults to localhost for development.
+// Aumann client. Socket.IO state → DOM via render.js.
+// Server URL: window.AUMANN_SERVER (set by config.js).
 
 import {
     showView, renderHand, renderBoard, renderConditions, statusFor,
@@ -15,138 +13,141 @@ import {
 const SERVER = window.AUMANN_SERVER || 'http://localhost:8787';
 
 let socket = null;
-let state = null;          // last received view from server
-let lastGameRecorded = 0;  // gameNum of the most recently saved history entry
+let state  = null;
+let lobby  = null;
+let lastGameRecorded = 0;
+let inLobby = false;
 
-// ---------- Connection ----------
+/* ---------------- Socket ---------------- */
 
 function connect() {
     if (socket) return;
     socket = io(SERVER, { transports: ['websocket'] });
-    socket.on('state', onState);
-    socket.on('connect', tryRejoin);
+    socket.on('state',     onState);
+    socket.on('lobby',     onLobby);
+    socket.on('connect',   onConnect);
     socket.on('disconnect', () => {});
 }
-
-function tryRejoin() {
+function onConnect() {
     const c = getRoomCookie();
-    if (!c?.code || !c?.playerId) return;
-    socket.emit('room:rejoin', c, (res) => {
-        if (!res?.ok) clearRoomCookie();
-    });
+    if (c?.code && c?.playerId) {
+        socket.emit('room:rejoin', c, (res) => {
+            if (!res?.ok) { clearRoomCookie(); state = null; joinLobby(); render(); }
+        });
+    } else { joinLobby(); }
 }
+function joinLobby() { if (socket && !inLobby) { inLobby = true; socket.emit('lobby:join'); } }
+function leaveLobby() { if (socket && inLobby) { inLobby = false; socket.emit('lobby:leave'); } }
 
 function onState(s) {
     state = s;
-    if (state.code) setRoomCookie(state.code, state.me?.id);
+    if (state?.code && state?.me?.id) { setRoomCookie(state.code, state.me.id); leaveLobby(); }
     render();
     maybeRecordHistory();
 }
+function onLobby(l) { lobby = l; if (!state || !state.game) renderLanding(); }
 
-// ---------- State → view router ----------
+/* ---------------- Render dispatch ---------------- */
 
 function render() {
-    if (!state) {
-        showView('landing');
-        renderLanding();
-        return;
-    }
-    if (!state.opponent && (!state.game || state.game.state === 'round1' && state.game.myR1 == null && state.game.oppR1Pending === false)) {
-        showView('waiting');
-        renderWaiting();
-        return;
-    }
-    if (state.game) {
-        showView('game');
-        renderGame();
-        return;
-    }
-    // Fallback (shouldn't happen)
-    showView('landing');
-    renderLanding();
+    if (!state) { showView('landing'); renderLanding(); return; }
+    if (!state.opponent && !state.game) { showView('waiting'); return; }
+    showView('game');
+    renderGame();
 }
 
 function renderLanding() {
     document.querySelector('#name').value = getName();
+
+    const roomsEl = document.querySelector('#lobby-rooms');
+    const emptyEl = document.querySelector('#lobby-empty');
+    roomsEl.innerHTML = '';
+    const open = lobby?.rooms || [];
+    if (open.length === 0) {
+        emptyEl.hidden = false;
+    } else {
+        emptyEl.hidden = true;
+        for (const r of open) {
+            const row = document.createElement('div');
+            row.className = 'lobby-room';
+            row.innerHTML = `<div class="creator">${escapeHtml(r.creator)}</div>`;
+            const btn = document.createElement('button');
+            btn.textContent = 'Join';
+            btn.addEventListener('click', () => joinRoom(r.code));
+            row.appendChild(btn);
+            roomsEl.appendChild(row);
+        }
+    }
+
     const name = getName();
     const statsEl = document.querySelector('#my-stats');
     if (name) {
         const summary = summarize(getHistory(name));
         if (summary) {
             statsEl.innerHTML = `
-                <div class="stat-row"><span class="label">Today's avg (${summary.todayGames} games)</span><span>${summary.todayAvg != null ? summary.todayAvg.toFixed(1) : '—'}</span></div>
-                <div class="stat-row"><span class="label">Today's ideal avg</span><span>${summary.todayIdealAvg != null ? summary.todayIdealAvg.toFixed(1) : '—'}</span></div>
-                <div class="stat-row"><span class="label">All-time avg (${summary.games} games)</span><span>${summary.allTimeAvg.toFixed(1)}</span></div>
-                <div class="stat-row"><span class="label">All-time ideal avg</span><span>${summary.allTimeIdealAvg.toFixed(1)}</span></div>
+                <div class="stat-row"><span class="label">Today (${summary.todayGames})</span><span>${summary.todayAvg != null ? summary.todayAvg.toFixed(1) : '—'} · ideal ${summary.todayIdealAvg != null ? summary.todayIdealAvg.toFixed(1) : '—'}</span></div>
+                <div class="stat-row"><span class="label">All-time (${summary.games})</span><span>${summary.allTimeAvg.toFixed(1)} · ideal ${summary.allTimeIdealAvg.toFixed(1)}</span></div>
             `;
             statsEl.hidden = false;
         } else { statsEl.hidden = true; }
     } else { statsEl.hidden = true; }
 }
 
-function renderWaiting() {
-    document.querySelectorAll('.room-code').forEach(el => el.textContent = state.code);
-}
-
 function renderGame() {
     const g = state.game;
 
-    // Header
-    document.querySelectorAll('.room-code').forEach(el => el.textContent = state.code);
-    document.querySelectorAll('.me-name').forEach(el => el.textContent = state.me?.name || 'You');
-    document.querySelectorAll('.opp-name').forEach(el => el.textContent = state.opponent?.name || 'Opponent');
-    document.querySelectorAll('.game-num').forEach(el => el.textContent = g.number);
+    const combined = (g.myHand && g.oppHand) ? [...g.myHand, ...g.oppHand] : null;
+    renderConditions(
+        document.querySelector('#conditions-row'),
+        g.conditions,
+        { revealed: g.state === 'revealed', combined },
+    );
 
-    // Conditions (without met/unmet during play)
-    renderConditions(document.querySelector('#condition-list'), state);
+    renderHand(document.querySelector('#opp-hand'), g.oppHand);
+    renderHand(document.querySelector('#my-hand'),  g.myHand);
 
-    // Hands
-    renderHand(document.querySelector('#my-hand'), g.myHand);
-    renderHand(document.querySelector('#opp-hand'), g.oppHand); // null until reveal → shows backs
-
-    // Board
     renderBoard(document.querySelector('#board'), state, onPlace);
 
-    // Status
     document.querySelector('#status').textContent = statusFor(state);
 
-    // Reveal panel
     const revealEl = document.querySelector('#reveal');
     if (g.state === 'revealed') {
         revealEl.hidden = false;
         renderReveal(
             {
-                q: document.querySelector('#reveal-q'),
-                conditions: document.querySelector('#reveal-conditions'),
-                scores: document.querySelector('#reveal-scores'),
-                ideal: document.querySelector('#reveal-ideal'),
+                q:       document.querySelector('#reveal-q'),
+                scores:  document.querySelector('#reveal-scores'),
+                details: document.querySelector('#reveal-details'),
             },
             state,
         );
-    } else {
-        revealEl.hidden = true;
-    }
+    } else { revealEl.hidden = true; }
 
-    // Session stats
     const sess = document.querySelector('#session-stats');
     if (state.scoreHistory.length) {
-        const total = state.scoreHistory.reduce((s, h) => s + h.youScore, 0);
-        const idealTotal = state.scoreHistory.reduce((s, h) => s + (h.idealScore / 2), 0);
         const games = state.scoreHistory.length;
-        sess.innerHTML = `
-            <div class="stat-row"><span class="label">This session (${games} games)</span><span>${(total / games).toFixed(1)} per round (you)</span></div>
-            <div class="stat-row"><span class="label">Ideal Bayesians avg</span><span>${(idealTotal / games).toFixed(1)}</span></div>
-        `;
-    } else {
-        sess.innerHTML = '';
-    }
+        const youAvg = state.scoreHistory.reduce((s, h) => s + h.youScore, 0) / games;
+        const idealAvg = state.scoreHistory.reduce((s, h) => s + h.idealScore / 2, 0) / games;
+        sess.innerHTML = `<div class="stat-row"><span class="label">This room (${games})</span><span>${youAvg.toFixed(1)} · ideal ${idealAvg.toFixed(1)}</span></div>`;
+    } else { sess.innerHTML = ''; }
 }
 
-// ---------- Actions ----------
+/* ---------------- Actions ---------------- */
+
+function joinRoom(code) {
+    const name = (document.querySelector('#name').value || '').trim();
+    if (!name) return flashError('Enter your name first.');
+    setName(name);
+    connect();
+    const go = () => socket.emit('room:join', { code, name }, (res) => {
+        if (!res?.ok) flashError(res?.error || 'Could not join.');
+    });
+    if (socket.connected) go(); else socket.once('connect', go);
+}
 
 function onPlace(round, row) {
     socket.emit('place', { round, row }, (res) => {
-        if (!res?.ok) flashError(res?.error || 'Could not place token.');
+        if (!res?.ok) flashError(res?.error || 'Could not place.');
     });
 }
 
@@ -155,26 +156,22 @@ function maybeRecordHistory() {
     if (state.game.state !== 'revealed') return;
     if (state.game.number === lastGameRecorded) return;
     lastGameRecorded = state.game.number;
-    const realized = realizedScores(state);
-    if (!realized) return;
-    const idealHalf = state.seat === 0
-        ? scoreFromRows(state.game.ideal.p1.r1Row, state.game.ideal.p1.r2Row, state.game.ideal.qTrue)
-        : scoreFromRows(state.game.ideal.p2.r1Row, state.game.ideal.p2.r2Row, state.game.ideal.qTrue);
+    const real = realizedScores(state);
+    if (!real) return;
+    const q = state.game.ideal.qTrue;
+    const S = [[10, 0], [9, 4], [7, 7], [4, 9], [0, 10]];
+    const myI = state.seat === 0 ? state.game.ideal.p1 : state.game.ideal.p2;
+    const idealHalf = (q ? S[myI.r1Row][0] : S[myI.r1Row][1]) + (q ? S[myI.r2Row][0] : S[myI.r2Row][1]);
     appendHistory(state.me?.name || 'You', {
         ts: Date.now(),
         date: new Date().toISOString(),
-        ownScore: realized.my,
+        ownScore: real.my,
         idealScore: state.game.ideal.score,
         idealHalf,
-        delta: realized.my - idealHalf,
+        delta: real.my - idealHalf,
         opponentName: state.opponent?.name || 'Opponent',
-        qTrue: state.game.ideal.qTrue,
+        qTrue: q,
     });
-}
-
-function scoreFromRows(r1, r2, q) {
-    const S = [[10, 0], [9, 4], [7, 7], [4, 9], [0, 10]];
-    return (q ? S[r1][0] : S[r1][1]) + (q ? S[r2][0] : S[r2][1]);
 }
 
 function flashError(msg) {
@@ -185,51 +182,47 @@ function flashError(msg) {
     setTimeout(() => el.hidden = true, 4000);
 }
 
-// ---------- DOM wiring ----------
+function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
+}
+
+/* ---------------- DOM wiring ---------------- */
 
 window.addEventListener('DOMContentLoaded', () => {
-    // Landing buttons
     document.querySelector('#btn-create').addEventListener('click', () => {
-        const name = document.querySelector('#name').value.trim();
+        const name = (document.querySelector('#name').value || '').trim();
         if (!name) return flashError('Enter your name first.');
         setName(name);
         connect();
-        socket.emit('room:create', { name }, (res) => {
+        const go = () => socket.emit('room:create', { name }, (res) => {
             if (!res?.ok) flashError(res?.error || 'Could not create room.');
         });
+        if (socket.connected) go(); else socket.once('connect', go);
     });
-    document.querySelector('#btn-join').addEventListener('click', () => {
-        const name = document.querySelector('#name').value.trim();
-        const code = document.querySelector('#join-code').value.trim().toUpperCase();
-        if (!name) return flashError('Enter your name first.');
-        if (!code) return flashError('Enter a room code.');
-        setName(name);
-        connect();
-        socket.emit('room:join', { name, code }, (res) => {
-            if (!res?.ok) flashError(res?.error || 'Could not join.');
-        });
-    });
+
     document.querySelector('#btn-leave-waiting').addEventListener('click', () => {
         clearRoomCookie();
         if (socket) { socket.close(); socket = null; }
-        state = null;
-        showView('landing');
-        renderLanding();
+        state = null; lobby = null; inLobby = false;
+        connect();
+        renderLanding(); showView('landing');
     });
+
     document.querySelector('#btn-next-game').addEventListener('click', () => {
         socket.emit('game:ready', null, () => {});
     });
 
-    // URL ?room=CODE auto-fills join field
-    const params = new URLSearchParams(location.search);
-    const roomParam = (params.get('room') || '').toUpperCase().slice(0, 4);
-    if (roomParam) document.querySelector('#join-code').value = roomParam;
+    // Mobile-friendly tooltips: tap a ?-icon to toggle its tooltip. Tap
+    // elsewhere to close. Hover still works on desktop.
+    document.addEventListener('click', (e) => {
+        const target = e.target.closest('.help');
+        // Close any open tooltip
+        document.querySelectorAll('.help.active').forEach(h => {
+            if (h !== target) h.classList.remove('active');
+        });
+        if (target) { target.classList.toggle('active'); e.stopPropagation(); }
+    });
 
-    // Show landing initially
-    renderLanding();
-
-    // Try silent rejoin if we already have a room cookie
-    if (getRoomCookie()) {
-        connect();
-    }
+    renderLanding(); showView('landing');
+    connect();
 });

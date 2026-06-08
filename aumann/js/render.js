@@ -1,20 +1,60 @@
-// DOM rendering helpers for the Aumann UI. Pure functions of state →
-// mutations on existing DOM nodes (no virtual DOM, no framework).
+// DOM rendering helpers. Pure-ish: take DOM nodes, mutate their children.
 
 import { RANK_LABEL, SUIT_GLYPH, RED_SUITS } from './cards.js';
 import { CONDITIONS } from './conditions.js';
 
-const SCORE_LABELS = ['10 / 0', '9 / 4', '7 / 7', '4 / 9', '0 / 10'];
-const BAND_LABELS  = ['80 – 100%', '60 – 80%', '40 – 60%', '20 – 40%', '0 – 20%'];
+const BAND_PCT    = ['80–100%', '60–80%', '40–60%', '20–40%', '0–20%'];
+const BAND_POINTS = ['10 / 0',  '9 / 4',  '7',      '4 / 9',  '0 / 10'];
 
-// Show one of the top-level <section class="view"> blocks, hiding the rest.
+const BAND_TIPS = [
+    'Place here when you think P(at least one condition is met) is between 80% and 100%. Scoring: 10 if any condition is met, 0 otherwise.',
+    'P between 60% and 80%. Scoring: 9 if any condition is met, 4 otherwise.',
+    'P between 40% and 60%. Scoring: 7 either way — the safe middle.',
+    'P between 20% and 40%. Scoring: 4 if any condition is met, 9 otherwise.',
+    'P between 0% and 20%. Scoring: 0 if any condition is met, 10 otherwise. The scores are calibrated so each band maximizes expected points for beliefs in its range.',
+];
+
+// Per-condition tooltip clarifications for things that aren't obvious from
+// the short label alone.
+const COND_TIP = {
+    4:  'Number cards = ranks 2–10. Aces (value 14) and face cards (J/Q/K) are NOT counted as number cards.',
+    5:  'Number cards = ranks 2–10. Aces and J/Q/K are NOT number cards.',
+    6:  'Number cards = ranks 2–10. Aces and J/Q/K are NOT number cards.',
+    7:  'Even number-card values are {2, 4, 6, 8, 10}; we need at least 4 distinct values from this set present in the 10 cards.',
+    8:  'Among the number cards (2–10): same count of even-valued and odd-valued.',
+    9:  'Among number cards (2–10), even count minus odd count ≥ 3.',
+    10: 'Face cards = J, Q, K. Aces are not face cards.',
+    11: 'Face cards = J, Q, K.',
+    12: 'At least one Jack, at least one Queen, at least one King.',
+    13: 'The lowest-valued card in the 10. Odd means rank is one of 3, 5, 7, 9, J, K.',
+    14: 'Red = hearts and diamonds.',
+    15: 'Highest-rank card is exactly a King or a Jack. (Queen or Ace would fail.)',
+    17: 'Take the 3 lowest-ranked cards from the 10 and sum their values.',
+    18: 'A pair = two cards of the same rank. We need two pairs whose ranks differ by exactly 1 (e.g. pair of 5s + pair of 6s, or pair of Ks + pair of As).',
+    20: 'The clubs suit loses ties. So this is true iff there is a clubs card whose rank is strictly higher than every non-clubs card\'s rank.',
+};
+
+const IDEAL_TIP =
+    'What two perfectly rational Bayesians would have scored on these exact hands: each computes their own posterior probability that Q is true, places in the matching band, then on round 2 updates given the opponent\'s round-1 row. The deviation shows how close to ideal your play was.';
+
+/* ---------------- View switching ---------------- */
+
 export function showView(id) {
-    document.querySelectorAll('.view').forEach(el => {
-        el.hidden = (el.id !== id);
+    document.querySelectorAll('.view').forEach(el => { el.hidden = (el.id !== id); });
+}
+
+/* ---------------- Cards ---------------- */
+
+// Sort a hand for display: alternate suit colours (black ♠, red ♥, black ♣,
+// red ♦), ascending rank within each suit. Makes the hand easier to parse.
+const SUIT_DISPLAY_ORDER = { s: 0, h: 1, c: 2, d: 3 };
+function sortHand(hand) {
+    return hand.slice().sort((a, b) => {
+        const so = SUIT_DISPLAY_ORDER[a.suit] - SUIT_DISPLAY_ORDER[b.suit];
+        return so !== 0 ? so : a.rank - b.rank;
     });
 }
 
-// Render a single card to a DOM element.
 export function renderCard(card, opts = {}) {
     const div = document.createElement('div');
     div.className = 'card';
@@ -38,219 +78,154 @@ export function renderCard(card, opts = {}) {
 export function renderHand(container, hand, opts = {}) {
     container.innerHTML = '';
     if (!hand) {
-        // Show 5 backs
         for (let i = 0; i < 5; i++) container.appendChild(renderCard(null, { back: true }));
         return;
     }
-    for (const c of hand) container.appendChild(renderCard(c, opts));
+    const sorted = sortHand(hand);
+    for (const c of sorted) container.appendChild(renderCard(c, opts));
 }
 
-// Render the 5-row board with two player columns. on Row click → onPlace(row).
+/* ---------------- Conditions ---------------- */
+
+function helpSpan(tip) {
+    if (!tip) return '';
+    const safe = String(tip).replace(/"/g, '&quot;');
+    return ` <span class="help" data-tooltip="${safe}">?</span>`;
+}
+
+export function renderConditions(container, conditions, opts = {}) {
+    container.innerHTML = '';
+    for (const c of conditions) {
+        const cond = CONDITIONS.find(x => x.id === c.id) || c;
+        const div = document.createElement('div');
+        div.className = 'cond-card';
+        const tip = COND_TIP[cond.id];
+        div.innerHTML = `<span>${cond.name}${helpSpan(tip)}</span>`;
+        if (opts.revealed && opts.combined) {
+            const met = cond.eval ? cond.eval(opts.combined) : false;
+            div.classList.add(met ? 'met' : 'unmet');
+        }
+        container.appendChild(div);
+    }
+}
+
+/* ---------------- Board ---------------- */
+
 export function renderBoard(container, view, onPlace) {
     container.innerHTML = '';
     const g = view.game;
-    const state = g.state;
+    const st = g.state;
+
+    // Row 0: band headers.
     for (let i = 0; i < 5; i++) {
-        const row = document.createElement('div');
-        row.className = 'board-row';
+        const b = document.createElement('div');
+        b.className = 'band';
+        b.innerHTML = `
+            <div class="pct">${BAND_PCT[i]}${i === 0 ? helpSpan(BAND_TIPS[i]) : ''}</div>
+            <div class="points">${BAND_POINTS[i]}</div>
+        `;
+        // Add per-band tooltip on the percentage. We only show a single ? icon
+        // (on the leftmost band) to avoid clutter — its tooltip covers the
+        // whole scoring rule. The other bands get a hidden title for desktop
+        // discoverability.
+        if (i > 0) b.title = BAND_TIPS[i];
+        container.appendChild(b);
+    }
 
-        // You cell
-        const you = document.createElement('div');
-        you.className = 'cell player';
-        // Both placed-for-round states
-        const myR1 = g.myR1, myR2 = g.myR2;
-        const oppR1 = g.oppR1, oppR2 = g.oppR2;
+    const canTapR1 = st === 'round1' && g.myR1 == null;
+    const canTapR2 = st === 'round2' && g.myR2 == null;
 
-        const showR1Me = (myR1 != null && i === myR1);
-        const showR2Me = (myR2 != null && i === myR2);
-        const showR1Opp = (oppR1 != null && i === oppR1);
-        const showR2Opp = (oppR2 != null && i === oppR2);
-
-        // Decide if this row is currently tappable (for me)
-        // - Round 1: I can place if I haven't yet AND game is in round1
-        // - Round 2: I can place if I haven't yet AND game is in round2
-        const canTapR1 = state === 'round1' && myR1 == null;
-        const canTapR2 = state === 'round2' && myR2 == null;
-        if (!(canTapR1 || canTapR2)) you.classList.add('disabled');
-
-        // Tokens
-        const tokenPair = document.createElement('div');
-        tokenPair.className = 'token-pair';
-        if (showR1Me) {
-            const t = document.createElement('div');
-            t.className = 'token r1';
-            t.title = 'Your round 1';
-            t.textContent = '1';
-            tokenPair.appendChild(t);
-        }
-        if (showR2Me) {
-            const t = document.createElement('div');
-            t.className = 'token r2';
-            t.title = 'Your round 2';
-            t.textContent = '2';
-            tokenPair.appendChild(t);
-        }
-        you.appendChild(tokenPair);
-
+    // Row 1: me cells.
+    for (let i = 0; i < 5; i++) {
+        const c = document.createElement('div');
+        c.className = 'cell me';
+        const tokens = document.createElement('div'); tokens.className = 'tokens';
+        if (g.myR1 === i) tokens.appendChild(token('1', 'r1'));
+        if (g.myR2 === i) tokens.appendChild(token('2', 'r2'));
+        c.appendChild(tokens);
         if (canTapR1 || canTapR2) {
-            you.addEventListener('click', () => {
-                const round = canTapR1 ? 1 : 2;
-                onPlace(round, i);
-            });
+            c.classList.add('tappable');
+            c.addEventListener('click', () => onPlace(canTapR1 ? 1 : 2, i));
         }
-
-        // Middle cell
-        const mid = document.createElement('div');
-        mid.className = 'cell middle';
-        mid.innerHTML = `<div class="band">${BAND_LABELS[i]}</div><div class="scores">${SCORE_LABELS[i]}</div>`;
-
-        // Opp cell
-        const opp = document.createElement('div');
-        opp.className = 'cell';
-        opp.classList.add('disabled'); // opponent's column is read-only for me
-        const oppTokens = document.createElement('div');
-        oppTokens.className = 'token-pair';
-        if (showR1Opp) {
-            const t = document.createElement('div');
-            t.className = 'token opp r1';
-            t.title = "Opponent's round 1";
-            t.textContent = '1';
-            oppTokens.appendChild(t);
-        }
-        if (showR2Opp) {
-            const t = document.createElement('div');
-            t.className = 'token opp r2';
-            t.title = "Opponent's round 2";
-            t.textContent = '2';
-            oppTokens.appendChild(t);
-        }
-        opp.appendChild(oppTokens);
-
-        row.appendChild(you);
-        row.appendChild(mid);
-        row.appendChild(opp);
-        container.appendChild(row);
+        container.appendChild(c);
+    }
+    // Row 2: opp cells.
+    for (let i = 0; i < 5; i++) {
+        const c = document.createElement('div');
+        c.className = 'cell opp';
+        const tokens = document.createElement('div'); tokens.className = 'tokens';
+        if (g.oppR1 === i) tokens.appendChild(token('1', 'opp r1'));
+        if (g.oppR2 === i) tokens.appendChild(token('2', 'opp r2'));
+        c.appendChild(tokens);
+        container.appendChild(c);
     }
 }
 
-// Render the conditions list. If revealed, mark which conditions are met (computed against combined hand).
-export function renderConditions(container, view, opts = {}) {
-    container.innerHTML = '';
-    const g = view.game;
-    const ol = document.createElement('ol');
-    ol.style.listStyle = 'none';
-    ol.style.padding = '0';
-    ol.style.margin = '0';
-    for (const c of g.conditions) {
-        const li = document.createElement('li');
-        const cond = CONDITIONS.find(x => x.id === c.id);
-        li.textContent = cond ? cond.name : c.name;
-        if (opts.revealed && opts.combined) {
-            const met = cond && cond.eval(opts.combined);
-            li.classList.add(met ? 'met' : 'unmet');
-        }
-        ol.appendChild(li);
-    }
-    container.appendChild(ol);
+function token(label, cls) {
+    const t = document.createElement('div');
+    t.className = 'token ' + cls;
+    t.textContent = label;
+    return t;
 }
 
-// Status text given the current game state and whose turn.
+/* ---------------- Status ---------------- */
+
 export function statusFor(view) {
     const g = view.game;
-    const s = g.state;
-    if (s === 'round1') {
-        if (g.myR1 == null && g.oppR1Pending) return 'Opponent has placed. Place your round 1 token.';
-        if (g.myR1 == null) return 'Place your round 1 token.';
+    if (!g) return '';
+    if (g.state === 'round1') {
+        if (g.myR1 == null) return 'Tap a row to place your first token.';
         return 'Waiting for opponent…';
     }
-    if (s === 'round2') {
-        if (g.myR2 == null && g.oppR2Pending) return 'Opponent has placed. Place your round 2 token.';
-        if (g.myR2 == null) return 'Place your round 2 token.';
+    if (g.state === 'round2') {
+        if (g.myR2 == null) return 'Tap a row to place your second token.';
         return 'Waiting for opponent…';
     }
-    return ''; // revealed — reveal panel shown instead
+    return '';
 }
 
-// Compute realized scores for both players given the placements + qTrue.
-// Returns { myScore, oppScore }.
+/* ---------------- Reveal ---------------- */
+
+const SCORES = [[10, 0], [9, 4], [7, 7], [4, 9], [0, 10]];
+function rowScore(row, q) { return q ? SCORES[row][0] : SCORES[row][1]; }
+
 export function realizedScores(view) {
     const g = view.game;
     if (!g.ideal) return null;
-    const S = [[10, 0], [9, 4], [7, 7], [4, 9], [0, 10]];
     const q = g.ideal.qTrue;
-    const myR1Score = g.myR1 != null ? (q ? S[g.myR1][0] : S[g.myR1][1]) : 0;
-    const myR2Score = g.myR2 != null ? (q ? S[g.myR2][0] : S[g.myR2][1]) : 0;
-    const oppR1Score = g.oppR1 != null ? (q ? S[g.oppR1][0] : S[g.oppR1][1]) : 0;
-    const oppR2Score = g.oppR2 != null ? (q ? S[g.oppR2][0] : S[g.oppR2][1]) : 0;
-    return {
-        my: myR1Score + myR2Score,
-        opp: oppR1Score + oppR2Score,
-        myR1Score, myR2Score, oppR1Score, oppR2Score,
-    };
+    const my  = (g.myR1  != null ? rowScore(g.myR1,  q) : 0) + (g.myR2  != null ? rowScore(g.myR2,  q) : 0);
+    const opp = (g.oppR1 != null ? rowScore(g.oppR1, q) : 0) + (g.oppR2 != null ? rowScore(g.oppR2, q) : 0);
+    return { my, opp, total: my + opp };
 }
 
-// Render reveal panel: Q result, condition check, score summary, ideal info.
-export function renderReveal(elements, view) {
+export function renderReveal(els, view) {
     const g = view.game;
-    const me = view.seat; // 0 or 1
-    const oppIdx = 1 - me;
-
-    const qEl = elements.q;
-    const condEl = elements.conditions;
-    const scoresEl = elements.scores;
-    const idealEl = elements.ideal;
-
     const q = g.ideal.qTrue;
-    qEl.textContent = q ? 'YES — at least one condition is met.' : 'NO — no condition is met.';
-    qEl.classList.toggle('yes', q);
-    qEl.classList.toggle('no', !q);
-
-    // Conditions with met/unmet against the combined hand
-    const combined = [...(g.myHand || []), ...(g.oppHand || [])];
-    renderConditions(condEl, view, { revealed: true, combined });
-
-    // Realized scores (yours, opponent's, sum); compare to ideal
-    const realized = realizedScores(view);
-    const idealHalfMine = Math.round((me === 0
-        ? scoreFromRows(g.ideal.p1.r1Row, g.ideal.p1.r2Row, q)
-        : scoreFromRows(g.ideal.p2.r1Row, g.ideal.p2.r2Row, q)));
-    const idealHalfOpp = Math.round((me === 0
-        ? scoreFromRows(g.ideal.p2.r1Row, g.ideal.p2.r2Row, q)
-        : scoreFromRows(g.ideal.p1.r1Row, g.ideal.p1.r2Row, q)));
-    const totalRealized = (realized?.my || 0) + (realized?.opp || 0);
-    const idealTotal = g.ideal.score;
-
-    scoresEl.innerHTML = `
-        <div class="score-cell">
-            <div class="label">You</div>
-            <div class="value">${realized.my}</div>
-            <div class="delta ${(realized.my - idealHalfMine) >= 0 ? 'pos' : 'neg'}">vs ideal ${idealHalfMine} (${diffStr(realized.my - idealHalfMine)})</div>
-        </div>
-        <div class="score-cell">
-            <div class="label">Opponent</div>
-            <div class="value">${realized.opp}</div>
-            <div class="delta ${(realized.opp - idealHalfOpp) >= 0 ? 'pos' : 'neg'}">vs ideal ${idealHalfOpp} (${diffStr(realized.opp - idealHalfOpp)})</div>
-        </div>
-        <div class="score-cell">
-            <div class="label">Total this round</div>
-            <div class="value">${totalRealized}</div>
-            <div class="delta ${(totalRealized - idealTotal) >= 0 ? 'pos' : 'neg'}">vs ideal ${idealTotal} (${diffStr(totalRealized - idealTotal)})</div>
-        </div>
-    `;
-
-    // Ideal probabilities
+    const me = view.seat;
     const myI = me === 0 ? g.ideal.p1 : g.ideal.p2;
     const oppI = me === 0 ? g.ideal.p2 : g.ideal.p1;
-    idealEl.innerHTML = `
-        <div class="row"><span>Your ideal round 1 P:</span> <span>${(100 * myI.r1Belief).toFixed(0)}% → row ${myI.r1Row + 1}</span></div>
-        <div class="row"><span>Your ideal round 2 P (given opp's row 1):</span> <span>${(100 * myI.r2Belief).toFixed(0)}% → row ${myI.r2Row + 1}</span></div>
-        <div class="row"><span>Opp's ideal round 1 P:</span> <span>${(100 * oppI.r1Belief).toFixed(0)}% → row ${oppI.r1Row + 1}</span></div>
-        <div class="row"><span>Opp's ideal round 2 P (given your row 1):</span> <span>${(100 * oppI.r2Belief).toFixed(0)}% → row ${oppI.r2Row + 1}</span></div>
+    const idealTotal = g.ideal.score;
+    const real = realizedScores(view);
+
+    els.q.textContent = q ? 'YES' : 'NO';
+    els.q.classList.toggle('yes', q);
+    els.q.classList.toggle('no',  !q);
+
+    const delta = real.total - idealTotal;
+    const deltaStr = delta > 0 ? `+${delta}` : `${delta}`;
+    const deltaCls = delta >= 0 ? 'pos' : 'neg';
+
+    els.scores.innerHTML = `
+        <span class="number">${real.total}</span>
+        <span class="ideal">ideal ${idealTotal}${helpSpan(IDEAL_TIP)}</span>
+        <span class="delta ${deltaCls}">${deltaStr}</span>
+    `;
+
+    els.details.innerHTML = `
+        you ${real.my} · opp ${real.opp} ·
+        ideal placement: you ${pct(myI.r1Belief)}→${pct(myI.r2Belief)},
+        opp ${pct(oppI.r1Belief)}→${pct(oppI.r2Belief)}
     `;
 }
 
-function scoreFromRows(r1, r2, q) {
-    const S = [[10, 0], [9, 4], [7, 7], [4, 9], [0, 10]];
-    return (q ? S[r1][0] : S[r1][1]) + (q ? S[r2][0] : S[r2][1]);
-}
-function diffStr(d) { return d >= 0 ? '+' + d : '' + d; }
+function pct(p) { return Math.round(100 * p) + '%'; }

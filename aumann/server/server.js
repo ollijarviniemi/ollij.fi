@@ -181,9 +181,28 @@ function viewFor(room, seat) {
 function broadcastRoom(io, room) {
     for (let seat = 0; seat < 2; seat++) {
         const p = room.players[seat];
-        if (!p) continue;
+        if (!p || !p.socketId) continue;
         io.to(p.socketId).emit('state', viewFor(room, seat));
     }
+}
+
+// Lobby view: list of rooms with exactly one connected player (i.e., waiting
+// for a second). No 4-letter codes shown to the player — the join target is
+// the code, but it stays in the data layer.
+function lobbyState() {
+    const open = [];
+    for (const [code, room] of rooms) {
+        const p0 = room.players[0];
+        const p1 = room.players[1];
+        if (p0 && !p1 && p0.socketId) {
+            open.push({ code, creator: p0.name, since: room.createdAt });
+        }
+    }
+    open.sort((a, b) => a.since - b.since);
+    return { rooms: open };
+}
+function broadcastLobby(io) {
+    io.to('lobby').emit('lobby', lobbyState());
 }
 
 // ---------- HTTP + Socket.IO setup ----------
@@ -202,6 +221,14 @@ io.on('connection', (socket) => {
     socket.data.roomCode = null;
     socket.data.playerId = null;
 
+    // Lobby: list of open rooms. Client subscribes when on landing; unsubscribes
+    // when entering or leaving a room.
+    socket.on('lobby:join', () => {
+        socket.join('lobby');
+        socket.emit('lobby', lobbyState());
+    });
+    socket.on('lobby:leave', () => { socket.leave('lobby'); });
+
     // Create a new room and seat the creator as player 0.
     socket.on('room:create', ({ name } = {}, cb) => {
         try {
@@ -211,8 +238,10 @@ io.on('connection', (socket) => {
             rooms.set(code, room);
             socket.data.roomCode = code;
             socket.data.playerId = seated.player.id;
+            socket.leave('lobby');
             cb?.({ ok: true, code, playerId: seated.player.id, seat: seated.seat });
             broadcastRoom(io, room);
+            broadcastLobby(io);
         } catch (e) {
             cb?.({ ok: false, error: e.message });
         }
@@ -228,9 +257,11 @@ io.on('connection', (socket) => {
             if (!seated) return cb?.({ ok: false, error: 'Room is full.' });
             socket.data.roomCode = c;
             socket.data.playerId = seated.player.id;
+            socket.leave('lobby');
             if (room.bothSeated() && !room.currentGame) dealNewGame(room);
             cb?.({ ok: true, code: c, playerId: seated.player.id, seat: seated.seat });
             broadcastRoom(io, room);
+            broadcastLobby(io);
         } catch (e) {
             cb?.({ ok: false, error: e.message });
         }
@@ -305,6 +336,7 @@ io.on('connection', (socket) => {
             // Mark disconnect — the seat stays for RECONNECT_WINDOW_MS.
             room.players[seat].lastSeen = Date.now();
             room.players[seat].socketId = null;
+            broadcastLobby(io);
         }
     });
 });
@@ -313,10 +345,12 @@ io.on('connection', (socket) => {
 
 setInterval(() => {
     const now = Date.now();
+    let changed = false;
     for (const [code, room] of rooms) {
         // Drop rooms inactive past TTL.
         if (now - room.lastActivity > ROOM_TTL_MS) {
             rooms.delete(code);
+            changed = true;
             continue;
         }
         // Free seats from disconnected players past the reconnect window.
@@ -324,11 +358,13 @@ setInterval(() => {
             const p = room.players[i];
             if (p && !p.socketId && now - p.lastSeen > RECONNECT_WINDOW_MS) {
                 room.players[i] = null;
+                changed = true;
             }
         }
         // If both seats are empty, drop the room.
-        if (!room.players[0] && !room.players[1]) rooms.delete(code);
+        if (!room.players[0] && !room.players[1]) { rooms.delete(code); changed = true; }
     }
+    if (changed) broadcastLobby(io);
 }, 60 * 1000);
 
 // ---------- Boot ----------
