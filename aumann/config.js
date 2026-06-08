@@ -8,7 +8,7 @@
 
 (function () {
     const SERVER_URL_DEV  = 'http://localhost:8787';
-    const SERVER_URL_PROD = 'CHANGE_ME_TO_YOUR_DEPLOYED_SERVER_URL';
+    const SERVER_URL_PROD = 'https://entrepreneurs-acceptable-files-bacterial.trycloudflare.com';
 
     const isLocal =
         location.hostname === 'localhost' ||
