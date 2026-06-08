@@ -22,11 +22,19 @@ let inLobby = false;
 
 function connect() {
     if (socket) return;
-    socket = io(SERVER, { transports: ['websocket'] });
+    // Detect the unedited placeholder so deployed instances don't fail mysteriously.
+    if (typeof SERVER === 'string' && SERVER.includes('CHANGE_ME')) {
+        flashError('Server URL not configured. Edit aumann/config.js and set SERVER_URL_PROD.');
+        return;
+    }
+    socket = io(SERVER, { transports: ['websocket'], reconnection: true });
     socket.on('state',     onState);
     socket.on('lobby',     onLobby);
     socket.on('connect',   onConnect);
     socket.on('disconnect', () => {});
+    socket.on('connect_error', (err) => {
+        flashError(`Cannot reach server (${SERVER}). Check that it's running.`);
+    });
 }
 function onConnect() {
     const c = getRoomCookie();
@@ -200,12 +208,16 @@ window.addEventListener('DOMContentLoaded', () => {
         if (socket.connected) go(); else socket.once('connect', go);
     });
 
-    document.querySelector('#btn-leave-waiting').addEventListener('click', () => {
+    function leaveRoom() {
         clearRoomCookie();
         if (socket) { socket.close(); socket = null; }
         state = null; lobby = null; inLobby = false;
         connect();
         renderLanding(); showView('landing');
+    }
+    document.querySelector('#btn-leave-waiting').addEventListener('click', leaveRoom);
+    document.querySelector('#btn-leave-game').addEventListener('click', () => {
+        if (confirm('Leave this room?')) leaveRoom();
     });
 
     document.querySelector('#btn-next-game').addEventListener('click', () => {

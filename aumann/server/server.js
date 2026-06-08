@@ -141,7 +141,7 @@ function viewFor(room, seat) {
         code: room.code,
         seat,
         me: me ? { id: me.id, name: me.name } : null,
-        opponent: opp ? { name: opp.name } : null,
+        opponent: opp ? { name: opp.name, connected: !!opp.socketId } : null,
         scoreHistory: room.scoreHistory.map(h => ({
             gameNum: h.gameNum,
             youScore: seat === 0 ? h.p1Score : h.p2Score,

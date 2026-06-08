@@ -173,12 +173,15 @@ function token(label, cls) {
 export function statusFor(view) {
     const g = view.game;
     if (!g) return '';
+    const oppDown = view.opponent && view.opponent.connected === false;
     if (g.state === 'round1') {
         if (g.myR1 == null) return 'Tap a row to place your first token.';
+        if (oppDown) return 'Opponent disconnected — waiting for them to come back…';
         return 'Waiting for opponent…';
     }
     if (g.state === 'round2') {
         if (g.myR2 == null) return 'Tap a row to place your second token.';
+        if (oppDown) return 'Opponent disconnected — waiting for them to come back…';
         return 'Waiting for opponent…';
     }
     return '';

@@ -15,7 +15,7 @@
 
 <!-- Landing: name field, "Start a room" button, and live list of open rooms. -->
 <section id="landing" class="view">
-    <h1>Aumann</h1>
+    <h1>Aumann <span class="help title-help" data-tooltip="Two-player Bayesian agreement game. Each player gets 5 hidden cards; together you estimate the probability that the combined 10-card hand satisfies any of 3 random conditions. From Maailmantutkija ch. 11.4.">?</span></h1>
 
     <div class="form-row">
         <input id="name" type="text" maxlength="24" autocomplete="off" placeholder="Your name">
@@ -42,6 +42,9 @@
 
 <!-- Game: minimal chrome. -->
 <section id="game" class="view" hidden>
+
+    <!-- Discrete leave-room link in the corner. -->
+    <button id="btn-leave-game" class="leave-link" title="Leave the room">← leave</button>
 
     <!-- 3 conditions as cards. -->
     <div id="conditions-row" class="conditions-row"></div>
