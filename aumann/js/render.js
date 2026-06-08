@@ -1,32 +1,22 @@
-// DOM rendering for Aumann v3: compact icon conditions, fanned hands (you + opp),
-// 3×5 B&W grid (0-20% left → 80-100% right), sidebar score tables, Bayesian
-// dashed-line + arc visualization after reveal.
+// DOM rendering for Aumann v4: icon+text condition cards, both-player
+// Bayesian visualization (1×5 slice each), hand fan→row reveal animation,
+// landing-page how-to examples.
 
-import { RANK_LABEL, SUIT_GLYPH, RED_SUITS } from './cards.js';
+import { RANK_LABEL, SUIT_GLYPH, RED_SUITS, makeCard } from './cards.js';
 import { CONDITIONS } from './conditions.js';
 import { ICON, TIP } from './condition-icons.js';
 
-// Display order: visual column index → internal row index. With 0-20% at
-// visual column 0 (leftmost), the internal row indices reverse to 4..0.
 const VIS_TO_INT = [4, 3, 2, 1, 0];
-const INT_TO_VIS = [4, 3, 2, 1, 0];
 
-// Per-cell band/score data ordered LEFT TO RIGHT (visual order).
 const BAND_PAYOFF = ['0/10', '4/9', '7/7', '9/4', '10/0'];
-const BAND_PCT    = ['0–20%',  '20–40%', '40–60%', '60–80%', '80–100%'];
-
-const BAND_TIP_LEFT_RIGHT = [
-    'P 0–20%. Scoring: 0 if any condition is met, 10 otherwise.',
-    'P 20–40%. Scoring: 4 if met, 9 otherwise.',
-    'P 40–60%. Scoring: 7 either way — the safe middle.',
-    'P 60–80%. Scoring: 9 if met, 4 otherwise.',
-    'P 80–100%. Scoring: 10 if met, 0 otherwise. The 10/9/7/4/0 numbers are calibrated so each band maximizes expected score for beliefs in its range.',
+const BAND_PCT    = ['0–20%', '20–40%', '40–60%', '60–80%', '80–100%'];
+const BAND_TIPS = [
+    'P 0–20%. 0 if any condition is met, 10 otherwise.',
+    'P 20–40%. 4 if met, 9 otherwise.',
+    'P 40–60%. 7 either way — the safe middle.',
+    'P 60–80%. 9 if met, 4 otherwise.',
+    'P 80–100%. 10 if met, 0 otherwise. The 10/9/7/4/0 numbers maximize expected score for beliefs in each band.',
 ];
-
-const IDEAL_TIP =
-    'What two perfectly rational Bayesians would have scored on these exact hands. The deviation shows how close to ideal your play was.';
-
-/* ---------------- View switching ---------------- */
 
 export function showView(id) {
     document.querySelectorAll('.view').forEach(el => { el.hidden = (el.id !== id); });
@@ -61,8 +51,10 @@ export function renderCard(card, opts = {}) {
     return div;
 }
 
-export function renderHand(container, hand) {
+// Plain replace-all hand render (used when we don't need the reveal animation).
+export function renderHand(container, hand, opts = {}) {
     container.innerHTML = '';
+    container.classList.remove('revealed');
     if (!hand) {
         for (let i = 0; i < 5; i++) container.appendChild(renderCard(null, { back: true }));
         return;
@@ -71,7 +63,29 @@ export function renderHand(container, hand) {
     for (const c of sorted) container.appendChild(renderCard(c));
 }
 
-/* ---------------- Conditions (compact icon style) ---------------- */
+// On the round-2 reveal: keep DOM stable, just swap content of each .card
+// (so opp's backs become face cards) and add the .revealed class. The CSS
+// transition on .card transforms then animates fan → flat row.
+export function revealHandInPlace(container, hand) {
+    if (!hand) return;
+    const existing = container.querySelectorAll('.card');
+    const sorted = sortHand(hand);
+    if (existing.length !== sorted.length) {
+        // Container didn't have the expected backs (rare); fall back to plain.
+        renderHand(container, hand);
+    } else {
+        for (let i = 0; i < existing.length; i++) {
+            const fresh = renderCard(sorted[i]);
+            existing[i].className = fresh.className;
+            existing[i].innerHTML = fresh.innerHTML;
+        }
+    }
+    // Force a layout flush, then add .revealed so the CSS transition fires.
+    void container.offsetWidth;
+    container.classList.add('revealed');
+}
+
+/* ---------------- Condition cards (icon + text both) ---------------- */
 
 export function renderConditions(container, conditions, opts = {}) {
     container.innerHTML = '';
@@ -79,10 +93,13 @@ export function renderConditions(container, conditions, opts = {}) {
         const cond = CONDITIONS.find(x => x.id === c.id) || c;
         const div = document.createElement('div');
         div.className = 'cond-card';
-        const iconHtml = ICON[cond.id] ? ICON[cond.id]() : `<div class="ic-formula">${cond.name}</div>`;
-        const tip = (TIP[cond.id] || '') + (TIP[cond.id] ? ' ' : '') + cond.name;
-        const tipEsc = tip.replace(/"/g, '&quot;');
-        div.innerHTML = `${iconHtml}<span class="cond-help help" data-tooltip="${tipEsc}">?</span>`;
+        const iconHtml = ICON[cond.id] ? ICON[cond.id]() : '';
+        const tipText = (TIP[cond.id] || cond.name).replace(/"/g, '&quot;');
+        div.innerHTML = `
+            <span class="cond-help help" data-tooltip="${tipText}">?</span>
+            <div class="cond-icon">${iconHtml}</div>
+            <div class="cond-text">${cond.name}</div>
+        `;
         if (opts.revealed && opts.combined) {
             const met = cond.eval ? cond.eval(opts.combined) : false;
             div.classList.add(met ? 'met' : 'unmet');
@@ -98,7 +115,7 @@ export function renderBoard(container, view, onPlace) {
     const g = view.game;
     const st = g.state;
 
-    // Row 1: opponent's cells (top). One per visual column.
+    // Row 1: teammate's cells (top).
     for (let v = 0; v < 5; v++) {
         const internal = VIS_TO_INT[v];
         const c = document.createElement('div');
@@ -109,7 +126,7 @@ export function renderBoard(container, view, onPlace) {
         c.appendChild(tokens);
         container.appendChild(c);
     }
-    // Row 2: band (middle). Payoff prominent, pct secondary.
+    // Row 2: band (payoffs + percentages).
     for (let v = 0; v < 5; v++) {
         const b = document.createElement('div');
         b.className = 'row-band';
@@ -117,7 +134,7 @@ export function renderBoard(container, view, onPlace) {
             <div class="payoff">${BAND_PAYOFF[v]}</div>
             <div class="pct">${BAND_PCT[v]}</div>
         `;
-        b.title = BAND_TIP_LEFT_RIGHT[v];
+        b.title = BAND_TIPS[v];
         container.appendChild(b);
     }
     // Row 3: your cells (bottom).
@@ -146,102 +163,80 @@ function token(label, cls) {
     return t;
 }
 
-/* ---------------- Bayesian dashed-line + arc (after reveal) ---------------- */
+/* ---------------- Bayesian dashed lines + arcs ---------------- */
 
-// belief ∈ [0,1] → x position as fraction (0..1) across the grid, given the
-// 0-20% column is on the LEFT. So x = belief.
-export function renderBayesArrows(boardWrap, view) {
-    // Wipe any previous lines.
+export function clearBayesArrows(boardWrap) {
     boardWrap.querySelectorAll('.bayes-line').forEach(n => n.remove());
-    const arc = boardWrap.querySelector('#bayes-arc');
-    arc.innerHTML = '';
-    arc.removeAttribute('hidden');
-    arc.style.display = 'none';
+    for (const id of ['bayes-arc-me', 'bayes-arc-opp']) {
+        const a = boardWrap.querySelector('#' + id);
+        if (a) { a.innerHTML = ''; a.style.display = 'none'; }
+    }
+}
+
+export function renderBayesArrows(boardWrap, view) {
+    clearBayesArrows(boardWrap);
 
     const g = view.game;
     if (!g.ideal) return;
     const me = view.seat;
-    const myI = me === 0 ? g.ideal.p1 : g.ideal.p2;
-    const x1 = myI.r1Belief * 100;
-    const x2 = myI.r2Belief * 100;
+    const myI  = me === 0 ? g.ideal.p1 : g.ideal.p2;
+    const oppI = me === 0 ? g.ideal.p2 : g.ideal.p1;
 
     const board = boardWrap.querySelector('#board');
     const w = board.offsetWidth;
-    const r1x = myI.r1Belief * w;
-    const r2x = myI.r2Belief * w;
-    // If labels would overlap horizontally, stack them vertically.
+    const meRow = board.querySelector('.row-me');
+    const oppRow = board.querySelector('.row-opp');
+    if (!meRow || !oppRow) return;
+
+    drawPlayerLines(board, 'me', myI, w, meRow.offsetTop, meRow.offsetHeight);
+    drawPlayerLines(board, 'opp', oppI, w, oppRow.offsetTop, oppRow.offsetHeight);
+
+    drawArc(boardWrap.querySelector('#bayes-arc-me'),  myI, w, '#1976d2');
+    drawArc(boardWrap.querySelector('#bayes-arc-opp'), oppI, w, '#ef6c00');
+}
+
+function drawPlayerLines(board, kind, info, w, top, h) {
+    const r1x = info.r1Belief * w;
+    const r2x = info.r2Belief * w;
     const close = Math.abs(r1x - r2x) < 70;
 
-    const r1Line = document.createElement('div');
-    r1Line.className = 'bayes-line r1';
-    r1Line.style.left = `${r1x}px`;
-    r1Line.innerHTML = `<div class="label">r1 ${Math.round(myI.r1Belief * 100)}%</div>`;
-    board.appendChild(r1Line);
+    const l1 = document.createElement('div');
+    l1.className = `bayes-line ${kind} r1`;
+    l1.style.left = `${r1x}px`;
+    l1.style.top  = `${top}px`;
+    l1.style.height = `${h}px`;
+    l1.innerHTML = `<div class="label">r1 ${Math.round(info.r1Belief * 100)}%</div>`;
+    board.appendChild(l1);
 
-    const r2Line = document.createElement('div');
-    r2Line.className = 'bayes-line r2' + (close ? ' stack' : '');
-    r2Line.style.left = `${r2x}px`;
-    r2Line.innerHTML = `<div class="label">r2 ${Math.round(myI.r2Belief * 100)}%</div>`;
-    board.appendChild(r2Line);
+    const l2 = document.createElement('div');
+    l2.className = `bayes-line ${kind} r2` + (close ? ' stack' : '');
+    l2.style.left = `${r2x}px`;
+    l2.style.top  = `${top}px`;
+    l2.style.height = `${h}px`;
+    l2.innerHTML = `<div class="label">r2 ${Math.round(info.r2Belief * 100)}%</div>`;
+    board.appendChild(l2);
+}
 
-    // Arc: cubic bezier dipping below the grid from r1's column down and back
-    // up to r2's column.
-    arc.style.display = 'block';
-    const arcW = w;
-    const arcH = 70;
-    arc.setAttribute('width',  arcW);
-    arc.setAttribute('height', arcH);
-    arc.setAttribute('viewBox', `0 0 ${arcW} ${arcH}`);
-    const sx = myI.r1Belief * arcW;
-    const ex = myI.r2Belief * arcW;
-    const minDx = 12; // ensure arc is visible even when beliefs are close
-    const dx = Math.max(Math.abs(ex - sx), minDx);
-    const cy = 50; // arc apex depth
-    arc.innerHTML = `
+function drawArc(svg, info, w, color) {
+    if (!svg) return;
+    svg.style.display = 'block';
+    const h = 60;
+    svg.setAttribute('width',  w);
+    svg.setAttribute('height', h);
+    svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+    const sx = info.r1Belief * w;
+    const ex = info.r2Belief * w;
+    const cy = 42;
+    svg.innerHTML = `
         <defs>
-            <marker id="arrowhead" viewBox="0 0 10 10" refX="9" refY="5"
+            <marker id="ah-${color.replace('#','')}" viewBox="0 0 10 10" refX="9" refY="5"
                     markerWidth="9" markerHeight="9" orient="auto">
-                <path d="M 0 0 L 10 5 L 0 10 z" fill="#1976d2" />
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="${color}" />
             </marker>
         </defs>
         <path d="M ${sx} 0 C ${sx} ${cy} ${ex} ${cy} ${ex} 8"
-              stroke="#1976d2" stroke-width="3" fill="none"
-              marker-end="url(#arrowhead)" />
-    `;
-}
-
-/* ---------------- Reveal panel ---------------- */
-
-const SCORES = [[10, 0], [9, 4], [7, 7], [4, 9], [0, 10]];
-function rowScore(row, q) { return q ? SCORES[row][0] : SCORES[row][1]; }
-
-export function realizedScores(view) {
-    const g = view.game;
-    if (!g.ideal) return null;
-    const q = g.ideal.qTrue;
-    const my  = (g.myR1  != null ? rowScore(g.myR1,  q) : 0) + (g.myR2  != null ? rowScore(g.myR2,  q) : 0);
-    const opp = (g.oppR1 != null ? rowScore(g.oppR1, q) : 0) + (g.oppR2 != null ? rowScore(g.oppR2, q) : 0);
-    return { my, opp, total: my + opp };
-}
-
-export function renderReveal(els, view) {
-    const g = view.game;
-    const q = g.ideal.qTrue;
-    const real = realizedScores(view);
-    const idealTotal = g.ideal.score;
-
-    els.q.textContent = q ? 'YES' : 'NO';
-    els.q.classList.toggle('yes', q);
-    els.q.classList.toggle('no',  !q);
-
-    const delta = real.total - idealTotal;
-    const deltaStr = delta > 0 ? `+${delta}` : `${delta}`;
-    const deltaCls = delta >= 0 ? 'pos' : 'neg';
-
-    els.team.innerHTML = `
-        <span class="team-score">${real.total}</span>
-        <span class="bayes-score">ideal ${idealTotal}<span class="help" data-tooltip="${IDEAL_TIP}">?</span></span>
-        <span class="delta ${deltaCls}">${deltaStr}</span>
+              stroke="${color}" stroke-width="3" fill="none"
+              marker-end="url(#ah-${color.replace('#','')})" />
     `;
 }
 
@@ -252,24 +247,30 @@ export function statusFor(view) {
     if (!g) return '';
     const oppDown = view.opponent && view.opponent.connected === false;
     if (g.state === 'round1') {
-        if (g.myR1 == null) return 'Tap a cell in your row.';
-        if (oppDown) return 'Opponent disconnected.';
-        return 'Waiting for opponent…';
+        if (g.myR1 == null) {
+            if (g.oppR1Pending) return 'Teammate has placed. Tap a row to place yours.';
+            return 'Tap a row to place your first token.';
+        }
+        if (oppDown) return 'Teammate disconnected.';
+        return 'Waiting for teammate…';
     }
     if (g.state === 'round2') {
-        if (g.myR2 == null) return 'Tap your second cell.';
-        if (oppDown) return 'Opponent disconnected.';
-        return 'Waiting for opponent…';
+        if (g.myR2 == null) {
+            if (g.oppR2Pending) return 'Teammate has placed their second. Tap a row to place yours.';
+            return 'Tap a row to place your second token.';
+        }
+        if (oppDown) return 'Teammate disconnected.';
+        return 'Waiting for teammate…';
     }
     return '';
 }
 
 /* ---------------- Sidebar score tables ---------------- */
 
-export function renderScoreTables(realEl, idealEl, scoreHistory) {
+export function renderScoreTables(realEl, idealEl, scoreHistory, latestGameNum) {
     const rows = scoreHistory || [];
     if (rows.length === 0) {
-        realEl.innerHTML = `<tbody><tr><td colspan="6" class="muted" style="text-align:center; padding:14px; font-style:italic; color:#aaa;">No games yet.</td></tr></tbody>`;
+        realEl.innerHTML = `<tbody><tr><td colspan="6" class="muted" style="text-align:center; padding:18px; font-style:italic; color:#aaa;">No games yet.</td></tr></tbody>`;
         idealEl.innerHTML = '';
         return;
     }
@@ -283,7 +284,8 @@ export function renderScoreTables(realEl, idealEl, scoreHistory) {
         let sumMy1 = 0, sumMy2 = 0, sumMa1 = 0, sumMa2 = 0, sumT = 0;
         for (const r of rows) {
             const e = extract(r);
-            body += `<tr>
+            const cls = r.gameNum === latestGameNum ? ' class="latest"' : '';
+            body += `<tr${cls}>
                 <td class="game-num">${r.gameNum}</td>
                 <td>${e.my1}</td><td>${e.my2}</td>
                 <td>${e.ma1}</td><td>${e.ma2}</td>
@@ -299,8 +301,7 @@ export function renderScoreTables(realEl, idealEl, scoreHistory) {
             <td>${(sumMa1/n).toFixed(1)}</td>
             <td>${(sumMa2/n).toFixed(1)}</td>
             <td class="total">${(sumT/n).toFixed(1)}</td>
-        </tr>`;
-        body += '</tbody>';
+        </tr></tbody>`;
         return head + body;
     };
     realEl.innerHTML = buildTable(r => ({
@@ -313,4 +314,78 @@ export function renderScoreTables(realEl, idealEl, scoreHistory) {
         ma1: r.mateIdeal.r1Score, ma2: r.mateIdeal.r2Score,
         total: r.totalIdealScore,
     }));
+}
+
+/* ---------------- Realized scores (used by main.js for history) ---------------- */
+
+const SCORES = [[10, 0], [9, 4], [7, 7], [4, 9], [0, 10]];
+function rowScore(row, q) { return q ? SCORES[row][0] : SCORES[row][1]; }
+
+export function realizedScores(view) {
+    const g = view.game;
+    if (!g.ideal) return null;
+    const q = g.ideal.qTrue;
+    const my  = (g.myR1  != null ? rowScore(g.myR1,  q) : 0) + (g.myR2  != null ? rowScore(g.myR2,  q) : 0);
+    const opp = (g.oppR1 != null ? rowScore(g.oppR1, q) : 0) + (g.oppR2 != null ? rowScore(g.oppR2, q) : 0);
+    return { my, opp, total: my + opp };
+}
+
+/* ---------------- Landing how-to examples ---------------- */
+
+export function renderHowTo() {
+    // Example 1: 5 of your cards face up + 5 backs (teammate's hand).
+    const hands = document.querySelector('#howto-hands');
+    if (hands) {
+        hands.innerHTML = '';
+        const me = document.createElement('div');
+        me.className = 'hand fan';
+        const sample = [
+            { rank: 14, suit: 's' }, { rank: 9, suit: 'h' }, { rank: 7, suit: 'h' },
+            { rank: 6, suit: 'c' }, { rank: 13, suit: 'd' },
+        ];
+        for (const c of sortHand(sample)) me.appendChild(renderCard(c));
+        const opp = document.createElement('div');
+        opp.className = 'hand fan';
+        for (let i = 0; i < 5; i++) opp.appendChild(renderCard(null, { back: true }));
+        hands.append(opp, me);
+    }
+    // Example 2: 3 condition cards.
+    const conds = document.querySelector('#howto-conditions');
+    if (conds) {
+        conds.innerHTML = '';
+        const row = document.createElement('div');
+        row.className = 'conditions-row';
+        renderConditions(row, [{ id: 1 }, { id: 14 }, { id: 19 }]);
+        conds.append(row);
+    }
+    // Example 3: board with one token (round 1).
+    const bR1 = document.querySelector('#howto-board-r1');
+    if (bR1) {
+        bR1.innerHTML = '';
+        const wrap = document.createElement('div');
+        wrap.className = 'board-wrap';
+        const board = document.createElement('div');
+        board.className = 'board';
+        renderBoard(board, {
+            game: { state: 'round1', myR1: 3, myR2: null, oppR1: 1, oppR2: null,
+                    conditions: [], ideal: null },
+        }, () => {});
+        wrap.appendChild(board);
+        bR1.appendChild(wrap);
+    }
+    // Example 4: board after round 2 (both placed both tokens).
+    const bR2 = document.querySelector('#howto-board-r2');
+    if (bR2) {
+        bR2.innerHTML = '';
+        const wrap = document.createElement('div');
+        wrap.className = 'board-wrap';
+        const board = document.createElement('div');
+        board.className = 'board';
+        renderBoard(board, {
+            game: { state: 'revealed', myR1: 3, myR2: 2, oppR1: 1, oppR2: 2,
+                    conditions: [], ideal: null },
+        }, () => {});
+        wrap.appendChild(board);
+        bR2.appendChild(wrap);
+    }
 }

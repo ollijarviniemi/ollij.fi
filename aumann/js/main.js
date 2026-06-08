@@ -1,9 +1,9 @@
 // Aumann client. Socket.IO state → DOM via render.js.
-// Server URL: window.AUMANN_SERVER (set by config.js).
 
 import {
-    showView, renderHand, renderBoard, renderConditions, statusFor,
-    realizedScores, renderReveal, renderBayesArrows, renderScoreTables,
+    showView, renderHand, revealHandInPlace, renderBoard, renderConditions,
+    statusFor, realizedScores, renderBayesArrows, clearBayesArrows,
+    renderScoreTables, renderHowTo,
 } from './render.js';
 import {
     getName, setName, getRoomCookie, setRoomCookie, clearRoomCookie,
@@ -17,6 +17,8 @@ let state  = null;
 let lobby  = null;
 let lastGameRecorded = 0;
 let inLobby = false;
+// Track previous render's game number + state so we can animate transitions.
+let lastRenderKey = null;
 
 /* ---------------- Socket ---------------- */
 
@@ -82,7 +84,6 @@ function renderLanding() {
             roomsEl.appendChild(row);
         }
     }
-
     const name = getName();
     const statsEl = document.querySelector('#my-stats');
     if (name) {
@@ -99,7 +100,13 @@ function renderLanding() {
 
 function renderGame() {
     const g = state.game;
+    const key = `${g.number}/${g.state}`;
+    const isFreshReveal = g.state === 'revealed'
+        && lastRenderKey?.startsWith(`${g.number}/`)
+        && !lastRenderKey.endsWith('/revealed');
+    const isNewGame = lastRenderKey && !lastRenderKey.startsWith(`${g.number}/`);
 
+    // Conditions: full re-render (cheap, supplies met/unmet at reveal).
     const combined = (g.myHand && g.oppHand) ? [...g.myHand, ...g.oppHand] : null;
     renderConditions(
         document.querySelector('#conditions-row'),
@@ -107,37 +114,57 @@ function renderGame() {
         { revealed: g.state === 'revealed', combined },
     );
 
-    renderHand(document.querySelector('#opp-hand'), g.oppHand);
-    renderHand(document.querySelector('#my-hand'),  g.myHand);
+    // Hands: special-case the reveal animation. On a fresh reveal, animate
+    // the existing fanned cards into a flat row (and swap opp's backs for
+    // face cards in place). Otherwise re-render normally.
+    const myHandEl = document.querySelector('#my-hand');
+    const oppHandEl = document.querySelector('#opp-hand');
+    if (isFreshReveal) {
+        revealHandInPlace(myHandEl, g.myHand);
+        revealHandInPlace(oppHandEl, g.oppHand);
+    } else if (isNewGame) {
+        myHandEl.classList.remove('revealed');
+        oppHandEl.classList.remove('revealed');
+        renderHand(myHandEl, g.myHand);
+        renderHand(oppHandEl, g.oppHand);
+    } else if (g.state !== 'revealed') {
+        // Round 1 / round 2 — re-render so token state stays current. But the
+        // hand DOM itself doesn't change between rounds, so this is cheap.
+        renderHand(myHandEl, g.myHand);
+        renderHand(oppHandEl, g.oppHand);
+    } else {
+        // Re-render of an already-revealed state (e.g., player just joined a
+        // finished game). Render normally + add .revealed class.
+        renderHand(myHandEl, g.myHand);
+        renderHand(oppHandEl, g.oppHand);
+        myHandEl.classList.add('revealed');
+        oppHandEl.classList.add('revealed');
+    }
 
     renderBoard(document.querySelector('#board'), state, onPlace);
     document.querySelector('#status').textContent = statusFor(state);
 
-    // Bayesian dashed lines + arc only after reveal.
+    // Bayesian visualization only after reveal.
     const boardWrap = document.querySelector('#board-wrap');
     if (g.state === 'revealed') {
-        // Defer so layout (offsetWidth) is correct.
         requestAnimationFrame(() => renderBayesArrows(boardWrap, state));
     } else {
-        boardWrap.querySelectorAll('.bayes-line').forEach(n => n.remove());
-        const arc = boardWrap.querySelector('#bayes-arc');
-        if (arc) { arc.innerHTML = ''; arc.style.display = 'none'; }
+        clearBayesArrows(boardWrap);
     }
 
-    const revealEl = document.querySelector('#reveal');
-    if (g.state === 'revealed') {
-        revealEl.hidden = false;
-        renderReveal(
-            { q: document.querySelector('#reveal-q'), team: document.querySelector('#reveal-team') },
-            state,
-        );
-    } else { revealEl.hidden = true; }
-
+    // Sidebar.
     renderScoreTables(
         document.querySelector('#score-table-real'),
         document.querySelector('#score-table-ideal'),
         state.scoreHistory,
+        g.state === 'revealed' ? g.number : null,
     );
+
+    // Next-game button only visible when revealed.
+    const nextBtn = document.querySelector('#btn-next-game');
+    nextBtn.hidden = g.state !== 'revealed';
+
+    lastRenderKey = key;
 }
 
 /* ---------------- Actions ---------------- */
@@ -177,7 +204,7 @@ function maybeRecordHistory() {
         idealScore: state.game.ideal.score,
         idealHalf,
         delta: real.my - idealHalf,
-        opponentName: state.opponent?.name || 'Opponent',
+        opponentName: state.opponent?.name || 'Teammate',
         qTrue: q,
     });
 }
@@ -210,7 +237,7 @@ window.addEventListener('DOMContentLoaded', () => {
     function leaveRoom() {
         clearRoomCookie();
         if (socket) { socket.close(); socket = null; }
-        state = null; lobby = null; inLobby = false;
+        state = null; lobby = null; inLobby = false; lastRenderKey = null;
         connect();
         renderLanding(); showView('landing');
     }
@@ -230,5 +257,6 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
     renderLanding(); showView('landing');
+    renderHowTo();
     connect();
 });

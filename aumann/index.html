@@ -15,7 +15,7 @@
 
 <!-- ============ LANDING ============ -->
 <section id="landing" class="view">
-    <h1>Aumann <span class="help title-help" data-tooltip="Two-player Bayesian agreement game. Each player gets 5 hidden cards; together you estimate the probability that the combined 10-card hand satisfies any of 3 random conditions. From Maailmantutkija ch. 11.4.">?</span></h1>
+    <h1>Aumann</h1>
 
     <div class="form-row">
         <input id="name" type="text" maxlength="24" autocomplete="off" placeholder="Your name">
@@ -31,11 +31,37 @@
 
     <div id="my-stats" class="stats-block" hidden></div>
     <div id="error-msg" class="error" hidden></div>
+
+    <!-- How to play, with rendered examples. Adapted from chapter 11.4 of
+         Maailmantutkija. The example DOM is injected by render.js. -->
+    <section class="how-to">
+        <h2>How to play</h2>
+
+        <p>You and a teammate sit at the table. From a standard 52-card deck, each of you gets 5 cards — but you can't see each other's:</p>
+        <div id="howto-hands" class="howto-block"></div>
+
+        <p>Three random "condition cards" are drawn and shown to both of you:</p>
+        <div id="howto-conditions" class="howto-block"></div>
+
+        <p>Your shared question: looking at <em>all 10 cards combined</em>, is at least one of the 3 conditions satisfied? Each of you forms a belief about the probability.</p>
+
+        <p>You both then simultaneously place a token on the board, in the column that matches your belief. The board's middle row tells you what each column pays out:</p>
+        <div id="howto-board-r1" class="howto-block"></div>
+
+        <p>Once you've both placed, you see each other's token. Maybe your teammate is more confident than you, and they have probably good reason — that might shift your belief. You then place a second token (round 2), wherever you now think the right column is:</p>
+        <div id="howto-board-r2" class="howto-block"></div>
+
+        <p>The cards are revealed, the conditions checked. Each token scores by its column: if <em>any</em> condition is met you get the top number; otherwise the bottom one. The middle column gives 7 either way — the safe pick when you're unsure.</p>
+
+        <p>Tokens score independently. The team total is your two scores plus your teammate's two — 40 points possible per game. After many games, the average matters more than any single round.</p>
+
+        <p>The sidebar tracks your scores and, on hover, what two perfect Bayesians would have scored on the same hands. After the reveal you'll also see two dashed lines on the board showing the ideal Bayesian's round-1 and round-2 column for each of you, with a curved arrow tracing how a perfect updater would have moved.</p>
+    </section>
 </section>
 
 <!-- ============ WAITING ============ -->
 <section id="waiting" class="view" hidden>
-    <h1>Waiting for someone to join…</h1>
+    <h1>Waiting for a teammate…</h1>
     <p class="muted">Your room appears in the list at <strong>ollij.fi/aumann</strong>.</p>
     <button id="btn-leave-waiting" class="ghost">Leave</button>
 </section>
@@ -48,33 +74,21 @@
     <div class="game-layout">
         <div class="game-main">
 
-            <!-- Conditions (compact icon style). -->
             <div id="conditions-row" class="conditions-row"></div>
 
-            <!-- Opponent's hand: same fanned style as yours. -->
             <div id="opp-hand" class="hand opp-hand fan"></div>
 
-            <!-- Status text. -->
             <div id="status" class="status"></div>
 
-            <!-- 3×5 board grid (heavy B&W). -->
             <div id="board-wrap" class="board-wrap">
+                <svg id="bayes-arc-opp" class="bayes-arc"  xmlns="http://www.w3.org/2000/svg" style="display:none"></svg>
                 <div id="board" class="board"></div>
-                <!-- SVG arc below the grid for Bayesian visualization. -->
-                <svg id="bayes-arc" class="bayes-arc" hidden xmlns="http://www.w3.org/2000/svg"></svg>
+                <svg id="bayes-arc-me" class="bayes-arc"  xmlns="http://www.w3.org/2000/svg" style="display:none"></svg>
             </div>
 
-            <!-- Your hand: large fanned. -->
             <div id="my-hand" class="hand my-hand fan"></div>
 
-            <!-- Reveal panel. -->
-            <div id="reveal" class="reveal" hidden>
-                <div id="reveal-q" class="reveal-q"></div>
-                <div id="reveal-team" class="reveal-team"></div>
-                <button id="btn-next-game" class="primary">Next game</button>
-            </div>
-
-        </div><!-- /.game-main -->
+        </div>
 
         <aside class="game-sidebar">
             <div class="sb-title">
@@ -82,11 +96,10 @@
                 <span class="help sb-help" data-tooltip="Hover the table to see what perfect Bayesians would have scored on the same hands.">?</span>
             </div>
             <div id="score-table-wrap" class="score-table-wrap">
-                <!-- Realized score table (always visible). On hover, the
-                     Bayesian table fades in over it. -->
                 <table id="score-table-real" class="score-table"></table>
                 <table id="score-table-ideal" class="score-table ideal-table"></table>
             </div>
+            <button id="btn-next-game" class="primary sb-next-game" hidden>Next game</button>
         </aside>
 
     </div>
