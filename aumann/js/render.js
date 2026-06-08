@@ -200,22 +200,31 @@ export function renderBayesArrows(boardWrap, view) {
     const oppI = me === 0 ? g.ideal.p2 : g.ideal.p1;
 
     const board = boardWrap.querySelector('#board');
-    const w = board.offsetWidth;
+    // Use the inner cell area so belief × innerW maps correctly into the
+    // grid's cells, NOT into the board's 2 px border. The line is 2.5 px
+    // wide, so we also subtract half its thickness to center the visible
+    // line on the belief position.
+    const innerW = board.clientWidth;
+    const borderW = parseFloat(getComputedStyle(board).borderLeftWidth) || 0;
     const meRow = board.querySelector('.row-me');
     const oppRow = board.querySelector('.row-opp');
     if (!meRow || !oppRow) return;
 
-    drawPlayerLines(board, 'me', myI, w, meRow.offsetTop, meRow.offsetHeight);
-    drawPlayerLines(board, 'opp', oppI, w, oppRow.offsetTop, oppRow.offsetHeight);
+    drawPlayerLines(board, 'me', myI, innerW, borderW, meRow.offsetTop, meRow.offsetHeight);
+    drawPlayerLines(board, 'opp', oppI, innerW, borderW, oppRow.offsetTop, oppRow.offsetHeight);
 
-    drawArc(boardWrap.querySelector('#bayes-arc-me'),  myI, w, '#1976d2', 'down');
-    drawArc(boardWrap.querySelector('#bayes-arc-opp'), oppI, w, '#ef6c00', 'up');
+    drawArc(boardWrap.querySelector('#bayes-arc-me'),  myI, innerW, '#1976d2', 'down');
+    drawArc(boardWrap.querySelector('#bayes-arc-opp'), oppI, innerW, '#ef6c00', 'up');
 }
 
-function drawPlayerLines(board, kind, info, w, top, h) {
-    const r1x = info.r1Belief * w;
-    const r2x = info.r2Belief * w;
-    const close = Math.abs(r1x - r2x) < 70;
+function drawPlayerLines(board, kind, info, innerW, borderW, top, h) {
+    const lineHalf = 1.25; // half of the 2.5 px dashed border-left thickness
+    const center = (b) => borderW + b * innerW;
+    const placeLeft = (b) => center(b) - lineHalf;
+
+    const r1x = placeLeft(info.r1Belief);
+    const r2x = placeLeft(info.r2Belief);
+    const close = Math.abs(center(info.r1Belief) - center(info.r2Belief)) < 70;
 
     const l1 = document.createElement('div');
     l1.className = `bayes-line ${kind} r1`;
@@ -262,7 +271,7 @@ function drawArc(svg, info, w, color, direction) {
     }
 
     svg.style.display = 'block';
-    const h = 56;
+    const h = 36;
     svg.setAttribute('width',  w);
     svg.setAttribute('height', h);
     svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
@@ -273,11 +282,11 @@ function drawArc(svg, info, w, color, direction) {
 
     let edgeY, apexY;
     if (direction === 'down') {
-        edgeY = 12;
-        apexY = h - 4;
+        edgeY = 11;
+        apexY = h - 3;
     } else {
-        edgeY = h - 12;
-        apexY = 4;
+        edgeY = h - 11;
+        apexY = 3;
     }
 
     const idSafe = color.replace('#','');
