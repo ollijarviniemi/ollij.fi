@@ -294,14 +294,17 @@ input[type="text"]:focus { outline: none; border-color: #111; }
     min-height: 200px;
     padding-top: 30px;
 }
+/* Card sizing: width fixed, aspect-ratio matches the PNG (226 × 314) so the
+   image fills the wrapper exactly — no letterbox, no wrapper padding around
+   the image, no "card on top of another" appearance. */
 .hand .card {
-    width: 105px;
-    height: 150px;
+    width: 110px;
+    aspect-ratio: 226 / 314;
+    height: auto;
     margin: 0 -25px;
     transform-origin: bottom center;
     transition: transform 0.2s ease;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.18);
-    padding: 8px 10px;
+    padding: 0;
 }
 .hand .card:nth-child(1) { transform: rotate(-14deg); z-index: 1; }
 .hand .card:nth-child(2) { transform: rotate(-7deg)  translateY(-4px); z-index: 2; }
@@ -309,8 +312,6 @@ input[type="text"]:focus { outline: none; border-color: #111; }
 .hand .card:nth-child(4) { transform: rotate(7deg)   translateY(-4px); z-index: 4; }
 .hand .card:nth-child(5) { transform: rotate(14deg); z-index: 5; }
 .my-hand .card:hover { transform: translateY(-12px); z-index: 10; }
-.hand .card .corner { font-size: 18px; font-weight: 700; line-height: 1; }
-.hand .card .center { font-size: 46px; text-align: center; line-height: 1; }
 
 /* Opp hand: flipped 180° as if held across the table during play. At reveal
    the container un-rotates and the cards spread to a flat row. */
@@ -582,9 +583,7 @@ input[type="text"]:focus { outline: none; border-color: #111; }
     .ic-formula { font-size: 12px; }
 
     .hand { min-height: 140px; padding-top: 18px; }
-    .hand .card { width: 64px; height: 90px; margin: 0 -14px; padding: 4px 5px; }
-    .hand .card .corner { font-size: 11px; }
-    .hand .card .center { font-size: 26px; }
+    .hand .card { width: 68px; height: auto; aspect-ratio: 226 / 314; margin: 0 -14px; padding: 0; }
 
     .board { grid-template-rows: 50px auto 50px; }
     .board .row-band { padding: 8px 2px; }
