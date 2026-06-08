@@ -983,6 +983,10 @@
 
         // Play a level (with guard against rapid navigation)
         let navigationInProgress = false;
+        // Reset on every page show (including bfcache restore from Back-nav).
+        // Without this, the flag stays stuck true after returning to the menu
+        // and every subsequent tap is silently dropped until you refresh.
+        window.addEventListener('pageshow', () => { navigationInProgress = false; });
         function playLevel(levelId, groupNumber, positionInGroup) {
             if (navigationInProgress) return;
             navigationInProgress = true;
