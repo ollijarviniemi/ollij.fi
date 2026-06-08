@@ -31,23 +31,41 @@ function sortHand(hand) {
     );
 }
 
+// Real-card image URL from deckofcardsapi.com. Format: {rank}{suit}.png where
+// rank ∈ {A, 2..9, 0 for 10, J, Q, K} and suit ∈ {S, H, D, C}.
+function cardImageUrl(c) {
+    const r = c.rank;
+    const rankCode =
+        r === 10 ? '0' : r === 11 ? 'J' : r === 12 ? 'Q' :
+        r === 13 ? 'K' : r === 14 ? 'A' : String(r);
+    return `https://deckofcardsapi.com/static/img/${rankCode}${c.suit.toUpperCase()}.png`;
+}
+
 export function renderCard(card, opts = {}) {
     const div = document.createElement('div');
     div.className = 'card';
     if (opts.back) {
         div.classList.add('back');
-        div.innerHTML = '<div class="corner"></div><div class="center"></div><div class="corner"></div>';
         return div;
     }
-    const red = RED_SUITS.has(card.suit);
-    div.classList.add(red ? 'red' : 'black');
-    const rank = RANK_LABEL[card.rank];
-    const suit = SUIT_GLYPH[card.suit];
-    div.innerHTML = `
-        <div class="corner">${rank}${suit}</div>
-        <div class="center">${suit}</div>
-        <div class="corner" style="align-self:flex-end; transform:rotate(180deg);">${rank}${suit}</div>
-    `;
+    div.classList.add(RED_SUITS.has(card.suit) ? 'red' : 'black');
+    const img = document.createElement('img');
+    img.src = cardImageUrl(card);
+    img.alt = `${RANK_LABEL[card.rank]}${SUIT_GLYPH[card.suit]}`;
+    img.draggable = false;
+    // Fallback to text if the image fails (e.g. offline): render a minimalist
+    // rank+suit in the centre, so the game stays playable even without CDN.
+    img.onerror = () => {
+        div.innerHTML = '';
+        const rank = RANK_LABEL[card.rank];
+        const suit = SUIT_GLYPH[card.suit];
+        div.innerHTML = `
+            <div class="corner">${rank}${suit}</div>
+            <div class="center">${suit}</div>
+            <div class="corner" style="align-self:flex-end; transform:rotate(180deg);">${rank}${suit}</div>
+        `;
+    };
+    div.appendChild(img);
     return div;
 }
 
@@ -189,8 +207,8 @@ export function renderBayesArrows(boardWrap, view) {
     drawPlayerLines(board, 'me', myI, w, meRow.offsetTop, meRow.offsetHeight);
     drawPlayerLines(board, 'opp', oppI, w, oppRow.offsetTop, oppRow.offsetHeight);
 
-    drawArc(boardWrap.querySelector('#bayes-arc-me'),  myI, w, '#1976d2');
-    drawArc(boardWrap.querySelector('#bayes-arc-opp'), oppI, w, '#ef6c00');
+    drawArc(boardWrap.querySelector('#bayes-arc-me'),  myI, w, '#1976d2', 'down');
+    drawArc(boardWrap.querySelector('#bayes-arc-opp'), oppI, w, '#ef6c00', 'up');
 }
 
 function drawPlayerLines(board, kind, info, w, top, h) {
@@ -215,26 +233,46 @@ function drawPlayerLines(board, kind, info, w, top, h) {
     board.appendChild(l2);
 }
 
-function drawArc(svg, info, w, color) {
+// Single smooth quadratic-bezier arc from r1 column to r2 column. Both
+// endpoints sit at the grid edge; the apex dips into the area away from the
+// grid. The arrowhead at the r2 end automatically orients into the grid.
+// direction = 'down' → me arc, sits below the grid; 'up' → teammate arc,
+// sits above the grid.
+function drawArc(svg, info, w, color, direction) {
     if (!svg) return;
     svg.style.display = 'block';
-    const h = 60;
+    const h = 72;
     svg.setAttribute('width',  w);
     svg.setAttribute('height', h);
     svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+
     const sx = info.r1Belief * w;
     const ex = info.r2Belief * w;
-    const cy = 42;
+    // Force a minimum horizontal span so the arc is visible even when r1 ≈ r2.
+    const adjustedSx = (Math.abs(ex - sx) < 14)
+        ? (sx + Math.sign(sx - ex || 1) * 7) : sx;
+    const mid = (adjustedSx + ex) / 2;
+
+    let edgeY, apexY;
+    if (direction === 'down') {
+        edgeY = 3;          // start/end at top of SVG = bottom edge of grid
+        apexY = h - 14;     // dip toward the bottom
+    } else {
+        edgeY = h - 3;      // start/end at bottom of SVG = top edge of grid
+        apexY = 14;         // arc upward away from grid
+    }
+
+    const idSafe = color.replace('#','');
     svg.innerHTML = `
         <defs>
-            <marker id="ah-${color.replace('#','')}" viewBox="0 0 10 10" refX="9" refY="5"
-                    markerWidth="9" markerHeight="9" orient="auto">
-                <path d="M 0 0 L 10 5 L 0 10 z" fill="${color}" />
+            <marker id="ah-${idSafe}" viewBox="0 0 12 12" refX="11" refY="6"
+                    markerWidth="10" markerHeight="10" orient="auto">
+                <path d="M 0 0 L 12 6 L 0 12 z" fill="${color}" />
             </marker>
         </defs>
-        <path d="M ${sx} 0 C ${sx} ${cy} ${ex} ${cy} ${ex} 8"
+        <path d="M ${adjustedSx} ${edgeY} Q ${mid} ${apexY} ${ex} ${edgeY}"
               stroke="${color}" stroke-width="3" fill="none"
-              marker-end="url(#ah-${color.replace('#','')})" />
+              marker-end="url(#ah-${idSafe})" />
     `;
 }
 

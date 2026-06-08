@@ -340,11 +340,20 @@ input[type="text"]:focus { outline: none; border-color: #111; }
     border: 2px solid #111;
     border-radius: 8px;
     background: #fff;
+    overflow: hidden;
+    user-select: none;
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     font-family: Georgia, serif;
-    user-select: none;
+}
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    pointer-events: none;
 }
 .card.red   { color: #c01818; }
 .card.black { color: #111; }
@@ -352,6 +361,7 @@ input[type="text"]:focus { outline: none; border-color: #111; }
     background: repeating-linear-gradient(45deg, #d4d4d8, #d4d4d8 4px, #e4e4e7 4px, #e4e4e7 8px);
     border-color: #999;
 }
+.card.back img { display: none; }
 .card.back .corner, .card.back .center { color: transparent; }
 
 /* ---------- 3×5 board grid (pure B&W, no rounding, no shading) ---------- */
@@ -462,9 +472,10 @@ input[type="text"]:focus { outline: none; border-color: #111; }
     position: absolute;
     left: 0;
     pointer-events: none;
+    display: block;
 }
-#bayes-arc-me  { top: 100%; height: 60px; }
-#bayes-arc-opp { bottom: 100%; height: 60px; transform: scaleY(-1); transform-origin: center; }
+#bayes-arc-me  { top: 100%; height: 72px; }
+#bayes-arc-opp { bottom: 100%; height: 72px; }
 
 
 /* ---------- Sidebar score tables ---------- */
