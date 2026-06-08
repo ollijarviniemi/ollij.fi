@@ -239,8 +239,28 @@ function drawPlayerLines(board, kind, info, w, top, h) {
 // grid. The arrowhead at the r2 end automatically orients into the grid.
 // direction = 'down' → me arc, sits below the grid; 'up' → teammate arc,
 // sits above the grid.
+// Single Q-bezier from the r1 column to the r2 column. Both endpoints sit
+// at the grid-facing edge of the SVG; the apex dips toward the far edge.
+//
+// Key details that prevent the previous clipping issues:
+// - markerUnits="userSpaceOnUse" so the arrowhead size is a fixed number of
+//   SVG units (14×14), not stroke-width-dependent (which made the head
+//   enormous, ~30 px, with stroke-width 3 and the default markerUnits).
+// - edgeY = 12 so the arrowhead's tip and its tail still fit inside the
+//   viewBox even when the path tangent at the end is vertical (close r1/r2).
+// - When |r2 − r1| is tiny (< 5 %) we skip the arc altogether — the two
+//   dashed lines side by side already say "Bayesian barely updated", and
+//   degenerate single-pixel arcs just looked broken.
 function drawArc(svg, info, w, color, direction) {
     if (!svg) return;
+
+    const delta = Math.abs(info.r2Belief - info.r1Belief);
+    if (delta < 0.05) {
+        svg.style.display = 'none';
+        svg.innerHTML = '';
+        return;
+    }
+
     svg.style.display = 'block';
     const h = 56;
     svg.setAttribute('width',  w);
@@ -249,31 +269,27 @@ function drawArc(svg, info, w, color, direction) {
 
     const sx = info.r1Belief * w;
     const ex = info.r2Belief * w;
-    // Force a minimum horizontal span so the arc is visible even when r1 ≈ r2.
-    const adjustedSx = (Math.abs(ex - sx) < 14)
-        ? (sx + Math.sign(sx - ex || 1) * 7) : sx;
-    const mid = (adjustedSx + ex) / 2;
+    const mid = (sx + ex) / 2;
 
-    // Endpoints sit near the grid-facing edge of the SVG; apex is at the far
-    // edge. Path goes start → apex → end as a single smooth quadratic curve.
     let edgeY, apexY;
     if (direction === 'down') {
-        edgeY = 4;          // near the top of the SVG (= near grid bottom)
-        apexY = h - 6;
+        edgeY = 12;
+        apexY = h - 4;
     } else {
-        edgeY = h - 4;      // near the bottom of the SVG (= near grid top)
-        apexY = 6;
+        edgeY = h - 12;
+        apexY = 4;
     }
 
     const idSafe = color.replace('#','');
     svg.innerHTML = `
         <defs>
-            <marker id="ah-${idSafe}" viewBox="0 0 12 12" refX="11" refY="6"
-                    markerWidth="10" markerHeight="10" orient="auto">
+            <marker id="ah-${idSafe}" viewBox="0 0 12 12" refX="10" refY="6"
+                    markerWidth="14" markerHeight="14" orient="auto"
+                    markerUnits="userSpaceOnUse">
                 <path d="M 0 0 L 12 6 L 0 12 z" fill="${color}" />
             </marker>
         </defs>
-        <path d="M ${adjustedSx} ${edgeY} Q ${mid} ${apexY} ${ex} ${edgeY}"
+        <path d="M ${sx} ${edgeY} Q ${mid} ${apexY} ${ex} ${edgeY}"
               stroke="${color}" stroke-width="3" fill="none"
               marker-end="url(#ah-${idSafe})" />
     `;
