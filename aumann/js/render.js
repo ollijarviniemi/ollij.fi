@@ -246,16 +246,16 @@ export function statusFor(view) {
     const oppDown = view.opponent && view.opponent.connected === false;
     if (g.state === 'round1') {
         if (g.myR1 == null) {
-            if (g.oppR1Pending) return 'Teammate has placed. Tap a row to place yours.';
-            return 'Tap a row to place your first token.';
+            if (g.oppR1Pending) return 'Teammate has placed. Click a column to place yours.';
+            return 'Click a column to place your first token.';
         }
         if (oppDown) return 'Teammate disconnected.';
         return 'Waiting for teammate…';
     }
     if (g.state === 'round2') {
         if (g.myR2 == null) {
-            if (g.oppR2Pending) return 'Teammate has placed their second. Tap a row to place yours.';
-            return 'Tap a row to place your second token.';
+            if (g.oppR2Pending) return 'Teammate has placed their second. Click a column to place yours.';
+            return 'Click a column to place your second token.';
         }
         if (oppDown) return 'Teammate disconnected.';
         return 'Waiting for teammate…';
@@ -268,8 +268,9 @@ export function statusFor(view) {
 export function renderScoreTables(realEl, idealEl, scoreHistory, latestGameNum) {
     const rows = scoreHistory || [];
     if (rows.length === 0) {
-        realEl.innerHTML = `<tbody><tr><td colspan="6" class="muted" style="text-align:center; padding:18px; font-style:italic; color:#aaa;">No games yet.</td></tr></tbody>`;
-        idealEl.innerHTML = '';
+        const empty = `<tbody><tr><td colspan="6" class="muted" style="text-align:center; padding:18px; font-style:italic; color:#aaa;">No games yet.</td></tr></tbody>`;
+        realEl.innerHTML  = empty;
+        idealEl.innerHTML = empty;
         return;
     }
 

@@ -40,7 +40,7 @@
         <p>You and a teammate sit at the table. From a standard 52-card deck, each of you gets 5 cards — but you can't see each other's:</p>
         <div id="howto-hands" class="howto-block"></div>
 
-        <p>Three random "condition cards" are drawn and shown to both of you:</p>
+        <p>Three "condition cards" are drawn at random from a set of 20, and shown to both of you:</p>
         <div id="howto-conditions" class="howto-block"></div>
 
         <p>Your shared question: looking at <em>all 10 cards combined</em>, is at least one of the 3 conditions satisfied? Each of you forms a belief about the probability.</p>
@@ -51,11 +51,11 @@
         <p>Once you've both placed, you see each other's token. Maybe your teammate is more confident than you, and they have probably good reason — that might shift your belief. You then place a second token (round 2), wherever you now think the right column is:</p>
         <div id="howto-board-r2" class="howto-block"></div>
 
-        <p>The cards are revealed, the conditions checked. Each token scores by its column: if <em>any</em> condition is met you get the top number; otherwise the bottom one. The middle column gives 7 either way — the safe pick when you're unsure.</p>
+        <p>The cards are revealed, the conditions checked. Each token scores by its column: if <em>any</em> condition is met you get the <strong>left</strong> number; otherwise the <strong>right</strong> one. The middle column gives 7 either way — the safe pick when you're unsure.</p>
 
-        <p>Tokens score independently. The team total is your two scores plus your teammate's two — 40 points possible per game. After many games, the average matters more than any single round.</p>
+        <p>Tokens score independently. The team total is your two scores plus your teammate's two — 40 points possible per game.</p>
 
-        <p>The sidebar tracks your scores and, on hover, what two perfect Bayesians would have scored on the same hands. After the reveal you'll also see two dashed lines on the board showing the ideal Bayesian's round-1 and round-2 column for each of you, with a curved arrow tracing how a perfect updater would have moved.</p>
+        <p>The sidebar tracks your scores. Below it, a fainter table shows what two perfect Bayesians would have scored on the same hands (hover to bring it into focus). After the reveal you'll also see two dashed lines on the board showing the ideal Bayesian's round-1 and round-2 column for each of you, with a curved arrow tracing how a perfect updater would have moved.</p>
     </section>
 </section>
 
@@ -75,9 +75,6 @@
             <!-- Teammate's hand at top (across the table, flipped). -->
             <div id="opp-hand" class="hand opp-hand fan"></div>
 
-            <!-- Conditions below teammate's hand. -->
-            <div id="conditions-row" class="conditions-row"></div>
-
             <div id="status" class="status"></div>
 
             <div id="board-wrap" class="board-wrap">
@@ -86,20 +83,19 @@
                 <svg id="bayes-arc-me" class="bayes-arc"  xmlns="http://www.w3.org/2000/svg" style="display:none"></svg>
             </div>
 
+            <!-- Conditions below the betting grid, right above your hand. -->
+            <div id="conditions-row" class="conditions-row"></div>
+
             <div id="my-hand" class="hand my-hand fan"></div>
 
         </div>
 
         <aside class="game-sidebar">
             <button id="btn-leave-game" class="leave-link" title="Leave the room">← leave</button>
-            <div class="sb-title">
-                Scores
-                <span class="help sb-help" data-tooltip="Hover the table to see what perfect Bayesians would have scored on the same hands.">?</span>
-            </div>
-            <div id="score-table-wrap" class="score-table-wrap">
-                <table id="score-table-real" class="score-table"></table>
-                <table id="score-table-ideal" class="score-table ideal-table"></table>
-            </div>
+            <div class="sb-title">Your scores</div>
+            <table id="score-table-real" class="score-table"></table>
+            <div class="sb-title sb-title-ideal">If two perfect Bayesians played the same hands</div>
+            <table id="score-table-ideal" class="score-table ideal-table"></table>
             <button id="btn-next-game" class="primary sb-next-game" hidden>Next game</button>
         </aside>
 
