@@ -1,0 +1,28 @@
+# Fly.io app config for the Aumann server. Before first deploy:
+#   1. edit `app` to a globally-unique name (Fly will reject duplicates).
+#   2. `fly auth signup` (or `fly auth login`)
+#   3. from this directory: `fly launch --copy-config --no-deploy` (one-time
+#      to register the app) or `fly apps create <name>` then `fly deploy`.
+#
+# This config keeps one machine always running so new players never hit a
+# cold start. Pick a region close to your players in primary_region.
+
+app = "CHANGE-ME-aumann"
+primary_region = "fra"  # frankfurt; see `fly platform regions`
+
+[build]
+  dockerfile = "Dockerfile"
+  # Build from the parent dir so the Dockerfile can COPY ../js
+  context = ".."
+
+[http_service]
+  internal_port = 8787
+  force_https = true
+  auto_stop_machines = "off"      # NEVER auto-stop → no cold starts
+  auto_start_machines = true
+  min_machines_running = 1
+
+[[vm]]
+  cpu_kind = "shared"
+  cpus = 1
+  memory_mb = 256
