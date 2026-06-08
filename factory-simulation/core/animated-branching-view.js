@@ -178,14 +178,20 @@ class AnimatedBranchingView {
 
   resizeCanvas() {
     const rect = this.container.getBoundingClientRect();
-    this.dpr = 1;  // Match normal renderer (no DPI scaling)
+    // Render at devicePixelRatio for sharp display. On mobile, multiply by an
+    // additional 2× so pinch-zoom keeps reasonably crisp resolution before
+    // pixelation kicks in (without DPI scaling, pinch-zoom turned the canvas
+    // into pixel mush even at modest zoom levels).
+    const baseDpr = window.devicePixelRatio || 1;
+    const isMobile = window.innerWidth <= 768;
+    this.dpr = isMobile ? baseDpr * 2 : baseDpr;
 
-    this.canvas.width = rect.width;
-    this.canvas.height = rect.height;
+    this.canvas.width = rect.width * this.dpr;
+    this.canvas.height = rect.height * this.dpr;
     this.canvas.style.width = rect.width + 'px';
     this.canvas.style.height = rect.height + 'px';
 
-    this.ctx.setTransform(1, 0, 0, 1, 0, 0);
+    this.ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
     this.viewportWidth = rect.width;
     this.viewportHeight = rect.height;
   }
