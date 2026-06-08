@@ -3,7 +3,7 @@
 
 import {
     showView, renderHand, renderBoard, renderConditions, statusFor,
-    realizedScores, renderReveal,
+    realizedScores, renderReveal, renderBayesArrows, renderScoreTables,
 } from './render.js';
 import {
     getName, setName, getRoomCookie, setRoomCookie, clearRoomCookie,
@@ -22,7 +22,6 @@ let inLobby = false;
 
 function connect() {
     if (socket) return;
-    // Detect the unedited placeholder so deployed instances don't fail mysteriously.
     if (typeof SERVER === 'string' && SERVER.includes('CHANGE_ME')) {
         flashError('Server URL not configured. Edit aumann/config.js and set SERVER_URL_PROD.');
         return;
@@ -32,9 +31,7 @@ function connect() {
     socket.on('lobby',     onLobby);
     socket.on('connect',   onConnect);
     socket.on('disconnect', () => {});
-    socket.on('connect_error', (err) => {
-        flashError(`Cannot reach server (${SERVER}). Check that it's running.`);
-    });
+    socket.on('connect_error', () => flashError(`Cannot reach server (${SERVER}).`));
 }
 function onConnect() {
     const c = getRoomCookie();
@@ -66,7 +63,6 @@ function render() {
 
 function renderLanding() {
     document.querySelector('#name').value = getName();
-
     const roomsEl = document.querySelector('#lobby-rooms');
     const emptyEl = document.querySelector('#lobby-empty');
     roomsEl.innerHTML = '';
@@ -115,29 +111,33 @@ function renderGame() {
     renderHand(document.querySelector('#my-hand'),  g.myHand);
 
     renderBoard(document.querySelector('#board'), state, onPlace);
-
     document.querySelector('#status').textContent = statusFor(state);
+
+    // Bayesian dashed lines + arc only after reveal.
+    const boardWrap = document.querySelector('#board-wrap');
+    if (g.state === 'revealed') {
+        // Defer so layout (offsetWidth) is correct.
+        requestAnimationFrame(() => renderBayesArrows(boardWrap, state));
+    } else {
+        boardWrap.querySelectorAll('.bayes-line').forEach(n => n.remove());
+        const arc = boardWrap.querySelector('#bayes-arc');
+        if (arc) { arc.innerHTML = ''; arc.style.display = 'none'; }
+    }
 
     const revealEl = document.querySelector('#reveal');
     if (g.state === 'revealed') {
         revealEl.hidden = false;
         renderReveal(
-            {
-                q:       document.querySelector('#reveal-q'),
-                scores:  document.querySelector('#reveal-scores'),
-                details: document.querySelector('#reveal-details'),
-            },
+            { q: document.querySelector('#reveal-q'), team: document.querySelector('#reveal-team') },
             state,
         );
     } else { revealEl.hidden = true; }
 
-    const sess = document.querySelector('#session-stats');
-    if (state.scoreHistory.length) {
-        const games = state.scoreHistory.length;
-        const youAvg = state.scoreHistory.reduce((s, h) => s + h.youScore, 0) / games;
-        const idealAvg = state.scoreHistory.reduce((s, h) => s + h.idealScore / 2, 0) / games;
-        sess.innerHTML = `<div class="stat-row"><span class="label">This room (${games})</span><span>${youAvg.toFixed(1)} · ideal ${idealAvg.toFixed(1)}</span></div>`;
-    } else { sess.innerHTML = ''; }
+    renderScoreTables(
+        document.querySelector('#score-table-real'),
+        document.querySelector('#score-table-ideal'),
+        state.scoreHistory,
+    );
 }
 
 /* ---------------- Actions ---------------- */
@@ -189,7 +189,6 @@ function flashError(msg) {
     el.hidden = false;
     setTimeout(() => el.hidden = true, 4000);
 }
-
 function escapeHtml(s) {
     return String(s).replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
 }
@@ -219,19 +218,14 @@ window.addEventListener('DOMContentLoaded', () => {
     document.querySelector('#btn-leave-game').addEventListener('click', () => {
         if (confirm('Leave this room?')) leaveRoom();
     });
-
     document.querySelector('#btn-next-game').addEventListener('click', () => {
         socket.emit('game:ready', null, () => {});
     });
 
-    // Mobile-friendly tooltips: tap a ?-icon to toggle its tooltip. Tap
-    // elsewhere to close. Hover still works on desktop.
+    // Tap-to-toggle for ?-icons on mobile.
     document.addEventListener('click', (e) => {
         const target = e.target.closest('.help');
-        // Close any open tooltip
-        document.querySelectorAll('.help.active').forEach(h => {
-            if (h !== target) h.classList.remove('active');
-        });
+        document.querySelectorAll('.help.active').forEach(h => { if (h !== target) h.classList.remove('active'); });
         if (target) { target.classList.toggle('active'); e.stopPropagation(); }
     });
 

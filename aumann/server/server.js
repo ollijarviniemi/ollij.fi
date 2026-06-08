@@ -124,10 +124,21 @@ function finalizeGame(room) {
     const p2Score = rowScore(g.placements.p2r1, q) + rowScore(g.placements.p2r2, q);
     room.scoreHistory.push({
         gameNum: g.number,
-        p1Score, p2Score,
-        idealScore: g.ideal.score,
         qTrue: q,
         conditionIds: g.conditions.map(c => c.id),
+        // Per-round placements (internal row indices) and per-round-score for the table.
+        p1: { r1: g.placements.p1r1, r2: g.placements.p1r2, r1Score: rowScore(g.placements.p1r1, q), r2Score: rowScore(g.placements.p1r2, q), total: p1Score },
+        p2: { r1: g.placements.p2r1, r2: g.placements.p2r2, r1Score: rowScore(g.placements.p2r1, q), r2Score: rowScore(g.placements.p2r2, q), total: p2Score },
+        // Ideal Bayesians' rows and beliefs (for the hover-table).
+        ideal: {
+            p1: { r1: g.ideal.p1.r1Row, r2: g.ideal.p1.r2Row, r1Belief: g.ideal.p1.r1Belief, r2Belief: g.ideal.p1.r2Belief,
+                  r1Score: rowScore(g.ideal.p1.r1Row, q), r2Score: rowScore(g.ideal.p1.r2Row, q),
+                  total: rowScore(g.ideal.p1.r1Row, q) + rowScore(g.ideal.p1.r2Row, q) },
+            p2: { r1: g.ideal.p2.r1Row, r2: g.ideal.p2.r2Row, r1Belief: g.ideal.p2.r1Belief, r2Belief: g.ideal.p2.r2Belief,
+                  r1Score: rowScore(g.ideal.p2.r1Row, q), r2Score: rowScore(g.ideal.p2.r2Row, q),
+                  total: rowScore(g.ideal.p2.r1Row, q) + rowScore(g.ideal.p2.r2Row, q) },
+            totalScore: g.ideal.score,
+        },
     });
 }
 
@@ -142,13 +153,22 @@ function viewFor(room, seat) {
         seat,
         me: me ? { id: me.id, name: me.name } : null,
         opponent: opp ? { name: opp.name, connected: !!opp.socketId } : null,
-        scoreHistory: room.scoreHistory.map(h => ({
-            gameNum: h.gameNum,
-            youScore: seat === 0 ? h.p1Score : h.p2Score,
-            oppScore: seat === 0 ? h.p2Score : h.p1Score,
-            idealScore: h.idealScore,
-            qTrue: h.qTrue,
-        })),
+        scoreHistory: room.scoreHistory.map(h => {
+            const me = seat === 0 ? h.p1 : h.p2;
+            const opp = seat === 0 ? h.p2 : h.p1;
+            const meI = seat === 0 ? h.ideal.p1 : h.ideal.p2;
+            const oppI = seat === 0 ? h.ideal.p2 : h.ideal.p1;
+            return {
+                gameNum: h.gameNum,
+                qTrue: h.qTrue,
+                you: me,
+                mate: opp,
+                youIdeal: meI,
+                mateIdeal: oppI,
+                totalScore: me.total + opp.total,
+                totalIdealScore: h.ideal.totalScore,
+            };
+        }),
         game: null,
     };
     if (g) {

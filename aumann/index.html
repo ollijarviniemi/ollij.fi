@@ -13,7 +13,7 @@
 
 <main>
 
-<!-- Landing: name field, "Start a room" button, and live list of open rooms. -->
+<!-- ============ LANDING ============ -->
 <section id="landing" class="view">
     <h1>Aumann <span class="help title-help" data-tooltip="Two-player Bayesian agreement game. Each player gets 5 hidden cards; together you estimate the probability that the combined 10-card hand satisfies any of 3 random conditions. From Maailmantutkija ch. 11.4.">?</span></h1>
 
@@ -33,43 +33,63 @@
     <div id="error-msg" class="error" hidden></div>
 </section>
 
-<!-- Waiting: your room is created, no one's joined yet. -->
+<!-- ============ WAITING ============ -->
 <section id="waiting" class="view" hidden>
     <h1>Waiting for someone to join…</h1>
     <p class="muted">Your room appears in the list at <strong>ollij.fi/aumann</strong>.</p>
     <button id="btn-leave-waiting" class="ghost">Leave</button>
 </section>
 
-<!-- Game: minimal chrome. -->
+<!-- ============ GAME ============ -->
 <section id="game" class="view" hidden>
 
-    <!-- Discrete leave-room link in the corner. -->
     <button id="btn-leave-game" class="leave-link" title="Leave the room">← leave</button>
 
-    <!-- 3 conditions as cards. -->
-    <div id="conditions-row" class="conditions-row"></div>
+    <div class="game-layout">
+        <div class="game-main">
 
-    <!-- Opponent's hand: 5 backs, small. -->
-    <div id="opp-hand" class="opp-hand"></div>
+            <!-- Conditions (compact icon style). -->
+            <div id="conditions-row" class="conditions-row"></div>
 
-    <!-- Status: one short line. -->
-    <div id="status" class="status"></div>
+            <!-- Opponent's hand: same fanned style as yours. -->
+            <div id="opp-hand" class="hand opp-hand fan"></div>
 
-    <!-- Horizontal board: 5 columns (bands), 2 rows (you on top, opp under). -->
-    <div id="board" class="board"></div>
+            <!-- Status text. -->
+            <div id="status" class="status"></div>
 
-    <!-- Your hand: 5 fanned cards, large. -->
-    <div id="my-hand" class="my-hand fan"></div>
+            <!-- 3×5 board grid (heavy B&W). -->
+            <div id="board-wrap" class="board-wrap">
+                <div id="board" class="board"></div>
+                <!-- SVG arc below the grid for Bayesian visualization. -->
+                <svg id="bayes-arc" class="bayes-arc" hidden xmlns="http://www.w3.org/2000/svg"></svg>
+            </div>
 
-    <!-- Reveal panel — shown only when game state = revealed. -->
-    <div id="reveal" class="reveal" hidden>
-        <div id="reveal-q" class="reveal-q"></div>
-        <div id="reveal-scores" class="reveal-scores"></div>
-        <button id="btn-next-game" class="primary">Next game</button>
-        <div id="reveal-details" class="reveal-details muted"></div>
+            <!-- Your hand: large fanned. -->
+            <div id="my-hand" class="hand my-hand fan"></div>
+
+            <!-- Reveal panel. -->
+            <div id="reveal" class="reveal" hidden>
+                <div id="reveal-q" class="reveal-q"></div>
+                <div id="reveal-team" class="reveal-team"></div>
+                <button id="btn-next-game" class="primary">Next game</button>
+            </div>
+
+        </div><!-- /.game-main -->
+
+        <aside class="game-sidebar">
+            <div class="sb-title">
+                Scores
+                <span class="help sb-help" data-tooltip="Hover the table to see what perfect Bayesians would have scored on the same hands.">?</span>
+            </div>
+            <div id="score-table-wrap" class="score-table-wrap">
+                <!-- Realized score table (always visible). On hover, the
+                     Bayesian table fades in over it. -->
+                <table id="score-table-real" class="score-table"></table>
+                <table id="score-table-ideal" class="score-table ideal-table"></table>
+            </div>
+        </aside>
+
     </div>
-
-    <div id="session-stats" class="stats-block"></div>
 </section>
 
 </main>
