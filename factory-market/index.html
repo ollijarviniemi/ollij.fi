@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bayesian Factory — Prediction Market</title>
+<link rel="stylesheet" href="css/style.css">
+
+<!-- Factory engine (browser globals), in dependency order -->
+<script src="../probability-games-common/config/colors.js"></script>
+<script src="../probability-games-common/config/sack-renderer.js"></script>
+<script src="../probability-games-common/core/rng.js"></script>
+<script src="../probability-games-common/core/trajectory.js"></script>
+<script src="../probability-games-common/core/ball.js"></script>
+<script src="../probability-games-common/core/component-registry.js"></script>
+<script src="../probability-games-common/core/seed-manager.js"></script>
+<script src="../probability-games-common/core/simulation.js"></script>
+<script src="../probability-games-common/core/renderer.js"></script>
+<script src="../factory-inference/core/veil-renderer.js"></script>
+<script src="../probability-games-common/core/coordinate-system.js"></script>
+<script src="../probability-games-common/components/sack.js"></script>
+<script src="../probability-games-common/components/conveyor.js"></script>
+<script src="../probability-games-common/components/conveyor-turn.js"></script>
+<script src="../probability-games-common/components/arm.js"></script>
+<script src="../probability-games-common/components/shuffler.js"></script>
+<script src="../probability-games-common/components/splitter.js"></script>
+<script src="../probability-games-common/components/observation.js"></script>
+<script src="../probability-games-common/components/black-pit.js"></script>
+<script src="../probability-games-common/components/duplicator.js"></script>
+<script src="../probability-games-common/components/filter.js"></script>
+<script src="../probability-games-common/components/merger.js"></script>
+<script src="../probability-games-common/components/button.js"></script>
+<script src="../probability-games-common/components/switch.js"></script>
+
+<script src="https://cdn.socket.io/4.8.0/socket.io.min.js"></script>
+<script src="config.js"></script>
+</head>
+<body>
+
+<div id="flash" class="flash" hidden></div>
+
+<!-- ============ LANDING ============ -->
+<main id="landing" class="view" hidden>
+  <h1>Bayesian Factory</h1>
+  <p class="lead">Watch balls fall through a partly hidden factory, then trade a market on where the next one lands. Everyone sees different balls — the market pools what you each know.</p>
+
+  <div id="tutorial-gate" class="gate" hidden>
+    <a href="tutorial.html" class="primary">See how it works first</a>
+    <button id="btn-skip-tutorial" class="skip">skip — I've played before</button>
+  </div>
+
+  <div id="play-controls" hidden>
+    <div class="start-row">
+      <input id="name" type="text" maxlength="24" autocomplete="off" placeholder="Your name">
+      <button id="btn-create" class="primary">Start a room</button>
+    </div>
+    <div class="lobby-label">Open rooms</div>
+    <div id="lobby-rooms" class="lobby-rooms"></div>
+    <div id="lobby-empty" class="lobby-empty">No open rooms — start one.</div>
+    <a href="tutorial.html" class="replay-tutorial">watch the tutorial again</a>
+  </div>
+</main>
+
+<!-- ============ GAME ============ -->
+<section id="game" class="view game-container" hidden>
+  <div class="left-content">
+    <div class="canvas-area">
+      <canvas id="factory-canvas" width="640" height="512"></canvas>
+      <div id="gm-grid" class="gm-grid" hidden></div>
+      <div id="gm-zoom" class="gm-zoom" hidden>
+        <button data-z="out" title="zoom out">−</button>
+        <button data-z="fit" title="fit to screen">fit</button>
+        <button data-z="in" title="zoom in">+</button>
+      </div>
+    </div>
+  </div>
+
+  <aside class="right-panel">
+    <div class="rp-top">
+      <span class="bank"><b id="bankroll">—</b> mana</span>
+    </div>
+
+    <div id="round-status" class="status-text"></div>
+    <button id="btn-restart" class="ghost replay-btn">↻ replay balls</button>
+
+    <div id="market-wrap">
+      <div id="mkt-buys" class="mkt-row"></div>
+      <canvas id="market-canvas"></canvas>
+      <div id="mkt-sells" class="mkt-row"></div>
+    </div>
+    <div id="prob-graph" class="probgraph"></div>
+    <div id="results"></div>
+
+    <div id="gm-panel" class="gm" hidden></div>
+    <div class="rp-spacer"></div>
+    <button id="btn-leave" class="ghost leave-bottom">leave</button>
+  </aside>
+</section>
+
+<script src="js/factory-replay.js"></script>
+<script src="js/gm-grid.js"></script>
+<script src="js/market-grid.js"></script>
+<script src="js/prob-graph.js"></script>
+<script src="js/market-ui.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Factory Market — Level Preview</title>
+<link rel="stylesheet" href="css/style.css">
+
+<!-- Factory engine (browser globals), in dependency order -->
+<script src="../probability-games-common/config/colors.js"></script>
+<script src="../probability-games-common/config/sack-renderer.js"></script>
+<script src="../probability-games-common/core/rng.js"></script>
+<script src="../probability-games-common/core/trajectory.js"></script>
+<script src="../probability-games-common/core/ball.js"></script>
+<script src="../probability-games-common/core/component-registry.js"></script>
+<script src="../probability-games-common/core/seed-manager.js"></script>
+<script src="../probability-games-common/core/simulation.js"></script>
+<script src="../probability-games-common/core/renderer.js"></script>
+<script src="../factory-inference/core/veil-renderer.js"></script>
+<script src="../probability-games-common/core/coordinate-system.js"></script>
+<script src="../probability-games-common/components/sack.js"></script>
+<script src="../probability-games-common/components/conveyor.js"></script>
+<script src="../probability-games-common/components/conveyor-turn.js"></script>
+<script src="../probability-games-common/components/arm.js"></script>
+<script src="../probability-games-common/components/shuffler.js"></script>
+<script src="../probability-games-common/components/splitter.js"></script>
+<script src="../probability-games-common/components/observation.js"></script>
+<script src="../probability-games-common/components/black-pit.js"></script>
+<script src="../probability-games-common/components/duplicator.js"></script>
+<script src="../probability-games-common/components/filter.js"></script>
+<script src="../probability-games-common/components/merger.js"></script>
+<script src="../probability-games-common/components/button.js"></script>
+<script src="../probability-games-common/components/switch.js"></script>
+</head>
+<body>
+
+<section class="game-container">
+  <div class="left-content">
+    <div class="canvas-area"><canvas id="factory-canvas" width="640" height="512"></canvas></div>
+  </div>
+  <aside class="right-panel">
+    <div class="rp-top">
+      <span class="room">Level preview</span>
+      <a href="manage.html" class="leave-link" style="margin-left:auto;text-decoration:none">← Levels</a>
+    </div>
+    <div id="empty" class="market-wait" hidden>No level to preview. Use “Test Level” in the editor.</div>
+    <div id="status" class="status-text"></div>
+    <button id="btn-replay" class="ghost replay-btn">↻ replay balls</button>
+    <label class="gm-liq"><input type="checkbox" id="veil-toggle"> show as players see it (plexiglass on)</label>
+    <div id="hyps" class="gm"></div>
+    <div id="bins"></div>
+    <div id="truth"></div>
+  </aside>
+</section>
+
+<script src="js/factory-replay.js"></script>
+<script src="js/preview.js"></script>
+</body>
+</html>

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factory Market — Level Editor</title>
+    <link rel="stylesheet" href="../factory-inference/css/editor.css">
+    <style>
+        /* Additional styles for DSL result display */
+        .dgp-result {
+            background: #1e1e1e;
+            border: 1px solid #3c3c3c;
+            border-radius: 4px;
+            padding: 10px;
+            margin-top: 10px;
+            font-family: monospace;
+            font-size: 11px;
+            color: #aaa;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .dgp-result .success {
+            color: #4caf50;
+        }
+        .dgp-result .error {
+            color: #f44336;
+        }
+        .dgp-result .info {
+            color: #2196f3;
+        }
+        .computed-distribution {
+            background: #2a2a2a;
+            border: 1px solid #4caf50;
+            border-radius: 4px;
+            padding: 10px;
+            margin-top: 10px;
+        }
+        .computed-distribution h4 {
+            margin: 0 0 8px 0;
+            font-size: 12px;
+            color: #4caf50;
+        }
+        .distribution-bar {
+            display: flex;
+            align-items: center;
+            margin-bottom: 4px;
+        }
+        .distribution-bar .label {
+            width: 40px;
+            font-size: 11px;
+            color: #aaa;
+        }
+        .distribution-bar .bar {
+            flex: 1;
+            height: 16px;
+            background: #3c3c3c;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .distribution-bar .bar-fill {
+            height: 100%;
+            background: #2196f3;
+            transition: width 0.3s;
+        }
+        .distribution-bar .prob {
+            width: 50px;
+            text-align: right;
+            font-size: 11px;
+            color: #aaa;
+            font-family: monospace;
+        }
+        /* DGP Versions Panel */
+        .version-item {
+            background: #1e1e1e;
+            border: 1px solid #3c3c3c;
+            border-radius: 4px;
+            padding: 8px;
+            margin-bottom: 6px;
+            cursor: pointer;
+        }
+        .version-item:hover {
+            border-color: #666;
+        }
+        .version-item.active {
+            border-color: #4caf50;
+            background: #1e2e1e;
+        }
+        .version-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2px;
+        }
+        .version-label {
+            background: transparent;
+            border: none;
+            color: #e0e0e0;
+            font-size: 12px;
+            font-weight: bold;
+            width: 120px;
+            padding: 0;
+        }
+        .version-label:focus {
+            outline: 1px solid #4caf50;
+            border-radius: 2px;
+        }
+        .version-info {
+            font-size: 11px;
+            color: #888;
+        }
+        .version-actions {
+            display: flex;
+            gap: 4px;
+        }
+        .version-actions button {
+            padding: 2px 6px;
+            font-size: 12px;
+            background: #333;
+            color: #aaa;
+            border: 1px solid #555;
+            border-radius: 2px;
+            cursor: pointer;
+            line-height: 1;
+        }
+        .version-actions button:hover {
+            background: #444;
+        }
+        .version-delete:hover {
+            background: #633 !important;
+            color: #f88 !important;
+        }
+        #save-version-btn {
+            padding: 4px 10px;
+            font-size: 12px;
+            background: #3c3c3c;
+            color: #e0e0e0;
+            border: 1px solid #555;
+            border-radius: 3px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 6px;
+        }
+        #save-version-btn:hover {
+            background: #4c4c4c;
+        }
+    </style>
+</head>
+<body>
+    <div class="editor-container">
+        <header>
+            <h1><a href="manage.html" style="color:inherit;text-decoration:none">←</a> Factory Market — Level Editor</h1>
+            <div class="header-actions">
+                <button onclick="window.location.href='manage.html'">All levels</button>
+                <button id="new-level">Clear</button>
+                <button id="load-level">Load Level</button>
+                <button id="save-level">Save Level</button>
+                <button id="test-level">Test Level</button>
+            </div>
+        </header>
+
+        <div class="editor-main">
+            <!-- Toolbar -->
+            <div class="toolbar">
+                <h3>Tools</h3>
+                <div class="tool-group">
+                    <button class="tool-btn active" data-tool="select" title="Select (V)">
+                        <span class="icon">↖</span>
+                        <span class="label">Select</span>
+                        <span class="hotkey">V</span>
+                    </button>
+                    <button class="tool-btn" data-tool="move" title="Move (M)">
+                        <span class="icon">✥</span>
+                        <span class="label">Move</span>
+                        <span class="hotkey">M</span>
+                    </button>
+                    <button class="tool-btn" data-tool="delete" title="Delete (D)">
+                        <span class="icon">×</span>
+                        <span class="label">Delete</span>
+                        <span class="hotkey">D</span>
+                    </button>
+                    <button class="tool-btn" data-tool="veil" title="Veil (W)">
+                        <span class="icon">▓</span>
+                        <span class="label">Veil</span>
+                        <span class="hotkey">W</span>
+                    </button>
+                </div>
+
+                <h3>Components</h3>
+                <div class="component-palette" id="component-palette">
+                    <!-- Populated by JavaScript -->
+                </div>
+
+                <h3>Properties</h3>
+                <div class="properties-panel" id="properties-panel">
+                    <p class="help-text">Select a component to edit properties</p>
+                </div>
+
+                <h3>Shortcuts</h3>
+                <div class="shortcuts">
+                    <div><kbd>V</kbd> Select</div>
+                    <div><kbd>M</kbd> Move</div>
+                    <div><kbd>D</kbd> Delete</div>
+                    <div><kbd>W</kbd> Veil</div>
+                    <div><kbd>Del</kbd> Remove</div>
+                    <div><kbd>R</kbd> Rotate</div>
+                    <div><kbd>Ctrl+Z</kbd> Undo</div>
+                    <div><kbd>Ctrl+Y</kbd> Redo</div>
+                </div>
+            </div>
+
+            <!-- Canvas Area -->
+            <div class="canvas-area">
+                <div class="canvas-controls">
+                    <div class="level-info">
+                        <label>Columns: <span id="grid-width-display">10</span></label>
+                        <button id="remove-col-left" title="Remove column from left">−←</button>
+                        <button id="add-col-left" title="Add column to left">+←</button>
+                        <button id="add-col-right" title="Add column to right">+→</button>
+                        <button id="remove-col-right" title="Remove column from right">−→</button>
+                        <label style="margin-left: 15px;">Rows: <span id="grid-height-display">8</span></label>
+                        <button id="remove-row-top" title="Remove row from top">−↑</button>
+                        <button id="add-row-top" title="Add row to top">+↑</button>
+                        <button id="add-row-bottom" title="Add row to bottom">+↓</button>
+                        <button id="remove-row-bottom" title="Remove row from bottom">−↓</button>
+                    </div>
+                    <div class="status" id="status">Ready</div>
+                </div>
+                <canvas id="editor-canvas" width="640" height="512"></canvas>
+            </div>
+
+            <!-- DGP Script Panel -->
+            <div class="hypothesis-panel">
+                <h3>Data Generating Process</h3>
+                <div class="script-editor">
+                    <textarea id="dgp-script" spellcheck="false"></textarea>
+                </div>
+                <button id="execute-dgp" class="execute-btn">Execute DGP</button>
+
+                <!-- DGP Execution Result -->
+                <div class="dgp-result" id="dgp-result">
+                    <p class="info">Click "Execute DGP" to validate and compute distribution</p>
+                </div>
+
+                <!-- Computed Distribution Display -->
+                <div class="computed-distribution" id="computed-distribution" style="display: none;">
+                    <h4>Computed Distribution</h4>
+                    <div id="distribution-bars">
+                        <!-- Populated by JavaScript -->
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 16px;">Hidden versions</h3>
+                <div id="dgp-versions-panel">
+                    <div id="version-list">
+                        <p class="help-text">No versions yet. Veil some tiles, then save a version.</p>
+                    </div>
+                    <button id="save-version-btn" title="Save the components on veiled tiles as a new version">+ Save version</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Configuration (shared library) -->
+    <script src="../probability-games-common/config/colors.js"></script>
+    <script src="../probability-games-common/config/sack-renderer.js"></script>
+
+    <!-- Core System (shared library) -->
+    <script src="../probability-games-common/core/rng.js"></script>
+    <script src="../probability-games-common/core/trajectory.js"></script>
+    <script src="../probability-games-common/core/ball.js"></script>
+    <script src="../probability-games-common/core/component-registry.js"></script>
+    <script src="../probability-games-common/core/seed-manager.js"></script>
+    <script src="../probability-games-common/core/simulation.js"></script>
+    <script src="../probability-games-common/core/renderer.js"></script>
+    <script src="../probability-games-common/core/coordinate-system.js"></script>
+
+    <!-- Components (shared library) -->
+    <script src="../probability-games-common/components/sack.js"></script>
+    <script src="../probability-games-common/components/conveyor.js"></script>
+    <script src="../probability-games-common/components/conveyor-turn.js"></script>
+    <script src="../probability-games-common/components/arm.js"></script>
+    <script src="../probability-games-common/components/shuffler.js"></script>
+    <script src="../probability-games-common/components/splitter.js"></script>
+    <script src="../probability-games-common/components/observation.js"></script>
+    <script src="../probability-games-common/components/black-pit.js"></script>
+    <script src="../probability-games-common/components/duplicator.js"></script>
+    <script src="../probability-games-common/components/filter.js"></script>
+    <script src="../probability-games-common/components/merger.js"></script>
+    <script src="../probability-games-common/components/button.js"></script>
+    <script src="../probability-games-common/components/switch.js"></script>
+
+    <!-- DGP DSL System -->
+    <script src="../factory-inference/core/dgp-dsl-core.js"></script>
+
+    <!-- Probabilistic Prediction DSL -->
+    <script src="../factory-inference/core/distribution.js"></script>
+    <script src="../factory-inference/core/dsl-parser.js"></script>
+    <script src="../factory-inference/core/dsl-evaluator.js"></script>
+    <script src="../factory-inference/core/distribution-scorer.js"></script>
+    <script src="../factory-inference/core/world-dag.js"></script>
+    <script src="../factory-inference/core/branching-simulator.js"></script>
+
+    <!-- Level Registry -->
+    <script src="levels/level-registry.js"></script>
+
+    <!-- Level Editor -->
+    <script src="editor/level-editor.js"></script>
+</body>
+</html>

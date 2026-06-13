@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bayesian Factory — How it works</title>
+<link rel="stylesheet" href="css/style.css">
+
+<!-- Factory engine (browser globals), in dependency order -->
+<script src="../probability-games-common/config/colors.js"></script>
+<script src="../probability-games-common/config/sack-renderer.js"></script>
+<script src="../probability-games-common/core/rng.js"></script>
+<script src="../probability-games-common/core/trajectory.js"></script>
+<script src="../probability-games-common/core/ball.js"></script>
+<script src="../probability-games-common/core/component-registry.js"></script>
+<script src="../probability-games-common/core/seed-manager.js"></script>
+<script src="../probability-games-common/core/simulation.js"></script>
+<script src="../probability-games-common/core/renderer.js"></script>
+<script src="../factory-inference/core/veil-renderer.js"></script>
+<script src="../probability-games-common/core/coordinate-system.js"></script>
+<script src="../probability-games-common/components/sack.js"></script>
+<script src="../probability-games-common/components/conveyor.js"></script>
+<script src="../probability-games-common/components/conveyor-turn.js"></script>
+<script src="../probability-games-common/components/arm.js"></script>
+<script src="../probability-games-common/components/shuffler.js"></script>
+<script src="../probability-games-common/components/splitter.js"></script>
+<script src="../probability-games-common/components/observation.js"></script>
+<script src="../probability-games-common/components/black-pit.js"></script>
+<script src="../probability-games-common/components/duplicator.js"></script>
+<script src="../probability-games-common/components/filter.js"></script>
+<script src="../probability-games-common/components/merger.js"></script>
+<script src="../probability-games-common/components/button.js"></script>
+<script src="../probability-games-common/components/switch.js"></script>
+</head>
+<body>
+
+<main class="tut">
+  <div class="tut-top">
+    <h1>How it works</h1>
+    <a class="skip-link" href="index.html">skip ›</a>
+  </div>
+  <div class="tut-grid">
+    <div class="tut-main">
+      <div class="canvas-bar">
+        <span id="tut-step"></span>
+        <span class="spacer"></span>
+        <button id="tut-replay" class="ghost">↻ replay</button>
+      </div>
+      <div class="canvas-wrap"><canvas id="factory-canvas" width="600" height="480"></canvas></div>
+    </div>
+    <div class="tut-side">
+      <div class="tut-dots" id="tut-dots"></div>
+      <h2 id="tut-title"></h2>
+      <p id="tut-body"></p>
+      <div class="tut-nav">
+        <button id="tut-back" class="ghost">‹ Back</button>
+        <button id="tut-next" class="primary">Next ›</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="js/factory-replay.js"></script>
+<script src="tutorial/levels.js"></script>
+<script src="tutorial/tutorial.js"></script>
+</body>
+</html>

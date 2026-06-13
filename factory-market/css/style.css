@@ -1,0 +1,155 @@
+/* Bayesian Factory — Prediction Market. Matches the Inference / Aumann house
+   style: flat white, black ink, a factory canvas with light grid lines, and a
+   fixed bordered sidebar holding the 10-row betting grid. */
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  color: #111; background: #fff; line-height: 1.45;
+  -webkit-tap-highlight-color: transparent;
+}
+h1 { font-size: 30px; font-weight: 600; letter-spacing: -0.3px; margin: 0 0 10px; }
+h2 { font-size: 21px; font-weight: 600; margin: 0 0 12px; }
+.muted { color: #888; }
+[hidden] { display: none !important; }
+
+button {
+  font: inherit; cursor: pointer; padding: 9px 18px;
+  border: 2px solid #111; background: #fff; color: #111; border-radius: 4px;
+  transition: background .15s ease;
+}
+button:hover:not(:disabled) { background: #f4f4f4; }
+button.primary { background: #111; color: #fff; }
+button.primary:hover:not(:disabled) { background: #333; }
+button.ghost { border-color: #ddd; color: #666; padding: 6px 12px; }
+button:disabled { opacity: .4; cursor: not-allowed; }
+input, select { font: inherit; padding: 9px 11px; border: 2px solid #ccc; border-radius: 4px; }
+input:focus, select:focus { outline: none; border-color: #111; }
+
+.flash { position: fixed; top: 14px; left: 50%; transform: translateX(-50%); z-index: 50;
+  padding: 8px 14px; border: 2px solid #c33; color: #c33; background: #fff; border-radius: 4px; font-size: 14px; }
+
+/* ---------- Landing ---------- */
+#landing { max-width: 640px; margin: 0 auto; padding: 40px 24px; }
+.lead { color: #555; font-size: 16px; margin-bottom: 24px; }
+.start-row { display: flex; gap: 10px; margin: 18px 0 30px; }
+.start-row input { flex: 1; }
+.lobby-label { font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px; }
+.lobby-rooms { display: flex; flex-direction: column; gap: 8px; }
+.lobby-room { display: flex; justify-content: space-between; align-items: center;
+  padding: 13px 16px; border: 1px solid #ddd; border-radius: 6px; }
+.lobby-room:hover { border-color: #999; }
+.lobby-room .host { font-size: 16px; font-weight: 500; }
+.lobby-room .meta { color: #888; font-size: 13px; }
+.lobby-empty { color: #999; font-size: 14px; padding: 6px 0; }
+.replay-tutorial { display: inline-block; margin-top: 18px; color: #aaa; font-size: 13px; text-decoration: none; }
+.replay-tutorial:hover { color: #666; }
+.gate .primary { display: block; text-align: center; text-decoration: none; padding: 11px; }
+.gate .skip { display: inline-block; margin-top: 12px; color: #aaa; font-size: 13px; border: none; background: none; padding: 0; }
+.gate .skip:hover { color: #666; background: none; }
+
+/* ---------- Game: factory on the left, fixed sidebar on the right ---------- */
+.game-container { display: flex; flex-direction: row; height: 100vh; width: 100vw; }
+.left-content { flex: 1; display: flex; min-width: 0; }
+.canvas-area { flex: 1; display: flex; align-items: center; justify-content: center; padding: 16px; min-width: 0; position: relative; }
+#factory-canvas { outline: 2px solid #ddd; display: block; box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  max-width: 100%; max-height: 100%; }
+
+/* GM grid: one mini factory per player. Cells are sized by JS to fill the area
+   (zoom 1) and scale with zoom; scrollable + drag-to-pan. */
+.gm-grid { width: 100%; height: 100%; overflow: hidden; cursor: grab; position: relative; }
+.gm-grid.grabbing { cursor: grabbing; }
+.gm-cells { display: grid; gap: 12px; align-content: start; justify-content: start;
+  transform-origin: 0 0; will-change: transform; }
+.gm-cell { border: 1px solid #ddd; border-radius: 6px; padding: 5px 5px 7px; background: #fff; overflow: hidden; }
+.gm-cell .name { font-size: 12px; font-weight: 600; text-align: center; margin-bottom: 3px; color: #333;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.gm-cell .cwrap { display: flex; align-items: center; justify-content: center; }
+.gm-cell canvas { outline: 1px solid #eee; max-width: 100%; max-height: 100%; }
+.gm-grid-empty { color: #999; padding: 40px; text-align: center; }
+
+/* zoom controls, floating over the grid */
+.gm-zoom { position: absolute; top: 12px; right: 12px; display: flex; gap: 4px; z-index: 5; }
+.gm-zoom button { padding: 4px 10px; border: 1px solid #ccc; background: rgba(255,255,255,0.95);
+  border-radius: 4px; font-size: 13px; line-height: 1; }
+.gm-zoom button:hover { background: #f0f0f0; }
+
+.right-panel { width: 640px; max-width: 50vw; flex: none; background: #fff; border-left: 2px solid #000;
+  padding: 20px 26px; display: flex; flex-direction: column; gap: 18px; overflow-y: auto; }
+.rp-top { display: flex; align-items: center; }
+.rp-top .bank { color: #111; font-size: 26px; }
+.rp-top .bank b { font-variant-numeric: tabular-nums; }
+.rp-top .bank small, .rp-top .bank { font-weight: 500; }
+.status-text { font-size: 16px; font-weight: 600; color: #333; text-align: center; min-height: 20px; }
+.replay-btn { align-self: center; font-size: 15px; padding: 8px 16px; }
+.rp-spacer { flex: 1; min-height: 8px; }
+.leave-bottom { align-self: flex-end; font-size: 14px; }
+
+/* market grid + per-column trade buttons */
+#market-wrap { text-align: center; }
+#market-canvas { display: block; margin: 0 auto; }
+.mrow { display: flex; margin: 0 auto; }
+.mrow .mgutter { flex: none; }
+.mcol { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 4px 2px; }
+.mcol button { width: calc(100% - 4px); padding: 5px 0; font-size: 14px; border-width: 1px; border-color: #ddd;
+  border-radius: 4px; font-variant-numeric: tabular-nums; font-weight: 600; }
+#mkt-buys .mcol button { color: #1b7a34; }
+#mkt-sells .mcol button { color: #b3261e; }
+/* Identical to the canvas observation-point boxes: colored fill, black border,
+   black letter. */
+.mlabel { width: 30px; height: 30px; border-radius: 3px; border: 2px solid #000; color: #000;
+  font-weight: 700; font-size: 17px; display: flex; align-items: center; justify-content: center; margin-bottom: 4px; }
+/* Always reserve the position line so the column doesn't shift when a position
+   appears/disappears. */
+.mpos { height: 16px; line-height: 16px; font-size: 13px; color: #333; font-variant-numeric: tabular-nums; margin-bottom: 3px; }
+
+/* probability-over-time chart (Manifold style) — prominent */
+.probgraph svg { width: 100%; height: auto; display: block; }
+.market-wait { color: #888; text-align: center; font-size: 14px; }
+
+/* results */
+.sb-title { font-size: 13px; color: #888; text-transform: uppercase; letter-spacing: 1.2px; margin: 0 0 8px; }
+.results { border-top: 1px solid #eee; padding-top: 10px; }
+.results table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; font-size: 15px; }
+.results td { padding: 5px 6px; text-align: right; }
+.results td:first-child { text-align: left; }
+.pos { color: #1b7a34; } .neg { color: #b3261e; }
+
+/* GM controls */
+.gm { border-top: 1px solid #eee; padding-top: 14px; display: flex; flex-direction: column; gap: 10px; }
+.gm select { width: 100%; padding: 9px; font-size: 15px; }
+.gm .hyps { display: flex; flex-direction: column; gap: 6px; }
+.gm .hyp { display: flex; align-items: center; gap: 10px; font-size: 15px; padding: 8px 12px; border: 1px solid #ddd; border-radius: 5px; cursor: pointer; }
+.gm .hyp.on { border-color: #111; background: #f6f6f6; }
+.gm .hyp .dist { color: #555; font-variant-numeric: tabular-nums; margin-left: auto; }
+.gm .row { display: flex; gap: 10px; }
+.gm .row button { flex: 1; font-size: 15px; padding: 10px 14px; }
+.gm-liq { color: #888; font-size: 14px; display: inline-flex; align-items: center; gap: 6px; }
+.gm-liq input { width: 70px; padding: 7px; border-width: 1px; }
+
+/* ---------- Tutorial ---------- */
+main.tut { max-width: 1100px; margin: 0 auto; padding: 24px; }
+.tut-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
+.skip-link { color: #aaa; text-decoration: none; font-size: 14px; }
+.skip-link:hover { color: #111; }
+.tut-grid { display: grid; grid-template-columns: 1fr 340px; gap: 40px; align-items: start; }
+.canvas-bar { display: flex; align-items: center; gap: 14px; margin-bottom: 8px; color: #888; font-size: 14px; }
+.canvas-bar .spacer { flex: 1; }
+.canvas-wrap { background: #fafafa; border: 1px solid #eee; border-radius: 6px; overflow: hidden; }
+#factory-canvas.tut-canvas { width: 100%; height: auto; }
+.tut-main .canvas-wrap canvas { display: block; width: 100%; height: auto; }
+.tut-side { display: flex; flex-direction: column; min-height: 420px; }
+.tut-side h2 { margin: 6px 0 10px; }
+.tut-side p { color: #444; }
+.tut-dots { display: flex; gap: 7px; margin-bottom: 6px; }
+.tut-dots .dot { width: 8px; height: 8px; border-radius: 50%; background: #ddd; }
+.tut-dots .dot.done { background: #aaa; }
+.tut-dots .dot.on { background: #111; }
+.tut-nav { margin-top: auto; display: flex; justify-content: space-between; gap: 10px; padding-top: 18px; }
+
+@media (max-width: 880px) {
+  .game-container { flex-direction: column; height: auto; }
+  .right-panel { width: 100%; max-width: none; border-left: none; border-top: 2px solid #000; }
+  .tut-grid { grid-template-columns: 1fr; gap: 24px; }
+}

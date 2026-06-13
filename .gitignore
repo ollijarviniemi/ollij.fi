@@ -3,5 +3,8 @@ compile_llms.py
 update_llms.sh
 setup_auto_update.py
 
+# Node dependencies (factory-market + aumann servers)
+node_modules/
+
 # Ensure LLMs.txt is tracked (not ignored)
 !LLMs.txt
