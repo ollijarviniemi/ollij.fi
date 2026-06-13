@@ -8,7 +8,7 @@
 
 (function () {
     const SERVER_URL_DEV  = 'http://localhost:8787';
-    const SERVER_URL_PROD = 'https://sister-vital-benjamin-cod.trycloudflare.com';
+    const SERVER_URL_PROD = 'https://pressed-antique-phys-density.trycloudflare.com';
 
     const isLocal =
         location.hostname === 'localhost' ||

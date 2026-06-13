@@ -3,7 +3,7 @@
 // deployed URL (rewritten by server/go-live.sh on each live session).
 (function () {
     const SERVER_URL_DEV = 'http://localhost:8788';
-    const SERVER_URL_PROD = 'CHANGE_ME_TO_YOUR_DEPLOYED_SERVER_URL';
+    const SERVER_URL_PROD = 'https://modifications-bridal-remembered-downloading.trycloudflare.com';
 
     const isLocal =
         location.hostname === 'localhost' ||
