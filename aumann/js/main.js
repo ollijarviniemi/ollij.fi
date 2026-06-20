@@ -155,7 +155,10 @@ function render() {
 }
 
 function renderLanding() {
-    document.querySelector('#name').value = getName();
+    // Only seed the name from storage when empty — never clobber what the user
+    // is typing (lobby updates re-render this view).
+    const nameEl = document.querySelector('#name');
+    if (!nameEl.value) nameEl.value = getName();
     const roomsEl = document.querySelector('#lobby-rooms');
     const emptyEl = document.querySelector('#lobby-empty');
     roomsEl.innerHTML = '';
