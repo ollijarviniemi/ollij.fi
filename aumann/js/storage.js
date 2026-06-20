@@ -29,7 +29,8 @@ export function clearRoomCookie() {
     try { localStorage.removeItem(KEY_ROOM); } catch {}
 }
 
-// History: per-player array of records { ts, date, ownScore, idealScore, delta, opponentName }
+// History: per-player array of records { ts, date, ownScore, loss, opponentName, qTrue }
+// `loss` = the player's own expected points lost vs. Bayesian-optimal play.
 export function getHistory(playerName) {
     try {
         const raw = localStorage.getItem(KEY_HISTORY_PREFIX + safe(playerName));
@@ -52,16 +53,17 @@ export function summarize(history) {
     if (!history.length) return null;
     const todayIso = new Date().toISOString().slice(0, 10);
     const todays = history.filter(h => (h.date || '').startsWith(todayIso));
-    const todayAvg = todays.length ? todays.reduce((s, h) => s + h.ownScore, 0) / todays.length : null;
-    const todayIdealAvg = todays.length ? todays.reduce((s, h) => s + (h.idealScore || 0) / 2, 0) / todays.length : null; // ideal is sum of 4 placements; each player's share is half
-    const allOwn = history.reduce((s, h) => s + h.ownScore, 0);
-    const allIdeal = history.reduce((s, h) => s + (h.idealScore || 0) / 2, 0);
+    const avg = (arr, f) => (arr.length ? arr.reduce((s, h) => s + f(h), 0) / arr.length : null);
+    // Loss averages only over records that carry a loss (older records predate
+    // the metric and would otherwise dilute the average toward 0).
+    const todayLoss = todays.filter(h => h.loss != null);
+    const allLoss = history.filter(h => h.loss != null);
     return {
         games: history.length,
         todayGames: todays.length,
-        todayAvg,
-        todayIdealAvg,
-        allTimeAvg: allOwn / history.length,
-        allTimeIdealAvg: allIdeal / history.length,
+        todayAvg: avg(todays, h => h.ownScore),
+        todayLossAvg: avg(todayLoss, h => h.loss),
+        allTimeAvg: avg(history, h => h.ownScore),
+        allTimeLossAvg: avg(allLoss, h => h.loss),
     };
 }

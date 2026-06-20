@@ -7,8 +7,12 @@
 // open (cors: { origin: '*' }) so any client origin works.
 
 (function () {
+    // Where the client opens its WebSocket. In production the realtime server is
+    // same-origin (Caddy proxies /socket.io/* to the games server), so this is
+    // empty. In local dev the server runs on :8787. main.js appends the game's
+    // namespace ('/aumann').
     const SERVER_URL_DEV  = 'http://localhost:8787';
-    const SERVER_URL_PROD = 'https://pressed-antique-phys-density.trycloudflare.com';
+    const SERVER_URL_PROD = 'https://combo-netscape-encoding-site.trycloudflare.com';  // temp: laptop tunnel bridge
 
     const isLocal =
         location.hostname === 'localhost' ||

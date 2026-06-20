@@ -32,6 +32,47 @@ export function rowScore(row, qTrue) {
     return qTrue ? ROWS[row].scoreYes : ROWS[row].scoreNo;
 }
 
+// Expected payoff of a token on `row` when the probability of Q is `p`.
+// The board's bands are designed so the expected-score-maximising row is
+// exactly beliefToRow(p).
+export function expScore(row, p) {
+    return p * ROWS[row].scoreYes + (1 - p) * ROWS[row].scoreNo;
+}
+
+// Expected loss (regret) of placing on `pickedRow` instead of the Bayesian-
+// optimal row, with the expectation over Q taken under the Bayesian belief `p`.
+// Always >= 0, and exactly 0 when pickedRow is (one of) the optimal row(s).
+//
+// This is the variance-reduced alternative to comparing realised scores: it
+// replaces the single realised outcome 1[Q] by its conditional expectation p,
+// so it carries no Bernoulli noise from how Q happened to resolve.
+export function expectedLoss(pickedRow, p) {
+    let best = -Infinity;
+    for (let r = 0; r < ROWS.length; r++) {
+        const s = expScore(r, p);
+        if (s > best) best = s;
+    }
+    return best - expScore(pickedRow, p);
+}
+
+// Per-move expected loss for both seats, given the ideal-Bayesian beliefs (the
+// `p1`/`p2` blocks from idealScore) and the rows each player actually placed.
+//
+// Beliefs are the ones an ideal Bayesian would have held — including round 2,
+// which conditions on the *ideal* teammate's round-1 row, not the human
+// teammate's actual placement. So a player can incur loss because their
+// teammate misplayed; in a team game, that's intended.
+export function lossBreakdown(ideal, placements) {
+    const seat = (info, r1Row, r2Row) => {
+        const r1 = expectedLoss(r1Row, info.r1Belief);
+        const r2 = expectedLoss(r2Row, info.r2Belief);
+        return { r1, r2, total: r1 + r2 };
+    };
+    const p1 = seat(ideal.p1, placements.p1r1, placements.p1r2);
+    const p2 = seat(ideal.p2, placements.p2r1, placements.p2r2);
+    return { p1, p2, team: p1.total + p2.total };
+}
+
 // Q: at least one of the supplied conditions is satisfied by the 10-card hand.
 export function checkQ(combinedHand, conditions) {
     for (const cond of conditions) if (cond.eval(combinedHand)) return true;

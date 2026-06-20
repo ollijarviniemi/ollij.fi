@@ -3,7 +3,7 @@
 import {
     showView, renderHand, revealHandInPlace, renderBoard, renderConditions,
     statusFor, realizedScores, renderBayesArrows, clearBayesArrows,
-    renderScoreTables, renderHowTo,
+    renderScoreboard, renderHowTo, appendChatMessage,
 } from './render.js';
 import {
     getName, setName, getRoomCookie, setRoomCookie, clearRoomCookie,
@@ -19,6 +19,14 @@ let lastGameRecorded = 0;
 let inLobby = false;
 // Track previous render's game number + state so we can animate transitions.
 let lastRenderKey = null;
+// Chat: ids already rendered (idempotent across the live event + state history).
+let chatSeen = new Set();
+let chatLastRound = null;   // last game number marked with a divider in the chat
+let inGameView = false;
+// Scoreboard: which metric is shown, and a signature to avoid needless rebuilds
+// (which would otherwise disturb the reader's scroll position).
+let scoreboardMode = 'loss';   // 'loss' (vs Bayesian, default) | 'score' (raw points)
+let scoreboardSig = null;
 
 /* ---------------- Socket ---------------- */
 
@@ -28,9 +36,10 @@ function connect() {
         flashError('Server URL not configured. Edit aumann/config.js and set SERVER_URL_PROD.');
         return;
     }
-    socket = io(SERVER, { transports: ['websocket'], reconnection: true });
+    socket = io(SERVER + '/aumann', { transports: ['websocket'], reconnection: true });
     socket.on('state',     onState);
     socket.on('lobby',     onLobby);
+    socket.on('chat',      onChat);
     socket.on('connect',   onConnect);
     socket.on('disconnect', () => {});
     socket.on('connect_error', () => flashError(`Cannot reach server (${SERVER}).`));
@@ -54,12 +63,94 @@ function onState(s) {
 }
 function onLobby(l) { lobby = l; if (!state || !state.game) renderLanding(); }
 
+/* ---------------- Chat ---------------- */
+
+function onChat(entry) { pushChat(entry); }
+
+// Render one message if unseen. Keeps the log pinned to the bottom when the
+// reader is already near the bottom (so it doesn't yank you up while scrolling).
+function pushChat(entry) {
+    if (chatSeen.has(entry.id)) return;
+    chatSeen.add(entry.id);
+    const logEl = document.querySelector('#chat-log');
+    if (!logEl) return;
+    const empty = logEl.querySelector('.chat-empty');
+    if (empty) empty.remove();
+    const nearBottom = logEl.scrollHeight - logEl.scrollTop - logEl.clientHeight < 60;
+    appendChatMessage(logEl, entry, state?.seat ?? -1);
+    if (nearBottom) logEl.scrollTop = logEl.scrollHeight;
+}
+
+// A faint "round N" divider in the chat flow when a new round (deal) begins.
+// The first round we see gets no "began" marker.
+function maybeRoundDivider() {
+    const n = state?.game?.number;
+    if (n == null) return;
+    if (chatLastRound == null) { chatLastRound = n; return; }
+    if (n === chatLastRound) return;
+    chatLastRound = n;
+    const logEl = document.querySelector('#chat-log');
+    if (!logEl) return;
+    const empty = logEl.querySelector('.chat-empty');
+    if (empty) empty.remove();
+    const nearBottom = logEl.scrollHeight - logEl.scrollTop - logEl.clientHeight < 60;
+    const div = document.createElement('div');
+    div.className = 'chat-divider';
+    const span = document.createElement('span');
+    span.textContent = `round ${n}`;
+    div.appendChild(span);
+    logEl.appendChild(div);
+    if (nearBottom) logEl.scrollTop = logEl.scrollHeight;
+}
+
+// Catch up on any history carried in the state (reconnect / late join).
+function renderChat() {
+    const logEl = document.querySelector('#chat-log');
+    if (!logEl) return;
+    for (const entry of state?.chat || []) pushChat(entry);
+    maybeRoundDivider();
+    if (!logEl.children.length) {
+        const e = document.createElement('div');
+        e.className = 'chat-empty muted';
+        e.textContent = 'No messages yet — say hi 👋';
+        logEl.appendChild(e);
+    }
+}
+
+// The game never needs the keyboard, so keep the chat input focused. Skip on
+// touch devices to avoid forcing the on-screen keyboard up.
+function focusChat() {
+    if ('ontouchstart' in window) return;
+    document.querySelector('#chat-input')?.focus();
+}
+
+/* ---------------- Scoreboard ---------------- */
+
+function renderScoreboardIfChanged() {
+    const g = state?.game;
+    const rows = state?.scoreHistory || [];
+    const latest = g && g.state === 'revealed' ? g.number : null;
+    const sig = `${scoreboardMode}|${rows.length}|${latest}`;
+    if (sig === scoreboardSig) return;
+    scoreboardSig = sig;
+    renderScoreboard(document.querySelector('#scoreboard'), rows, latest, scoreboardMode);
+}
+
+function setScoreboardMode(mode) {
+    if (mode === scoreboardMode) return;
+    scoreboardMode = mode;
+    scoreboardSig = null; // force a rebuild
+    document.querySelectorAll('.sb-tab').forEach(b => b.classList.toggle('active', b.dataset.mode === mode));
+    renderScoreboardIfChanged();
+}
+
 /* ---------------- Render dispatch ---------------- */
 
 function render() {
-    if (!state) { showView('landing'); renderLanding(); return; }
-    if (!state.opponent && !state.game) { showView('waiting'); return; }
+    if (!state) { showView('landing'); renderLanding(); inGameView = false; return; }
+    if (!state.opponent && !state.game) { showView('waiting'); inGameView = false; return; }
     showView('game');
+    if (!inGameView) { inGameView = true; focusChat(); }
     renderGame();
 }
 
@@ -90,8 +181,8 @@ function renderLanding() {
         const summary = summarize(getHistory(name));
         if (summary) {
             statsEl.innerHTML = `
-                <div class="stat-row"><span class="label">Today (${summary.todayGames})</span><span>${summary.todayAvg != null ? summary.todayAvg.toFixed(1) : '—'} · ideal ${summary.todayIdealAvg != null ? summary.todayIdealAvg.toFixed(1) : '—'}</span></div>
-                <div class="stat-row"><span class="label">All-time (${summary.games})</span><span>${summary.allTimeAvg.toFixed(1)} · ideal ${summary.allTimeIdealAvg.toFixed(1)}</span></div>
+                <div class="stat-row"><span class="label">Today (${summary.todayGames})</span><span>${summary.todayAvg != null ? summary.todayAvg.toFixed(1) : '—'} · loss ${summary.todayLossAvg != null ? summary.todayLossAvg.toFixed(1) : '—'}</span></div>
+                <div class="stat-row"><span class="label">All-time (${summary.games})</span><span>${summary.allTimeAvg.toFixed(1)} · loss ${summary.allTimeLossAvg != null ? summary.allTimeLossAvg.toFixed(1) : '—'}</span></div>
             `;
             statsEl.hidden = false;
         } else { statsEl.hidden = true; }
@@ -156,13 +247,8 @@ function renderGame() {
         clearBayesArrows(boardWrap);
     }
 
-    // Sidebar.
-    renderScoreTables(
-        document.querySelector('#score-table-real'),
-        document.querySelector('#score-table-ideal'),
-        state.scoreHistory,
-        g.state === 'revealed' ? g.number : null,
-    );
+    // Sidebar scoreboard (re-rendered only when its content actually changes).
+    renderScoreboardIfChanged();
 
     // Next-game button: visible when revealed. Both players must click it
     // (server tracks ready[seat]). After your own click, the button disables
@@ -179,6 +265,7 @@ function renderGame() {
         nextBtn.textContent = 'Next game';
     }
 
+    renderChat();
     lastRenderKey = key;
 }
 
@@ -208,19 +295,17 @@ function maybeRecordHistory() {
     lastGameRecorded = state.game.number;
     const real = realizedScores(state);
     if (!real) return;
-    const q = state.game.ideal.qTrue;
-    const S = [[10, 0], [9, 4], [7, 7], [4, 9], [0, 10]];
-    const myI = state.seat === 0 ? state.game.ideal.p1 : state.game.ideal.p2;
-    const idealHalf = (q ? S[myI.r1Row][0] : S[myI.r1Row][1]) + (q ? S[myI.r2Row][0] : S[myI.r2Row][1]);
+    // Your own expected loss for this game (two placements), as computed
+    // server-side from the ideal-Bayesian beliefs.
+    const hist = (state.scoreHistory || []).find(h => h.gameNum === state.game.number);
+    const myLoss = hist?.you ? hist.you.loss : null;
     appendHistory(state.me?.name || 'You', {
         ts: Date.now(),
         date: new Date().toISOString(),
         ownScore: real.my,
-        idealScore: state.game.ideal.score,
-        idealHalf,
-        delta: real.my - idealHalf,
+        loss: myLoss,
         opponentName: state.opponent?.name || 'Teammate',
-        qTrue: q,
+        qTrue: state.game.ideal.qTrue,
     });
 }
 
@@ -253,6 +338,8 @@ window.addEventListener('DOMContentLoaded', () => {
         clearRoomCookie();
         if (socket) { socket.close(); socket = null; }
         state = null; lobby = null; inLobby = false; lastRenderKey = null;
+        chatSeen = new Set(); chatLastRound = null; inGameView = false; scoreboardSig = null;
+        const logEl = document.querySelector('#chat-log'); if (logEl) logEl.innerHTML = '';
         connect();
         renderLanding(); showView('landing');
     }
@@ -264,11 +351,45 @@ window.addEventListener('DOMContentLoaded', () => {
         socket.emit('game:ready', null, () => {});
     });
 
+    // Scoreboard metric toggle.
+    document.querySelectorAll('.sb-tab').forEach(btn => {
+        btn.addEventListener('click', () => setScoreboardMode(btn.dataset.mode));
+    });
+
     // Tap-to-toggle for ?-icons on mobile.
     document.addEventListener('click', (e) => {
         const target = e.target.closest('.help');
         document.querySelectorAll('.help.active').forEach(h => { if (h !== target) h.classList.remove('active'); });
         if (target) { target.classList.toggle('active'); e.stopPropagation(); }
+    });
+
+    // Send a chat message; keep the cursor in the box afterwards.
+    document.querySelector('#chat-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const input = document.querySelector('#chat-input');
+        const text = input.value.trim();
+        if (!text || !socket) return;
+        socket.emit('chat', { text }, (res) => { if (res && !res.ok && res.error) flashError(res.error); });
+        input.value = '';
+        input.focus();
+    });
+
+    // The game itself never needs the keyboard: if the player starts typing
+    // anywhere in the game view, route it straight into the chat box (capturing
+    // the first keystroke) so they never have to click the input first.
+    document.addEventListener('keydown', (e) => {
+        const gameEl = document.querySelector('#game');
+        if (!gameEl || gameEl.hidden) return;
+        const input = document.querySelector('#chat-input');
+        if (!input) return;
+        const active = document.activeElement;
+        if (active === input) return;
+        if (active && /^(INPUT|TEXTAREA|SELECT)$/.test(active.tagName)) return;
+        if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
+            input.focus();
+            input.value += e.key;
+            e.preventDefault();
+        }
     });
 
     renderLanding(); showView('landing');

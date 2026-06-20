@@ -329,56 +329,63 @@ export function statusFor(view) {
     return '';
 }
 
-/* ---------------- Sidebar score tables ---------------- */
+/* ---------------- Sidebar scoreboard ---------------- */
 
-export function renderScoreTables(realEl, idealEl, scoreHistory, latestGameNum) {
+// One scrollable scoreboard with a header + avg pinned at the top and the games
+// listed newest-first below. `mode` is 'loss' (expected points lost vs. the
+// Bayesian, lower is better) or 'score' (raw realized points).
+//
+// Scroll behaviour: new rounds are prepended at the top. If the reader is at the
+// top they keep seeing the newest; if they've scrolled down to older rounds we
+// hold their position (shift scrollTop by the height the new content added)
+// instead of yanking them back up.
+export function renderScoreboard(container, scoreHistory, latestGameNum, mode) {
     const rows = scoreHistory || [];
+    const prevTop = container.scrollTop;
+    const prevH = container.scrollHeight;
+    const atTop = prevTop < 8;
+
     if (rows.length === 0) {
-        const empty = `<tbody><tr><td colspan="6" class="muted" style="text-align:center; padding:18px; font-style:italic; color:#aaa;">No games yet.</td></tr></tbody>`;
-        realEl.innerHTML  = empty;
-        idealEl.innerHTML = empty;
+        container.innerHTML = `<div class="scoreboard-empty muted">No games yet.</div>`;
         return;
     }
 
-    const buildTable = (extract) => {
-        const head = `
-            <thead><tr>
-                <th>#</th><th>my 1</th><th>my 2</th><th>mate 1</th><th>mate 2</th><th>total</th>
-            </tr></thead>`;
-        let body = '<tbody>';
-        let sumMy1 = 0, sumMy2 = 0, sumMa1 = 0, sumMa2 = 0, sumT = 0;
-        for (const r of rows) {
-            const e = extract(r);
-            const cls = r.gameNum === latestGameNum ? ' class="latest"' : '';
-            body += `<tr${cls}>
-                <td class="game-num">${r.gameNum}</td>
-                <td>${e.my1}</td><td>${e.my2}</td>
-                <td>${e.ma1}</td><td>${e.ma2}</td>
-                <td class="total">${e.total}</td>
-            </tr>`;
-            sumMy1 += e.my1; sumMy2 += e.my2; sumMa1 += e.ma1; sumMa2 += e.ma2; sumT += e.total;
-        }
-        const n = rows.length;
-        body += `<tr class="avg-row">
+    const isLoss = mode === 'loss';
+    const fmt = isLoss ? (v => v.toFixed(1)) : (v => String(v));
+    const pick = isLoss
+        ? (r => ({ my1: r.you.r1Loss, my2: r.you.r2Loss, ma1: r.mate.r1Loss, ma2: r.mate.r2Loss, total: r.totalLoss }))
+        : (r => ({ my1: r.you.r1Score, my2: r.you.r2Score, ma1: r.mate.r1Score, ma2: r.mate.r2Score, total: r.totalScore }));
+
+    const sum = { my1: 0, my2: 0, ma1: 0, ma2: 0, total: 0 };
+    for (const r of rows) { const e = pick(r); for (const k in sum) sum[k] += e[k]; }
+    const n = rows.length;
+
+    const head = `<thead>
+        <tr><th>#</th><th>my&nbsp;1</th><th>my&nbsp;2</th><th>mate&nbsp;1</th><th>mate&nbsp;2</th><th>total</th></tr>
+        <tr class="avg-row">
             <td class="game-num">avg</td>
-            <td>${(sumMy1/n).toFixed(1)}</td>
-            <td>${(sumMy2/n).toFixed(1)}</td>
-            <td>${(sumMa1/n).toFixed(1)}</td>
-            <td>${(sumMa2/n).toFixed(1)}</td>
-            <td class="total">${(sumT/n).toFixed(1)}</td>
-        </tr></tbody>`;
-        return head + body;
-    };
-    realEl.innerHTML = buildTable(r => ({
-        my1: r.you.r1Score, my2: r.you.r2Score,
-        ma1: r.mate.r1Score, ma2: r.mate.r2Score,
-        total: r.totalScore,
-    }));
-    idealEl.innerHTML = buildTable(r => ({
-        my1: r.youIdeal.r1Score, my2: r.youIdeal.r2Score,
-        ma1: r.mateIdeal.r1Score, ma2: r.mateIdeal.r2Score,
-        total: r.totalIdealScore,
-    }));
+            <td>${(sum.my1/n).toFixed(1)}</td><td>${(sum.my2/n).toFixed(1)}</td>
+            <td>${(sum.ma1/n).toFixed(1)}</td><td>${(sum.ma2/n).toFixed(1)}</td>
+            <td class="total">${(sum.total/n).toFixed(1)}</td>
+        </tr>
+    </thead>`;
+    let body = '<tbody>';
+    for (let i = rows.length - 1; i >= 0; i--) {   // newest first
+        const r = rows[i];
+        const e = pick(r);
+        const cls = r.gameNum === latestGameNum ? ' class="latest"' : '';
+        body += `<tr${cls}>
+            <td class="game-num">${r.gameNum}</td>
+            <td>${fmt(e.my1)}</td><td>${fmt(e.my2)}</td>
+            <td>${fmt(e.ma1)}</td><td>${fmt(e.ma2)}</td>
+            <td class="total">${fmt(e.total)}</td>
+        </tr>`;
+    }
+    body += '</tbody>';
+    container.innerHTML = `<table class="score-table${isLoss ? ' loss-mode' : ''}">${head}${body}</table>`;
+
+    const newH = container.scrollHeight;
+    container.scrollTop = atTop ? 0 : prevTop + (newH - prevH);
 }
 
 /* ---------------- Realized scores (used by main.js for history) ---------------- */
@@ -393,6 +400,21 @@ export function realizedScores(view) {
     const my  = (g.myR1  != null ? rowScore(g.myR1,  q) : 0) + (g.myR2  != null ? rowScore(g.myR2,  q) : 0);
     const opp = (g.oppR1 != null ? rowScore(g.oppR1, q) : 0) + (g.oppR2 != null ? rowScore(g.oppR2, q) : 0);
     return { my, opp, total: my + opp };
+}
+
+/* ---------------- Chat ---------------- */
+
+// Append one message bubble. Just the text — sender is conveyed by side/colour
+// (yours right/black, teammate left/grey), so no names or timestamps. Uses
+// textContent, so message text can never inject markup.
+export function appendChatMessage(logEl, entry, mySeat) {
+    const wrap = document.createElement('div');
+    wrap.className = 'chat-msg ' + (entry.seat === mySeat ? 'me' : 'them');
+    const body = document.createElement('div');
+    body.className = 'chat-text';
+    body.textContent = entry.text;
+    wrap.appendChild(body);
+    logEl.appendChild(wrap);
 }
 
 /* ---------------- Landing how-to examples ---------------- */

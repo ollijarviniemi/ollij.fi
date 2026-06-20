@@ -55,7 +55,7 @@
 
         <p>Tokens score independently. The team total is your two scores plus your teammate's two — 40 points possible per game.</p>
 
-        <p>The sidebar tracks your scores. Below it, a fainter table shows what two perfect Bayesians would have scored on the same hands (hover to bring it into focus). After the reveal you'll also see two dashed lines on the board showing the ideal Bayesian's round-1 and round-2 column for each of you, with a curved arrow tracing how a perfect updater would have moved.</p>
+        <p>The sidebar tracks your scores. Below it, a fainter table shows the expected points each placement lost versus a perfect Bayesian — 0 means you matched the Bayesian's column, and it's averaged over the Bayesian's belief rather than the single revealed outcome, so it's a cleaner read on decision quality (hover to bring it into focus). After the reveal you'll also see two dashed lines on the board showing the ideal Bayesian's round-1 and round-2 column for each of you, with a curved arrow tracing how a perfect updater would have moved.</p>
     </section>
 </section>
 
@@ -92,11 +92,23 @@
 
         <aside class="game-sidebar">
             <button id="btn-leave-game" class="leave-link" title="Leave the room">← leave</button>
-            <div class="sb-title">Your scores</div>
-            <table id="score-table-real" class="score-table"></table>
+            <div class="sb-panel scoreboard-panel">
+                <div class="sb-tabs">
+                    <button class="sb-tab active" data-mode="loss">Loss vs Bayesian</button>
+                    <button class="sb-tab" data-mode="score">Your scores</button>
+                </div>
+                <div id="scoreboard" class="scoreboard"></div>
+            </div>
+
             <button id="btn-next-game" class="primary sb-next-game" hidden>Next game</button>
-            <div class="sb-title sb-title-ideal">If two perfect Bayesians played the same hands</div>
-            <table id="score-table-ideal" class="score-table ideal-table"></table>
+
+            <div class="game-chat sb-panel" id="game-chat">
+                <div class="chat-title">Chat</div>
+                <div id="chat-log" class="chat-log"></div>
+                <form id="chat-form" class="chat-form" autocomplete="off">
+                    <input id="chat-input" type="text" maxlength="500" placeholder="Message your teammate…">
+                </form>
+            </div>
         </aside>
 
     </div>

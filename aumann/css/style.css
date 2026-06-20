@@ -9,7 +9,7 @@ body {
     line-height: 1.45;
     -webkit-tap-highlight-color: transparent;
 }
-main { max-width: 1180px; margin: 0 auto; padding: 30px 24px 64px; }
+main { max-width: 1180px; margin: 0 auto; padding: 16px 24px 16px; }
 
 h1, h2, h3 { margin: 0 0 14px; font-weight: 600; }
 h1 { font-size: 30px; letter-spacing: -0.3px; }
@@ -176,16 +176,26 @@ input[type="text"]:focus { outline: none; border-color: #111; }
 
 .game-layout {
     display: grid;
-    grid-template-columns: 1fr 340px;
-    gap: 64px;
+    grid-template-columns: 1fr 380px;
+    gap: 48px;
     align-items: start;
 }
-.game-main   { min-width: 0; }
-.game-sidebar {
-    position: sticky;
-    top: 20px;
+.game-main {
+    min-width: 0;
+    height: calc(100vh - 32px);
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    gap: clamp(4px, 1.1vh, 16px);
+}
+.game-sidebar {
+    position: sticky;
+    top: 16px;
+    height: calc(100vh - 32px);
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
 }
 
 /* ---------- Condition cards (icon + text both visible) ---------- */
@@ -193,17 +203,17 @@ input[type="text"]:focus { outline: none; border-color: #111; }
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 14px;
-    margin-bottom: 22px;
+    margin-bottom: 0;
 }
 .cond-card {
     position: relative;
     border: 3px solid #111;
     border-radius: 8px;
-    padding: 18px 14px 14px;
+    padding: clamp(10px, 1.6vh, 18px) 12px clamp(8px, 1.2vh, 14px);
     background: #fff;
     text-align: center;
     transition: border-color 0.3s ease, background 0.3s ease;
-    min-height: 170px;
+    min-height: clamp(100px, 17vh, 172px);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -290,15 +300,15 @@ input[type="text"]:focus { outline: none; border-color: #111; }
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    margin: 22px 0 12px;
-    min-height: 200px;
-    padding-top: 30px;
+    margin: 0;
+    min-height: clamp(116px, 18vh, 206px);
+    padding-top: clamp(12px, 2.4vh, 30px);
 }
 /* Card sizing: width fixed, aspect-ratio matches the PNG (226 × 314) so the
    image fills the wrapper exactly — no letterbox, no wrapper padding around
    the image, no "card on top of another" appearance. */
 .hand .card {
-    width: 110px;
+    width: clamp(78px, 12.5vh, 116px);
     aspect-ratio: 226 / 314;
     height: auto;
     margin: 0 -25px;
@@ -316,7 +326,7 @@ input[type="text"]:focus { outline: none; border-color: #111; }
 /* Opp hand: flipped 180° as if held across the table during play. At reveal
    the container un-rotates and the cards spread to a flat row. */
 .opp-hand {
-    margin: 0 0 18px;
+    margin: 0;
     transform: rotate(180deg);
     transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.3, 1);
 }
@@ -329,7 +339,7 @@ input[type="text"]:focus { outline: none; border-color: #111; }
     transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.3, 1),
                 margin 0.6s cubic-bezier(0.25, 0.8, 0.3, 1);
 }
-.hand.revealed { padding-top: 0; min-height: 160px; }
+.hand.revealed { padding-top: 0; min-height: clamp(94px, 14vh, 156px); }
 .hand.revealed .card,
 .hand.revealed .card:hover {
     transform: rotate(0deg) translateY(0) !important;
@@ -375,7 +385,7 @@ input[type="text"]:focus { outline: none; border-color: #111; }
 /* ---------- 3×5 board grid (pure B&W, no rounding, no shading) ---------- */
 .status {
     text-align: center;
-    margin: 4px 0 10px;
+    margin: 0;
     font-size: 14px;
     color: #777;
     min-height: 20px;
@@ -387,15 +397,15 @@ input[type="text"]:focus { outline: none; border-color: #111; }
    toggles .with-arcs on the wrap when game.state === 'revealed'. */
 .board-wrap {
     position: relative;
-    margin: 24px 0;
+    margin: clamp(6px, 1.2vh, 18px) 0;
     transition: margin 0.4s ease;
 }
-.board-wrap.with-arcs { margin: 60px 0; }
+.board-wrap.with-arcs { margin: clamp(30px, 5vh, 56px) 0; }
 
 .board {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: 70px auto 70px;
+    grid-template-rows: clamp(44px, 7.5vh, 72px) auto clamp(44px, 7.5vh, 72px);
     /* Inner cell borders are 2 px; the outer border must match so the right
        edge of the 10/0 column doesn't look thicker than the inner verticals. */
     border: 2px solid #000;
@@ -421,7 +431,7 @@ input[type="text"]:focus { outline: none; border-color: #111; }
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 12px 4px;
+    padding: clamp(6px, 1.2vh, 13px) 4px;
     border-right: 2px solid #000;
     border-top: 2px solid #000;
     border-bottom: 2px solid #000;
@@ -429,7 +439,7 @@ input[type="text"]:focus { outline: none; border-color: #111; }
 }
 .board .row-band:last-of-type { border-right: none; }
 .board .row-band .payoff {
-    font-size: 38px;
+    font-size: clamp(28px, 4.2vh, 40px);
     font-weight: 800;
     color: #000;
     line-height: 1;
@@ -566,18 +576,125 @@ input[type="text"]:focus { outline: none; border-color: #111; }
 .score-table.ideal-table tr.latest { background: #f4f9fd; }
 .score-table.ideal-table tr.avg-row { background: #fbfcfd; }
 
+/* ---------- Right rail: scoreboard + chat panels ---------- */
+/* The rail is a fixed-height sticky column; its two panels share that height and
+   each scroll internally, so the chat stays put no matter how long the
+   scoreboard gets. */
+.sb-panel {
+    border: 1px solid #e2e2e2;
+    border-radius: 10px;
+    background: #fff;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+.scoreboard-panel { flex: 1 1 38%; min-height: 134px; }
+
+.sb-tabs { display: flex; flex: 0 0 auto; border-bottom: 1px solid #eee; }
+.sb-tab {
+    flex: 1;
+    border: none;
+    border-radius: 0;
+    background: #fff;
+    color: #999;
+    padding: 10px 6px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+.sb-tab:hover:not(.active) { background: #fafafa; color: #555; }
+.sb-tab.active { color: #111; border-bottom-color: #111; }
+
+.scoreboard { flex: 1 1 auto; min-height: 0; overflow-y: auto; }
+.scoreboard-empty { text-align: center; padding: 24px 10px; font-size: 14px; font-style: italic; color: #aaa; }
+.scoreboard .score-table {
+    border: none;
+    border-radius: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+.scoreboard thead { position: sticky; top: 0; z-index: 2; }
+.scoreboard thead th { background: #fff; border-bottom: 1.5px solid #ccc; }
+.scoreboard thead .avg-row td { background: #fafafa; border-bottom: 1.5px solid #ccc; }
+
 .sb-next-game {
-    margin-top: 18px;
+    flex: 0 0 auto;
+    margin: 0;
     width: 100%;
-    padding: 12px;
+    padding: 11px;
     font-size: 15px;
 }
+
+/* ---------- Chat (lower panel of the rail) ---------- */
+.game-chat {
+    flex: 1 1 58%;
+    min-height: 200px;
+    background: #fcfcfc;
+}
+.chat-title {
+    flex: 0 0 auto;
+    font-size: 12px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 11px 14px;
+    border-bottom: 1px solid #eee;
+    background: #fff;
+}
+.chat-log {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.chat-empty { font-size: 13px; text-align: center; margin: auto 0; }
+.chat-msg { max-width: 88%; }
+.chat-msg.them { align-self: flex-start; }
+.chat-msg.me   { align-self: flex-end; }
+.chat-divider {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 3px 2px;
+    color: #bbb;
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+}
+.chat-divider::before, .chat-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #ececec;
+}
+.chat-text {
+    display: inline-block;
+    padding: 7px 11px;
+    border-radius: 13px;
+    font-size: 14px;
+    line-height: 1.35;
+    word-break: break-word;
+    white-space: pre-wrap;
+}
+.chat-msg.them .chat-text { background: #f0f0f0; color: #111; border-bottom-left-radius: 4px; }
+.chat-msg.me   .chat-text { background: #111;    color: #fff; border-bottom-right-radius: 4px; }
+.chat-form { border-top: 1px solid #eee; padding: 10px; }
+.chat-form input { width: 100%; }
 
 /* ---------- Mobile ---------- */
 @media (max-width: 880px) {
     main { padding: 18px 12px 56px; }
     .game-layout { grid-template-columns: 1fr; gap: 24px; }
-    .game-sidebar { position: static; }
+    .game-main { height: auto; display: block; }
+    .game-sidebar { position: static; height: auto; }
+    .scoreboard-panel { flex: 0 0 auto; height: 240px; }
+    .game-chat { flex: 0 0 auto; height: 340px; }
 
     .conditions-row { gap: 8px; }
     .cond-card { padding: 12px 6px; min-height: 92px; gap: 4px; }
