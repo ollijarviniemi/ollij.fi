@@ -477,3 +477,84 @@ export function renderHowTo() {
         bR2.appendChild(wrap);
     }
 }
+
+/* ---------------- Account game history ---------------- */
+
+const escapeHtml = (s) => String(s).replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
+// Stored rows are 0=top (80–100%) … 4=bottom (0–20%); BAND_PCT is indexed the
+// other way, so map row → band as BAND_PCT[4 - row].
+const bandLabel = (row) => (row == null ? '—' : BAND_PCT[4 - row]);
+
+function histHandRow(label, hand) {
+    const row = document.createElement('div');
+    row.className = 'hist-hand-row';
+    const lbl = document.createElement('span');
+    lbl.className = 'lbl';
+    lbl.textContent = label;
+    const cards = document.createElement('div');
+    cards.className = 'hist-cards';
+    for (const c of sortHand(hand || [])) cards.appendChild(renderCard(c));
+    row.append(lbl, cards);
+    return row;
+}
+
+function histMoveRow(label, r1, r2, isIdeal) {
+    const row = document.createElement('div');
+    row.className = 'hist-move-row' + (isIdeal ? ' ideal' : '');
+    row.innerHTML =
+        `<span class="lbl">${escapeHtml(label)}</span>` +
+        `<span class="mv">${bandLabel(r1)} <span class="arrow">→</span> ${bandLabel(r2)}</span>`;
+    return row;
+}
+
+// Render the signed-in player's past games (newest first) into the modal.
+export function renderHistory(container, games) {
+    container.innerHTML = '';
+    if (!games || !games.length) {
+        const e = document.createElement('div');
+        e.className = 'muted hist-empty';
+        e.textContent = 'No games yet. Play a game while signed in and it’ll appear here.';
+        container.appendChild(e);
+        return;
+    }
+    for (const g of games) {
+        const seat = g.youSeat ?? 0;
+        const you = g.seats?.[seat] || {};
+        const them = g.seats?.[1 - seat] || {};
+        const youIdeal = g.ideal?.seats?.[seat];
+        const oppName = g.opponent || 'guest';
+
+        const el = document.createElement('div');
+        el.className = 'hist-game';
+
+        const date = new Date(g.playedAt);
+        const dateStr = isNaN(date) ? '' : date.toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' });
+        const head = document.createElement('div');
+        head.className = 'hist-head';
+        head.innerHTML =
+            `<span class="hist-date">${escapeHtml(dateStr)}</span>` +
+            `<span class="hist-opp">vs ${escapeHtml(oppName)}</span>` +
+            `<span class="hist-q ${g.qTrue ? 'met' : 'unmet'}">Q ${g.qTrue ? 'met' : 'not met'}</span>`;
+        el.appendChild(head);
+
+        const hands = document.createElement('div');
+        hands.className = 'hist-hands';
+        hands.append(histHandRow('You', you.hand), histHandRow(oppName, them.hand));
+        el.appendChild(hands);
+
+        if (g.conditions?.length) {
+            const conds = document.createElement('div');
+            conds.className = 'hist-conds';
+            conds.textContent = g.conditions.map(c => c.name).join('  ·  ');
+            el.appendChild(conds);
+        }
+
+        const moves = document.createElement('div');
+        moves.className = 'hist-moves';
+        moves.append(histMoveRow('You', you.r1, you.r2), histMoveRow(oppName, them.r1, them.r2));
+        if (youIdeal) moves.appendChild(histMoveRow('Bayesian', youIdeal.r1, youIdeal.r2, true));
+        el.appendChild(moves);
+
+        container.appendChild(el);
+    }
+}

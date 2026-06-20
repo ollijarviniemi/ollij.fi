@@ -3,10 +3,11 @@
 import {
     showView, renderHand, revealHandInPlace, renderBoard, renderConditions,
     statusFor, realizedScores, renderBayesArrows, clearBayesArrows,
-    renderScoreboard, renderHowTo, appendChatMessage,
+    renderScoreboard, renderHowTo, appendChatMessage, renderHistory,
 } from './render.js';
 import {
     getName, setName, getRoomCookie, setRoomCookie, clearRoomCookie,
+    getToken, setToken, clearToken,
     appendHistory, getHistory, summarize,
 } from './storage.js';
 
@@ -15,6 +16,7 @@ const SERVER = window.AUMANN_SERVER || 'http://localhost:8787';
 let socket = null;
 let state  = null;
 let lobby  = null;
+let account = null;   // logged-in user { username, display }, or null for guests
 let lastGameRecorded = 0;
 let inLobby = false;
 // Track previous render's game number + state so we can animate transitions.
@@ -45,6 +47,13 @@ function connect() {
     socket.on('connect_error', () => flashError(`Cannot reach server (${SERVER}).`));
 }
 function onConnect() {
+    // Resume a remembered account (independent of any room membership).
+    const token = getToken();
+    if (token) socket.emit('auth:resume', { token }, (res) => {
+        account = res?.ok ? res.user : null;
+        if (!res?.ok) clearToken();
+        if (!state) renderAuth();
+    });
     const c = getRoomCookie();
     if (c?.code && c?.playerId) {
         socket.emit('room:rejoin', c, (res) => {
@@ -154,11 +163,28 @@ function render() {
     renderGame();
 }
 
-function renderLanding() {
-    // Only seed the name from storage when empty — never clobber what the user
-    // is typing (lobby updates re-render this view).
+// Toggle the auth box between the login form and the signed-in state, and own
+// the name field (a logged-in user always plays under their account name).
+function renderAuth() {
+    const form = document.querySelector('#auth-form');
+    const li = document.querySelector('#auth-loggedin');
+    const nameRow = document.querySelector('#name-row');
     const nameEl = document.querySelector('#name');
-    if (!nameEl.value) nameEl.value = getName();
+    if (!form || !li) return;
+    if (account) {
+        form.hidden = true; li.hidden = false;
+        document.querySelector('#auth-display').textContent = account.display;
+        nameRow.hidden = true;
+        nameEl.value = account.display;
+    } else {
+        form.hidden = false; li.hidden = true;
+        nameRow.hidden = false;
+        if (!nameEl.value) nameEl.value = getName();   // never clobber typed text
+    }
+}
+
+function renderLanding() {
+    renderAuth();
     const roomsEl = document.querySelector('#lobby-rooms');
     const emptyEl = document.querySelector('#lobby-empty');
     roomsEl.innerHTML = '';
@@ -291,6 +317,43 @@ function onPlace(round, row) {
     });
 }
 
+/* ---------------- Accounts ---------------- */
+
+function doAuth(event, mode) {
+    event?.preventDefault();
+    const username = (document.querySelector('#auth-username').value || '').trim();
+    const password = document.querySelector('#auth-password').value || '';
+    const remember = document.querySelector('#auth-remember').checked;
+    if (!username || !password) return flashError('Enter a username and password.');
+    connect();
+    const ev = mode === 'register' ? 'auth:register' : 'auth:login';
+    const go = () => socket.emit(ev, { username, password, remember }, (res) => {
+        if (!res?.ok) return flashError(res?.error || 'Could not sign in.');
+        account = res.user;
+        if (res.token) setToken(res.token); else clearToken();
+        document.querySelector('#auth-password').value = '';
+        renderAuth();
+    });
+    if (socket.connected) go(); else socket.once('connect', go);
+}
+
+function doLogout() {
+    if (socket) socket.emit('auth:logout', { token: getToken() }, () => {});
+    clearToken();
+    account = null;
+    renderAuth();
+}
+
+function openHistory() {
+    if (!socket) return;
+    socket.emit('auth:history', null, (res) => {
+        if (!res?.ok) return flashError(res?.error || 'Could not load history.');
+        renderHistory(document.querySelector('#history-list'), res.games);
+        document.querySelector('#history-modal').hidden = false;
+    });
+}
+function closeHistory() { document.querySelector('#history-modal').hidden = true; }
+
 function maybeRecordHistory() {
     if (!state?.game) return;
     if (state.game.state !== 'revealed') return;
@@ -353,6 +416,14 @@ window.addEventListener('DOMContentLoaded', () => {
     document.querySelector('#btn-next-game').addEventListener('click', () => {
         socket.emit('game:ready', null, () => {});
     });
+
+    // Accounts (optional).
+    document.querySelector('#auth-form').addEventListener('submit', (e) => doAuth(e, 'login'));
+    document.querySelector('#btn-register').addEventListener('click', (e) => doAuth(e, 'register'));
+    document.querySelector('#btn-logout').addEventListener('click', doLogout);
+    document.querySelector('#btn-history').addEventListener('click', openHistory);
+    document.querySelector('#btn-history-close').addEventListener('click', closeHistory);
+    document.querySelector('#history-backdrop').addEventListener('click', closeHistory);
 
     // Scoreboard metric toggle.
     document.querySelectorAll('.sb-tab').forEach(btn => {

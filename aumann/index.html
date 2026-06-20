@@ -17,7 +17,27 @@
 <section id="landing" class="view">
     <h1>Aumann</h1>
 
-    <div class="form-row">
+    <div id="auth-box" class="auth-box">
+        <form id="auth-form" class="auth-form">
+            <input id="auth-username" type="text" maxlength="24" autocomplete="username" placeholder="Username">
+            <input id="auth-password" type="password" maxlength="200" autocomplete="current-password" placeholder="Password">
+            <label class="auth-remember"><input id="auth-remember" type="checkbox" checked> Remember me</label>
+            <div class="auth-buttons">
+                <button id="btn-login" type="submit" class="ghost">Log in</button>
+                <button id="btn-register" type="button" class="ghost">Register</button>
+            </div>
+            <div class="muted auth-hint">Optional — play as a guest, or sign in to save your game history.</div>
+        </form>
+        <div id="auth-loggedin" class="auth-loggedin" hidden>
+            <span class="auth-who">Signed in as <strong id="auth-display"></strong></span>
+            <div class="auth-buttons">
+                <button id="btn-history" type="button" class="ghost">History</button>
+                <button id="btn-logout" type="button" class="ghost">Log out</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="name-row" class="form-row">
         <input id="name" type="text" maxlength="24" autocomplete="off" placeholder="Your name">
     </div>
 
@@ -115,6 +135,18 @@
 </section>
 
 </main>
+
+<!-- ============ HISTORY MODAL ============ -->
+<div id="history-modal" class="modal" hidden>
+    <div class="modal-backdrop" id="history-backdrop"></div>
+    <div class="modal-card">
+        <div class="modal-head">
+            <h2>Your games</h2>
+            <button id="btn-history-close" class="ghost">Close</button>
+        </div>
+        <div id="history-list" class="history-list"></div>
+    </div>
+</div>
 
 </body>
 </html>

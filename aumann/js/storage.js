@@ -4,6 +4,7 @@
 
 const KEY_NAME = 'aumann.name';
 const KEY_ROOM = 'aumann.room';       // { code, playerId }
+const KEY_TOKEN = 'aumann.token';     // "remember me" account token
 const KEY_HISTORY_PREFIX = 'aumann.history.'; // + safe(playerName)
 
 function safe(name) { return String(name || '').toLowerCase().replace(/[^a-z0-9_-]/g, '_').slice(0, 32); }
@@ -27,6 +28,17 @@ export function setRoomCookie(code, playerId) {
 }
 export function clearRoomCookie() {
     try { localStorage.removeItem(KEY_ROOM); } catch {}
+}
+
+// "Remember me" account token: replayed on connect via auth:resume.
+export function getToken() {
+    try { return localStorage.getItem(KEY_TOKEN) || ''; } catch { return ''; }
+}
+export function setToken(token) {
+    try { localStorage.setItem(KEY_TOKEN, token); } catch {}
+}
+export function clearToken() {
+    try { localStorage.removeItem(KEY_TOKEN); } catch {}
 }
 
 // History: per-player array of records { ts, date, ownScore, loss, opponentName, qTrue }
