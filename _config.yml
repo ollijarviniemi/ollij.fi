@@ -45,3 +45,26 @@ permalink: /:collection/:path/
 text_lists:
   - epi
   - tekoaly
+
+# Keep server-side and tooling files out of the published static build. The list
+# repeats Jekyll's built-in defaults (node_modules, Gemfile, vendor/...) because
+# specifying `exclude` replaces the defaults rather than extending them.
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - translation/
+  - serve.py
+  - games-server/
+  - ops/
+  - Caddyfile
+  - deploy.sh
+  - aumann/server/
+  - aumann/bot/

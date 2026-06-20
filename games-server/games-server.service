@@ -1,0 +1,17 @@
+[Unit]
+Description=ollij.fi realtime games server
+After=network.target
+
+[Service]
+Type=simple
+User=ollij
+WorkingDirectory=/srv/ollij.fi/games-server
+ExecStart=/usr/local/bin/node server.js
+Environment=PORT=8787
+# Same-origin in prod; tighten if you ever serve the client from another origin.
+Environment=CORS_ORIGIN=https://ollij.fi,https://www.ollij.fi
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
