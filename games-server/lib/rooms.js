@@ -6,6 +6,7 @@
 // its own state by implementing a small interface (see mountGame).
 
 import { randomBytes } from 'node:crypto';
+import store from './store.js';
 
 const ROOM_TTL_MS = 30 * 60 * 1000;        // 30 min idle → drop room
 const RECONNECT_WINDOW_MS = 5 * 60 * 1000; // 5 min disconnect → keep seat
@@ -91,12 +92,73 @@ export function mountGame(nsp, game) {
     }
     function broadcastLobby() { nsp.to('lobby').emit('lobby', lobbyState()); }
 
+    // When a game has just finished, persist one history row per seated player
+    // who is logged in. The game exposes the finished-game record via
+    // game.historyRecord(room) (null until a game is freshly revealed); the
+    // per-room guard makes this idempotent across repeated broadcasts.
+    function maybeSaveHistory(room) {
+        const rec = game.historyRecord?.(room);
+        if (!rec) return;
+        if (room.data._historySavedFor === rec.gameNum) return;
+        room.data._historySavedFor = rec.gameNum;
+        const now = Date.now();
+        for (let seat = 0; seat < 2; seat++) {
+            const p = room.players[seat];
+            if (!p?.userId) continue;
+            const opp = room.players[1 - seat];
+            store.addGame(p.userId, opp ? (opp.account || opp.name) : null, { ...rec, youSeat: seat }, now);
+        }
+    }
+
     nsp.on('connection', (socket) => {
         socket.data.roomCode = null;
         socket.data.playerId = null;
+        socket.data.userId   = null;   // set once this socket authenticates
+        socket.data.account  = null;   // display name of the logged-in user
 
         socket.on('lobby:join', () => { socket.join('lobby'); socket.emit('lobby', lobbyState()); });
         socket.on('lobby:leave', () => { socket.leave('lobby'); });
+
+        // --- accounts (optional: guests can still play) ----------------------
+        function signIn(user, remember) {
+            socket.data.userId = user.id;
+            socket.data.account = user.display;
+            const out = { ok: true, user: { username: user.username, display: user.display } };
+            if (remember) out.token = store.issueToken(user.id, Date.now());
+            return out;
+        }
+        socket.on('auth:register', ({ username, password, remember } = {}, cb) => {
+            try {
+                const { user, error } = store.registerUser(username, password, Date.now());
+                cb?.(error ? { ok: false, error } : signIn(user, remember));
+            } catch (e) { cb?.({ ok: false, error: e.message }); }
+        });
+        socket.on('auth:login', ({ username, password, remember } = {}, cb) => {
+            try {
+                const { user, error } = store.loginUser(username, password);
+                cb?.(error ? { ok: false, error } : signIn(user, remember));
+            } catch (e) { cb?.({ ok: false, error: e.message }); }
+        });
+        socket.on('auth:resume', ({ token } = {}, cb) => {
+            try {
+                const user = store.userForToken(token, Date.now());
+                if (!user) return cb?.({ ok: false, error: 'Session expired.' });
+                socket.data.userId = user.id;
+                socket.data.account = user.display;
+                cb?.({ ok: true, user: { username: user.username, display: user.display } });
+            } catch (e) { cb?.({ ok: false, error: e.message }); }
+        });
+        socket.on('auth:logout', ({ token } = {}, cb) => {
+            try { store.revokeToken(token); } catch {}
+            socket.data.userId = null; socket.data.account = null;
+            cb?.({ ok: true });
+        });
+        socket.on('auth:history', (_payload, cb) => {
+            try {
+                if (!socket.data.userId) return cb?.({ ok: true, games: [] });
+                cb?.({ ok: true, games: store.gamesForUser(socket.data.userId) });
+            } catch (e) { cb?.({ ok: false, error: e.message }); }
+        });
 
         socket.on('room:create', ({ name } = {}, cb) => {
             try {
@@ -104,6 +166,7 @@ export function mountGame(nsp, game) {
                 const room = new Room(code);
                 const seated = room.seatNew(String(name || 'Player').slice(0, 24), socket.id);
                 rooms.set(code, room);
+                if (socket.data.userId) { seated.player.userId = socket.data.userId; seated.player.account = socket.data.account; }
                 socket.data.roomCode = code;
                 socket.data.playerId = seated.player.id;
                 socket.leave('lobby');
@@ -120,6 +183,7 @@ export function mountGame(nsp, game) {
                 if (!room) return cb?.({ ok: false, error: 'No such room.' });
                 const seated = room.seatNew(String(name || 'Player').slice(0, 24), socket.id);
                 if (!seated) return cb?.({ ok: false, error: 'Room is full.' });
+                if (socket.data.userId) { seated.player.userId = socket.data.userId; seated.player.account = socket.data.account; }
                 socket.data.roomCode = c;
                 socket.data.playerId = seated.player.id;
                 socket.leave('lobby');
@@ -171,6 +235,7 @@ export function mountGame(nsp, game) {
                     const res = fn(room, seat, payload) || {};
                     if (res.error) return cb?.({ ok: false, error: res.error });
                     room.touch();
+                    maybeSaveHistory(room);
                     cb?.({ ok: true });
                     broadcastRoom(room);
                 } catch (e) { cb?.({ ok: false, error: e.message }); }
@@ -200,6 +265,7 @@ export function mountGame(nsp, game) {
             }
             if (!room.players[0] && !room.players[1]) { rooms.delete(code); changed = true; }
         }
+        store.purgeExpiredTokens(now);
         if (changed) broadcastLobby();
     }, 60 * 1000);
 

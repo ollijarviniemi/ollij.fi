@@ -1,26 +1,14 @@
-# ollij.fi — static site + realtime games on one box.
+# ollij.fi realtime games — WebSocket endpoint on the box.
 #
-# Caddy serves the built static site for everything, and reverse-proxies the
-# one realtime path (/socket.io/*) to the Node games server. So every page is
-# ollij.fi/… (e.g. ollij.fi/aumann) and the WebSocket is same-origin — no
-# subdomain. Caddy gets/renews HTTPS certificates automatically.
-#
-# Behind Cloudflare later: keep ollij.fi DNS-only at first so this just works.
-# When you enable the Cloudflare proxy for the CDN, install a Cloudflare Origin
-# Certificate here (SSL mode Full(strict)) and add a cache-bypass rule for
-# /socket.io/* so the WebSocket handshake isn't cached.
+# The static site (ollij.fi, including /aumann) is served by GitHub Pages via
+# Cloudflare; this box runs only the Node games server. The browser connects to
+# wss://ws.ollij.fi, which Caddy reverse-proxies to the games server (the Node
+# process serves /socket.io/* and /health). Caddy obtains and renews the HTTPS
+# certificate automatically via the ACME HTTP-01 challenge — so ws.ollij.fi must
+# resolve to this box and reach it on port 80. Keep the ws.ollij.fi record
+# DNS-only (grey cloud) in Cloudflare so the challenge isn't intercepted.
 
-ollij.fi, www.ollij.fi {
+ws.ollij.fi {
 	encode zstd gzip
-
-	# Realtime traffic → the games server (WebSocket upgrade is automatic).
-	handle /socket.io/* {
-		reverse_proxy 127.0.0.1:8787
-	}
-
-	# Everything else → the built static site (includes /aumann, /factory-market, …).
-	handle {
-		root * /srv/ollij.fi/_site
-		file_server
-	}
+	reverse_proxy 127.0.0.1:8787
 }

@@ -150,4 +150,28 @@ export default {
             return {};
         },
     },
+
+    // Neutral (seat-agnostic) record of the just-finished game, for the account
+    // history store. Returns null until a game is freshly revealed (finalized).
+    // rooms.js tags each saved copy with the saving player's youSeat.
+    historyRecord(room) {
+        const g = room.data.currentGame;
+        if (!g || g.state() !== 'revealed' || !g.ideal) return null;
+        const q = g.ideal.qTrue;
+        const seatRec = (i) => ({
+            hand: g.hands[i],
+            r1: g.placements[i === 0 ? 'p1r1' : 'p2r1'],
+            r2: g.placements[i === 0 ? 'p1r2' : 'p2r2'],
+        });
+        const idealRec = (side) => ({
+            r1: side.r1Row, r2: side.r2Row, r1Belief: side.r1Belief, r2Belief: side.r2Belief,
+        });
+        return {
+            gameNum: g.number,
+            qTrue: q,
+            conditions: g.conditions.map(c => ({ id: c.id, name: c.name })),
+            seats: [seatRec(0), seatRec(1)],
+            ideal: { seats: [idealRec(g.ideal.p1), idealRec(g.ideal.p2)] },
+        };
+    },
 };

@@ -8,8 +8,11 @@ User=ollij
 WorkingDirectory=/srv/ollij.fi/games-server
 ExecStart=/usr/local/bin/node server.js
 Environment=PORT=8787
-# Same-origin in prod; tighten if you ever serve the client from another origin.
+# The page is served from ollij.fi (GitHub Pages); the WS is this box at
+# ws.ollij.fi, so requests are cross-origin — allow the page origins.
 Environment=CORS_ORIGIN=https://ollij.fi,https://www.ollij.fi
+# Accounts + game history SQLite DB lives here (created on first run).
+Environment=DATA_DIR=/srv/ollij.fi/games-server/data
 Restart=on-failure
 RestartSec=3
 
