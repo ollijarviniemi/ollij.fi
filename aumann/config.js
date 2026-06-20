@@ -12,7 +12,7 @@
     // empty. In local dev the server runs on :8787. main.js appends the game's
     // namespace ('/aumann').
     const SERVER_URL_DEV  = 'http://localhost:8787';
-    const SERVER_URL_PROD = 'https://combo-netscape-encoding-site.trycloudflare.com';  // temp: laptop tunnel bridge
+    const SERVER_URL_PROD = 'https://ranks-flows-hence-emperor.trycloudflare.com';  // temp: laptop tunnel bridge (http2)
 
     const isLocal =
         location.hostname === 'localhost' ||
