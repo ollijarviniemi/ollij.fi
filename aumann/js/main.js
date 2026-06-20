@@ -38,15 +38,19 @@ function connect() {
         flashError('Server URL not configured. Edit aumann/config.js and set SERVER_URL_PROD.');
         return;
     }
-    socket = io(SERVER + '/aumann', { transports: ['websocket'], reconnection: true });
+    // Allow the polling fallback (not just raw WebSocket) so restrictive
+    // networks/proxies that block WS upgrades still connect.
+    socket = io(SERVER + '/aumann', { transports: ['websocket', 'polling'], reconnection: true });
     socket.on('state',     onState);
     socket.on('lobby',     onLobby);
     socket.on('chat',      onChat);
     socket.on('connect',   onConnect);
     socket.on('disconnect', () => {});
-    socket.on('connect_error', () => flashError(`Cannot reach server (${SERVER}).`));
+    // Calm, persistent notice while (re)connecting; cleared on connect.
+    socket.on('connect_error', () => flashError('Connecting to the game server…', true));
 }
 function onConnect() {
+    clearError();   // we're connected — drop any "connecting…" notice
     // Resume a remembered account (independent of any room membership).
     const token = getToken();
     if (token) socket.emit('auth:resume', { token }, (res) => {
@@ -166,18 +170,18 @@ function render() {
 // Toggle the auth box between the login form and the signed-in state, and own
 // the name field (a logged-in user always plays under their account name).
 function renderAuth() {
-    const form = document.querySelector('#auth-form');
-    const li = document.querySelector('#auth-loggedin');
+    const box = document.querySelector('#auth-box');      // optional sign-in section
+    const li = document.querySelector('#auth-loggedin');  // signed-in bar
     const nameRow = document.querySelector('#name-row');
     const nameEl = document.querySelector('#name');
-    if (!form || !li) return;
+    if (!box || !li) return;
     if (account) {
-        form.hidden = true; li.hidden = false;
+        box.hidden = true; li.hidden = false;
         document.querySelector('#auth-display').textContent = account.display;
         nameRow.hidden = true;
         nameEl.value = account.display;
     } else {
-        form.hidden = false; li.hidden = true;
+        box.hidden = false; li.hidden = true;
         nameRow.hidden = false;
         if (!nameEl.value) nameEl.value = getName();   // never clobber typed text
     }
@@ -375,12 +379,20 @@ function maybeRecordHistory() {
     });
 }
 
-function flashError(msg) {
+let errorTimer = null;
+function flashError(msg, persist = false) {
     const el = document.querySelector('#error-msg');
-    if (!el) { alert(msg); return; }
+    if (!el) { if (!persist) alert(msg); return; }
     el.textContent = msg;
     el.hidden = false;
-    setTimeout(() => el.hidden = true, 4000);
+    el.classList.toggle('connecting', persist);
+    clearTimeout(errorTimer);
+    if (!persist) errorTimer = setTimeout(() => { el.hidden = true; }, 4000);
+}
+function clearError() {
+    const el = document.querySelector('#error-msg');
+    if (el) { el.hidden = true; el.classList.remove('connecting'); }
+    clearTimeout(errorTimer);
 }
 function escapeHtml(s) {
     return String(s).replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
