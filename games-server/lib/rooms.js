@@ -162,9 +162,10 @@ export function mountGame(nsp, game) {
 
         socket.on('room:create', ({ name } = {}, cb) => {
             try {
+                if (!socket.data.userId) return cb?.({ ok: false, error: 'Please sign in first.' });
                 const code = allocCode(rooms);
                 const room = new Room(code);
-                const seated = room.seatNew(String(name || 'Player').slice(0, 24), socket.id);
+                const seated = room.seatNew(socket.data.account.slice(0, 24), socket.id);
                 rooms.set(code, room);
                 if (socket.data.userId) { seated.player.userId = socket.data.userId; seated.player.account = socket.data.account; }
                 socket.data.roomCode = code;
@@ -178,10 +179,11 @@ export function mountGame(nsp, game) {
 
         socket.on('room:join', ({ code, name } = {}, cb) => {
             try {
+                if (!socket.data.userId) return cb?.({ ok: false, error: 'Please sign in first.' });
                 const c = String(code || '').toUpperCase();
                 const room = rooms.get(c);
                 if (!room) return cb?.({ ok: false, error: 'No such room.' });
-                const seated = room.seatNew(String(name || 'Player').slice(0, 24), socket.id);
+                const seated = room.seatNew(socket.data.account.slice(0, 24), socket.id);
                 if (!seated) return cb?.({ ok: false, error: 'Room is full.' });
                 if (socket.data.userId) { seated.player.userId = socket.data.userId; seated.player.account = socket.data.account; }
                 socket.data.roomCode = c;

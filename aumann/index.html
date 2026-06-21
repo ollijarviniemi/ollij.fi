@@ -17,7 +17,7 @@
 <section id="landing" class="view">
     <h1>Aumann</h1>
 
-    <!-- Signed-in bar (shown only when logged in). -->
+    <!-- Signed-in bar (shown when logged in). -->
     <div id="auth-loggedin" class="auth-loggedin" hidden>
         <span class="auth-who">Signed in as <strong id="auth-display"></strong></span>
         <span class="auth-links">
@@ -26,26 +26,9 @@
         </span>
     </div>
 
-    <!-- Primary action: play (as a guest with just a name, or as your account). -->
-    <div id="name-row" class="form-row">
-        <input id="name" type="text" maxlength="24" autocomplete="off" placeholder="Your name">
-    </div>
-
-    <button id="btn-create" class="primary">Start a room</button>
-
-    <div id="lobby-list" class="lobby">
-        <div class="lobby-label">Or join a room:</div>
-        <div id="lobby-rooms" class="lobby-rooms"></div>
-        <div id="lobby-empty" class="lobby-empty muted">No open rooms yet.</div>
-    </div>
-
-    <div id="my-stats" class="stats-block" hidden></div>
-    <div id="error-msg" class="error" hidden></div>
-
-    <!-- Optional sign-in (shown only when logged out). Secondary to guest play. -->
+    <!-- Sign-in card (shown when logged out). An account is required to play. -->
     <div id="auth-box" class="auth-box">
-        <div class="auth-divider"><span>or sign in — optional</span></div>
-        <p class="auth-prompt muted">Create an account to save your game history and pick up on any device.</p>
+        <p class="auth-prompt">Log in or create an account to play.</p>
         <form id="auth-form" class="auth-form">
             <input id="auth-username" type="text" maxlength="24" autocomplete="username" placeholder="Username">
             <input id="auth-password" type="password" maxlength="200" autocomplete="current-password" placeholder="Password">
@@ -56,6 +39,19 @@
             </div>
         </form>
     </div>
+
+    <!-- Play controls (shown when logged in). -->
+    <div id="play-controls" hidden>
+        <button id="btn-create" class="primary">Start a room</button>
+        <div id="lobby-list" class="lobby">
+            <div class="lobby-label">Or join a room:</div>
+            <div id="lobby-rooms" class="lobby-rooms"></div>
+            <div id="lobby-empty" class="lobby-empty muted">No open rooms yet.</div>
+        </div>
+        <div id="my-stats" class="stats-block" hidden></div>
+    </div>
+
+    <div id="error-msg" class="error" hidden></div>
 
     <!-- How to play, with rendered examples. Adapted from chapter 11.4 of
          Maailmantutkija. The example DOM is injected by render.js. -->

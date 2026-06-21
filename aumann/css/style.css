@@ -718,11 +718,8 @@ input[type="text"]:focus { outline: none; border-color: #111; }
 }
 
 /* ---------- Accounts (landing) ---------- */
-.auth-box { margin: 28px 0 6px; max-width: 340px; }
-.auth-divider { display: flex; align-items: center; text-align: center; color: #bbb; font-size: 13px; margin: 0 0 10px; }
-.auth-divider::before, .auth-divider::after { content: ""; flex: 1; border-top: 1px solid #eee; }
-.auth-divider span { padding: 0 12px; white-space: nowrap; }
-.auth-prompt { font-size: 13px; margin: 0 0 12px; }
+.auth-box { margin: 12px 0 6px; max-width: 340px; }
+.auth-prompt { font-size: 15px; color: #444; margin: 0 0 12px; }
 .auth-form { display: flex; flex-direction: column; gap: 8px; max-width: 340px; }
 .auth-form input[type="text"],
 .auth-form input[type="password"] {

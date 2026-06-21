@@ -6,7 +6,7 @@ import {
     renderScoreboard, renderHowTo, appendChatMessage, renderHistory,
 } from './render.js';
 import {
-    getName, setName, getRoomCookie, setRoomCookie, clearRoomCookie,
+    getRoomCookie, setRoomCookie, clearRoomCookie,
     getToken, setToken, clearToken,
     appendHistory, getHistory, summarize,
 } from './storage.js';
@@ -169,26 +169,24 @@ function render() {
 
 // Toggle the auth box between the login form and the signed-in state, and own
 // the name field (a logged-in user always plays under their account name).
+// An account is required to play: when logged out, only the sign-in card shows;
+// when logged in, the play controls (start/join) appear.
 function renderAuth() {
-    const box = document.querySelector('#auth-box');      // optional sign-in section
-    const li = document.querySelector('#auth-loggedin');  // signed-in bar
-    const nameRow = document.querySelector('#name-row');
-    const nameEl = document.querySelector('#name');
-    if (!box || !li) return;
+    const box = document.querySelector('#auth-box');        // sign-in card
+    const li = document.querySelector('#auth-loggedin');    // signed-in bar
+    const play = document.querySelector('#play-controls');  // start/join
+    if (!box || !li || !play) return;
     if (account) {
-        box.hidden = true; li.hidden = false;
+        box.hidden = true; li.hidden = false; play.hidden = false;
         document.querySelector('#auth-display').textContent = account.display;
-        nameRow.hidden = true;
-        nameEl.value = account.display;
     } else {
-        box.hidden = false; li.hidden = true;
-        nameRow.hidden = false;
-        if (!nameEl.value) nameEl.value = getName();   // never clobber typed text
+        box.hidden = false; li.hidden = true; play.hidden = true;
     }
 }
 
 function renderLanding() {
     renderAuth();
+    if (!account) return;   // nothing else on the landing until signed in
     const roomsEl = document.querySelector('#lobby-rooms');
     const emptyEl = document.querySelector('#lobby-empty');
     roomsEl.innerHTML = '';
@@ -208,7 +206,7 @@ function renderLanding() {
             roomsEl.appendChild(row);
         }
     }
-    const name = getName();
+    const name = account.display;
     const statsEl = document.querySelector('#my-stats');
     if (name) {
         const summary = summarize(getHistory(name));
@@ -305,11 +303,9 @@ function renderGame() {
 /* ---------------- Actions ---------------- */
 
 function joinRoom(code) {
-    const name = (document.querySelector('#name').value || '').trim();
-    if (!name) return flashError('Enter your name first.');
-    setName(name);
+    if (!account) return flashError('Please sign in first.');
     connect();
-    const go = () => socket.emit('room:join', { code, name }, (res) => {
+    const go = () => socket.emit('room:join', { code, name: account.display }, (res) => {
         if (!res?.ok) flashError(res?.error || 'Could not join.');
     });
     if (socket.connected) go(); else socket.once('connect', go);
@@ -402,11 +398,9 @@ function escapeHtml(s) {
 
 window.addEventListener('DOMContentLoaded', () => {
     document.querySelector('#btn-create').addEventListener('click', () => {
-        const name = (document.querySelector('#name').value || '').trim();
-        if (!name) return flashError('Enter your name first.');
-        setName(name);
+        if (!account) return flashError('Please sign in first.');
         connect();
-        const go = () => socket.emit('room:create', { name }, (res) => {
+        const go = () => socket.emit('room:create', { name: account.display }, (res) => {
             if (!res?.ok) flashError(res?.error || 'Could not create room.');
         });
         if (socket.connected) go(); else socket.once('connect', go);

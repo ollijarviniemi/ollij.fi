@@ -12,7 +12,19 @@ const stateWhere = (s, pred) => new Promise(r => { const h = st => { if (pred(st
 let pass = 0, fail = 0;
 const check = (c, m) => { if (c) { console.log(`  ✓ ${m}`); pass++; } else { console.log(`  ✗ ${m}`); fail++; } };
 
+// Playing now requires an account: register a fixed smoke user (or log in if it
+// already exists from a previous run).
+const auth = async (s, username) => {
+    let r = await emit(s, 'auth:register', { username, password: 'smoke-pass-123' });
+    if (r.error) r = await emit(s, 'auth:login', { username, password: 'smoke-pass-123' });
+    return r;
+};
+
 const A = await connect(), B = await connect();
+const aAuth = await auth(A, 'smoke_alice'); await auth(B, 'smoke_bob');
+check(aAuth.ok && aAuth.user, 'account login/register works');
+check((await emit(await connect(), 'room:create', {})).error === 'Please sign in first.', 'create rejected without an account');
+
 const cr = await emit(A, 'room:create', { name: 'Alice' });
 check(cr.ok && cr.code, 'room created on /aumann');
 
