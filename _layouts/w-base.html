@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+{%- assign has_math = false -%}
+{%- if content contains '$' or content contains '\(' -%}{%- assign has_math = true -%}{%- endif -%}
 <html lang="{{ page.lang | default: 'en' }}">
 <head>
   <meta charset="utf-8">
@@ -8,6 +10,18 @@
   {%- if ptitle == "" or ptitle == content -%}{%- assign ptitle = page.title -%}{%- endif -%}
   <title>{% if page.home %}Olli Järviniemi{% else %}{% if ptitle and ptitle != "" %}{{ ptitle }} · {% endif %}Olli Järviniemi{% endif %}</title>
   {% if page.description %}<meta name="description" content="{{ page.description }}">{% endif %}
+  {% if page.hero %}<meta property="og:image" content="{{ page.hero | absolute_url }}">{% endif %}
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  {%- comment -%} Preload above-the-fold fonts (body + display) to avoid the fallback→webfont swap. {%- endcomment -%}
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/newsreader-latin-var.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/kurale-v11-latin-regular.woff2" crossorigin>
+  {% if page.hero %}<link rel="preload" as="image" href="{{ page.hero }}" type="image/webp" fetchpriority="high">{% endif %}
+  {% if has_math %}<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>{% endif %}
+
   <link rel="stylesheet" href="/assets/css/site.css">
   <script>
     /* set theme before paint to avoid a flash */
@@ -35,6 +49,7 @@
   {{ content }}
 
   <script src="/assets/js/theme.js"></script>
+  {% if has_math %}
   <!-- Inline/display math: write inline as $…$ or \(…\), display as $$…$$ or \[…\]. -->
   <script>
     window.MathJax = {
@@ -43,5 +58,6 @@
     };
   </script>
   <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  {% endif %}
 </body>
 </html>

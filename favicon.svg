@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <style>
+    .mark { stroke: #7c2d2d; }
+    @media (prefers-color-scheme: dark) { .mark { stroke: #d98c7a; } }
+  </style>
+  <rect class="mark" x="9.2" y="9.2" width="13.6" height="13.6" rx="1.2"
+        fill="none" stroke-width="2.6" transform="rotate(45 16 16)"/>
+</svg>
