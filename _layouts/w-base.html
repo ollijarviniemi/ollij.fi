@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-{%- comment -%} Only load MathJax (and guard against the raw-TeX flash) on pages that use math. {%- endcomment -%}
-{%- assign has_math = false -%}
-{%- if content contains '$' or content contains '\(' -%}{%- assign has_math = true -%}{%- endif -%}
-<html lang="{{ page.lang | default: 'en' }}"{% if has_math %} class="mathjax-pending"{% endif %}>
+<html lang="{{ page.lang | default: 'en' }}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,31 +7,8 @@
   {%- assign ptitle = content | split: '</h1>' | first | split: '>' | last | strip_html | strip -%}
   {%- if ptitle == "" or ptitle == content -%}{%- assign ptitle = page.title -%}{%- endif -%}
   <title>{% if page.home %}Olli Järviniemi{% else %}{% if ptitle and ptitle != "" %}{{ ptitle }} · {% endif %}Olli Järviniemi{% endif %}</title>
-  {%- comment -%} Description: explicit front matter, else first paragraph. {%- endcomment -%}
-  {%- assign desc = page.description | default: page.excerpt | strip_html | strip | truncate: 160 -%}
-  {% if desc and desc != "" %}<meta name="description" content="{{ desc }}">{% endif %}
-  <link rel="canonical" href="{{ page.url | absolute_url }}">
-  <meta property="og:type" content="{% if page.home %}website{% else %}article{% endif %}">
-  <meta property="og:title" content="{{ ptitle | default: 'Olli Järviniemi' }}">
-  {% if desc and desc != "" %}<meta property="og:description" content="{{ desc }}">{% endif %}
-  <meta property="og:url" content="{{ page.url | absolute_url }}">
-  <meta property="og:site_name" content="Olli Järviniemi">
-  {% if page.hero %}<meta property="og:image" content="{{ page.hero | absolute_url }}">
-  <meta name="twitter:card" content="summary_large_image">{% else %}<meta name="twitter:card" content="summary">{% endif %}
-
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="/favicon.png" sizes="32x32" type="image/png">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-
-  {%- comment -%} Preload the fonts used above the fold (body + display) to avoid the fallback→webfont swap. {%- endcomment -%}
-  <link rel="preload" as="font" type="font/woff2" href="/fonts/newsreader-latin-var.woff2" crossorigin>
-  <link rel="preload" as="font" type="font/woff2" href="/fonts/kurale-v11-latin-regular.woff2" crossorigin>
-  {% if page.hero %}<link rel="preload" as="image" href="{{ page.hero }}" type="image/webp" fetchpriority="high">{% endif %}
-
+  {% if page.description %}<meta name="description" content="{{ page.description }}">{% endif %}
   <link rel="stylesheet" href="/assets/css/site.css">
-  {% if has_math %}<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <link rel="preload" as="script" href="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" crossorigin>
-  <style>html.mathjax-pending .post-body{visibility:hidden}</style>{% endif %}
   <script>
     /* set theme before paint to avoid a flash */
     (function () {
@@ -61,25 +35,13 @@
   {{ content }}
 
   <script src="/assets/js/theme.js"></script>
-  {% if has_math %}
   <!-- Inline/display math: write inline as $…$ or \(…\), display as $$…$$ or \[…\]. -->
   <script>
     window.MathJax = {
       tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
-      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] },
-      startup: {
-        pageReady() {
-          // Reveal the article only once math is typeset — no flash of raw $…$ source.
-          return MathJax.startup.defaultReady().then(function () {
-            document.documentElement.classList.remove('mathjax-pending');
-          });
-        }
-      }
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }
     };
-    // Safety: never leave the article hidden if MathJax fails to load.
-    setTimeout(function () { document.documentElement.classList.remove('mathjax-pending'); }, 2000);
   </script>
   <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-  {% endif %}
 </body>
 </html>

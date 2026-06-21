@@ -61,11 +61,7 @@
 
 /* ---------- base ---------- */
 *, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; scrollbar-gutter: stable; }
-/* Respect users who ask for less motion: drop the theme-fade and any animation. */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
-}
+html { -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
   background: var(--bg);
@@ -114,12 +110,10 @@ a:hover { color: var(--accent); text-decoration-color: currentColor; }
 .post-back a { color: var(--muted); text-decoration: none; }
 .post-back a:hover { color: var(--accent); }
 .post-body h1, .post-title { font-family: var(--display); font-weight: 500;
-  font-size: 2.15rem; line-height: 1.15; margin: 0 0 1.4rem; letter-spacing: .005em;
-  text-wrap: balance; }
-.post-body h2 { font-size: 1.5rem; margin: 2.4rem 0 .8rem; line-height: 1.2; text-wrap: balance;
-  scroll-margin-top: 1.5rem; }
+  font-size: 2.15rem; line-height: 1.15; margin: 0 0 1.4rem; letter-spacing: .005em; }
+.post-body h2 { font-size: 1.5rem; margin: 2.4rem 0 .8rem; line-height: 1.2; }
 .post-body h3 { font-size: 1.2rem; margin: 2rem 0 .6rem; }
-.post-body p { margin: 0 0 1.1rem; text-wrap: pretty; }   /* avoids short widow lines */
+.post-body p { margin: 0 0 1.1rem; }
 .post-body em, .post-body i { font-style: italic; }
 .post-body strong, .post-body b { font-weight: 700; }   /* real Newsreader 700 (variable) */
 .post-body blockquote {

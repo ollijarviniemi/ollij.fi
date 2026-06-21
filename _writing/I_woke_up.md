@@ -1,15 +1,9 @@
 ---
-title: "I woke up in a strange place"
-hero: /assets/img/everloom.webp
 redirect_from:
   - /blog/I_woke_up/
 ---
 <figure>
-  <picture>
-    <source srcset="/assets/img/everloom.webp" type="image/webp">
-    <img src="/assets/img/everloom.png" alt="The Everloom"
-         width="1536" height="1024" fetchpriority="high" decoding="async">
-  </picture>
+  <img src="/assets/img/everloom.png" alt="The Everloom">
   <figcaption><a href="https://lucaspaakh.bandcamp.com/track/the-everloom-theme">Recommended background music.</a></figcaption>
 </figure>
 
