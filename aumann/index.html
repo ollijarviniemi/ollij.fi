@@ -58,7 +58,7 @@
     <section class="how-to">
         <h2>How to play</h2>
 
-        <p>You and a teammate sit at the table. From a standard 52-card deck, each of you gets 5 cards — but you can't see each other's:</p>
+        <p>You and a teammate sit at the table. From a standard 52-card deck, each of you gets 5 cards. You can't see each other's cards:</p>
         <div id="howto-hands" class="howto-block"></div>
 
         <p>Three "condition cards" are drawn at random from a set of 20, and shown to both of you:</p>
@@ -66,17 +66,17 @@
 
         <p>Your shared question: looking at <em>all 10 cards combined</em>, is at least one of the 3 conditions satisfied? Each of you forms a belief about the probability.</p>
 
-        <p>You both then simultaneously place a token on the board, in the column that matches your belief. The board's middle row tells you what each column pays out:</p>
+        <p>You both then independently place a token on the board, in the column that matches your belief. The board's middle row tells you what each column pays out if the answer to the question is yes/no:</p>
         <div id="howto-board-r1" class="howto-block"></div>
 
-        <p>Once you've both placed, you see each other's token. Maybe your teammate is more confident than you, and they have probably good reason — that might shift your belief. You then place a second token (round 2), wherever you now think the right column is:</p>
+        <p>Once you've both placed, you see each other's token. Your beliefs might change by seeing your teammate's token. You then place a second token (round 2), reflecting your updated belief:</p>
         <div id="howto-board-r2" class="howto-block"></div>
 
-        <p>The cards are revealed, the conditions checked. Each token scores by its column: if <em>any</em> condition is met you get the <strong>left</strong> number; otherwise the <strong>right</strong> one. The middle column gives 7 either way — the right pick when you're around 50/50.</p>
+        <p>The cards are revealed, the conditions checked. Each token scores by its column: if <em>any</em> condition is met you get the <strong>left</strong> number; otherwise the <strong>right</strong> one. The middle column gives 7 either way.</p>
 
-        <p>Tokens score independently. The team total is your two scores plus your teammate's two — 40 points possible per game.</p>
+        <p>Tokens score independently. The team total is your two scores plus your teammate's two, with a maximum of 40 points possible per game.</p>
 
-        <p>The sidebar tracks your scores. Below it, a fainter table shows the expected points each placement lost versus a perfect Bayesian — 0 means you matched the Bayesian's column, and it's averaged over the Bayesian's belief rather than the single revealed outcome, so it's a cleaner read on decision quality (hover to bring it into focus). After the reveal you'll also see two dashed lines on the board showing the ideal Bayesian's round-1 and round-2 column for each of you, with a curved arrow tracing how a perfect updater would have moved.</p>
+        <p>The sidebar tracks your scores. The main scoring method is to compare your play to how two perfect Bayesians would have played. More precisely: we compute the expected value of your play and the expected value of the Bayesians' play (with expectations taken with respect to the Bayesians' beliefs) and subtract them from each other. Perfect play thus corresponds to a score of zero -- try to get as close as possible! After a game ends, you will see the exact beliefs Bayesians playing the game would have had, providing feedback to improve your play.</p>
     </section>
 </section>
 
@@ -93,7 +93,8 @@
     <div class="game-layout">
         <div class="game-main">
 
-            <!-- Teammate's hand at top (across the table, flipped). -->
+            <!-- Teammate's name + hand at top (across the table, flipped). -->
+            <div id="opp-name" class="opp-name"></div>
             <div id="opp-hand" class="hand opp-hand fan"></div>
 
             <div id="status" class="status"></div>

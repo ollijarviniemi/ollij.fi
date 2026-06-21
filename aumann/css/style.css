@@ -325,6 +325,14 @@ input[type="text"]:focus { outline: none; border-color: #111; }
 
 /* Opp hand: flipped 180° as if held across the table during play. At reveal
    the container un-rotates and the cards spread to a flat row. */
+.opp-name {
+    text-align: center;
+    font-size: 14px;
+    color: #777;
+    margin: 0 0 4px;
+    min-height: 18px;
+}
+.opp-name.disconnected { color: #c33; }
 .opp-hand {
     margin: 0;
     transform: rotate(180deg);

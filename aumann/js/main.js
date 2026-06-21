@@ -266,6 +266,16 @@ function renderGame() {
     renderBoard(document.querySelector('#board'), state, onPlace);
     document.querySelector('#status').textContent = statusFor(state);
 
+    // Teammate name label above their hand.
+    const oppNameEl = document.querySelector('#opp-name');
+    const mate = state.opponent?.name;
+    if (mate) {
+        oppNameEl.textContent = state.opponent.connected === false ? `${mate} (disconnected)` : `Playing with ${mate}`;
+        oppNameEl.classList.toggle('disconnected', state.opponent.connected === false);
+    } else {
+        oppNameEl.textContent = '';
+    }
+
     // Bayesian visualization only after reveal. Also grow board-wrap margin
     // so the arcs have room above + below the grid.
     const boardWrap = document.querySelector('#board-wrap');

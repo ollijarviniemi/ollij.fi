@@ -310,21 +310,23 @@ export function statusFor(view) {
     const g = view.game;
     if (!g) return '';
     const oppDown = view.opponent && view.opponent.connected === false;
+    const Mate = view.opponent?.name || 'Teammate';   // sentence-start form
+    const mate = view.opponent?.name || 'teammate';    // mid-sentence form
     if (g.state === 'round1') {
         if (g.myR1 == null) {
-            if (g.oppR1Pending) return 'Teammate has placed. Click a column to place yours.';
+            if (g.oppR1Pending) return `${Mate} has placed. Click a column to place yours.`;
             return 'Click a column to place your first token.';
         }
-        if (oppDown) return 'Teammate disconnected.';
-        return 'Waiting for teammate…';
+        if (oppDown) return `${Mate} disconnected.`;
+        return `Waiting for ${mate}…`;
     }
     if (g.state === 'round2') {
         if (g.myR2 == null) {
-            if (g.oppR2Pending) return 'Teammate has placed their second. Click a column to place yours.';
+            if (g.oppR2Pending) return `${Mate} has placed their second. Click a column to place yours.`;
             return 'Click a column to place your second token.';
         }
-        if (oppDown) return 'Teammate disconnected.';
-        return 'Waiting for teammate…';
+        if (oppDown) return `${Mate} disconnected.`;
+        return `Waiting for ${mate}…`;
     }
     return '';
 }
