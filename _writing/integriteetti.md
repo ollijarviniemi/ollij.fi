@@ -1,4 +1,5 @@
 ---
+lang: fi
 redirect_from:
   - /blog/integriteetti/
 ---

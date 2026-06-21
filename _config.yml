@@ -11,6 +11,9 @@ remote_theme: jekyll/minima@1e8a445e
 # add a line comment on "theme: minima" above.
 #remote_theme: jekyll/minima
 
+# Site base URL — needed for absolute_url / canonical links and social meta tags.
+url: "https://ollij.fi"
+
 plugins:
   - jekyll-seo-tag
   - jekyll-titles-from-headings
@@ -65,6 +68,12 @@ defaults:
       path: "epi"
     values:
       layout: w-epi
+      lang: fi
+  # tekoaly.md is a standalone Finnish page.
+  - scope:
+      path: "tekoaly.md"
+    values:
+      lang: fi
 
 # Keep server-side, translation, and tooling files out of the published static
 # build. The list repeats Jekyll's built-in defaults (node_modules, Gemfile,

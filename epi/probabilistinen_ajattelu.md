@@ -28,7 +28,7 @@ Tutkitaan edellistä kuvaa. Palikat, jotka oli asetettu ennen kohtaa 10:10, tule
 
 ![Osa panoksista katoaa](Kuvat/prob_2)
 
-Tässä on jotakin hassua: kuvassa on laitettu 10 prosentin edestä palikoita sille, ettei kaveri saavu, 15 % sille, että että hän vielä tulee, ja... ai niin, menetit sen 75 %.
+Tässä on jotakin hassua: kuvassa on laitettu 10 prosentin edestä palikoita sille, ettei kaveri saavu, 15 % sille, että hän vielä tulee, ja... ai niin, menetit sen 75 %.
 
 Mutta uskomusten pitäisi yhteensä olla tasan 100 % -- ei enempää, ei vähempää. Täten deflaatio iskee ja palikoiden arvo kasvaa! Palikoita on jäljellä enää 25, joten nyt jokainen palikka on neljän prosentin arvoinen. Seuraavassa kuvassa palikat ovat siten kooltaan nelinkertaisia. (Palikoiden sijaintien muutos johtuu vain visualisoinnin haasteista.)
 

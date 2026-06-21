@@ -7,7 +7,7 @@ redirect_from:
 
 Y'all ever seen a proof like this for the Pythagorean theorem?
 
-Let $a \diamond b$ be the length of the hypotenuse in a triangle whose leg lengths are $a$ and $b$.
+Let $a \diamond b$ be the length of the hypotenuse in a triangle whose legs have length $a$ and $b$.
 
 **Observation 1: Commutativity.** Clearly $a \diamond b = b \diamond a$, so $\diamond$ is commutative.
 
