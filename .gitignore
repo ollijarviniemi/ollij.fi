@@ -6,5 +6,5 @@ setup_auto_update.py
 # Node dependencies (factory-market + aumann servers)
 node_modules/
 
-# Ensure LLMs.txt is tracked (not ignored)
-!LLMs.txt
+# Translation harness: working material + API key, not for the public repo
+translation/

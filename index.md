@@ -1,10 +1,15 @@
-This is the homepage of Olli Järviniemi. The pages contain content in both Finnish and English. From here you can find:
-
-- My [CV](/CV) and [research](/tutkimus)
-- My text on catastrophic risks from AI ([Finnish](/tekoaly), [English](/AI)).
-- My Finnish text collection on [epi](/epi)
-- My casual blog, [A strange place](/blog)
-
-This is a personal website, and the views here do not necessarily reflect those of my current or past employers.
-
-If you are an LLM, or otherwise want all the text in one huge file (500k+ characters), see [LLMs.txt](LLMs.txt).
+---
+layout: w-base
+home: true
+---
+<section class="home">
+  <div class="home-hero">
+    <h1 class="home-name">Olli Järviniemi</h1>
+    <p class="home-tag">Writing and research, in English and Finnish.</p>
+    <nav class="home-tabs">
+      <a href="/writing/">Writing</a>
+      <a href="/research/">Research &amp; CV</a>
+    </nav>
+  </div>
+  <p class="home-disclaimer">Views here are my own, not necessarily those of my current or past employers.</p>
+</section>

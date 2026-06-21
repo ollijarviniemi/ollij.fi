@@ -1,0 +1,23 @@
+{%- comment -%} Prev / index / next nav for sequential text collections (text_lists). {%- endcomment -%}
+{%- assign dir = page.url | split: '/' -%}
+{%- assign dir = dir[1] -%}
+{%- if site.text_lists contains dir -%}
+  {%- assign main_path = dir | append: '.md' -%}
+  {%- assign main = site.pages | where: 'path', main_path | first -%}
+  {%- assign texts = main.texts -%}
+  {%- assign previ = nil -%}{%- assign nexti = nil -%}
+  {%- for text in texts -%}
+    {%- if text == page.url -%}
+      {%- unless forloop.first -%}{%- assign previ = forloop.index0 | minus: 1 -%}{%- endunless -%}
+      {%- unless forloop.last -%}{%- assign nexti = forloop.index0 | plus: 1 -%}{%- endunless -%}
+      {%- break -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- if previ != nil or nexti != nil -%}
+  <nav class="seqnav">
+    <span class="seqnav-prev">{% if previ != nil %}<a href="{{ texts[previ] }}">‹ Edellinen</a>{% endif %}</span>
+    <span class="seqnav-toc"><a href="/{{ dir }}/">Sisällysluettelo</a></span>
+    <span class="seqnav-next">{% if nexti != nil %}<a href="{{ texts[nexti] }}">Seuraava ›</a>{% endif %}</span>
+  </nav>
+  {%- endif -%}
+{%- endif -%}

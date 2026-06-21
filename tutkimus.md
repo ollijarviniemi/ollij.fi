@@ -1,3 +1,6 @@
+---
+layout: w-page
+---
 # Tutkimus
 
 ## Tekoäly ja tekoälyturvallisuus

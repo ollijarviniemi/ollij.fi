@@ -1,3 +1,6 @@
+---
+layout: w-page
+---
 # Tekoälyn katastrofaalisista riskeistä
 
 **K:** "Sinulla on näkemyksiä tekoälystä. Kerro niistä."

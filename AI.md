@@ -1,3 +1,6 @@
+---
+layout: w-page
+---
 # On catastrophic risks from AI
 
 **Q:** "You have views on artificial intelligence. Tell us about them."

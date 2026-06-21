@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: 'en' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {%- comment -%} Prefer the first <h1> from content; fall back to page.title. {%- endcomment -%}
+  {%- assign ptitle = content | split: '</h1>' | first | split: '>' | last | strip_html | strip -%}
+  {%- if ptitle == "" or ptitle == content -%}{%- assign ptitle = page.title -%}{%- endif -%}
+  <title>{% if page.home %}Olli Järviniemi{% else %}{% if ptitle and ptitle != "" %}{{ ptitle }} · {% endif %}Olli Järviniemi{% endif %}</title>
+  {% if page.description %}<meta name="description" content="{{ page.description }}">{% endif %}
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <script>
+    /* set theme before paint to avoid a flash */
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) { document.documentElement.setAttribute('data-theme', 'light'); }
+    })();
+  </script>
+</head>
+<body>
+  <header class="masthead{% if page.home %} home-bar{% endif %}">
+    {% unless page.home %}
+    <a class="brand" href="/">Olli Järviniemi</a>
+    <nav class="mnav">
+      <a href="/writing/">Writing</a>
+      <a href="/research/">Research &amp; CV</a>
+    </nav>
+    {% endunless %}
+    <button class="theme-toggle" type="button" aria-label="Toggle dark mode">☾</button>
+  </header>
+
+  {{ content }}
+
+  <script src="/assets/js/theme.js"></script>
+  <!-- Inline/display math: write inline as $…$ or \(…\), display as $$…$$ or \[…\]. -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</body>
+</html>

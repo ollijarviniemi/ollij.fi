@@ -14,6 +14,7 @@ remote_theme: jekyll/minima@1e8a445e
 plugins:
   - jekyll-seo-tag
   - jekyll-titles-from-headings
+  - jekyll-redirect-from
 # Theme-specific settings
 
 titles_from_headings:
@@ -46,9 +47,28 @@ text_lists:
   - epi
   - tekoaly
 
-# Keep server-side and tooling files out of the published static build. The list
-# repeats Jekyll's built-in defaults (node_modules, Gemfile, vendor/...) because
-# specifying `exclude` replaces the defaults rather than extending them.
+# New writing section: posts live at the site root (ollij.fi/<slug>), rendered by
+# our standalone w-post layout. Authoring stays front-matter-free (# Title + body).
+collections:
+  writing:
+    output: true
+    permalink: /:path/
+
+defaults:
+  - scope:
+      path: ""
+      type: writing
+    values:
+      layout: w-post
+  # epi/ is a sequential Finnish text collection (prev/next nav via seqnav).
+  - scope:
+      path: "epi"
+    values:
+      layout: w-epi
+
+# Keep server-side, translation, and tooling files out of the published static
+# build. The list repeats Jekyll's built-in defaults (node_modules, Gemfile,
+# vendor/...) because specifying `exclude` replaces the defaults, not extends them.
 exclude:
   - .sass-cache/
   - .jekyll-cache/
@@ -68,3 +88,5 @@ exclude:
   - deploy.sh
   - aumann/server/
   - aumann/bot/
+  - key-updates/
+  - wiki/

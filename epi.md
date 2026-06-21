@@ -1,4 +1,5 @@
 ---
+layout: w-page
 texts:
  - /epi/epipuhe/
  - /epi/binaarinen_jakauma/

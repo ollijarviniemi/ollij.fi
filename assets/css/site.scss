@@ -1,0 +1,215 @@
+---
+# Front matter (even empty) makes Jekyll compile this SCSS -> /assets/css/site.css
+---
+
+/*  ollij.fi reading styles.
+    Theming system (CSS-variable light/dark, monochrome reading values) is adapted
+    from Gwern Branwen's gwern.net CSS, which is released CC-0 / MIT. Reskinned to
+    EB Garamond and a warm-paper palette; not affiliated with gwern.net. */
+
+/* ---------- fonts (self-hosted) ---------- */
+@font-face {
+  font-family: 'EB Garamond'; font-style: normal; font-weight: 500; font-display: swap;
+  src: url('/fonts/eb-garamond-v27-latin-500.woff2') format('woff2'),
+       url('/fonts/eb-garamond-v27-latin-500.woff') format('woff');
+}
+@font-face {
+  font-family: 'EB Garamond'; font-style: italic; font-weight: 500; font-display: swap;
+  src: url('/fonts/eb-garamond-v27-latin-500italic.woff2') format('woff2'),
+       url('/fonts/eb-garamond-v27-latin-500italic.woff') format('woff');
+}
+@font-face {
+  font-family: 'Kurale'; font-style: normal; font-weight: 400; font-display: swap;
+  src: url('/fonts/kurale-v11-latin-regular.woff2') format('woff2'),
+       url('/fonts/kurale-v11-latin-regular.woff') format('woff');
+}
+/* Newsreader — variable weight axis (300–800); body renders at 500, bold at 700 */
+@font-face {
+  font-family: 'Newsreader'; font-style: normal; font-weight: 300 800; font-display: swap;
+  src: url('/fonts/newsreader-latin-var.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Newsreader'; font-style: italic; font-weight: 300 800; font-display: swap;
+  src: url('/fonts/newsreader-latin-italic-var.woff2') format('woff2');
+}
+
+/* ---------- palette ---------- */
+:root {
+  --bg:        #fbfaf6;   /* warm paper */
+  --bg-offset: #f1eee4;   /* code / cards */
+  --ink:       #1b1a16;
+  --muted:     #6f6a5e;
+  --rule:      #ded7c7;
+  --link:      #2a2823;
+  --accent:    #7c2d2d;   /* muted brick — used sparingly */
+  --accent-dim:#a86a55;
+  --measure:   53rem;     /* reading column (~95 chars at 21px EB Garamond) */
+  --serif: 'Newsreader', Garamond, Georgia, serif;
+  --display: 'Kurale', 'Newsreader', Georgia, serif;
+}
+[data-theme="dark"] {
+  --bg:        #16150f;   /* warm near-black */
+  --bg-offset: #221f17;
+  --ink:       #e9e4d4;
+  --muted:     #9a9482;
+  --rule:      #34302510;
+  --rule:      #36322a;
+  --link:      #d8d2c1;
+  --accent:    #d98c7a;
+  --accent-dim:#b9745f;
+}
+
+/* ---------- base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 21px;
+  font-weight: 500;   /* Newsreader body weight (its 400 is too light); EB Garamond shipped 500-only */
+  line-height: 1.62;
+  font-feature-settings: "kern" 1, "liga" 1, "onum" 1;
+  text-rendering: optimizeLegibility;
+  transition: background-color .2s ease, color .2s ease;
+}
+::selection { background: var(--ink); color: var(--bg); }
+
+a { color: var(--link); text-decoration: underline; text-decoration-thickness: .05em;
+    text-decoration-color: var(--accent-dim); text-underline-offset: .14em; }
+a:hover { color: var(--accent); text-decoration-color: currentColor; }
+
+/* ---------- masthead ---------- */
+.masthead {
+  display: flex; align-items: baseline; gap: 1.2rem;
+  max-width: 64rem; margin: 0 auto; padding: 1.6rem 2rem 1.1rem;
+  border-bottom: 1px solid var(--rule);
+}
+.brand { font-family: var(--display); font-size: 1.35rem; letter-spacing: .01em;
+  text-decoration: none; color: var(--ink); }
+.brand:hover { color: var(--accent); }
+.mnav { display: flex; gap: 1rem; font-size: .82rem; letter-spacing: .08em;
+  text-transform: uppercase; }
+.mnav a { text-decoration: none; color: var(--muted); }
+.mnav a:hover { color: var(--accent); }
+.theme-toggle {
+  margin-left: auto; background: none; border: 1px solid var(--rule); color: var(--muted);
+  width: 2rem; height: 2rem; border-radius: 50%; cursor: pointer; font-size: .95rem;
+  line-height: 1; display: grid; place-items: center; padding: 0;
+}
+.theme-toggle:hover { color: var(--accent); border-color: var(--accent); }
+
+.site-foot { max-width: var(--measure); margin: 4rem auto 3rem; padding: 1.2rem 2rem 0;
+  border-top: 1px solid var(--rule); color: var(--muted); font-size: .85rem; }
+
+/* ---------- reading page ---------- */
+.post { max-width: var(--measure); margin: 0 auto; padding: 2.4rem 2rem 0; }
+.post-back { font-size: .82rem; letter-spacing: .06em; text-transform: uppercase;
+  margin: 0 0 1.6rem; }
+.post-back a { color: var(--muted); text-decoration: none; }
+.post-back a:hover { color: var(--accent); }
+.post-body h1, .post-title { font-family: var(--display); font-weight: 500;
+  font-size: 2.15rem; line-height: 1.15; margin: 0 0 1.4rem; letter-spacing: .005em; }
+.post-body h2 { font-size: 1.5rem; margin: 2.4rem 0 .8rem; line-height: 1.2; }
+.post-body h3 { font-size: 1.2rem; margin: 2rem 0 .6rem; }
+.post-body p { margin: 0 0 1.1rem; }
+.post-body em, .post-body i { font-style: italic; }
+.post-body strong, .post-body b { font-weight: 700; }   /* real Newsreader 700 (variable) */
+.post-body blockquote {
+  margin: 1.4rem 0; padding: .2rem 0 .2rem 1.3rem;
+  border-left: 2px solid var(--accent-dim); color: var(--muted); font-style: italic;
+}
+.post-body ul, .post-body ol { margin: 0 0 1.1rem; padding-left: 1.4rem; }
+.post-body li { margin: .25rem 0; }
+.post-body img { max-width: 100%; height: auto; }
+.post-body figure { margin: 1.8rem 0; text-align: center; }
+.post-body figcaption { color: var(--muted); font-size: .9rem; margin-top: .5rem; }
+.post-body code { font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  font-size: .82em; background: var(--bg-offset); padding: .1em .35em; border-radius: 3px; }
+.post-body pre { background: var(--bg-offset); padding: 1rem 1.1rem; overflow-x: auto;
+  border-radius: 4px; font-size: .8em; line-height: 1.5; }
+.post-body pre code { background: none; padding: 0; }
+.post-body table { border-collapse: collapse; margin: 1.4rem 0; width: 100%; font-size: .95em; }
+.post-body th, .post-body td { border-bottom: 1px solid var(--rule); padding: .4rem .6rem;
+  text-align: left; }
+/* centered rule between sections */
+.post-body hr { border: 0; text-align: center; margin: 2.2rem 0; }
+.post-body hr::after { content: "*　*　*"; color: var(--muted); letter-spacing: .3em; }
+/* footnotes (bottom of page) */
+.post-body .footnotes { margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid var(--rule);
+  font-size: .9rem; color: var(--muted); }
+
+/* ---------- /writing index — shared ---------- */
+.windex-head { max-width: 52rem; margin: 0 auto; padding: 2.6rem 2rem 0; text-align: center; }
+.windex-head h1 { font-family: var(--display); font-weight: 500; font-size: 2.3rem; margin: 0; letter-spacing: .01em; }
+
+.wsection-title {
+  font-family: var(--serif); font-variant: small-caps; font-weight: 500;
+  letter-spacing: .08em; font-size: 1.05rem; color: var(--accent);
+  margin: 0 0 .5rem; padding-bottom: .25rem; border-bottom: 1px solid var(--rule);
+}
+.wlist { list-style: none; margin: 0; padding: 0; }
+.wlist li { margin: .18rem 0; line-height: 1.35; }
+.wlist a { text-decoration: none; color: var(--link); }
+.wlist a:hover { color: var(--accent); text-decoration: underline; text-decoration-color: currentColor; }
+.wsection .note { color: var(--muted); font-style: italic; font-size: .92rem; }
+
+/* B — two-column directory (grid, filled row by row) */
+.windex-b { max-width: 52rem; margin: 1.4rem auto 0; padding: 1rem 2rem 0;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2rem 3rem; align-items: start; }
+
+/* C — sticky section nav */
+.windex-c { max-width: 64rem; margin: 1.4rem auto 0; padding: 1rem 2rem 0;
+  display: grid; grid-template-columns: 11rem 1fr; gap: 2.6rem; }
+.windex-c .wnav { position: sticky; top: 1.4rem; align-self: start;
+  display: flex; flex-direction: column; gap: .3rem; font-size: .9rem; }
+.windex-c .wnav a { text-decoration: none; color: var(--muted); letter-spacing: .04em; }
+.windex-c .wnav a:hover { color: var(--accent); }
+.windex-c .wbody .wsection { margin-bottom: 2rem; scroll-margin-top: 1.4rem; }
+.windex-c .wbody .wlist { columns: 2; column-gap: 2rem; }
+@media (max-width: 720px) {
+  .windex-c { grid-template-columns: 1fr; gap: 1rem; }
+  .windex-c .wnav { position: static; flex-flow: row wrap; gap: .3rem .9rem;
+    padding-bottom: .8rem; border-bottom: 1px solid var(--rule); }
+  .windex-c .wbody .wlist { columns: 1; }
+}
+
+/* D — literary / sparse */
+.windex-d { max-width: 34rem; margin: 2rem auto 0; padding: 1rem 2rem 0; }
+.windex-d .wsection { margin: 0 0 3rem; text-align: center; }
+.windex-d .wsection-title { border: 0; color: var(--ink); letter-spacing: .28em;
+  text-transform: uppercase; font-variant: normal; font-size: .9rem; margin-bottom: 1rem; }
+.windex-d .wlist li { margin: .5rem 0; font-size: 1.08rem; }
+
+/* ---------- landing ---------- */
+.masthead.home-bar { border-bottom: none; padding-bottom: 0; }
+.home { box-sizing: border-box; min-height: calc(100vh - 4.5rem); max-width: 52rem;
+  margin: 0 auto; padding: 1rem 2rem 2.4rem; display: flex; flex-direction: column; }
+.home-hero { margin: auto 0; }
+.home-name { font-family: var(--display); font-weight: 500; font-size: 4rem;
+  line-height: 1.02; margin: 0 0 .8rem; letter-spacing: .005em; }
+.home-tag { color: var(--muted); font-size: 1.35rem; margin: 0 0 2.8rem; }
+.home-tabs { display: flex; gap: 2.6rem; align-items: baseline; }
+.home-tabs a { font-family: var(--display); font-size: 2rem; text-decoration: none; color: var(--ink); }
+.home-tabs a:hover { color: var(--accent); }
+.home-disclaimer { color: var(--muted); font-size: .92rem; margin: 0; }
+
+/* prev / index / next nav (epi text collection) */
+.seqnav { display: flex; gap: 1rem; margin: 3rem 0 0; padding-top: 1rem;
+  border-top: 1px solid var(--rule); font-size: .9rem; }
+.seqnav span { flex: 1; }
+.seqnav-toc { text-align: center; }
+.seqnav-next { text-align: right; }
+.seqnav a { color: var(--muted); text-decoration: none; }
+.seqnav a:hover { color: var(--accent); }
+
+@media (max-width: 600px) {
+  body { font-size: 19px; }
+  .masthead { flex-wrap: wrap; gap: .6rem 1rem; padding: 1.1rem 1.2rem .9rem; }
+  .windex-b, .windex-c, .windex-head, .post, .home { padding-left: 1.2rem; padding-right: 1.2rem; }
+  .windex-b { grid-template-columns: 1fr; }
+  .home-name { font-size: 2.7rem; }
+  .home-tag { font-size: 1.15rem; }
+  .home-tabs { flex-direction: column; gap: .7rem; }
+}

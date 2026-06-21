@@ -1,0 +1,23 @@
+---
+layout: w-base
+---
+<div class="windex-head">
+  <h1>I woke up in a strange place</h1>
+</div>
+
+<div class="windex-b">
+  {% for section in site.data.writing.sections %}
+  <section class="wsection">
+    <h2 class="wsection-title">{{ section.name }}</h2>
+    {% if section.posts and section.posts.size > 0 %}
+      <ul class="wlist">
+        {% for p in section.posts %}
+        <li><a href="{{ p.url }}">{{ p.title }}</a></li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="note">{{ section.note | default: "—" }}</p>
+    {% endif %}
+  </section>
+  {% endfor %}
+</div>

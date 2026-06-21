@@ -1,0 +1,87 @@
+# Single source of truth for the /writing index (layout: _layouts/w-index-b.html).
+# Edit here to add/reorder posts; the layout only presents it. url = final site path.
+# TODO(user): curate "New" and "Top"; set real targets for "Rule Deduction",
+# "MTKK", "OOOO"; "Links" is a future section.
+
+sections:
+  - name: New
+    posts:
+      - { title: "Decision-making training in environments with ground truth", url: "/ground_truth/" }
+      - { title: "The importance of language", url: "/importance_of_language/" }
+      - { title: "Black boxes", url: "/black_boxes/" }
+      - { title: "Non-standard Pythagoras proof", url: "/pythagoras/" }
+      - { title: "In a large world", url: "/large_world/" }
+      - { title: "Aumann", url: "/aumann/" }
+      - { title: "Bayesian Factory", url: "/factory/" }
+
+  - name: Top
+    posts:
+      - { title: "I woke up in a strange place", url: "/I_woke_up/" }
+      - { title: '"You will never meet the other player ever again"', url: "/never_again/" }
+      - { title: "Decision-making training in environments with ground truth", url: "/ground_truth/" }
+      - { title: "The Pendulum Trial", url: "/predict/" }   # TODO(user): confirm — assumed = "Predict"
+      - { title: "A cause for distrust in Bayesianism", url: "/distrust_in_bayes/" }
+      - { title: "The perpetual-motion jury", url: "/perpetual_motion/" }
+      - { title: "Writing as a tool", url: "/writing_tool/" }
+      - { title: "In a large world", url: "/large_world/" }
+
+  - name: Math
+    posts:
+      - { title: "Fairness or Bayes?", url: "/fairness_or_bayes/" }
+      - { title: "A cause for distrust in Bayesianism", url: "/distrust_in_bayes/" }
+      - { title: '"You will never meet the other player ever again"', url: "/never_again/" }
+      - { title: "Non-standard Pythagoras proof", url: "/pythagoras/" }
+      - { title: "Systems of differential equations as a baseline for modeling", url: "/differential_equations/" }
+
+  - name: Games and puzzles
+    posts:
+      - { title: "Decision-making training in environments with ground truth", url: "/ground_truth/" }
+      - { title: "The missing games", url: "/missing_games/" }
+      - { title: "Games from another culture", url: "/another_culture/" }
+      - { title: "Bayesian Factory", url: "/factory/" }
+      - { title: "Aumann", url: "/aumann/" }
+      - { title: "Rule Discovery", url: "/rule-discovery/" }
+
+  - name: Epistemics
+    posts:
+      - { title: "Black boxes", url: "/black_boxes/" }
+      - { title: "In defense of jargon", url: "/jargon/" }
+      - { title: "The perpetual-motion jury", url: "/perpetual_motion/" }
+
+  - name: World Modeling
+    posts:
+      - { title: "The importance of language", url: "/importance_of_language/" }
+      - { title: "Writing as a tool", url: "/writing_tool/" }
+      - { title: "Measuring gravitational acceleration", url: "/gravity/" }
+      - { title: "Compatible with the laws of physics", url: "/physics/" }
+
+  - name: Softer side
+    posts:
+      - { title: "I woke up in a strange place", url: "/I_woke_up/" }
+      - { title: "An unusual situation", url: "/unusual/" }
+      - { title: "Response to Chattel Childhood", url: "/childhood/" }
+      - { title: "The perceived stakes", url: "/stakes/" }
+      - { title: "In a large world", url: "/large_world/" }
+
+  - name: Medianworld stories
+    posts:
+      - { title: "The Pendulum Trial", url: "/predict/" }
+      - { title: "Belief Holders", url: "/holders/" }
+      - { title: "Fortress", url: "/fortress/" }
+      - { title: "Obstacle tag", url: "/tag/" }
+      - { title: "Omni-Athletes", url: "/omni/" }
+
+  - name: Miscellaneous
+    posts:
+      - { title: 'Kriittinen arvio K. Koon teoksesta "Kuka keksi rakkauden"', url: "/koo/" }
+      - { title: "Kirja-arvio: Karamazovin veljekset", url: "/karamazov/" }
+      - { title: "Preserve", url: "/preserve/" }
+      - { title: "Sure about that?", url: "/sure/" }
+
+  - name: Legacy
+    posts:
+      - { title: "On catastrophic risks from AI", url: "/AI/" }
+      - { title: "Tekoälyn katastrofaalisista riskeistä", url: "/tekoaly/" }
+      - { title: "Epi", url: "/epi/" }
+      - { title: "Kilpamatematiikan peruskurssi", url: "https://kurssi.matematiikkakilpailut.fi/" }
+      - { title: "OOOO", url: "/oooo.pdf" }
