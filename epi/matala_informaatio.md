@@ -1,3 +1,6 @@
+---
+description: "Kirjaimellisesti tosia mutta mitäänsanomattomia väitteitä kuten \"on siinä hyviäkin puolia\" käytetään häivyttämään erot ja torjumaan kritiikki."
+---
 # Matalan informaation väitteet
 
 "On siinä hyviäkin puolia, että..."

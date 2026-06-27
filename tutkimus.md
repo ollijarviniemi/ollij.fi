@@ -1,5 +1,6 @@
 ---
 layout: w-page
+description: "Olli Järviniemen tutkimusjulkaisut tekoälyturvallisuudesta (FrontierMath, kielimallien petollisuus) ja analyyttisestä lukuteoriasta."
 ---
 # Tutkimus
 

@@ -1,3 +1,6 @@
+---
+description: "Bayesin kaava ilman notaatiota: silmän jomotuksen syytä testaten uskomukset päivittyvät kertomalla todennäköisyyksien suhteet evidenssin suhteilla."
+---
 # Uskomusten muutos
 
 Eräänä päivänä käytin toistakymmentä tuntia lukemiseen. Myöhemmin illalla silmääni koski.

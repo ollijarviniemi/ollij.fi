@@ -1,3 +1,6 @@
+---
+description: "Raitiovaunuongelman kaltaiset ajatusleikit laukaisevat 'filosofiatilan', jossa ajattelu heikkenee — ja sivuuttavat epävarmuuden, joka on moraalin ydintä."
+---
 # Filosofiatila ja ajatusleikit
 
 "Raiteisiin on köytetty viisi ihmistä. Raitiovaunu on ajamassa heidän ylitseen. Voit kuitenkin vääntää vipua, jolloin vaunu ajautuu toiselle raiteelle ja ajaa yhden ihmisen yli. Väännätkö vipua?"

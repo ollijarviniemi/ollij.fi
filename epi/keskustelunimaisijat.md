@@ -1,3 +1,6 @@
+---
+description: "Jotkin aiheet imaisevat keskustelun ja ajattelun mukanaan — vahvat tunteet ja vastakkainasettelu vievät sivuraiteille. Siksi puhun ilmiöstä, en esimerkeistä."
+---
 # Keskustelunimaisijat
 
 Kerran pidin keskustelussa hieman pidemmän puheenvuoron kertoakseni yhdestä ajatuksesta. Ajatuksen selittämiseksi rakensin analogian erään tunnetun keskustelunaiheen kanssa. Jatkoin kohti varsinaista pointtia, mutta...

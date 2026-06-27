@@ -1,3 +1,6 @@
+---
+description: "Tiedostamaton uskomus, ettei maailmassa voi nähdä parannettavaa — \"miten minä muka tietäisin paremmin\" — vaikka helppoja parannuksia riittää."
+---
 # Tehokkaan maailman hypoteesi
 
 Mitä yhteistä seuraavilla tilanteilla on?

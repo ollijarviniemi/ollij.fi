@@ -8,3 +8,10 @@ node_modules/
 
 # Translation harness: working material + API key, not for the public repo
 translation/
+# GA editor — personal corpus + runtime data. NEVER publish on the public site
+# (captures, append-only log, draft history, telemetry, dispatched tasks).
+# node_modules/ is already ignored globally above.
+_ga/
+
+# private quick-capture notes — a real post locally, but never committed to the public repo
+_writing/saved-thoughts.md

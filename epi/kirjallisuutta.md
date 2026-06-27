@@ -1,3 +1,6 @@
+---
+description: "Suosituksia tekstien teemoihin: HPMOR, The Sequences, Slate Star Codex, The Scout Mindset, Thinking Fast and Slow, Jaynesin todennäköisyysteos ja muita."
+---
 # Kirjallisuutta
 
 Muutamia materiaaleja, joita suosittelen tekstieni teemoihin liittyen.

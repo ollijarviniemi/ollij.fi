@@ -2,6 +2,7 @@
 redirect_from:
   - /blog/ikiliikkuva/
   - /ikiliikkuva/
+description: "Condorcet's jury theorem assumes impossible independence — you can't squeeze more confidence from limited information than it holds, like energy from nothing."
 ---
 
 # The perpetual-motion jury

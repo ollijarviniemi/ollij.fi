@@ -1,6 +1,7 @@
 ---
 redirect_from:
   - /blog/distrust_in_bayes/
+description: "Even sharing all your raw data may not let skeptics trust your conclusion — because you chose where to sample. A realizability problem for Bayesians."
 ---
 # A cause for distrust in Bayesianism
 
@@ -34,7 +35,7 @@ In the particular case of two urns, one could of course consider explicitly all 
 
 But consider a more realistic case. Let's say we have a million urns, arranged in a $1000 \times 1000$ grid. Based on initial sampling, we know things like "if you go downwards in the grid, you tend to find more red balls" and "urns that are close to each other tend to have similar content": we know that there's a lot of nice structure and patterns, but like in real life, we can't explicitly articulate all that into our prior. What do you do?
 
-The thing I would do is to try and learn a function $p(x, y)$ that takes in the $x$ and $y$ coordinates of an urn to be sampled, and predicts the probability that a ball drawn from that urn is red. Obviously, I can't search over the space of all functions, so I need to look at "simple" functions that respect the structure I know about -- e.g. maybe I only consider logistic regressions with $x$ and $y$ as the input parameters.
+The thing I would do is to try and learn a function $p(x, y)$ that takes in the $x$ and $y$ coordinates of an urn to be sampled, and assigns a probability that a ball drawn from that urn is red. Obviously, I can't search over the space of all functions, so I need to look at "simple" functions that respect the structure I know about -- e.g. maybe I only consider logistic regressions with $x$ and $y$ as the input parameters.
 
 Of course, it's plain obvious that my hypothesis space won't contain the true hypothesis. And knowing this doesn't allow me to expand my space so that it both contains the true one and is also practically feasible to work with. So we get back to the issue raised earlier: the way in which I sample affects which hypothesis I will pick up as the best one.
 
@@ -42,7 +43,7 @@ Of course, it's plain obvious that my hypothesis space won't contain the true hy
 
 It gets worse: Suppose you distrust me, as a researcher. Not so much that you think I'd fabricate data or even filter it, heaven forbid, but just that I'm somehow going to selectively focus on cases that support whatever conclusion I want to arrive at.
 
-In this case, even if I release all of my data I've collected during my study (in the order I collected them) and you personally compute the likelihood ratios for different hypotheses, you might *still* worry that I have rigged the *sampling procedure* in some way, so that my preferred hypothesis comes out on the top. You might imagine that after sampling for a while and forming a good picture of what some urns are like, I somehow continue by adversarially sampling particular urns most compatible with my bottom line.
+In this case, even if I release all of my data I've collected during my study (in the order I collected them) and you personally compute the likelihood ratios for different hypotheses, you might *still* worry that I have rigged the *sampling procedure* in some way, so that my preferred hypothesis comes out on the top – that after sampling for a while and forming a good picture of what some urns are like, I somehow continue by adversarially sampling particular urns most compatible with my bottom line.
 
 There is a naive solution proposal to this problem: if we have million urns, demand we just sample uniformly from them. This is the Schelling point, and if I choose it, you can then be rather reassured I haven't rigged the process.
 

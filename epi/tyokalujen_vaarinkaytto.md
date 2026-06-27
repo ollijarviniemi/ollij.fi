@@ -1,3 +1,6 @@
+---
+description: "Hyvän epistemiikan työkalut kääntyvät aseiksi keskustelun voittamiseen: \"miksi uskot mitä uskot?\" ja syytökset sumeudesta voivat olla väärinkäyttöä."
+---
 # Työkalujen väärinkäyttö
 
 Olen esittänyt erinäisiä ideoita, jotka on tarkoitettu epin parantamiseen. Niitä voi toki käyttää myös keskustelujen pilaamiseen:

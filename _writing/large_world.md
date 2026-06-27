@@ -2,6 +2,7 @@
 redirect_from:
   - /blog/suuressa_maailmassa/
   - /suuressa_maailmassa/
+description: "On global \"there exists\" claims and a London reunion about death, decision theory, and many worlds, in the final moments of Ancient Earth."
 ---
 
 # In a large world

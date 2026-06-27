@@ -1,5 +1,6 @@
 ---
 layout: w-page
+description: "A technical but accessible Q&A on catastrophic AI risk: capabilities, short timelines, why we don't understand models, hidden problems, goals, and what to do."
 ---
 # On catastrophic risks from AI
 
@@ -40,7 +41,7 @@ If, on the other hand, the reader wants to understand why AI *itself* poses risk
 
 *Translated from the [original Finnish version](https://ollij.fi/tekoaly/) from March 2024. The translation might have shortcomings.*[^thanks]
 
-<a name="section-1">
+<a name="section-1"></a>
 ## 1. About AI in general
 
 **Q:** "Let's start from the very beginning. What is this 'artificial intelligence' you speak of?"
@@ -83,7 +84,7 @@ general-purpose AIs trained with large amounts of compute.
 On the question [When will the first general AI system be devised, tested, and publicly
 announced?](https://www.metaculus.com/questions/5121/date-of-artificial-general- intelligence/) from Metaculus, a collective estimate aggregated from over a thousand predictors places the median year (at the time of writing) at 2031. Different questions ("timelines to what?") and different crowds give different answers - there is by no means consensus on the subject. In any case, timelines of 5 to 15 years[^55] to transformative AI[^57] are quite typical.
 
-<a name="section-2">
+<a name="section-2"></a>
 ## 2. The dangers of AI
 
 **Q:** "Why are AIs dangerous? Where do the risks come from?"
@@ -144,7 +145,7 @@ I would also say that "capable AIs would be able to cause the destruction of hum
 
 But now that this basic point about the extreme potential and danger of AIs has been addressed, we can move on to questions such as "will such highly capable AIs even be built?" and "how hard is it to make sure AIs don't do bad things?"
 
-<a name="section-3"> 
+<a name="section-3"></a>
 ## 3. Timelines
 
 **Q:** "What reason is there to believe that it is possible to build human-level AIs?"
@@ -203,7 +204,7 @@ Coming back to the point: "Using more compute gives better results” has shown 
 
 In general, the right time to prepare for catastrophic risks is early on, even if one thinks it is likely that they would materialize only later.
 
-<a name="section-4"> 
+<a name="section-4"></a>
 ## 4. Level of understanding
 
 **Q:** "You've pointed out that nobody really understands how AIs work. What exactly do you
@@ -457,7 +458,7 @@ This is just one reason why the text produced by a model may contain hidden info
 And this move away from natural language is itself just one example of the problems that can end
 up hidden from people. Speaking of which...
 
-<a name="section-5"> 
+<a name="section-5"></a>
 ## 5. Hidden problems
 
 **Q:** "Why can't we fix problems as they arise?" 
@@ -503,7 +504,7 @@ The actual reason behind deception can only be guessed at: the in-role explanati
 
 Regardless of the reasons, deception can cause real harm if AIs perform tasks more widely and autonomously. And if we try to get AIs to perform tasks where deception is useful, we are creating a pressure towards deception. This does not require AI to have "goals". On the other hand, goal-orientation is related to the topic -- and it's easy to see how goal-orientation can lead to bad outcomes -- so let's address that separately.
 
-<a name="section-6"> 
+<a name="section-6"></a>
 ## 6. Goals
 
 **Q:** "Do AIs have goals?"
@@ -601,7 +602,7 @@ type prompts to the model will guide the model's behavior towards the given goal
 
 The problem is that our ability to shape the objectives of models is weak. We are not able to give models the objective of “fulfilling people's values", for example, so that the model reliably aims to achieve this. We can train the model to behave well and feed the language model with "fulfill human values" type of prompts, but these measures do not directly turn the internal processes and goals of the model to what we want. At best, it is very unclear how the behavior of the model will generalize to new situations. At worst, we end up with a scheming model, so that the naive interpretation of the model's behavior is completely misleading.
 
-<a name="section-7"> 
+<a name="section-7"></a>
 ## 7. Concrete stories
 
 **Q:** "How is the development of AI going in practice?"
@@ -683,7 +684,7 @@ And as I mentioned at the beginning of the text, I am largely focusing on the ri
 
 Ultimately, reality will probably be something else.[^60] Hopefully in a good way.
 
-<a name="section-8"> 
+<a name="section-8"></a>
 ## 8. Solutions
 
 **Q:** "What can be done about the threats posed by AI?"

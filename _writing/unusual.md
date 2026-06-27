@@ -1,6 +1,7 @@
 ---
 redirect_from:
   - /blog/unusual/
+description: "Waking with no memory of who you are, deducing yourself from what stays salient: a Finnish number theorist who knows far too much about AI. Then the bell rings."
 ---
 # An unusual situation
 

@@ -1,3 +1,6 @@
+---
+description: "Mielen teorian käyttämättä jättäminen: vasta-argumentit, jotka toinen on jo kuullut, ja nopeat väärät vastaukset estävät pääsyn oikeisiin keskusteluihin."
+---
 # Reflektointi
 
 [Mielen teorialla](https://en.wikipedia.org/wiki/Theory_of_mind) viitataan kykyyn mallintaa muiden ihmisten mielentiloja, esimerkiksi heidän uskomuksia. Lapsilla tämä kyky kehittyy noin nelivuotiaana, jolloin he pystyvät yksinkertaisimmissa tilanteissa hahmottamaan toisen ihmisen uskomusten olevan virheellisiä.

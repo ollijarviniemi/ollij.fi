@@ -1,5 +1,6 @@
 ---
 layout: w-page
+description: "Tekninen yleistajuinen katsaus tekoälyn katastrofaalisiin riskeihin: rakennamme ihmisiä kyvykkäämpiä tekoälyjä ymmärtämättä, mitä teemme."
 ---
 # Tekoälyn katastrofaalisista riskeistä
 
@@ -38,7 +39,7 @@ Jos taas lukija haluaa ymmärtää, miksi tekoälyt *itsessään* muodostavat ri
 
 *Kirjoitettu maaliskuussa 2024.*[^kiitos]
 
-<a name="osio-1">
+<a name="osio-1"></a>
 ## 1. Tekoälystä yleisesti
 
 **K:** "Aloitetaan ihan alusta. Mitä on tämä 'tekoäly', josta puhut?"
@@ -68,7 +69,7 @@ Varsinainen toiminta on kuitenkin huomattavasti vähäisempää kuin esimerkiksi
 
 Metaculus-sivuston kysymyksessä [When will the first general AI system be devised, tested, and publicly announced?](https://www.metaculus.com/questions/5121/date-of-artificial-general-intelligence/) yli tuhannen ennustajan vastauksista koottu yhteisarvio mediaanivuodelle on (tekstin kirjoitushetkellä) 2031. Eri kysymykset ("aikajanat mihin?") ja eri ihmisjoukot antavat erilaisia vastauksia -- aiheesta ei suinkaan ole yksimielisyyttä. Joka tapauksessa seuraavaan 5-15 vuoteen asettuvat lukemat[^55] transformatiivisesta tekoälystä[^57] ovat tyypillisiä.
 
-<a name="osio-2">
+<a name="osio-2"></a>
 ## 2. Tekoälyn vaaroista
 
 **K:** "Miksi tekoälyt ovat vaarallisia? Mistä uhka syntyy?"
@@ -125,7 +126,7 @@ Sanoisin myös, että "kyvykkäät tekoälyt kykenisivät aiheuttamaan ihmiskunn
 
 Mutta nyt kun tämä peruspointti tekoälyjen äärimmäisestä potentiaalista ja vaarasta on käsitelty, voimme edetä kysymyksiin kuten "tullaanko tällaisia huippukyvykkäitä tekoälyjä edes rakentamaan?" tai "kuinka vaikeaa on varmistaa, etteivät tekoälyt tee pahoja juttuja?"
 
-<a name="osio-3">
+<a name="osio-3"></a>
 ## 3. Aikajänteistä
 
 **K:** "Miksi uskoa, että ihmistasoisia tekoälyjä on mahdollista rakentaa?"
@@ -166,7 +167,7 @@ Jos sitten palataan itse asiaan: "Käyttämällä lisää laskentatehoa mallien 
 
 Ja ylipäätään oikea valinta on valmistautua isoihin uhkiin ajoissa, vaikka ajattelisi, että uhat todennäköisesti realisoituisivat vasta myöhemmin.
 
-<a name="osio-4">
+<a name="osio-4"></a>
 ## 4. Ymmärryksen taso
 
 **K:** "Olet viitannut siihen, ettei kukaan oikeastaan ymmärrä, miten tekoälyt toimivat. Mitä tarkalleen tarkoitat tällä?"
@@ -347,7 +348,7 @@ Tämä on vain yksi syy sille, minkä takia mallin tuottama teksti voi sisältä
 
 Ja tämä etääntyminen luonnollisesta kielestä on itsessään vain yksi esimerkki siitä, millaisia ongelmia voi päätyä ihmisiltä piiloon. Asiasta puheen ollen...
 
-<a name="osio-5">
+<a name="osio-5"></a>
 ## 5. Piilevät ongelmat
 
 **K:** "Miksi emme voi korjata ongelmia sitä mukaa kun ne ilmaantuvat?"
@@ -388,7 +389,7 @@ Oli syyt mitä hyvänsä, huijaamisesta voi seurata aitoa vahinkoa, jos tekoäly
 
 Tämä ei vaadi, että tekoälyllä olisi "tavoitteita". Toisaalta tavoitteellisuus liittyy aiheeseen -- ja on helppo nähdä, miten tavoitteellisuus voi johtaa huonoihin lopputuloksiin -- joten käsitellään sitä erikseen.
 
-<a name="osio-6">
+<a name="osio-6"></a>
 ## 6. Tavoitteellisuus
 
 **K:** "Onko tekoälyillä tavoitteita?"
@@ -483,7 +484,7 @@ Ihmiset tietysti myös tarkoituksella rakentavat tekoälyjä niin, että ne ovat
 
 Ongelmana on kuitenkin, että kykymme muovata mallien tavoitteita ovat heikkoja. Emme osaa antaa malleille tavoitetta "toteuta ihmisten arvoja" niin, että malli luotettavasti pyrkisi tämän toteuttamiseen. Voimme toki kouluttaa mallia hyvään käytökseen ja syöttää kielimallile "toteuta ihmisten arvoja" -tekstejä, mutta nämä toimenpiteet eivät suoraan saa mallin sisäisiä prosesseja ja tavoitteita haluamammelaisiksi. Parhaimmillaankin on hyvin epäselvää, miten mallin käytös yleistyy uudenlaisiin tilanteisiin. Pahimmillaan päädymme juonimisskenaarioon, jossa luonnollinen tulkinta mallin toiminnasta on täysin harhaanjohtava.
 
-<a name="osio-7">
+<a name="osio-7"></a>
 ## 7. Konkreettisia tarinoita
 
 **K:** "Miten tekoälyn kehitys käytännössä etenee?"
@@ -560,7 +561,7 @@ Ja kuten tekstin alussa mainitsin, keskityn pitkälti tekoälyjen aiheuttamiin r
 
 Lopulta todellisuus on varmaankin jotakin muuta.[^60] Toivottavasti hyvällä tavalla.
 
-<a name="osio-8">
+<a name="osio-8"></a>
 ## 8. Ratkaisuja
 
 **K:** "Mitä tekoälyn muodostamille uhille voidaan tehdä?"

@@ -2,6 +2,7 @@
 lang: fi
 redirect_from:
   - /blog/avaruusoliotesti/
+description: "Tieteen Kuvalehden avaruuskirja sekoittaa pätevää tiedettä ja perusteettomia ennustuksia — hyvä kriittisen ajattelun testi, jos sen vain tietäisi testiksi."
 ---
 # Avaruusoliotesti
 

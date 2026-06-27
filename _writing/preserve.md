@@ -1,6 +1,7 @@
 ---
 redirect_from:
   - /blog/preserve/
+description: "A prisoner bargains with the God-Emperor who means to kill him before his power grows — and works out that the real opening is an idea no one has tried before."
 ---
 # Preserve
 

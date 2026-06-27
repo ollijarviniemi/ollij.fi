@@ -1,6 +1,7 @@
 ---
 layout: w-page
 permalink: /research/
+description: "Research and publications by Olli Järviniemi on AI safety and propensity inference, plus number-theory work and CV."
 ---
 # Research
 

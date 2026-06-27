@@ -2,6 +2,7 @@
 lang: fi
 redirect_from:
   - /blog/karamazov/
+description: "Kirja-arvio Karamazovin veljeksistä: historian todellisuus, hahmojen vieras maailmankuva ja se, miksi liberalismi voitti nationalistisen kristinuskon."
 ---
 # Kirja-arvio: Karamazovin veljekset
 

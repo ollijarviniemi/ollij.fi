@@ -2,6 +2,7 @@
 redirect_from:
   - /blog/lajeja/
   - /lajeja/
+description: "New games made possible by modern tech: mass-estimation, the halving game, a Schelling game, timed Easter-egg hunts, and a dream of AR dodgeball."
 ---
 
 # Games from another culture

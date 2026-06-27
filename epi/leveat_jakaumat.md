@@ -1,3 +1,6 @@
+---
+description: "Ihmiset vaihtelevat yllättävän paljon, mutta kuplautuminen kätkee sen: tuttavapiiri ei anna edustavaa kuvaa, ja jakaumien pitkät hännät aliarvioidaan helposti."
+---
 # Jakaumat ovat leveitä
 
 Teesi: Ihmiset vaihtelevat yllättävän paljon erinäisillä mittareilla. Tätä vaihtelua helposti aliarvioidaan. Annan alla esimerkkejä.

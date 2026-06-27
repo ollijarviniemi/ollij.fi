@@ -1,16 +1,42 @@
 <!DOCTYPE html>
 {%- assign has_math = false -%}
-{%- if content contains '$' or content contains '\(' -%}{%- assign has_math = true -%}{%- endif -%}
+{%- if content contains '$' or content contains '\(' or content contains '\[' or content contains '\begin{' -%}{%- assign has_math = true -%}{%- endif -%}
 <html lang="{{ page.lang | default: 'en' }}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  {%- comment -%} Prefer the first <h1> from content; fall back to page.title. {%- endcomment -%}
-  {%- assign ptitle = content | split: '</h1>' | first | split: '>' | last | strip_html | strip -%}
-  {%- if ptitle == "" or ptitle == content -%}{%- assign ptitle = page.title -%}{%- endif -%}
+  {%- comment -%} Title: derive from the body's first <h1> (right for posts). An explicit
+       page.seo_title overrides it — used where the visible <h1> is a deliberate flourish
+       (e.g. /writing/, whose <h1> is the "I woke up in a strange place" masthead). We do NOT
+       fall back to page.title: jekyll-titles-from-headings backfills it with a titleized
+       FILENAME for writing-collection docs ("large_world" → "Large_world"), which is junk. {%- endcomment -%}
+  {%- assign ptitle = page.seo_title -%}
+  {%- if ptitle == nil or ptitle == "" -%}
+    {%- assign ptitle = content | split: '</h1>' | first | split: '>' | last | strip_html | strip -%}
+    {%- if ptitle == content -%}{%- assign ptitle = "" -%}{%- endif -%}
+  {%- endif -%}
   <title>{% if page.home %}Olli Järviniemi{% else %}{% if ptitle and ptitle != "" %}{{ ptitle }} · {% endif %}Olli Järviniemi{% endif %}</title>
-  {% if page.description %}<meta name="description" content="{{ page.description }}">{% endif %}
+
+  {%- comment -%} SEO meta. Description: explicit front-matter wins, else first paragraph
+       after the <h1>. og:title tracks ptitle so shares show the post's real title. {%- endcomment -%}
+  {%- assign meta_desc = page.description -%}
+  {%- if meta_desc == nil or meta_desc == "" -%}
+    {%- assign meta_desc = content | split: '</h1>' | last | strip_html | normalize_whitespace | strip | truncate: 160 -%}
+  {%- endif -%}
+  {%- assign og_title = ptitle -%}
+  {%- if page.home or og_title == nil or og_title == "" -%}{%- assign og_title = 'Olli Järviniemi' -%}{%- endif -%}
+  {% if meta_desc != "" %}<meta name="description" content="{{ meta_desc | escape }}">{% endif %}
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  <meta property="og:type" content="{% if page.home or page.layout == 'w-index-b' or page.layout == 'w-page' %}website{% else %}article{% endif %}">
+  <meta property="og:site_name" content="Olli Järviniemi">
+  <meta property="og:title" content="{{ og_title | escape }}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  {% if meta_desc != "" %}<meta property="og:description" content="{{ meta_desc | escape }}">{% endif %}
+  <meta property="og:locale" content="{% if page.lang == 'fi' %}fi_FI{% else %}en_US{% endif %}">
   {% if page.hero %}<meta property="og:image" content="{{ page.hero | absolute_url }}">{% endif %}
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{{ og_title | escape }}">
+  {% if meta_desc != "" %}<meta name="twitter:description" content="{{ meta_desc | escape }}">{% endif %}
 
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon.png" sizes="32x32" type="image/png">
@@ -48,16 +74,291 @@
 
   {{ content }}
 
+  {%- comment -%} Localhost-only: double-click body text to edit this post IN PLACE (no-op on the live site). {%- endcomment -%}
+  {% if page.path %}
+  <script>(function(){
+    if(!/^(localhost|127\.0\.0\.1|0\.0\.0\.0|\[::1\])$/.test(location.hostname)) return;
+    var src={{ page.path | jsonify }}, loading=null;
+    // so an empty post still has something to double-click (the body collapses to 0px otherwise)
+    var mh=document.createElement('style'); mh.textContent=
+      '.post-body{min-height:40vh}'
+      // localhost masthead gets extra controls — let it use full width, keep the brand on one
+      // line, and render recents in normal case (not the shouty truncated uppercase caps).
+      +'.masthead{max-width:none;flex-wrap:nowrap;align-items:center}'
+      +'.masthead .brand{white-space:nowrap;flex:0 0 auto}'
+      +'.masthead .mnav{flex:1 1 auto;flex-wrap:wrap;row-gap:.15rem;align-items:center}'
+      +'.masthead .ga-recent{text-transform:none;letter-spacing:0;font-size:.78rem;color:var(--muted)}';
+    document.head.appendChild(mh);
+    function ensure(){
+      if(window.gaMountInline) return Promise.resolve();
+      if(loading) return loading;
+      loading=new Promise(function(res,rej){
+        if(!document.querySelector('link[data-ga-katex]')){ var l=document.createElement('link'); l.rel='stylesheet'; l.href='https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css'; l.setAttribute('data-ga-katex','1'); document.head.appendChild(l); }
+        // cache-bust: localhost dev, so always fetch the freshest bundle (avoids running a stale build after a rebuild)
+        var s=document.createElement('script'); s.src='http://localhost:8090/editor/dist/editor.bundle.js?t='+Date.now(); s.onload=res; s.onerror=rej; document.head.appendChild(s);
+      });
+      return loading;
+    }
+    document.querySelectorAll('.post-body').forEach(function(el){
+      // listen on the whole .post so the (possibly empty) body's surrounding area is clickable too
+      var host=el.closest('.post')||el.parentNode;
+      host.addEventListener('dblclick', function(ev){
+        var sel=window.getSelection&&getSelection();
+        var word=((sel&&sel.toString())||'').trim();
+        var find=(word.length>3 && word.length<200)?word:null;
+        // character offset of the click within the rendered post text — lets the editor place the
+        // caret in the right spot regardless of size differences between reader and editor
+        var roff=null, rlen=el.textContent.length;
+        try { if(sel&&sel.anchorNode&&el.contains(sel.anchorNode)){ var w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT),o=0,n; while((n=w.nextNode())){ if(n===sel.anchorNode){ roff=o+sel.anchorOffset; break; } o+=n.nodeValue.length; } } } catch(e){}
+        ensure().then(function(){ window.gaMountInline(host, {root:'site', path:src, find:find, cx:ev.clientX, cy:ev.clientY, roff:roff, rlen:rlen}); if(window.gaRecordRecent) window.gaRecordRecent(); });
+      });
+    });
+    // localhost: drop the "Writing" / "Research & CV" nav links — this UI is for blogging,
+    // and writing/ is where Olli spends >99% of his time. Brand link to "/" stays.
+    document.querySelectorAll('.masthead .mnav a[href="/writing/"], .masthead .mnav a[href="/research/"]').forEach(function(a){ a.remove(); });
+    // on localhost the brand is your way back to the writing index, not the public landing page
+    var gaBrand=document.querySelector('.masthead .brand'); if(gaBrand) gaBrand.href='/writing/';
+    // "+ new" draft — creates a post, registers it on /writing/, opens it in edit mode
+    var mast=document.querySelector('.masthead .mnav')||document.querySelector('.masthead');
+    if(mast){
+      var nb=document.createElement('a'); nb.href='/new/'; nb.textContent='+ new'; mast.appendChild(nb);
+      var db=document.createElement('a'); db.href='/dashboard/'; db.textContent='dashboard'; mast.appendChild(db);
+      var rb=document.createElement('a'); rb.href='#'; rb.textContent='↻ server';
+      rb.title='restart the local server to pick up backend changes (your editing keeps running; saves retry across the blip)';
+      rb.addEventListener('click', function(e){ e.preventDefault(); rb.textContent='↻ restarting…';
+        fetch('http://localhost:8090/api/ga/restart',{method:'POST'}).catch(function(){});
+        var t=setInterval(function(){ fetch('http://localhost:8090/save-export/_ping',{cache:'no-store'}).then(function(r){ if(r.ok){ clearInterval(t); rb.textContent='↻ server ✓'; setTimeout(function(){rb.textContent='↻ server';},2500); } }).catch(function(){}); }, 500); });
+      mast.appendChild(rb);
+      // attention dot — gentle signal that a dispatched task needs you (else invisible)
+      var dot=document.createElement('span'); dot.textContent='●'; dot.title='';
+      dot.style.cssText='cursor:pointer;font-size:.62rem;margin-left:.35rem;color:transparent;transition:color .4s';
+      function gaPollAttn(){ fetch('http://localhost:8090/api/ga/attn',{cache:'no-store'}).then(function(r){return r.json();}).then(function(a){
+        var attn=(a.status==='needs-attention'||a.status==='failed'||a.status==='question');
+        dot.style.color=attn?'var(--accent)':'transparent';   // lit ONLY when Claude explicitly needs you
+        dot.title=attn?((a.note||a.status)+' — click to dismiss'):'';
+      }).catch(function(){}); }
+      dot.addEventListener('click', function(){ if(dot.title) alert(dot.title.replace(/ — click to dismiss$/,'')); fetch('http://localhost:8090/api/ga/attn',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({status:'idle',note:''})}).catch(function(){}); dot.style.color='transparent'; });
+      mast.appendChild(dot);
+      gaPollAttn(); setInterval(gaPollAttn, 4000);
+    }
+    // recent posts — subtle dropdown of the last posts Olli has viewed/edited, for navigation.
+    // Client-only: a deduped, capped list of {url,title,ts} in localStorage under "ga:recents".
+    var RKEY='ga:recents', RCAP=8;
+    function rload(){ try{ var a=JSON.parse(localStorage.getItem(RKEY)||'[]'); return Array.isArray(a)?a:[]; }catch(e){ return []; } }
+    function rtitle(){ var h=document.querySelector('.post-body h1, h1'); var t=h&&h.textContent.trim();
+      if(!t) t=(document.title||'').split(' · ')[0].trim();   // strip the " · Olli Järviniemi" site suffix
+      return t||location.pathname; }
+    function recordRecent(){ // record this page by its public URL (so links work on the served site)
+      if(!document.querySelector('.masthead .mnav')) return; // home page has no nav — keep the landing clean
+      var l=rload().filter(function(r){ return r.url!==location.pathname; });
+      l.unshift({url:location.pathname, title:rtitle(), ts:Date.now()});
+      try{ localStorage.setItem(RKEY, JSON.stringify(l.slice(0,RCAP))); }catch(e){}
+      renderRecents();
+    }
+    function renderRecents(){
+      if(!mast) return;
+      // recent posts shown directly in the header as inline links (no dropdown)
+      Array.prototype.slice.call(mast.querySelectorAll('.ga-recent')).forEach(function(a){ a.remove(); });
+      var others=rload().filter(function(r){ return r.url!==location.pathname; });
+      others.slice(0,3).forEach(function(r){
+        var t=(r.title||'').split(' · ')[0];   // strip the site suffix, incl. from older stored entries
+        var a=document.createElement('a'); a.className='ga-recent'; a.href=r.url; a.textContent=t; a.title=t;
+        a.style.cssText='max-width:7rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;opacity:.7';
+        mast.appendChild(a);
+      });
+    }
+    window.gaRecordRecent=recordRecent;
+    recordRecent();
+    // auto-edit on arrival (e.g. right after creating a post)
+    if(/[?&]edit=1/.test(location.search)){ ensure().then(function(){ var post=document.querySelector('.post'); if(post) window.gaMountInline(post, {root:'site', path:src}); if(window.gaRecordRecent) window.gaRecordRecent(); }); }
+    // global capture (Ctrl-K) + dispatch (Ctrl-J), available while reading any page
+    window.GA_PAGE_PATH=src;
+    document.addEventListener('keydown', function(e){
+      if(!(e.ctrlKey||e.metaKey)) return;
+      var k=e.key.toLowerCase();
+      if(k==='k'){ e.preventDefault(); ensure().then(function(){ window.gaCapture(); }); }
+      else if(k==='j'){ e.preventDefault(); ensure().then(function(){ window.gaDispatch(); }); }
+    });
+  })();</script>
+
+  <!-- Thinking-partner chat widget (localhost only): Intercom/LessWrong-style messenger,
+       bottom-right, wired to the GA 'think' channel (persona + pre-stuffed corpus). -->
+  <script>(function(){
+    if(!/^(localhost|127\.0\.0\.1|0\.0\.0\.0|\[::1\])$/.test(location.hostname)) return;
+    var API='http://localhost:8090', TKEY='ga:think:task', OKEY='ga:think:open';
+    var st=document.createElement('style'); st.textContent=
+      '#gatp{position:fixed;right:20px;bottom:20px;z-index:9999;font-family:inherit}'
+      +'#gatp-launch{width:56px;height:56px;border-radius:50%;background:#2c2c31;color:#fff;border:none;cursor:pointer;'
+      +'box-shadow:0 4px 16px rgba(0,0,0,.28);display:flex;align-items:center;justify-content:center;transition:transform .15s,background .15s}'
+      +'#gatp-launch:hover{background:#3a3a41;transform:translateY(-1px)}'
+      +'#gatp-panel{display:none;flex-direction:column;width:384px;height:min(640px,80vh);background:#fff;color:#16161a;'
+      +'border-radius:16px;overflow:hidden;box-shadow:0 6px 44px rgba(0,0,0,.20)}'
+      +'#gatp.open #gatp-panel{display:flex}#gatp.open #gatp-launch{display:none}'
+      +'#gatp-hd{display:flex;align-items:center;gap:10px;padding:15px 16px;border-bottom:1px solid #ececef}'
+      +'#gatp-hd .av{width:32px;height:32px;border-radius:50%;background:#2c2c31;color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;flex:0 0 auto}'
+      +'#gatp-hd .hd-t{flex:1;min-width:0}#gatp-hd .tt{font-weight:600;font-size:.95rem;line-height:1.1}#gatp-hd .sub{font-size:.72rem;color:#8a8a90}'
+      +'#gatp-hd .hb{background:none;border:none;color:#9a9aa0;cursor:pointer;font-size:17px;line-height:1;padding:2px 6px}#gatp-hd .hb:hover{color:#555}'
+      +'#gatp-body{flex:1;overflow-y:auto;padding:14px 16px;display:flex;flex-direction:column;gap:3px;background:#fafafb}'
+      +'#gatp-hist{display:none;position:absolute;top:62px;left:0;right:0;bottom:0;background:#fff;overflow-y:auto;padding:6px 0;z-index:2}'
+      +'#gatp.hist #gatp-hist{display:block}#gatp.hist #gatp-body,#gatp.hist #gatp-foot{visibility:hidden}'
+      +'.gatp-hi{padding:10px 16px;cursor:pointer;border-bottom:1px solid #f0f0f2}.gatp-hi:hover{background:#f5f5f7}'
+      +'.gatp-hi .t{font-size:.85rem;color:#1a1a1f;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}'
+      +'.gatp-hi .d{font-size:.68rem;color:#9a9aa0;margin-top:2px}.gatp-hi.cur .t{font-weight:600}'
+      +'#gatp-hist .empty{padding:18px 16px;font-size:.8rem;color:#9a9aa0}'
+      +'.gatp-day{align-self:center;font-size:.7rem;color:#9a9aa0;margin:8px 0 6px}'
+      +'.gatp-b{max-width:82%;padding:9px 13px;border-radius:16px;font-size:.875rem;line-height:1.42;white-space:pre-wrap;word-wrap:break-word}'
+      +'.gatp-b.a{align-self:flex-start;background:#ececed;color:#1a1a1f;border-bottom-left-radius:5px}'
+      +'.gatp-b.u{align-self:flex-end;background:#dde9f6;color:#13314c;border-bottom-right-radius:5px}'
+      +'.gatp-cap{font-size:.68rem;color:#9a9aa0;margin:1px 2px 7px}.gatp-cap.u{align-self:flex-end}.gatp-cap.a{align-self:flex-start}'
+      +'.gatp-b code{background:rgba(0,0,0,.07);padding:.05em .3em;border-radius:4px;font-size:.85em}'
+      +'.gatp-b a{color:#1c5fb0}'
+      +'.gatp-think{align-self:flex-start;max-width:82%;font-size:.78rem;color:#8a8a90;margin:1px 0 2px}'
+      +'.gatp-think summary{cursor:pointer;user-select:none;list-style:none}.gatp-think summary::-webkit-details-marker{display:none}'
+      +'.gatp-think .tx{white-space:pre-wrap;border-left:2px solid #ddd;padding:4px 0 4px 9px;margin-top:5px;color:#9a9aa0;line-height:1.4}'
+      +'#gatp-foot{padding:11px 12px}'
+      +'#gatp-pill{display:flex;align-items:flex-end;gap:6px;border:1px solid #e0e0e4;border-radius:22px;padding:5px 6px 5px 12px;background:#fff}'
+      +'#gatp-in{flex:1;border:none;outline:none;resize:none;font:inherit;font-size:.88rem;line-height:1.4;max-height:120px;background:transparent;padding:6px 0}'
+      +'#gatp-clip{background:none;border:none;color:#9a9aa0;cursor:pointer;font-size:17px;padding:6px 4px;flex:0 0 auto}'
+      +'#gatp-send{flex:0 0 auto;width:30px;height:30px;border-radius:50%;border:none;cursor:pointer;background:#c7c7cc;color:#fff;font-size:16px;display:flex;align-items:center;justify-content:center;transition:background .15s}'
+      +'#gatp-send.on{background:var(--accent,#2c2c31)}#gatp-send:disabled{cursor:default}'
+      +'@media(prefers-color-scheme:dark){#gatp-panel{background:#1d1d20;color:#e8e8ea}'
+      +'#gatp-hd{border-color:#2e2e33}#gatp-body{background:#191919}.gatp-b.a{background:#2a2a2f;color:#e6e6e8}.gatp-b.u{background:#243a52;color:#dce9f7}'
+      +'#gatp-pill{background:#222226;border-color:#34343a}#gatp-in{color:#e8e8ea}'
+      +'#gatp-hist{background:#1d1d20}.gatp-hi{border-color:#2a2a2f}.gatp-hi:hover{background:#242428}.gatp-hi .t{color:#e6e6e8}}';
+    document.head.appendChild(st);
+
+    var root=document.createElement('div'); root.id='gatp';
+    root.innerHTML=
+      '<button id="gatp-launch" title="Thinking partner">'
+      +'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></button>'
+      +'<div id="gatp-panel">'
+      +'<div id="gatp-hd"><div class="av">✦</div><div class="hd-t"><div class="tt">Thinking partner</div><div class="sub">grounded in your corpus</div></div>'
+      +'<button class="hb" id="gatp-new" title="New conversation">+</button>'
+      +'<button class="hb" id="gatp-histbtn" title="Past conversations">&#9776;</button>'
+      +'<button class="hb" id="gatp-close" title="Close">&#8964;</button></div>'
+      +'<div id="gatp-hist"></div>'
+      +'<div id="gatp-body"></div>'
+      +'<div id="gatp-foot"><div id="gatp-pill">'
+      +'<button id="gatp-clip" title="Attach image">🖇</button>'
+      +'<textarea id="gatp-in" rows="1" placeholder="Message…"></textarea>'
+      +'<button id="gatp-send" disabled>↑</button>'
+      +'<input id="gatp-file" type="file" accept="image/*" style="display:none">'
+      +'</div></div></div>';
+    document.body.appendChild(root);
+
+    var panel=root.querySelector('#gatp-panel'), body=root.querySelector('#gatp-body'),
+        inp=root.querySelector('#gatp-in'), send=root.querySelector('#gatp-send'),
+        clip=root.querySelector('#gatp-clip'), file=root.querySelector('#gatp-file'),
+        hist=root.querySelector('#gatp-hist');
+    var taskId=localStorage.getItem(TKEY)||null, polling=false;
+
+    function newConv(){ taskId=null; localStorage.removeItem(TKEY); polling=false; root.classList.remove('hist'); render([]); inp.focus(); }
+    function showHistory(){
+      root.classList.add('hist'); hist.innerHTML='<div class="empty">loading…</div>';
+      fetch(API+'/api/ga/tasks',{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){
+        var ts=(d.tasks||[]).filter(function(t){return t.channel==='think';});
+        if(!ts.length){ hist.innerHTML='<div class="empty">No conversations yet.</div>'; return; }
+        hist.innerHTML='';
+        ts.forEach(function(t){
+          var first=(t.messages||[]).filter(function(m){return m.role==='user';})[0];
+          var title=first?first.content.replace(/<thinking>[\s\S]*?<\/thinking>/i,'').trim():'(empty)';
+          var el=document.createElement('div'); el.className='gatp-hi'+(t.id===taskId?' cur':'');
+          el.innerHTML='<div class="t"></div><div class="d"></div>';
+          el.querySelector('.t').textContent=title.slice(0,90)||'(empty)';
+          el.querySelector('.d').textContent=(t.created||'').replace('T',' ').slice(0,16);
+          el.addEventListener('click',function(){ taskId=t.id; localStorage.setItem(TKEY,taskId); root.classList.remove('hist'); polling=false; poll(); });
+          hist.appendChild(el);
+        });
+      }).catch(function(){ hist.innerHTML='<div class="empty">failed to load</div>'; });
+    }
+
+    function esc(s){ return s.replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];}); }
+    function fmt(s){ // tiny markdown: code, bold, links, then escape rest
+      return esc(s).replace(/`([^`]+)`/g,'<code>$1</code>').replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>')
+        .replace(/\[([^\]]+)\]\((https?:[^)]+)\)/g,'<a href="$2" target="_blank">$1</a>'); }
+    function open(v){ root.classList.toggle('open',v); localStorage.setItem(OKEY,v?'1':'0'); if(v){ inp.focus(); body.scrollTop=body.scrollHeight; } }
+
+    function render(msgs, pending){
+      body.innerHTML=''; var day=document.createElement('div'); day.className='gatp-day';
+      day.textContent=new Date().toLocaleDateString(undefined,{month:'long',day:'numeric'}); body.appendChild(day);
+      (msgs||[]).forEach(function(m){
+        var who=m.role==='user'?'u':'a', content=m.content;
+        if(who==='a'){ // pull leading <thinking>…</thinking> into a collapsible block
+          var mt=content.match(/<thinking>([\s\S]*?)<\/thinking>/i);
+          if(mt){ content=content.replace(mt[0],'').trim();
+            var d=document.createElement('details'); d.className='gatp-think';
+            d.innerHTML='<summary>▸ reasoning</summary><div class="tx"></div>';
+            d.querySelector('.tx').textContent=mt[1].trim(); body.appendChild(d); }
+        }
+        if(content){ var b=document.createElement('div'); b.className='gatp-b '+who; b.innerHTML=fmt(content); body.appendChild(b); }
+        if(who==='a'){ var c=document.createElement('div'); c.className='gatp-cap a'; c.textContent='Thinking partner'; body.appendChild(c); }
+      });
+      if(pending){ var t=document.createElement('div'); t.className='gatp-b a'; t.id='gatp-typing'; t.textContent='…'; body.appendChild(t); }
+      body.scrollTop=body.scrollHeight;
+    }
+    function poll(){
+      if(!taskId){ return; } polling=true;
+      fetch(API+'/api/ga/task?id='+taskId,{cache:'no-store'}).then(function(r){return r.json();}).then(function(t){
+        if(!t||t.error){ polling=false; return; }
+        var running=(t.status==='queued'||t.status==='running');
+        render(t.messages, running);
+        if(running){ setTimeout(poll,1200); } else { polling=false; }
+      }).catch(function(){ polling=false; });
+    }
+    function submit(){
+      var text=inp.value.trim(); if(!text) return;
+      inp.value=''; resize(); toggleSend();
+      var url=taskId?'/api/ga/task-reply':'/api/ga/think';
+      var payload=taskId?{id:taskId,text:text}:{prompt:text};
+      var cur=Array.prototype.map.call(body.querySelectorAll('.gatp-b'),function(b){return {role:b.classList.contains('u')?'user':'assistant',content:b.textContent};});
+      cur.push({role:'user',content:text}); render(cur,true);
+      fetch(API+url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
+        .then(function(r){return r.json();}).then(function(d){
+          if(d.id){ taskId=d.id; localStorage.setItem(TKEY,taskId); }
+          if(!polling) poll();
+        }).catch(function(){});
+    }
+    function resize(){ inp.style.height='auto'; inp.style.height=Math.min(inp.scrollHeight,120)+'px'; }
+    function toggleSend(){ var on=inp.value.trim().length>0; send.disabled=!on; send.classList.toggle('on',on); }
+
+    root.querySelector('#gatp-launch').addEventListener('click',function(){ open(true); if(taskId&&!polling) poll(); });
+    root.querySelector('#gatp-close').addEventListener('click',function(){ root.classList.remove('hist'); open(false); });
+    root.querySelector('#gatp-new').addEventListener('click',newConv);
+    root.querySelector('#gatp-histbtn').addEventListener('click',function(){ root.classList.contains('hist')?root.classList.remove('hist'):showHistory(); });
+    send.addEventListener('click',submit);
+    inp.addEventListener('input',function(){ resize(); toggleSend(); });
+    inp.addEventListener('keydown',function(e){ if(e.key==='Enter'&&!e.shiftKey){ e.preventDefault(); submit(); } });
+    clip.addEventListener('click',function(){ file.click(); });
+    file.addEventListener('change',function(){ var f=file.files[0]; if(!f) return; var fd=new FormData(); fd.append('image',f,f.name);
+      fetch(API+'/api/ga/upload-image',{method:'POST',body:fd}).then(function(r){return r.json();}).then(function(d){
+        if(d.url){ inp.value+=(inp.value?' ':'')+'!['+f.name+']('+d.url+')'; resize(); toggleSend(); inp.focus(); } }).catch(function(){}); file.value=''; });
+
+    if(localStorage.getItem(OKEY)==='1'){ open(true); if(taskId) poll(); }
+  })();</script>
+  {% endif %}
+
   <script src="/assets/js/theme.js"></script>
   {% if has_math %}
-  <!-- Inline/display math: write inline as $…$ or \(…\), display as $$…$$ or \[…\]. -->
+  <!-- Math via KaTeX — same engine the editor uses, so it renders identically.
+       inline: $…$ or \(…\) ; display: $$…$$ or \[…\]. -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
   <script>
-    window.MathJax = {
-      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
-      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }
-    };
+    // Render bare amsmath environments (\begin{align*}…) that renderMathInElement can't see,
+    // then run the normal delimiter pass. Keeps published math identical to the live editor.
+    function gaRenderMath(){
+      try {
+        var rx=/\\begin\{(align\*?|alignat\*?|equation\*?|gather\*?|multline\*?|aligned|cases|array|[bBpvV]?matrix)\}[\s\S]*?\\end\{\1\}/;
+        var w=document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT), hits=[];
+        while(w.nextNode()) if(rx.test(w.currentNode.nodeValue)) hits.push(w.currentNode);
+        hits.forEach(function(n){ var s=document.createElement('span');
+          s.innerHTML=n.nodeValue.replace(new RegExp(rx.source,'g'), function(m){ try{return katex.renderToString(m,{displayMode:true,throwOnError:false});}catch(e){return m;} });
+          n.parentNode.replaceChild(s,n); });
+      } catch(e){}
+      renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false},{left:'$',right:'$',display:false}],throwOnError:false});
+    }
   </script>
-  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="gaRenderMath()"></script>
   {% endif %}
 </body>
 </html>

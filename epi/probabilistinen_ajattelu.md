@@ -1,3 +1,6 @@
+---
+description: "Todennäköisyys mittaa uskomuksen vahvuutta kuten Celsius lämpötilaa. Esimerkkinä myöhästyvää kaveria odottaessa epävarmuus muuttuu ajan myötä."
+---
 # Probabilistinen ajattelu
 
 Olet sopinut tapaavasi kaverisi tänään kello kymmenen. Hän ei saavu ajoissa paikalle. Odotat. Kello näyttää 10:10. "Ehkä hän on unohtanut tai juuttunut johonkin muualle", pohdit. Odotat lisää. Epäilysi kaverisi saapumisesta voimistuvat ajan edetessä. Kello näyttää 10:20. Kaveria ei näy, ja luovutat asian suhteen.

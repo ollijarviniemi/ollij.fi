@@ -1,3 +1,6 @@
+---
+description: "Sanan käyttäminen luo konseptin ja tekee ajattelusta kirkkaampaa — siksi uudet termit. Ja siksi \"epi\": \"tietoteoria\" toisi väärät mielikuvat."
+---
 # Sanoista ja konsepteista
 
 Kirjoittaessani olen pyrkinyt välttämään harvinaisia ja teknisiä sanoja, joita lukija ei välttämättä ennestään tiedä. Yleisestihän ohjeistetaan kirjoittamaan selkeästi.

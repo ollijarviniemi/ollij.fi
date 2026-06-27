@@ -1,3 +1,6 @@
+---
+description: "Ilmeiset ohjeet ovat ilmeisiä, mutta niitä tulee harvoin mietittyä saati tehtyä — 'kaikkihan tämän tietää' on eri asia kuin oikeasti keksiä ja toteuttaa ne."
+---
 # Ilmeiset ohjeet
 
 Seuraava tekstinpätkä on jäänyt mieleeni (lainaus on Nate Soaresin tekstistä [Obvious advice](https://mindingourway.com/obvious-advice/)):

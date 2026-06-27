@@ -1,6 +1,7 @@
 ---
 redirect_from:
   - /blog/predict/
+description: "A child predicting a pendulum's swing — and education experts predicting the child, on prediction markets tuned to engineer the feeling of scientific discovery."
 ---
 # Predict
 

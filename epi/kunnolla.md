@@ -1,3 +1,6 @@
+---
+description: "Jaynesin kirja: todennäköisyyslaskennan säännöt ovat uskomusten lakeja, eivät suosituksia — ja tieteen tilastolliset testit lepäävät huteralla pohjalla."
+---
 # Kunnolla tehty todennäköisyyslaskenta
 
 Käsitykseni todennäköisyyksistä ja tilastotieteestä muuttui, kun luin E. T. Jaynesin kirjan "Probability Theory: The Logic of Science".

@@ -1,6 +1,7 @@
 ---
 redirect_from:
   - /blog/fortress/
+description: "A dispatch from elsewhere on Fortress, a 32-a-side sport designed so the bottom quartile still has fun — unlike Earth's strangely boring football."
 ---
 # Fortress
 

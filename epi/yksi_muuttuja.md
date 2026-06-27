@@ -1,3 +1,6 @@
+---
+description: "Yhden muuttujan malli on hyödytön, jos muuttuja ei ole keskeinen — C-vitamiini vai liikunta? \"Kaikki on monimutkaista\" on yhtä laiska vastaus kuin yksi syy."
+---
 # Yhden muuttujan mallit
 
 Jotkin asiat ovat yksinkertaisia ja niihin löytyy siistit vastaukset. Kysymykseen "Miksi Kuu kiertää Maata?" voi vastata hyvin puhumalla painovoimasta Maan ja Kuun välillä. Kyllä, *teknisesti* liikeratoihin vaikuttaa muidenkin kappaleiden aiheuttama painovoima (kuten Auringon, muiden planeettojen tai sinun vasemman jalan sukkasi). Käytännössä näiden tekijöiden vaikutus on kuitenkin toissijainen. Kuu edelleen kiertäisi Maata, vaikka sukkasi yhtäkkiä katoaisi.

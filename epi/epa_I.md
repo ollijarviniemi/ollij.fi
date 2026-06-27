@@ -1,3 +1,6 @@
+---
+description: "Todistusta ei vaadita uskomuksen muuttamiseen: yli-itsevarmuudesta, lopputulosvinoumasta ja uskomusten tasapuolisesta päivittämisestä epävarmuuden alla."
+---
 # Epävarmuutta ja epäonnistumisia I
 
 Olen keskustelussa saanut kuulla toisen osapuolen sanovan "En voi tietenkään todistaa sinulle, että [olen oikeassa], mutta..."

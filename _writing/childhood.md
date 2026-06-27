@@ -1,6 +1,7 @@
 ---
 redirect_from:
   - /blog/childhood/
+description: "A response to Aella's Chattel Childhood: forced school lunches, P.E. violence, sibling fights — structural, not exceptionally bad parents."
 ---
 
 # Response to *Chattel Childhood*
@@ -45,13 +46,13 @@ One example is school lunch. I'd say "I was forced to eat food" is a truthful de
 
 Having gone through the Finnish education system, I'm of course aware of the general arguments for this. It's good for children to get used to tasting new foods. It's important for children to eat. During the school day it's important to eat, not only for the child themselves, but also because otherwise the child starts disturbing others. The plate should be eaten clean so there's no food waste. Very reasonable.
 
-In any case, in second grade it happened at lunch that the food was so bad I had to run from the cafeteria to the bathroom to vomit. The teacher followed me to the bathroom and scolded me, saying "is this how you thank the cooks [for having made the school food]".
+In any case, in second grade it happened one day that the food was so bad I had to run from the lunchhall to the bathroom to vomit. The teacher followed me to the bathroom and scolded me, saying "is this how you thank the cooks [for having made the school food]".
 
 ---
 
 Boys' P.E. class in middle school. Knowing me, you can guess I was not a fish in water there.
 
-That actually understates it. There were several P.E. classes where I felt physically threatened. Naturally I'm forced into this situation: leaving is forbidden by the rules and social norms, and violations carry punishments.
+That understates it. There were several P.E. classes where I felt physically threatened. Naturally I was forced into this situation: leaving is forbidden by the rules and social norms, and violations carry punishments.
 
 Depending on which school of thought you belong to, you might be sympathetic toward me or offer defenses of P.E. class. Young people, after all, ought to move, and ought to vent a little energy through exercise. It's good to get used to it sometimes hurting a little, so you don't grow too timid. And it's unfortunate if something worse happens sometimes, but one teacher can't see and prevent everything.
 

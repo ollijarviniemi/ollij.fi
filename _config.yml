@@ -15,9 +15,21 @@ remote_theme: jekyll/minima@1e8a445e
 url: "https://ollij.fi"
 
 plugins:
-  - jekyll-seo-tag
+  - jekyll-sitemap          # generates /sitemap.xml (auto-excludes published:false WIP)
   - jekyll-titles-from-headings
   - jekyll-redirect-from
+# NOTE: SEO meta (canonical/description/Open Graph/Twitter) is hand-rolled in
+# _layouts/w-base.html so og:title tracks each post's <h1> (the writing collection has
+# no front-matter title). jekyll-seo-tag was declared but never invoked ({% seo %} was
+# absent → it emitted nothing), so it's removed to avoid a false impression of coverage.
+
+# Markdown: GFM parser so a SINGLE newline renders as a line break (<br>), matching how the
+# editor (marked, breaks:true) renders — "a line break is a line break". Still kramdown under
+# the hood, so footnotes/IAL/math etc. keep working; GFM adds hard-wrap + bare-URL autolinks.
+markdown: kramdown
+kramdown:
+  input: GFM
+
 # Theme-specific settings
 
 titles_from_headings:
@@ -97,5 +109,9 @@ exclude:
   - deploy.sh
   - aumann/server/
   - aumann/bot/
+  - factory-market/server/   # node backend + its node_modules (untracked, but excluded so local builds match prod & no CHANGELOG.md pages leak into the sitemap)
   - key-updates/
   - wiki/
+  - _ga/
+  - editor/
+  - seqgame/   # dev dir (python engine + design docs); the playable game ships from /assets/seqgame/

@@ -1,3 +1,6 @@
+---
+description: "Kieli on epätarkkaa, ja \"suunnilleen samat\" väitteet pyöristyvät samoiksi — vaikka totuusarvot eroavat. Sumea puhe heijastaa ja ruokkii sumeaa ajattelua."
+---
 # Sumuiset ajatukset
 
 Kieli ei ole eksaktia. Tämä tuntuu melko välttämättömältä. Välillä se on hyvä. Kontekstista pystyy päättelemään paljon. Asioita voi sanoa lyhyesti. Ja yleensä asiat eivät ole niin täsmälleen. Riittää sanoa jotakin vähän sinne päin ja pointista saa silti kiinni. Kaikki tietävät, mitä tarkoitetaan.

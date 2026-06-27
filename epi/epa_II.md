@@ -1,3 +1,6 @@
+---
+description: "Kahnemanin ja Tverskyn kehystämiskokeet ja painotettu kolikkopeli: esimerkkejä siitä, miten ihmiset epäonnistuvat päätöksissä epävarmuuden alla."
+---
 # Epävarmuutta ja epäonnistumisia II
 
 Seuraavat kolme esimerkkiä ihmisten valinnoista epävarmuuden alla ovat Kahnemanin ja Tverskyn vuoden 1986 artikkelista "[Rational Choice and the Framing of Decisions](https://doi.org/10.1007/978-3-642-74919-3_4)".

@@ -1,3 +1,6 @@
+---
+description: "Ihmiset eivät mieti suuruusluokkia: onko muutos suuri vai pieni? Kvantifiointi on opittu taito, ja oikea kysymys koskee vaihtoehtoiskustannuksia."
+---
 # Kvantifiointi
 
 Kuulin kerran vinkin "kannattaa laittaa pyykinpesukone käyntiin myöhään illalla, koska silloin sähkö on halvempaa".

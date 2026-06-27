@@ -1,6 +1,7 @@
 ---
 redirect_from:
   - /blog/holders/
+description: "A social technology from another world: Belief Holders, accountable public reasoners with Mistakes pages whose epistemic authority must be constantly earned."
 ---
 # Belief Holders
 

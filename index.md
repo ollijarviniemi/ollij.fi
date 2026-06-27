@@ -1,6 +1,7 @@
 ---
 layout: w-base
 home: true
+description: "Olli Järviniemi — writing and research on AI safety, epistemics, and mathematics, in English and Finnish."
 ---
 <section class="home">
   <div class="home-hero">

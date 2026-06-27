@@ -1,3 +1,6 @@
+---
+description: "Sovinnollisuudella on kaksi kasvoa: erimielisyyden aito selvittäminen on hyvää, mutta uskomusten muuttaminen vain konfliktin välttämiseksi rapauttaa epin."
+---
 # Haitallinen sovinnollisuus
 
 Olen nuorempana ollut luontaisesti melko massaan mukautuva ja sovinnollinen. (Tämä piirteeni on muuttunut [ymmärrettyäni eräitä asioita](/epi/kerran_luotin), mutta se on toinen tarina.) Tällä oli seurauksia: väitellessäni minulla oli tapana erimielisyyksien sijaan ohjata keskustelu väitteeseen, josta olimme samaa mieltä.

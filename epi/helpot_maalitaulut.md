@@ -1,3 +1,6 @@
+---
+description: "Salaliittoteoriat ja muut helpot maalitaulut eivät ole pointti — huono epi ei ole 'tyhmien muiden' ongelma vaan koskee myös fiksuja, täysjärkisiä ihmisiä."
+---
 # Helpot maalitaulut
 
 Kohtalaisen usein kun puhutaan siitä, miksi hyvä epi -- tai tiede, koulutus, ajattelutaidot tai kriittinen lukutaito -- on tärkeää, mainitaan jossakin kohtaa salaliittoteoriat, ilmastoskeptismi, rokotevastaisuus tai muuta vastaavaa. Tai ylipäätään joku ihmisjoukko, jolla on ihan tyhmiä ajatuksia jostakin aiheesta.

@@ -2,6 +2,7 @@
 redirect_from:
   - /blog/todennakoisyysareena/
   - /todennakoisyysareena/
+description: "Designing games with computable optimal policies — Bayesian factory, Aumann agreement — to train decision-making with the ground-truth feedback real life lacks."
 ---
 
 # Decision-making training in environments with ground truth

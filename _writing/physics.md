@@ -2,6 +2,7 @@
 redirect_from:
   - /blog/fysiikka/
   - /fysiikka/
+description: "Cooling with a fan, gravity assists, sailing faster than the wind, a water-mixing puzzle that looks impossible — cases where physical intuition overgeneralizes."
 ---
 
 # Compatible with the laws of physics

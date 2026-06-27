@@ -1,3 +1,6 @@
+---
+description: "Todennäköisyyksien arvo ei ole laskuissa vaan työkaluissa: uskomukset ovat epävarmoja, niiden tulee muuttua evidenssistä eivätkä keskimäärin vahvistua."
+---
 # Miksi todennäköisyydet?
 
 "En ihan ymmärrä. Osaan kyllä intuitiivisella tasolla käsitellä epävarmuutta ja muuttaa uskomuksiani saadessani uutta tietoa, vaikken olekaan miettinyt asioita todennäköisyyksien kautta. Mikä tässä on pointtina? Miksi miettiä todennäköisyyksiä?"

@@ -1,6 +1,7 @@
 ---
 redirect_from:
   - /blog/omni/
+description: "A dispatch from elsewhere on why athletes specializing in one sport feels wrong — Omni-Athletes, the fully general hackathon, and the wizard-power contest."
 ---
 # Omni-Athletes
 

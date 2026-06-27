@@ -1,3 +1,6 @@
+---
+description: "Dialogi siitä, miksi epävarmuutta käsitellään odotusarvoilla: koherenteista uskomuksista ja preferensseistä seuraa odotusarvon maksimointi — ei toisin päin."
+---
 # Odotusarvo ja epävarmuus
 
 **Anna:** Lottoaminen ei kannata, koska siinä odotusarvo on negatiivinen.

@@ -1,3 +1,6 @@
+---
+description: "\"Yrität rakentaa paratiisia\" on yleispätevä tapa ampua alas mikä tahansa parannusehdotus. Negatiivisuus ja status quon puolustus estävät asioita paranemasta."
+---
 # Negatiivisuus ja status quon puolustajat
 
 Nuorempana sain idean yhteisasumisesta: muutamasta tusinaan ihmistä voisi asua samassa suuressa asunnossa.

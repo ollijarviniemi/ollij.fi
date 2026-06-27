@@ -1,6 +1,7 @@
 ---
 redirect_from:
   - /blog/fairness_or_bayes/
+description: "Betting on a disagreement, you can have fairness or Bayesian log scores, not both. The Brier-score resolution: people are not hypotheses."
 ---
 # Fairness or Bayes?
 

@@ -1,3 +1,6 @@
+---
+description: "Tapoja sivuuttaa esiin nostettu ongelma: sille ei muka voi tehdä mitään, analyysi on turhaa, asiat ovat jo parhaalla tolalla, tai absurdi vitsiehdotus."
+---
 # Ongelmien sivuuttamisesta
 
 Joskus ihmiset ottavat keskusteluissa esiin joitakin ongelmia. Olen esimerkiksi muutamaan otteeseen törmännyt keskusteluun, joka alkaa "Yliopistossa ei opeteta asioita kovin hyvin" tai "Yliopistossa ei keskitytä erityisen hyödyllisiin/tärkeisiin asioihin".

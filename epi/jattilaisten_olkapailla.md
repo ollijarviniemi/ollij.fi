@@ -1,3 +1,6 @@
+---
+description: "Menneet ajattelijat erehtyivät asioista, joita emme enää pidä edes vaikeina — seisomme niin korkeilla jättiläisten olkapäillä, että luulemme hartioita maaksi."
+---
 # Jättiläisten olkapäillä
 
 "[Jos olen nähnyt muita kauemmas, se johtuu siitä, että olen seissyt jättiläisten olkapäillä.](https://en.wikipedia.org/wiki/Standing_on_the_shoulders_of_giants)"

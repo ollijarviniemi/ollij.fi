@@ -1,6 +1,7 @@
 ---
 redirect_from:
   - /blog/importance_of_language/
+description: "\"Language affects how you think,\" made concrete: Finnish lacks a practical word for \"false,\" and missing vocabulary adds friction to directions of thought."
 ---
 # The importance of language
 

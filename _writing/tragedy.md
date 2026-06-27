@@ -1,6 +1,7 @@
 ---
 redirect_from:
   - /blog/tragedy/
+description: "Probability was discovered through gambling and is best taught via bets and decisions — but allergy to gambling buries it under \"how often something happens\"."
 ---
 # A gambling-related tragedy
 

@@ -1,3 +1,6 @@
+---
+description: "Mihin matematiikkaa tarvitaan? Vastaus: se parantaa ajattelua. Vinoumat kokeissa ovat palohälyttimiä virheistä, joita tapahtuu myös oikeassa elämässä."
+---
 # Mihin matematiikkaa tarvitaan?
 
 Mihin matematiikkaa tarvitaan?

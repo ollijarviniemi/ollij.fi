@@ -1,0 +1,8 @@
+# Allow all crawlers — search engines and AI alike. (Olli wants the writing
+# both findable and in training data.) NOTE: Cloudflare's "managed robots.txt" /
+# Content Signals feature can OVERRIDE this at the edge; if the live robots.txt
+# still shows Disallow/ai-train=no, disable that in the Cloudflare dashboard.
+User-agent: *
+Allow: /
+
+Sitemap: https://ollij.fi/sitemap.xml

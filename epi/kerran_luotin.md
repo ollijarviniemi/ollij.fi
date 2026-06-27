@@ -1,3 +1,6 @@
+---
+description: "Menetin sokean luottamukseni lähipiirin, median, koulutuksen, tieteen ja ihmiskunnan epiin — en enää oleta, että isot aikuiset tietävät, mitä tekevät."
+---
 # Kerran luotin
 
 Kerran luotin--

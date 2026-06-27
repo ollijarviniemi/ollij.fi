@@ -1,3 +1,6 @@
+---
+description: "Suullinen keskustelu on lokaalia: lyhyet puheenvuorot estävät kasaamasta ideoita syvälle — siksi osa ajatuksista täytyy kirjoittaa ylös tullakseen sanotuiksi."
+---
 # Suullinen kommunikaatio on lokaalia
 
 Arkipäiväisessä keskustelussa puheenvuorot ovat yleensä lyhyitä. Pitkän monologin pitäminen on etiketin vastaista ja puheenvuoron pidetessä keskeytyksen todennäköisyys kasvaa. Mietintätauon pitäminen monologin keskellä johtaa niin ikään siihen, että joku esittää kysymyksiä tai kommentteja, ja keskustelu ajautuu muualle.

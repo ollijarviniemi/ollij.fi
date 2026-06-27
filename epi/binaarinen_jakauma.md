@@ -1,3 +1,6 @@
+---
+description: "Ihmiset eivät jakaudu siististi hyvä- ja huonokuntoisiin, vaan jatkuvalle jakaumalle — binäärinen kategoria-ajattelu on opittu virhe, ei luonnollinen taito."
+---
 # Binääriset kategoriat ja jakaumat
 
 Kerran kuulin jonkun sanovan "Nykyään ihmisillä on huono kunto, paitsi ne, joilla on hyvä kunto, ovat *tosi* hyvässä kunnossa."
