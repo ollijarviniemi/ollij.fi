@@ -6,6 +6,7 @@
 sections:
   - name: New
     posts:
+      - { title: "LLM-assisted belief articulation exercise", url: "/belief_articulation/" }
       - { title: "Decision-making training in environments with ground truth", url: "/ground_truth/" }
       - { title: "The importance of language", url: "/importance_of_language/" }
       - { title: "Black boxes", url: "/black_boxes/" }
@@ -44,6 +45,7 @@ sections:
 
   - name: Epistemics
     posts:
+      - { title: "LLM-assisted belief articulation exercise", url: "/belief_articulation/" }
       - { title: "Black boxes", url: "/black_boxes/" }
       - { title: "In defense of jargon", url: "/jargon/" }
       - { title: "The perpetual-motion jury", url: "/perpetual_motion/" }
@@ -85,3 +87,9 @@ sections:
       - { title: "Epi", url: "/epi/" }
       - { title: "Kilpamatematiikan peruskurssi", url: "https://kurssi.matematiikkakilpailut.fi/" }
       - { title: "OOOO", url: "/oooo.pdf" }
+
+  - name: Actual drafts
+    private: true
+    posts:
+      - { title: "On Guardian Angels", url: "/on_guardian_angels/" }
+      - { title: "Deep information", url: "/deep_information/" }
