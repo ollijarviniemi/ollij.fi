@@ -8,7 +8,7 @@ I ran an experiment on this with Opus 4.8: I messaged my friend to "think of a m
 
 ---
 
-*Written before being revealed the guess.* I spent around 4 hours on the task. My primary aims were to
+*Written before being revealed the choice.* I spent around 4 hours on the task. My primary aims were to
 
 1. have my list of hypotheses include what my friend had written, and, more interestingly,
 2. have the probabilities correspond to my beliefs under reflection.
@@ -23,7 +23,7 @@ Ultimately I was pretty disappointed with the output, doubting that the right an
 
 ---
 
-*Written after being revealed the guess.* The correct hypothesis – "Schur's theorem: For every non-constant univariate polynomial $P$ with integer coefficients, there are infinitely many primes $p$ such that $p$ divides at least one of $P(1), P(2), P(3), \ldots$" – was indeed not in my hypothesis space, despite the theorem being a running joke between my and my friend.
+*Written after being revealed the choice.* The correct hypothesis – "Schur's theorem: For every non-constant univariate polynomial $P$ with integer coefficients, there are infinitely many primes $p$ such that $p$ divides at least one of $P(1), P(2), P(3), \ldots$" – was indeed not in my hypothesis space, despite the theorem being a running joke between my and my friend.
 
 (There was *a* Schur's theorem, but not this one.)
 
