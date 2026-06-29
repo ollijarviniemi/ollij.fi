@@ -1,6 +1,7 @@
 // Server smoke test. Drives a full game: two clients connect, create+join,
 // each round, reveal, next-game.
 import { io as ioClient } from 'socket.io-client';
+import { renderScoreboard } from '../js/render.js';
 
 const URL = process.env.URL || 'http://localhost:8787';
 
@@ -8,7 +9,7 @@ function wait(ms) { return new Promise(r => setTimeout(r, ms)); }
 
 function connect(name) {
     return new Promise((resolve, reject) => {
-        const s = ioClient(URL, { transports: ['websocket'], reconnection: false });
+        const s = ioClient(URL + '/aumann', { transports: ['websocket'], reconnection: false });
         s.on('connect', () => resolve(s));
         s.on('connect_error', reject);
     });
@@ -70,19 +71,48 @@ check(stateB.last.game.oppR1 === 0, 'B now sees A\'s r1 = 0');
 check(stateA.last.game.state === 'round2', 'state advanced to round2');
 check(stateA.last.game.oppHand === null, 'A still does NOT see B\'s hand');
 
-// 5) Both place round 2
+// 5) Players "think" during round 2 — the ideal-Bayesian compute was kicked off at DEAL time and
+//    runs in the worker the whole time, so a realistic think-pause lets it finish before reveal.
+await wait(1800);
+
+const revealStart = Date.now();
+let revealAt = null, idealAt = null;
+A.on('state', s => {
+    if (s.game?.state === 'revealed') {
+        if (revealAt === null) revealAt = Date.now();
+        if (idealAt === null && s.game.ideal !== null) idealAt = Date.now();
+    }
+});
 await emit(A, 'place', { round: 2, row: 2 });
 await emit(B, 'place', { round: 2, row: 2 });
-await wait(150);
 
-check(stateA.last.game.state === 'revealed', 'state is revealed');
+// Wait for the score to land (precomputed, so it should be essentially immediate).
+const deadline = Date.now() + 15000;
+while ((idealAt === null) && Date.now() < deadline) await wait(20);
+
+check(stateA.last.game.state === 'revealed', 'state is revealed immediately');
 check(Array.isArray(stateA.last.game.oppHand) && stateA.last.game.oppHand.length === 5, 'A now sees B\'s 5 cards');
 check(stateB.last.game.oppHand?.length === 5, 'B now sees A\'s 5 cards');
-check(stateA.last.game.ideal !== null && typeof stateA.last.game.ideal.score === 'number', 'ideal scores computed');
+check(stateA.last.game.ideal !== null && typeof stateA.last.game.ideal.score === 'number', 'ideal scores present after reveal');
 check(typeof stateA.last.game.ideal.qTrue === 'boolean', 'qTrue is boolean');
+const gap = idealAt - revealAt;
+check(gap < 400, `score appears ~immediately at reveal (precomputed during play): +${gap} ms gap`);
+console.log(`  · reveal at +${revealAt - revealStart} ms, score at +${idealAt - revealStart} ms after placing`);
 
 // 6) Score history records the game
 check(stateA.last.scoreHistory.length === 1, 'scoreHistory has 1 entry');
+
+// 6b) Render-contract: the scoreboard must render without crashing in BOTH modes
+//     (this catches missing fields like the r1Loss/totalLoss the client reads).
+const sh = stateA.last.scoreHistory, e0 = sh[0];
+check(typeof e0.you.r1Loss === 'number' && typeof e0.you.r2Loss === 'number' && typeof e0.mate.r1Loss === 'number', 'scoreHistory carries per-round loss');
+check(typeof e0.totalLoss === 'number' && typeof e0.totalScore === 'number', 'scoreHistory carries totalLoss + totalScore');
+const stubContainer = () => { let h = ''; return { scrollTop: 0, get scrollHeight() { return 100; }, set innerHTML(v) { h = v; }, get innerHTML() { return h; } }; };
+for (const mode of ['score', 'loss']) {
+    let ok = true, msg = '';
+    try { renderScoreboard(stubContainer(), sh, stateA.last.game.number, mode); } catch (ex) { ok = false; msg = ex.message; }
+    check(ok, `renderScoreboard('${mode}') renders without throwing${ok ? '' : ' — ' + msg}`);
+}
 
 // 7) Both ready up; new game deals
 await emit(A, 'game:ready');

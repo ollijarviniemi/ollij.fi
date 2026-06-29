@@ -8,7 +8,7 @@ import {
 import {
     getRoomCookie, setRoomCookie, clearRoomCookie,
     getToken, setToken, clearToken,
-    appendHistory, getHistory, summarize,
+    appendHistory,
 } from './storage.js';
 
 const SERVER = window.AUMANN_SERVER || 'http://localhost:8787';
@@ -206,18 +206,8 @@ function renderLanding() {
             roomsEl.appendChild(row);
         }
     }
-    const name = account.display;
     const statsEl = document.querySelector('#my-stats');
-    if (name) {
-        const summary = summarize(getHistory(name));
-        if (summary) {
-            statsEl.innerHTML = `
-                <div class="stat-row"><span class="label">Today (${summary.todayGames})</span><span>${summary.todayAvg != null ? summary.todayAvg.toFixed(1) : '—'} · loss ${summary.todayLossAvg != null ? summary.todayLossAvg.toFixed(1) : '—'}</span></div>
-                <div class="stat-row"><span class="label">All-time (${summary.games})</span><span>${summary.allTimeAvg.toFixed(1)} · loss ${summary.allTimeLossAvg != null ? summary.allTimeLossAvg.toFixed(1) : '—'}</span></div>
-            `;
-            statsEl.hidden = false;
-        } else { statsEl.hidden = true; }
-    } else { statsEl.hidden = true; }
+    if (statsEl) statsEl.hidden = true;   // Today / All-time summary dropped from the landing page
 }
 
 function renderGame() {

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belief conditions — card illustrations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .card-condition {
+            background: white;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        .condition-text {
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            width: 100%;
+        }
+        .svg-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Belief conditions — visual illustrations</h1>
+
+    <!-- 0. Card-value note -->
+    <div class="card-condition">
+        <div class="condition-text" style="font-weight:normal; font-size:15px; line-height:1.4;">Card values: number cards 2–10 count as their number; J, Q, K count as 11, 12, 13. The ace is the <b>highest</b> card, counting as 14 — and an ace is <b>not</b> a number card.</div>
+    </div>
+
+    <!-- 1. At least 2 aces -->
+    <div class="card-condition">
+        <div class="condition-text">At least 2 aces.</div>
+        <div class="svg-container">
+            <svg width="200" height="130" viewBox="0 0 200 130">
+                <rect x="15" y="5" width="70" height="100" fill="white" stroke="black" stroke-width="3" rx="8"/>
+                <text x="50" y="60" text-anchor="middle" font-size="32" fill="black" font-weight="bold">A</text>
+                <rect x="115" y="5" width="70" height="100" fill="white" stroke="black" stroke-width="3" rx="8"/>
+                <text x="150" y="60" text-anchor="middle" font-size="32" fill="black" font-weight="bold">A</text>
+                <text x="100" y="125" text-anchor="middle" font-size="16" fill="black" font-weight="bold">≥ 2</text>
+            </svg>
+        </div>
+    </div>
+
+    <!-- 2. At least 5 cards of one suit -->
+    <div class="card-condition">
+        <div class="condition-text">At least 5 cards of one suit.</div>
+        <div class="svg-container">
+            <svg width="450" height="130" viewBox="0 0 450 130">
+                <rect x="5" y="5" width="70" height="100" fill="white" stroke="black" stroke-width="3" rx="8"/>
+                <text x="40" y="60" text-anchor="middle" font-size="24" fill="red" font-weight="bold">♥</text>
+                <rect x="95" y="5" width="70" height="100" fill="white" stroke="black" stroke-width="3" rx="8"/>
+                <text x="130" y="60" text-anchor="middle" font-size="24" fill="red" font-weight="bold">♥</text>
+                <rect x="185" y="5" width="70" height="100" fill="white" stroke="black" stroke-width="3" rx="8"/>
+                <text x="220" y="60" text-anchor="middle" font-size="24" fill="red" font-weight="bold">♥</text>
+                <rect x="275" y="5" width="70" height="100" fill="white" stroke="black" stroke-width="3" rx="8"/>
+                <text x="310" y="60" text-anchor="middle" font-size="24" fill="red" font-weight="bold">♥</text>
+                <rect x="365" y="5" width="70" height="100" fill="white" stroke="black" stroke-width="3" rx="8"/>
+                <text x="400" y="60" text-anchor="middle" font-size="24" fill="red" font-weight="bold">♥</text>
+                <text x="225" y="125" text-anchor="middle" font-size="16" fill="black" font-weight="bold">≥ 5 same</text>
+            </svg>
+        </div>
+    </div>
+
+    <!-- 3. The 7 of clubs -->
+    <div class="card-condition">
+        <div class="condition-text">The 7 of clubs.</div>
+        <div class="svg-container">
+            <svg width="80" height="110" viewBox="0 0 80 110">
+                <rect x="5" y="5" width="70" height="100" fill="white" stroke="black" stroke-width="3" rx="8"/>
+                <text x="40" y="45" text-anchor="middle" font-size="28" fill="black" font-weight="bold">7</text>
+                <text x="40" y="75" text-anchor="middle" font-size="24" fill="black" font-weight="bold">♣</text>
+            </svg>
+        </div>
+    </div>
+
+    <!-- 4. Number cards sum to at least 50 -->
+    <div class="card-condition">
+        <div class="condition-text">Number cards sum to at least 50.</div>
+        <div class="svg-container">
+            <svg width="400" height="150" viewBox="0 0 400 150">
+                <rect x="5" y="5" width="60" height="90" fill="white" stroke="blue" stroke-width="3" rx="6"/>
+                <text x="35" y="55" text-anchor="middle" font-size="20" fill="blue" font-weight="bold">8</text>
+                <text x="85" y="55" text-anchor="middle" font-size="20" fill="black" font-weight="bold">+</text>
+                <rect x="105" y="5" width="60" height="90" fill="white" stroke="blue" stroke-width="3" rx="6"/>
+                <text x="135" y="55" text-anchor="middle" font-size="20" fill="blue" font-weight="bold">9</text>
+                <text x="185" y="55" text-anchor="middle" font-size="20" fill="black" font-weight="bold">+</text>
+                <rect x="205" y="5" width="60" height="90" fill="white" stroke="blue" stroke-width="3" rx="6"/>
+                <text x="235" y="55" text-anchor="middle" font-size="20" fill="blue" font-weight="bold">10</text>
+                <text x="285" y="55" text-anchor="middle" font-size="20" fill="black" font-weight="bold">+</text>
+                <text x="325" y="55" text-anchor="middle" font-size="20" fill="black" font-weight="bold">...</text>
+                <text x="200" y="125" text-anchor="middle" font-size="16" fill="black" font-weight="bold">Sum ≥ 50</text>
+            </svg>
+        </div>
+    </div>
+
+    <!-- 5. Exactly 6 number cards -->
+    <div class="card-condition">
+        <div class="condition-text">Exactly 6 number cards.</div>
+        <div class="svg-container">
+            <svg width="100" height="130" viewBox="0 0 100 130">
+                <rect x="15" y="5" width="70" height="100" fill="white" stroke="black" stroke-width="3" rx="8"/>
+                <text x="50" y="60" text-anchor="middle" font-size="20" fill="black" font-weight="bold">2-10</text>
+                <text x="50" y="125" text-anchor="middle" font-size="16" fill="black" font-weight="bold">= 6</text>
+            </svg>
+        </div>
+    </div>
+
+    <!-- 6. At least 8 number cards -->
+    <div class="card-condition">
+        <div class="condition-text">At least 8 number cards.</div>
+        <div class="svg-container">
+            <svg width="100" height="130" viewBox="0 0 100 130">
+                <rect x="15" y="5" width="70" height="100" fill="white" stroke="black" stroke-width="3" rx="8"/>
+                <text x="50" y="60" text-anchor="middle" font-size="20" fill="black" font-weight="bold">2-10</text>
+                <text x="50" y="125" text-anchor="middle" font-size="16" fill="black" font-weight="bold">≥ 8</text>
+            </svg>
+        </div>
+    </div>
+
+    <!-- 7. At least 4 distinct even number-card values -->
+    <div class="card-condition">
+        <div class="condition-text">At least 4 distinct even number-card values.</div>
+        <div class="svg-container">
+            <svg width="430" height="130" viewBox="0 0 430 130">
+                <rect x="5" y="5" width="70" height="100" fill="white" stroke="black" stroke-width="3" rx="8"/>
+                <text x="40" y="60" text-anchor="middle" font-size="28" fill="black" font-weight="bold">2</text>
+                <rect x="85" y="5" width="70" height="100" fill="white" stroke="black" stroke-width="3" rx="8"/>
+                <text x="120" y="60" text-anchor="middle" font-size="28" fill="black" font-weight="bold">4</text>
+                <rect x="165" y="5" width="70" height="100" fill="white" stroke="black" stroke-width="3" rx="8"/>
+                <text x="200" y="60" text-anchor="middle" font-size="28" fill="black" font-weight="bold">6</text>
+                <rect x="245" y="5" width="70" height="100" fill="white" stroke="black" stroke-width="3" rx="8"/>
+                <text x="280" y="60" text-anchor="middle" font-size="28" fill="black" font-weight="bold">8</text>
+                <rect x="325" y="5" width="70" height="100" fill="white" stroke="black" stroke-width="3" rx="8"/>
+                <text x="360" y="60" text-anchor="middle" font-size="28" fill="black" font-weight="bold">10</text>
+                <text x="215" y="125" text-anchor="middle" font-size="16" fill="black" font-weight="bold">≥ 4 distinct</text>
+            </svg>
+        </div>
+    </div>
+
+    <!-- 8. Equal count of even and odd number cards -->
+    <div class="card-condition">
+        <div class="condition-text">Equal count of even and odd number cards.</div>
+        <div class="svg-container">
+            <svg width="400" height="100" viewBox="0 0 400 100">
+                <text x="200" y="50" text-anchor="middle" font-size="24" fill="black" font-weight="bold">#{2, 4, 6, 8, 10} = #{3, 5, 7, 9}</text>
+            </svg>
+        </div>
+    </div>
+
+    <!-- 9. Even number cards exceed odd by at least 3 -->
+    <div class="card-condition">
+        <div class="condition-text">Even number cards exceed odd by at least 3.</div>
+        <div class="svg-container">
+            <svg width="450" height="100" viewBox="0 0 450 100">
+                <text x="225" y="50" text-anchor="middle" font-size="24" fill="black" font-weight="bold">#{2, 4, 6, 8, 10} ≥ #{3, 5, 7, 9} + 3</text>
+            </svg>
+        </div>
+    </div>
+
+    <!-- 10. Exactly 1 face card -->
+    <div class="card-condition">
+        <div class="condition-text">Exactly 1 face card.</div>
+        <div class="svg-container">
+            <svg width="100" height="130" viewBox="0 0 100 130">
+                <rect x="15" y="5" width="70" height="100" fill="white" stroke="black" stroke-width="3" rx="8"/>
+                <text x="50" y="60" text-anchor="middle" font-size="24" fill="black" font-weight="bold">JQK</text>
+                <text x="50" y="125" text-anchor="middle" font-size="16" fill="black" font-weight="bold">= 1</text>
+            </svg>
+        </div>
+    </div>
+
+    <!-- 11. Exactly 3 face cards -->
+    <div class="card-condition">
+        <div class="condition-text">Exactly 3 face cards.</div>
+        <div class="svg-container">
+            <svg width="280" height="130" viewBox="0 0 280 130">
+                <rect x="5" y="5" width="70" height="100" fill="white" stroke="black" stroke-width="3" rx="8"/>
+                <text x="40" y="60" text-anchor="middle" font-size="24" fill="black" font-weight="bold">JQK</text>
+                <rect x="105" y="5" width="70" height="100" fill="white" stroke="black" stroke-width="3" rx="8"/>
+                <text x="140" y="60" text-anchor="middle" font-size="24" fill="black" font-weight="bold">JQK</text>
+                <rect x="205" y="5" width="70" height="100" fill="white" stroke="black" stroke-width="3" rx="8"/>
+                <text x="240" y="60" text-anchor="middle" font-size="24" fill="black" font-weight="bold">JQK</text>
+                <text x="140" y="125" text-anchor="middle" font-size="16" fill="black" font-weight="bold">= 3</text>
+            </svg>
+        </div>
+    </div>
+
+    <!-- 12. At least one each of J, Q, K -->
+    <div class="card-condition">
+        <div class="condition-text">At least one each of J, Q, K.</div>
+        <div class="svg-container">
+            <svg width="260" height="130" viewBox="0 0 260 130">
+                <rect x="5" y="5" width="70" height="100" fill="white" stroke="black" stroke-width="3" rx="8"/>
+                <text x="40" y="60" text-anchor="middle" font-size="32" fill="black" font-weight="bold">J</text>
+                <rect x="95" y="5" width="70" height="100" fill="white" stroke="black" stroke-width="3" rx="8"/>
+                <text x="130" y="60" text-anchor="middle" font-size="32" fill="black" font-weight="bold">Q</text>
+                <rect x="185" y="5" width="70" height="100" fill="white" stroke="black" stroke-width="3" rx="8"/>
+                <text x="220" y="60" text-anchor="middle" font-size="32" fill="black" font-weight="bold">K</text>
+                <text x="130" y="125" text-anchor="middle" font-size="16" fill="black" font-weight="bold">≥ 1 each</text>
+            </svg>
+        </div>
+    </div>
+
+    <!-- 13. Smallest card's value is odd -->
+    <div class="card-condition">
+        <div class="condition-text">Smallest card's value is odd.</div>
+        <div class="svg-container">
+            <svg width="200" height="130" viewBox="0 0 200 130">
+                <rect x="65" y="5" width="70" height="100" fill="white" stroke="black" stroke-width="3" rx="8"/>
+                <text x="100" y="60" text-anchor="middle" font-size="28" fill="black" font-weight="bold">3</text>
+                <text x="100" y="125" text-anchor="middle" font-size="16" fill="black" font-weight="bold">Lowest = odd</text>
+            </svg>
+        </div>
+    </div>
+
+    <!-- 14. Exactly 6 red cards -->
+    <div class="card-condition">
+        <div class="condition-text">Exactly 6 red cards.</div>
+        <div class="svg-container">
+            <svg width="100" height="130" viewBox="0 0 100 130">
+                <rect x="15" y="5" width="70" height="100" fill="white" stroke="red" stroke-width="3" rx="8"/>
+                <text x="50" y="125" text-anchor="middle" font-size="16" fill="red" font-weight="bold">= 6</text>
+            </svg>
+        </div>
+    </div>
+
+    <!-- 15. Highest card is a King or Jack -->
+    <div class="card-condition">
+        <div class="condition-text">Highest card is a King or Jack.</div>
+        <div class="svg-container">
+            <svg width="300" height="100" viewBox="0 0 300 100">
+                <text x="150" y="50" text-anchor="middle" font-size="24" fill="black" font-weight="bold">Highest ∈ {K, J}</text>
+            </svg>
+        </div>
+    </div>
+
+    <!-- 16. At least 4 cards of value 3, 6, or 9 -->
+    <div class="card-condition">
+        <div class="condition-text">At least 4 cards of value 3, 6, or 9.</div>
+        <div class="svg-container">
+            <svg width="350" height="130" viewBox="0 0 350 130">
+                <rect x="5" y="5" width="70" height="100" fill="white" stroke="black" stroke-width="3" rx="8"/>
+                <text x="40" y="60" text-anchor="middle" font-size="28" fill="black" font-weight="bold">3</text>
+                <rect x="85" y="5" width="70" height="100" fill="white" stroke="black" stroke-width="3" rx="8"/>
+                <text x="120" y="60" text-anchor="middle" font-size="28" fill="black" font-weight="bold">6</text>
+                <rect x="165" y="5" width="70" height="100" fill="white" stroke="black" stroke-width="3" rx="8"/>
+                <text x="200" y="60" text-anchor="middle" font-size="28" fill="black" font-weight="bold">9</text>
+                <rect x="245" y="5" width="70" height="100" fill="white" stroke="black" stroke-width="3" rx="8"/>
+                <text x="280" y="60" text-anchor="middle" font-size="28" fill="black" font-weight="bold">3</text>
+                <text x="175" y="125" text-anchor="middle" font-size="16" fill="black" font-weight="bold">≥ 4 cards</text>
+            </svg>
+        </div>
+    </div>
+
+    <!-- 17. Sum of the 3 lowest cards is at most 8 -->
+    <div class="card-condition">
+        <div class="condition-text">Sum of the 3 lowest cards is at most 8.</div>
+        <div class="svg-container">
+            <svg width="350" height="100" viewBox="0 0 350 100">
+                <text x="175" y="50" text-anchor="middle" font-size="24" fill="black" font-weight="bold">3 lowest: sum ≤ 8</text>
+            </svg>
+        </div>
+    </div>
+
+    <!-- 18. Two pairs of consecutive values -->
+    <div class="card-condition">
+        <div class="condition-text">Two pairs whose values differ by exactly one.</div>
+        <div class="svg-container">
+            <svg width="400" height="150" viewBox="0 0 400 150">
+                <!-- First pair -->
+                <rect x="25" y="25" width="60" height="90" fill="white" stroke="black" stroke-width="3" rx="6"/>
+                <text x="55" y="75" text-anchor="middle" font-size="24" fill="black" font-weight="bold">7</text>
+                <rect x="95" y="25" width="60" height="90" fill="white" stroke="black" stroke-width="3" rx="6"/>
+                <text x="125" y="75" text-anchor="middle" font-size="24" fill="black" font-weight="bold">7</text>
+                <!-- Second pair -->
+                <rect x="225" y="25" width="60" height="90" fill="white" stroke="black" stroke-width="3" rx="6"/>
+                <text x="255" y="75" text-anchor="middle" font-size="24" fill="black" font-weight="bold">8</text>
+                <rect x="295" y="25" width="60" height="90" fill="white" stroke="black" stroke-width="3" rx="6"/>
+                <text x="325" y="75" text-anchor="middle" font-size="24" fill="black" font-weight="bold">8</text>
+                <!-- Arrow and +1 -->
+                <defs>
+                    <marker id="arrowhead2" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+                        <polygon points="0 0, 8 3, 0 6" fill="black"/>
+                    </marker>
+                </defs>
+                <path d="M 165 70 L 215 70" stroke="black" stroke-width="2" fill="none" marker-end="url(#arrowhead2)"/>
+                <text x="190" y="60" text-anchor="middle" font-size="16" fill="black" font-weight="bold">+1</text>
+                <text x="90" y="135" text-anchor="middle" font-size="14" fill="black" font-weight="bold">Pair</text>
+                <text x="290" y="135" text-anchor="middle" font-size="14" fill="black" font-weight="bold">Pair</text>
+            </svg>
+        </div>
+    </div>
+
+    <!-- 19. Hearts >= Diamonds >= Spades (by count) -->
+    <div class="card-condition">
+        <div class="condition-text">Hearts ≥ Diamonds ≥ Spades (by count).</div>
+        <div class="svg-container">
+            <svg width="300" height="100" viewBox="0 0 300 100">
+                <text x="50" y="50" text-anchor="middle" font-size="32" fill="red" font-weight="bold">♥</text>
+                <text x="100" y="50" text-anchor="middle" font-size="32" fill="black" font-weight="bold">≥</text>
+                <text x="150" y="50" text-anchor="middle" font-size="32" fill="red" font-weight="bold">♦</text>
+                <text x="200" y="50" text-anchor="middle" font-size="32" fill="black" font-weight="bold">≥</text>
+                <text x="250" y="50" text-anchor="middle" font-size="32" fill="black" font-weight="bold">♠</text>
+            </svg>
+        </div>
+    </div>
+
+    <!-- 20. Highest card is clubs (clubs loses ties) -->
+    <div class="card-condition">
+        <div class="condition-text">Highest card is a club. (Clubs lose ties.)</div>
+        <div class="svg-container">
+            <svg width="200" height="130" viewBox="0 0 200 130">
+                <rect x="65" y="5" width="70" height="100" fill="white" stroke="black" stroke-width="3" rx="8"/>
+                <text x="100" y="60" text-anchor="middle" font-size="32" fill="black" font-weight="bold">♣</text>
+                <text x="100" y="125" text-anchor="middle" font-size="16" fill="black" font-weight="bold">Highest</text>
+            </svg>
+        </div>
+    </div>
+
+</body>
+</html>
