@@ -29,4 +29,4 @@ Ultimately I was pretty disappointed with the output, doubting that the right an
 
 My friend reported also considering the Lifting The Exponent Lemma (another running joke and folk result in olympiad mathematics). This result *was* in the list... at place 2251 and probability 8-in-a-million. Clearly, this probability was not stable under reflection, in part because I was unaware of the presence of the hypothesis in "my" list.
 
-The task under hand was small and toy enough that I believe if I had spent 40 hours instead of 4 on it, and had an appropriately larger compute budget, I would have "solved" it. Nevertheless, I think the observation about LLMs not providing sufficient uplift due to poor epistemics, lack of context and limited bandwidth communication is more broadly applicable.
+The task at hand was small and toy enough that I believe if I had spent 40 hours instead of 4 on it, and had an appropriately larger compute budget, I would have "solved" it. Nevertheless, I think the observation about LLMs not providing sufficient uplift due to poor epistemics, lack of context and limited bandwidth communication is more broadly applicable.
