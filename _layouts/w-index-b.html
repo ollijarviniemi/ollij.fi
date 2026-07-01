@@ -1,23 +1,390 @@
 ---
 layout: w-base
 ---
+<style>
+  /* WIP looks like every other section — no special highlight */
+  .ga-secrm { opacity: 0; cursor: pointer; color: var(--muted); font-size: .85rem; margin-left: .45rem; transition: opacity .15s; }
+  .wsection:hover .ga-secrm { opacity: .4; }
+  .ga-secrm:hover { opacity: 1; color: var(--accent); }
+  .wsection-title { cursor: text; }
+  .ga-secedit { font: inherit; font-size: .95em; background: var(--bg); color: var(--ink); border: 1px solid var(--rule); border-radius: 4px; padding: .05rem .35rem; }
+  .ga-newin { display: inline-block; margin-top: .35rem; font-size: .78rem; color: var(--muted); opacity: .5; text-decoration: none; transition: opacity .15s, color .15s; }
+  .ga-newin:hover { opacity: 1; color: var(--accent); }
+  .ga-addsec { grid-column: 1 / -1; color: var(--muted); opacity: .35; cursor: pointer; font-size: .82rem; margin-top: .3rem; transition: opacity .15s; }
+  .ga-addsec:hover { opacity: .9; color: var(--accent); }
+  .ga-addsec input { font: inherit; background: var(--bg); color: var(--ink); border: 1px solid var(--rule); border-radius: 4px; padding: .12rem .4rem; }
+  .ga-del { opacity: 0; cursor: pointer; color: var(--muted); font-size: .72rem; margin-left: .4rem; transition: opacity .15s; }
+  .wlist li:hover .ga-del { opacity: .35; }
+  .ga-del:hover { opacity: 1 !important; color: var(--accent); }
+  /* Long sections (>~8 docs) scroll within themselves instead of running down the page (Olli, 2026-07-01). */
+  .windex-b .wlist { max-height: 13.5rem; overflow-y: auto; padding-right: .3rem; scrollbar-width: thin; scrollbar-color: var(--rule) transparent; }
+  .windex-b .wlist::-webkit-scrollbar { width: 6px; }
+  .windex-b .wlist::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 3px; }
+</style>
 <div class="windex-head">
   <h1>I woke up in a strange place</h1>
 </div>
 
 <div class="windex-b">
-  {% for section in site.data.writing.sections %}
-  <section class="wsection">
-    <h2 class="wsection-title">{{ section.name }}</h2>
-    {% if section.posts and section.posts.size > 0 %}
+  {%- comment -%} The whole "Private — only you" zone is localhost-only: omitted from the public
+  (production) build so private section NAMES + WIP never leak onto ollij.fi. GitHub Pages builds
+  with JEKYLL_ENV=production; local builds are development, so Olli still sees it. {%- endcomment -%}
+  {% unless jekyll.environment == "production" %}
+  <div class="windex-zone windex-private">
+    <div class="windex-zone-label">Private — only you</div>
+    {%- comment -%} Work in progress = private (published:false) posts not yet placed in a section {%- endcomment -%}
+    {% assign placed = "|" %}{% for s in site.data.writing.sections %}{% for pp in s.posts %}{% assign placed = placed | append: pp.url | append: "|" %}{% endfor %}{% endfor %}
+    <section class="wsection wsection-wip">
+      <h2 class="wsection-title">Work in progress</h2>
       <ul class="wlist">
-        {% for p in section.posts %}
-        <li><a href="{{ p.url }}">{{ p.title }}</a></li>
-        {% endfor %}
+        {% for d in site.writing %}{% if d.published == false %}{% assign needle = d.url | prepend: "|" | append: "|" %}{% unless placed contains needle %}
+        {% if d.nav_title %}{% assign t = d.nav_title %}{% else %}{% assign t = d.content | split: '</h1>' | first | split: '>' | last | strip_html | strip %}{% if t == "" or t == d.content %}{% assign t = d.title | default: d.url %}{% endif %}{% endif %}
+        <li><a href="{{ d.url }}">{{ t }}</a></li>{% endunless %}{% endif %}{% endfor %}
       </ul>
-    {% else %}
-      <p class="note">{{ section.note | default: "—" }}</p>
-    {% endif %}
-  </section>
-  {% endfor %}
+    </section>
+    {% for section in site.data.writing.sections %}{% if section.private %}
+    <section class="wsection">
+      <h2 class="wsection-title">{{ section.name }}</h2>
+      <ul class="wlist">
+        {% for p in section.posts %}{% assign doc = site.writing | where: "url", p.url | first %}{% if doc.published == false %}
+        {% if doc.nav_title %}{% assign t = doc.nav_title %}{% else %}{% assign t = doc.content | split: '</h1>' | first | split: '>' | last | strip_html | strip %}{% if t == "" or t == doc.content %}{% assign t = p.title %}{% endif %}{% endif %}
+        <li><a href="{{ p.url }}">{{ t }}</a></li>{% endif %}{% endfor %}
+      </ul>
+    </section>
+    {% endif %}{% endfor %}
+  </div>
+  {% endunless %}
+
+  <div class="windex-zone windex-public">
+    <div class="windex-zone-label">Public</div>
+    {% for section in site.data.writing.sections %}{% unless section.private %}
+    <section class="wsection">
+      <h2 class="wsection-title">{{ section.name }}</h2>
+      {% if section.posts and section.posts.size > 0 %}
+      <ul class="wlist">
+        {% for p in section.posts %}{% assign doc = site.writing | where: "url", p.url | first %}{% if doc == nil or doc.published != false %}
+        <li><a href="{{ p.url }}">{% if doc.nav_title %}{{ doc.nav_title }}{% else %}{{ p.title }}{% endif %}</a></li>{% endif %}{% endfor %}
+      </ul>
+      {% else %}<p class="note">{{ section.note | default: "—" }}</p>{% endif %}
+    </section>
+    {% endunless %}{% endfor %}
+  </div>
 </div>
+
+{%- comment -%} Localhost-only: drag within/between sections; dropping into Private vs Public sets the post's privacy. {%- endcomment -%}
+<script>(function(){
+  if(!/^(localhost|127\.0\.0\.1|0\.0\.0\.0|\[::1\])$/.test(location.hostname)) return;
+  var board=document.querySelector('.windex-b'); if(!board) return;
+  var priv=board.querySelector('.windex-private'), pub=board.querySelector('.windex-public');
+  function sectionName(sec){ var h=sec.querySelector('.wsection-title'); if(!h) return '';
+    var t=''; for(var i=0;i<h.childNodes.length;i++){ if(h.childNodes[i].nodeType===3) t+=h.childNodes[i].textContent; } return t.trim(); }
+  function liUrl(li){ var a=li&&li.querySelector('a'); return a?a.getAttribute('href'):null; }
+  // POST that never throws on a non-JSON reply (e.g. a 404 from an out-of-date server)
+  function postJSON(url, body){
+    return fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
+      .then(function(r){ return r.text().then(function(t){ try{ return JSON.parse(t); }catch(e){ return {error: r.status===404 ? 'server is out of date — click ↻ server' : ('unexpected response '+r.status)}; } }); })
+      .catch(function(){ return {error:'server unreachable'}; });
+  }
+  // ensure Pinned + Work-in-progress exist in the Private zone (as drop targets)
+  var firstPriv=priv.querySelector('.wsection');
+  if(!priv.querySelector('.wsection-wip')){ var w=document.createElement('section'); w.className='wsection wsection-wip'; w.innerHTML='<h2 class="wsection-title">Work in progress</h2><ul class="wlist"></ul>'; priv.insertBefore(w, firstPriv); }
+
+  var indicator=document.createElement('div');
+  indicator.style.cssText='height:2px;background:var(--accent);margin:.2rem 0;border-radius:1px;pointer-events:none';
+  var drag=null, ctx=null;
+  function arm(li){ li.setAttribute('draggable','true'); li.style.cursor='grab';
+    li.addEventListener('dragstart', function(){ drag={url:liUrl(li), li:li, from:sectionName(li.closest('.wsection')), origParent:li.parentNode, origNext:li.nextElementSibling}; });
+    if(!li.querySelector('.ga-del')){ var x=document.createElement('span'); x.className='ga-del'; x.textContent='✕'; x.title='delete (kept on disk, hidden from the site)';
+      x.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation();
+        postJSON('http://localhost:8090/api/ga/delete-post',{url:liUrl(li)}).then(function(res){ if(res.ok) li.remove(); else alert(res.error||'failed'); }); });
+      li.appendChild(x); } }
+  board.querySelectorAll('.wsection .wlist li').forEach(arm);
+
+  // instant WIP: reconcile the Work-in-progress list against disk so new drafts appear
+  // immediately (no ~20s Jekyll wait), and deleted/published ones disappear right away.
+  function syncWip(){
+    var wipUl=priv.querySelector('.wsection-wip .wlist'); if(!wipUl) return;
+    fetch('http://localhost:8090/api/ga/wip').then(function(r){return r.json();}).then(function(d){
+      if(drag) return;  // don't reshuffle mid-drag
+      var posts=(d&&d.posts)||[], want={}; posts.forEach(function(p){ want[p.url]=p.title; });
+      var have={};
+      Array.prototype.slice.call(wipUl.querySelectorAll('li')).forEach(function(li){ var u=liUrl(li);
+        if(u && !(u in want)){ li.remove(); } else if(u){ have[u]=li; } });
+      posts.forEach(function(p){ if(have[p.url]) return;
+        // Don't re-add to WIP anything already shown in a section — e.g. a draft just dragged
+        // into a section whose placement hasn't rebuilt to disk yet (avoids a transient dupe).
+        if(board.querySelector('.wsection:not(.wsection-wip) .wlist li a[href="'+p.url+'"]')) return;
+        var li=document.createElement('li'), a=document.createElement('a'); a.href=p.url; a.textContent=p.title; li.appendChild(a); wipUl.appendChild(li); arm(li); });
+    }).catch(function(){});
+  }
+  syncWip();
+  window.addEventListener('focus', syncWip);
+
+  // subtle section controls: click the title to rename it; − removes an empty section.
+  function editTitle(sec){
+    var title=sec.querySelector('.wsection-title'); if(title.querySelector('.ga-secedit')) return;
+    var old=sectionName(sec);
+    var inp=document.createElement('input'); inp.className='ga-secedit'; inp.value=old;
+    title.textContent=''; title.appendChild(inp); inp.focus(); inp.select();
+    var settled=false;
+    function finish(commit){ if(settled) return; settled=true;
+      var nv=inp.value.trim(); title.textContent=(commit&&nv)?nv:old; addTitleControls(sec);
+      if(commit && nv && nv!==old){
+        postJSON('http://localhost:8090/api/ga/rename-section',{old:old,new:nv}).then(function(res){
+          if(!res.ok){ title.textContent=old; addTitleControls(sec); alert(res.error==='name taken'?'A section with that name already exists.':(res.error||'rename failed')); } }); }
+    }
+    inp.addEventListener('keydown', function(ev){ ev.stopPropagation();
+      if(ev.key==='Enter'){ ev.preventDefault(); finish(true); } else if(ev.key==='Escape'){ finish(false); } });
+    inp.addEventListener('blur', function(){ finish(false); });
+  }
+  function addTitleControls(sec){
+    if(sec.classList.contains('wsection-wip')) return;
+    var title=sec.querySelector('.wsection-title'); if(!title) return;
+    if(!title.__renameBound){ title.__renameBound=true; title.title='click to rename';
+      title.addEventListener('click', function(){ editTitle(sec); }); }
+    if(title.querySelector('.ga-secrm')) return;
+    var rm=document.createElement('span'); rm.className='ga-secrm'; rm.textContent='−'; rm.title='remove section (must be empty)';
+    rm.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation();
+      postJSON('http://localhost:8090/api/ga/remove-section',{name:sectionName(sec)}).then(function(res){ if(res.ok) sec.remove(); else alert(res.error==='not empty'?'Move its docs out of this section first.':(res.error||'failed')); });
+    });
+    title.appendChild(rm);
+  }
+  board.querySelectorAll('.wsection').forEach(addTitleControls);
+  // "+ new" filed under a section: only in the Private zone — a fresh draft is published:false,
+  // which would deploy as a dead link if placed in a public section (server also guards this).
+  function addNewInSection(sec){
+    if(sec.classList.contains('wsection-wip')||sec.querySelector('.ga-newin')) return;
+    var a=document.createElement('a'); a.className='ga-newin'; a.href='/new/'; a.textContent='+ new'; a.title='new draft, filed under this section';
+    a.addEventListener('click', function(e){ e.preventDefault(); location.href='/new/?section='+encodeURIComponent(sectionName(sec)); });
+    sec.appendChild(a);
+  }
+  priv.querySelectorAll('.wsection').forEach(addNewInSection);
+  function makeSection(zone, name){ var sec=document.createElement('section'); sec.className='wsection';
+    sec.innerHTML='<h2 class="wsection-title"></h2><ul class="wlist"></ul>'; sec.querySelector('.wsection-title').textContent=name;
+    var add=zone.querySelector('.ga-addsec'); zone.insertBefore(sec, add); addTitleControls(sec); if(zone===priv) addNewInSection(sec); return sec; }
+  function addSectionUI(zone, isPrivate){
+    var add=document.createElement('a'); add.className='ga-addsec'; add.href='#'; add.textContent='+ section';
+    add.addEventListener('click', function(e){ e.preventDefault(); if(add.querySelector('input')) return;
+      var inp=document.createElement('input'); inp.placeholder='section name'; add.textContent=''; add.appendChild(inp); inp.focus();
+      inp.addEventListener('keydown', function(ev){ ev.stopPropagation();
+        if(ev.key==='Enter'){ var name=inp.value.trim(); if(!name){ add.textContent='+ section'; return; }
+          postJSON('http://localhost:8090/api/ga/add-section',{name:name,private:isPrivate}).then(function(res){ if(res.ok) makeSection(zone, name); else alert(res.error||'failed'); add.textContent='+ section'; });
+        } else if(ev.key==='Escape'){ add.textContent='+ section'; } });
+    });
+    zone.appendChild(add);
+  }
+  addSectionUI(priv, true); addSectionUI(pub, false);
+
+  document.addEventListener('dragover', function(e){
+    if(!drag) return;
+    var sec=e.target.closest && e.target.closest('.windex-b .wsection');
+    if(!sec) return;
+    e.preventDefault();
+    var ul=sec.querySelector('.wlist');
+    if(!ul){ ul=document.createElement('ul'); ul.className='wlist'; var note=sec.querySelector('.note'); if(note) note.remove(); sec.appendChild(ul); }
+    var li=e.target.closest('.wlist li'); var ref=null;
+    if(li && li.parentNode===ul && li!==indicator){ var r=li.getBoundingClientRect(); ref=(e.clientY<r.top+r.height/2)?li:li.nextElementSibling; }
+    if(ref===indicator) ref=indicator.nextElementSibling;
+    if(ref) ul.insertBefore(indicator, ref); else ul.appendChild(indicator);
+    ctx={ul:ul, sec:sec, ref:ref};
+  });
+
+  document.addEventListener('drop', function(e){
+    if(!drag||!ctx) return; e.preventDefault();
+    var isPrivate=!!ctx.sec.closest('.windex-private');
+    var toWip=ctx.sec.classList.contains('wsection-wip');
+    var section=toWip?null:sectionName(ctx.sec);
+    var before=(ctx.ref&&ctx.ref!==indicator)?liUrl(ctx.ref):null;
+    if(indicator.parentNode) indicator.parentNode.removeChild(indicator);
+    if(before===drag.url){ drag=null; ctx=null; return; }
+    var li=drag.li, origParent=drag.origParent, origNext=drag.origNext, url=drag.url;
+    if(ctx.ref) ctx.ul.insertBefore(li, ctx.ref); else ctx.ul.appendChild(li);
+    postJSON('http://localhost:8090/api/ga/place',{url:url, section:section, private:isPrivate, before:before}).then(function(res){ if(!res.ok){ if(origParent) origParent.insertBefore(li, origNext); alert(res.error||'move failed'); } });
+    drag=null; ctx=null;
+  });
+  document.addEventListener('dragend', function(){ if(indicator.parentNode) indicator.parentNode.removeChild(indicator); drag=null; ctx=null; });
+})();</script>
+
+{%- comment -%} Localhost-only: Reading — a collapsed left-edge rail that hover-expands (the
+  dashboard-rail pattern: out of the way, stable, subtle). Fixed, so it never reflows the
+  centered index. Hidden on the public site. {%- endcomment -%}
+<style>
+ #rd-rail{position:fixed;top:4.4rem;left:0;bottom:0;width:2.3rem;z-index:40;background:var(--bg-offset);border-right:1px solid var(--rule);overflow:hidden;transition:width .16s ease}
+ #rd-rail:hover,#rd-rail.open{width:19.5rem;overflow:auto}
+ #rd-rail .rd-lblv{writing-mode:vertical-rl;text-orientation:mixed;font-size:.64rem;text-transform:uppercase;letter-spacing:.2em;color:var(--muted);white-space:nowrap;padding:.9rem .65rem;cursor:default}
+ #rd-rail:hover .rd-lblv,#rd-rail.open .rd-lblv{display:none}
+ #rd-rail .rd-body{display:none;padding:.7rem .85rem 1.2rem}
+ #rd-rail:hover .rd-body,#rd-rail.open .rd-body{display:block}
+ .rd-hd{display:flex;align-items:baseline;gap:.5rem;font-size:.6rem;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin:0 0 .3rem;opacity:.85}
+ .rd-disk{margin-left:auto;letter-spacing:0;font-size:.6rem;opacity:.6;white-space:nowrap}
+ .rd-lbl{font-size:.56rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:.55rem 0 .05rem;opacity:.7}
+ .rd-item{display:flex;align-items:baseline;gap:.45rem;padding:.13rem 0;text-decoration:none;color:var(--ink);font-size:.88rem;line-height:1.25}
+ .rd-item .rd-t{flex:0 1 auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+ .rd-item .rd-meta{font-size:.62rem;color:var(--muted);font-variant-numeric:tabular-nums;flex:0 0 auto}
+ .rd-item:hover .rd-t{color:var(--accent)}
+ .rd-empty{font-size:.78rem;color:var(--muted);opacity:.65;line-height:1.35}
+ #rd-rail .rd-add{display:flex;align-items:center;gap:.5rem;margin:.7rem 0 0;border-top:1px solid var(--rule);padding-top:.6rem}
+ #rd-url{flex:1;min-width:0;font:inherit;font-size:.8rem;background:transparent;color:var(--ink);border:0;border-bottom:1px solid var(--rule);padding:.2rem 0;outline:none}
+ #rd-url:focus{border-bottom-color:var(--accent)}
+ #rd-url::placeholder{color:var(--muted);opacity:.55}
+ .rd-pdf{font-size:.6rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);cursor:pointer;white-space:nowrap}
+ .rd-pdf:hover{color:var(--accent)}
+ .rd-more{font-size:.62rem;color:var(--muted);cursor:pointer;padding:.18rem 0 0;opacity:.7}
+ .rd-more:hover{color:var(--accent)}
+ .rd-fresh .rd-meta{font-style:italic;opacity:.85}
+</style>
+<script>(function(){
+  return;  // Reading rail DISABLED 2026-06-29 — provided no value; to be redone as a right-sidebar surface (see attention-tools). Code kept below for reuse.
+  if(!/^(localhost|127\.0\.0\.1|0\.0\.0\.0|\[::1\])$/.test(location.hostname)) return;
+  var API=location.origin;
+  var rail=document.createElement('aside'); rail.id='rd-rail';
+  rail.innerHTML='<div class="rd-lblv">Reading</div><div class="rd-body">'
+    +'<div class="rd-hd"><span>Reading</span><span class="rd-disk" id="rd-disk"></span></div>'
+    +'<div id="rd-now"></div><div id="rd-next"></div><div id="rd-fresh"></div>'
+    +'<div class="rd-add"><input id="rd-url" placeholder="paste a URL…"><label class="rd-pdf">+ PDF<input id="rd-file" type="file" accept="application/pdf" style="display:none"></label></div>'
+    +'</div>';
+  document.body.appendChild(rail);
+  var urlEl=rail.querySelector('#rd-url'), fileEl=rail.querySelector('#rd-file');
+  function lbl(t){ var e=document.createElement('div'); e.className='rd-lbl'; e.textContent=t; return e; }
+  function row(x){
+    // open the LIVE page (read in your real browser); pdf uploads open the archived doc
+    var a=document.createElement('a'); a.className='rd-item'; a.target='_blank'; a.rel='noopener';
+    a.href = (x.source&&/^https?:/.test(x.source)) ? x.source : ('/api/ga/reading/doc?slug='+encodeURIComponent(x.slug));
+    var meta = x.captured===false ? (x.error?'⚠ failed':'archiving…') : (x.type==='pdf'?'pdf':'');
+    a.innerHTML='<span class="rd-t"></span><span class="rd-meta"></span>';
+    a.querySelector('.rd-t').textContent=x.title||x.slug;
+    a.querySelector('.rd-meta').textContent=meta;
+    return a;
+  }
+  function appendCapped(box, items, make, cap){
+    items.slice(0, cap).forEach(function(x){ box.appendChild(make(x)); });
+    if(items.length>cap){ var m=document.createElement('div'); m.className='rd-more'; m.textContent='+ '+(items.length-cap)+' more';
+      m.addEventListener('click', function(){ items.slice(cap).forEach(function(x){ box.insertBefore(make(x), m); }); m.remove(); });
+      box.appendChild(m); }
+  }
+  function freshRow(x){
+    // opens the LIVE post in a new tab; archives + queues it in the background
+    var a=document.createElement('a'); a.className='rd-item rd-fresh'; a.href=x.url; a.target='_blank'; a.rel='noopener';
+    a.innerHTML='<span class="rd-t"></span><span class="rd-meta"></span>';
+    a.querySelector('.rd-t').textContent=x.title; a.querySelector('.rd-meta').textContent=x.source;
+    a.addEventListener('click', function(){
+      fetch(API+'/api/ga/reading/add',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({url:x.url,title:x.title})}).catch(function(){});
+      setTimeout(load, 1500);
+    });
+    return a;
+  }
+  function loadFeed(){
+    fetch(API+'/api/ga/reading/feed',{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){
+      var box=rail.querySelector('#rd-fresh'); box.innerHTML=''; var items=d.items||[];
+      if(!items.length) return;
+      box.appendChild(lbl('Fresh from your sources')); appendCapped(box, items, freshRow, 6);
+    }).catch(function(){});
+  }
+  function load(){
+    fetch(API+'/api/ga/reading/list',{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){
+      var items=d.items||[], now=rail.querySelector('#rd-now'), next=rail.querySelector('#rd-next');
+      var reading=items.filter(function(x){return x.status==='reading';});
+      var queue=items.filter(function(x){return x.status==='queue';});
+      now.innerHTML=''; next.innerHTML='';
+      if(reading.length){ now.appendChild(lbl('Continue reading')); reading.forEach(function(x){ now.appendChild(row(x)); }); }
+      if(queue.length){ next.appendChild(lbl('Up next')); appendCapped(next, queue, row, 4); }
+      if(!reading.length && !queue.length){ now.innerHTML='<div class="rd-empty">Nothing in progress — grab one below, or paste a URL.</div>'; }
+      var dk=rail.querySelector('#rd-disk'); if(d.disk) dk.textContent=d.disk.human;
+    }).catch(function(){});
+  }
+  urlEl.addEventListener('keydown', function(e){
+    if(e.key!=='Enter') return; var u=urlEl.value.trim(); if(!u) return;
+    urlEl.value=''; urlEl.placeholder='archiving…';
+    fetch(API+'/api/ga/reading/add',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({url:u})})
+      .then(function(r){return r.json();}).then(function(){ urlEl.placeholder='paste a URL…'; load();
+        var n=0,t=setInterval(function(){ load(); if(++n>40) clearInterval(t); },3000); }).catch(function(){ urlEl.placeholder='add failed'; });
+  });
+  fileEl.addEventListener('change', function(){
+    var f=fileEl.files[0]; if(!f) return; var fd=new FormData(); fd.append('file',f,f.name);
+    fetch(API+'/api/ga/reading/upload',{method:'POST',body:fd}).then(function(r){return r.json();}).then(function(){ fileEl.value=''; load(); }).catch(function(){});
+  });
+  load(); loadFeed(); setInterval(load, 8000); setInterval(loadFeed, 60000);
+})();</script>
+
+{%- comment -%} Localhost-only: the Recommended-reading rail — a collapsed RIGHT-edge strip that
+  hover-expands (mirror of the dashboard right-rail / LLM-pushed-info surface). Fixed, never reflows
+  the centered index, hidden on the public site. LLM top-10 from your reading notes; an item drops
+  when you read it (≳15s dwell, server-side) or you ✕ it (read already / not interested → also
+  excluded from future recs). Collapse is delayed and refresh pauses while hovered, so it's steady
+  under the cursor. {%- endcomment -%}
+<style>
+ #fd-rail{position:fixed;top:4.4rem;right:0;bottom:0;width:2.3rem;z-index:40;background:var(--bg-offset);border-left:1px solid var(--rule);overflow:hidden;transition:width .18s ease;transition-delay:.35s}
+ #fd-rail:hover,#fd-rail.open{width:21rem;overflow-y:auto;overflow-x:hidden;scrollbar-gutter:stable;transition-delay:0s}
+ #fd-rail .fd-lblv{writing-mode:vertical-rl;text-orientation:mixed;font-size:.64rem;text-transform:uppercase;letter-spacing:.2em;color:var(--muted);white-space:nowrap;padding:.9rem .65rem;cursor:default}
+ #fd-rail:hover .fd-lblv,#fd-rail.open .fd-lblv{display:none}
+ #fd-rail .fd-body{display:none;padding:.7rem .9rem 1.4rem}
+ #fd-rail:hover .fd-body,#fd-rail.open .fd-body{display:block}
+ .fd-hd{display:flex;align-items:baseline;gap:.5rem;font-size:.58rem;text-transform:uppercase;letter-spacing:.13em;color:var(--muted);margin:0 0 .35rem;opacity:.8}
+ .fd-rfr{margin-left:auto;letter-spacing:0;cursor:pointer;opacity:.55;font-size:.72rem}
+ .fd-rfr:hover{opacity:1;color:var(--accent)}
+ .fd-item{display:block;padding:.34rem 0;text-decoration:none;color:var(--ink);border-bottom:1px solid color-mix(in srgb,var(--rule) 45%,transparent)}
+ .fd-item:last-child{border-bottom:0}
+ .fd-row{display:flex;align-items:baseline;gap:.5rem}
+ .fd-item .fd-t{flex:1 1 auto;font-size:.86rem;line-height:1.25}
+ .fd-item .fd-src{flex:0 0 auto;font-size:.6rem;color:var(--muted);white-space:nowrap;max-width:6.5rem;overflow:hidden;text-overflow:ellipsis}
+ .fd-item .fd-x{flex:0 0 auto;opacity:0;cursor:pointer;color:var(--muted);font-size:.7rem;line-height:1;padding:0 .05rem;transition:opacity .12s}
+ .fd-item:hover .fd-x{opacity:.4}
+ .fd-x:hover{opacity:1 !important;color:var(--accent)}
+ .fd-item:hover .fd-t{color:var(--accent)}
+ .fd-empty{font-size:.76rem;color:var(--muted);opacity:.6;line-height:1.4;padding:.2rem 0}
+ .fd-note{font-size:.66rem;color:var(--muted);opacity:.6;font-style:italic;padding:.15rem 0}
+</style>
+<script>(function(){
+  if(!/^(localhost|127\.0\.0\.1|0\.0\.0\.0|\[::1\])$/.test(location.hostname)) return;
+  var API=location.origin;
+  var rail=document.createElement('aside'); rail.id='fd-rail';
+  rail.innerHTML='<div class="fd-lblv">Reading</div><div class="fd-body">'
+    +'<div class="fd-hd"><span>Recommended</span><span class="fd-rfr" id="fd-rec-rfr" title="regenerate recommendations">↻</span></div>'
+    +'<div id="fd-rec"></div>'
+    +'</div>';
+  document.body.appendChild(rail);
+  if(location.hash==='#reading') rail.classList.add('open');   // deep-link: open the rail
+  function busy(){ return rail.matches(':hover') || rail.classList.contains('open'); }
+
+  function dismiss(url, el){
+    // Just remove the row — no list rebuild (rebuilding instantly refilled the slot from the
+    // buffer and flashed the whole list, which read as the item "coming back"). The server has
+    // already dropped+excluded it; the freed slot refills quietly on the next idle refresh.
+    el.style.opacity=.25; el.style.pointerEvents='none';
+    fetch(API+'/api/ga/reading/recommend-dismiss',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({url:url})})
+      .then(function(r){ if(r.ok){ el.style.transition='opacity .15s'; el.style.opacity='0'; setTimeout(function(){ el.remove(); }, 150); }
+                         else { el.style.opacity=''; el.style.pointerEvents=''; } })
+      .catch(function(){ el.style.opacity=''; el.style.pointerEvents=''; });
+  }
+  function item(x){
+    var a=document.createElement('a'); a.className='fd-item'; a.href=x.url; a.target='_blank'; a.rel='noopener';
+    var row=document.createElement('div'); row.className='fd-row';
+    var t=document.createElement('span'); t.className='fd-t'; t.textContent=x.title||x.url;
+    var s=document.createElement('span'); s.className='fd-src'; s.textContent=x.source||'';
+    var xb=document.createElement('span'); xb.className='fd-x'; xb.textContent='✕'; xb.title='read already / not interested — hide and stop recommending';
+    xb.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); dismiss(x.url, a); });
+    row.appendChild(t); row.appendChild(s); row.appendChild(xb); a.appendChild(row);
+    return a;
+  }
+  // force=true bypasses the hover guard (user-initiated); otherwise we don't rebuild the list
+  // under the cursor (that was the source of the cursor-move glitch).
+  function loadRec(force){
+    if(!force && busy()) return;
+    fetch(API+'/api/ga/reading/recommend',{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){
+      var box=rail.querySelector('#fd-rec'); box.innerHTML='';
+      var items=(d&&d.top10)||[];
+      if(items.length){ items.forEach(function(x){ box.appendChild(item(x)); }); }
+      else if(d&&d.generating){ box.innerHTML='<div class="fd-note">thinking up recommendations…</div>'; }
+      else{ box.innerHTML='<div class="fd-empty">No recommendations yet — ↻ to generate from your reading notes.</div>'; }
+    }).catch(function(){});
+  }
+  rail.querySelector('#fd-rec-rfr').addEventListener('click', function(){
+    rail.querySelector('#fd-rec').innerHTML='<div class="fd-note">thinking up recommendations…</div>';
+    fetch(API+'/api/ga/reading/recommend-refresh',{method:'POST'}).catch(function(){});
+    var n=0,t=setInterval(function(){ loadRec(true); if(++n>60) clearInterval(t); },4000);
+  });
+  loadRec(true);
+  // refill quietly once the cursor leaves (rail collapsed) — never rebuilds under the cursor
+  rail.addEventListener('mouseleave', function(){ setTimeout(function(){ loadRec(false); }, 450); });
+  setInterval(function(){ loadRec(false); }, 30000);
+})();</script>
