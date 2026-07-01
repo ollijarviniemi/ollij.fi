@@ -6,8 +6,8 @@
 sections:
   - name: New
     posts:
+      - { title: "Subjectivist games for accelerated learning", url: "/subjectivist_games/" }
       - { title: "LLM-assisted belief articulation exercise", url: "/belief_articulation/" }
-      - { title: "Decision-making training in environments with ground truth", url: "/ground_truth/" }
       - { title: "The importance of language", url: "/importance_of_language/" }
       - { title: "Black boxes", url: "/black_boxes/" }
       - { title: "Non-standard Pythagoras proof", url: "/pythagoras/" }
@@ -19,8 +19,7 @@ sections:
     posts:
       - { title: "I woke up in a strange place", url: "/I_woke_up/" }
       - { title: '"You will never meet the other player ever again"', url: "/never_again/" }
-      - { title: "Decision-making training in environments with ground truth", url: "/ground_truth/" }
-      - { title: "The Pendulum Trial", url: "/predict/" }   # TODO(user): confirm — assumed = "Predict"
+      - { title: "The Pendulum Trial", url: "/predict/" }
       - { title: "A cause for distrust in Bayesianism", url: "/distrust_in_bayes/" }
       - { title: "The perpetual-motion jury", url: "/perpetual_motion/" }
       - { title: "Writing as a tool", url: "/writing_tool/" }
@@ -32,11 +31,10 @@ sections:
       - { title: "A cause for distrust in Bayesianism", url: "/distrust_in_bayes/" }
       - { title: '"You will never meet the other player ever again"', url: "/never_again/" }
       - { title: "Non-standard Pythagoras proof", url: "/pythagoras/" }
-      - { title: "Systems of differential equations as a baseline for modeling", url: "/differential_equations/" }
+      - { title: "Differential equations as a baseline", url: "/differential_equations/" }
 
   - name: Games and puzzles
     posts:
-      - { title: "Decision-making training in environments with ground truth", url: "/ground_truth/" }
       - { title: "The missing games", url: "/missing_games/" }
       - { title: "Games from another culture", url: "/another_culture/" }
       - { title: "Bayesian Factory", url: "/factory/" }
@@ -61,7 +59,7 @@ sections:
     posts:
       - { title: "I woke up in a strange place", url: "/I_woke_up/" }
       - { title: "An unusual situation", url: "/unusual/" }
-      - { title: "Response to Chattel Childhood", url: "/childhood/" }
+      - { title: "Response to <em>Chattel Childhood</em>", url: "/childhood/" }
       - { title: "The perceived stakes", url: "/stakes/" }
       - { title: "In a large world", url: "/large_world/" }
 
@@ -75,7 +73,7 @@ sections:
 
   - name: Miscellaneous
     posts:
-      - { title: 'Kriittinen arvio K. Koon teoksesta "Kuka keksi rakkauden"', url: "/koo/" }
+      - { title: '"Kuka keksi rakkauden" – Kriittinen arvio', url: "/koo/" }
       - { title: "Kirja-arvio: Karamazovin veljekset", url: "/karamazov/" }
       - { title: "Preserve", url: "/preserve/" }
       - { title: "Sure about that?", url: "/sure/" }
@@ -91,5 +89,17 @@ sections:
   - name: Actual drafts
     private: true
     posts:
-      - { title: "On Guardian Angels", url: "/on_guardian_angels/" }
       - { title: "Deep information", url: "/deep_information/" }
+
+  - name: Semi-daily notes
+    private: true
+    posts:
+      - { title: "July 1st", url: "/july_1st/" }
+      - { title: "Weekend plans", url: "/weekend_plans/" }
+
+  - name: GAs
+    private: true
+    posts:
+      - { title: "On Guardian Angels", url: "/on_guardian_angels/" }
+      - { title: "The thinking assistant", url: "/the_thinking_assistant/" }
+      - { title: "Website improvements", url: "/website_improvements/" }
