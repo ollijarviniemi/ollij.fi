@@ -159,9 +159,12 @@ a:hover { color: var(--accent); text-decoration-color: currentColor; }
 .wlist a:hover { color: var(--accent); text-decoration: underline; text-decoration-color: currentColor; }
 .wsection .note { color: var(--muted); font-style: italic; font-size: .92rem; }
 
-/* B — two-column directory (grid, filled row by row) */
-.windex-b { max-width: 52rem; margin: 1.4rem auto 0; padding: 1rem 2rem 0;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 2rem 3rem; align-items: start; }
+/* B — two-column directory, split into Private (top) and Public (below) zones */
+.windex-b { max-width: 52rem; margin: 1.4rem auto 0; padding: 1rem 2rem 0; }
+.windex-zone { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem 3rem; align-items: start; }
+.windex-zone-label { grid-column: 1 / -1; font-family: var(--serif); font-variant: small-caps;
+  letter-spacing: .14em; font-size: .78rem; color: var(--muted); margin: 0; }
+.windex-public { margin-top: 2.4rem; padding-top: 1.8rem; border-top: 1px solid var(--rule); }
 
 /* C — sticky section nav */
 .windex-c { max-width: 64rem; margin: 1.4rem auto 0; padding: 1rem 2rem 0;
@@ -212,7 +215,7 @@ a:hover { color: var(--accent); text-decoration-color: currentColor; }
   body { font-size: 19px; }
   .masthead { flex-wrap: wrap; gap: .6rem 1rem; padding: 1.1rem 1.2rem .9rem; }
   .windex-b, .windex-c, .windex-head, .post, .home { padding-left: 1.2rem; padding-right: 1.2rem; }
-  .windex-b { grid-template-columns: 1fr; }
+  .windex-zone { grid-template-columns: 1fr; }
   .home-name { font-size: 2.7rem; }
   .home-tag { font-size: 1.15rem; }
   .home-tabs { flex-direction: column; gap: .7rem; }

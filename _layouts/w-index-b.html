@@ -16,10 +16,13 @@ layout: w-base
   .ga-del { opacity: 0; cursor: pointer; color: var(--muted); font-size: .72rem; margin-left: .4rem; transition: opacity .15s; }
   .wlist li:hover .ga-del { opacity: .35; }
   .ga-del:hover { opacity: 1 !important; color: var(--accent); }
-  /* Long sections (>~8 docs) scroll within themselves instead of running down the page (Olli, 2026-07-01). */
-  .windex-b .wlist { max-height: 13.5rem; overflow-y: auto; padding-right: .3rem; scrollbar-width: thin; scrollbar-color: var(--rule) transparent; }
-  .windex-b .wlist::-webkit-scrollbar { width: 6px; }
-  .windex-b .wlist::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 3px; }
+  /* Long DRAFT sections (>~8 docs) scroll within themselves — ONLY the private/drafts zone
+     (localhost); public sections stay full-height and never scroll (Olli, 2026-07-01). */
+  .windex-private .wlist { max-height: 13.5rem; overflow-y: auto; padding-right: .3rem; scrollbar-width: thin; scrollbar-color: var(--rule) transparent; }
+  .windex-private .wlist::-webkit-scrollbar { width: 6px; }
+  .windex-private .wlist::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 3px; }
+  /* On the public site the private zone is gone, so the public zone is first — drop its top separator. */
+  .windex-b > .windex-zone:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
 </style>
 <div class="windex-head">
   <h1>I woke up in a strange place</h1>
@@ -56,7 +59,7 @@ layout: w-base
   {% endunless %}
 
   <div class="windex-zone windex-public">
-    <div class="windex-zone-label">Public</div>
+    {% unless jekyll.environment == "production" %}<div class="windex-zone-label">Public</div>{% endunless %}
     {% for section in site.data.writing.sections %}{% unless section.private %}
     <section class="wsection">
       <h2 class="wsection-title">{{ section.name }}</h2>
