@@ -1,5 +1,4 @@
 ---
-description: "Insentiivit ohjaavat ihmisiä kuin fysikaaliset voimat ja selittävät, mikseivät asiat ole paremmin — ei 'ihmiset ovat tyhmiä'. Vangin dilemma ja Pareto-käyrä."
 ---
 # Insentiivit, koordinaatio ja Pareto-käyrä
 

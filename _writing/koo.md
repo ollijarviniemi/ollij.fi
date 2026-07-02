@@ -2,9 +2,9 @@
 lang: fi
 redirect_from:
   - /blog/koo/
-description: "Tieteellinen täystyrmäys K. Koon laululle Kuka keksi rakkauden: ladattu kysymys, evoluutiobiologian sivuutus ja mielen projektion harha."
+description: "K. Koo pohtii teoksessaan Kuka keksi rakkauden rakkautta koskevia kysymyksiä. Valitettavasti analyysissä sorrutaan lukuisiin epistemisiin virheisiin."
 ---
-# Kriittinen arvio K. Koon teoksesta "Kuka keksi rakkauden"
+# K. Koo, "Kuka keksi rakkauden" – kriittinen arvio
 
 Teoksessaan [Kuka keksi rakkauden](https://www.youtube.com/watch?v=TIUeeOLzUAw) K. Koo pohtii rakkautta koskevia kysymyksiä.
 

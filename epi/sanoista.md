@@ -1,5 +1,4 @@
 ---
-description: "Sanan käyttäminen luo konseptin ja tekee ajattelusta kirkkaampaa — siksi uudet termit. Ja siksi \"epi\": \"tietoteoria\" toisi väärät mielikuvat."
 ---
 # Sanoista ja konsepteista
 

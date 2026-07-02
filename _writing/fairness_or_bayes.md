@@ -1,11 +1,11 @@
 ---
 redirect_from:
   - /blog/fairness_or_bayes/
-description: "Betting on a disagreement, you can have fairness or Bayesian log scores, not both. The Brier-score resolution: people are not hypotheses."
+description: "There is a betting procedure that is both fair and incentivizes honesty, but it uses the Brier score. Shouldn't a good Bayesian demand log scores instead?"
 ---
 # Fairness or Bayes?
 
-Suppose you and your friend disagree about something - like, as usual, about tomorrow's weather. You put 40% on it raining tomorrow, your friend puts 20%. As any civilized people, you want to bet on it. What odds should you pick?
+Suppose you and your friend disagree about something -- like, as usual, about tomorrow's weather. You put 40% on it raining tomorrow, your friend puts 20%. As any civilized people, you want to bet on it. What odds should you pick?
 
 Obviously, the normal 1 : 1 odds don't work, since you both agree it's more likely it doesn't rain than that it does.
 
@@ -17,7 +17,7 @@ Fortunately, there's a [procedure for assigning odds](https://www.lesswrong.com/
 
 The solution is: the loser pays the winner the difference of their Brier scores, multiplied by some pre-determined constant (corresponding to how much money you want to bet on).
 
-If, like me, you are a vehement defender of a Bayesian stance to probability theory, you might become suspicious: Why the Brier score? Why not the difference in log scores? Isn't there, like, the whole Bayes theorem and everything that tell what's the normatively correct way to adjust credences on hypotheses after an observation? 
+If, like me, you are a vehement defender of a Bayesian stance to probability theory, you might become suspicious: Why the Brier score? Why not the difference in log scores? Isn't there, like, the whole Bayes theorem and everything that tell what's the normatively correct way to adjust credences on hypotheses after an observation?
 
 Using the log score would give you honesty (2), but it wouldn't satisfy fairness (1). This presents you with a dilemma. When forced to choose one, which one do you put your faith in: your notions of "fairness", or the axioms of probability theory?
 

@@ -1,5 +1,4 @@
 ---
-description: "Todennäköisyys mittaa uskomuksen vahvuutta kuten Celsius lämpötilaa. Esimerkkinä myöhästyvää kaveria odottaessa epävarmuus muuttuu ajan myötä."
 ---
 # Probabilistinen ajattelu
 

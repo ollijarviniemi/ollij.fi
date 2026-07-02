@@ -1,7 +1,7 @@
 ---
 redirect_from:
   - /blog/pythagoras/
-description: "Proving the Pythagorean theorem via the operation \"hypotenuse of legs a and b\": commutative, associative, scale-invariant, forcing the functional form n^(1/2)."
+description: "Take the operation 'hypotenuse of the triangle with legs a and b'. It is commutative, associative and scale-invariant, and the Pythagorean theorem follows."
 ---
 
 # Non-standard Pythagoras proof

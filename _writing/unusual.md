@@ -1,7 +1,7 @@
 ---
 redirect_from:
   - /blog/unusual/
-description: "Waking with no memory of who you are, deducing yourself from what stays salient: a Finnish number theorist who knows far too much about AI. Then the bell rings."
+description: "I wake up. It's dark, I can't hear anything, I can't feel anything, I don't remember who I am. Stay calm. Reach for the things I know."
 ---
 # An unusual situation
 

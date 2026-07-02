@@ -1,5 +1,4 @@
 ---
-description: "Ihmiset eivät mieti suuruusluokkia: onko muutos suuri vai pieni? Kvantifiointi on opittu taito, ja oikea kysymys koskee vaihtoehtoiskustannuksia."
 ---
 # Kvantifiointi
 

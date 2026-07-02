@@ -1,7 +1,7 @@
 ---
 redirect_from:
   - /blog/stakes/
-description: "Why some dismiss rationality and others can't: it tracks perceived stakes. A high-stakes view of life — real suffering, personally — can't just sit idle."
+description: "The stakes are real."
 ---
 # The perceived stakes
 

@@ -1,7 +1,7 @@
 ---
 redirect_from:
   - /blog/fortress/
-description: "A dispatch from elsewhere on Fortress, a 32-a-side sport designed so the bottom quartile still has fun — unlike Earth's strangely boring football."
+description: "Team sports should be fun even if you're in the bottom quartile skillwise. Let me tell you fables about Fortress."
 ---
 # Fortress
 
@@ -17,7 +17,7 @@ To be fair, it is true that at the professional level football is an actual team
 
 But, frankly, even world-class football is still not very entertaining. Where I'm from, people would be baffled that this is the sport that the world has chosen for the Very Biggest Sports Event.
 
-So let me tell you about one of the big-budget sports that we have. It's called Fortress. The games have two teams with typically 32 people each. As you may guess, the aim of the game is to capture the other team's fortress. 
+So let me tell you about one of the big-budget sports that we have. It's called Fortress. The games have two teams with typically 32 people each. As you may guess, the aim of the game is to capture the other team's fortress.
 
 It's not played on a stadium, because the game area is actually quite large. The early game is focused on the attackers making their way towards the other team's base, both by running and overcoming a collection of challenges -- climbing nets, swinging on a sling over a cliff, carefully pulling yourself over an extremely shaky suspension bridge, monkey bars, moving heavy boxes and lifting each other so that you can make your way over a wall, that sort of thing.
 

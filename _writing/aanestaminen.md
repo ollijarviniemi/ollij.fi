@@ -2,7 +2,6 @@
 lang: fi
 redirect_from:
   - /blog/aanestaminen/
-description: "Miksi siitä, ketä äänestää, ei saa puhua? Normi vaieta on hölynpölyä — keskustelu ja koordinointi parantaisi äänestyspäätöksiä."
 ---
 # Puhukaa äänestämisestä
 

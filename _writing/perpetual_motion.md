@@ -2,7 +2,7 @@
 redirect_from:
   - /blog/ikiliikkuva/
   - /ikiliikkuva/
-description: "Condorcet's jury theorem assumes impossible independence — you can't squeeze more confidence from limited information than it holds, like energy from nothing."
+description: "You can't squeeze unbounded confidence out of limited information."
 ---
 
 # The perpetual-motion jury
@@ -29,4 +29,4 @@ So even if every one of the jurors thinks the probability of guilt is one in a m
 
 So the model presented at the lecture isn't just slightly flawed, fixable with small adjustments. No, it is frankly superstition, which fails to grasp where these people's "informed beliefs" come from in the first place.
 
-This is therefore not a technical mathematical point about probability theory, but a fundamental point about how belief formation works: it requires and rests on observations. If there are no observations, there can be no informed estimates. If there is only a limited amount of information, the estimates can only be limited in confidence.
+This is therefore not a technical mathematical point about probability theory, but a fundamental point about how belief formation works: it requires and rests on observations. If there are no observations, there can be no informed estimates. If there is only a limited amount of information, the estimates can only be so confident.

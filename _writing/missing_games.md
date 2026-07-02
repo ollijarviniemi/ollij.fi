@@ -2,7 +2,7 @@
 redirect_from:
   - /blog/pelit/
   - /pelit/
-description: "Two decades after Nokia brain games, where are the games that are fun and train real cognition — decision-making under uncertainty, communication, coordination?"
+description: "As a kid I played \"brain games\" on an old Nokia. Two decades later, where are the games that are fun and train generally useful cognitive abilities?"
 ---
 
 # The missing games

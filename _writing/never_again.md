@@ -2,7 +2,7 @@
 redirect_from:
   - /blog/toistuvuus/
   - /toistuvuus/
-description: "Why \"you'll never meet this player again\" doesn't abstract away reputation: causal cycles in a dense social network are short, so defection still bites back."
+description: "Even when never facing the same person again, social networks have short causal cycles."
 ---
 
 # "You will never meet the other player ever again"

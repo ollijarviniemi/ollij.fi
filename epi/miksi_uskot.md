@@ -1,5 +1,4 @@
 ---
-description: "Kysymys \"miksi uskot mitä uskot?\" hakee uskomuksesi todellisia syitä, ei jälkikäteen keksittyjä perusteluja. Väittely on surkea tapa lähestyä totuutta."
 ---
 # Miksi uskot mitä uskot?
 

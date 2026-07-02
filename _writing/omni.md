@@ -1,7 +1,7 @@
 ---
 redirect_from:
   - /blog/omni/
-description: "A dispatch from elsewhere on why athletes specializing in one sport feels wrong — Omni-Athletes, the fully general hackathon, and the wizard-power contest."
+description: "In any physical activity you can name, a professional Omni-Athlete will absolutely crush any normal person you'll ever meet, goes the idea."
 ---
 # Omni-Athletes
 

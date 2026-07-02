@@ -2,7 +2,6 @@
 lang: fi
 redirect_from:
   - /blog/ajattelen/
-description: "Harvoin tekoälystä puhuessa voi sanoa, mitä oikeasti ajattelee: Dysonin kuulista, kuolemattomuudesta, sukupuutosta. Miksi maski menee päälle?"
 ---
 # Mitä oikeasti ajattelen
 

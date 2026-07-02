@@ -1,5 +1,4 @@
 ---
-description: "Hyvä epi on Oikeasti Tärkeä asia myös silloin, kun totuus on hankala: tekoälyriski, eläintuotanto ja kuolema esimerkkeinä. Totuus on osa eettistä toimintaa."
 ---
 # Epi on tärkeää
 

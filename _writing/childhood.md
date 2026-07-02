@@ -1,7 +1,7 @@
 ---
 redirect_from:
   - /blog/childhood/
-description: "A response to Aella's Chattel Childhood: forced school lunches, P.E. violence, sibling fights — structural, not exceptionally bad parents."
+description: "A response to Aella's Chattel Childhood."
 ---
 
 # Response to *Chattel Childhood*

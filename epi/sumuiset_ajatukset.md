@@ -1,5 +1,4 @@
 ---
-description: "Kieli on epätarkkaa, ja \"suunnilleen samat\" väitteet pyöristyvät samoiksi — vaikka totuusarvot eroavat. Sumea puhe heijastaa ja ruokkii sumeaa ajattelua."
 ---
 # Sumuiset ajatukset
 

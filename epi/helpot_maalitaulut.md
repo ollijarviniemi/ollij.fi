@@ -1,5 +1,4 @@
 ---
-description: "Salaliittoteoriat ja muut helpot maalitaulut eivät ole pointti — huono epi ei ole 'tyhmien muiden' ongelma vaan koskee myös fiksuja, täysjärkisiä ihmisiä."
 ---
 # Helpot maalitaulut
 

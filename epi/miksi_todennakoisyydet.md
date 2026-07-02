@@ -1,5 +1,4 @@
 ---
-description: "Todennäköisyyksien arvo ei ole laskuissa vaan työkaluissa: uskomukset ovat epävarmoja, niiden tulee muuttua evidenssistä eivätkä keskimäärin vahvistua."
 ---
 # Miksi todennäköisyydet?
 

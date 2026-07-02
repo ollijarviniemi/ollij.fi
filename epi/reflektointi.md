@@ -1,5 +1,4 @@
 ---
-description: "Mielen teorian käyttämättä jättäminen: vasta-argumentit, jotka toinen on jo kuullut, ja nopeat väärät vastaukset estävät pääsyn oikeisiin keskusteluihin."
 ---
 # Reflektointi
 

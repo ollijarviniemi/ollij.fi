@@ -1,7 +1,7 @@
 ---
 redirect_from:
   - /blog/jargon/
-description: "A concreteness-obsessed writer's defense of jargon: words like \"epistemic disagreement\" get people to look in new directions and carry real semantic baggage."
+description: "New words and phrases are good, they get people to look in new directions."
 ---
 
 # In defense of jargon

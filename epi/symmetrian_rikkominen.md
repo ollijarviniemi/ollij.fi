@@ -1,5 +1,4 @@
 ---
-description: "Jos kritiikkisi pätee yhtä lailla hyväksymääsi asiaan, se ei riko symmetriaa. Yleispätevät vasta-argumentit eivät erottele tosia ja epätosia väitteitä."
 ---
 # Symmetrian rikkominen, yleispätevät vasta-argumentit ja niin edelleen
 

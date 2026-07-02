@@ -1,5 +1,4 @@
 ---
-description: "Bayesin kaava ilman notaatiota: silmän jomotuksen syytä testaten uskomukset päivittyvät kertomalla todennäköisyyksien suhteet evidenssin suhteilla."
 ---
 # Uskomusten muutos
 

@@ -2,7 +2,6 @@
 lang: fi
 redirect_from:
   - /blog/puutteellinen/
-description: "Matematiikan vetovoima on täydellinen informaatio. Mutta epävarmuudesta huolimatta kannattaa operoida — ei vain todeta en tiedä ja antaa olla."
 ---
 # Puutteellisella informaatiolla operointi
 

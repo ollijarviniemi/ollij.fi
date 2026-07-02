@@ -1,5 +1,4 @@
 ---
-description: "Kun jokin on sinulle helppoa, se herättää status-reaktioita: \"hyvä sun on sanoa\". Statuspeli häiritsee keskustelua, jos tavoite on totuus eikä fiksuus."
 ---
 # Status
 

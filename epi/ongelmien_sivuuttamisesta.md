@@ -1,5 +1,4 @@
 ---
-description: "Tapoja sivuuttaa esiin nostettu ongelma: sille ei muka voi tehdä mitään, analyysi on turhaa, asiat ovat jo parhaalla tolalla, tai absurdi vitsiehdotus."
 ---
 # Ongelmien sivuuttamisesta
 

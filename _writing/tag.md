@@ -1,7 +1,7 @@
 ---
 redirect_from:
   - /blog/tag/
-description: "Obstacle tag: tag played around cushioned obstacles, which apparently no one has built. A cardboard-box version, and norms that make trying new things cheap."
+description: "I don't quite understand why nobody seems to have built an arena for it."
 ---
 # Obstacle tag
 

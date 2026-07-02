@@ -1,5 +1,4 @@
 ---
-description: "Suullinen keskustelu on lokaalia: lyhyet puheenvuorot estävät kasaamasta ideoita syvälle — siksi osa ajatuksista täytyy kirjoittaa ylös tullakseen sanotuiksi."
 ---
 # Suullinen kommunikaatio on lokaalia
 

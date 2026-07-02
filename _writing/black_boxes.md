@@ -2,7 +2,7 @@
 redirect_from:
   - /blog/mustat_laatikot/
   - /mustat_laatikot/
-description: "How you can be near-certain no one learns five-ball juggling in an hour — and why, as a child, other people and buses felt like unpredictable black boxes."
+description: "I'm near-certain that no one can learn to juggle five balls in an hour. But how can I know?"
 ---
 
 # Black boxes

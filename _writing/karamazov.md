@@ -2,7 +2,7 @@
 lang: fi
 redirect_from:
   - /blog/karamazov/
-description: "Kirja-arvio Karamazovin veljeksistä: historian todellisuus, hahmojen vieras maailmankuva ja se, miksi liberalismi voitti nationalistisen kristinuskon."
+description: "Historian oleellisin ominaisuus on, että se on oikeasti tapahtunut. Karamazovin veljekset on pikimusta varjo menneestä maailmasta."
 ---
 # Kirja-arvio: Karamazovin veljekset
 

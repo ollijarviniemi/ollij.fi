@@ -1,5 +1,4 @@
 ---
-description: "Todistusta ei vaadita uskomuksen muuttamiseen: yli-itsevarmuudesta, lopputulosvinoumasta ja uskomusten tasapuolisesta päivittämisestä epävarmuuden alla."
 ---
 # Epävarmuutta ja epäonnistumisia I
 

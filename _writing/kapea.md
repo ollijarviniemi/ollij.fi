@@ -2,7 +2,6 @@
 lang: fi
 redirect_from:
   - /blog/kapea/
-description: "Harvinainen tapa kokea maailma: nähdä metsässä luonnonvalinta, betonin tonnit, ruohon itsereplikoituva aurinkovoimala. Lähes kenellekään tämä ei ole oletustila."
 ---
 # Yllättävän kapea jakauma
 

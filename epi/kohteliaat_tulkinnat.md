@@ -1,5 +1,4 @@
 ---
-description: "Konjunktioharha (Linda-ongelma) ei ole väärinymmärrys vaan aito virhe — liian kohtelias tulkinta muiden ajattelusta on vanhojen uskomusten rationalisointia."
 ---
 # Liian kohteliaat tulkinnat
 

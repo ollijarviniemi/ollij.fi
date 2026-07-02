@@ -1,5 +1,4 @@
 ---
-description: "Menneet ajattelijat erehtyivät asioista, joita emme enää pidä edes vaikeina — seisomme niin korkeilla jättiläisten olkapäillä, että luulemme hartioita maaksi."
 ---
 # Jättiläisten olkapäillä
 

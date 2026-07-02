@@ -2,7 +2,6 @@
 lang: fi
 redirect_from:
   - /blog/integriteetti/
-description: "Moraalikasvatus loppuu alakouluun, mutta hankalat tilanteet jatkuvat. Miksi integriteetistä ja oikein toimimisesta pitäisi puhua myös aikuisille?"
 ---
 # Integriteettiä aikuisille
 

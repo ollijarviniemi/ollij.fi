@@ -4,7 +4,7 @@ redirect_from:
   - /blog/todennakoisyysareena/
   - /todennakoisyysareena/
   - /ground_truth/
-description: "Designing games with computable optimal policies — Bayesian factory, Aumann agreement — to train decision-making with the ground-truth feedback real life lacks."
+description: "I inroduce a genre of games designed for dense feedback, provide examples, and discuss the prospects for \"distilling\" machine skills into humans."
 ---
 # Subjectivist games for accelerated learning
 Both in real life and games, feedback on your level of play typically

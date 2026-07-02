@@ -2,7 +2,7 @@
 redirect_from:
   - /blog/differentiaaliyhtaloryhmat/
   - /differentiaaliyhtaloryhmat/
-description: "Why systems of differential equations beat threshold models as a default: people wrongly round small effects — ferry waits, a VAT hike — to zero."
+description: "Many things simply are continuous and differentiable!"
 ---
 
 # Systems of differential equations as a baseline for modeling

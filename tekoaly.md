@@ -1,6 +1,8 @@
 ---
 layout: w-page
-description: "Tekninen yleistajuinen katsaus tekoälyn katastrofaalisiin riskeihin: rakennamme ihmisiä kyvykkäämpiä tekoälyjä ymmärtämättä, mitä teemme."
+noindex: true
+sitemap: false
+description: "Minun vuoden 2024 näkemykseni tekoälyn katastrofaalisista riskeistä."
 ---
 # Tekoälyn katastrofaalisista riskeistä
 

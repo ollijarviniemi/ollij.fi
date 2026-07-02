@@ -1,5 +1,4 @@
 ---
-description: "Ilmeiset ohjeet ovat ilmeisiä, mutta niitä tulee harvoin mietittyä saati tehtyä — 'kaikkihan tämän tietää' on eri asia kuin oikeasti keksiä ja toteuttaa ne."
 ---
 # Ilmeiset ohjeet
 

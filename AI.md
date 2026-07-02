@@ -1,6 +1,8 @@
 ---
 layout: w-page
-description: "A technical but accessible Q&A on catastrophic AI risk: capabilities, short timelines, why we don't understand models, hidden problems, goals, and what to do."
+noindex: true
+sitemap: false
+description: "My 2024 views on catastrophic risks from AI."
 ---
 # On catastrophic risks from AI
 

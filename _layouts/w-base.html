@@ -26,6 +26,9 @@
   {%- assign og_title = ptitle -%}
   {%- if page.home or og_title == nil or og_title == "" -%}{%- assign og_title = 'Olli Järviniemi' -%}{%- endif -%}
   {% if meta_desc != "" %}<meta name="description" content="{{ meta_desc | escape }}">{% endif %}
+  {%- comment -%} noindex: true in frontmatter = reachable via site links but dropped from
+       search engines (pair with sitemap: false). For legacy texts Olli doesn't want SEO'd. {%- endcomment -%}
+  {% if page.noindex %}<meta name="robots" content="noindex">{% endif %}
   <link rel="canonical" href="{{ page.url | absolute_url }}">
   <meta property="og:type" content="{% if page.home or page.layout == 'w-index-b' or page.layout == 'w-page' %}website{% else %}article{% endif %}">
   <meta property="og:site_name" content="Olli Järviniemi">

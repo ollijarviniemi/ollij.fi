@@ -1,5 +1,5 @@
 ---
-description: "I spent four hours with an LLM building an explicit probability distribution over 4000 guesses at a friend's chosen theorem — and the true answer wasn't even on the list. What that says about LLM epistemic uplift."
+description: "Explicitly writing down a probability distribution over the set of mathematical results."
 ---
 # LLM-assisted belief articulation exercise
 Human beliefs are not natively a probability distribution over explicit hypotheses nor, outside of toy cases, are humans able to articulate their beliefs in this form. However, LLMs have an extensive understanding of human knowledge and beliefs, and can enumerate hypoheses and probabilities cheaply and at scale. 

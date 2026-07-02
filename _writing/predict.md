@@ -1,9 +1,9 @@
 ---
 redirect_from:
   - /blog/predict/
-description: "A child predicting a pendulum's swing — and education experts predicting the child, on prediction markets tuned to engineer the feeling of scientific discovery."
+description: "Few challenge problems from my school years are as memorable as the pendulum trial."
 ---
-# Predict
+# The Pendulum Trial
 
 There were many challenge problems that I encountered in my school years, but few of them are as memorable as the pendulum trial.
 

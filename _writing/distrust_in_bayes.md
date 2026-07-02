@@ -1,7 +1,7 @@
 ---
 redirect_from:
   - /blog/distrust_in_bayes/
-description: "Even sharing all your raw data may not let skeptics trust your conclusion — because you chose where to sample. A realizability problem for Bayesians."
+description: "When no hypothesis in your space is true, the one you converge to depends on where you sample. So sharing all your raw data might not be enough for others to trust your results."
 ---
 # A cause for distrust in Bayesianism
 

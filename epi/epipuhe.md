@@ -1,5 +1,4 @@
 ---
-description: "Kokoelman esipuhe: mitä 'epi' tarkoittaa — uskomukset, niiden totuudenmukaisuus ja totuuteen johtavat prosessit — miksi episteemisiä kysymyksiä on kaikkialla."
 ---
 # Esipuhe
 

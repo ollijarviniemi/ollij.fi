@@ -1,5 +1,4 @@
 ---
-description: "Kahnemanin ja Tverskyn kehystämiskokeet ja painotettu kolikkopeli: esimerkkejä siitä, miten ihmiset epäonnistuvat päätöksissä epävarmuuden alla."
 ---
 # Epävarmuutta ja epäonnistumisia II
 

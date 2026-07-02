@@ -1,5 +1,4 @@
 ---
-description: "Sovinnollisuudella on kaksi kasvoa: erimielisyyden aito selvittäminen on hyvää, mutta uskomusten muuttaminen vain konfliktin välttämiseksi rapauttaa epin."
 ---
 # Haitallinen sovinnollisuus
 

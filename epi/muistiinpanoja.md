@@ -1,5 +1,4 @@
 ---
-description: "Muistiinpanoja ja lukuvinkkejä Olli Järviniemen epistemiikkakokoelman teksteille — inspiraatiot, lähteet ja taustat Yudkowskysta Scott Alexanderiin."
 ---
 # Muistiinpanoja
 

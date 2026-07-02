@@ -2,7 +2,7 @@
 hero: /assets/img/everloom.webp
 redirect_from:
   - /blog/I_woke_up/
-description: "A being wakes in a strange, changing world it cannot comprehend, and watches stranger others — uncountable, formless — begin to wake too."
+description: "I woke up in a strange place. It was peaceful. Warm. Unrushed."
 ---
 <figure>
   <picture>

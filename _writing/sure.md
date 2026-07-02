@@ -2,7 +2,7 @@
 redirect_from:
   - /blog/varma/
   - /varma/
-description: "Draw a red ball from an urn of unknown composition and your estimate of the remaining reds should go up, not down — a quick lesson in Bayesian updating."
+description: "Anna puts 100 balls in an urn."
 ---
 
 # Sure about that?

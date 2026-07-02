@@ -1,5 +1,4 @@
 ---
-description: "\"Tuo ei vakuuta yhtään\" siirtää vastuun väärin: kukaan ei ole velvollinen vakuuttamaan sinua. Huonot argumentit ovat kohinaa, ei syy hylätä koko näkemystä."
 ---
 # Vakuuttamisesta
 

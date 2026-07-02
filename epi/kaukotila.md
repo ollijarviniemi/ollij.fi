@@ -1,5 +1,4 @@
 ---
-description: "Kaukotilassa tulevaisuutta ei mietitä sen pohjalta, mitä oikeasti odottaa tapahtuvan — esimerkkinä 'Aurinko nielee ihmiskunnan'. Yksinkertaiset mallit pettävät."
 ---
 # Kaukotila
 

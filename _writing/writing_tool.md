@@ -2,7 +2,7 @@
 redirect_from:
   - /blog/kirjoittaminen/
   - /kirjoittaminen/
-description: "Writing got rewarding once it served thinking — like paper in a math olympiad. Why school's vacation reports failed, and how a computer helps him think."
+description: "Writing became a lot more rewarding once it was instrumental to my own thinking."
 ---
 
 # Writing as a tool

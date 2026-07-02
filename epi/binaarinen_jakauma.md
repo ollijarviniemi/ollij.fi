@@ -1,5 +1,4 @@
 ---
-description: "Ihmiset eivät jakaudu siististi hyvä- ja huonokuntoisiin, vaan jatkuvalle jakaumalle — binäärinen kategoria-ajattelu on opittu virhe, ei luonnollinen taito."
 ---
 # Binääriset kategoriat ja jakaumat
 

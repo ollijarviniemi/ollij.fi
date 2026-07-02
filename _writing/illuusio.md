@@ -2,7 +2,6 @@
 lang: fi
 redirect_from:
   - /blog/illuusio/
-description: "Tiilien laskennasta arkielämän esimerkki: kun asioita miettii todennäköisyyksinä, moni näennäinen erimielisyys paljastuu ei-erimielisyydeksi."
 ---
 # Illuusio erimielisyydestä
 

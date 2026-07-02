@@ -2,7 +2,6 @@
 lang: fi
 redirect_from:
   - /blog/ajatuksenluku/
-description: "Tieto on kaivettavissa aivoista, mutta montako serialista askelta ajatuksenlukulaite vaatii? Milloin kyse on muistin lukemisesta, milloin laskennasta?"
 ---
 # Ajatustenluvusta
 

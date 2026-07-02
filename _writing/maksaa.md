@@ -2,7 +2,6 @@
 lang: fi
 redirect_from:
   - /blog/maksaa/
-description: "Paljonko maksaa kerrostalo, bussi tai kilometri ratikkaraidetta? Tieto on olemassa — kunpa se olisi löydettävissä numeerisen lukutaidon tueksi."
 ---
 # Paljonko asiat maksaa?
 

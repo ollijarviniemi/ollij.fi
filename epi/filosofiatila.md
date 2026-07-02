@@ -1,5 +1,4 @@
 ---
-description: "Raitiovaunuongelman kaltaiset ajatusleikit laukaisevat 'filosofiatilan', jossa ajattelu heikkenee — ja sivuuttavat epävarmuuden, joka on moraalin ydintä."
 ---
 # Filosofiatila ja ajatusleikit
 

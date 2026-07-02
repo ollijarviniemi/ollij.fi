@@ -1,7 +1,7 @@
 ---
 redirect_from:
   - /blog/what/
-description: "How this blog began: thoughts too big for conversation, written in chat groups then a Telegram channel — unpolished Finnish and English rants, posted as-is."
+description: "I wrote long messages into friend chat groups, then into a Telegram channel. Eventually I put the texts up here, unpolished, as they were written."
 ---
 # What is this blog about?
 

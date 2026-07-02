@@ -2,7 +2,7 @@
 redirect_from:
   - /blog/suuressa_maailmassa/
   - /suuressa_maailmassa/
-description: "On global \"there exists\" claims and a London reunion about death, decision theory, and many worlds, in the final moments of Ancient Earth."
+description: "Awe at the size of existence."
 ---
 
 # In a large world
@@ -17,7 +17,7 @@ There is a category of claims and questions that beautifully illustrates my way 
 
 One of their defining features is globality. Settling and answering them can't be done just by examining things closely with a magnifying glass or with a clever experimental setup. They concern the whole world, and so they invite more expansive thinking.
 
-Another is their childlike naturalness and simplicity. Big brother's wisdoms in the dim of the children's room late on a summer evening, when neither one wants to sleep.
+Another is their childlike naturalness and simplicity. Elder brother's wisdoms in the dim of the children's room late on a summer evening, when neither one wants to sleep.
 
 > It is possible for people to fly in the sky like birds.
 

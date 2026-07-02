@@ -2,7 +2,7 @@
 redirect_from:
   - /blog/putoamiskiihtyvyys/
   - /putoamiskiihtyvyys/
-description: "Measuring g by dropping balls down a 23-meter stairwell: 8.5–8.9 m/s², off by 10–15% from sound delay and air resistance. Not bad for half an hour."
+description: "A friend and I measured gravitational acceleration by dropping balls down a 23-meter stairwell."
 ---
 
 # Measuring gravitational acceleration

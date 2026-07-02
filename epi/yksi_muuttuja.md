@@ -1,5 +1,4 @@
 ---
-description: "Yhden muuttujan malli on hyödytön, jos muuttuja ei ole keskeinen — C-vitamiini vai liikunta? \"Kaikki on monimutkaista\" on yhtä laiska vastaus kuin yksi syy."
 ---
 # Yhden muuttujan mallit
 
