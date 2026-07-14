@@ -49,7 +49,6 @@
   <link rel="preload" as="font" type="font/woff2" href="/fonts/newsreader-latin-var.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/fonts/kurale-v11-latin-regular.woff2" crossorigin>
   {% if page.hero %}<link rel="preload" as="image" href="{{ page.hero }}" type="image/webp" fetchpriority="high">{% endif %}
-  {% if has_math %}<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>{% endif %}
 
   <link rel="stylesheet" href="/assets/css/site.css">
   <script>
@@ -96,7 +95,7 @@
       if(window.gaMountInline) return Promise.resolve();
       if(loading) return loading;
       loading=new Promise(function(res,rej){
-        if(!document.querySelector('link[data-ga-katex]')){ var l=document.createElement('link'); l.rel='stylesheet'; l.href='https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css'; l.setAttribute('data-ga-katex','1'); document.head.appendChild(l); }
+        if(!document.querySelector('link[data-ga-katex]')){ var l=document.createElement('link'); l.rel='stylesheet'; l.href='/assets/vendor/katex/katex.min.css'; l.setAttribute('data-ga-katex','1'); document.head.appendChild(l); }
         // cache-bust: localhost dev, so always fetch the freshest bundle (avoids running a stale build after a rebuild)
         var s=document.createElement('script'); s.src='http://localhost:8090/editor/dist/editor.bundle.js?t='+Date.now(); s.onload=res; s.onerror=rej; document.head.appendChild(s);
       });
@@ -140,7 +139,8 @@
         dot.style.color=attn?'var(--accent)':'transparent';   // lit ONLY when Claude explicitly needs you
         dot.title=attn?((a.note||a.status)+' — click to dismiss'):'';
       }).catch(function(){}); }
-      dot.addEventListener('click', function(){ if(dot.title) alert(dot.title.replace(/ — click to dismiss$/,'')); fetch('http://localhost:8090/api/ga/attn',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({status:'idle',note:''})}).catch(function(){}); dot.style.color='transparent'; });
+      // click = silent dismiss — the note lives in the hover tooltip; no pop-up (Olli, 2026-07-03)
+      dot.addEventListener('click', function(){ fetch('http://localhost:8090/api/ga/attn',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({status:'idle',note:''})}).catch(function(){}); dot.style.color='transparent'; dot.title=''; });
       mast.appendChild(dot);
       gaPollAttn(); setInterval(gaPollAttn, 4000);
     }
@@ -338,14 +338,71 @@
 
     if(localStorage.getItem(OKEY)==='1'){ open(true); if(taskId) poll(); }
   })();</script>
+
+  <!-- Anki masthead link (localhost landing page only). Reviews live in the Anki DESKTOP APP
+       since 2026-07-08 ("let's just use Anki, no need to reinvent the wheel"): this link shows
+       the deck's due+new count (serve.py proxies AnkiConnect, or peeks at the collection DB
+       read-only when Anki is closed) and a click opens/raises the app (single-instance).
+       Since 2026-07-11 Anki is the ONLY review/curation surface — the extension's end-of-post
+       review block is removed (0.6.26); nightly cards auto-push, his deletions are the cull. -->
+  <script>(function(){
+    if(!/^(localhost|127\.0\.0\.1|0\.0\.0\.0|\[::1\])$/.test(location.hostname)) return;
+    if(location.pathname!=='/writing/' && location.pathname!=='/writing') return;
+    fetch('/api/ga/anki/status',{cache:'no-store'})
+      .then(function(r){ return r.ok ? r.json() : {stale:true}; })
+      .then(function(d){
+        if(!d) return;
+        var mast=document.querySelector('.masthead .mnav')||document.querySelector('.masthead');
+        if(!mast) return;
+        var link=document.createElement('a'); link.href='#'; link.className='ga-sr';
+        function label(){ return (d.due>0) ? 'Anki \u00b7 '+d.due+' due' : 'Anki'; }
+        link.textContent=label();
+        link.addEventListener('click',function(e){
+          e.preventDefault();
+          if(d.stale){ alert('serve.py is stale \u2014 hit \u21bb server, then reload'); return; }
+          link.textContent='Anki \u00b7 opening\u2026';
+          fetch('/api/ga/anki/open',{method:'POST'}).then(function(r){
+            if(!r.ok) throw 0;
+            setTimeout(function(){ link.textContent=label(); },2000);
+          }).catch(function(){ link.textContent='Anki \u00b7 failed'; });
+        });
+        mast.appendChild(link);
+      }).catch(function(){});
+  })();</script>
+
+  <!-- Extension install/update link (localhost /writing/ only). One-click install: the href is the
+       stable signed build served by serve.py; opening it triggers Firefox's install prompt. Shows
+       "· update" when the signed build is newer than the installed one (content.js stamps
+       data-ga-ext on <html>). Olli chose one-click over auto-update (2026-07-09). -->
+  <script>(function(){
+    if(!/^(localhost|127\.0\.0\.1|0\.0\.0\.0|\[::1\])$/.test(location.hostname)) return;
+    if(location.pathname!=='/writing/' && location.pathname!=='/writing') return;
+    var mast=document.querySelector('.masthead .mnav')||document.querySelector('.masthead');
+    if(!mast) return;
+    var link=document.createElement('a'); link.className='ga-recent'; link.href='/extension/ga.xpi';
+    link.textContent='extension'; link.title='Install / update the GA extension (one click → Add)';
+    mast.appendChild(link);
+    // label "· update" when the served signed build is newer than what's installed
+    fetch('/extension/manifest.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(m){
+      if(!m||!m.version) return;
+      link.title='GA extension v'+m.version+' — click to install / update (→ Add)';
+      var tries=0;
+      (function poll(){
+        var have=document.documentElement.getAttribute('data-ga-ext');   // set by content.js once installed
+        if(have){ if(have!==m.version){ link.textContent='extension · update'; link.style.color='var(--link,#7a5)'; }
+                  else { link.textContent='extension · v'+m.version; } return; }
+        if(tries++<8) setTimeout(poll,400);   // content script injects at document_idle; give it a moment
+      })();
+    }).catch(function(){});
+  })();</script>
   {% endif %}
 
   <script src="/assets/js/theme.js"></script>
   {% if has_math %}
   <!-- Math via KaTeX — same engine the editor uses, so it renders identically.
        inline: $…$ or \(…\) ; display: $$…$$ or \[…\]. -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <link rel="stylesheet" href="/assets/vendor/katex/katex.min.css">
+  <script defer src="/assets/vendor/katex/katex.min.js"></script>
   <script>
     // Render bare amsmath environments (\begin{align*}…) that renderMathInElement can't see,
     // then run the normal delimiter pass. Keeps published math identical to the live editor.
@@ -361,7 +418,7 @@
       renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false},{left:'$',right:'$',display:false}],throwOnError:false});
     }
   </script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="gaRenderMath()"></script>
+  <script defer src="/assets/vendor/katex/contrib/auto-render.min.js" onload="gaRenderMath()"></script>
   {% endif %}
 </body>
 </html>

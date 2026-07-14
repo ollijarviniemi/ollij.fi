@@ -1,8 +1,24 @@
 ---
 layout: w-base
 ---
-<article class="post">
+<article class="post{% if page.sp %} sp{% endif %}"{% if page.sp %} data-sp-meta="{{ page.sp | escape }}"{% endif %}>
   <div class="post-body">
     {{ content }}
   </div>
 </article>
+{%- comment -%} Post enhancements, loaded for EVERY post. gaFigures centres images and builds a
+     captioned <figure> from the markdown image title (Olli 2026-07-14). gaSeriousPost additionally
+     assembles the abstract · summary | ToC · meta apparatus for `sp:` posts (design 2026-07-11).
+     Synchronous on purpose: the transforms run while the parser is still blocked, so the first
+     paint is already correct — no reflow flash. These are the same window.* functions the editor
+     bundle reuses when leaving edit mode, so read and edit stay identical by construction. {%- endcomment -%}
+<script src="/assets/js/serious-post.js"></script>
+<script>
+  (function () {
+    var body = document.querySelector('article.post .post-body');
+    if (!body) return;
+    if (window.gaFigures) gaFigures(body);
+    var art = document.querySelector('article.post.sp');
+    if (art && window.gaSeriousPost) gaSeriousPost(body, { meta: art.dataset.spMeta });
+  })();
+</script>

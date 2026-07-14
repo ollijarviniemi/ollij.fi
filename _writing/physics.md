@@ -2,7 +2,7 @@
 redirect_from:
   - /blog/fysiikka/
   - /fysiikka/
-description: "Cooling yourself with a fan, gravity assists, sailing faster than the wind. Many things feel at a glance like they violate some physical law, but don't."
+description: "Not everything is against the laws of physics!"
 ---
 
 # Compatible with the laws of physics

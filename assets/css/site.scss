@@ -23,6 +23,22 @@
   src: url('/fonts/kurale-v11-latin-regular.woff2') format('woff2'),
        url('/fonts/kurale-v11-latin-regular.woff') format('woff');
 }
+/* Petrona — variable weight axis; the Serious-Post display face (design round 2026-07-11) */
+@font-face {
+  font-family: 'Petrona'; font-style: normal; font-weight: 400 700; font-display: swap;
+  src: url('/fonts/petrona-latin-var.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Petrona'; font-style: normal; font-weight: 400 700; font-display: swap;
+  src: url('/fonts/petrona-latinext-var.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Petrona'; font-style: italic; font-weight: 400 700; font-display: swap;
+  src: url('/fonts/petrona-latin-italic-var.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 /* Newsreader — variable weight axis (300–800); body renders at 500, bold at 700 */
 @font-face {
   font-family: 'Newsreader'; font-style: normal; font-weight: 300 800; font-display: swap;
@@ -46,6 +62,9 @@
   --measure:   53rem;     /* reading column (~95 chars at 21px EB Garamond) */
   --serif: 'Newsreader', Garamond, Georgia, serif;
   --display: 'Kurale', 'Newsreader', Georgia, serif;
+  /* Serious-Post voices: display = headers/ToC, apparatus = abstract/summary/endmatter */
+  --sp-display: 'Petrona', var(--serif);
+  --sp-apparatus: 'EB Garamond', Garamond, serif;
 }
 [data-theme="dark"] {
   --bg:        #16150f;   /* warm near-black */
@@ -115,8 +134,9 @@ a:hover { color: var(--accent); text-decoration-color: currentColor; }
 .post-body h1, .post-title { font-family: var(--display); font-weight: 500;
   font-size: 2.15rem; line-height: 1.15; margin: 0 0 1.4rem; letter-spacing: .005em;
   text-wrap: balance; }
-.post-body h2 { font-size: 1.5rem; margin: 2.4rem 0 .8rem; line-height: 1.2; }
-.post-body h3 { font-size: 1.2rem; margin: 2rem 0 .6rem; }
+.post-body h2 { font-size: 1.7rem; margin: 2.4rem 0 .8rem; line-height: 1.2; }
+.post-body h3 { font-size: 1.4rem; margin: 2rem 0 .6rem; }
+.post-body h4 { font-size: 1.25rem; margin: 1.8rem 0 .5rem; }
 .post-body p { margin: 0 0 1.1rem; text-wrap: pretty; }
 .post-body em, .post-body i { font-style: italic; }
 .post-body strong, .post-body b { font-weight: 700; }   /* real Newsreader 700 (variable) */
@@ -124,11 +144,22 @@ a:hover { color: var(--accent); text-decoration-color: currentColor; }
   margin: 1.4rem 0; padding: .2rem 0 .2rem 1.3rem;
   border-left: 2px solid var(--accent-dim); color: var(--muted); font-style: italic;
 }
+/* quotes render italic, so emphasis inside flips to roman to stay visible */
+.post-body blockquote em, .post-body blockquote i { font-style: normal; }
 .post-body ul, .post-body ol { margin: 0 0 1.1rem; padding-left: 1.4rem; }
 .post-body li { margin: .25rem 0; }
 .post-body img { max-width: 100%; height: auto; }
 .post-body figure { margin: 1.8rem 0; text-align: center; }
 .post-body figcaption { color: var(--muted); font-size: .9rem; margin-top: .5rem; }
+/* Images are centred (Olli 2026-07-14). CSS does the centring so it holds even before/without JS;
+   gaFigures (serious-post.js) upgrades a titled image into a captioned <figure>. A "lone" image —
+   the only thing in its paragraph — becomes a block and centres; inline images in a sentence stay
+   inline. */
+.post-body p > img:only-child { display: block; margin: 1.7rem auto; }
+.post-body figure.post-fig { margin: 1.9rem auto; }
+.post-body figure.post-fig img { display: inline-block; }
+.post-body figure.post-fig figcaption { max-width: 34rem; margin: .55rem auto 0; line-height: 1.5; }
+.post.sp .post-body figure.post-fig figcaption { font-family: var(--sp-apparatus); }
 .post-body code { font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace;
   font-size: .82em; background: var(--bg-offset); padding: .1em .35em; border-radius: 3px; }
 .post-body pre { background: var(--bg-offset); padding: 1rem 1.1rem; overflow-x: auto;
@@ -144,24 +175,94 @@ a:hover { color: var(--accent); text-decoration-color: currentColor; }
 .post-body .footnotes { margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid var(--rule);
   font-size: .9rem; color: var(--muted); }
 
+/* ---------- Serious Post (.post.sp) ----------
+   Long-form apparatus: h1 · meta · abstract · [summary | numbered ToC] · * * * · body.
+   Design = mockup variant g (dashboard/design/build.py), Olli-approved 2026-07-11
+   ("Petrona is clearly the best" → "OK, seems good enough for now!").
+   Opt-in per post via `sp:` frontmatter; assembled by /assets/js/serious-post.js. */
+.post.sp { max-width: 56rem; }
+.post.sp .post-body h1 { font-family: var(--sp-display); font-weight: 700;
+  font-size: 2.55rem; line-height: 1.1; letter-spacing: -.005em; margin-bottom: .55rem; }
+.sp-meta { font-variant: small-caps; letter-spacing: .16em; font-size: .8rem;
+  color: var(--muted); margin: 0 0 2.1rem; }
+.sp-abstract { font-family: var(--sp-apparatus); font-size: .84em; line-height: 1.52;
+  max-width: 34rem; margin: 0 0 0 auto; text-align: justify; hyphens: auto; }
+.sp-abstract p { margin: 0; }
+.sp-hall { display: grid; grid-template-columns: 1fr 19rem; gap: 2.4rem; margin: 2.6rem 0 0; }
+.sp-summary { font-family: var(--sp-apparatus); font-size: 1.02em; line-height: 1.5;
+  text-align: justify; hyphens: auto; }
+.sp-summary > p:last-child { margin-bottom: 0; }
+.sp-toc { align-self: start; background: var(--bg-offset); border-radius: 4px;
+  padding: 1rem 1.1rem; }
+.sp-toc ol { list-style: none; margin: 0; padding: 0; }
+.sp-toc li { display: flex; flex-wrap: wrap; gap: 0 .55em; align-items: baseline;
+  line-height: 1.3; }
+.sp-toc li > ol { flex-basis: 100%; padding-left: 1.4em; margin: .3rem 0 .5rem; }
+.sp-toc li > a { flex: 1 1 0; min-width: 0; text-decoration: none; }
+.sp-toc .n { flex: 0 0 auto; min-width: 1.1em; color: var(--accent-dim);
+  font-family: var(--serif); font-weight: 500; font-size: .8rem; }
+.sp-toc > ol > li { margin: .42rem 0; }
+.sp-toc > ol > li > a { font-family: var(--sp-display); font-weight: 600;
+  font-size: 1.04rem; color: var(--ink); }
+.sp-toc ol ol li { margin: .18rem 0; }
+.sp-toc ol ol a { font-size: .97rem; color: var(--muted); }
+.sp-toc ol ol .n { min-width: 1.9em; font-size: .78rem; }
+.sp-toc a:hover { color: var(--accent); }
+.sp-close { text-align: center; color: var(--muted); letter-spacing: .3em;
+  margin: 2.8rem 0 3.4rem; font-size: 1.05rem; }
+/* quote register: light epigraph, no bar; attribution on its own right-aligned line */
+.post.sp .post-body blockquote { border: 0; padding: 0; margin: 1.7rem 2.8rem; font-size: .97em; }
+.sp-cite { text-align: right; font-style: normal; margin: .35rem 0 0; }
+.post.sp .post-body h2 { font-family: var(--sp-display); font-weight: 600; font-size: 2.05rem;
+  margin: 3.2rem 0 .85rem; padding-bottom: .3rem; border-bottom: 1px solid var(--rule); }
+.post.sp .post-body h3 { font-family: var(--sp-display); font-weight: 600; font-size: 1.6rem;
+  margin: 2.5rem 0 .55rem; }
+/* Related reading: title link + a quiet dim byline on the SAME line (author, year kept in
+   source/hover). Dense single-line entries. */
+.post.sp .post-body ul.sp-reflist { list-style: none; padding: 0; margin: 1.1rem 0; }
+.post.sp .post-body ul.sp-reflist li { margin: 0 0 .38rem; line-height: 1.5; }
+.post.sp .post-body ul.sp-reflist a { font-family: var(--sp-apparatus); }
+.sp-ref-by { font-family: var(--sp-apparatus); color: var(--muted); font-size: .9em; }
+.sp-ref-by::before { content: "  ·  "; color: var(--faint); }
+.sp-endmatter { margin-top: 4.5rem; }
+.post.sp .post-body .sp-endmatter h2 { text-align: right; font-family: var(--serif);
+  font-variant: small-caps; letter-spacing: .1em; font-size: 1.18rem; color: var(--accent);
+  font-weight: 500; border-bottom: 1px solid var(--rule); padding-bottom: .35rem; margin: 0 0 1rem; }
+.sp-endmatter ul { columns: 2; column-gap: 2.8rem; list-style: none; padding: 0; margin: 0;
+  font-family: var(--sp-apparatus); font-size: 1.02em; }
+.sp-endmatter li { margin: .5rem 0; break-inside: avoid; padding-left: 1.1rem;
+  text-indent: -1.1rem; }
+.sp-endmatter li::before { content: '–\2002'; color: var(--accent-dim); }
+@media (max-width: 720px) {
+  .sp-hall { grid-template-columns: 1fr; gap: 1.6rem; }
+  .sp-abstract { margin-right: 0; max-width: none; }
+  .sp-endmatter ul { columns: 1; }
+}
+
 /* ---------- /writing index — shared ---------- */
 .windex-head { max-width: 52rem; margin: 0 auto; padding: 2.6rem 2rem 0; text-align: center; }
 .windex-head h1 { font-family: var(--display); font-weight: 500; font-size: 2.3rem; margin: 0; letter-spacing: .01em; }
 
 .wsection-title {
   font-family: var(--serif); font-variant: small-caps; font-weight: 500;
-  letter-spacing: .08em; font-size: 1.05rem; color: var(--accent);
+  letter-spacing: .08em; font-size: 1.12rem; color: var(--accent);
   margin: 0 0 .5rem; padding-bottom: .25rem; border-bottom: 1px solid var(--rule);
 }
 .wlist { list-style: none; margin: 0; padding: 0; }
-.wlist li { margin: .18rem 0; line-height: 1.35; }
+/* tight line-height + real inter-item margin: a wrapped title clusters as ONE entry,
+   visibly distinct from the break to the next entry */
+.wlist li { margin: .24rem 0; line-height: 1.28; }
 .wlist a { text-decoration: none; color: var(--link); }
 .wlist a:hover { color: var(--accent); text-decoration: underline; text-decoration-color: currentColor; }
 .wsection .note { color: var(--muted); font-style: italic; font-size: .92rem; }
 
-/* B — two-column directory, split into Private (top) and Public (below) zones */
-.windex-b { max-width: 52rem; margin: 1.4rem auto 0; padding: 1rem 2rem 0; }
-.windex-zone { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem 3rem; align-items: start; }
+/* B — two-column directory, split into Private (top) and Public (below) zones.
+   Columns pinned to 23.25rem (372px at the 16px root): "Subjectivist games for
+   accelerated learning" (369px) barely fits one line — that's the calibration, no wider.
+   (The localhost hover-✕ is position:absolute, out of flow, so it doesn't count.) */
+.windex-b { max-width: 57rem; margin: 1.4rem auto 0; padding: 1rem 2rem 0; }
+.windex-zone { display: grid; grid-template-columns: repeat(2, minmax(0, 23.25rem));
+  justify-content: center; gap: 2rem 2.6rem; align-items: start; }
 .windex-zone-label { grid-column: 1 / -1; font-family: var(--serif); font-variant: small-caps;
   letter-spacing: .14em; font-size: .78rem; color: var(--muted); margin: 0; }
 .windex-public { margin-top: 2.4rem; padding-top: 1.8rem; border-top: 1px solid var(--rule); }
