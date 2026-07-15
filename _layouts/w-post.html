@@ -12,7 +12,7 @@ layout: w-base
      Synchronous on purpose: the transforms run while the parser is still blocked, so the first
      paint is already correct — no reflow flash. These are the same window.* functions the editor
      bundle reuses when leaving edit mode, so read and edit stay identical by construction. {%- endcomment -%}
-<script src="/assets/js/serious-post.js"></script>
+<script src="/assets/js/serious-post.js?v={{ site.time | date: '%s' }}"></script>
 <script>
   (function () {
     var body = document.querySelector('article.post .post-body');
