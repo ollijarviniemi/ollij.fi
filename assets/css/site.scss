@@ -175,6 +175,62 @@ a:hover { color: var(--accent); text-decoration-color: currentColor; }
 .post-body .footnotes { margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid var(--rule);
   font-size: .9rem; color: var(--muted); }
 
+/* ---------- credence demo (interactive exercise card in a post) ----------
+   Faithful port of the extension's credence5 card (extension/ar-sidebar.js) so readers can
+   click the bet instead of looking at a screenshot: payoff (points if TRUE / if FALSE) salient,
+   probability band quiet below; one click commits and reveals. Palette = the card's own values,
+   which match the site vars (--ink/--muted/--accent/--rule) exactly; the extras live here.
+   Behavior: /assets/js/credence-demo.js. No persistence — refresh returns it unanswered. */
+.cred-demo {
+  --cred-hair: #ece7db;
+  --cred-deep: #5a2020;
+  --cred-fill: rgba(124,45,45,.06);
+  --cred-fill-2: rgba(124,45,45,.14);
+  --cred-answer: #2b7d55;
+  --cred-answer-fill: rgba(43,125,85,.12);
+  --cred-ui: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  margin: 1.8rem 0;
+  padding: 12px 0 9px 20px;
+  border-top: 2px solid var(--accent);
+  border-left: 2px solid var(--accent);
+}
+[data-theme="dark"] .cred-demo {
+  --cred-hair: #2a2721;
+  --cred-deep: #e8b3a3;
+  --cred-fill: rgba(217,140,122,.12);
+  --cred-fill-2: rgba(217,140,122,.22);
+  --cred-answer: #7fd49a;
+  --cred-answer-fill: rgba(127,212,154,.15);
+}
+.cred-q { font-size: 1.05em; line-height: 1.55; color: var(--ink); }
+.cred-scale { display: flex; margin-top: 15px; border: 1px solid var(--rule); border-radius: 5px;
+  overflow: hidden; max-width: 470px; }
+.cred-bk { flex: 1; display: flex; flex-direction: column; align-items: center;
+  justify-content: center; gap: 2px; padding: 6px 2px; font-family: var(--cred-ui);
+  color: var(--ink); cursor: pointer; border-left: 1px solid var(--cred-hair);
+  text-align: center; font-variant-numeric: tabular-nums; user-select: none;
+  transition: background .12s, color .12s; }
+.cred-bk:first-child { border-left: 0; }
+.cred-demo:not(.revealed) .cred-bk:hover { background: var(--cred-fill); }
+.cred-demo.revealed .cred-bk { cursor: default; }
+.cred-bk.end { background: var(--cred-fill-2); }
+.cred-pay { font-size: 15px; font-weight: 600; line-height: 1.1; letter-spacing: -.2px;
+  color: var(--ink); }
+.cred-pct { font-size: 10.5px; line-height: 1; color: var(--muted); }
+.cred-bk.end .cred-pay { color: var(--cred-deep); }
+/* on reveal, emphasise the payoff column you actually earned (TRUE → left number, FALSE → right) */
+.cred-demo.vtrue .cred-bk.end .pf, .cred-demo.vfalse .cred-bk.end .pt { opacity: .3; }
+.cred-demo.vtrue .cred-bk.end .pt, .cred-demo.vfalse .cred-bk.end .pf { font-weight: 800; }
+/* ring the band that would have scored best in green */
+.cred-bk.correct { box-shadow: inset 0 0 0 2px var(--cred-answer);
+  background: var(--cred-answer-fill); }
+.cred-bk.correct .cred-pay, .cred-bk.correct .cred-pct { color: var(--cred-answer); }
+/* the revealed truth, below the strip (the strip stays put — no layout jump) */
+.cred-result { display: none; margin-top: 11px; font-family: var(--cred-ui);
+  font-variant-numeric: tabular-nums; }
+.cred-demo.revealed .cred-result { display: block; }
+.cred-result .cred-actual { color: var(--cred-answer); font-weight: 600; font-size: 14.5px; }
+
 /* ---------- Serious Post (.post.sp) ----------
    Long-form apparatus: h1 · meta · abstract · [summary | numbered ToC] · * * * · body.
    Design = mockup variant g (dashboard/design/build.py), Olli-approved 2026-07-11
