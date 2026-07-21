@@ -17,6 +17,7 @@
         transition:border-color .15s,opacity .15s;border-radius:0}
   input:focus{border-bottom-color:var(--ink)}
   input:disabled{opacity:.45}
+  input::placeholder{color:var(--ink);opacity:.4;letter-spacing:.04em}
   .err input:not(#u){border-bottom-color:var(--accent);animation:sh .3s}
   #u,#go{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
   @keyframes sh{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
@@ -27,7 +28,7 @@
      passphrase and AUTOFILL it on every protected post (same origin, same form) -->
 <form id="f" method="post" action="">
   <input id="u" type="text" value="reader" autocomplete="username" tabindex="-1" aria-hidden="true">
-  <input id="p" type="password" autofocus aria-label="passphrase" autocomplete="current-password">
+  <input id="p" type="password" autofocus placeholder="passphrase" aria-label="passphrase" autocomplete="current-password">
   <!-- hidden default button: a >1-input form has NO implicit Enter-submission without one -->
   <button id="go" type="submit" tabindex="-1" aria-hidden="true"></button>
 </form>
