@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en" data-protect-stub="1">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>ollij.fi</title>
+<style>
+  :root{--bg:#fbfaf6;--ink:#1b1a16;--accent:#7c2d2d;--border:#ded7c7}
+  @media (prefers-color-scheme:dark){:root{--bg:#16150f;--ink:#e9e4d4;--accent:#d98c7a;--border:#34343a}}
+  html,body{height:100%}
+  body{margin:0;background:var(--bg);color:var(--ink);display:grid;place-items:center;
+       font:500 21px 'Newsreader',Garamond,Georgia,serif}
+  form{display:flex}
+  input{font:inherit;color:var(--ink);background:transparent;border:0;border-bottom:1px solid var(--border);
+        outline:none;padding:.15em .2em;width:17ch;text-align:center;letter-spacing:.02em;
+        transition:border-color .15s,opacity .15s;border-radius:0}
+  input:focus{border-bottom-color:var(--ink)}
+  input:disabled{opacity:.45}
+  .err input:not(#u){border-bottom-color:var(--accent);animation:sh .3s}
+  #u,#go{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+  @keyframes sh{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+</style>
+</head>
+<body>
+<!-- real username+password semantics so password managers offer to SAVE the shared
+     passphrase and AUTOFILL it on every protected post (same origin, same form) -->
+<form id="f" method="post" action="">
+  <input id="u" type="text" value="reader" autocomplete="username" tabindex="-1" aria-hidden="true">
+  <input id="p" type="password" autofocus aria-label="passphrase" autocomplete="current-password">
+  <!-- hidden default button: a >1-input form has NO implicit Enter-submission without one -->
+  <button id="go" type="submit" tabindex="-1" aria-hidden="true"></button>
+</form>
+<script>
+(() => {
+const D = { v: 1, iter: __ITER__, salt: '__SALT__', iv: '__IV__', ct: '__CT__' };
+const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+async function unlock(pw) {
+  const km = await crypto.subtle.importKey('raw', new TextEncoder().encode(pw), 'PBKDF2', false, ['deriveKey']);
+  const key = await crypto.subtle.deriveKey(
+    { name: 'PBKDF2', hash: 'SHA-256', salt: b64(D.salt), iterations: D.iter },
+    km, { name: 'AES-GCM', length: 256 }, false, ['decrypt']);
+  const pt = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: b64(D.iv) }, key, b64(D.ct));
+  return new TextDecoder().decode(pt);
+}
+const form = document.getElementById('f'), field = document.getElementById('p');
+let busy = false, typed = false;
+async function attempt(pw) {
+  pw = (pw || '').trim();
+  if (!pw || busy) return;
+  busy = true; field.disabled = true; form.classList.remove('err');
+  try {
+    const html = await unlock(pw);
+    try {  // Chrome-family: store the shared passphrase without relying on save-prompt heuristics
+      if (window.PasswordCredential) navigator.credentials.store(new PasswordCredential({ id: 'reader', password: pw }));
+    } catch (e) {}
+    document.open(); document.write(html); document.close();
+  } catch (e) {
+    void form.offsetWidth; form.classList.add('err');
+    field.disabled = false; field.select(); field.focus();
+  }
+  busy = false;
+}
+form.addEventListener('submit', e => { e.preventDefault(); attempt(field.value); });
+field.addEventListener('keydown', () => { typed = true; });
+if (location.hash.length > 1) {
+  attempt(decodeURIComponent(location.hash.slice(1)));
+} else {
+  // a password manager AUTOFILLS without keystrokes — unlock on its value so a saved
+  // passphrase means the post just opens. Never fires once the user starts typing.
+  const autofill = () => { if (!typed && !busy && field.value) attempt(field.value); };
+  [300, 900, 1800].forEach(t => setTimeout(autofill, t));
+  document.addEventListener('pointerdown', autofill, { once: true });
+}
+})();
+</script>
+</body>
+</html>

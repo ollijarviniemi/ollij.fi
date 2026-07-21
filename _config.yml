@@ -86,6 +86,13 @@ defaults:
       path: "tekoaly.md"
     values:
       lang: fi
+  # p/<slug>.html = encrypted protected-review stubs claiming their post's real URL
+  # (see _protect/README.md): each carries sitemap: false itself; this scope is the
+  # backstop so nothing under p/ can ever reach /sitemap.xml.
+  - scope:
+      path: "p"
+    values:
+      sitemap: false
 
 # Keep server-side, translation, and tooling files out of the published static
 # build. The list repeats Jekyll's built-in defaults (node_modules, Gemfile,
@@ -102,6 +109,7 @@ exclude:
   - vendor/gems/
   - vendor/ruby/
   - translation/
+  - _reader/                 # vendored pdf.js viewer, served locally by serve.py only
   - serve.py
   - games-server/
   - ops/

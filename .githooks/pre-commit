@@ -1,0 +1,82 @@
+#!/usr/bin/env bash
+# ollij.fi pre-commit guard — blocks the easy ways to leak a draft or a secret.
+# Activated via: git config core.hooksPath .githooks   (run once per clone)
+# Override in a genuine emergency: git commit --no-verify
+set -u
+fail=0
+red(){ printf '\033[31m%s\033[0m\n' "$1"; }
+ylw(){ printf '\033[33m%s\033[0m\n' "$1"; }
+grn(){ printf '\033[32m%s\033[0m\n' "$1"; }
+
+# ---- 1) BLOCK: never commit a draft (published: false). Drafts stay untracked; the public
+#         repo is public, so committing a draft exposes its source even if it never renders. ----
+drafts=()
+while IFS= read -r f; do
+  [ -z "$f" ] && continue
+  case "$f" in
+    _writing/*.md)
+      git show ":$f" 2>/dev/null | grep -qE '^published:[[:space:]]*false[[:space:]]*$' && drafts+=("$f") ;;
+  esac
+done < <(git diff --cached --name-only --diff-filter=ACM)
+if [ "${#drafts[@]}" -gt 0 ]; then
+  red "✗ BLOCKED: staged DRAFT(s) marked 'published: false' — do not commit these to the public repo:"
+  for f in "${drafts[@]}"; do echo "      $f"; done
+  echo "    unstage:  git restore --staged ${drafts[*]}"
+  echo "    (truly intend to commit a draft? git commit --no-verify)"
+  fail=1
+fi
+
+# ---- 1b) BLOCK: protected review posts (protected: true) must NEVER be committed —
+#          they publish ONLY as encrypted stubs under p/<token>/ (see _protect/README.md). ----
+prot=()
+while IFS= read -r f; do
+  [ -z "$f" ] && continue
+  case "$f" in
+    _writing/*.md)
+      git show ":$f" 2>/dev/null | grep -qE '^protected:[[:space:]]*true[[:space:]]*$' && prot+=("$f") ;;
+  esac
+done < <(git diff --cached --name-only --diff-filter=ACM)
+if [ "${#prot[@]}" -gt 0 ]; then
+  red "✗ BLOCKED: staged PROTECTED post(s) — these ship only as encrypted p/<slug>.html stubs, never as source:"
+  for f in "${prot[@]}"; do echo "      $f"; done
+  echo "    unstage:  git restore --staged ${prot[*]}"
+  echo "    cleared for real publishing? run: python3 _protect/protect.py release <slug>"
+  fail=1
+fi
+
+# ---- 1c) BLOCK: metadata/asset leaks of protected posts (writing.yml titles, their images). ----
+leaks=$(python3 .githooks/protected-leak-check.py 2>/dev/null || true)
+if [ -n "$leaks" ]; then
+  red "✗ BLOCKED: staged change leaks a PROTECTED post's metadata or assets:"
+  echo "$leaks" | sed 's/^/      /'
+  echo "    (protected posts stay out of writing.yml and their images out of git until released.)"
+  fail=1
+fi
+
+# ---- 2) BLOCK: obvious secrets in newly-ADDED lines. ----
+secrets=$(git diff --cached -U0 --diff-filter=ACM 2>/dev/null | grep -E '^\+' \
+  | grep -aEn 'sk-[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16}|-----BEGIN [A-Z ]*PRIVATE KEY-----|xox[baprs]-[0-9A-Za-z-]{10,}|gh[pousr]_[A-Za-z0-9]{30,}|AIza[0-9A-Za-z_-]{30,}' || true)
+if [ -n "$secrets" ]; then
+  red "✗ BLOCKED: possible secret(s) in staged changes:"
+  echo "$secrets" | sed 's/^/      /'
+  echo "    remove them (and rotate the key). Override: git commit --no-verify"
+  fail=1
+fi
+
+# ---- 3) WARN: brand-new _writing posts with no 'published:' line WILL go live on push. ----
+newpub=()
+while IFS= read -r f; do
+  [ -z "$f" ] && continue
+  case "$f" in
+    _writing/*.md)
+      git show ":$f" 2>/dev/null | grep -qE '^published:' || newpub+=("$f") ;;
+  esac
+done < <(git diff --cached --name-only --diff-filter=A)
+if [ "${#newpub[@]}" -gt 0 ]; then
+  ylw "⚠ Publishing NEW public post(s) — these go live on push (no 'published:' line):"
+  for f in "${newpub[@]}"; do echo "      $f"; done
+  ylw "    if any is actually a draft, abort (Ctrl-C) and add 'published: false'."
+fi
+
+if [ "$fail" = 1 ]; then red "pre-commit checks failed — nothing committed."; exit 1; fi
+exit 0

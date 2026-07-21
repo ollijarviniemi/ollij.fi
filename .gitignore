@@ -15,3 +15,12 @@ _ga/
 
 # private quick-capture notes — a real post locally, but never committed to the public repo
 _writing/saved-thoughts.md
+# the canonical TODO list — same treatment
+_writing/todo.md
+assets/uploads/sr-img/
+# design mockups render unpublished draft content — local-only, never on the public site
+dashboard/design/
+
+# protected review pages (see _protect/README.md): the registry maps slugs to
+# tokens AND passphrases — strictly local. The tool itself is committed.
+_protect/registry.json
