@@ -6,6 +6,7 @@
 sections:
   - name: New
     posts:
+      - { title: "Me, Olli", url: "/me_olli/" }
       - { title: "Subjectivist games for accelerated learning", url: "/subjectivist_games/" }
       - { title: "LLM-assisted belief articulation exercise", url: "/belief_articulation/" }
       - { title: "The importance of language", url: "/importance_of_language/" }
@@ -59,6 +60,7 @@ sections:
 
   - name: Softer side
     posts:
+      - { title: "Me, Olli", url: "/me_olli/" }
       - { title: "I woke up in a strange place", url: "/I_woke_up/" }
       - { title: "An unusual situation", url: "/unusual/" }
       - { title: "Response to <em>Chattel Childhood</em>", url: "/childhood/" }
