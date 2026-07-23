@@ -126,7 +126,9 @@ a:hover { color: var(--accent); text-decoration-color: currentColor; }
   border-top: 1px solid var(--rule); color: var(--muted); font-size: .85rem; }
 
 /* ---------- reading page ---------- */
-.post { max-width: var(--measure); margin: 0 auto; padding: 2.4rem 2rem 0; }
+/* 40vh of bottom padding: scrolled to the end, the final lines rest mid-screen
+   instead of pinned to the viewport bottom. */
+.post { max-width: var(--measure); margin: 0 auto; padding: 2.4rem 2rem 40vh; }
 .post-back { font-size: .82rem; letter-spacing: .06em; text-transform: uppercase;
   margin: 0 0 1.6rem; }
 .post-back a { color: var(--muted); text-decoration: none; }
