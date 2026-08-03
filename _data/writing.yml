@@ -1,7 +1,7 @@
-# Single source of truth for the /writing index (layout: _layouts/w-index-b.html).
-# Edit here to add/reorder posts; the layout only presents it. url = final site path.
-# TODO(user): curate "New" and "Top"; set real targets for "Rule Deduction",
-# "MTKK", "OOOO"; "Links" is a future section.
+# Public writing index — MACHINE-DERIVED from _data/writing_local.yml (gitignored).
+# Do not hand-edit: edit writing_local.yml and run `python3 _ga/sync-writing-index.py`
+# (serve.py regenerates this automatically on every index write). Layout:
+# _layouts/w-index-b.html. Private sections never appear here by construction.
 
 sections:
   - name: New

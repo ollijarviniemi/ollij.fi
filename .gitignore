@@ -24,3 +24,20 @@ dashboard/design/
 # protected review pages (see _protect/README.md): the registry maps slugs to
 # tokens AND passphrases — strictly local. The tool itself is committed.
 _protect/registry.json
+dashboard/
+
+# juggling choreography project — personal data + downloaded audio, never public
+juggling/
+
+# Kongregate account export — childhood account data + downloaded games, never public
+kongregate/
+
+# QA store sidecars (memory-augmentation question sets) — live next to their sources
+# (~/ga/notes/augmentation-qa-store.md decision 1); the repo is public, these never ship
+*.qa.jsonl
+_ga/**/qa/
+
+# The FULL writing index (public + private sections) — the single editing surface.
+# The tracked _data/writing.yml is a machine-derived public projection of this file
+# (see _ga/sync-writing-index.py). Default-private regime, 2026-08-03.
+_data/writing_local.yml

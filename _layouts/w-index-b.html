@@ -13,7 +13,8 @@ layout: w-base
   .ga-addsec { grid-column: 1 / -1; color: var(--muted); opacity: .35; cursor: pointer; font-size: .82rem; margin-top: .3rem; transition: opacity .15s; }
   .ga-addsec:hover { opacity: .9; color: var(--accent); }
   .ga-addsec input { font: inherit; background: var(--bg); color: var(--ink); border: 1px solid var(--rule); border-radius: 4px; padding: .12rem .4rem; }
-  .ga-del { opacity: 0; cursor: pointer; color: var(--muted); font-size: .72rem; margin-left: .4rem; transition: opacity .15s; }
+  /* out of flow: the hover-✕ must never consume row width (columns are calibrated to the text) */
+  .ga-del { position: absolute; opacity: 0; cursor: pointer; color: var(--muted); font-size: .72rem; margin-left: .4rem; transition: opacity .15s; }
   .wlist li:hover .ga-del { opacity: .35; }
   .ga-del:hover { opacity: 1 !important; color: var(--accent); }
   /* Long DRAFT sections (>~8 docs) scroll within themselves — ONLY the private/drafts zone
@@ -35,8 +36,11 @@ layout: w-base
   {% unless jekyll.environment == "production" %}
   <div class="windex-zone windex-private">
     <div class="windex-zone-label">Private — only you</div>
+    {%- comment -%} Private sections live in _data/writing_local.yml (gitignored; absent on the
+    public build). The tracked writing.yml is its machine-derived public projection. {%- endcomment -%}
+    {% assign widx = site.data.writing_local | default: site.data.writing %}
     {%- comment -%} Work in progress = private (published:false) posts not yet placed in a section {%- endcomment -%}
-    {% assign placed = "|" %}{% for s in site.data.writing.sections %}{% for pp in s.posts %}{% assign placed = placed | append: pp.url | append: "|" %}{% endfor %}{% endfor %}
+    {% assign placed = "|" %}{% for s in widx.sections %}{% for pp in s.posts %}{% assign placed = placed | append: pp.url | append: "|" %}{% endfor %}{% endfor %}
     <section class="wsection wsection-wip">
       <h2 class="wsection-title">Work in progress</h2>
       <ul class="wlist">
@@ -45,7 +49,7 @@ layout: w-base
         <li><a href="{{ d.url }}">{{ t }}</a></li>{% endunless %}{% endif %}{% endfor %}
       </ul>
     </section>
-    {% for section in site.data.writing.sections %}{% if section.private %}
+    {% for section in widx.sections %}{% if section.private %}
     <section class="wsection">
       <h2 class="wsection-title">{{ section.name }}</h2>
       <ul class="wlist">
@@ -202,7 +206,7 @@ layout: w-base
     if(before===drag.url){ drag=null; ctx=null; return; }
     var li=drag.li, origParent=drag.origParent, origNext=drag.origNext, url=drag.url;
     if(ctx.ref) ctx.ul.insertBefore(li, ctx.ref); else ctx.ul.appendChild(li);
-    postJSON('http://localhost:8090/api/ga/place',{url:url, section:section, private:isPrivate, before:before}).then(function(res){ if(!res.ok){ if(origParent) origParent.insertBefore(li, origNext); alert(res.error||'move failed'); } });
+    postJSON('http://localhost:8090/api/ga/place',{url:url, section:section, private:isPrivate, before:before, from:drag.from}).then(function(res){ if(!res.ok){ if(origParent) origParent.insertBefore(li, origNext); alert(res.error||'move failed'); } });
     drag=null; ctx=null;
   });
   document.addEventListener('dragend', function(){ if(indicator.parentNode) indicator.parentNode.removeChild(indicator); drag=null; ctx=null; });
@@ -317,11 +321,13 @@ layout: w-base
   under the cursor. {%- endcomment -%}
 <style>
  #fd-rail{position:fixed;top:4.4rem;right:0;bottom:0;width:2.3rem;z-index:40;background:var(--bg-offset);border-left:1px solid var(--rule);overflow:hidden;transition:width .18s ease;transition-delay:.35s}
- #fd-rail:hover,#fd-rail.open{width:21rem;overflow-y:auto;overflow-x:hidden;scrollbar-gutter:stable;transition-delay:0s}
- #fd-rail .fd-lblv{writing-mode:vertical-rl;text-orientation:mixed;font-size:.64rem;text-transform:uppercase;letter-spacing:.2em;color:var(--muted);white-space:nowrap;padding:.9rem .65rem;cursor:default}
- #fd-rail:hover .fd-lblv,#fd-rail.open .fd-lblv{display:none}
- #fd-rail .fd-body{display:none;padding:.7rem .9rem 1.4rem}
- #fd-rail:hover .fd-body,#fd-rail.open .fd-body{display:block}
+ #fd-rail:hover,#fd-rail.open{width:24rem;overflow-y:auto;overflow-x:hidden;scrollbar-gutter:stable;transition-delay:0s}
+ #fd-rail .fd-lblv{writing-mode:vertical-rl;text-orientation:mixed;font-size:.64rem;text-transform:uppercase;letter-spacing:.2em;color:var(--muted);white-space:nowrap;padding:.9rem .65rem;cursor:default;transition:opacity .12s}
+ #fd-rail:hover .fd-lblv,#fd-rail.open .fd-lblv{opacity:0}
+ /* The body is pinned to the (screen-fixed) right edge at its final width, and only fades:
+    the width animation becomes a curtain reveal, so text never rewraps/bounces mid-transition. */
+ #fd-rail .fd-body{position:absolute;top:0;right:0;width:23.1rem;box-sizing:border-box;padding:.7rem .8rem 1.4rem .7rem;opacity:0;visibility:hidden;transition:opacity .12s ease,visibility 0s linear .12s}
+ #fd-rail:hover .fd-body,#fd-rail.open .fd-body{opacity:1;visibility:visible;transition:opacity .16s ease .05s,visibility 0s}
  .fd-hd{display:flex;align-items:baseline;gap:.5rem;font-size:.58rem;text-transform:uppercase;letter-spacing:.13em;color:var(--muted);margin:0 0 .35rem;opacity:.8}
  .fd-rfr{margin-left:auto;letter-spacing:0;cursor:pointer;opacity:.55;font-size:.72rem}
  .fd-rfr:hover{opacity:1;color:var(--accent)}
@@ -344,6 +350,8 @@ layout: w-base
   rail.innerHTML='<div class="fd-lblv">Reading</div><div class="fd-body">'
     +'<div class="fd-hd"><span>Recommended</span><span class="fd-rfr" id="fd-rec-rfr" title="regenerate recommendations">↻</span></div>'
     +'<div id="fd-rec"></div>'
+    +'<div class="fd-hd" style="margin-top:1.1rem"><span>Fresh from your sources</span><span class="fd-rfr" id="fd-feed-rfr" title="re-poll the RSS sources">↻</span></div>'
+    +'<div id="fd-feed"></div>'
     +'</div>';
   document.body.appendChild(rail);
   if(location.hash==='#reading') rail.classList.add('open');   // deep-link: open the rail
@@ -378,7 +386,7 @@ layout: w-base
       var items=(d&&d.top10)||[];
       if(items.length){ items.forEach(function(x){ box.appendChild(item(x)); }); }
       else if(d&&d.generating){ box.innerHTML='<div class="fd-note">thinking up recommendations…</div>'; }
-      else{ box.innerHTML='<div class="fd-empty">No recommendations yet — ↻ to generate from your reading notes.</div>'; }
+      // depleted = done for the day — stay quiet (no nag toward ↻); list resamples tomorrow
     }).catch(function(){});
   }
   rail.querySelector('#fd-rec-rfr').addEventListener('click', function(){
@@ -386,8 +394,41 @@ layout: w-base
     fetch(API+'/api/ga/reading/recommend-refresh',{method:'POST'}).catch(function(){});
     var n=0,t=setInterval(function(){ loadRec(true); if(++n>60) clearInterval(t); },4000);
   });
-  loadRec(true);
+
+  // Feed 1 — mechanical "new from your RSS sources" (pool already excludes read/archived).
+  // Clicking opens the live page and queues it into the reading store in the background.
+  function feedItem(x){
+    var a=document.createElement('a'); a.className='fd-item'; a.href=x.url; a.target='_blank'; a.rel='noopener';
+    var row=document.createElement('div'); row.className='fd-row';
+    var t=document.createElement('span'); t.className='fd-t'; t.textContent=x.title||x.url;
+    var s=document.createElement('span'); s.className='fd-src'; s.textContent=x.source||'';
+    var xb=document.createElement('span'); xb.className='fd-x'; xb.textContent='✕'; xb.title='read already / not interested — hide from the feed';
+    xb.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); dismiss(x.url, a, x.title); });
+    row.appendChild(t); row.appendChild(s); row.appendChild(xb); a.appendChild(row);
+    a.addEventListener('click', function(){
+      fetch(API+'/api/ga/reading/add',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({url:x.url,title:x.title})}).catch(function(){});
+    });
+    return a;
+  }
+  function loadFeed(force){
+    if(!force && busy()) return;
+    fetch(API+'/api/ga/reading/likes?n=12',{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){
+      var box=rail.querySelector('#fd-feed'); box.innerHTML='';
+      var items=(d&&d.items)||[], cap=6;
+      if(!items.length){ box.innerHTML='<div class="fd-empty">Nothing new from your sources.</div>'; return; }
+      items.slice(0,cap).forEach(function(x){ box.appendChild(feedItem(x)); });
+      if(items.length>cap){ var m=document.createElement('div'); m.className='fd-note'; m.style.cursor='pointer'; m.textContent='+ '+(items.length-cap)+' more';
+        m.addEventListener('click', function(){ items.slice(cap).forEach(function(x){ box.insertBefore(feedItem(x), m); }); m.remove(); });
+        box.appendChild(m); }
+    }).catch(function(){});
+  }
+  rail.querySelector('#fd-feed-rfr').addEventListener('click', function(){
+    fetch(API+'/api/ga/reading/feed-refresh',{method:'POST'}).catch(function(){});
+    var n=0,t=setInterval(function(){ loadFeed(true); if(++n>5) clearInterval(t); },3000);
+  });
+
+  loadRec(true); loadFeed(true);
   // refill quietly once the cursor leaves (rail collapsed) — never rebuilds under the cursor
-  rail.addEventListener('mouseleave', function(){ setTimeout(function(){ loadRec(false); }, 450); });
-  setInterval(function(){ loadRec(false); }, 30000);
+  rail.addEventListener('mouseleave', function(){ setTimeout(function(){ loadRec(false); loadFeed(false); }, 450); });
+  setInterval(function(){ loadRec(false); loadFeed(false); }, 30000);
 })();</script>

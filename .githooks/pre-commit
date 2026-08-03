@@ -53,6 +53,36 @@ if [ -n "$leaks" ]; then
   fail=1
 fi
 
+# ---- 1d) BLOCK: writing.yml with private sections — commit the public projection only.
+#          (The working copy keeps 'private: true' sections for the localhost view; the
+#          committed file must match what the public page shows. Added 2026-08-03.) ----
+if git diff --cached --name-only | grep -q '^_data/writing.yml$'; then
+  if git show :_data/writing.yml 2>/dev/null | grep -q 'private: true'; then
+    red "✗ BLOCKED: staged _data/writing.yml contains 'private: true' sections — commit the public projection; the working copy keeps them for localhost."
+    fail=1
+  fi
+fi
+
+# ---- 1e) BLOCK: pasted screenshots — an assets/uploads file belongs in the public repo
+#          only when a tracked post references it (private by default; Ctrl+K screenshots
+#          land here). Added 2026-08-03. ----
+ups=()
+while IFS= read -r f; do
+  [ -z "$f" ] && continue
+  case "$f" in
+    assets/uploads/*)
+      base=$(basename "$f")
+      git grep -q --cached -F "$base" -- '_writing/*.md' 2>/dev/null || ups+=("$f") ;;
+  esac
+done < <(git diff --cached --name-only --diff-filter=A)
+if [ "${#ups[@]}" -gt 0 ]; then
+  red "✗ BLOCKED: staged assets/uploads file(s) no tracked post references (pasted screenshots are private by default):"
+  for f in "${ups[@]}"; do echo "      $f"; done
+  echo "    unstage:  git restore --staged ${ups[*]}"
+  echo "    (publishing a post that uses it? stage the post in the same commit.)"
+  fail=1
+fi
+
 # ---- 2) BLOCK: obvious secrets in newly-ADDED lines. ----
 secrets=$(git diff --cached -U0 --diff-filter=ACM 2>/dev/null | grep -E '^\+' \
   | grep -aEn 'sk-[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16}|-----BEGIN [A-Z ]*PRIVATE KEY-----|xox[baprs]-[0-9A-Za-z-]{10,}|gh[pousr]_[A-Za-z0-9]{30,}|AIza[0-9A-Za-z_-]{30,}' || true)
