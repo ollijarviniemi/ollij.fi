@@ -6,6 +6,7 @@
 sections:
   - name: New
     posts:
+      - { title: "Proto-Guardian Angels via Stock LLMs", url: "/proto_angel/" }
       - { title: "Me, Olli", url: "/me_olli/" }
       - { title: "Subjectivist games for accelerated learning", url: "/subjectivist_games/" }
       - { title: "LLM-assisted belief articulation exercise", url: "/belief_articulation/" }
@@ -53,6 +54,7 @@ sections:
 
   - name: World Modeling
     posts:
+      - { title: "Proto-Guardian Angels via Stock LLMs", url: "/proto_angel/" }
       - { title: "The importance of language", url: "/importance_of_language/" }
       - { title: "Writing as a tool", url: "/writing_tool/" }
       - { title: "Measuring gravitational acceleration", url: "/gravity/" }
@@ -90,22 +92,3 @@ sections:
       - { title: "Kilpamatematiikan peruskurssi", url: "https://kurssi.matematiikkakilpailut.fi/" }
       # OOOO: pdf dropped from this site 2026-07-03 (hosted elsewhere); re-add with the external URL.
       # - { title: "OOOO", url: "" }
-
-  - name: Actual drafts
-    private: true
-    posts:
-      - { title: "Deep information", url: "/deep_information/" }
-
-  - name: Semi-daily notes
-    private: true
-    posts:
-      - { title: "July 2nd", url: "/july_2nd/" }
-      - { title: "July 1st", url: "/july_1st/" }
-      - { title: "Weekend plans", url: "/weekend_plans/" }
-
-  - name: GAs
-    private: true
-    posts:
-      - { title: "On Guardian Angels", url: "/on_guardian_angels/" }
-      - { title: "The thinking assistant", url: "/the_thinking_assistant/" }
-      - { title: "Website improvements", url: "/website_improvements/" }

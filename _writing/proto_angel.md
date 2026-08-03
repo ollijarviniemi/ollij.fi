@@ -1,14 +1,12 @@
 ---
-sp: june 21 – july 21, 2026 · in progress
-title: "Proto-Guardian Angels via Stock LLMs"
-published: true
-sitemap: false
+sp: june 21 – august 3, 2026
+description: "Rather than waiting for the Guardian Angels to come and save me, I get what I can out of frozen, stock LLMs."
 ---
 # Proto-Guardian Angels via Stock LLMs
 ## Abstract
 LLMs are increasingly able to automatically solve tasks, yet as of mid-2026 provide little for individual thinking and growth. Gwern proposes [*Guardian Angels*](https://gwern.net/guardian-angel), digital twin LLMs *trained to emulate* a single user's personality, values and preferences. I discuss complementary methods for individual empowerment via *frozen, stock LLMs*, realising presently achievable gains with low barriers to entry. I provide numerous example improvements from personal usage, including *active reading* via personalised exercises on curated, expert-written texts.
 ## Extended summary
-For all their strengths, present-day frontier AIs have severe limitations for personalised use cases: models regularly fail to infer and respect users' preferences [even in very predictable cases on in-distribution AI research tasks](https://blog.redwoodresearch.org/p/current-ais-seem-pretty-misaligned), and more so in domains involving highly personalised and non-obvious preferences, such as writing and communication, UI/UX design, pedagogy, game design and personal decision-making. As a result, there's a disparity between models' capabilities and their value in empowering humans.
+For all their strengths, present-day frontier AIs have severe limitations for personalised use-cases: models regularly fail to infer and respect users' preferences [even in very predictable cases on in-distribution AI research tasks](https://blog.redwoodresearch.org/p/current-ais-seem-pretty-misaligned), and more so in domains involving highly personalised and non-obvious preferences, such as writing and communication, UI/UX design, pedagogy, game design and personal decision-making. As a result, there's a disparity between models' capabilities and their value in empowering humans.
 
 [Gwern proposes](https://gwern.net/guardian-angel) personalised *Guardian Angel* LLMs trained to emulate a single user, inferring and inheriting their taste, preferences and values, based on rich, active learning from past and present data on the user. GAs would thus have many desirable properties compared to traditional LLMs, including their (relative) alignment and deep personalised knowledge.
 
@@ -17,14 +15,12 @@ A major challenge with GAs is the reliance on training, complicating the impleme
 I discuss wielding frozen, stock frontier LLMs as "proto-GAs", for achieving some basic benefits of GAs and laying groundwork for full GAs later with a lower barrier to entry.
 
 Based on practical experience, I first list various concrete improvements from personalised, customisable software and data logging. These then enable *machine-augmented active reading:* proto-GAs curate human-written text, design exercises for the user to complete pre- and mid-reading, and construct cards for spaced repetition to be done later.
-
-I release the code to empower other practitioners to experiment with and develop their own proto-GAs. (TODO)
 ## Introduction
 Upon reading Gwern's article on Guardian Angels, I was impressed and motivated: "Yes, GAs are exactly what I want! I will maneuver myself so that it's easy for me to train my own GA! I will store all my data and collect more and write a lot and..."
 
 This was naive in a useful way, as it made me confront many of the core questions and think about them in near-mode. What should I write if I wanted to create training data for my own GA? In fact, what is it that I'd want my GA to do? Gwern has the idea of an automated blogger, maybe I could have one of those... but what would it write, what is the writing I want to see more of? What is it that *I* want to write, or do more generally?
 
-Eventually, I arrived at a couple of aims: First, I simply wanted to do more deep thinking, the sort one does by writing, in part to resolve some of the more confusing questions around GA use cases. Second, I also wanted to read more, not least because it would spur new thoughts.
+Eventually, I arrived at a couple of aims: First, I simply wanted to do more deep thinking, the sort one does by writing, in part to resolve some of the more confusing questions around GA use-cases. Second, I also wanted to read more, not least because it would spur new thoughts.
 
 Rather than waiting for the Guardian Angels to come and save me, I cut to the chase and started making progress on those problems now. And I realised that, while true GAs surely have their strengths, a lot of my needs in the immediate term could be resolved with out-of-the-box, stock LLMs purposed to support my development.
 
@@ -129,7 +125,7 @@ Here are example exercises of this type:
 - [How could you verify that a datacenter is running only approved inference, and not secret training, without trusting its operator?](https://ai-2040.com/supplements/verification-plan)
 
 Especially with this latter exercise type, the LLMs are not terribly reliable in their execution. The downside cost of this is not too high – it's a bit annoying, but it doesn't take many seconds to dismiss the exercise. And often it's just fine: if a question has a confused framing, then, well, what do *I* think is the right way to think about it? What matters is not so much the question, but the promise that the text (written by a thoughtful human) will have discussion that I can compare my thinking against.
-## Insight-through-making for proto-GA
+## Insight-through-making
 Ultimately, what I want out of Guardian Angels is not fun little exercises or spaced repetition cards, and so assessing their success by their ability to do that would be misguided. The real tests are more like "am I writing more and higher-quality blog posts thanks to GAs?", "am I able to do better thinking on hard and confusing topics?" and "am I producing useful contributions that result in positive changes in the world?"
 
 It's unpromising to try and *directly* build, for example, an "automated blogger" out of current stock LLMs; similarly, I haven't heard of anyone yet succeeding at building useful "thinking assistants".
@@ -138,11 +134,7 @@ This is why I'm looking for ways in which stock LLMs could help *indirectly*, vi
 
 This doesn't contradict eventually taking direct stabs at automation. In fact, the opposite is true: one of the things I'm hoping to get from working with proto-GAs is to be better able to use the opportunity if and when GAs break through. Notably, the challenge of building GAs isn't primarily an ML problem (any more than [AI for epistemics](https://ai-2040.com/supplements/ai-for-epistemics) is), but seems to be much more bottlenecked on fuzzy questions.
 
-My process behind the idea of active reading seems decent for making progress on these problems (keeping in mind that the idea itself hasn't yet proven its worth!). I see it as an attempt to execute what Matuschak and Nielsen call [insight-through-making](https://numinous.productions/ttft/) (and as a product of executing it – my active reading setup is itself an insight that came through making the basic writing and reading infra!). So I hope that if it fails to be useful in itself, it at least provides insight for something new and successful.
-
-## Code
-(TODO: compile code, publish and link)
-
+My process behind the idea of active reading seems decent for making progress on these problems (keeping in mind that the idea itself hasn't yet proven its worth!). I see it as an attempt to execute what Matuschak and Nielsen call [insight-through-making](https://numinous.productions/ttft/). So I hope that if it fails to be useful in itself, it at least provides insight for something new and successful.
 ## Related reading
 - [Design Sketches: Angels-on-the-Shoulder](https://www.forethought.org/research/design-sketches-angels-on-the-shoulder) — Owen Cotton-Barratt, Lizka Vaintrob, Oly Sourbut and Rose Hadshar, 2026
 - [Design sketches for a more sensible world](https://www.forethought.org/research/design-sketches-for-a-more-sensible-world) — Owen Cotton-Barratt, Lizka Vaintrob, Oly Sourbut and Rose Hadshar, 2026
