@@ -1,6 +1,6 @@
 ---
 sp: june 21 – august 3, 2026
-description: "Rather than waiting for the Guardian Angels to come and save me, I get what I can out of frozen, stock LLMs."
+description: "Realising a fraction of the value of Guardian Angels via closed-weight frontier models."
 ---
 # Proto-Guardian Angels via Stock LLMs
 ## Abstract
