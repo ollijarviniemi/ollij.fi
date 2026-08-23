@@ -42,6 +42,38 @@ passphrase, so shared links keep working across draft revisions; `--fresh` (or a
 differing `--password`) rotates it and re-encrypts every registered stub in one run —
 remember to commit ALL regenerated stubs, and tell the holders.
 
+## Friend read-links — one shared capability decrypts the post AND turns on comments (2026-08-23)
+
+For the *friends* review phase (as opposed to the AISI passphrase phase), a post can also be
+read — and commented on — via a single shared **capability link**, with **no passphrase**:
+
+    python3 _comments/cli.py mint --label friends --slug /<slug>/   # → one 32-hex link
+    python3 _protect/protect.py <slug> --friend-label friends       # bake the friend read-block
+
+`--friend-token <32hex>` passes the capability directly (tests use this); `--friend-label`
+resolves it from `_comments/local/links.json`. The label is remembered per-post in
+`registry.json`, so plain re-runs after an edit keep the same friend link working.
+
+**How it stays two independent systems** (Olli's invariant, 2026-08-23): the stub carries
+**two independent ciphertexts** of the same page. The passphrase block (PBKDF2, above) is
+untouched — **zero regression on the AISI path**. The friend block is AES-256-GCM under a key
+derived `HKDF-SHA256(token, info="protect-read")` from the shared comment capability — a
+*distinct* HKDF info from the comment layer's own `auth`/`kek` halves over the same token, so
+nothing is derivable across them. On load the stub tries the 32-hex fragment, then a stored
+`cmt_token` (a returning friend whose fragment the comment layer already stripped); on success
+it `document.write`s the post, and because the fragment/token is still present the page's own
+w-base bootstrap then activates the E2E comment layer on that same capability. **The passphrase
+decrypts the post and *never* the comments** (the comment bootstrap only wakes on a 32-hex
+fragment or stored token — a passphrase is neither); the capability reads/writes comments and
+never needs the passphrase. Neither secret is derivable from the other.
+
+Revocation, for one shared link: rotate it — `cli.py revoke friends` (kills comment access +
+re-keys), re-`mint`, re-run `protect.py` with the new token, re-push the stub. (Old ciphertext
+in git history stays readable to old-token holders, same as the passphrase model.)
+
+The comment backend (Cloudflare Worker + D1) must be deployed for *commenting* to work; the
+*read* is fully static (the baked friend block), so it works from the committed stub alone.
+
 ## Guarantees & honest limits
 
 - GitHub, site visitors, Cloudflare, crawlers: see AES-GCM ciphertext only. The stub is
@@ -85,7 +117,11 @@ post's URL must LOSE to the collection doc — the invariant that keeps local pr
 showing the draft), Tier 1 Node-WebCrypto round-trip + wrong-pass + GCM tamper, Tier 2
 **real headless Firefox** driving the reviewer's path (locked → wrong pass → unlock →
 content + inlined images render + KaTeX; `#fragment` auto-unlock), Tier 3 the guard in
-a throwaway git repo (all three leak channels block; release path passes). `--quick`
-skips Firefox; `PROTECT_TEST_SHOTS=<dir>` keeps screenshots. The guard test was
+a throwaway git repo (all three leak channels block; release path passes), **Tier 4 the
+friend link end-to-end** (`test-friend-comments.mjs`: real wrangler-dev Worker + minted
+capability + chromium — friend link decrypts the post and lights up comments, comment
+round-trips + survives reload, returning-friend stored-token path, the passphrase-shows-no-
+comments separation, wrong-token → passphrase box, and D1-is-ciphertext-at-rest). `--quick`
+skips Firefox + Tier 4; `PROTECT_TEST_SHOTS=<dir>` keeps screenshots. The guard test was
 verified to FAIL against the pre-feature hook (all three channels leaked) before being
 trusted.

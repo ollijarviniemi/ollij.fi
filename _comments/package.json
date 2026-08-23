@@ -1,0 +1,7 @@
+{
+  "name": "ollij-comments-dev",
+  "private": true,
+  "devDependencies": {
+    "wrangler": "^3.114.17"
+  }
+}

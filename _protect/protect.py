@@ -2,6 +2,9 @@
 """Protected review pages — publish a post at its REAL URL so ONLY passphrase-holders can read it.
 
     python3 _protect/protect.py <slug>              encrypt + (re)write the stub p/<slug>.html → /<slug>/
+    python3 _protect/protect.py <slug> --friend-label friends   also bake a shared-link read block:
+        one 32-hex comment capability (cli.py mint --label friends) that decrypts the post AND turns
+        on E2E comments, no passphrase — separate from the AISI passphrase (see README "Friend read-links")
     python3 _protect/protect.py release <slug>      post cleared for real publishing: remove stub + flag
     python3 _protect/protect.py list                show what is currently protected
 
@@ -28,9 +31,11 @@ PROTECT_DIR = os.path.join(ROOT, '_protect')
 REGISTRY = os.path.join(PROTECT_DIR, 'registry.json')
 WORDLIST = os.path.join(PROTECT_DIR, 'wordlist.txt')
 TEMPLATE = os.path.join(PROTECT_DIR, 'stub-template.html')
+COMMENTS_LINKS = os.path.join(ROOT, '_comments', 'local', 'links.json')
 SITE_URL = 'https://ollij.fi'
 PBKDF2_ITER = 600_000
 STUB_MARKER = 'data-protect-stub'
+FRIEND_INFO = b'protect-read'   # HKDF info for the friend read-key (distinct from comments' auth/kek)
 
 MIME = {'.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.gif': 'image/gif',
         '.webp': 'image/webp', '.svg': 'image/svg+xml', '.avif': 'image/avif', '.ico': 'image/x-icon'}
@@ -151,12 +156,66 @@ def encrypt(html, passphrase):
     return b64(salt), b64(iv), b64(ct)
 
 
-def write_stub(out_file, permalink, salt, iv, ct):
+def encrypt_friend(html, token_hex):
+    """A SECOND, fully independent ciphertext of the same page, readable from the shared
+    32-hex comment capability link — HKDF-SHA256(token, info='protect-read') → AES-256-GCM.
+    Independent of the passphrase block (neither secret derives the other) and of the
+    comment layer's own auth/kek halves (distinct HKDF info over the same token). One link
+    thus both decrypts the post and — via the page's existing w-base bootstrap, which fires
+    on the same 32-hex fragment / stored cmt_token — lights up comments. The passphrase
+    block is untouched: zero regression on the AISI read path. Per-post random HKDF salt
+    (baked into the stub) so each post's read-key is independent even under one shared link."""
+    from cryptography.hazmat.primitives.kdf.hkdf import HKDF
+    from cryptography.hazmat.primitives.hashes import SHA256
+    from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+    token = bytes.fromhex(token_hex)
+    salt = secrets.token_bytes(16)
+    key = HKDF(algorithm=SHA256(), length=32, salt=salt, info=FRIEND_INFO).derive(token)
+    iv = secrets.token_bytes(12)
+    ct = AESGCM(key).encrypt(iv, html.encode(), None)   # ciphertext||tag — WebCrypto layout
+    b64 = lambda b: base64.b64encode(b).decode()
+    return b64(salt), b64(iv), b64(ct)
+
+
+def resolve_friend_token(token, label, soft=False):
+    """Return a 32-hex friend token from --friend-token, or by --friend-label lookup in the
+    comment system's local links.json (the single source of truth for the shared link), or
+    None when neither is given. `soft` downgrades a missing label to a warning (used when
+    re-encrypting OTHER posts during a passphrase rotation) instead of aborting."""
+    if token:
+        if not re.fullmatch(r'[0-9a-f]{32}', token):
+            die('--friend-token must be 32 lowercase hex chars (a comment capability token)')
+        return token
+    if not label:
+        return None
+    mint_hint = f'    python3 _comments/cli.py mint --label {label} --slug /<slug>/'
+    if not os.path.exists(COMMENTS_LINKS):
+        msg = f'friend-label {label!r}: no _comments/local/links.json — mint the link first:\n{mint_hint}'
+        (warn(msg) or None) if soft else die(msg)
+        return None
+    links = json.load(open(COMMENTS_LINKS))
+    if label not in links:
+        msg = (f'friend-label {label!r}: not in links.json (have: {", ".join(links) or "none"}). Mint it:\n{mint_hint}')
+        (warn(msg) or None) if soft else die(msg)
+        return None
+    tok = links[label].get('token', '')
+    if not re.fullmatch(r'[0-9a-f]{32}', tok):
+        msg = f'links.json[{label!r}] has no valid 32-hex token'
+        (warn(msg) or None) if soft else die(msg)
+        return None
+    return tok
+
+
+def write_stub(out_file, permalink, salt, iv, ct, friend=None):
     """A Jekyll PAGE claiming the post's real permalink. {% raw %} keeps Liquid inert;
-    sitemap: false in front matter (belt) + the p/ defaults scope (suspenders)."""
+    sitemap: false in front matter (belt) + the p/ defaults scope (suspenders).
+    `friend` = (salt, iv, ct) for the shared-link read block, or None → empty placeholders
+    (the stub's friend path is then inert; passphrase behaviour is identical to before)."""
     with open(TEMPLATE) as f:
         stub = f.read()
-    for k, v in (('__ITER__', str(PBKDF2_ITER)), ('__SALT__', salt), ('__IV__', iv), ('__CT__', ct)):
+    fs, fi, fc = friend if friend else ('', '', '')
+    for k, v in (('__ITER__', str(PBKDF2_ITER)), ('__SALT__', salt), ('__IV__', iv), ('__CT__', ct),
+                 ('__FRIEND_SALT__', fs), ('__FRIEND_IV__', fi), ('__FRIEND_CT__', fc)):
         assert k in stub, f'template missing {k}'
         stub = stub.replace(k, v)
     assert STUB_MARKER in stub, 'template lost its stub marker'
@@ -168,7 +227,7 @@ def write_stub(out_file, permalink, salt, iv, ct):
     return out_file
 
 
-def protect_one(slug, site_dir, passphrase, out_file=None, permalink=None):
+def protect_one(slug, site_dir, passphrase, out_file=None, permalink=None, friend_token=None):
     """Encrypt one rendered post into its stub. Returns its private asset paths."""
     page = os.path.join(site_dir, slug, 'index.html')
     if not os.path.exists(page):
@@ -181,10 +240,12 @@ def protect_one(slug, site_dir, passphrase, out_file=None, permalink=None):
 
     html, inlined, missing, leftover = inline_images(html, site_dir)
     salt, iv, ct = encrypt(html, passphrase)
+    friend = encrypt_friend(html, friend_token) if friend_token else None
     out = write_stub(out_file or os.path.join(ROOT, 'p', slug + '.html'),
-                     permalink or f'/{slug}/', salt, iv, ct)
+                     permalink or f'/{slug}/', salt, iv, ct, friend=friend)
     kb = os.path.getsize(out) // 1024
-    print(f'\033[32m✓ protected: {slug}\033[0m  ({len(inlined)} image(s) inlined, {kb} KB stub)')
+    fnote = ' + friend read-link' if friend else ''
+    print(f'\033[32m✓ protected: {slug}\033[0m  ({len(inlined)} image(s) inlined, {kb} KB stub{fnote})')
     for m in missing:
         warn(f'referenced image not found in build, left as-is: {m}')
     for l in leftover:
@@ -221,6 +282,13 @@ def cmd_protect(args):
     if not passphrase:
         passphrase = gen_passphrase()
 
+    # Friend read-access (Option 1: one shared comment link decrypts the post AND lights up
+    # comments). Token from --friend-token / --friend-label, else the label remembered for
+    # this post in the registry — so re-runs after an edit keep the same link working.
+    entry = reg['posts'].get(slug, {})
+    friend_label = args.friend_label or (None if args.friend_token else entry.get('friend_label'))
+    friend_token = resolve_friend_token(args.friend_token, friend_label)
+
     # render exactly what the live site would serve
     tmp = None
     site_dir = args.site_dir
@@ -230,12 +298,13 @@ def cmd_protect(args):
         build_site(site_dir)
     try:
         print('')
-        assets = protect_one(slug, site_dir, passphrase, args.out_file, args.permalink)
+        assets = protect_one(slug, site_dir, passphrase, args.out_file, args.permalink, friend_token=friend_token)
         others = [] if args.test else sorted(s for s in reg['posts'] if s != slug)
         if rotated and others:
             print(f'  passphrase changed → re-encrypting {len(others)} other protected post(s):')
             for s in others:
-                extra = protect_one(s, site_dir, passphrase)
+                s_token = resolve_friend_token(None, reg['posts'][s].get('friend_label'), soft=True)
+                extra = protect_one(s, site_dir, passphrase, friend_token=s_token)
                 reg['posts'][s]['assets'] = sorted(set(reg['posts'][s].get('assets', []) + extra))
     finally:
         if tmp:
@@ -244,17 +313,25 @@ def cmd_protect(args):
     if not args.test:
         entry = reg['posts'].get(slug, {})
         reg['passphrase'] = passphrase
-        reg['posts'][slug] = {'created': entry.get('created') or __import__('datetime').date.today().isoformat(),
-                              'assets': sorted(set(entry.get('assets', []) + assets))}
+        new_entry = {'created': entry.get('created') or __import__('datetime').date.today().isoformat(),
+                     'assets': sorted(set(entry.get('assets', []) + assets))}
+        remembered_label = friend_label or entry.get('friend_label')
+        if remembered_label:
+            new_entry['friend_label'] = remembered_label
+        reg['posts'][slug] = new_entry
         save_registry(reg)
         print(f'    url:   {SITE_URL}/{slug}/   (the post\'s real URL — passphrase prompt until released)')
         print(f'    pass:  {passphrase}   (SHARED by all protected posts; browsers offer to remember it)')
         print(f'    link:  {SITE_URL}/{slug}/#{passphrase}   (one-click: passphrase rides the #fragment,')
         print(f'           which never reaches any server — but it does land in the recipient\'s history)')
+        if friend_token:
+            print(f'    FRIENDS: {SITE_URL}/{slug}/#{friend_token}')
+            print(f'           (the one shared link — decrypts the post AND turns on comments; NO passphrase.')
+            print(f'            The passphrase above stays AISI-only and never grants comment access.)')
         print(f'    note:  localhost:8090/{slug}/ keeps showing the DRAFT (it wins local builds);')
         print(f'           the stub only serves where the draft doesn\'t exist, i.e. the public site.')
         print(f'  → commit p/{slug}.html with a GENERIC message and push to go live.')
-        print(f'    re-run after edits to update in place (same link, same passphrase).')
+        print(f'    re-run after edits to update in place (same link, same passphrase, same friend link).')
 
 
 def cmd_release(args):
@@ -306,6 +383,8 @@ def main():
     ap.add_argument('--password', help='use this passphrase instead of generating/reusing')
     ap.add_argument('--fresh', action='store_true', help='rotate the passphrase (old link dies)')
     ap.add_argument('--force', action='store_true', help='allow protecting a git-tracked post')
+    ap.add_argument('--friend-token', help='shared 32-hex comment capability that also decrypts the post (Option 1)')
+    ap.add_argument('--friend-label', help='resolve the friend token from _comments/local/links.json by this label')
     ap.add_argument('--site-dir', help='use an existing built site instead of building')
     ap.add_argument('--out-file', help='write the stub here instead of p/<slug>.html')
     ap.add_argument('--permalink', help='override the stub permalink (test suite only)')

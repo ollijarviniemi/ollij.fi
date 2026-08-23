@@ -35,15 +35,56 @@
 <script>
 (() => {
 const D = { v: 1, iter: __ITER__, salt: '__SALT__', iv: '__IV__', ct: '__CT__' };
+// Friend read block: a SECOND independent ciphertext of the same page, keyed off the shared
+// 32-hex comment capability link. Empty (all '') when no friend link was baked → the whole
+// friend path below is inert and passphrase behaviour is exactly as before.
+const F = { salt: '__FRIEND_SALT__', iv: '__FRIEND_IV__', ct: '__FRIEND_CT__' };
 const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+const te = new TextEncoder();
+// document.open/write only REPLACES the page (and runs the written page's scripts —
+// comment bootstrap, KaTeX, theme) once the stub has fully loaded; called earlier it either
+// APPENDS into the stub (mid-parse) or silently skips the written scripts (during
+// DOMContentLoaded). The passphrase path was saved only by PBKDF2's 600k-iteration latency
+// landing its write after `load`; the fast HKDF friend path is not — so gate on readyState.
+function render(html) {
+  const w = () => { document.open(); document.write(html); document.close(); };
+  if (document.readyState === 'complete') w();
+  else addEventListener('load', w, { once: true });
+}
+
+// PBKDF2 passphrase path (AISI reviewers) — unchanged.
 async function unlock(pw) {
-  const km = await crypto.subtle.importKey('raw', new TextEncoder().encode(pw), 'PBKDF2', false, ['deriveKey']);
+  const km = await crypto.subtle.importKey('raw', te.encode(pw), 'PBKDF2', false, ['deriveKey']);
   const key = await crypto.subtle.deriveKey(
     { name: 'PBKDF2', hash: 'SHA-256', salt: b64(D.salt), iterations: D.iter },
     km, { name: 'AES-GCM', length: 256 }, false, ['decrypt']);
   const pt = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: b64(D.iv) }, key, b64(D.ct));
   return new TextDecoder().decode(pt);
 }
+// HKDF friend path (one shared link): matches protect.py encrypt_friend + comments.js token
+// scheme — HKDF-SHA256(16 token bytes, salt, info='protect-read') → AES-256-GCM read key.
+async function friendUnlock(tokenHex) {
+  const ikm = Uint8Array.from(tokenHex.match(/../g).map(h => parseInt(h, 16)));
+  const km = await crypto.subtle.importKey('raw', ikm, 'HKDF', false, ['deriveKey']);
+  const key = await crypto.subtle.deriveKey(
+    { name: 'HKDF', hash: 'SHA-256', salt: b64(F.salt), info: te.encode('protect-read') },
+    km, { name: 'AES-GCM', length: 256 }, false, ['decrypt']);
+  const pt = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: b64(F.iv) }, key, b64(F.ct));
+  return new TextDecoder().decode(pt);
+}
+// The 32-hex fragment (fresh link) or a previously stored cmt_token (returning friend, whose
+// fragment the comment layer already stripped). Rendering keeps the hash intact so the page's
+// own w-base bootstrap then activates comments on the same token.
+async function tryFriend() {
+  if (!F.ct) return false;
+  let tok = null;
+  const h = (location.hash || '').slice(1);
+  if (/^[0-9a-f]{32}$/.test(h)) tok = h;
+  else { try { const s = localStorage.getItem('cmt_token'); if (/^[0-9a-f]{32}$/.test(s || '')) tok = s; } catch (e) {} }
+  if (!tok) return false;
+  try { render(await friendUnlock(tok)); return true; } catch (e) { return false; }
+}
+
 const form = document.getElementById('f'), field = document.getElementById('p');
 let busy = false, typed = false;
 async function attempt(pw) {
@@ -55,7 +96,7 @@ async function attempt(pw) {
     try {  // Chrome-family: store the shared passphrase without relying on save-prompt heuristics
       if (window.PasswordCredential) navigator.credentials.store(new PasswordCredential({ id: 'reader', password: pw }));
     } catch (e) {}
-    document.open(); document.write(html); document.close();
+    render(html);
   } catch (e) {
     void form.offsetWidth; form.classList.add('err');
     field.disabled = false; field.select(); field.focus();
@@ -64,15 +105,20 @@ async function attempt(pw) {
 }
 form.addEventListener('submit', e => { e.preventDefault(); attempt(field.value); });
 field.addEventListener('keydown', () => { typed = true; });
-if (location.hash.length > 1) {
-  attempt(decodeURIComponent(location.hash.slice(1)));
-} else {
-  // a password manager AUTOFILLS without keystrokes — unlock on its value so a saved
-  // passphrase means the post just opens. Never fires once the user starts typing.
-  const autofill = () => { if (!typed && !busy && field.value) attempt(field.value); };
-  [300, 900, 1800].forEach(t => setTimeout(autofill, t));
-  document.addEventListener('pointerdown', autofill, { once: true });
-}
+
+(async () => {
+  if (await tryFriend()) return;                       // shared link → post + comments, no prompt
+  const h = location.hash.slice(1);
+  if (h && !/^[0-9a-f]{32}$/.test(h)) {                // #passphrase one-click (a 32-hex that reached here
+    attempt(decodeURIComponent(h));                    // failed friend-unlock → show the box, never try it as a pass)
+  } else if (!h) {
+    // a password manager AUTOFILLS without keystrokes — unlock on its value so a saved
+    // passphrase means the post just opens. Never fires once the user starts typing.
+    const autofill = () => { if (!typed && !busy && field.value) attempt(field.value); };
+    [300, 900, 1800].forEach(t => setTimeout(autofill, t));
+    document.addEventListener('pointerdown', autofill, { once: true });
+  }
+})();
 })();
 </script>
 </body>

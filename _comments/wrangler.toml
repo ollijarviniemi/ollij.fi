@@ -1,0 +1,16 @@
+# ollij.fi comments Worker. Deploy (once Olli provides a Cloudflare API token):
+#   cd _comments && npx wrangler d1 create ollij-comments   # then paste database_id below
+#   npx wrangler d1 execute ollij-comments --remote --file schema.sql
+#   npx wrangler d1 execute ollij-comments --remote --file local/seed.sql   # admin token (cli.py setup)
+#   npx wrangler deploy
+# Local dev/testing needs no account: npx wrangler dev  (D1 simulated in .wrangler/state)
+name = "ollij-comments"
+main = "worker.js"
+compatibility_date = "2026-07-01"
+
+routes = [{ pattern = "ollij.fi/api/comments/*", zone_name = "ollij.fi" }]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "ollij-comments"
+database_id = "b9cbd6c9-a3a7-46b5-8fd1-a794f64dbc3a"

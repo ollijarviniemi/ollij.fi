@@ -45,10 +45,15 @@ git add -f assets/uploads/secret-shot.png
 expect_block "registered private asset is blocked"
 git reset -q
 
-# D) same files are fine once the post is no longer protected (release path)
-rm _writing/secretpost.md _protect/registry.json
+# D) once released, the post publishes normally: a TRACKED post (no protected flag) that
+#    references its image commits together with the image and its writing.yml entry. The
+#    orphan-upload guard (added 2026-08-03, "pasted screenshots private by default") requires
+#    a tracked post to reference an upload — so the release fixture must include that post,
+#    exactly as a real `protect.py release` + publish would.
+rm -f _protect/registry.json
+printf -- '---\ntitle: "Secret post"\n---\n# Secret post\n\n![shot](/assets/uploads/secret-shot.png)\n' > _writing/secretpost.md
 printf 'sections:\n  - name: New\n    posts:\n      - { title: "Secret post", url: "/secretpost/" }\n' > _data/writing.yml
-git add _data/writing.yml assets/uploads/secret-shot.png
+git add _writing/secretpost.md _data/writing.yml assets/uploads/secret-shot.png
 if git commit -q -m released >/dev/null 2>&1; then ok "after release, the same commits pass"; else bad "release path still blocked"; fi
 
 exit $fails

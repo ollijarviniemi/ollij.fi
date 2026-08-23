@@ -397,6 +397,14 @@
   })();</script>
   {% endif %}
 
+  {%- comment -%} Comment layer bootstrap: inert for public visitors (a hash test + a
+       localStorage read, no requests, no layout impact). Holders of a capability link
+       (#32-hex fragment, or a previously stored token) lazily load the layer, which is
+       end-to-end encrypted — see _comments/README.md. {%- endcomment -%}
+  <script>(function(){try{
+    if(!/^#[0-9a-f]{32}$/.test(location.hash||'')&&!localStorage.getItem('cmt_token'))return;
+    var s=document.createElement('script');s.src='/assets/js/comments.js?v={{ site.time | date: '%s' }}';document.head.appendChild(s);
+  }catch(e){}})();</script>
   <script src="/assets/js/theme.js?v={{ site.time | date: '%s' }}"></script>
   {% if has_math %}
   <!-- Math via KaTeX — same engine the editor uses, so it renders identically.

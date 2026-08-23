@@ -13,7 +13,8 @@ cd "$(dirname "$0")/.." || exit 1
 # (2026-07-16 near-freeze; snap confinement denies pkill, stop transient scopes instead)
 if command -v cw >/dev/null 2>&1 && ! grep -q 'claude-work.slice' /proc/self/cgroup 2>/dev/null \
    && [ -z "${GA_TEST_NO_CW:-}" ]; then
-  exec cw "$0" "$@"
+  # Tier 4 runs wrangler dev + chromium + a jekyll build → needs more than cw's 3500M default
+  exec env CW_MEM="${CW_MEM:-6000M}" cw "$0" "$@"
 fi
 exec 9>/tmp/protect-test.lock
 flock -n 9 || { echo "✗ another _protect/test.sh is running — refusing to stack." >&2; exit 1; }
@@ -33,13 +34,29 @@ reap_stale
 
 SCRATCH=$(mktemp -d "${TMPDIR:-/tmp}/protect-test.XXXXXX")
 STUB_IMG=p/zzz-selftest-proto.html; STUB_MATH=p/zzz-selftest-pyth.html; PIN=p/zzz-conflictpin.html
-cleanup(){ reap_stale; rm -f "$STUB_IMG" "$STUB_MATH" "$PIN"; rmdir p 2>/dev/null; rm -rf "$SCRATCH"; }
+# Self-contained image fixture: a transient post + one real (1×1) upload, so the
+# image-inlining path (screenshots → data: URIs, no leak) is tested WITHOUT riding on any
+# real post's evolving content — proto_angel silently lost its images (2026-08), which made
+# the old `SLUG_IMG=proto_angel` fixture vacuous and this tier red on main.
+IMG_POST=_writing/zzz-imgfixture.md; IMG_ASSET=assets/uploads/zzz-imgfixture-shot.png
+cleanup(){ reap_stale; rm -f "$STUB_IMG" "$STUB_MATH" "$PIN" "$IMG_POST" "$IMG_ASSET"; rmdir p 2>/dev/null; rm -rf "$SCRATCH"; }
 trap cleanup EXIT
 export NODE_PATH="${NODE_PATH:-/home/olli/node_modules}"
 
 PASS='amber-lantern-quill-moss'
-SLUG_IMG=proto_angel;  URL_IMG=zzz-selftest-proto; SENT_IMG='Guardian'
-SLUG_MATH=pythagoras;  URL_MATH=zzz-selftest-pyth; SENT_MATH='Pythagoras proof'
+# SLUG_IMG (the source post) is a normal published post → legitimately in the sitemap, so its
+# slug must NOT contain the 'zzz-selftest' substring the stub-sitemap check greps for; URL_IMG
+# (the STUB permalink) keeps that prefix — stubs must stay OUT of the sitemap.
+SLUG_IMG=zzz-imgfixture;  URL_IMG=zzz-selftest-proto; SENT_IMG='Guardian selftest sentinel'
+SLUG_MATH=pythagoras;     URL_MATH=zzz-selftest-pyth; SENT_MATH='Pythagoras proof'
+
+# plant the transient image fixture — a valid 16×16 PNG (NOT 1×1: headless Firefox reports
+# naturalWidth 0 for a 1×1 image, which would false-fail the "image actually loads" check)
+base64 -d > "$IMG_ASSET" <<'PNG'
+iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAGUlEQVR4nGM8oaHBQApgIkn1qIZRDUNKAwCMLQE4ZidSiAAAAABJRU5ErkJggg==
+PNG
+printf -- '---\ntitle: "Selftest image post"\n---\n# Selftest image post\n\n%s.\n\n![shot](/%s)\n' \
+  "$SENT_IMG" "$IMG_ASSET" > "$IMG_POST"
 
 QUICK=0; for a in "$@"; do [ "$a" = --quick ] && QUICK=1; done
 fail=0
@@ -103,6 +120,14 @@ if [ "$QUICK" = 0 ]; then
 fi
 
 run "Tier 3 · pre-commit guard blocks every leak channel" bash _protect/test-guard.sh "$SCRATCH"
+
+if [ "$QUICK" = 0 ]; then
+  # Tier 4 · the ONE shared friend link both decrypts the post AND lights up E2E comments,
+  # against a real Worker (wrangler dev) + real browser — and the passphrase never = comments.
+  # Heavy (wrangler + chromium + its own jekyll build); manages its own lifecycle + cleanup.
+  run "Tier 4 · friend link → post + comments e2e (wrangler + chromium)" \
+    node _protect/test-friend-comments.mjs
+fi
 
 echo ""
 if [ "$fail" = 1 ]; then echo "✗ PROTECT SUITE FAILED"; exit 1; fi
