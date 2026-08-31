@@ -83,6 +83,37 @@ if [ "${#ups[@]}" -gt 0 ]; then
   fail=1
 fi
 
+# ---- 1f) BLOCK: comment-layer private state (master key, capabilities, seeds, exports).
+#          _comments/{worker.js,cli.py,…} is public code; _comments/local/ never is.
+#          Belt over the .gitignore braces (git add -f, renames). Added 2026-08-03. ----
+cmtleak=$(git diff --cached --name-only | grep -E '^_comments/(local/|.*\.env$|.*seed.*\.sql$|.*export.*\.json$)' || true)
+if [ -n "$cmtleak" ]; then
+  red "✗ BLOCKED: staged comment-layer private state (keys/capabilities/exports live only on this machine):"
+  echo "$cmtleak" | sed 's/^/      /'
+  echo "    unstage:  git restore --staged $cmtleak"
+  fail=1
+fi
+
+# ---- 1g) BLOCK: GA-system code must never enter the PUBLIC repo (Olli 2026-08-31:
+#          "as little code in the public repo as possible, ideally zero"). The GA stack
+#          is versioned in a separate private repo; here it exists only as untracked
+#          working-tree files, one `git add -A` away from a public push — this guard is
+#          that missing wall. serve.py itself IS tracked (the old
+#          65-line games server), so for it we block on CONTENT: any staged serve.py
+#          that carries the GA API surface. Added 2026-09-01 (audit decision 8a). ----
+gacode=$(git diff --cached --name-only --diff-filter=ACM \
+  | grep -E '^(serve_[a-z_]+\.py|gasys/|_ga/|dashboard/|editor/|extension/|_layouts/w-)' || true)
+if git diff --cached --name-only --diff-filter=ACM | grep -qx 'serve.py'; then
+  git show ':serve.py' 2>/dev/null | grep -q 'api/ga' && gacode="serve.py (GA-era content)
+$gacode"
+fi
+if [ -n "$gacode" ]; then
+  red "✗ BLOCKED: staged GA-system code — this repo is PUBLIC; GA code lives in the private repo, never here:"
+  echo "$gacode" | sed 's/^/      /'
+  echo "    unstage:  git restore --staged <paths>"
+  fail=1
+fi
+
 # ---- 2) BLOCK: obvious secrets in newly-ADDED lines. ----
 secrets=$(git diff --cached -U0 --diff-filter=ACM 2>/dev/null | grep -E '^\+' \
   | grep -aEn 'sk-[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16}|-----BEGIN [A-Z ]*PRIVATE KEY-----|xox[baprs]-[0-9A-Za-z-]{10,}|gh[pousr]_[A-Za-z0-9]{30,}|AIza[0-9A-Za-z_-]{30,}' || true)
