@@ -102,7 +102,7 @@ fi
 #          65-line games server), so for it we block on CONTENT: any staged serve.py
 #          that carries the GA API surface. Added 2026-09-01 (audit decision 8a). ----
 gacode=$(git diff --cached --name-only --diff-filter=ACM \
-  | grep -E '^(serve_[a-z_]+\.py|gasys/|_ga/|dashboard/|editor/|extension/|_layouts/w-)' || true)
+  | grep -E '^(serve_[a-z_]+\.py|gasys/|_ga/|dashboard/|editor/|extension/)' || true)   # _layouts/w-* are SITE layouts (writing collection renders the public site with them) — not GA code, 2026-09-01
 if git diff --cached --name-only --diff-filter=ACM | grep -qx 'serve.py'; then
   git show ':serve.py' 2>/dev/null | grep -q 'api/ga' && gacode="serve.py (GA-era content)
 $gacode"
