@@ -6,6 +6,7 @@
 sections:
   - name: New
     posts:
+      - { title: "Future societies as information economies", url: "/information_economies/" }
       - { title: "Proto-Guardian Angels via Stock LLMs", url: "/proto_angel/" }
       - { title: "Me, Olli", url: "/me_olli/" }
       - { title: "Subjectivist games for accelerated learning", url: "/subjectivist_games/" }
@@ -55,6 +56,7 @@ sections:
   - name: World Modeling
     posts:
       - { title: "Proto-Guardian Angels via Stock LLMs", url: "/proto_angel/" }
+      - { title: "Future societies as information economies", url: "/information_economies/" }
       - { title: "The importance of language", url: "/importance_of_language/" }
       - { title: "Writing as a tool", url: "/writing_tool/" }
       - { title: "Measuring gravitational acceleration", url: "/gravity/" }
