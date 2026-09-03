@@ -15,8 +15,6 @@ sections:
       - { title: "Black boxes", url: "/black_boxes/" }
       - { title: "Non-standard Pythagoras proof", url: "/pythagoras/" }
       - { title: "In a large world", url: "/large_world/" }
-      - { title: "Aumann", url: "/aumann/" }
-      - { title: "Bayesian Factory", url: "/factory/" }
 
   - name: Top
     posts:
