@@ -17,7 +17,10 @@ on GitHub). So the gate must sit *before* git, not in front of the site.
    fully rendered `/<slug>/index.html` — byte-identical to how the live site would
    render it (same CSS, KaTeX, masthead).
 3. Inlines every root-relative `<img>` as a `data:` URI, so unpublished screenshots
-   under `assets/uploads/` neither leak nor 404 for reviewers.
+   under `assets/uploads/` neither leak nor 404 for reviewers — and the site stylesheet
+   as a `<style>` block, because a `document.write`n page paints before an external
+   stylesheet arrives (2026-09-20: "a white background and non-rendered markdown" for a
+   split second). Tier 2 serves the CSS late and samples the body colour to keep it so.
 4. Encrypts the page: AES-256-GCM, key = PBKDF2-HMAC-SHA256(passphrase, 600k iterations).
 5. Writes `p/<slug>.html` — a Jekyll page whose `permalink` claims **the post's real
    URL `/<slug>/`**: ciphertext + an inline WebCrypto decryptor styled to the site
