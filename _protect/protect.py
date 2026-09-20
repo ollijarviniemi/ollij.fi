@@ -17,7 +17,8 @@ renders at the same URL and WINS the destination (collection docs are written af
 pages — pinned by test.sh), so localhost:8090/<slug>/ keeps showing the draft; on the
 public build only the stub exists. The encrypted payload is the fully rendered page
 from a local Jekyll build — identical to the live site — with /assets/ images inlined
-as data URIs so unpublished screenshots leak nothing and render for reviewers.
+as data URIs so unpublished screenshots leak nothing and render for reviewers, and the
+site stylesheet inlined so the decrypted page is styled on its very first paint.
 
 ALL protected posts share ONE passphrase (registry.json), so colleagues save it once in
 their password manager and every protected URL autofills; re-runs reuse it, so shared
@@ -143,6 +144,40 @@ def inline_images(html, site_dir):
     return html, inlined, missing, leftover
 
 
+def inline_styles(html, site_dir):
+    """Inline every root-relative <link rel="stylesheet"> as a <style> block. A document.write'd
+    page paints BEFORE its external stylesheet arrives, so with a <link> the reader saw the post as
+    default-styled HTML on white for a split second (Olli, 2026-09-20). site.css references its
+    fonts by root-relative url(), so the rules mean exactly the same inlined. Returns
+    (html, inlined, missing)."""
+    inlined, missing = [], []
+
+    def repl(tag_match):
+        tag = tag_match.group(0)
+        if not re.search(r'\brel\s*=\s*(["\'])stylesheet\1', tag):
+            return tag
+        href_m = re.search(r'\bhref\s*=\s*(["\'])(.*?)\1', tag)
+        if not href_m:
+            return tag
+        href = href_m.group(2)
+        if not href.startswith('/') or href.startswith('//'):
+            return tag
+        path = os.path.join(site_dir, href.lstrip('/').split('?')[0])
+        if not path.endswith('.css') or not os.path.exists(path):
+            missing.append(href)
+            return tag
+        with open(path) as f:
+            css = f.read()
+        if '</style' in css.lower():   # would terminate the block early — leave the link alone
+            missing.append(href)
+            return tag
+        inlined.append(href)
+        return f'<style data-inlined="{href.split("?")[0]}">\n{css}\n</style>'
+
+    html = re.sub(r'<link\b[^>]*>', repl, html)
+    return html, inlined, missing
+
+
 def encrypt(html, passphrase):
     from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
     from cryptography.hazmat.primitives.hashes import SHA256
@@ -239,13 +274,19 @@ def protect_one(slug, site_dir, passphrase, out_file=None, permalink=None, frien
             f'write order flipped (see test.sh conflict pin). Refusing to encrypt a stub into a stub.')
 
     html, inlined, missing, leftover = inline_images(html, site_dir)
+    html, css_inlined, css_missing = inline_styles(html, site_dir)
+    for m in css_missing:
+        warn(f'stylesheet not found in build, left as an external link (WILL flash unstyled): {m}')
+    if not css_inlined:
+        warn('no stylesheet inlined — the decrypted page will flash unstyled until site.css loads')
     salt, iv, ct = encrypt(html, passphrase)
     friend = encrypt_friend(html, friend_token) if friend_token else None
     out = write_stub(out_file or os.path.join(ROOT, 'p', slug + '.html'),
                      permalink or f'/{slug}/', salt, iv, ct, friend=friend)
     kb = os.path.getsize(out) // 1024
     fnote = ' + friend read-link' if friend else ''
-    print(f'\033[32m✓ protected: {slug}\033[0m  ({len(inlined)} image(s) inlined, {kb} KB stub{fnote})')
+    print(f'\033[32m✓ protected: {slug}\033[0m  ({len(inlined)} image(s) + {len(css_inlined)} stylesheet(s) inlined, '
+          f'{kb} KB stub{fnote})')
     for m in missing:
         warn(f'referenced image not found in build, left as-is: {m}')
     for l in leftover:

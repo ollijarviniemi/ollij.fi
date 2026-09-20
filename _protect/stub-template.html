@@ -5,9 +5,23 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
 <title>ollij.fi</title>
+<script>
+  /* the site's own theme rule (w-base.html), verbatim: its toggle's localStorage choice, else the
+     OS scheme — set before paint, so the box and the post it becomes are the same paper */
+  (function () {
+    try {
+      var t = localStorage.getItem('theme');
+      if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', t);
+    } catch (e) { document.documentElement.setAttribute('data-theme', 'light'); }
+  })();
+</script>
 <style>
+  /* the site's body face, same file as site.css → warm in cache before the post is written */
+  @font-face{font-family:'Newsreader';font-style:normal;font-weight:300 800;font-display:swap;
+             src:url("/fonts/newsreader-latin-var.woff2") format("woff2")}
   :root{--bg:#fbfaf6;--ink:#1b1a16;--accent:#7c2d2d;--border:#ded7c7}
-  @media (prefers-color-scheme:dark){:root{--bg:#16150f;--ink:#e9e4d4;--accent:#d98c7a;--border:#34343a}}
+  :root[data-theme="dark"]{--bg:#16150f;--ink:#e9e4d4;--accent:#d98c7a;--border:#34343a}
   html,body{height:100%}
   body{margin:0;background:var(--bg);color:var(--ink);display:grid;place-items:center;
        font:500 21px 'Newsreader',Garamond,Georgia,serif}
@@ -41,6 +55,9 @@ const D = { v: 1, iter: __ITER__, salt: '__SALT__', iv: '__IV__', ct: '__CT__' }
 const F = { salt: '__FRIEND_SALT__', iv: '__FRIEND_IV__', ct: '__FRIEND_CT__' };
 const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
 const te = new TextEncoder();
+// A friend link (32-hex fragment) opens the post with no prompt — don't flash the passphrase
+// box for the moment the unlock takes; it comes back below if the token turns out bad.
+if (/^[0-9a-f]{32}$/.test((location.hash || '').slice(1))) document.getElementById('f').style.visibility = 'hidden';
 // document.open/write only REPLACES the page (and runs the written page's scripts —
 // comment bootstrap, KaTeX, theme) once the stub has fully loaded; called earlier it either
 // APPENDS into the stub (mid-parse) or silently skips the written scripts (during
@@ -108,6 +125,7 @@ field.addEventListener('keydown', () => { typed = true; });
 
 (async () => {
   if (await tryFriend()) return;                       // shared link → post + comments, no prompt
+  form.style.visibility = '';                          // not a (valid) friend link → the box after all
   const h = location.hash.slice(1);
   if (h && !/^[0-9a-f]{32}$/.test(h)) {                // #passphrase one-click (a 32-hex that reached here
     attempt(decodeURIComponent(h));                    // failed friend-unlock → show the box, never try it as a pass)
