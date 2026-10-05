@@ -112,6 +112,9 @@ run "Tier 0 · real pipeline: build → protect → no-leak → conflict pin" ti
 run "Tier 1 · crypto round-trip + tamper (node WebCrypto)" \
   node _protect/test-crypto.mjs "$SCRATCH/site2/$URL_IMG/index.html" "$PASS" "$SENT_IMG"
 
+run "Tier 1b · friends-only: shared passphrase locked out, friend link opens" \
+  python3 _protect/test-friends-only.py "$SCRATCH/site" "$SLUG_IMG" "$PASS" "$SENT_IMG" "$SCRATCH"
+
 if [ "$QUICK" = 0 ]; then
   run "Tier 2 · real headless Firefox e2e (reviewer's path)" \
     node _protect/test-e2e.mjs "$SCRATCH/site2" \
