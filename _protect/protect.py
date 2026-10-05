@@ -5,6 +5,9 @@
     python3 _protect/protect.py <slug> --friend-label friends   also bake a shared-link read block:
         one 32-hex comment capability (cli.py mint --label friends) that decrypts the post AND turns
         on E2E comments, no passphrase — separate from the AISI passphrase (see README "Friend read-links")
+    python3 _protect/protect.py <slug> --friend-label friends --friends-only   friend link ONLY: the
+        passphrase block is keyed to a discarded random secret, so the shared (AISI) passphrase does
+        NOT open this post. Sticky in the registry (re-runs and rotations keep it friends-only).
     python3 _protect/protect.py release <slug>      post cleared for real publishing: remove stub + flag
     python3 _protect/protect.py list                show what is currently protected
 
@@ -67,6 +70,11 @@ def save_registry(reg):
     with os.fdopen(fd, 'w') as f:
         json.dump(reg, f, indent=2, sort_keys=True)
     os.chmod(REGISTRY, 0o600)
+
+
+def throwaway_secret():
+    """A never-stored random key for the passphrase block of a friends-only post."""
+    return secrets.token_hex(32)
 
 
 def gen_passphrase():
@@ -329,6 +337,10 @@ def cmd_protect(args):
     entry = reg['posts'].get(slug, {})
     friend_label = args.friend_label or (None if args.friend_token else entry.get('friend_label'))
     friend_token = resolve_friend_token(args.friend_token, friend_label)
+    friends_only = bool(args.friends_only or entry.get('friends_only'))
+    if friends_only and not friend_token:
+        die('--friends-only needs a friend read-link (--friend-label/--friend-token) — '
+            'otherwise nobody could open the post')
 
     # render exactly what the live site would serve
     tmp = None
@@ -339,13 +351,17 @@ def cmd_protect(args):
         build_site(site_dir)
     try:
         print('')
-        assets = protect_one(slug, site_dir, passphrase, args.out_file, args.permalink, friend_token=friend_token)
+        # friends-only: the passphrase block still exists (stubs stay uniform) but is keyed to a
+        # random secret that is never stored, so the shared passphrase cannot open this post
+        assets = protect_one(slug, site_dir, throwaway_secret() if friends_only else passphrase,
+                             args.out_file, args.permalink, friend_token=friend_token)
         others = [] if args.test else sorted(s for s in reg['posts'] if s != slug)
         if rotated and others:
             print(f'  passphrase changed → re-encrypting {len(others)} other protected post(s):')
             for s in others:
                 s_token = resolve_friend_token(None, reg['posts'][s].get('friend_label'), soft=True)
-                extra = protect_one(s, site_dir, passphrase, friend_token=s_token)
+                s_pass = throwaway_secret() if reg['posts'][s].get('friends_only') else passphrase
+                extra = protect_one(s, site_dir, s_pass, friend_token=s_token)
                 reg['posts'][s]['assets'] = sorted(set(reg['posts'][s].get('assets', []) + extra))
     finally:
         if tmp:
@@ -359,9 +375,15 @@ def cmd_protect(args):
         remembered_label = friend_label or entry.get('friend_label')
         if remembered_label:
             new_entry['friend_label'] = remembered_label
+        if friends_only:
+            new_entry['friends_only'] = True
         reg['posts'][slug] = new_entry
         save_registry(reg)
         print(f'    url:   {SITE_URL}/{slug}/   (the post\'s real URL — passphrase prompt until released)')
+        if friends_only:
+            print(f'    FRIENDS ONLY: {SITE_URL}/{slug}/#{friend_token}')
+            print(f'           (the ONLY way in — the shared passphrase does NOT open this post)')
+    if not args.test and not friends_only:
         print(f'    pass:  {passphrase}   (SHARED by all protected posts; browsers offer to remember it)')
         print(f'    link:  {SITE_URL}/{slug}/#{passphrase}   (one-click: passphrase rides the #fragment,')
         print(f'           which never reaches any server — but it does land in the recipient\'s history)')
@@ -369,6 +391,7 @@ def cmd_protect(args):
             print(f'    FRIENDS: {SITE_URL}/{slug}/#{friend_token}')
             print(f'           (the one shared link — decrypts the post AND turns on comments; NO passphrase.')
             print(f'            The passphrase above stays AISI-only and never grants comment access.)')
+    if not args.test:
         print(f'    note:  localhost:8090/{slug}/ keeps showing the DRAFT (it wins local builds);')
         print(f'           the stub only serves where the draft doesn\'t exist, i.e. the public site.')
         print(f'  → commit p/{slug}.html with a GENERIC message and push to go live.')
@@ -405,7 +428,8 @@ def cmd_list(args):
         print('nothing protected.')
         return
     for slug, e in sorted(reg['posts'].items()):
-        print(f'  {slug:30s}  {SITE_URL}/{slug}/   since {e.get("created", "?")}')
+        fo = '   FRIENDS ONLY' if e.get('friends_only') else ''
+        print(f'  {slug:30s}  {SITE_URL}/{slug}/   since {e.get("created", "?")}{fo}')
     print(f'  shared passphrase: {reg.get("passphrase")}')
 
 
@@ -426,6 +450,8 @@ def main():
     ap.add_argument('--force', action='store_true', help='allow protecting a git-tracked post')
     ap.add_argument('--friend-token', help='shared 32-hex comment capability that also decrypts the post (Option 1)')
     ap.add_argument('--friend-label', help='resolve the friend token from _comments/local/links.json by this label')
+    ap.add_argument('--friends-only', action='store_true',
+                    help='friend link only: the shared (AISI) passphrase does not open this post (sticky)')
     ap.add_argument('--site-dir', help='use an existing built site instead of building')
     ap.add_argument('--out-file', help='write the stub here instead of p/<slug>.html')
     ap.add_argument('--permalink', help='override the stub permalink (test suite only)')
