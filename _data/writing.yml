@@ -19,11 +19,11 @@ sections:
   - name: Top
     posts:
       - { title: "I woke up in a strange place", url: "/I_woke_up/" }
-      - { title: "Subjectivist games for accelerated learning", url: "/subjectivist_games/" }
+      - { title: "Me, Olli", url: "/me_olli/" }
+      - { title: "Future societies as information economies", url: "/information_economies/" }
       - { title: '"You will never meet the other player ever again"', url: "/never_again/" }
       - { title: "The Pendulum Trial", url: "/predict/" }
       - { title: "A cause for distrust in Bayesianism", url: "/distrust_in_bayes/" }
-      - { title: "The perpetual-motion jury", url: "/perpetual_motion/" }
       - { title: "Writing as a tool", url: "/writing_tool/" }
       - { title: "In a large world", url: "/large_world/" }
 
