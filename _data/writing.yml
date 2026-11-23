@@ -6,6 +6,8 @@
 sections:
   - name: New
     posts:
+      - { title: "<em>Violet Evergarden</em> and utopia", url: "/violet_evergarden/" }
+      - { title: "The era of logical uncertainty", url: "/logical_era/" }
       - { title: "Future societies as information economies", url: "/information_economies/" }
       - { title: "Proto-Guardian Angels via Stock LLMs", url: "/proto_angel/" }
       - { title: "Me, Olli", url: "/me_olli/" }
@@ -13,8 +15,6 @@ sections:
       - { title: "LLM-assisted belief articulation exercise", url: "/belief_articulation/" }
       - { title: "The importance of language", url: "/importance_of_language/" }
       - { title: "Black boxes", url: "/black_boxes/" }
-      - { title: "Non-standard Pythagoras proof", url: "/pythagoras/" }
-      - { title: "In a large world", url: "/large_world/" }
 
   - name: Top
     posts:
@@ -46,6 +46,7 @@ sections:
 
   - name: Epistemics
     posts:
+      - { title: "The era of logical uncertainty", url: "/logical_era/" }
       - { title: "LLM-assisted belief articulation exercise", url: "/belief_articulation/" }
       - { title: "Black boxes", url: "/black_boxes/" }
       - { title: "In defense of jargon", url: "/jargon/" }
@@ -62,6 +63,7 @@ sections:
 
   - name: Softer side
     posts:
+      - { title: "<em>Violet Evergarden</em> and utopia", url: "/violet_evergarden/" }
       - { title: "Me, Olli", url: "/me_olli/" }
       - { title: "I woke up in a strange place", url: "/I_woke_up/" }
       - { title: "An unusual situation", url: "/unusual/" }

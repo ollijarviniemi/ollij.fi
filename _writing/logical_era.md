@@ -1,0 +1,21 @@
+---
+description: "In the long run, most uncertainty will be about behaviour of computations."
+---
+# The era of logical uncertainty
+Children sometimes get asked basic questions about their preferences: What's your favorite color? Favorite food? These particular questions are good choices, as they are easy to answer: most children have clear opinions on food. This is thanks to children having had experience with many foods, and the question "do I like this particular food I'm eating" often requiring little introspective ability.
+
+Other questions about preferences are trickier. For example, consider the question "which movies do you like?" When I was younger, my answer involved *Interstellar* and was predictable from there. Now, in my adult life, I went to see my first ever comedy film – *The Invite* – and, to my surprise, found I liked it more than some of the more plausible guesses (such as *The Odyssey*).
+
+I'd go as far as saying I have been mistaken about my movie preferences – not in any philosophically profound way, I just mean the question "if I go see this movie, will I afterwards say I liked it" has a well-defined answer, and I'd have given a wrong prediction. It's not really different from how I might be mistaken about which movies my friends like, or about how many kilometers I can run in an hour, or how well I can learn a new skill if I practice it for fifty hours.
+
+Why are such predictions hard, hard enough for me to not get them right?
+
+One reason is that I simply don't know what movies exist. Human civilization has produced many movies, and the supply keeps changing over time as well – surely there'll be surprises there. "Do I like comedy movies?" is implicitly related to questions like "What's the state of film-making technology?" and "What sort of films does the industry choose to make?", which in turn are related to many other empirical questions I have only limited knowledge of. That is, it's a question of empirical uncertainty.
+
+But clearly that's not all of it: even if my friend has seen the particular movie *The Invite* and knows what it has in store for me, they wouldn't necessarily know if I liked it. Now, you might shrug this off as another problem of empirical uncertainty: my friend has seen the movie, but might not remember it perfectly, and my friend knows me, but not perfectly. Those are valid issues, but again clearly not all of it: even if my friend had a digital copy of the movie, a digital upload of myself, and a full copy of the virtual movie theater in which digital-me watches the movie – all the empirical information you'd need – that hardly seems like it'd help predict whether I'll like it. (Except if my friend cheats by actually running the simulation and then asking digital-me for a movie review.) This is a problem of having uncertainty about computations and implications of logical statements, a problem of *logical uncertainty*.
+
+Logical uncertainty is a very natural challenge to reasoning about humans. Of course it's often hard to predict what a human will think and say after a long time, just like it's often hard to predict what computer programs do when run for a long time!
+
+Going further, I claim that for many questions we might want to answer, a major fraction of our uncertainty stems from logical uncertainty (roughly, behaviour of computations), not from empirical uncertainty (roughly, which computations are taking place). This is already the case for many important questions around AI, as many questions are almost entirely functions of the weights of a model – something we have zero empirical uncertainty about – and the outputs those result in. I conjecture this will become true of many other fields as well as they mature.
+
+More broadly, in technologically mature civilizations one would expect nearly all empirical questions of broad interest to be resolvable, barring intelligent actors deliberately inducing such uncertainty. As such, the empirical uncertainty constraining our current civilization is primarily a matter of technological inability rather than a fundamental property of reality, simply a phase preceding the era of logical uncertainty.
